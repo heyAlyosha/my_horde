@@ -60,6 +60,7 @@ function on_message(self, message_id, message, sender)
 		end
 
 	elseif message_id == hash("trigger_response") and message.own_group == hash("attack") then
+		
 		if message.enter then
 			-- Объект для повреждения вошёл поле атаки
 			local url_object = message.other_id
@@ -76,17 +77,25 @@ function on_message(self, message_id, message, sender)
 				command = self.command,
 				damage = self.damage,
 				damage_count_object = 5,
-				type = hash("hit")
+				type = hash("hit"),
+				from_id_object = go.get_id()
 			}
 			factory.create("#bullet_hit_factory", position, rotation, properties)
-			self.timer_atack = timer.delay(self.speed_damage, true, function (self)
-				-- Место спавна пули
-				local position = go.get_position()
-				-- Поворачиваем пулю в нужное управление
-				local rot = vmath.normalize(go.get_position(url_object) - position)
-				local angle = math.atan2(rot.y, rot.x)
-				local rotation = vmath.quat_rotation_z(angle) 
-				factory.create("#bullet_hit_factory", position, rotation, properties)
+
+			self.timer_atack = timer.delay(self.speed_damage, true, function (self, handle, time_elapsed)
+				if storage_game.go_urls[message.other_id] then
+					-- Место спавна пули
+					local position = go.get_position()
+					-- Поворачиваем пулю в нужное управление
+					local rot = vmath.normalize(go.get_position(url_object) - position)
+					local angle = math.atan2(rot.y, rot.x)
+					local rotation = vmath.quat_rotation_z(angle)
+					factory.create("#bullet_hit_factory", position, rotation, properties)
+
+				else
+					timer.cancel(handle)
+					self.timer_atack = nil
+				end
 			end)
 
 		else
@@ -95,7 +104,9 @@ function on_message(self, message_id, message, sender)
 				self.timer_atack = nil
 			end
 		end
+		pprint(message_id, message)
 	end
+	
 end
 
 function on_input(self, action_id, action)

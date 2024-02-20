@@ -9,9 +9,7 @@ local game_content_achieve = require "main.game.content.game_content_achieve"
 local game_content_characteristic = require "main.game.content.game_content_characteristic"
 local game_content_company = require "main.game.content.game_content_company"
 local storage_collection = require "main.storage.storage_collection"
-local storage_collection = require "main.storage.storage_collection"
 local loader_gui_function = require "main.loaders.loader_gui.modules.loader_gui_function"
-local storage_game = require "main.game.storage.storage_game"
 local defsave = require("defsave.defsave")
 local druid = require("druid.druid")
 local druid_castom_style = require "main.gui.modules.druid_castom_style"
@@ -20,6 +18,7 @@ local druid_castom_style = require "main.gui.modules.druid_castom_style"
 function init(self)
 	input_remote_tv = require "input.input_remote_tv.modules.input_remote_tv"
 	character_animations = require "main.game.animations.character_animations"
+	storage_game = require "main.game.storage.storage_game"
 
 	math.randomseed = function (seed)
 		storage_game.randomseed = storage_game.randomseed or 0

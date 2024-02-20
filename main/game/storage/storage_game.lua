@@ -109,4 +109,7 @@ M.family = {
 
 }
 
+-- Urls объектов в игре
+M.go_urls = {}
+
 return M

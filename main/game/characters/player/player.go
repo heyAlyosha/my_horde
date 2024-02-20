@@ -1,5 +1,5 @@
 components {
-  id: "main_character"
+  id: "script"
   component: "/main/game/characters/player/player.script"
   position {
     x: 0.0
@@ -11,6 +11,11 @@ components {
     y: 0.0
     z: 0.0
     w: 1.0
+  }
+  properties {
+    id: "damage"
+    value: "5.0"
+    type: PROPERTY_TYPE_NUMBER
   }
   properties {
     id: "speed_damage"
