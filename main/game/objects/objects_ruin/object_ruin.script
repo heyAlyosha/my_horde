@@ -24,7 +24,7 @@ function on_message(self, message_id, message, sender)
 
 		label.set_text("#label", self.live .. "/"..self.max_live)
 
-		if self.live < 0 then
+		if self.live <= 0 then
 			go.delete()
 		end
 	end

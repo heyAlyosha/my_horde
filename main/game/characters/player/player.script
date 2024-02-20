@@ -78,7 +78,7 @@ function on_message(self, message_id, message, sender)
 				damage = self.damage,
 				damage_count_object = 5,
 				type = hash("hit"),
-				from_id_object = go.get_id()
+				parent = msg.url()
 			}
 			factory.create("#bullet_hit_factory", position, rotation, properties)
 
