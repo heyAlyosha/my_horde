@@ -1,0 +1,177 @@
+local druid = require("druid.druid")
+local gui_input = require "main.gui.modules.gui_input"
+local storage_gui = require "main.storage.storage_gui"
+local gui_animate = require "main.gui.modules.gui_animate"
+local gui_manager = require "main.gui.modules.gui_manager"
+-- Адаптирвоанный интерфейс
+local gui_loyouts = require "main.gui.modules.gui_loyouts"
+-- Переводы
+local gui_lang = require "main.lang.gui_lang"
+local lang_core = require "main.lang.lang_core"
+local storage_game = require "main.game.storage.storage_game"
+local storage_gui = require "main.storage.storage_gui"
+
+local function close(self)
+	gui_animate.hidden_bottom(self, self.nodes.wrap, function (self)
+		msg.post("/loader_gui", "visible", {id = self.id, visible = false})
+		msg.post("/core_screens", "continue_game_from_pause")
+	end)
+end
+
+function init(self)
+	self.id = "modal_pause"
+
+	msg.post(".", "acquire_input_focus")
+	gui_manager.add_screen(self.id, msg.url())
+	gui.set_render_order(storage_gui.orders.pause)
+
+	self.is_modal = false
+
+	self.nodes = {
+		wrap = gui.get_node("wrap"),
+		title = gui.get_node("title"),
+		btn_close = gui.get_node("btn-close-template/btn"),
+		btn_close_icon = gui.get_node("btn-close-template/btn_icon"),
+		btn_back = gui.get_node("btn_back_template/btn"),
+		btn_back_icon = gui.get_node("btn_back_template/btn_icon"),
+		btn_continue = gui.get_node("btn_continue_template/btn"),
+		btn_continue_icon = gui.get_node("btn_continue_template/btn_icon"),
+		btn_refresh = gui.get_node("btn_refresh_template/btn"),
+		btn_refresh_icon = gui.get_node("btn_refresh_template/btn_icon"),
+	}
+
+	msg.post("/loader_gui", "visible", {
+		id = "bg",
+		parent_id = self.id,
+		value = {order = 4},
+		visible = true,
+		type = hash("animated_close"),
+	})
+
+	gui_lang.set_text_upper(self, self.nodes.title, "_pause")
+
+	gui_animate.show_bottom(self, self.nodes.wrap , nil)
+
+	self.druid = druid.new(self)
+
+	self.btns = {
+		{id = "close", type = "btn", section = "close", node = self.nodes.btn_close, wrap_node = self.nodes.btn_close_icon, node_title = false, icon = "btn_circle_bg_red_", wrap_icon = "btn_icon_close_",},
+		{id = "back", type = "btn", section = "body", node = self.nodes.btn_back, wrap_node = self.nodes.btn_back_icon, node_title = false, icon = "btn_circle_bg_orange_", wrap_icon = "btn_icon_back_",},
+		{id = "continue", type = "btn", section = "body", node = self.nodes.btn_continue, wrap_node = self.nodes.btn_continue_icon, node_title = false, icon = "btn_circle_bg_green_", wrap_icon = "btn_icon_play_",},
+		{id = "refresh", type = "btn", section = "body", node = self.nodes.btn_refresh, wrap_node = self.nodes.btn_refresh_icon, node_title = false, icon = "btn_circle_bg_orange_", wrap_icon = "btn_icon_refresh_",},
+	}
+
+	if storage_game.game.study_level and storage_game.game.study_level > 0 then
+		gui_input.set_disabled(self, self.btns[4], true)
+	end
+
+	msg.post("/core_screens", "pause")
+
+	timer.delay(0.25, false, function(self)
+		gui_input.set_focus(self, 3)
+
+		-- Прячем мещающиеся окна
+		if storage_gui.components_visible.main_title then
+			msg.post("main:/loader_gui", "visible", {id = "main_title", visible = false})
+		end
+
+		if storage_gui.components_visible.quest_image then
+			msg.post("main:/loader_gui", "visible", {id = "quest_image", visible = false})
+		end
+
+		if storage_gui.components_visible.quest_music then
+			msg.post("main:/loader_gui", "visible", {id = "quest_music", visible = false})
+		end
+	end)
+end
+
+function final(self)
+	gui_input.set_last_focus_component(self, msg.url().fragment)
+
+	gui_manager.remove_screen(self.id, msg.url())
+	self.druid:final()
+	gui_input.on_final(self)
+
+	msg.post("/loader_gui", "visible", {
+		id = "bg",
+		parent_id = self.id,
+		visible = false,
+		type = hash("animated_close"),
+	})
+
+	-- Прячем мещающиеся окна
+	if storage_gui.components_visible.main_title then
+		msg.post("main:/loader_gui", "visible", {id = "main_title", visible = false})
+	end
+
+	if storage_gui.components_visible.quest_image then
+		msg.post("main:/loader_gui", "visible", {id = "quest_image", visible = false})
+	end
+
+	if storage_gui.components_visible.quest_music then
+		msg.post("main:/loader_gui", "visible", {id = "quest_music", visible = false})
+	end
+end
+
+function update(self, dt)
+	self.druid:update(dt)
+end
+
+function on_message(self, message_id, message, sender)
+	input_remote_tv.on_message(self, message_id, message, sender)
+	self.druid:on_message(message_id, message, sender)
+
+	if message_id == hash("focus") then
+		gui_input.set_focus(self, message.focus)
+
+	elseif message_id == hash("hidden") then
+		gui_animate.hidden_bottom(self, self.nodes.wrap, function (self)
+			msg.post("/loader_gui", "visible", {id = self.id, visible = false})
+		end)
+
+	end
+end
+
+function on_input(self, action_id, action)
+	action_id, action = input_remote_tv.on_input(self, action_id, action)
+	self.druid:on_input(action_id, action)
+
+	if self.focus_btn_id == 1 and action_id == hash("up") and action.pressed then
+		msg.post("/loader_gui", "focus", {
+			id = "interface", -- id компонента в лоадер гуи
+			focus = 1 -- кнопка фокуса
+		})
+		msg.post("main:/sound", "play", {sound_id = "focus_main_menu"})
+		return
+	end
+
+	-- Нажатие на кнопки
+	local function function_activate(self, focus_btn_id)
+		local btn = self.btns[focus_btn_id]
+
+		gui_animate.activate(self, btn.node)
+		msg.post("main:/sound", "play", {sound_id = "activate_btn"})
+
+		if btn.disabled then
+			return
+		end
+
+		if btn.id == "close" or btn.id == "continue" then
+			close(self)
+
+		elseif btn.id == "back" then
+			storage_game.game.study = nil
+			msg.post("main:/core_screens", "back_menu", {})
+
+		elseif btn.id == "refresh" then
+			msg.post("main:/core_screens", "refresh_round", {})
+
+		end
+	end
+
+	return gui_input.on_input(self, action_id, action, function_focus, function_activate, close, function_post_focus)
+end
+
+function on_reload(self)
+
+end

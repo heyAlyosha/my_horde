@@ -1,0 +1,207 @@
+local druid = require("druid.druid")
+local gui_input = require "main.gui.modules.gui_input"
+local storage_gui = require "main.storage.storage_gui"
+local storage_player = require "main.storage.storage_player"
+local gui_animate = require "main.gui.modules.gui_animate"
+local modal_characteristics_animations = require "main.gui.modals.modal_characteristics.animations.modal_characteristics_animations"
+local modal_characteristics_up = require "main.gui.modals.modal_characteristics.modules.modal_characteristics_up"
+local modal_characteristics_render = require "main.gui.modals.modal_characteristics.modules.modal_characteristics_render"
+local gui_manager = require "main.gui.modules.gui_manager"
+local game_content_characteristic = require "main.game.content.game_content_characteristic"
+local game_content_text = require "main.game.content.game_content_text"
+local gui_render = require "main.gui.modules.gui_render"
+local gui_size = require 'main.gui.modules.gui_size'
+local api_player = require 'main.game.api.api_player'
+-- Адаптирвоанный интерфейс
+local gui_loyouts = require "main.gui.modules.gui_loyouts"
+-- Переводы
+local gui_lang = require "main.lang.gui_lang"
+local lang_core = require "main.lang.lang_core"
+local live_update_atlas = require "main.game.live_update.atlas.live_update_atlas"
+
+function init(self)
+	msg.post(".", "acquire_input_focus")
+	gui.set_render_order(storage_gui.orders.modal)
+	gui_manager.add_screen("modal_result_single", msg.url())
+
+	--self.is_modal = true
+	self.id = "modal_characteristics"
+
+	self.nodes = {
+		wrap = gui.get_node("wrap"),
+		title = gui.get_node("title"),
+		description = gui.get_node("description"),
+		btn_close = gui.get_node("btn-close-template/btn"),
+		btn_close_icon = gui.get_node("btn-close-template/btn_icon"),
+	}
+
+	gui_lang.set_text_upper(self, self.nodes.title, "_improvements", before_str, after_str)
+
+	self.btns_id = {}
+	self.btns = {
+		-- Кнопка закрытия
+		{
+			id = "close", 
+			type = "btn", 
+			section = "close", 
+			node = self.nodes.btn_close, 
+			wrap_node = self.nodes.btn_close_icon, 
+			node_title = false, 
+			icon = "btn_circle_bg_red_", 
+			wrap_icon = "btn_icon_close_"
+		},
+	}
+
+	-- Карточки с харкатеристиками
+	self.cards = {
+		{id = "mind", template_name = "item_1_template"},
+		{id = "accuracy", template_name = "item_2_template"},
+		{id = "charisma", template_name = "item_3_template"},
+		{id = "trade", template_name = "item_4_template"},
+		{id = "speed_caret", template_name = "item_5_template"},
+	}
+
+	self.druid = druid.new(self)
+	gui_input.init(self)
+
+	modal_characteristics_render.render(self, not_modal)
+
+	-- Устанавливаем фокус
+	if storage_player.characteristic_points > 0 then
+		timer.delay(0.1, false, function (self)
+			gui_input.set_focus(self, 2)
+		end)
+	else
+		timer.delay(0.1, false, function (self)
+			gui_input.set_focus(self, #self.btns)
+		end)
+	end
+	
+end
+
+function final(self)
+	msg.post("/loader_gui", "visible", {
+		id = "bg",
+		visible = false,
+		parent_id = self.id,
+		type = hash("animated_close"),
+	})
+	gui_input.on_final(self)
+
+	gui_manager.remove_screen("modal_characteristics", msg.url())
+	self.druid:final()
+	live_update_atlas.on_final_gui(self)
+end
+
+function update(self, dt)
+	self.druid:update(dt)
+
+	-- Сохраняем позиции кнопок
+	storage_gui.positions[self.id] = storage_gui.positions[self.id] or {}
+	for i = 1, 6 do
+		local btn = self.btns[i]
+
+		if btn then
+			storage_gui.positions[self.id][i] = gui.get_screen_position(btn.node)
+		else
+			storage_gui.positions[self.id][i] = nil
+		end
+	end
+end
+
+function on_message(self, message_id, message, sender)
+	input_remote_tv.on_message(self, message_id, message, sender)
+	self.druid:on_message(message_id, message, sender)
+	gui_loyouts.on_message(self, message_id, message)
+	live_update_atlas.on_message_gui(self, message_id, message, sender)
+
+	if message_id == hash("layout_changed") then
+		modal_characteristics_render.render(self, not_modal)
+
+	elseif message_id == hash("focus") then
+		gui_input.set_focus(self, message.focus)
+
+	elseif message_id == hash("visible") then
+		-- Показываем окно
+		local data = message.value
+		gui_animate.show_bottom(self, self.nodes.wrap , nil)
+
+		msg.post("main:/sound", "play", {sound_id = "modal_top_2_2"})
+
+		msg.post("/loader_gui", "visible", {
+			id = "bg",
+			visible = true,
+			parent_id = self.id,
+			type = hash("animated_close"),
+			values =  {order = 5}
+		})
+
+	-- Пришло сообщение
+	elseif message_id == hash("set_status") then
+		if message.type == "success_up" then
+			local success_id = message.value.id
+			modal_characteristics_render.render(self)
+
+			-- Устанавливаем фокус
+			if storage_player.characteristic_points > 0 then
+				if self.focus_btn_id > #self.btns then
+					self.focus_btn_id = #self.btns
+				end
+
+				gui_input.set_focus(self, self.focus_btn_id)
+			else
+				gui_input.set_focus(self, 2)
+			end
+
+			local btn = self.btns_id[message.value.id]
+			modal_characteristics_animations.up(self, btn.name_template)
+		end
+
+	end
+end
+
+function on_input(self, action_id, action)
+	action_id, action = input_remote_tv.on_input(self, action_id, action)
+	self.druid:on_input(action_id, action)
+
+	-- Нажатие на кнопки
+	local function function_activate(self, focus_btn_id)
+		local btn = self.btns[focus_btn_id]
+
+		-- Кнопка заблокирована
+		if btn.disabled then
+			return false
+		end
+		
+		local node = btn.node or btn.wrap_node or btn.node_bg
+		gui_animate.activate(self, node)
+
+		if btn.id == "close" or btn.id == "skip" then
+			msg.post("main:/sound", "play", {sound_id = "activate_btn"})
+			modal_characteristics_render.hidden(self)
+
+		elseif btn.is_characteristic then
+			local btns = modal_characteristics_up.activate(self, btn)
+
+			timer.delay(1, false, function (self)
+				if #btns <= 2 then
+					modal_characteristics_render.hidden(self)
+				end
+			end)
+			
+		end
+	end
+
+	local is_modal = self.is_modal
+	if gui_input.on_input(self, action_id, action, function_focus, function_activate, modal_characteristics_render.hidden, function_post_focus, is_modal) then
+		return true
+	end
+
+	if action.x and action.y and gui.pick_node(self.nodes.wrap, action.x, action.y) then
+		return true
+	end
+end
+
+function on_reload(self)
+
+end

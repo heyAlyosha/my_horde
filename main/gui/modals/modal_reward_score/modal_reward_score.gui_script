@@ -1,0 +1,215 @@
+local druid = require("druid.druid")
+local gui_input = require "main.gui.modules.gui_input"
+local storage_gui = require "main.storage.storage_gui"
+local storage_player = require "main.storage.storage_player"
+local gui_animate = require "main.gui.modules.gui_animate"
+local modal_reward_score_functions = require "main.gui.modals.modal_reward_score.modules.modal_reward_score_functions"
+local gui_manager = require "main.gui.modules.gui_manager"
+local gui_scale = require "main.gui.modules.gui_scale"
+local gui_size = require 'main.gui.modules.gui_size'
+local api_player = require 'main.game.api.api_player'
+local color = require("color-lib.color")
+-- Адаптирвоанный интерфейс
+local gui_loyouts = require "main.gui.modules.gui_loyouts"
+-- Переводы
+local gui_lang = require "main.lang.gui_lang"
+local lang_core = require "main.lang.lang_core"
+
+function init(self)
+	msg.post(".", "acquire_input_focus")
+	gui.set_render_order(3)
+	gui_manager.add_screen("modal_reward_score", msg.url())
+
+	self.nodes = {
+		wrap = gui.get_node("wrap"),
+		title = gui.get_node("title"),
+		arrow = gui.get_node("arrow"),
+		wrap_count = gui.get_node("wrap_count"),
+		count = gui.get_node("count"),
+		old_count = gui.get_node("old_count"),
+		wrap_old_count = gui.get_node("wrap_old_count"),
+		icon = gui.get_node("icon"),
+		wrap_reward_numbers = gui.get_node("reward_numbers"),
+		wrap_areola = gui.get_node("areola_template/wrap"),
+		wrap_scale = gui.get_node("wrap_scale"),
+		reward_numbers = {
+			gui.get_node("buff_1_5_left"),
+			gui.get_node("buff_2_left"),
+			gui.get_node("buff_3_left"),
+			gui.get_node("buff_4"),
+			gui.get_node("buff_3_right"),
+			gui.get_node("buff_2_right"),
+			gui.get_node("buff_1_5_right"),
+		},
+		btn_reward = gui.get_node("btn_reward_template/btn"),
+		btn_reward_icon = gui.get_node("btn_reward_template/btn_icon"),
+		btn_close = gui.get_node("btn-close-template/btn"),
+		btn_close_title = gui.get_node("btn-close-template/btn_icon"),
+		--btn_close = gui.get_node("btn_skip_template/btn_wrap"),
+		--btn_close_title = gui.get_node("btn_skip_template/btn_title"),
+	}
+
+	gui_lang.set_text_upper(self, self.nodes.title, "_up_reward_score", before_str, after_str)
+	gui_lang.set_text_upper(self, self.nodes.btn_close_title, "_no", before_str, after_str)
+
+	local width_sector  = 12.5
+	self.sectors = {
+		{node = self.nodes.reward_numbers[1], width_procent = 10, ratio = 1.25, color = color.set("#96ff96ff"), scale = 1.05},
+		{node = self.nodes.reward_numbers[2], width_procent = 16, ratio = 1.5, color = color.set("#88ff88ff"), scale = 1.1},
+		{node = self.nodes.reward_numbers[3], width_procent = 16, ratio = 1.75, color = color.set("#76ff76ff"), scale = 1.15},
+		{node = self.nodes.reward_numbers[4], width_procent = 16, ratio = 2, color = color.lime, scale = 1.2},
+		{node = self.nodes.reward_numbers[5], width_procent = 16, ratio = 1.75, color = color.set("#76ff76ff"), scale = 1.15},
+		{node = self.nodes.reward_numbers[6], width_procent = 16, ratio = 1.5, color = color.set("#88ff88ff"), scale = 1.1},
+		{node = self.nodes.reward_numbers[7], width_procent = 10, ratio = 1.25, color = color.set("#96ff96ff"), scale = 1.05},
+	}
+
+	for i, sector in ipairs(self.sectors) do
+		gui_loyouts.set_text(self, sector.node, "X"..sector.ratio)
+	end
+
+	--gui_animate.show_bottom(self, self.nodes.wrap , nil)
+	self.druid = druid.new(self)
+
+	self.btns = {
+		-- Кнопка закрытия
+		{
+			id = "close", 
+			type = "btn", 
+			section = "close", 
+			node = self.nodes.btn_close,
+			node_title = self.nodes.btn_close_title, 
+			icon = "btn_circle_bg_red_"
+		},
+		-- реклама
+		{
+			id = "reward", 
+			type = "btn", 
+			section = "body", 
+			node = self.nodes.btn_reward, 
+			--wrap_node =  self.nodes.btn_reward_icon,
+			icon = "button_default_green_", 
+			--wrap_icon = "btn_icon_home_"
+		},
+	}
+
+	
+end
+
+function final(self)
+	msg.post("/loader_gui", "visible", {
+		id = "bg",
+		visible = false,
+		type = hash("animated_close"),
+	})
+
+	msg.post("game-room:/core_game", "event", {id = "close_reward_score", score = self.success_score})
+
+	gui_manager.remove_screen("modal_settings", msg.url())
+	self.druid:final()
+	gui_input.on_final(self)
+end
+
+function update(self, dt)
+	self.druid:update(dt)
+end
+
+function on_message(self, message_id, message, sender)
+	input_remote_tv.on_message(self, message_id, message, sender)
+	self.druid:on_message(message_id, message, sender)
+
+	gui_loyouts.on_message(self, message_id, message)
+
+	if message_id == hash("focus") then
+		gui_input.set_focus(self, message.focus)
+
+	elseif message_id == hash("visible") then
+		-- Показываем окно
+		local data = message.value
+		gui_animate.show_bottom(self, self.nodes.wrap , nil)
+
+		local score = data.score
+		modal_reward_score_functions.visible(self, score)
+
+		msg.post("/loader_gui", "visible", {
+			id = "bg",
+			visible = true,
+			type = hash("animated_close"),
+		})
+
+	elseif message_id == hash("hidden") then
+		modal_reward_score_functions.hidden(self)
+
+	-- Пришло сообщение
+	elseif message_id == hash("set_status") then
+		if message.type == "success_reward" then
+			modal_reward_score_functions.success(self, type)
+		end
+
+	end
+end
+
+function on_input(self, action_id, action)
+	action_id, action = input_remote_tv.on_input(self, action_id, action)
+	self.druid:on_input(action_id, action)
+
+	if storage_gui.components_visible.modal_pause then
+		return true
+	end
+
+	if action_id == hash("up") and action.pressed then
+		msg.post("/loader_gui", "focus", {
+			id = "interface", -- id компонента в лоадер гуи
+			focus = 1 -- кнопка фокуса
+		})
+
+		msg.post("main:/sound", "play", {sound_id = "focus_main_menu"})
+
+		return
+	end
+
+	-- Нажатие на кнопки
+	local function function_activate(self, focus_btn_id)
+		local btn = self.btns[focus_btn_id]
+		msg.post("main:/sound", "play", {sound_id = "activate_btn"})
+
+		-- Кнопка заблокирована
+		if btn.disabled or self.disabled then
+			return false
+		end
+
+		local node = btn.node or btn.wrap_node or btn.node_bg
+		gui_animate.activate(self, node)
+
+		if btn.id == "close" then
+			gui_animate.hidden_bottom(self, self.nodes.wrap, function (self)
+				msg.post("/loader_gui", "visible", {
+					id = "modal_reward_score",
+					visible = false,
+					type = hash("animated_close")
+				})
+			end)
+
+		elseif btn.id == "reward" then
+			self.scale.stop(self)
+
+		end
+	end
+
+	if action_id == hash("action") and  action.pressed then
+		function_activate(self, 1)
+		return false
+
+	elseif self.disabled then
+		return false
+	end
+
+	local function function_back(self)
+		function_activate(self, 2)
+	end
+
+	return gui_input.on_input(self, action_id, action, function_focus, function_activate, function_back, function_post_focus)
+end
+
+function on_reload(self)
+
+end

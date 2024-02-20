@@ -1,0 +1,110 @@
+local druid = require("druid.druid")
+local gui_input = require "main.gui.modules.gui_input"
+local gui_animate = require "main.gui.modules.gui_animate"
+local storage_gui = require "main.storage.storage_gui"
+local gui_manager = require "main.gui.modules.gui_manager"
+local game_word_functions = require "main.gui.game_gui.game_word.functions.game_word_functions"
+-- Адаптирвоанный интерфейс
+local gui_loyouts = require "main.gui.modules.gui_loyouts"
+-- Переводы
+local gui_lang = require "main.lang.gui_lang"
+local lang_core = require "main.lang.lang_core"
+
+function init(self)
+	self.id = "game_word"
+	msg.post(".", "acquire_input_focus")
+	gui_manager.add_screen(self.id, msg.url())
+	gui.set_render_order(3)
+
+	self.nodes = {
+		wrap = gui.get_node("wrap"),
+		title = gui.get_node("title"),
+		input_title = gui.get_node("name_template/title"),
+		btn_confirm = gui.get_node("btn-confirm-template/btn_wrap"),
+		btn_confirm_title = gui.get_node("btn-confirm-template/btn_title"),
+		btn_close = gui.get_node("btn-close-template/btn_wrap"),
+		btn_close_title = gui.get_node("btn-close-template/btn_title"),
+	}
+
+	gui_lang.set_text_upper(self, self.nodes.title, "_open_word", before_str, after_str)
+	gui_lang.set_text_upper(self, self.nodes.input_title, "_write_word", before_str, after_str)
+	gui_lang.set_text_upper(self, self.nodes.btn_confirm_title, "_answer", before_str, after_str)
+	gui_lang.set_text_upper(self, self.nodes.btn_close_title, "_cancel", before_str, after_str)
+
+	self.druid = druid.new(self)
+end
+
+function final(self)
+	gui_manager.remove_screen("game_word", msg.url())
+	self.druid:final()
+	gui_input.on_final(self)
+end
+
+function update(self, dt)
+	self.druid:update(dt)
+end
+
+function on_message(self, message_id, message, sender)
+	input_remote_tv.on_message(self, message_id, message, sender)
+	self.druid:on_message(message_id, message, sender)
+	gui_loyouts.on_message(self, message_id, message)
+
+	if message_id == hash("focus") then
+		gui_input.set_focus(self, message.focus)
+
+	elseif message_id == hash("visible") then
+		game_word_functions.visible(self, message.player_id)
+
+	elseif message_id == hash("hidden") then
+		game_word_functions.hidden(self)
+
+	elseif message.type == "input_keyboard" then
+		-- Нажатие на виртуальную клавиатуру
+		if message.key == "set_symbol" then
+			local symbol = message.value
+			local new_string = self.btns[1].input:get_text() .. symbol
+			self.btns[1].input:set_text(new_string)
+			
+		elseif message.key == "delete_symbol" then
+			local new_string = utf8.sub(self.btns[1].input:get_text(), 1, -2)
+			self.btns[1].input:set_text(new_string)
+
+		elseif message.key == "space" then
+			local new_string = self.btns[1].input:get_text() .. " "
+			self.btns[1].input:set_text(new_string)
+
+		elseif message.key == "close" then
+		end 
+	end
+end
+
+function on_input(self, action_id, action)
+	action_id, action = input_remote_tv.on_input(self, action_id, action)
+	self.druid:on_input(action_id, action)
+	if action_id == hash("up") and action.pressed then
+		if self.focus_btn_id and self.btns[self.focus_btn_id].section == "card_1" then
+			msg.post("/loader_gui", "focus", {
+				id = "interface", -- id компонента в лоадер гуи
+				focus = 1 -- кнопка фокуса
+			})
+
+		elseif self.focus_btn_id and self.btns[self.focus_btn_id].section == "body" then
+			for i, item in ipairs(self.btns) do
+				if not item.disabled and item.section == "card_1" then
+					return gui_input.set_focus(self, i)
+				end
+			end
+		end
+
+	elseif action_id == hash("down") and action.pressed then
+		if storage_gui.components_visible.keyboard_ru and self.focus_btn_id and self.btns[self.focus_btn_id].section == "footer" then
+			msg.post(storage_gui.components_visible.keyboard_ru, "focus", {focus = 1})
+			msg.post("main:/sound", "play", {sound_id = "focus_main_menu"})
+			return
+
+		end
+	end
+
+	local function_back = game_word_functions.close
+	return gui_input.on_input(self, action_id, action, function_focus, game_word_functions.activate_btn, function_back)
+end
