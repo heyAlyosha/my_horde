@@ -1,10 +1,40 @@
 components {
-  id: "object_ruin"
-  component: "/main/game/objects/objects_ruin/object_ruin.script"
+  id: "main_character"
+  component: "/main/game/characters/player/player.script"
   position {
     x: 0.0
     y: 0.0
     z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  properties {
+    id: "speed_damage"
+    value: "0.5"
+    type: PROPERTY_TYPE_NUMBER
+  }
+  properties {
+    id: "speed"
+    value: "50.0"
+    type: PROPERTY_TYPE_NUMBER
+  }
+}
+embedded_components {
+  id: "body"
+  type: "sprite"
+  data: "tile_set: \"/main/atlases/first_level.atlas\"\n"
+  "default_animation: \"zombie_0_0_default\"\n"
+  "material: \"/builtins/materials/sprite.material\"\n"
+  "blend_mode: BLEND_MODE_ALPHA\n"
+  ""
+  position {
+    x: 0.0
+    y: 0.0
+    z: 1.0
   }
   rotation {
     x: 0.0
@@ -17,31 +47,30 @@ embedded_components {
   id: "collision_physic"
   type: "collisionobject"
   data: "collision_shape: \"\"\n"
-  "type: COLLISION_OBJECT_TYPE_STATIC\n"
+  "type: COLLISION_OBJECT_TYPE_KINEMATIC\n"
   "mass: 0.0\n"
   "friction: 0.1\n"
   "restitution: 0.5\n"
   "group: \"default\"\n"
   "mask: \"default\"\n"
-  "mask: \"attack\"\n"
   "embedded_collision_shape {\n"
   "  shapes {\n"
   "    shape_type: TYPE_SPHERE\n"
   "    position {\n"
   "      x: 0.0\n"
-  "      y: -4.0\n"
+  "      y: -7.0\n"
   "      z: 0.0\n"
   "    }\n"
   "    rotation {\n"
-  "      x: 0.4617486\n"
+  "      x: 0.0\n"
   "      y: 0.0\n"
   "      z: 0.0\n"
-  "      w: 0.8870108\n"
+  "      w: 1.0\n"
   "    }\n"
   "    index: 0\n"
   "    count: 1\n"
   "  }\n"
-  "  data: 3.75\n"
+  "  data: 2.5\n"
   "}\n"
   "linear_damping: 0.0\n"
   "angular_damping: 0.0\n"
@@ -61,38 +90,18 @@ embedded_components {
   }
 }
 embedded_components {
-  id: "object"
-  type: "sprite"
-  data: "tile_set: \"/main/atlases/first_level.atlas\"\n"
-  "default_animation: \"trash_can\"\n"
-  "material: \"/builtins/materials/sprite.material\"\n"
-  "blend_mode: BLEND_MODE_ALPHA\n"
-  ""
-  position {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-}
-embedded_components {
-  id: "collision_damage"
+  id: "collision_attack"
   type: "collisionobject"
   data: "collision_shape: \"\"\n"
   "type: COLLISION_OBJECT_TYPE_TRIGGER\n"
   "mass: 0.0\n"
   "friction: 0.1\n"
   "restitution: 0.5\n"
-  "group: \"damage\"\n"
-  "mask: \"attack\"\n"
+  "group: \"attack\"\n"
+  "mask: \"damage\"\n"
   "embedded_collision_shape {\n"
   "  shapes {\n"
-  "    shape_type: TYPE_BOX\n"
+  "    shape_type: TYPE_SPHERE\n"
   "    position {\n"
   "      x: 0.0\n"
   "      y: 0.0\n"
@@ -105,16 +114,33 @@ embedded_components {
   "      w: 1.0\n"
   "    }\n"
   "    index: 0\n"
-  "    count: 3\n"
+  "    count: 1\n"
   "  }\n"
-  "  data: 3.073176\n"
-  "  data: 4.9576564\n"
-  "  data: 10.0\n"
+  "  data: 15.0\n"
   "}\n"
   "linear_damping: 0.0\n"
   "angular_damping: 0.0\n"
   "locked_rotation: false\n"
   "bullet: false\n"
+  ""
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}
+embedded_components {
+  id: "bullet_hit_factory"
+  type: "factory"
+  data: "prototype: \"/main/game/bullets/bullet_hit.go\"\n"
+  "load_dynamically: false\n"
+  "dynamic_prototype: false\n"
   ""
   position {
     x: 0.0

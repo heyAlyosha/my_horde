@@ -1,35 +1,10 @@
 components {
-  id: "main_character"
-  component: "/main/game/characters/character_main/main_character.script"
+  id: "bullet"
+  component: "/main/game/bullets/bullet.script"
   position {
     x: 0.0
     y: 0.0
     z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  properties {
-    id: "speed"
-    value: "50.0"
-    type: PROPERTY_TYPE_NUMBER
-  }
-}
-embedded_components {
-  id: "body"
-  type: "sprite"
-  data: "tile_set: \"/main/atlases/first_level.atlas\"\n"
-  "default_animation: \"zombie_0_0_default\"\n"
-  "material: \"/builtins/materials/sprite.material\"\n"
-  "blend_mode: BLEND_MODE_ALPHA\n"
-  ""
-  position {
-    x: 0.0
-    y: 7.0
-    z: 1.0
   }
   rotation {
     x: 0.0
@@ -39,7 +14,7 @@ embedded_components {
   }
 }
 embedded_components {
-  id: "attack"
+  id: "body"
   type: "sprite"
   data: "tile_set: \"/main/atlases/first_level.atlas\"\n"
   "default_animation: \"attack_default\"\n"
@@ -47,8 +22,8 @@ embedded_components {
   "blend_mode: BLEND_MODE_ALPHA\n"
   ""
   position {
-    x: 12.0
-    y: 5.0
+    x: 5.0
+    y: 0.0
     z: 0.0
   }
   rotation {
@@ -59,20 +34,20 @@ embedded_components {
   }
 }
 embedded_components {
-  id: "collision_physic"
+  id: "collision_bullet"
   type: "collisionobject"
   data: "collision_shape: \"\"\n"
-  "type: COLLISION_OBJECT_TYPE_KINEMATIC\n"
+  "type: COLLISION_OBJECT_TYPE_TRIGGER\n"
   "mass: 0.0\n"
   "friction: 0.1\n"
   "restitution: 0.5\n"
-  "group: \"default\"\n"
-  "mask: \"default\"\n"
+  "group: \"bullet\"\n"
+  "mask: \"damage\"\n"
   "embedded_collision_shape {\n"
   "  shapes {\n"
-  "    shape_type: TYPE_SPHERE\n"
+  "    shape_type: TYPE_BOX\n"
   "    position {\n"
-  "      x: 0.0\n"
+  "      x: 10.0\n"
   "      y: 0.0\n"
   "      z: 0.0\n"
   "    }\n"
@@ -83,14 +58,16 @@ embedded_components {
   "      w: 1.0\n"
   "    }\n"
   "    index: 0\n"
-  "    count: 1\n"
+  "    count: 3\n"
   "  }\n"
-  "  data: 2.5\n"
+  "  data: 10.0\n"
+  "  data: 5.0\n"
+  "  data: 10.0\n"
   "}\n"
   "linear_damping: 0.0\n"
   "angular_damping: 0.0\n"
   "locked_rotation: false\n"
-  "bullet: false\n"
+  "bullet: true\n"
   ""
   position {
     x: 0.0

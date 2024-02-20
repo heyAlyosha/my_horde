@@ -1,4 +1,7 @@
+go.property("damage", 1)
+go.property("speed_damage", 0.25)
 go.property("speed", 20)
+go.property("command", hash("player"))
 
 function init(self)
 	-- this tells the engine to send input to on_input() in this script
@@ -46,12 +49,50 @@ end
 
 function on_message(self, message_id, message, sender)
 	if message_id == hash("contact_point_response") then
+		-- СТолкновение с физическим объектом
 		if message.distance > 0 then
 			local proj = vmath.project(self.correction, message.normal * message.distance)
 			if proj < 1 then
 				local comp = (message.distance - message.distance * proj) * message.normal
 				go.set_position(go.get_position() + comp)
 				self.correction = self.correction + comp
+			end
+		end
+
+	elseif message_id == hash("trigger_response") and message.own_group == hash("attack") then
+		if message.enter then
+			-- Объект для повреждения вошёл поле атаки
+			local url_object = message.other_id
+			self.type_bullet = hash("bullet_hit")
+
+			-- Место спавна пули
+			local position = go.get_position()
+			-- Поворачиваем пулю в нужное управление
+			local rot = vmath.normalize(position - go.get_position(url_object))
+			local angle = math.atan2(rot.y, rot.x)
+			local rotation = vmath.quat_rotation_z(angle) 
+			-- Свойства пули
+			local properties = {
+				command = self.command,
+				damage = self.damage,
+				damage_count_object = 5,
+				type = hash("hit")
+			}
+			factory.create("#bullet_hit_factory", position, rotation, properties)
+			self.timer_atack = timer.delay(self.speed_damage, true, function (self)
+				-- Место спавна пули
+				local position = go.get_position()
+				-- Поворачиваем пулю в нужное управление
+				local rot = vmath.normalize(go.get_position(url_object) - position)
+				local angle = math.atan2(rot.y, rot.x)
+				local rotation = vmath.quat_rotation_z(angle) 
+				factory.create("#bullet_hit_factory", position, rotation, properties)
+			end)
+
+		else
+			if self.timer_atack then
+				timer.cancel(self.timer_atack)
+				self.timer_atack = nil
 			end
 		end
 	end

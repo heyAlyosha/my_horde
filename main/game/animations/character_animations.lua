@@ -21,8 +21,6 @@ function M.play(self, animation_id)
 		end)
 		sprite.play_flipbook("#attack", "attack_default")
 	end
-
-	pprint(self.animation_current)
 end
 
 return M

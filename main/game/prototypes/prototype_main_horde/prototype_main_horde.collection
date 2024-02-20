@@ -1,7 +1,7 @@
 name: "prototype_main_horde"
 instances {
   id: "character_main"
-  prototype: "/main/game/characters/character_main/character_main.go"
+  prototype: "/main/game/characters/player/player.go"
   position {
     x: 124.0
     y: 109.0
@@ -26,6 +26,26 @@ instances {
     x: 124.0
     y: 95.0
     z: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "bullet_hit"
+  prototype: "/main/game/bullets/bullet_hit.go"
+  position {
+    x: 125.0
+    y: 109.0
+    z: 0.0
   }
   rotation {
     x: 0.0

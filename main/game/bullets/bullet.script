@@ -1,10 +1,11 @@
-go.property("live", 10)
+--Удар или пуля
+go.property("damage", 0)
+go.property("damage_count_object", 5)
+go.property("command", hash("player")) -- Id комманды, объектам которой наносится урон
+go.property("type", hash("hit")) -- Тип пули (hit)
 
--- Разрушаемые объекты
 function init(self)
-	-- Add initialization code here
-	-- Learn more: https://defold.com/manuals/script/
-	-- Remove this function if not needed
+	
 end
 
 function final(self)
