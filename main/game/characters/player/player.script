@@ -17,21 +17,25 @@ function final(self)
 end
 
 function update(self, dt)
-	if vmath.length_sqr(self.input) > 1 then
-		self.input = vmath.normalize(self.input)
-	end
+	if not self.move_stop then
+		if vmath.length_sqr(self.input) > 1 then
+			self.input = vmath.normalize(self.input)
+		end
 
-	-- Движение
-	local movement = self.input * self.speed * dt
-	local p = go.get_position()
-	go.set_position(p + movement)
+		-- Движение
+		local movement = self.input * self.speed * dt
+		local p = go.get_position()
+		go.set_position(p + movement)
 
-	-- Анимация
-	if vmath.length(movement) > 0 then
-		character_animations.play(self, "move")
-		sprite.set_hflip("#body", movement.x < 0)
-	else
-		character_animations.play(self, "idle")
+		-- Анимация
+		if vmath.length(movement) > 0 then
+			character_animations.play(self, "move")
+			if not self.hflip_stop then
+				sprite.set_hflip("#body", movement.x < 0)
+			end
+		else
+			character_animations.play(self, "idle")
+		end
 	end
 
 	self.input = vmath.vector3()
@@ -63,41 +67,15 @@ function on_message(self, message_id, message, sender)
 		
 		if message.enter then
 			-- Объект для повреждения вошёл поле атаки
-			local url_object = message.other_id
-			self.type_bullet = hash("bullet_hit")
-
-			-- Место спавна пули
-			local position = go.get_position()
-			-- Поворачиваем пулю в нужное управление
-			local rot = vmath.normalize(position - go.get_position(url_object))
-			local angle = math.atan2(rot.y, rot.x)
-			local rotation = vmath.quat_rotation_z(angle) 
-			-- Свойства пули
-			local properties = {
-				command = self.command,
-				damage = self.damage,
-				damage_count_object = 5,
-				type = hash("hit"),
-				parent = msg.url()
-			}
-			factory.create("#bullet_hit_factory", position, rotation, properties)
-
-			self.timer_atack = timer.delay(self.speed_damage, true, function (self, handle, time_elapsed)
-				if storage_game.go_urls[message.other_id] then
-					-- Место спавна пули
-					local position = go.get_position()
-					-- Поворачиваем пулю в нужное управление
-					local rot = vmath.normalize(go.get_position(url_object) - position)
-					local angle = math.atan2(rot.y, rot.x)
-					local rotation = vmath.quat_rotation_z(angle)
-					factory.create("#bullet_hit_factory", position, rotation, properties)
-
-				else
-					timer.cancel(handle)
-					self.timer_atack = nil
-				end
-			end)
-
+			self.message = message
+			if character_attack.attack(self) then
+				self.timer_atack = timer.delay(self.speed_damage, true, function (self, handle, time_elapsed)
+					if not character_attack.attack(self) then
+						timer.cancel(handle)
+						self.timer_atack = nil
+					end
+				end)
+			end
 		else
 			if self.timer_atack then
 				timer.cancel(self.timer_atack)

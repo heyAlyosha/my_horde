@@ -16,8 +16,10 @@ function M.play(self, animation_id)
 		end
 
 	elseif animation_id == "attack" then
+		self.hflip_stop = true
 		sprite.play_flipbook("#body", "zombie_0_0_attack", function (self)
 			self.last_animation = nil
+			self.hflip_stop = nil
 		end)
 		sprite.play_flipbook("#attack", "attack_default")
 	end
