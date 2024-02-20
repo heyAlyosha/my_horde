@@ -22,7 +22,7 @@ embedded_components {
   id: "body"
   type: "sprite"
   data: "tile_set: \"/main/atlases/first_level.atlas\"\n"
-  "default_animation: \"zombie_0_0\"\n"
+  "default_animation: \"zombie_0_0_default\"\n"
   "material: \"/builtins/materials/sprite.material\"\n"
   "blend_mode: BLEND_MODE_ALPHA\n"
   ""

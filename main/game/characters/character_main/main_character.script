@@ -16,9 +16,27 @@ function update(self, dt)
 	if vmath.length_sqr(self.input) > 1 then
 		self.input = vmath.normalize(self.input)
 	end
-	local movement = self.input * self.speed * dt              -- [1]  
+
+	-- Движение
+	local movement = self.input * self.speed * dt
 	local p = go.get_position()
 	go.set_position(p + movement)
+
+	-- Анимация
+	if vmath.length(movement) > 0 then
+		self.animation_current = "zombie_0_0_run"
+		
+		sprite.set_hflip("#body", movement.x < 0 )
+	else
+		self.animation_current = "zombie_0_0_default"
+		
+	end
+
+	if self.last_animation ~= self.animation_current then
+		sprite.play_flipbook("#body", self.animation_current)
+		self.last_animation = self.animation_current
+	end
+
 	self.input = vmath.vector3()
 end
 
