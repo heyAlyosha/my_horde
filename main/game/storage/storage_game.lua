@@ -111,6 +111,10 @@ M.family = {
 
 -- Urls объектов в игре
 M.go_urls = {}
+
+-- Данные игровых объектов
+M.go_objects = {}
+
 -- Настрйоки карты
 M.map_settings = {
 	size = vmath.vector3(2000, 1000, 0)

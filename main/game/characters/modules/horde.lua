@@ -38,9 +38,31 @@ function M.on_update(self)
 		for i = 1, #self.horde do
 			local item = self.horde[i]
 
-			-- Перемещаем
-			local position = M.get_position(self, self.position_to, i)
-			position_functions.go_set_perspective_z(position, item.url)
+			-- Если есть коллизии столкновений
+			if storage_game.go_objects[item.id].collision_physic then
+				local collision_message =  storage_game.go_objects[item.id].collision_physic.message
+				local storage_item = storage_game.go_objects[item.id].storage or {}
+				storage_item.correction = storage_item.correction or vmath.vector3()
+				print("Да", collision_message.distance)
+				if collision_message.distance > 0 then
+					local proj = vmath.project(storage_item.correction, collision_message.normal * collision_message.distance)
+					
+					if proj < 1 then
+						local comp = (collision_message.distance - collision_message.distance * proj) * collision_message.normal
+						local position = go.get_position(item.url) + comp
+						go.set_position(position, item.url)
+
+						storage_item.correction = storage_item.correction + comp
+						print("Да")
+					end
+				end
+				storage_item.correction = vmath.vector3()
+				storage_game.go_objects[item.id].collision_physic = nil
+			else
+				-- Перемещаем
+				local position = M.get_position(self, self.position_to, i)
+				position_functions.go_set_perspective_z(position, item.url)
+			end
 
 			-- Поворачиваем в сторону игрока
 			sprite.set_hflip(item.url_sprite, self.movement.x < 0)

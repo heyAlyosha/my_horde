@@ -16,7 +16,7 @@ function M.go_set_perspective_z(position, url)
 	position = position or go.get_position()
 	position.z = M.get_perspective_z(position.y)
 	go.set_position(position, url)
-	
+
 	return position
 end
 

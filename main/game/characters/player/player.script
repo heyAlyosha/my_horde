@@ -16,7 +16,7 @@ function init(self)
 
 	timer.delay(0.1, false, function (self)
 		local сenter_position = vmath.vector3(0)
-		local index_to_horde = 50
+		local index_to_horde = 1
 		horde.get_position(self, сenter_position, index_to_horde)
 
 		for i = 1, index_to_horde do
@@ -57,7 +57,7 @@ function update(self, dt)
 
 	horde.on_update(self)
 
-	pprint(position_functions.go_set_perspective_z())
+	position_functions.go_set_perspective_z()
 
 	self.input = vmath.vector3()
 	self.correction = vmath.vector3()
