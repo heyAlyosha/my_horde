@@ -39,7 +39,8 @@ function M.on_update(self)
 			local item = self.horde[i]
 
 			-- Перемещаем
-			go.set(item.url_script, "position_to", M.get_position(self, self.position_to, i))
+			local position = M.get_position(self, self.position_to, i)
+			position_functions.go_set_perspective_z(position, item.url)
 
 			-- Поворачиваем в сторону игрока
 			sprite.set_hflip(item.url_sprite, self.movement.x < 0)

@@ -44,8 +44,8 @@ instances {
   prototype: "/main/game/building/building_house.go"
   position {
     x: 55.0
-    y: 188.0
-    z: 1.0
+    y: 158.0
+    z: 2.0
   }
   rotation {
     x: 0.0
@@ -64,8 +64,8 @@ instances {
   prototype: "/main/game/building/building_house.go"
   position {
     x: 135.0
-    y: 188.0
-    z: 1.0
+    y: 158.0
+    z: 2.0
   }
   rotation {
     x: 0.0
@@ -84,8 +84,8 @@ instances {
   prototype: "/main/game/building/building_house.go"
   position {
     x: 230.0
-    y: 185.0
-    z: 1.0
+    y: 155.0
+    z: 2.0
   }
   rotation {
     x: 0.0

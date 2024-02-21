@@ -1,6 +1,6 @@
 components {
   id: "script"
-  component: "/main/game/characters/zombie/zombie.script"
+  component: "/main/game/characters/zombie_horde/zombie_horde.script"
   position {
     x: 0.0
     y: 0.0

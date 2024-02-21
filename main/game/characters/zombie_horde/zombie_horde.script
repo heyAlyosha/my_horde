@@ -2,12 +2,16 @@ go.property("damage", 1)
 go.property("speed_damage", 0.25)
 go.property("speed_to_object", 30)
 go.property("command", hash("player"))
-go.property("skin_id", 1)
+go.property("skin_id", 0)
 go.property("human_id", 1)
 go.property("parent", msg.url())
 go.property("position_to", vmath.vector3())
 
 function init(self)
+	sprite.play_flipbook("#body", "zombie_"..self.skin_id.."_"..self.human_id .. "_default")
+
+	position_functions.go_set_perspective_z()
+
 	self.input = vmath.vector3(0)
 	self.velocity = vmath.vector3(0)
 	self.correction = vmath.vector3()

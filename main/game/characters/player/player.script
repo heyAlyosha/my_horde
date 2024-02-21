@@ -7,6 +7,8 @@ go.property("skin_id", 0)
 function init(self)
 	msg.post(".", "acquire_input_focus")
 
+	position_functions.go_set_perspective_z()
+
 	self.input = vmath.vector3(0)
 	self.velocity = vmath.vector3(0)
 	self.correction = vmath.vector3()
@@ -55,9 +57,7 @@ function update(self, dt)
 
 	horde.on_update(self)
 
-	local position = go.get_position()
-	position.z = 2 - position.y * 0.0001
-	go.set_position(position)
+	pprint(position_functions.go_set_perspective_z())
 
 	self.input = vmath.vector3()
 	self.correction = vmath.vector3()
@@ -103,7 +103,6 @@ function on_message(self, message_id, message, sender)
 				self.timer_atack = nil
 			end
 		end
-		
 	end
 	
 end

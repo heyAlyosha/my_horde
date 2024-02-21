@@ -1,3 +1,18 @@
+components {
+  id: "script"
+  component: "/main/game/building/building.script"
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}
 embedded_components {
   id: "collision_physic"
   type: "collisionobject"
@@ -14,7 +29,7 @@ embedded_components {
   "    shape_type: TYPE_BOX\n"
   "    position {\n"
   "      x: 0.0\n"
-  "      y: -24.0\n"
+  "      y: 2.0\n"
   "      z: 0.0\n"
   "    }\n"
   "    rotation {\n"
@@ -30,7 +45,7 @@ embedded_components {
   "    shape_type: TYPE_BOX\n"
   "    position {\n"
   "      x: 0.0\n"
-  "      y: -39.0\n"
+  "      y: -13.0\n"
   "      z: 0.0\n"
   "    }\n"
   "    rotation {\n"
@@ -46,7 +61,7 @@ embedded_components {
   "    shape_type: TYPE_BOX\n"
   "    position {\n"
   "      x: -15.0\n"
-  "      y: -31.0\n"
+  "      y: -5.0\n"
   "      z: 0.0\n"
   "    }\n"
   "    rotation {\n"
@@ -62,7 +77,7 @@ embedded_components {
   "    shape_type: TYPE_BOX\n"
   "    position {\n"
   "      x: 15.0\n"
-  "      y: -31.0\n"
+  "      y: -5.0\n"
   "      z: 0.0\n"
   "    }\n"
   "    rotation {\n"
@@ -114,8 +129,8 @@ embedded_components {
   ""
   position {
     x: 0.0
-    y: 0.0
-    z: 0.0
+    y: 26.0
+    z: 1.0
   }
   rotation {
     x: 0.0
