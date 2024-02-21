@@ -1,28 +1,15 @@
 go.property("damage", 1)
 go.property("speed_damage", 0.25)
-go.property("speed", 20)
+go.property("speed_to_object", 30)
 go.property("command", hash("player"))
+go.property("skins", 1)
+go.property("human_id", 1)
+go.property("parent", msg.url())
 
 function init(self)
-	-- this tells the engine to send input to on_input() in this script
-	msg.post(".", "acquire_input_focus")
-
 	self.input = vmath.vector3(0)
 	self.velocity = vmath.vector3(0)
 	self.correction = vmath.vector3()
-	self.hordes = {}
-
-	timer.delay(0.1, false, function (self)
-		local сenter_position = vmath.vector3(0)
-		local index_to_horde = 50
-		horde.get_position(self, сenter_position, index_to_horde)
-
-		for i = 1, index_to_horde do
-			local position = horde.get_position(self, go.get_position(), i)
-			factory.create("#zombie_factory", position)
-		end
-	end)
-	
 end
 
 function final(self)
@@ -30,33 +17,9 @@ function final(self)
 end
 
 function update(self, dt)
-	if not self.move_stop then
-		if vmath.length_sqr(self.input) > 1 then
-			self.input = vmath.normalize(self.input)
-		end
-
-		-- Движение
-		local movement = self.input * self.speed * dt
-		local p = go.get_position()
-		go.set_position(p + movement)
-
-		-- Анимация
-		if vmath.length(movement) > 0 then
-			character_animations.play(self, "move")
-			if not self.hflip_stop then
-				sprite.set_hflip("#body", movement.x < 0)
-			end
-		else
-			character_animations.play(self, "idle")
-		end
-	end
-
 	local position = go.get_position()
 	position.z = 2 - position.y * 0.0001
 	go.set_position(position)
-
-	self.input = vmath.vector3()
-	self.correction = vmath.vector3()
 end
 
 function fixed_update(self, dt)
@@ -102,21 +65,6 @@ function on_message(self, message_id, message, sender)
 		pprint(message_id, message)
 	end
 	
-end
-
-function on_input(self, action_id, action)
-	if action_id == hash("up") then
-		self.input.y = 1                     -- [1]
-	elseif action_id == hash("down") then
-		self.input.y = -1                    -- [1]
-	elseif action_id == hash("left") then
-		self.input.x = -1                    -- [1]
-	elseif action_id == hash("right") then
-		self.input.x = 1                     -- [1]
-	elseif action_id == hash("action") and action.pressed then
-		character_animations.play(self, "attack")
-		
-	end
 end
 
 function on_reload(self)

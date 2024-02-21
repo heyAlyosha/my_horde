@@ -1,6 +1,6 @@
 components {
   id: "script"
-  component: "/main/game/characters/player/player.script"
+  component: "/main/game/characters/zombie/zombie.script"
   position {
     x: 0.0
     y: 0.0
@@ -11,16 +11,6 @@ components {
     y: 0.0
     z: 0.0
     w: 1.0
-  }
-  properties {
-    id: "damage"
-    value: "5.0"
-    type: PROPERTY_TYPE_NUMBER
-  }
-  properties {
-    id: "speed_damage"
-    value: "0.5"
-    type: PROPERTY_TYPE_NUMBER
   }
 }
 embedded_components {
@@ -139,25 +129,6 @@ embedded_components {
   id: "bullet_hit_factory"
   type: "factory"
   data: "prototype: \"/main/game/bullets/bullet_hit.go\"\n"
-  "load_dynamically: false\n"
-  "dynamic_prototype: false\n"
-  ""
-  position {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-}
-embedded_components {
-  id: "zombie_factory"
-  type: "factory"
-  data: "prototype: \"/main/game/characters/zombie/zombie.go\"\n"
   "load_dynamically: false\n"
   "dynamic_prototype: false\n"
   ""

@@ -16,9 +16,11 @@ local druid_castom_style = require "main.gui.modules.druid_castom_style"
 
 function init(self)
 	storage_game = require "main.game.storage.storage_game"
+	horde = require "main.game.characters.modules.horde"
 	input_remote_tv = require "input.input_remote_tv.modules.input_remote_tv"
 	character_animations = require "main.game.animations.character_animations"
 	character_attack = require "main.game.characters.modules.character_attack"
+	
 
 	math.randomseed = function (seed)
 		storage_game.randomseed = storage_game.randomseed or 0
