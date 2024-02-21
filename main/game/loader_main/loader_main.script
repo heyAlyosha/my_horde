@@ -20,6 +20,8 @@ function init(self)
 	input_remote_tv = require "input.input_remote_tv.modules.input_remote_tv"
 	character_animations = require "main.game.animations.character_animations"
 	character_attack = require "main.game.characters.modules.character_attack"
+
+	profiler.enable_ui(true)
 	
 
 	math.randomseed = function (seed)

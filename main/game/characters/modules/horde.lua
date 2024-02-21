@@ -1,15 +1,69 @@
 -- Орда
 local M = {}
 
-M.start_radius = 15
+M.start_radius = 13
 M.start_angle = 35
-M.add_step_radius = 15
+M.add_step_radius = 12
 M.add_step_angle = -20
-M.interval_zombie = 18
+M.interval_zombie = 16
 
 -- Позиции для орды
 M.positions = {}
 
+-- Добавление зомбика в орду
+function M.add_zombie_horde(self, skin_id, human_id)
+	local position = M.get_position(self, go.get_position(), #self.horde + 1)
+	local properties = {
+		parent = msg.url(),
+		skin_id = skin_id,
+		human_id = human_id,
+	}
+	local id = factory.create("#zombie_horde_factory", position, rotation, properties)
+	self.horde[#self.horde + 1] = {
+		id = id,
+		url = msg.url(id),
+		url_script = msg.url(nil, id, "script"),
+		url_sprite = msg.url(nil, id, "body"),
+		skin_id = skin_id,
+		human_id = human_id,
+	}
+end
+
+
+function M.on_update(self)
+	-- УСтанавливаем расположение орды
+	
+	if vmath.length(self.movement) > 0 then
+		self.animation_horde = "run"
+		for i = 1, #self.horde do
+			local item = self.horde[i]
+
+			-- Перемещаем
+			go.set(item.url_script, "position_to", M.get_position(self, self.position_to, i))
+
+			-- Поворачиваем в сторону игрока
+			sprite.set_hflip(item.url_sprite, self.movement.x < 0)
+
+			-- Анимация ходьбы
+			if self.animation_horde ~= self.last_animation_horde then
+				sprite.play_flipbook(item.url_sprite, "zombie_"..item.skin_id.."_"..item.human_id .. "_run")
+			end
+		end
+		
+	else
+		self.animation_horde = "default"
+		if self.animation_horde ~= self.last_animation_horde then
+			for i = 1, #self.horde do
+				local item = self.horde[i]
+				-- Анимация покоя
+				sprite.play_flipbook(item.url_sprite, "zombie_"..item.skin_id.."_"..item.human_id .. "_default")
+			end
+		end
+	end
+	self.last_animation_horde = self.animation_horde
+end
+
+-- Получение угла, основываясь
 function M.get_angle_radius(radius, row)
 	-- Стартовая точка
 	local point_start_radius = vmath.vector3(0)
@@ -57,43 +111,16 @@ function M.get_position(self, сenter_position, index_to_horde)
 
 			x = dir.x*math.cos(math.rad(current_angle)) - dir.y*math.sin(math.rad(current_angle))
 			y = dir.y*math.cos(math.rad(current_angle)) + dir.x*math.sin(math.rad(current_angle))
-			M.positions[i] = vmath.vector3(x, y, 0)
 
-			
-			print("current_angle:", i, current_angle)
+			-- Добавляем небольшой рандом
+			math.randomseed(i)
+			x = x + math.random(-2, 2)
+			y = y + math.random(-2, 2)
+			M.positions[i] = vmath.vector3(x, y, 0)
 		end
 
 		return сenter_position + M.positions[index_to_horde]
 
-		--[[
-		-- Центр круга
-		self.center = vmath.vector3(0, 0, 0)
-		-- Радиус
-		self.radius = 15 -- <2>
-		-- Скорость
-		self.speed = 10 -- <3>
-		-- Прошедшее время
-		self.t = 0 -- <4>
-
-		for i = 1, index_to_horde do
-			--print(math.sin(i * self.speed), math.cos(i * self.speed))
-			local dx = math.sin(i * self.speed) * self.radius -- <6>
-			local dy = math.cos(i * self.speed) * self.radius
-			local pos = vmath.vector3() -- <7>
-			pos.x = self.center.x + dx -- <8>
-			pos.y = self.center.y + dy
-			--go.set_position(pos) -- <9>
-			M.positions[i] = pos
-		end
-		--]]
-
-		--[[
-		for i = 0, index_to_horde do
-			local dx = math.sin((i - 1) * M.interval_zombie) * (M.start_radius + M.add_step_radius * step)
-			local dy = math.cos((i - 1) * M.interval_zombie) * (M.start_radius + M.add_step_radius * step)
-			print("Horde position:", i, dx, dy)
-		end
-		--]]
 	end
 end
 

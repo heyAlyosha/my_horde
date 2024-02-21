@@ -21,7 +21,6 @@ function M.play(self, animation_id)
 			self.last_animation = nil
 			self.hflip_stop = nil
 		end)
-		sprite.play_flipbook("#attack", "attack_default")
 	end
 end
 

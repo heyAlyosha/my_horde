@@ -2,7 +2,7 @@ go.property("damage", 1)
 go.property("speed_damage", 0.25)
 go.property("speed_to_object", 30)
 go.property("command", hash("player"))
-go.property("skins", 1)
+go.property("skin_id", 1)
 go.property("human_id", 1)
 go.property("parent", msg.url())
 go.property("position_to", vmath.vector3())
@@ -15,32 +15,6 @@ end
 
 function final(self)
 	msg.post(".", "release_input_focus")
-end
-
-function fixed_update(self, dt)
-	-- This function is called if 'Fixed Update Frequency' is enabled in the Engine section of game.project
-	-- Can be coupled with fixed updates of the physics simulation if 'Use Fixed Timestep' is enabled in
-	-- Physics section of game.project
-	-- Add update code here
-	-- Learn more: https://defold.com/manuals/script/
-	-- Remove this function if not needed
-end
-
-function update(self, dt)
-	if self.comp then
-		go.set_position(go.get_position() + self.comp)
-		self.comp = nil
-		self.position_to = nil
-
-	elseif not self.comp and self.position_to and vmath.length(self.position_to) > 0 then
-		go.set_position(self.position_to)
-		self.position_to = nil
-
-	end
-
-	local position = go.get_position()
-	position.z = 2 - position.y * 0.0001
-	go.set_position(position)
 end
 
 function on_message(self, message_id, message, sender)
@@ -76,7 +50,6 @@ function on_message(self, message_id, message, sender)
 				self.timer_atack = nil
 			end
 		end
-		pprint(message_id, message)
 	end
 	
 end

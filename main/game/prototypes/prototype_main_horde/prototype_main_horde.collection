@@ -39,6 +39,66 @@ instances {
     z: 1.0
   }
 }
+instances {
+  id: "building_house"
+  prototype: "/main/game/building/building_house.go"
+  position {
+    x: 55.0
+    y: 188.0
+    z: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "building_house1"
+  prototype: "/main/game/building/building_house.go"
+  position {
+    x: 135.0
+    y: 188.0
+    z: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "building_house2"
+  prototype: "/main/game/building/building_house.go"
+  position {
+    x: 230.0
+    y: 185.0
+    z: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
 scale_along_z: 0
 embedded_instances {
   id: "map"
