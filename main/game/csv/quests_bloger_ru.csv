@@ -1,0 +1,46 @@
+index;level_id;type;resource;word;quest
+1;1;image;bloger/sobchak.jpg;Собчак;Что за блогер?
+2;1;image;bloger/urgant.jpg;ургант;Что за блогер?
+3;1;image;bloger/gudkov.jpg;Гудков;Что за блогер?
+4;2;image;bloger/vdud.jpg;Дудь;Что за блогер?
+5;2;image;bloger/garahov.jpg;Джарахов;Что за блогер?
+6;2;image;bloger/prusikin.jpg;Прусикин;Что за блогер?
+7;3;image;bloger/wylsacom.jpg;Вилсаком;Что за блогер?
+8;3;image;bloger/kuplinov.jpg;Куплинов;Что за блогер?
+9;3;image;bloger/maddyson.jpg;Меддисон;Что за блогер?
+10;4;image;bloger/bad_comedian.jpg;Баженов;Что за блогер?
+11;4;image;bloger/hova.jpg;хованский;Что за блогер?
+12;4;image;bloger/sobolev.jpg;Соболев;Что за блогер?
+13;5;image;bloger/marmok.jpg;Мистер Мармок;Название канала этого блогера
+14;5;image;bloger/bumaga.jpg;Влад Бумага;Что за блогер?
+15;5;image;bloger/lev.jpg;Лев Против;Название канала этого блогера
+16;6;image;bloger/100500.jpg;максим голополосов;Имя и фамилия блогера
+17;6;image;bloger/maslennikov.jpg;Масленников;Что за блогер?
+18;6;image;bloger/pivovarov.jpg;Пивоваров;Что за блогер?
+19;7;image;bloger/goblin.jpg;гоблин пучков;Имя и псевдоним блогера
+20;7;image;bloger/restorator.jpg;Ресторатор Тимарцев ;Имя и псевдоним блогера
+21;7;image;bloger/oblomov.jpg;Друже Обломов;Псевдоним этого блогера
+22;8;image;bloger/usachev.jpg;Усачев;Что за блогер?
+23;8;image;bloger/kak_prosto.jpg;Стас Васильев;Имя и фамилия блогера
+24;8;image;bloger/varlamov.jpg;Варламов;Что за блогер?
+25;9;image;bloger/toples.jpg;Ян Топлес Лапотков;Имя и псевдоним блогера
+26;9;image;bloger/slava_kpss.jpg;слава кпсс машнов;Имя и псевдоним блогера
+27;9;image;bloger/vizhivalovo.jpg;Выживалово;Название канала этого блогера
+28;10;image;bloger/mamix.jpg;Мамикс;Название канала этого блогера
+29;10;image;bloger/frost.jpg;Фрост;Название канала этого блогера
+30;10;image;bloger/pozzi.jpg;Поззи;Псевдоним этого блогера
+31;10;image;bloger/krid.jpg;Крид;Что за блогер?
+32;11;image;bloger/klap.jpg;Катя клэп;Что за блогер?
+33;11;image;bloger/mayiyana.jpg;Марьяна Ро;Что за блогер?
+34;11;image;bloger/spilberg.jpg;Спилберг;Псевдоним этого блогера
+35;12;image;bloger/slivki.jpg;Сливки Шоу;Название канала этого блогера
+36;12;image;bloger/siyenduk.jpg;Сыендук;Псевдоним этого блогера
+37;12;image;bloger/this_is_horosho.jpg;Стас Давыдов;Имя и фамилия блогера
+38;13;image;bloger/sonolev.jpg;соболев;Что за блогер?
+39;13;image;bloger/parfenow.jpg;Парфёнов;Что за блогер?
+40;14;image;bloger/larin.jpg;ларин;Что за блогер?
+41;14;image;bloger/kuzma.jpg;Кузьма гридин;Псевдоним этого блогера
+42;14;image;bloger/yulik.jpg;Юлий онежко;Что за блогер?
+43;15;image;bloger/bogdan.jpg;Богдан Лисевский;Что за блогер?
+44;15;image;bloger/cake.jpg;Кирилл Кейк;Что за блогер?
+45;15;image;bloger/shihman.jpg;шихман;Что за блогер?

@@ -1,0 +1,16 @@
+id;cooments;sort;color;type;icon;add_shop;start_shop;init_player;price_buy;level;upgrade_price;upgrade_id;score;shop_infinite;visible_count;shop_family;level_shop;skipping;sectors;accuracy;speed_caret;reward;scale;title_id_string;description_id_string;description_mini_id_string
+trap_1;;15;tomato;trap;trap_1;1;10;3;15;0;500;trap;1000;;true;;0;true;;;;5;70;_artifact_title_{{id}};_artifact_description_{{id}};_artifact_description_mini_{{id}}
+trap_2;;14;tomato;trap;trap_2;1;0;0;15;0;1000;trap;1500;;true;;0;true;;;;0;50;_artifact_title_{{id}};_artifact_description_{{id}};_artifact_description_mini_{{id}}
+trap_3;;13;tomato;trap;trap_3;1;0;0;15;0;0;trap;2000;;true;true;0;true;;;;0;70;_artifact_title_{{id}};_artifact_description_{{id}};_artifact_description_mini_{{id}}
+catch_1;;12;magenta;catch;catch_1;1;10;5;10;0;500;catch;50;;true;;0;;7;;;5;50;_artifact_title_{{id}};_artifact_description_{{id}};_artifact_description_mini_{{id}}
+catch_2;;11;magenta;catch;catch_2;1;10;0;10;0;1000;catch;75;;true;;0;;7;;;0;65;_artifact_title_{{id}};_artifact_description_{{id}};_artifact_description_mini_{{id}}
+catch_3;;10;magenta;catch;catch_3;1;5;0;10;0;0;catch;100;;true;true;0;;7;;;0;80;_artifact_title_{{id}};_artifact_description_{{id}};_artifact_description_mini_{{id}}
+bank_1;;9;yellow;bank;bank_1;1;20;2;50;0;;;50;;true;true;1;;;;;5;50;_artifact_title_{{id}};_artifact_description_{{id}};_artifact_description_mini_{{id}}
+accuracy_1;;8;aqua;accuracy;accuracy_1;1;10;3;150;0;;;;;true;true;5;;;40;;5;100;_artifact_title_{{id}};_artifact_description_accuracy_1;_artifact_description_mini_{{id}}
+accuracy_2;;7;aqua;accuracy;accuracy_2;1;10;3;350;0;;;;;true;true;5;;;80;;0;100;_artifact_title_{{id}};_artifact_description_accuracy_1;_artifact_description_mini_{{id}}
+speed_caret_1;;6;springgreen;speed_caret;speed_caret_1;1;10;3;150;0;;;;;true;true;5;;;;150;5;80;_artifact_title_{{id}};_artifact_description_{{id}};_artifact_description_mini_{{id}}
+speed_caret_2;;5;springgreen;speed_caret;speed_caret_2;1;10;3;350;0;;;;;true;true;5;;;;300;0;80;_artifact_title_{{id}};_artifact_description_speed_caret_1;_artifact_description_mini_{{id}}
+try_1;;4;;try;try_1;1;5;0;2500;0;;;;;true;true;100;;;;;3;100;_artifact_title_{{id}};_artifact_description_{{id}};_artifact_description_mini_{{id}}
+delivery;;3;;shop;delivery;0;0;0;50;0;;;;true;;;0;;;;;3;100;_artifact_title_{{id}};_artifact_description_{{id}};_artifact_description_mini_{{id}}
+xp_1;;2;;shop;xp_1;5;15;5;100;0;;;200;;;;5;;;;;0;100;_artifact_title_{{id}};_artifact_description_{{id}};_artifact_description_mini_{{id}}
+clear_characteristics;;1;;shop;clear_characteristics;0;0;0;7500;0;;;;true;;;0;;;;;0;100;_artifact_title_{{id}};_artifact_description_{{id}};_artifact_description_mini_{{id}}

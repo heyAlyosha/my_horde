@@ -1,0 +1,140 @@
+[bootstrap]
+main_collection = /main/main.collectionc
+render = /main/render/orthographic_custom.renderc
+
+[project]
+title = My Horde
+bundle_resources = /assets/resourse,/main/loaders/loader_sdk/config/yandex_games_game_project.target
+custom_resources = /main/game/csv
+version = 0.0.1
+dependencies#0 = https://github.com/britzl/defold-input/archive/master.zip
+dependencies#1 = https://github.com/defold/extension-websocket/archive/3.0.0.zip
+dependencies#2 = https://github.com/heroiclabs/nakama-defold/archive/refs/tags/3.1.0.zip
+dependencies#3 = https://github.com/d954mas/defold-utf8/archive/master.zip
+dependencies#4 = https://github.com/y444/defold-color-lib/archive/master.zip
+dependencies#5 = https://github.com/Insality/druid/archive/master.zip
+dependencies#6 = https://github.com/subsoap/defos/archive/master.zip
+dependencies#7 = https://github.com/britzl/defold-richtext/archive/master.zip
+dependencies#8 = https://github.com/britzl/deftest/archive/master.zip
+dependencies#9 = https://github.com/nevolin-dmitry-leonid/defold-simple-target-system/archive/refs/heads/master.zip
+dependencies#10 = https://github.com/britzl/defold-orthographic/archive/master.zip
+dependencies#11 = https://github.com/indiesoftby/defold-yagames/archive/refs/heads/master.zip
+dependencies#12 = https://github.com/subsoap/defsave/archive/master.zip
+dependencies#13 = https://github.com/indiesoftby/defold-liveupdate-reszip/archive/main.zip
+dependencies#14 = https://github.com/indiesoftby/defold-splitmix64/archive/main.zip
+dependencies#15 = https://github.com/Insality/defold-printer/archive/master.zip
+dependencies#16 = https://github.com/Lerg/extension-imageloader/archive/master.zip
+
+[platform]
+platform = yandex_games
+sdk_go = yandex_games_sdk
+
+[input]
+use_accelerometer = 0
+game_binding = /input/game.input_bindingc
+gamepads = /builtins/input/default.gamepadsc
+
+[display]
+width = 480
+height = 270
+vsync = 0
+display_profiles = /main/render/my.display_profilesc
+dynamic_orientation = 1
+high_dpi = 1
+
+[script]
+shared_state = 1
+
+[windows]
+app_icon = /assets/app_icons/appicon.ico
+
+[osx]
+app_icon = /assets/app_icons/appicon.icns
+
+[android]
+input_method = HiddenInputField
+
+[physics]
+gravity_y = -1000.0
+scale = 0.01
+max_collisions = 1024
+max_contacts = 512
+trigger_overlap_capacity = 256
+world_count = 8
+max_collision_object_count = 1024
+
+[tilemap]
+max_tile_count = 30000
+max_count = 1024
+
+[graphics]
+max_draw_calls = 4096
+texture_profiles = /main/graphics/custom.texture_profiles
+default_texture_min_filter = nearest
+default_texture_mag_filter = nearest
+
+[sprite]
+max_count = 4096
+subpixels = 0
+
+[factory]
+max_count = 2048
+
+[collectionfactory]
+max_count = 1024
+
+[collection]
+max_instances = 2048
+
+[model]
+max_count = 128
+
+[html5]
+show_fullscreen_button = 0
+show_made_with_defold = 0
+scale_mode = stretch
+heap_size = 64
+splash_image = /main/loaders/loader_sdk/types/yandex_games/files/web/preloader_optimized.jpg
+htmlfile = /main/loaders/loader_sdk/types/yandex_games/files/web/engine_template.html
+cssfile = /main/loaders/loader_sdk/types/yandex_games/files/web/dark_theme.css
+
+[sound]
+max_component_count = 256
+max_sound_data = 512
+max_sound_buffers = 256
+
+[druid]
+no_auto_template = 1
+no_auto_input = 1
+
+[label]
+subpixels = 1
+max_count = 128
+
+[resource]
+max_resources = 2048
+
+[engine]
+fixed_update_frequency = 30
+
+[share_log]
+block_release_version = false
+catch_promise_errors = true
+force_html5_init = true
+
+[gui]
+max_count = 512
+
+[developers]
+is_logout_pip = 1
+nakama_localhost = 0
+is_debug = true
+token = eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI0NmFhOGJhNzk4NjcxOWEzOGYyZWQ2ODkxZjgzMjMxNmQxNDA5M2FlNDFlN2U1OGExMGJkODNiZjUwZTgxZmYxNTM5YmU5MjcwMDQyNjI5OCIsImF1ZCI6IlZQUyIsImV4cCI6MTY1OTQyOTA3NywiaWF0IjoxNjU5MzQyNjY3LCJpc3MiOiJLRVlNQVNURVIiLCJ0eXBlIjoiQmVhcmVyIiwianRpIjoiOWM0NzdkNGMtZmY1Mi00ZWY3LTg0ZmYtOTZlNWE4YmE5MjhkIiwic2lkIjoiMTk5ZTY5ZmQtOGU4Zi00NTZlLWFkNmYtYzJiNjViZjVhZGI1In0.HHYBWuxl5meOCXb6EODc_FahNbEgVTQOPh2zAhqV7A8XGAsHQAlESHKTMSt-mZBtHMvm-rOLVgyOmwOXtgqxYGlRFc9notceGRmzKuJzM9g0xwcmYVVeLcrfhsIlADaAtJDoanYYV4cpWZ73hxFyt9t1_H7dz-WmbMRY0XWB1He7PdD0hKoMNyy8e4qpgV_yMYPhqUvXLhBCzDvfL1O1F7_hqX6XHCbTGRR_x2FfQodVnn3QuFj7Xoxf1sTgcgS-a4EGCPS3WG2UeOPD_SGcAceduEGzy2TVNlTpQ2O8jq678B2ln81xFeY4OyZYV3WtDx1MaP2oHIXBVrdD00CJxV_WU-ImyOpq0B_PjL0zZkBajDttf-W5T6eRt6k2i49kAQc68_S0JXq9mm_YoqOLuGErJ0EUK2_-gNDl2_ymL69uxBgLOI1n-uf1EtV_GF1JbVzvkUVkXtzS2ha7GJEtGc4dScJpWnCXRJU4BpERJgKFtLruUj_G1dT3H6oapVXYPjNe81YzFCm72NsSKI19FZBbqOhowR0ZEda1I02yx2TtC9YmO1_SNfwesq_gWaJyFaUtPCBDTjbXGDoTMxSM0kLg6TpqjPU9q6bFX1RO6ViI5dAopMgo64jjpzB9d_05Fa2ih3dzGR9pH4cty9ysnNhtf0wHmDHFL-bt5QRLS6o
+phrase = Запусти Тест 26
+
+[liveupdate_reszip]
+wipe_on_start = 1
+
+[collection_proxy]
+max_count = 16
+

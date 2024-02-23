@@ -1,0 +1,133 @@
+local game_content_artifact = require "main.game.content.game_content_artifact"
+local game_core_gamers = require "main.game.core.game_core_gamers"
+local storage_player = require "main.storage.storage_player"
+local storage_gui = require "main.storage.storage_gui"
+local api_player = require "main.game.api.api_player"
+local nakama_api_account = require "main.online.nakama.api.nakama_api_account"
+local nakama = require "nakama.nakama"
+local api_core_shop = require "main.core.api.api_core_shop"
+local data_handler = require "main.data.data_handler"
+
+function init(self)
+	
+end
+
+function final(self)
+	
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("get_reward") then
+		-- Запрос на показ рекламы за вознаграждение
+		if message.type == "artifact" then
+			-- За артефакт
+			self.id = message.id
+			self.player_id = message.player_id or "player"
+			self.is_game = message.is_game
+			self.is_reward = true
+			self.type = "artifact"
+
+			msg.post("main:/ads", "reward")
+
+
+		elseif message.type == "score_round" then
+			-- Удвоение награды за раунд
+			self.score = message.score or 0
+			self.type = "score_round"
+
+			msg.post("main:/ads", "reward")
+		end
+
+	elseif message_id == hash("ads_close") and message.status == "success" then
+		-- Успешные просмотры рекламы
+		if self.type == "artifact" then
+			local artifact = game_content_artifact.get_item(self.id, self.player_id, self.is_game, self.is_reward)
+
+			if artifact and artifact.is_reward then
+				nakama.sync(function ()
+					local artifact_id = self.id
+
+					-- Синхроизируем с накамой
+					local set_nakama = false
+
+					local old_count_artifact = storage_player.artifacts[artifact_id] or 0
+
+					local userdata = {
+						view_rewards = api_player.set_view_rewards(self, artifact_id, 1, "add", set_nakama),
+						-- Увеличиваем просмотры рекламы у игрока
+						artifacts = api_player.set_artifacts(self, artifact_id, 1, "add", set_nakama),
+						-- Уменьшаем его в магазине
+						shop = api_core_shop.add_shop(self, artifact_id, -1, set_nakama)
+					}
+					data_handler.set_userdata(self, userdata, function_result)
+
+					if storage_gui.components_visible.catalog_shop then
+						msg.post("main:/loader_gui", "set_status", {
+							id = "catalog_shop",
+							type = "result_buy",
+							value = {
+								status = "success",
+								type_object = "artifact",
+								item_id = artifact_id -- Приз
+							}
+						})
+					end
+
+
+					if self.is_game then
+						local new_count_artifact = storage_player.artifacts[artifact_id] or 0
+						local player = game_core_gamers.get_player(self, "player", game_content_wheel)
+						player.artifacts[artifact_id] = new_count_artifact
+
+						--game_core_gamers.add_artifact_count(self, artifact_id, player_id, 1)
+
+						timer.delay(0.25, false, function (self)
+							--[[
+							msg.post("/loader_gui", "set_status", {
+								id = "game_hud_buff_horisontal",
+								type = "update",
+							})
+							--]]
+
+							msg.post("/loader_gui", "set_status", {
+								id = "all",
+								type = "update",
+								where = "reward"
+							})
+						end)
+					end
+
+					msg.post("main:/loader_gui", "set_status", {
+						id = "all",
+						from_id = "core_reward", 
+						type = "reward",
+						value = {
+							status = "success",
+							type_object = "artifact",
+							item_id = artifact_id -- Приз
+						}
+					})
+				end, cancellation_token)
+			end
+
+		elseif self.type == "score_round" and message.status == "success" then
+			timer.delay(0.5, false, function (self)
+				msg.post("/loader_gui", "set_status", {
+					id = "modal_reward_score",
+					type = "success_reward"
+				})
+			end)
+		end
+		
+	end
+end
+
+function on_input(self, action_id, action)
+	
+end
+
+function on_reload(self)
+	-- Add reload-handling code here
+	-- Learn more: https://defold.com/manuals/hot-reload/
+	-- Remove this function if not needed
+end
