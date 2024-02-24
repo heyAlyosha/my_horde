@@ -1,7 +1,7 @@
 go.property("damage", 1)
 go.property("live", 1)
 go.property("speed_damage", 0.25)
-go.property("speed", 30)
+go.property("speed", 50)
 go.property("command", hash("player"))
 go.property("skin_id", 0)
 go.property("human_id", 1)
@@ -19,7 +19,7 @@ function init(self)
 		local function handle_error(self, error_code)
 			print("Error", error_code)
 		end
-		move_bot.move_to_object(self, self.target, handle_success, handle_error)
+		move_bot.move_to_object(self, self.target, handle_success, handle_error, handle_no_object_target)
 		
 	end)
 

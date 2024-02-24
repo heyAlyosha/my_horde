@@ -3,7 +3,6 @@ local game_content_characteristic = require "main.game.content.game_content_char
 local api_player = require "main.game.api.api_player"
 local api_core_shop = require "main.core.api.api_core_shop"
 local storage_sdk = require "main.storage.storage_sdk"
-local game_core_gamers = require "main.game.core.game_core_gamers"
 local game_content_functions = require "main.game.content.modules.game_content_functions"
 
 -- Информация про артефакты

@@ -7,7 +7,6 @@ local gui_loader = require "main.gui.modules.gui_loader"
 local game_content_achieve = require "main.game.content.game_content_achieve"
 local storage_player = require "main.storage.storage_player"
 local core_player_function = require "main.core.core_player.modules.core_player_function"
-local game_core_stats = require "main.game.core.game_core_stats"
 local gui_loyouts = require "main.gui.modules.gui_loyouts"
 local gui_lang = require "main.lang.gui_lang"
 

@@ -9,7 +9,6 @@ local game_content_wheel = require "main.game.content.game_content_wheel"
 local gui_animate = require "main.gui.modules.gui_animate"
 local color = require("color-lib.color")
 local storage_game = require "main.game.storage.storage_game"
-local game_core_gamers = require "main.game.core.game_core_gamers"
 local gui_loyouts = require "main.gui.modules.gui_loyouts"
 local gui_lang = require "main.lang.gui_lang"
 local storage_player = require "main.storage.storage_player"

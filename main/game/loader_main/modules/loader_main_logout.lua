@@ -3,7 +3,6 @@ local M = {}
 
 local color = require("color-lib.color")
 local storage_player = require "main.storage.storage_player"
-local game_core_round_start = require "main.game.core.round.modules.game_core_round_start"
 local loader_sdk_modules = require "main.loaders.loader_sdk.modules.loader_sdk_modules"
 local game_content_artifact = require "main.game.content.game_content_artifact"
 local api_core_shop = require "main.core.api.api_core_shop"

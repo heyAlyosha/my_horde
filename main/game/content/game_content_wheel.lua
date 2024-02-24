@@ -3,7 +3,6 @@ local storage_game = require "main.game.storage.storage_game"
 local api_player = require "main.game.api.api_player"
 local color = require "color-lib.color"
 local game_content_artifact = require "main.game.content.game_content_artifact"
-local game_core_gamers = require "main.game.core.game_core_gamers"
 
 
 -- Информация про колесо

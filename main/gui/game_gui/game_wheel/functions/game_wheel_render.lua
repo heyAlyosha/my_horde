@@ -11,7 +11,6 @@ local game_content_wheel = require "main.game.content.game_content_wheel"
 local game_content_characteristic = require "main.game.content.game_content_characteristic"
 local game_wheel_functions = require "main.gui.game_gui.game_wheel.functions.game_wheel_functions"
 local game_wheel_objects = require "main.gui.game_gui.game_wheel.functions.game_wheel_objects"
-local game_core_gamers = require "main.game.core.game_core_gamers"
 local gui_loyouts = require "main.gui.modules.gui_loyouts"
 local gui_lang = require "main.lang.gui_lang"
 local color = require("color-lib.color")

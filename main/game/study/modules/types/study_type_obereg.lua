@@ -5,7 +5,6 @@ local lang_core = require "main.lang.lang_core"
 local storage_gui = require "main.storage.storage_gui"
 local storage_player = require "main.storage.storage_player"
 local api_player = require "main.game.api.api_player"
-local game_core_gamers = require "main.game.core.game_core_gamers"
 local core_layouts = require "main.core.core_layouts"
 
 -- Запуск

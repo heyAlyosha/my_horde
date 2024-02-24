@@ -1,18 +1,17 @@
 go.property("live", 10)
 go.property("points_attack_count", 8)
 go.property("command", hash("building_ruin"))
+go.property("type_object", hash("building_ruin"))
 
 -- Разрушаемые объекты
 function init(self)
-	-- Add initialization code here
-	-- Learn more: https://defold.com/manuals/script/
-	-- Remove this function if not needed
-	storage_game.go_urls[go.get_id()] = msg.url()
+	go_controller.add(self)
 	self.max_live = self.live
 	label.set_text("#label", self.live .. "/"..self.max_live)
 end
 
 function final(self)
+	go_controller.delete(self)
 	storage_game.go_urls[go.get_id()] = nil
 end
 
