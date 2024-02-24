@@ -19,7 +19,8 @@ function init(self)
 		local function handle_error(self, error_code)
 			print("Error", error_code)
 		end
-		move_bot.move_to_object(self, self.target, handle_success, handle_error, handle_no_object_target)
+		ai_attack.add_target(self, self.target)
+		ai_move.move_to_object(self, self.target, handle_success, handle_error, handle_no_object_target)
 		
 	end)
 
@@ -89,7 +90,6 @@ function on_message(self, message_id, message, sender)
 				self.timer_atack = nil
 			end
 		end
-		pprint(message_id, message)
 	end
 	
 end

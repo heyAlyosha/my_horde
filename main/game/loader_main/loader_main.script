@@ -27,7 +27,8 @@ function init(self)
 	astar_settings = require("main.game.astar.astar_settings")
 	astar_utils = require("main.game.astar.astar_utils")
 	astar_functions = require("main.game.astar.astar_functions")
-	move_bot = require("main.game.move.move_bot")
+	ai_move = require("main.game.ai.ai_move")
+	ai_attack = require("main.game.ai.ai_attack")
 
 	--profiler.enable_ui(true)
 
@@ -403,5 +404,5 @@ end
 function on_reload(self)
 	-- Add reload-handling code here
 	-- Learn more: https://defold.com/manuals/hot-reload/
-	-- Remove this function if not needed
+	-- Reai_move this function if not needed
 end

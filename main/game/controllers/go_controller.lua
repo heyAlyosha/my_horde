@@ -10,6 +10,30 @@ function M.add(self)
 	local url_original = msg.url()
 	local url = msg.url(url_original.socket, url_original.path, nil)
 	storage_game.go_keys[M.url_to_key(url)] = msg.url()
+
+	-- Объект - цель
+	if self.targets and self.targets > 0 then
+		storage_game.go_targets[M.url_to_key(url)] = {
+			-- Сколько 
+			target_max = self.targets,
+			target_current = 0,
+			targets = {},
+		}
+
+		-- Добавляем контент
+		local target_item = storage_game.go_targets[M.url_to_key(url)]
+		local position = go.get_position()
+		for i = 1, self.targets do
+			local rot = vmath.quat_rotation_z(3.141592563 * 2 / self.targets * i)
+			local vec = vmath.rotate(rot, self.target_dist)
+			target_item.targets["target_"..i] = {
+				count_object = 0,
+				vector_target = vec,
+				position = vec + position,
+				characters = {}
+			}
+		end
+	end
 end
 
 -- Добавление go

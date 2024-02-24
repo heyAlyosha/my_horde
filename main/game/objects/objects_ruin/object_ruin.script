@@ -1,11 +1,15 @@
 go.property("live", 10)
-go.property("points_attack_count", 8)
 go.property("command", hash("building_ruin"))
 go.property("type_object", hash("building_ruin"))
+go.property("targets", 8)
+go.property("target_dist", vmath.vector3(6, 0, 0))
+go.property("target_useful", 1)
+
 
 -- Разрушаемые объекты
 function init(self)
 	go_controller.add(self)
+	position_functions.go_set_perspective_z()
 	self.max_live = self.live
 	label.set_text("#label", self.live .. "/"..self.max_live)
 end

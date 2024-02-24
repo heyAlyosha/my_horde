@@ -1,8 +1,38 @@
 -- Передвижение ботов
 local M = {}
 
+-- Добавление цели мобу
+function M.add_target(self, url_target)
+	local position = go.get_position()
+	local target = storage_game.go_targets[go_controller.url_to_key(url_target)]
+
+	-- Ищем расположение
+	local possible_targets = {}
+	local position_target_object = go.get_position(url_target)
+	
+	for k, item in pairs(target.targets) do
+		possible_targets[#possible_targets+1] = {
+			id = k,
+			vector_target = item.vector_target, 
+			sort = #item.characters * 1000 + vmath.length(item.position - position)
+		}
+	end
+	--pprint("possible_targets", possible_targets)
+
+	-- Сортируем по ценности 
+	table.sort(possible_targets, function (a, b)
+		return a.sort < b.sort
+	end)
+
+	self.target = url_target
+	self.target_vector = possible_targets[1].vector_target
+
+	pprint(target.targets[possible_targets[1].id])
+	table.insert(target.targets[possible_targets[1].id].characters, msg.url())
+end
+
 -- Пердвижение к точке
-function M.move_item(self, position_to, handle)
+function M.move_to_attack(self, position_to, handle)
 	local position = go.get_position()
 
 	local dir = position_to - position
@@ -23,11 +53,6 @@ handle_no_object_target(self) -- Объект удалён из мира
 --]]
 function M.move_to_object(self, url, handle_success, handle_error, handle_no_object_target)
 	local position = go.get_position()
-	
-	pprint("storage_game.go_urls", storage_game.go_urls, url)
-	pprint("storage_game.go_ids", storage_game.go_ids, url)
-	pprint("storage_game.go_keys", storage_game.go_keys, go_controller.url_to_key(url))
-	print("go_controller.is_object(url)", go_controller.is_object(url))
 
 	if not go_controller.is_object(url) then
 		-- Если объект удалён
