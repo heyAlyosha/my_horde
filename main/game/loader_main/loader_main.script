@@ -15,6 +15,7 @@ local druid = require("druid.druid")
 local druid_castom_style = require "main.gui.modules.druid_castom_style"
 
 function init(self)
+	camera = require "orthographic.camera"
 	storage_game = require "main.game.storage.storage_game"
 	horde = require "main.game.characters.modules.horde"
 	input_remote_tv = require "input.input_remote_tv.modules.input_remote_tv"
@@ -22,6 +23,9 @@ function init(self)
 	character_attack = require "main.game.characters.modules.character_attack"
 	position_functions = require "main.modules.position_functions"
 	draw = require "main.modules.draw"
+	astar_settings = require("main.game.astar.astar_settings")
+	astar_utils = require("main.game.astar.astar_utils")
+	astar_functions = require("main.game.astar.astar_functions")
 
 	--profiler.enable_ui(true)
 

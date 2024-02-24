@@ -24,6 +24,7 @@ dependencies#13 = https://github.com/indiesoftby/defold-liveupdate-reszip/archiv
 dependencies#14 = https://github.com/indiesoftby/defold-splitmix64/archive/main.zip
 dependencies#15 = https://github.com/Insality/defold-printer/archive/master.zip
 dependencies#16 = https://github.com/Lerg/extension-imageloader/archive/master.zip
+dependencies#17 = https://github.com/selimanac/defold-astar/archive/master.zip
 
 [platform]
 platform = yandex_games

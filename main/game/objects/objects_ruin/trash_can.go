@@ -34,7 +34,7 @@ embedded_components {
   "    shape_type: TYPE_SPHERE\n"
   "    position {\n"
   "      x: 0.0\n"
-  "      y: -4.0\n"
+  "      y: 0.0\n"
   "      z: 0.0\n"
   "    }\n"
   "    rotation {\n"
@@ -79,8 +79,8 @@ embedded_components {
   ""
   position {
     x: 0.0
-    y: 0.0
-    z: 0.0
+    y: 4.0
+    z: 1.0
   }
   rotation {
     x: 0.0
@@ -105,7 +105,7 @@ embedded_components {
   "    shape_type: TYPE_BOX\n"
   "    position {\n"
   "      x: 0.0\n"
-  "      y: 0.0\n"
+  "      y: 4.0\n"
   "      z: 0.0\n"
   "    }\n"
   "    rotation {\n"
@@ -177,7 +177,7 @@ embedded_components {
   ""
   position {
     x: 0.0
-    y: 9.0
+    y: 12.0
     z: 0.0
   }
   rotation {
@@ -190,5 +190,189 @@ embedded_components {
     x: 0.25
     y: 0.25
     z: 1.0
+  }
+}
+embedded_components {
+  id: "point_attack"
+  type: "sprite"
+  data: "default_animation: \"point_green\"\n"
+  "material: \"/builtins/materials/sprite.material\"\n"
+  "blend_mode: BLEND_MODE_ALPHA\n"
+  "textures {\n"
+  "  sampler: \"texture_sampler\"\n"
+  "  texture: \"/main/atlases/first_level.atlas\"\n"
+  "}\n"
+  ""
+  position {
+    x: 0.0
+    y: -5.0
+    z: 3.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}
+embedded_components {
+  id: "point_attack1"
+  type: "sprite"
+  data: "default_animation: \"point_green\"\n"
+  "material: \"/builtins/materials/sprite.material\"\n"
+  "blend_mode: BLEND_MODE_ALPHA\n"
+  "textures {\n"
+  "  sampler: \"texture_sampler\"\n"
+  "  texture: \"/main/atlases/first_level.atlas\"\n"
+  "}\n"
+  ""
+  position {
+    x: -5.0
+    y: -4.0
+    z: 3.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}
+embedded_components {
+  id: "point_attack2"
+  type: "sprite"
+  data: "default_animation: \"point_green\"\n"
+  "material: \"/builtins/materials/sprite.material\"\n"
+  "blend_mode: BLEND_MODE_ALPHA\n"
+  "textures {\n"
+  "  sampler: \"texture_sampler\"\n"
+  "  texture: \"/main/atlases/first_level.atlas\"\n"
+  "}\n"
+  ""
+  position {
+    x: -7.0
+    y: 0.0
+    z: 3.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}
+embedded_components {
+  id: "point_attack3"
+  type: "sprite"
+  data: "default_animation: \"point_green\"\n"
+  "material: \"/builtins/materials/sprite.material\"\n"
+  "blend_mode: BLEND_MODE_ALPHA\n"
+  "textures {\n"
+  "  sampler: \"texture_sampler\"\n"
+  "  texture: \"/main/atlases/first_level.atlas\"\n"
+  "}\n"
+  ""
+  position {
+    x: -4.0
+    y: 3.0
+    z: 3.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}
+embedded_components {
+  id: "point_attack4"
+  type: "sprite"
+  data: "default_animation: \"point_green\"\n"
+  "material: \"/builtins/materials/sprite.material\"\n"
+  "blend_mode: BLEND_MODE_ALPHA\n"
+  "textures {\n"
+  "  sampler: \"texture_sampler\"\n"
+  "  texture: \"/main/atlases/first_level.atlas\"\n"
+  "}\n"
+  ""
+  position {
+    x: 0.0
+    y: 5.0
+    z: 3.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}
+embedded_components {
+  id: "point_attack5"
+  type: "sprite"
+  data: "default_animation: \"point_green\"\n"
+  "material: \"/builtins/materials/sprite.material\"\n"
+  "blend_mode: BLEND_MODE_ALPHA\n"
+  "textures {\n"
+  "  sampler: \"texture_sampler\"\n"
+  "  texture: \"/main/atlases/first_level.atlas\"\n"
+  "}\n"
+  ""
+  position {
+    x: 5.0
+    y: 3.0
+    z: 3.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}
+embedded_components {
+  id: "point_attack6"
+  type: "sprite"
+  data: "default_animation: \"point_green\"\n"
+  "material: \"/builtins/materials/sprite.material\"\n"
+  "blend_mode: BLEND_MODE_ALPHA\n"
+  "textures {\n"
+  "  sampler: \"texture_sampler\"\n"
+  "  texture: \"/main/atlases/first_level.atlas\"\n"
+  "}\n"
+  ""
+  position {
+    x: 7.0
+    y: -1.0
+    z: 3.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}
+embedded_components {
+  id: "point_attack7"
+  type: "sprite"
+  data: "default_animation: \"point_green\"\n"
+  "material: \"/builtins/materials/sprite.material\"\n"
+  "blend_mode: BLEND_MODE_ALPHA\n"
+  "textures {\n"
+  "  sampler: \"texture_sampler\"\n"
+  "  texture: \"/main/atlases/first_level.atlas\"\n"
+  "}\n"
+  ""
+  position {
+    x: 5.0
+    y: -4.0
+    z: 3.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
   }
 }

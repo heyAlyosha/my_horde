@@ -5,7 +5,7 @@ M.start_radius = 13
 M.start_angle = 35
 M.add_step_radius = 12
 M.add_step_angle = -20
-M.interval_zombie = 16
+M.interval_zombie = 20
 
 -- Позиции для орды
 M.positions = {}
@@ -86,10 +86,8 @@ function M.move_horde_player(self)
 				item.animate_position_to = true
 				local speed = 75
 				local duration = length / speed
-				print("duration", duration)
 				go.animate(item.url, "position", go.PLAYBACK_ONCE_FORWARD, position_to, gui.EASING_LINEAR, duration, 0, function (self)
 					item.animate_position_to = nil
-					print("animation", "Да")
 				end)
 			end
 		end

@@ -1,5 +1,6 @@
 go.property("live", 10)
-go.property("command", hash("hash"))
+go.property("points_attack_count", 8)
+go.property("command", hash("building_ruin"))
 
 -- Разрушаемые объекты
 function init(self)

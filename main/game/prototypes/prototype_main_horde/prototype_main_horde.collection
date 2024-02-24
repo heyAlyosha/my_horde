@@ -3,8 +3,8 @@ instances {
   id: "player"
   prototype: "/main/game/characters/player/player.go"
   position {
-    x: 222.0
-    y: 76.0
+    x: 18.0
+    y: 19.0
     z: 1.0
   }
   rotation {
@@ -43,8 +43,8 @@ instances {
   id: "building_house"
   prototype: "/main/game/building/building_house.go"
   position {
-    x: 55.0
-    y: 158.0
+    x: 56.0
+    y: 143.0
     z: 2.0
   }
   rotation {
@@ -63,8 +63,8 @@ instances {
   id: "building_house1"
   prototype: "/main/game/building/building_house.go"
   position {
-    x: 135.0
-    y: 158.0
+    x: 152.0
+    y: 143.0
     z: 2.0
   }
   rotation {
@@ -83,8 +83,8 @@ instances {
   id: "building_house2"
   prototype: "/main/game/building/building_house.go"
   position {
-    x: 230.0
-    y: 155.0
+    x: 248.0
+    y: 143.0
     z: 2.0
   }
   rotation {
@@ -159,27 +159,42 @@ instances {
     z: 1.0
   }
 }
-scale_along_z: 0
-embedded_instances {
-  id: "map"
-  data: "components {\n"
-  "  id: \"nature\"\n"
-  "  component: \"/main/tilemaps/nature.tilemap\"\n"
-  "  position {\n"
-  "    x: 0.0\n"
-  "    y: 0.0\n"
-  "    z: 0.0\n"
-  "  }\n"
-  "  rotation {\n"
-  "    x: 0.0\n"
-  "    y: 0.0\n"
-  "    z: 0.0\n"
-  "    w: 1.0\n"
-  "  }\n"
-  "  property_decls {\n"
-  "  }\n"
-  "}\n"
-  ""
+instances {
+  id: "zombie"
+  prototype: "/main/game/characters/zombie/zombie.go"
+  position {
+    x: 102.0
+    y: 133.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "script"
+    properties {
+      id: "skin_id"
+      value: "0.0"
+      type: PROPERTY_TYPE_NUMBER
+    }
+    properties {
+      id: "target"
+      value: "trash_can"
+      type: PROPERTY_TYPE_URL
+    }
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "map_prototype"
+  prototype: "/main/game/maps/levels/map_prototype.go"
   position {
     x: 0.0
     y: 0.0
@@ -197,3 +212,4 @@ embedded_instances {
     z: 1.0
   }
 }
+scale_along_z: 0
