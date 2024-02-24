@@ -1,0 +1,127 @@
+go.property("damage", 1)
+go.property("speed_damage", 0.25)
+go.property("speed", 20)
+go.property("command", hash("player"))
+go.property("skin_id", 0)
+go.property("human_id", 0)
+
+function init(self)
+	msg.post(".", "acquire_input_focus")
+
+	position_functions.go_set_perspective_z()
+
+	self.input = vmath.vector3(0)
+	self.velocity = vmath.vector3(0)
+	self.correction = vmath.vector3()
+	self.horde = {}
+
+	timer.delay(0.1, false, function (self)
+		local сenter_position = vmath.vector3(0)
+		local index_to_horde = 25
+		horde.get_position(self, сenter_position, index_to_horde)
+
+		for i = 1, index_to_horde do
+			math.randomseed(i)
+			local human_id = math.random(1, 9)
+			horde.add_zombie_horde(self, self.skin_id, human_id)
+		end
+	end)
+
+end
+
+function final(self)
+	msg.post(".", "release_input_focus")
+end
+
+function update(self, dt)
+	if not self.move_stop then
+		if vmath.length_sqr(self.input) > 1 then
+			self.input = vmath.normalize(self.input)
+		end
+
+		-- Движение
+		self.movement = self.input * self.speed * dt
+		local p = go.get_position()
+		self.position_to = p + self.movement
+		self.position_center_horde = vmath.vector3(self.position_to.x, self.position_to.y, self.position_to.z)
+		--self.position_center_horde.y = self.position_center_horde.y - 6
+		go.set_position(self.position_to)
+
+		-- Анимация
+		if vmath.length(self.movement) > 0 then
+			character_animations.play(self, "move")
+			if not self.hflip_stop then
+				sprite.set_hflip("#body", self.movement.x < 0)
+			end
+		else
+			character_animations.play(self, "idle")
+		end
+	end
+
+	horde.on_update(self)
+
+	position_functions.go_set_perspective_z()
+
+	self.input = vmath.vector3()
+	self.correction = vmath.vector3()
+end
+
+function fixed_update(self, dt)
+	
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("contact_point_response") then
+		-- СТолкновение с физическим объектом
+		if message.distance > 0 then
+			local proj = vmath.project(self.correction, message.normal * message.distance)
+			if proj < 1 then
+				local comp = (message.distance - message.distance * proj) * message.normal
+				go.set_position(go.get_position() + comp)
+				self.correction = self.correction + comp
+			end
+		end
+
+	elseif message_id == hash("trigger_response") and message.own_group == hash("attack") then
+		
+		if message.enter then
+			-- Объект для повреждения вошёл поле атаки
+			self.message = message
+			if character_attack.attack(self) then
+				self.timer_atack = timer.delay(self.speed_damage, true, function (self, handle, time_elapsed)
+					if not character_attack.attack(self) then
+						timer.cancel(handle)
+						self.timer_atack = nil
+					end
+				end)
+			end
+		else
+			if self.timer_atack then
+				timer.cancel(self.timer_atack)
+				self.timer_atack = nil
+			end
+		end
+	end
+	
+end
+
+function on_input(self, action_id, action)
+	if action_id == hash("up") then
+		self.input.y = 1                     -- [1]
+	elseif action_id == hash("down") then
+		self.input.y = -1                    -- [1]
+	elseif action_id == hash("left") then
+		self.input.x = -1                    -- [1]
+	elseif action_id == hash("right") then
+		self.input.x = 1                     -- [1]
+	elseif action_id == hash("action") and action.pressed then
+		character_animations.play(self, "attack")
+		
+	end
+end
+
+function on_reload(self)
+	-- Add reload-handling code here
+	-- Learn more: https://defold.com/manuals/hot-reload/
+	-- Remove this function if not needed
+end

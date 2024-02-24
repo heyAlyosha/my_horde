@@ -1,0 +1,178 @@
+local color = require("color-lib.color")
+local plug_functions = require "main.gui.plug.modules.plug_functions"
+local gui_animate = require "main.gui.modules.gui_animate" 
+local gui_input = require "main.gui.modules.gui_input"
+local gui_loader = require "main.gui.modules.gui_loader"
+local gui_manager = require "main.gui.modules.gui_manager"
+local loader_gui_history = require "main.loaders.loader_gui.modules.loader_gui_history"
+local druid = require("druid.druid")
+local sound_render = require "main.sound.modules.sound_render"
+local storage_gui = require "main.storage.storage_gui"
+local gui_render = require "main.gui.modules.gui_render"
+local gui_loyouts = require "main.gui.modules.gui_loyouts"
+
+function init(self)
+	self.id = "plug"
+
+	msg.post(".", "acquire_input_focus")
+	gui.set_render_order(storage_gui.orders.plug )
+	gui_manager.add_screen(self.id, msg.url())
+	self.druid = druid.new(self)
+
+	self.nodes = {
+		title = gui.get_node("loader_template/loader_text"),
+		loader_icon = gui.get_node("loader_template/loader_icon"),
+		loader_wrap = gui.get_node("loader_template/loader_wrap"),
+		btn_wrap = gui.get_node("btn_template/btn_wrap"),
+		wrap_btn = gui.get_node("wrap_btn"),
+		center_btns = gui.get_node("center_btns"),
+		wrap_btns = gui.get_node("wrap_btns"),
+		wrap_icon = gui.get_node("wrap_icon"),
+		icon = gui.get_node("icon"),
+		progress_wrap = gui.get_node("progress_template/wrap"),
+		progress_line = gui.get_node("progress_template/line"),
+		progress_number = gui.get_node("progress_template/number")
+	}
+
+	local rotation = gui.get_rotation(self.nodes.loader_icon)
+	gui.animate(self.nodes.loader_icon, "rotation.z", rotation.z + 360, gui.EASING_LINEAR, 3, 0, nil, gui.PLAYBACK_LOOP_FORWARD)
+end
+
+function final(self)
+	gui_input.on_final(self)
+	gui_manager.remove_screen(msg.url())
+	self.druid:final()
+end
+
+function on_message(self, message_id, message, sender)
+	input_remote_tv.on_message(self, message_id, message, sender)
+
+	if message_id == hash("layout_changed") then
+		loader_gui_history.refresh_msg(self, self.id, "all")
+		gui.set_enabled(self.nodes.btn_wrap, false)
+	end
+
+	self.druid:on_message(message_id, message, sender)
+	if message_id == hash("visible") then
+		local data = message.value or {}
+		gui.set_enabled(self.nodes.btn_wrap, false)
+		self.title = data.title or ""
+		self.color = data.color or color.white
+		self.type_animation = data.type_animation or "default"
+
+		if data.icon ~= nil then
+			self.icon = data.icon 
+			gui.set_enabled(self.nodes.loader_icon, data.icon == false)
+			gui.set_enabled(self.nodes.wrap_icon, data.icon ~= false)
+
+			if self.icon then
+				gui.play_flipbook(self.nodes.icon, self.icon)
+			end
+		end
+
+		if data.btns and #data.btns > 0 then
+			gui_loyouts.set_enabled(self, self.nodes.progress_wrap, false)
+		end
+
+		plug_functions.render_btns(self, data.btns)
+
+		gui.set_text(self.nodes.title, utf8.upper(self.title))
+		gui.set_color(self.nodes.title, self.color)
+
+		gui_animate.show_elem_popping(self, self.nodes.title, duration, delay, function_end_animation)
+
+	elseif message_id == hash("set_content") and message.type == "progress" then
+		-- Отрисовка прогресс бара
+		gui_loyouts.set_enabled(self, self.nodes.progress_wrap, type(message.procent) == "number")
+		if message.procent then
+			local node_wrap = self.nodes.progress_wrap
+			local node_line = self.nodes.progress_line
+			local node_number = self.nodes.progress_number
+			local duration = 0.05
+			gui_render.progress(self, message.procent, 100, node_wrap, node_line, node_number, duration)
+		end
+		
+	elseif message_id == hash("hidden") then
+		local duration = 0.25
+		local easing = gui.EASING_LINEAR
+
+		if self.type_animation == "top" then
+			gui.animate(self.nodes.title, "position.y", gui.get_position(self.nodes.title).y + 300, easing, duration)
+			gui.animate(self.nodes.title, "scale", vmath.vector3(0.1), easing, duration)
+			gui.animate(self.nodes.title, "color", vmath.vector4(0, 0, 0, 0), easing, duration, 0 , function (self)
+				msg.post("/loader_gui", "visible", {
+					id = self.id,
+					visible = false,
+					parent_id = self.parent_id
+				})
+			end)
+
+		else
+			gui.animate(self.nodes.title, "scale", vmath.vector3(2), easing, duration)
+			gui.animate(self.nodes.title, "color", vmath.vector4(0, 0, 0, 0), easing, duration, 0 , function (self)
+				msg.post("/loader_gui", "visible", {
+					id = self.id,
+					visible = false,
+					parent_id = self.parent_id
+				})
+			end)
+		end
+		
+	end
+end
+
+
+function on_input(self, action_id, action)
+	action_id, action = input_remote_tv.on_input(self, action_id, action)
+	self.druid:on_input(action_id, action)
+	-- Нажатие на кнопки
+	local function function_activate(self, focus_btn_id)
+		local btn = self.btns[focus_btn_id]
+
+		gui_animate.activate(self, btn.node, function_after)
+		sound_render.play("activate_btn")
+
+		if btn.id == "message" then
+			msg.post("/loader_gui", "visible", {
+				id = self.id,
+				visible = false,
+				parent_id = self.parent_id
+			})
+			local value = btn.value
+			
+			msg.post(value.message_url, value.message_id)
+			
+		elseif btn.id == "logout" then
+			msg.post('/loader_main', 'event', {id = "start_logout"})
+
+		elseif btn.id == "refresh_gui" then
+			btn.value = btn.value or {}
+			btn.value.messages = btn.value.messages or {}
+			for i, item in ipairs(btn.value.messages) do
+				msg.post('main:/loader_gui', item.message_id, item.message)
+			end
+
+		elseif btn.id == "to_screen" then
+			btn.value = btn.value or {}
+			btn.value.screen = btn.value.screen
+			
+			msg.post("main:/core_screens", btn.value.screen)
+			msg.post("/loader_gui", "visible", {
+				id = self.id,
+				visible = false,
+			})
+		end
+	end
+
+	if self.focus_btn_id == 1 and action_id == hash("up")  and action.pressed then
+		if storage_gui.components_visible.interface then
+			msg.post(storage_gui.components_visible.interface, "focus", {focus = 1})
+			sound_render.play("focus_main_menu")
+		end
+
+		return
+	end
+
+	return gui_input.on_input(self, action_id, action, function_focus, function_activate, function_back)
+
+end
