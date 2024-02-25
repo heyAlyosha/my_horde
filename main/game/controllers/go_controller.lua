@@ -17,6 +17,7 @@ function M.add(self)
 			-- Сколько 
 			target_max = self.targets,
 			target_current = 0,
+			target_useful = self.target_useful or 0,
 			targets = {},
 		}
 

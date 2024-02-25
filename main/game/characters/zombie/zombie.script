@@ -11,29 +11,33 @@ go.property("position_to", vmath.vector3())
 go.property("target", msg.url())
 go.property("type_object", hash("zombie_player"))
 
-
 function init(self)
 	sprite.play_flipbook("#body", "zombie_"..self.skin_id.."_"..self.human_id .. "_default")
 	position_functions.go_set_perspective_z()
+
+	-- Если нет цели
+	if go_controller.url_to_key(self.target) == go_controller.url_to_key(msg.url()) then
+		self.target = nil
+	end
 
 	self.input = vmath.vector3(0)
 	self.velocity = vmath.vector3(0)
 	self.correction = vmath.vector3()
 
-	local group_id = "visible_object"
-	self.group_id, self.visible_object_id = ai_vision.add_dynamic_object(self, group_id)
+	local group_name = "visible_object"
+	self.group_id, self.visible_object_id = ai_vision.add_dynamic_object(self, group_name)
 
-	timer.delay(0.25, true, function (self)
-		local position = go.get_position()
-		local width = self.distantion_visible * 2
-		local height = self.distantion_visible * 2
-		local group_id = aabb.new_group()
+	timer.delay(0.25, true, function (self, handle)
+		local visible_items = ai_vision.get_visible(self, self.visible_object_id, self.distantion_visible)
 
-		local result, count = aabb.query(self.group_id, position.x, position.y, width, height)
+		pprint("self.target", self.target)
 
-		pprint(result, count)
+		if visible_items then
+			self.target = visible_items[1].url
+		end
 
-		if false then
+		if self.target then
+			timer.cancel(handle)
 			local function handle_success(self)
 				print("Success")
 			end
@@ -42,6 +46,7 @@ function init(self)
 			end
 			ai_attack.add_target(self, self.target)
 			ai_move.move_to_object(self, self.target, handle_success, handle_error, handle_no_object_target)
+			
 		end
 
 	end)

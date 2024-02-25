@@ -12,8 +12,8 @@ function init(self)
 	self.max_live = self.live
 	label.set_text("#label", self.live .. "/"..self.max_live)
 
-	local group_id = "visible_object"
-	self.group_id, self.visible_object_id = ai_vision.add_static_object(self, group_id)
+	local group_name = "visible_object"
+	self.group_id, self.visible_object_id = ai_vision.add_static_object(self, group_name)
 end
 
 function final(self)

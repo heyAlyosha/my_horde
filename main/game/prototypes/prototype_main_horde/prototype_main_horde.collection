@@ -23,8 +23,8 @@ instances {
   id: "trash_can"
   prototype: "/main/game/objects/objects_ruin/trash_can.go"
   position {
-    x: 157.0
-    y: 94.0
+    x: 181.0
+    y: 97.0
     z: 1.0
   }
   rotation {
@@ -103,8 +103,8 @@ instances {
   id: "road_sign_stop"
   prototype: "/main/game/objects/objects_static/road_sign_stop.go"
   position {
-    x: 211.0
-    y: 77.0
+    x: 207.0
+    y: 26.0
     z: 2.0
   }
   rotation {
@@ -123,8 +123,8 @@ instances {
   id: "road_sign_stop1"
   prototype: "/main/game/objects/objects_static/road_sign_stop.go"
   position {
-    x: 231.0
-    y: 77.0
+    x: 227.0
+    y: 26.0
     z: 2.0
   }
   rotation {
@@ -143,8 +143,8 @@ instances {
   id: "road_sign_stop2"
   prototype: "/main/game/objects/objects_static/road_sign_stop.go"
   position {
-    x: 251.0
-    y: 77.0
+    x: 247.0
+    y: 26.0
     z: 2.0
   }
   rotation {
@@ -163,8 +163,8 @@ instances {
   id: "zombie"
   prototype: "/main/game/characters/zombie/zombie.go"
   position {
-    x: 188.0
-    y: 111.0
+    x: 221.0
+    y: 93.0
     z: 0.0
   }
   rotation {
@@ -200,6 +200,354 @@ instances {
     y: 0.0
     z: 0.0
     w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "trash_can1"
+  prototype: "/main/game/objects/objects_ruin/trash_can.go"
+  position {
+    x: 211.0
+    y: 108.0
+    z: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "script"
+    properties {
+      id: "target_useful"
+      value: "10.0"
+      type: PROPERTY_TYPE_NUMBER
+    }
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "trash_can2"
+  prototype: "/main/game/objects/objects_ruin/trash_can.go"
+  position {
+    x: 242.0
+    y: 107.0
+    z: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "trash_can3"
+  prototype: "/main/game/objects/objects_ruin/trash_can.go"
+  position {
+    x: 264.0
+    y: 98.0
+    z: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "zombie1"
+  prototype: "/main/game/characters/zombie/zombie.go"
+  position {
+    x: 211.0
+    y: 81.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "script"
+    properties {
+      id: "skin_id"
+      value: "0.0"
+      type: PROPERTY_TYPE_NUMBER
+    }
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "zombie2"
+  prototype: "/main/game/characters/zombie/zombie.go"
+  position {
+    x: 237.0
+    y: 77.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "script"
+    properties {
+      id: "skin_id"
+      value: "0.0"
+      type: PROPERTY_TYPE_NUMBER
+    }
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "zombie3"
+  prototype: "/main/game/characters/zombie/zombie.go"
+  position {
+    x: 221.0
+    y: 66.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "script"
+    properties {
+      id: "skin_id"
+      value: "0.0"
+      type: PROPERTY_TYPE_NUMBER
+    }
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "zombie4"
+  prototype: "/main/game/characters/zombie/zombie.go"
+  position {
+    x: 199.0
+    y: 67.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "script"
+    properties {
+      id: "skin_id"
+      value: "0.0"
+      type: PROPERTY_TYPE_NUMBER
+    }
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "zombie5"
+  prototype: "/main/game/characters/zombie/zombie.go"
+  position {
+    x: 242.0
+    y: 60.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "script"
+    properties {
+      id: "skin_id"
+      value: "0.0"
+      type: PROPERTY_TYPE_NUMBER
+    }
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "zombie6"
+  prototype: "/main/game/characters/zombie/zombie.go"
+  position {
+    x: 261.0
+    y: 63.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "script"
+    properties {
+      id: "skin_id"
+      value: "0.0"
+      type: PROPERTY_TYPE_NUMBER
+    }
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "zombie7"
+  prototype: "/main/game/characters/zombie/zombie.go"
+  position {
+    x: 261.0
+    y: 44.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "script"
+    properties {
+      id: "skin_id"
+      value: "0.0"
+      type: PROPERTY_TYPE_NUMBER
+    }
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "zombie8"
+  prototype: "/main/game/characters/zombie/zombie.go"
+  position {
+    x: 227.0
+    y: 46.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "script"
+    properties {
+      id: "skin_id"
+      value: "0.0"
+      type: PROPERTY_TYPE_NUMBER
+    }
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "zombie9"
+  prototype: "/main/game/characters/zombie/zombie.go"
+  position {
+    x: 203.0
+    y: 47.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "script"
+    properties {
+      id: "skin_id"
+      value: "0.0"
+      type: PROPERTY_TYPE_NUMBER
+    }
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "zombie10"
+  prototype: "/main/game/characters/zombie/zombie.go"
+  position {
+    x: 181.0
+    y: 51.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "script"
+    properties {
+      id: "skin_id"
+      value: "0.0"
+      type: PROPERTY_TYPE_NUMBER
+    }
   }
   scale3 {
     x: 1.0
