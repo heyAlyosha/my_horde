@@ -1,0 +1,132 @@
+go.property("damage", 1)
+go.property("live", 1)
+go.property("speed_damage", 0.25)
+go.property("speed", 50)
+go.property("distantion_visible", 30)
+go.property("command", hash("player"))
+go.property("skin_id", 0)
+go.property("human_id", 1)
+go.property("parent", msg.url())
+go.property("position_to", vmath.vector3())
+go.property("target", msg.url())
+go.property("type_object", hash("zombie_player"))
+
+function init(self)
+	sprite.play_flipbook("#body", "zombie_"..self.skin_id.."_"..self.human_id .. "_default")
+	position_functions.go_set_perspective_z()
+
+	-- Если нет цели
+	if go_controller.url_to_key(self.target) == go_controller.url_to_key(msg.url()) then
+		self.target = nil
+	end
+
+	self.input = vmath.vector3(0)
+	self.velocity = vmath.vector3(0)
+	self.correction = vmath.vector3()
+
+	self.group_name = "visible_object"
+	self.group_id, self.visible_object_id = ai_vision.add_dynamic_object(self, self.group_name)
+
+	timer.delay(0.25, true, function (self, handle)
+		local visible_items = ai_vision.get_visible(self, self.visible_object_id, self.distantion_visible)
+
+		if visible_items then
+			self.target = visible_items[1].url
+		end
+
+		if self.target then
+			timer.cancel(handle)
+			local function handle_success(self)
+				print("Success")
+			end
+			local function handle_error(self, error_code)
+				print("Error", error_code)
+			end
+			ai_attack.add_target(self, self.target)
+			ai_move.move_to_object(self, self.target, handle_success, handle_error, handle_no_object_target)
+		end
+	end)
+end
+
+function final(self)
+	msg.post(".", "release_input_focus")
+end
+
+function fixed_update(self, dt)
+	-- This function is called if 'Fixed Update Frequency' is enabled in the Engine section of game.project
+	-- Can be coupled with fixed updates of the physics simulation if 'Use Fixed Timestep' is enabled in
+	-- Physics section of game.project
+	-- Add update code here
+	-- Learn more: https://defold.com/manuals/script/
+	-- Remove this function if not needed
+end
+
+function update(self, dt)
+	if self.debug_lines_to_target then
+		draw.line(self.debug_lines_to_target.from, self.debug_lines_to_target.to)
+	end
+
+	if self.debug_lines_to_tile then
+		--pprint(self.debug_lines_to_tile)
+		for i, v in ipairs(self.debug_lines_to_tile) do
+			draw.line(v.from, v.to)
+		end
+		
+	end
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("object_visible_kill") then
+		pprint("object_visible_kill")
+		-- Прицеливаемый объект уничтожен
+		if self.target then
+			ai_attack.delete_target(self, self.target)
+
+			timer.delay(0.25, true, function (self, handle)
+				local visible_items = ai_vision.get_visible(self, self.visible_object_id, self.distantion_visible)
+
+				if visible_items then
+					self.target = visible_items[1].url
+				end
+
+				if self.target then
+					timer.cancel(handle)
+					local function handle_success(self)
+						print("Success")
+					end
+					local function handle_error(self, error_code)
+						print("Error", error_code)
+					end
+					ai_attack.add_target(self, self.target)
+					ai_move.move_to_object(self, self.target, handle_success, handle_error, handle_no_object_target)
+				end
+			end)
+		end
+
+	elseif message_id == hash("trigger_response") and message.own_group == hash("attack") then
+		if message.enter then
+			-- Объект для повреждения вошёл поле атаки
+			self.message = message
+			if character_attack.attack(self) then
+				self.timer_atack = timer.delay(self.speed_damage, true, function (self, handle, time_elapsed)
+					if not character_attack.attack(self) then
+						timer.cancel(handle)
+						self.timer_atack = nil
+					end
+				end)
+			end
+		else
+			if self.timer_atack then
+				timer.cancel(self.timer_atack)
+				self.timer_atack = nil
+			end
+		end
+	end
+	
+end
+
+function on_reload(self)
+	-- Add reload-handling code here
+	-- Learn more: https://defold.com/manuals/hot-reload/
+	-- Remove this function if not needed
+end

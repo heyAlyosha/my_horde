@@ -1,0 +1,109 @@
+local color = require("color-lib.color")
+local storage_game = require "main.game.storage.storage_game"
+local sound_render = require "main.sound.modules.sound_render"
+
+function init(self)
+	self.max_len = 10
+	self.default_scale = go.get("#label_score", "scale")
+
+	msg.post("#sprite_light", "disable")
+	msg.post("#sprite_gamer", "disable")
+
+	label.set_text("#label_name", "")
+	label.set_text("#label_score", "")
+end
+
+function final(self)
+	
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("set_gamer") then
+		local name = message.name or ""
+		local score = message.score or "0"
+		local icon = message.icon or "icon-anonim"
+		local color_player = message.color_player or color.white
+		self.player_id = message.player_id
+
+		-- обрезаем, Если слишком дли
+		if utf8.len(name) > self.max_len then
+			local len_word = 0
+			local word = ""
+
+			for symbol in utf8.gmatch(name, ".") do
+				len_word = len_word + 1
+
+				if len_word >= 3 and symbol == " " then
+					break
+				end
+
+				if len_word < self.max_len then
+					word = word .. symbol
+
+				else
+					word = word .. ""
+					break
+				end
+			end
+
+			name = word
+		end
+
+		label.set_text("#label_name", utf8.upper(name))
+		label.set_text("#label_score", score)
+		go.set("#label_name", "color", color_player)
+
+		msg.post("#sprite_gamer", "enable")
+		sprite.play_flipbook("#sprite_gamer", icon)
+
+	elseif message_id == hash("set_focus") then	
+		if message.focus then
+			msg.post("#sprite_light", "enable")
+			msg.post("#sprite_active_name", "enable")
+			msg.post("#sprite_active_score", "enable")
+		else
+			msg.post("#sprite_light", "disable")
+			msg.post("#sprite_active_name", "disable")
+			msg.post("#sprite_active_score", "disable")
+		end
+
+	elseif message_id == hash("set_disabled") then	
+		msg.post("#sprite_light", "disable")
+		msg.post("#sprite_gamer", "disable")
+		label.set_text("#label_name", "")
+		label.set_text("#label_score", "")
+
+	elseif message_id == hash("update_score") then
+		local current_score = tonumber(label.get_text("#label_score"))
+		local new_score = message.score or current_score
+		local edit_score = new_score - current_score
+
+		-- Анимация изменения очков
+		if edit_score ~= 0 then
+			msg.post("main:/sound", "play", {sound_id = "not_enouth_beep", is_single = true})
+			go.animate("#label_score", "scale", go.PLAYBACK_ONCE_PINGPONG, self.default_scale*1.5, go.EASING_LINEAR, 0.5, 0, function (self)
+				sound_render.play("add_gold", url_object)
+				label.set_text("#label_score", new_score)
+
+				-- Добавляем уведомлялку над головой
+				local position = go.get_position()
+				position.y = position.y + 70
+				position.z = 20
+				go.animate("#label_score", "scale", go.PLAYBACK_ONCE_FORWARD, self.default_scale, go.EASING_LINEAR, 0.25)
+				--go.set("#label_score", "scale", self.default_scale)
+
+				
+
+				factory.create("#factory_edit_score", position, nil, {score = edit_score})
+
+				if self.player_id == "player" and storage_game.stars.type == "score" then
+					msg.post("main:/core_stars", "update", {
+						value = new_score, 
+						operation = "set"
+					})
+				end
+			end)
+		end
+
+	end
+end

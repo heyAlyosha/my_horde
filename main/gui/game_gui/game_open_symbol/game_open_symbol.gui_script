@@ -1,0 +1,92 @@
+local gui_input = require "main.gui.modules.gui_input"
+local storage_gui = require "main.storage.storage_gui"
+local gui_scale = require "main.gui.modules.gui_scale"
+local gui_animate = require "main.gui.modules.gui_animate" 
+local game_content_wheel = require "main.game.content.game_content_wheel"
+local game_open_symbol_functions = require "main.gui.game_gui.game_open_symbol.functions.game_open_symbol_functions"
+local gui_size = require "main.gui.modules.gui_size"
+local gui_lang = require "main.lang.gui_lang"
+
+function init(self)
+	msg.post(".", "acquire_input_focus")
+	gui.set_render_order(2)
+
+	self.id = "game_open_symbol"
+
+	self.nodes = {
+		wrap = gui.get_node("wrap"),
+		title = gui.get_node("title"),
+		wrap_btns = gui.get_node("wrap_btns"),
+		wrap_bg = gui.get_node("wrap_bg"),
+		btn = gui.get_node("btn_template/btn_wrap"),
+		btn_title = gui.get_node("btn_template/btn_title"),
+	}
+
+	gui_lang.set_text_upper(self, self.nodes.title, "_open_any_symbol", before_str, after_str)
+
+	-- Кнопка "Крутить барабан"
+	self.btns = {
+		--[[
+		{
+			id = "go", 
+			type = "btn",
+			section = "wheel",
+			node = self.nodes.btn,
+			node_title = self.nodes.btn_title,
+			icon = "button_default_green_"
+		}
+		]]--
+	}
+
+	
+end
+
+function final(self)
+	gui_input.on_final(self)
+end
+
+function on_message(self, message_id, message, sender)
+	input_remote_tv.on_message(self, message_id, message, sender)
+	if message_id == hash("layout_changed") then
+		game_open_symbol_functions.visible(self, self.last_data)
+
+	elseif message_id == hash("focus") then
+		gui_input.set_focus(self, message.focus)
+
+	elseif message_id == hash("visible") then
+		self.last_data = message.value
+		game_open_symbol_functions.visible(self, self.last_data)
+
+	elseif message_id == hash("hidden") then
+		game_open_symbol_functions.hidden(self)
+	end
+end
+
+function on_input(self, action_id, action)
+	action_id, action = input_remote_tv.on_input(self, action_id, action)
+	local function function_back(self)
+		-- do things
+	end
+
+	if storage_gui.components_visible.modal_pause then
+		return true
+	end
+
+	-- Нажатие на кнопки
+	local function function_activate(self, focus_btn_id)
+		local btn = self.btns[focus_btn_id]
+		gui_animate.activate(self, self.btns[focus_btn_id].node, nil)
+
+		game_open_symbol_functions.activate(self, self.btns[focus_btn_id])
+	end
+
+	if action_id == hash("up")  and action.pressed then
+		if storage_gui.components_visible.interface then
+			msg.post(storage_gui.components_visible.interface, "focus", {focus = 1})
+			msg.post("main:/sound", "play", {sound_id = "focus_main_menu"})
+			return
+		end
+	end
+
+	return gui_input.on_input(self, action_id, action, function_focus, function_activate, function_back)
+end
