@@ -23,8 +23,8 @@ instances {
   id: "trash_can"
   prototype: "/main/game/objects/objects_ruin/trash_can.go"
   position {
-    x: 181.0
-    y: 97.0
+    x: 299.0
+    y: 164.0
     z: 1.0
   }
   rotation {
@@ -163,8 +163,8 @@ instances {
   id: "zombie"
   prototype: "/main/game/characters/zombie/zombie.go"
   position {
-    x: 162.0
-    y: 96.0
+    x: 177.0
+    y: 93.0
     z: 0.0
   }
   rotation {
@@ -175,11 +175,6 @@ instances {
   }
   component_properties {
     id: "script"
-    properties {
-      id: "distantion_visible"
-      value: "40.0"
-      type: PROPERTY_TYPE_NUMBER
-    }
     properties {
       id: "skin_id"
       value: "0.0"
@@ -216,8 +211,8 @@ instances {
   id: "trash_can1"
   prototype: "/main/game/objects/objects_ruin/trash_can.go"
   position {
-    x: 208.0
-    y: 97.0
+    x: 326.0
+    y: 164.0
     z: 1.0
   }
   rotation {
@@ -236,8 +231,8 @@ instances {
   id: "trash_can2"
   prototype: "/main/game/objects/objects_ruin/trash_can.go"
   position {
-    x: 235.0
-    y: 97.0
+    x: 353.0
+    y: 164.0
     z: 1.0
   }
   rotation {
@@ -256,8 +251,8 @@ instances {
   id: "trash_can3"
   prototype: "/main/game/objects/objects_ruin/trash_can.go"
   position {
-    x: 262.0
-    y: 97.0
+    x: 380.0
+    y: 164.0
     z: 1.0
   }
   rotation {
@@ -265,6 +260,39 @@ instances {
     y: 0.0
     z: 0.0
     w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "zombie_enemy"
+  prototype: "/main/game/characters/zombie/zombie.go"
+  position {
+    x: 231.0
+    y: 95.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "script"
+    properties {
+      id: "command"
+      value: "zombie_enemy"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "skin_id"
+      value: "0.0"
+      type: PROPERTY_TYPE_NUMBER
+    }
   }
   scale3 {
     x: 1.0

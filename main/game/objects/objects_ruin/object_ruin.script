@@ -3,7 +3,7 @@ go.property("command", hash("building_ruin"))
 go.property("type_object", hash("building_ruin"))
 go.property("targets", 8)
 go.property("target_dist", vmath.vector3(6, 0, 0))
-go.property("target_useful", 1)
+go.property("target_useful", 0)
 
 -- Разрушаемые объекты
 function init(self)

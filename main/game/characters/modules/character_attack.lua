@@ -2,11 +2,13 @@
 local M = {}
 
 --Запуск атаки
-function M.attack(self)
-	if not storage_game.go_urls[self.message.other_id] then
+function M.attack(self, url_object)
+	local url_object = url_object or self.message.other_id
+
+	if not go_controller.is_object(url_object) then
 		return false
 	end
-	local url_object = self.message.other_id
+
 	self.type_bullet = hash("bullet_hit")
 
 	-- Место спавна пули
@@ -39,7 +41,7 @@ function M.attack(self)
 		rot = vmath.vector3(1, 0, 0)
 		rotation = vmath.quat_rotation_z(math.atan2(rot.y, rot.x))
 	end
-	print(rotation)
+	--print(rotation)
 	factory.create("#bullet_hit_factory", position, rotation, properties)
 
 	sprite.set_hflip("#body", rot.x < 0)

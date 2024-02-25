@@ -3,6 +3,7 @@ go.property("live", 1)
 go.property("speed_damage", 0.25)
 go.property("speed", 50)
 go.property("distantion_visible", 30)
+go.property("distantion_attack", 10)
 go.property("command", hash("player"))
 go.property("skin_id", 0)
 go.property("human_id", 1)
@@ -10,8 +11,13 @@ go.property("parent", msg.url())
 go.property("position_to", vmath.vector3())
 go.property("target", msg.url())
 go.property("type_object", hash("zombie_player"))
+go.property("targets", 8)
+go.property("target_dist", vmath.vector3(6, 0, 0))
+go.property("target_useful", 2)
 
 function init(self)
+	go_controller.add(self)
+
 	sprite.play_flipbook("#body", "zombie_"..self.skin_id.."_"..self.human_id .. "_default")
 	position_functions.go_set_perspective_z()
 
@@ -32,6 +38,7 @@ function init(self)
 
 		if visible_items then
 			self.target = visible_items[1].url
+			self.is_attack = true
 		end
 
 		if self.target then
@@ -77,7 +84,6 @@ end
 
 function on_message(self, message_id, message, sender)
 	if message_id == hash("object_visible_kill") then
-		pprint("object_visible_kill")
 		-- Прицеливаемый объект уничтожен
 		if self.target then
 			ai_attack.delete_target(self, self.target)

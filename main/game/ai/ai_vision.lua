@@ -20,7 +20,6 @@ function M.add_static_object(self, group_name)
 
 	local aabb_id = aabb.insert(group_id, self.pos.x , self.pos.y, self.size.x, self.size.y)
 
-	print("add_static_object",group_id, aabb_id)
 	storage_game.groups_aabbcc[group_name].objects[aabb_id] = {
 		url = msg.url(go.get_id()),
 		command = self.command,

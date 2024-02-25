@@ -66,4 +66,17 @@ function M.delete_target(self, url_target)
 	self.target_id_point = nil
 end
 
+-- Хватает дистанции для атаки
+function M.check_distance_attack(self, url)
+	self.distantion_attack = self.distantion_attack or 0
+	pprint("check_distance_attack", self.distantion_attack, vmath.length(go.get_position(url) - go.get_position()))
+	if self.distantion_attack >= vmath.length(go.get_position(url) - go.get_position()) then
+		local result = physics.raycast(go.get_position(), go.get_position(url), {hash("default")}, options)
+		return not result or #result == 0
+	end
+
+	return false
+end
+
+
 return M
