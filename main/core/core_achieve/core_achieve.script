@@ -1,0 +1,44 @@
+local core_achieve_functions = require "main.core.core_achieve.modules.core_achieve_functions"
+
+function init(self)
+	
+end
+
+function final(self)
+	-- Add finalization code here
+	-- Learn more: https://defold.com/manuals/script/
+	-- Remove this function if not needed
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("update_progress") then
+		if self.timer_update then
+			timer.cancel(self.timer_update)
+			self.timer_update = nil
+		end
+
+		self.timer_update = timer.delay(0.5, false, function (self)
+			core_achieve_functions.update(self)
+			self.timer_update = nil
+		end)
+
+	end
+end
+
+function on_input(self, action_id, action)
+	-- Add input-handling code here. The game object this script is attached to
+	-- must have acquired input focus:
+	--
+	--    msg.post(".", "acquire_input_focus")
+	--
+	-- All mapped input bindings will be received. Mouse and touch input will
+	-- be received regardless of where on the screen it happened.
+	-- Learn more: https://defold.com/manuals/input/
+	-- Remove this function if not needed
+end
+
+function on_reload(self)
+	-- Add reload-handling code here
+	-- Learn more: https://defold.com/manuals/hot-reload/
+	-- Remove this function if not needed
+end

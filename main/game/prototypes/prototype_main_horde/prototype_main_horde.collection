@@ -1,0 +1,210 @@
+name: "prototype_main_horde"
+instances {
+  id: "player"
+  prototype: "/main/game/characters/player/player.go"
+  position {
+    x: 54.0
+    y: 24.0
+    z: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "trash_can"
+  prototype: "/main/game/objects/objects_ruin/trash_can.go"
+  position {
+    x: 157.0
+    y: 94.0
+    z: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "building_house"
+  prototype: "/main/game/building/building_house.go"
+  position {
+    x: 56.0
+    y: 143.0
+    z: 2.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "building_house1"
+  prototype: "/main/game/building/building_house.go"
+  position {
+    x: 152.0
+    y: 143.0
+    z: 2.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "building_house2"
+  prototype: "/main/game/building/building_house.go"
+  position {
+    x: 248.0
+    y: 143.0
+    z: 2.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "road_sign_stop"
+  prototype: "/main/game/objects/objects_static/road_sign_stop.go"
+  position {
+    x: 211.0
+    y: 77.0
+    z: 2.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "road_sign_stop1"
+  prototype: "/main/game/objects/objects_static/road_sign_stop.go"
+  position {
+    x: 231.0
+    y: 77.0
+    z: 2.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "road_sign_stop2"
+  prototype: "/main/game/objects/objects_static/road_sign_stop.go"
+  position {
+    x: 251.0
+    y: 77.0
+    z: 2.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "zombie"
+  prototype: "/main/game/characters/zombie/zombie.go"
+  position {
+    x: 188.0
+    y: 111.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "script"
+    properties {
+      id: "skin_id"
+      value: "0.0"
+      type: PROPERTY_TYPE_NUMBER
+    }
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "map"
+  prototype: "/main/game/maps/levels/map_prototype.go"
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+scale_along_z: 0

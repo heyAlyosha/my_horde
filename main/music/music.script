@@ -1,0 +1,116 @@
+local storage_player = require "main.storage.storage_player"
+local storage_game = require "main.game.storage.storage_game"
+local core_live_update = require "main.game.live_update.core_live_update"
+
+go.property("load_files", false)
+
+-- Запуск обычной музыки
+local function play_music(self, message)
+	if self.loop or self.current_music ~= message.sound then
+		self.loop = message.loop
+		if self.current_music then
+			sound.stop("live_update_sound:/music#"..self.current_music)
+			self.current_music = false
+		end
+
+		-- Записываем музыку
+		storage_game.current_music_play = message
+		sound.play("live_update_sound:/music#"..message.sound, {gain = storage_player.settings.volume_music}, function (self, message_id, message, sender)
+
+			if message_id == hash("sound_done") then
+				if self.loop then
+					msg.post(".", "play", {sound = self.current_music, loop = true})
+				end
+			elseif message_id == hash("sound_stopped") then
+				self.loop = nil
+			end 
+		end)
+		
+		self.current_music = message.sound
+	end
+end
+
+function init(self)
+	self.volume = 0
+	self.current_music = false
+
+	-- Загружаем музыку
+	--[[
+	core_live_update.load(self, "#collectionproxy", function (self, err)
+		if not err then
+			msg.post("#collectionproxy", hash("load"))
+		end
+	end, callback_progress)
+	--]]
+end
+
+function final(self)
+	-- Add finalization code here
+	-- Learn more: https://defold.com/manuals/script/
+	-- Remove this function if not needed
+end
+
+function update(self, dt)
+	-- Add update code here
+	-- Learn more: https://defold.com/manuals/script/
+	-- Remove this function if not needed
+end
+
+function on_message(self, message_id, message, sender)
+
+	if not self.load_files and message_id == hash("play") then
+		-- Если музыкальные файлы не загружены
+		self.last_music_message = message
+	end
+
+	if message_id == hash("play")  and self.load_files then
+		-- Если это музыка проигрыша
+		if message.sound == "game_over" then
+			play_music_game_over(self, message)
+		-- Если это музыка проигрыша
+		elseif message.sound == "gameplay" then
+			play_music_gameplay(self, message)
+		else
+			play_music(self, message)
+		end
+	elseif message_id == hash("stop") and self.load_files then
+		if self.current_music then
+			sound.stop("live_update_sound:/music#"..self.current_music)
+			self.current_music = false
+		end
+	elseif message_id == hash("volume") then
+		self.volume = message.volume
+		storage_player.settings.volume_music = message.volume
+
+		if self.current_music then
+			pprint(msg.url("live_update_sound", "music", self.current_music))
+			--sound.set_gain(msg.url("live_update_sound", "music", self.current_music), storage_player.settings.volume_music)
+			sound.set_gain("live_update_sound:/music#"..self.current_music, storage_player.settings.volume_music)
+		end
+
+		msg.post("/loader_gui", "set_status", {
+			id = "interface",
+			type = "update_volume"
+		})
+	elseif message_id == hash("proxy_loaded") then
+		-- Прокси коллекция с гуи компонентом загружена
+		msg.post(sender, "init")
+		msg.post(sender, "enable")
+		self.load_files = true
+
+		-- Если был апоследняя музыка, запускаем её
+
+	elseif message_id == hash("play_last_music") then
+		
+		-- Прокси коллекция с гуи компонентом загружена
+		if self.last_music_message then
+			msg.post(".", "play", self.last_music_message)
+		end
+	end
+end
+
+function on_reload(self)
+	-- Add reload-handling code here
+	-- Learn more: https://defold.com/manuals/hot-reload/
+	-- Remove this function if not needed
+end
