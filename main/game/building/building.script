@@ -1,7 +1,0 @@
-function init(self)
-	pprint(position_functions.go_set_perspective_z())
-end
-
-function final(self)
-	
-end
