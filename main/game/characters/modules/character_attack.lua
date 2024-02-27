@@ -3,7 +3,7 @@ local M = {}
 
 --Запуск атаки
 function M.attack(self, url_object)
-	local url_object = url_object or self.message.other_id
+	local url_object = url_object or msg.url(self.message.other_id)
 
 	if not go_controller.is_object(url_object) then
 		return false

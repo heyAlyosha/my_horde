@@ -24,7 +24,8 @@ function M.add(self)
 		-- области вокруг объекта для атаки
 		local target_item = storage_game.go_targets[M.url_to_key(url)]
 		local position = go.get_position()
-		local map_url = go.get(msg.url("map#map_core"), "map_url")
+		--print(msg.url("map#map_core"))
+		local map_url = go.get(storage_game.map.url_script, "map_url")
 
 		for i = 1, self.targets do
 			local rot = vmath.quat_rotation_z(3.141592563 * 2 / self.targets * i)
@@ -93,6 +94,7 @@ end
 
 -- url в ключ для массива
 function M.url_to_key(url)
+	pprint(url)
 	return hash_to_hex(url.socket or hash("")) .. hash_to_hex(url.path) .. hash_to_hex(url.fragment or hash(""))
 end
 

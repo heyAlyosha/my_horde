@@ -19,7 +19,26 @@ function M.condition_attack(self, url)
 	ai_attack.add_target(self, self.target)
 	ai_move.move_to_object(self, self.target, handle_success, handle_error, handle_no_object_target)
 	self.check_attak = M.check_distantion_attack(self, self.target)
+end
 
+-- Возвращение в орду
+function M.condition_to_horde(self, url)
+	self.condition = hash("run_to_horde")
+	self.target = url
+
+	self.is_attack = true
+
+	local function handle_success(self)
+		print("Success")
+	end
+
+	local function handle_error(self, error_code)
+		print("Error", error_code)
+	end
+
+	ai_attack.add_target(self, self.target)
+	ai_move.move_to_object(self, self.target, handle_success, handle_error, handle_no_object_target)
+	self.check_attak = M.check_distantion_attack(self, self.target)
 end
 
 -- Дистанция для атаки
@@ -68,8 +87,6 @@ function M.fire(self, url)
 	self.timer_fire = timer.delay(self.speed_damage, true, function (self)
 		fire(self)
 	end)
-
-	print("stop", stop)
 
 	return {
 		stop = stop

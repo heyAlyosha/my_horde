@@ -2,6 +2,9 @@ go.property("map_url", msg.url())
 
 function init(self)
 	storage_game.map.url = self.map_url
+	
+	storage_game.map.url_script = msg.url()
+	pprint("storage_game.map.url_script", storage_game.map.url_script)
 	local levelx, levely, w, h = tilemap.get_bounds(self.map_url)
 	local tile, coord_x, coord_y = 0
 	local pos = vmath.vector3()

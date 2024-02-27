@@ -22,11 +22,6 @@ components {
     value: "20.0"
     type: PROPERTY_TYPE_NUMBER
   }
-  properties {
-    id: "target"
-    value: ""
-    type: PROPERTY_TYPE_URL
-  }
 }
 embedded_components {
   id: "body"

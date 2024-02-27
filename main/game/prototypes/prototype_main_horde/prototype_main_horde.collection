@@ -3,8 +3,8 @@ instances {
   id: "player"
   prototype: "/main/game/characters/player/player.go"
   position {
-    x: 54.0
-    y: 24.0
+    x: 98.0
+    y: 22.0
     z: 1.0
   }
   rotation {
@@ -160,34 +160,6 @@ instances {
   }
 }
 instances {
-  id: "zombie"
-  prototype: "/main/game/characters/zombie/zombie.go"
-  position {
-    x: 177.0
-    y: 93.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  component_properties {
-    id: "script"
-    properties {
-      id: "live"
-      value: "20.0"
-      type: PROPERTY_TYPE_NUMBER
-    }
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
   id: "map"
   prototype: "/main/game/maps/levels/map_prototype.go"
   position {
@@ -291,6 +263,87 @@ instances {
     properties {
       id: "skin_id"
       value: "0.0"
+      type: PROPERTY_TYPE_NUMBER
+    }
+    properties {
+      id: "human_id"
+      value: "2.0"
+      type: PROPERTY_TYPE_NUMBER
+    }
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "zombie_enemy1"
+  prototype: "/main/game/characters/zombie/zombie.go"
+  position {
+    x: 221.0
+    y: 111.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "script"
+    properties {
+      id: "command"
+      value: "zombie_enemy"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "skin_id"
+      value: "0.0"
+      type: PROPERTY_TYPE_NUMBER
+    }
+    properties {
+      id: "human_id"
+      value: "2.0"
+      type: PROPERTY_TYPE_NUMBER
+    }
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "zombie_enemy2"
+  prototype: "/main/game/characters/zombie/zombie.go"
+  position {
+    x: 223.0
+    y: 75.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "script"
+    properties {
+      id: "command"
+      value: "zombie_enemy"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "skin_id"
+      value: "0.0"
+      type: PROPERTY_TYPE_NUMBER
+    }
+    properties {
+      id: "human_id"
+      value: "2.0"
       type: PROPERTY_TYPE_NUMBER
     }
   }

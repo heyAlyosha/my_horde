@@ -4,6 +4,12 @@ go.property("speed", 20)
 go.property("command", hash("player"))
 go.property("skin_id", 0)
 go.property("human_id", 0)
+go.property("horde_count", 10)
+go.property("visible_horde_min", 100)
+go.property("distantion_attack_zombie_horde", 100)
+go.property("targets", 8)
+go.property("target_dist", vmath.vector3(6, 0, 0))
+go.property("target_useful", 0)
 
 function init(self)
 	msg.post(".", "acquire_input_focus")
@@ -13,11 +19,16 @@ function init(self)
 	self.input = vmath.vector3(0)
 	self.velocity = vmath.vector3(0)
 	self.correction = vmath.vector3()
+
+	self.visible_horde = self.visible_horde_min
 	self.horde = {}
+	self.zombies = {}
 
 	timer.delay(0.1, false, function (self)
+		go_controller.add(self)
+
 		local сenter_position = vmath.vector3(0)
-		local index_to_horde = 200
+		local index_to_horde = self.horde_count
 		horde.get_position(self, сenter_position, index_to_horde)
 
 		for i = 1, index_to_horde do
@@ -27,9 +38,36 @@ function init(self)
 		end
 	end)
 
+	self.group_name = "visible_object"
+	self.group_id, self.visible_object_id = ai_vision.add_dynamic_object(self, self.group_name)
+
+	-- Обзор вокруг персонажа
+	self.timer_view = timer.delay(0.25, true, function (self)
+		local visible_items = ai_vision.get_visible(self, self.visible_object_id, self.visible_horde)
+		local position = go.get_position()
+
+		if visible_items then
+			for i = 1, #visible_items do
+				local target = visible_items[i]
+				if #self.horde > 0 then 
+					for horde_index = #self.horde, 1, -1 do
+						local item = self.horde[horde_index]
+						local position_target = go.get_position(target.url)
+						local position_zombie = go.get_position(item.url)
+
+						print("position_zombie", position_zombie, item.url)
+						if vmath.length(position_target - position_zombie) <= self.distantion_attack_zombie_horde then
+							character_zombie_main.add_zombie_attack(self, horde_index, position_zombie, target.url)
+						end
+					end
+				end
+			end
+		end
+	end)
 end
 
 function final(self)
+	go_controller.delete(self)
 	msg.post(".", "release_input_focus")
 end
 

@@ -48,7 +48,7 @@ function on_message(self, message_id, message, sender)
 				
 				if self.command ~= command_object then
 					self.damage_count_object = self.damage_count_object - 1
-					msg.post(message.other_id, "damage", {damage = self.damage, from_id_object = self.from_id_object})
+					msg.post(message.other_id, "damage", {damage = self.damage, parent = self.parent, position = go.get_position()})
 				end
 			end
 		end

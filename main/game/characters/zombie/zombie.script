@@ -24,11 +24,6 @@ function init(self)
 	self.max_live = self.live
 	label.set_text("#label", self.live .. "/"..self.max_live)
 
-	-- Если нет цели
-	if go_controller.url_to_key(self.target) == go_controller.url_to_key(msg.url()) then
-		self.target = nil
-	end
-
 	self.input = vmath.vector3(0)
 	self.velocity = vmath.vector3(0)
 	self.correction = vmath.vector3()
@@ -36,13 +31,32 @@ function init(self)
 	self.group_name = "visible_object"
 	self.group_id, self.visible_object_id = ai_vision.add_dynamic_object(self, self.group_name)
 
-	timer.delay(0.25, true, function (self, handle)
-		local visible_items = ai_vision.get_visible(self, self.visible_object_id, self.distantion_visible)
+	print("self.target", self.target, msg.url())
+	-- Если нет цели
+	if go_controller.url_to_key(self.target) == go_controller.url_to_key(msg.url(go.get_id())) then
+		self.target = nil
+	end
 
-		if visible_items and #visible_items > 0 and visible_items[1].url then
-			ai_zombie.condition_attack(self, visible_items[1].url)
-		end
-	end)
+	if self.target then
+		print(self.target)
+		ai_zombie.condition_attack(self, self.target)
+	else
+		timer.delay(0.25, true, function (self, handle)
+			local visible_items = ai_vision.get_visible(self, self.visible_object_id, self.distantion_visible)
+
+			if visible_items and #visible_items > 0 and visible_items[1].url then
+				ai_zombie.condition_attack(self, visible_items[1].url)
+			end
+		end)
+	end
+
+	print("self.post_target", self.target)
+
+	
+
+	
+
+	
 end
 
 function final(self)
@@ -82,6 +96,7 @@ function on_message(self, message_id, message, sender)
 		end
 
 	elseif message_id == hash("damage") then
+		pprint(message_id, message)
 		-- Получили урон
 		local damage = message.damage or 0
 		self.from_id_object = message.from_id_object 
@@ -89,7 +104,7 @@ function on_message(self, message_id, message, sender)
 
 		label.set_text("#label", self.live .. "/"..self.max_live)
 
-		go.animate(".", "scale", go.PLAYBACK_ONCE_PINGPONG, 1.1, go.EASING_OUTBACK, 0.25, 0)
+		--go.animate(".", "position", go.PLAYBACK_ONCE_PINGPONG, 1.1, go.EASING_OUTBACK, 0.25, 0)
 
 		if self.live <= 0 then
 			go.delete()
