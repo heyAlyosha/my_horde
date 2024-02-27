@@ -46,6 +46,7 @@ function init(self)
 end
 
 function final(self)
+	go_controller.delete(self)
 	msg.post(".", "release_input_focus")
 end
 
@@ -73,31 +74,11 @@ function update(self, dt)
 end
 
 function on_message(self, message_id, message, sender)
-	print(message_id)
 	if message_id == hash("object_visible_kill") then
 		-- Прицеливаемый объект уничтожен
 		if self.target then
 			ai_attack.delete_target(self, self.target)
-
-			timer.delay(0.25, true, function (self, handle)
-				local visible_items = ai_vision.get_visible(self, self.visible_object_id, self.distantion_visible)
-
-				if visible_items then
-					self.target = visible_items[1].url
-				end
-
-				if self.target then
-					timer.cancel(handle)
-					local function handle_success(self)
-						print("Success")
-					end
-					local function handle_error(self, error_code)
-						print("Error", error_code)
-					end
-					ai_attack.add_target(self, self.target)
-					ai_move.move_to_object(self, self.target, handle_success, handle_error, handle_no_object_target)
-				end
-			end)
+			ai_zombie.clear_coditions(self)
 		end
 
 	elseif message_id == hash("damage") then
@@ -109,29 +90,9 @@ function on_message(self, message_id, message, sender)
 		label.set_text("#label", self.live .. "/"..self.max_live)
 
 		go.animate(".", "scale", go.PLAYBACK_ONCE_PINGPONG, 1.1, go.EASING_OUTBACK, 0.25, 0)
-		--go.animate(".", "scale.x", go.PLAYBACK_ONCE_PINGPONG, 1.2, go.EASING_INBOUNCE, 0.2, 0)
 
 		if self.live <= 0 then
 			go.delete()
-		end
-
-	elseif message_id == hash("trigger_response") and message.own_group == hash("attack") then
-		if message.enter then
-			-- Объект для повреждения вошёл поле атаки
-			self.message = message
-			if character_attack.attack(self) then
-				self.timer_atack = timer.delay(self.speed_damage, true, function (self, handle, time_elapsed)
-					if not character_attack.attack(self) then
-						timer.cancel(handle)
-						self.timer_atack = nil
-					end
-				end)
-			end
-		else
-			if self.timer_atack then
-				timer.cancel(self.timer_atack)
-				self.timer_atack = nil
-			end
 		end
 	end
 	

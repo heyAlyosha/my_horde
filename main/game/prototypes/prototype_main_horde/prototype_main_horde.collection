@@ -176,8 +176,8 @@ instances {
   component_properties {
     id: "script"
     properties {
-      id: "skin_id"
-      value: "0.0"
+      id: "live"
+      value: "20.0"
       type: PROPERTY_TYPE_NUMBER
     }
   }
