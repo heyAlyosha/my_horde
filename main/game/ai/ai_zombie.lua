@@ -1,26 +1,6 @@
 -- ИИ зомби
 local M = {}
 
--- Состояние атаки
-function M.condition_attack(self, url)
-	self.condition = hash("attack")
-	self.target = url
-
-	self.is_attack = true
-
-	local function handle_success(self)
-		print("Success")
-	end
-
-	local function handle_error(self, error_code)
-		print("Error", error_code)
-	end
-
-	ai_attack.add_target(self, self.target)
-	ai_move.move_to_object(self, self.target, handle_success, handle_error, handle_no_object_target)
-	self.check_attak = M.check_distantion_attack(self, self.target)
-end
-
 -- Получение места в орде
 function M.get_horde_position(self)
 	local url_script = msg.url(self.parent.socket, self.parent.path, "script")
@@ -64,90 +44,34 @@ function M.condition_to_horde(self)
 
 		ai_attack.add_target(self, self.target)
 		ai_move.move_to_object(self, self.target, handle_success, handle_error, handle_no_object_target, handle_item_move)
+
+	else
+		pprint("object_visible_kill")
+		ai_attack.delete_target(self, self.target)
+		ai_core.clear_coditions(self)
+
+		-- Обозреваем вокруг
+		if not self.view then
+			self.view = ai_core.view(self, function (self, visible_items)
+				pprint("self.view", visible_items)
+				if visible_items then
+					ai_core.condition_attack(self, visible_items[1].url)
+					return true
+				end
+			end)
+		end
+
 	end
 
 	-- Обозреваем вокруг
 	if not self.view then
 		self.view = ai_core.view(self, function (self, visible_items)
+			
 			if visible_items then
-				ai_zombie.condition_attack(self, visible_items[1].url)
+				ai_core.condition_attack(self, visible_items[1].url)
 				return true
 			end
 		end)
-	end
-end
-
--- Дистанция для атаки
-function M.check_distantion_attack(self, url)
-	local function hendle_error(self)
-		M.clear_coditions(self, url)
-		M.condition_to_horde(self)
-	end
-
-	local function attack(self)
-		if ai_attack.check_distance_attack(self, url, hendle_error) then
-			ai_move.stop(self)
-			self.fire = M.fire(self, self.target)
-		end
-	end
-
-	local function stop(self)
-		if self.timer_check_distation_attack then
-			timer.cancel(self.timer_check_distation_attack)
-			self.timer_check_distation_attack = nil
-		end
-	end
-
-	stop(self)
-
-	-- Высчитываем дистанцию
-	attack(self)
-	self.timer_check_distation_attack = timer.delay(0.2, true, function (self)
-		attack(self)
-	end)
-
-	return {stop = stop}
-end
-
--- Огонь или удар по противнику
-function M.fire(self, url)
-	local function fire(self)
-		character_attack.attack(self, url)
-	end
-
-	local function stop(self)
-		if self.timer_fire then
-			timer.cancel(self.timer_fire)
-			self.timer_fire = nil
-		end
-	end
-
-	stop(self)
-
-	fire(self)
-	self.timer_fire = timer.delay(self.speed_damage, true, function (self)
-		fire(self)
-	end)
-
-	return {
-		stop = stop
-	}
-end
-
--- Очитска состояний и таймеро
-function M.clear_coditions(self, url)
-	self.condition = nil
-
-	if self.view then
-		self.view.stop(self)
-	end
-
-	if self.fire then
-		self.fire.stop(self)
-	end
-
-	if self.check_attak then
-		self.check_attak.stop(self)
 	end
 end
 

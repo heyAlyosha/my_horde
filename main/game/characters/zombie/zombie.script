@@ -41,13 +41,12 @@ function init(self)
 	end
 
 	if self.target then
-		ai_zombie.condition_attack(self, self.target)
+		ai_core.condition_attack(self, self.target)
 
 	else
 		self.view = ai_core.view(self, function (self, visible_items)
-			
 			if visible_items then
-				ai_zombie.condition_attack(self, visible_items[1].url)
+				ai_core.condition_attack(self, visible_items[1].url)
 				return true
 			end
 		end)
@@ -91,7 +90,7 @@ function on_message(self, message_id, message, sender)
 		-- Прицеливаемый объект уничтожен
 		if self.target then
 			ai_attack.delete_target(self, self.target)
-			ai_zombie.clear_coditions(self)
+			ai_core.clear_coditions(self)
 
 			ai_zombie.condition_to_horde(self)
 		end
@@ -110,7 +109,6 @@ function on_message(self, message_id, message, sender)
 			go.delete()
 		end
 	end
-	
 end
 
 function on_reload(self)

@@ -1,6 +1,36 @@
 -- Ядро ИИ
 local M = {}
 
+-- Состояние атаки
+function M.condition_attack(self, url, handle_success, handle_error)
+	self.condition = hash("attack")
+	self.target = url
+
+	self.is_attack = true
+
+	local handle_success = handle_success or function (self)
+		print("Success")
+	end
+
+	local handle_error = handle_error or function (self, error_code)
+		print("Error", error_code)
+	end
+
+	ai_attack.add_target(self, self.target)
+	ai_move.move_to_object(self, self.target, handle_success, handle_error, handle_no_object_target)
+
+	-- Расстояние до цели
+	local function handle_distantion_success(self)
+		ai_move.stop(self)
+		self.fire = ai_core.fire(self, self.target)
+	end
+	local function handle_distantion_error(self)
+		ai_core.clear_coditions(self, url)
+		M.condition_to_horde(self)
+	end
+	self.check_attak = ai_core.check_distantion_attack(self, self.target, handle_distantion_success, handle_distantion_error)
+end
+
 -- Обзор окружения
 function M.view(self, handle_enemy)
 	local function view(self)
@@ -23,6 +53,7 @@ function M.view(self, handle_enemy)
 		if self.timer_view then
 			timer.cancel(self.timer_view)
 			self.timer_view = nil
+			self.view = nil
 		end
 	end
 
@@ -35,6 +66,76 @@ function M.view(self, handle_enemy)
 	end)
 
 	return {stop = stop}
+end
+
+-- Дистанция для атаки
+function M.check_distantion_attack(self, url, handle_success, handle_error)
+	local function attack(self)
+		if ai_attack.check_distance_attack(self, url, hendle_error) then
+			if handle_success then
+				handle_success(self)
+			end
+		end
+	end
+
+	local function stop(self)
+		if self.timer_check_distation_attack then
+			timer.cancel(self.timer_check_distation_attack)
+			self.timer_check_distation_attack = nil
+		end
+	end
+
+	stop(self)
+
+	-- Высчитываем дистанцию
+	attack(self)
+	self.timer_check_distation_attack = timer.delay(0.2, true, function (self)
+		attack(self)
+	end)
+
+	return {stop = stop}
+end
+
+-- Очитска состояний и таймеро
+function M.clear_coditions(self, url)
+	self.condition = nil
+
+	if self.view then
+		self.view.stop(self)
+	end
+
+	if self.fire then
+		self.fire.stop(self)
+	end
+
+	if self.check_attak then
+		self.check_attak.stop(self)
+	end
+end
+
+-- Огонь или удар по противнику
+function M.fire(self, url, handle_fire)
+	local handle_fire = handle_fire or function (self)
+		character_attack.attack(self, url)
+	end
+
+	local function stop(self)
+		if self.timer_fire then
+			timer.cancel(self.timer_fire)
+			self.timer_fire = nil
+		end
+	end
+
+	stop(self)
+
+	handle_fire(self)
+	self.timer_fire = timer.delay(self.speed_damage, true, function (self)
+		handle_fire(self)
+	end)
+
+	return {
+		stop = stop
+	}
 end
 
 
