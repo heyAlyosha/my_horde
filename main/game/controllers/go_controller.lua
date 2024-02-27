@@ -76,7 +76,9 @@ function M.delete(self)
 		for key, target_point in pairs(target_item.targets) do
 			for i, url_object_attack in ipairs(target_point.characters) do
 				-- Рассылаем сообщения, что объект удалён
-				msg.post(url_object_attack, "object_visible_kill")
+				if M.is_object(url_object_attack) then
+					msg.post(url_object_attack, "object_visible_kill")
+				end
 			end
 		end
 	end

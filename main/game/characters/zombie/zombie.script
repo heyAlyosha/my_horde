@@ -33,7 +33,7 @@ function init(self)
 
 	print("self.target", self.target, msg.url())
 	-- Если нет цели
-	if go_controller.url_to_key(self.target) == go_controller.url_to_key(msg.url(go.get_id())) then
+	if go_controller.url_to_key(self.target) == go_controller.url_to_key(msg.url()) then
 		self.target = nil
 	end
 
