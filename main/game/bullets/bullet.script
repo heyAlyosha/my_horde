@@ -20,11 +20,13 @@ function final(self)
 	-- Remove this function if not needed
 end
 
+--[[
 function update(self, dt)
 	if self.type == hash("hit") then
 		go.set_position(go.get_position(self.parent))
 	end
 end
+--]]
 
 function fixed_update(self, dt)
 	-- This function is called if 'Fixed Update Frequency' is enabled in the Engine section of game.project
@@ -43,6 +45,7 @@ function on_message(self, message_id, message, sender)
 				-- Проверяем, что объект из другой команды
 				local url_script = msg.url(nil, message.other_id, "script")
 				local command_object = go.get(url_script, "command")
+				
 				if self.command ~= command_object then
 					self.damage_count_object = self.damage_count_object - 1
 					msg.post(message.other_id, "damage", {damage = self.damage, from_id_object = self.from_id_object})

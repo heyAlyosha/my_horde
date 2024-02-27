@@ -1,5 +1,5 @@
 go.property("damage", 1)
-go.property("live", 1)
+go.property("live", 10)
 go.property("speed_damage", 0.25)
 go.property("speed", 50)
 go.property("distantion_visible", 30)
@@ -20,6 +20,9 @@ function init(self)
 
 	sprite.play_flipbook("#body", "zombie_"..self.skin_id.."_"..self.human_id .. "_default")
 	position_functions.go_set_perspective_z()
+
+	self.max_live = self.live
+	label.set_text("#label", self.live .. "/"..self.max_live)
 
 	-- Если нет цели
 	if go_controller.url_to_key(self.target) == go_controller.url_to_key(msg.url()) then
@@ -70,6 +73,7 @@ function update(self, dt)
 end
 
 function on_message(self, message_id, message, sender)
+	print(message_id)
 	if message_id == hash("object_visible_kill") then
 		-- Прицеливаемый объект уничтожен
 		if self.target then
@@ -94,6 +98,21 @@ function on_message(self, message_id, message, sender)
 					ai_move.move_to_object(self, self.target, handle_success, handle_error, handle_no_object_target)
 				end
 			end)
+		end
+
+	elseif message_id == hash("damage") then
+		-- Получили урон
+		local damage = message.damage or 0
+		self.from_id_object = message.from_id_object 
+		self.live = self.live - damage
+
+		label.set_text("#label", self.live .. "/"..self.max_live)
+
+		go.animate(".", "scale", go.PLAYBACK_ONCE_PINGPONG, 1.1, go.EASING_OUTBACK, 0.25, 0)
+		--go.animate(".", "scale.x", go.PLAYBACK_ONCE_PINGPONG, 1.2, go.EASING_INBOUNCE, 0.2, 0)
+
+		if self.live <= 0 then
+			go.delete()
 		end
 
 	elseif message_id == hash("trigger_response") and message.own_group == hash("attack") then

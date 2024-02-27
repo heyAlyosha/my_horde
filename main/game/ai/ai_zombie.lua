@@ -41,7 +41,7 @@ function M.check_distantion_attack(self, url)
 	end)
 end
 
--- Огонь по противнику
+-- Огонь или удар по противнику
 function M.fire(self, url)
 	local function fire(self)
 		character_attack.attack(self, url)
