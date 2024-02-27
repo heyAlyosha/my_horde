@@ -30,7 +30,10 @@ function M.add_zombie_attack(self, horde_index, position, target)
 			human_id = item.human_id,
 		}
 
-		self.target_add_horde = horde.get_position(self, go.get_position(), #self.horde)
+		-- Позиция для добавления зомбиков
+		if #self.horde > 0 then
+			self.target_add_horde = horde.get_position(self, go.get_position(), #self.horde)
+		end
 	end
 end
 

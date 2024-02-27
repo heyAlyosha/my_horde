@@ -66,8 +66,8 @@ function init(self)
 	self.group_name = "visible_object"
 	self.group_id, self.visible_object_id = ai_vision.add_dynamic_object(self, self.group_name)
 
-	-- Обзор вокруг персонажа
-	self.timer_view = timer.delay(0.25, true, function (self)
+	-- Обзор вокруг орды
+	self.timer_view_horde = timer.delay(0.25, true, function (self)
 		local visible_items = ai_vision.get_visible(self, self.visible_object_id, self.visible_horde)
 		local position = go.get_position()
 
@@ -81,6 +81,7 @@ function init(self)
 						local position_zombie = go.get_position(item.url)
 
 						if vmath.length(position_target - position_zombie) <= self.distantion_attack_zombie_horde then
+							print("horde_index", horde_index)
 							character_zombie_main.add_zombie_attack(self, horde_index, position_zombie, target.url)
 						end
 					end
