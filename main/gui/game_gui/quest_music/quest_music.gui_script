@@ -1,0 +1,97 @@
+local color = require("color-lib.color")
+local gui_animate = require "main.gui.modules.gui_animate" 
+local gui_input = require "main.gui.modules.gui_input"
+local gui_loyouts = require "main.gui.modules.gui_loyouts"
+local gui_lang = require "main.lang.gui_lang"
+local lang_core = require "main.lang.lang_core"
+local storage_gui = require "main.storage.storage_gui"
+local quest_music_functions = require "main.gui.game_gui.quest_music.modules.quest_music_functions"
+local storage_player = require "main.storage.storage_player"
+local api_player = require 'main.game.api.api_player'
+
+function init(self)
+	msg.post(".", "acquire_input_focus")
+	gui.set_render_order(storage_gui.orders.main_title)
+	self.nodes = {
+		wrap = gui.get_node("wrap"),
+		title = gui.get_node("title"),
+		notes_active = gui.get_node("notes_active"),
+		notes_bg = gui.get_node("notes_bg"),
+	}
+	self.id = "quest_music"
+	gui_loyouts.set_color(self, self.nodes.wrap, vmath.vector4(0, 0, 0, 0))
+	gui_loyouts.set_size(self, self.nodes.notes_active, 0, "x")
+
+	self.url_sound = "https://storage.yandexcloud.net/hey-alyosha/chudesa/quests/sound/test.ogg"
+
+	self.volume_music = api_player.get_settings(self).volume_music
+
+	msg.post("main:/music", "volume", {volume = 0})
+
+end
+
+function final(self)
+	local no_focus_last_component = true
+	gui_input.on_final(self, no_focus_last_component)
+
+	pprint("volume")
+	msg.post("main:/music", "volume", {volume = self.volume_music})
+	sound.stop("game-room:/game-room_core#sound-quest")
+end
+
+function on_message(self, message_id, message, sender)
+	input_remote_tv.on_message(self, message_id, message, sender)
+	gui_loyouts.on_message(self, message_id, message)
+
+	if message_id == hash("visible") then
+		msg.post("main:/sound", "play", {sound_id = "modal_close_1"})
+		
+		local data = message.value or {}
+		self.title = data.title or ""
+		self.color = data.color or color.white
+		self.duration_music = data.duration_music or 10
+		self.type_animation = data.type_animation or "default"
+
+		gui_loyouts.set_color(self, self.nodes.wrap, vmath.vector4(1, 1, 1, 1))
+
+		gui_loyouts.set_text(self, self.nodes.title, utf8.upper(self.title))
+		gui_loyouts.set_color(self, self.nodes.title, self.color)
+
+
+		gui_animate.show_elem_popping(self, self.nodes.wrap, duration, delay, function (self)
+			sound.play("game-room:/game-room_core#sound-quest")
+			quest_music_functions.play_animation(self, self.duration_music, function (self)
+				msg.post("main:/loader_gui", "visible", {id = "quest_music", visible = false, type = hash("animated_close")})
+			end)
+			
+		end)
+
+	elseif message_id == hash("hidden") then
+		pprint(message_id, message, duration)
+		local duration = 0.25
+		local easing = gui.EASING_LINEAR
+
+		if self.type_animation == "top" then
+			gui.animate(self.nodes.wrap, "position.y", gui.get_position(self.nodes.wrap).y + 300, easing, duration)
+			gui.animate(self.nodes.wrap, "scale", vmath.vector3(0.1), easing, duration)
+			gui.animate(self.nodes.wrap, "color", vmath.vector4(0, 0, 0, 0), easing, duration, 0, function (self)
+				msg.post("/loader_gui", "visible", {
+					id = self.id,
+					visible = false,
+					parent_id = self.parent_id
+				})
+			end)
+
+		else
+			gui.animate(self.nodes.wrap, "scale", vmath.vector3(2), easing, duration)
+			gui.animate(self.nodes.wrap, "color", vmath.vector4(0, 0, 0, 0), easing, duration, 0 , function (self)
+				msg.post("/loader_gui", "visible", {
+					id = self.id,
+					visible = false,
+					parent_id = self.parent_id
+				})
+			end)
+		end
+		
+	end
+end

@@ -1,0 +1,231 @@
+local druid = require("druid.druid")
+local gui_input = require "main.gui.modules.gui_input"
+local storage_gui = require "main.storage.storage_gui"
+local storage_player = require "main.storage.storage_player"
+local gui_animate = require "main.gui.modules.gui_animate"
+local game_family_shop_btns = require "main.gui.game_gui.game_family_shop.modules.game_family_shop_btns"
+local game_family_shop_render = require "main.gui.game_gui.game_family_shop.modules.game_family_shop_render"
+local game_family_shop_functions = require "main.gui.game_gui.game_family_shop.modules.game_family_shop_functions"
+local gui_manager = require "main.gui.modules.gui_manager"
+local game_content_levels = require "main.game.content.game_content_levels"
+local game_content_text = require "main.game.content.game_content_text"
+local gui_render = require "main.gui.modules.gui_render"
+local gui_size = require 'main.gui.modules.gui_size'
+local api_player = require 'main.game.api.api_player'
+local gui_loyouts = require "main.gui.modules.gui_loyouts"
+local gui_lang = require "main.lang.gui_lang"
+local nakama_api_account = require "main.online.nakama.api.nakama_api_account"
+local censoored_csv = require "main.core.censoored.censoored_csv"
+local sound_render = require "main.sound.modules.sound_render"
+
+function init(self)
+	msg.post(".", "acquire_input_focus")
+	gui.set_render_order(storage_gui.orders.default_screen)
+	self.id = "game_family_shop"
+
+	gui_manager.add_screen(self.id, msg.url())
+
+	self.nodes = {
+		wrap = gui.get_node("wrap"),
+		title = gui.get_node("title"),
+
+		player_avatar = gui.get_node("player_template/avatar"),
+		player_name = gui.get_node("player_template/name"),
+		player_score = gui.get_node("player_template/title_price"),
+
+		btn_close = gui.get_node("btn-close-template/btn"),
+		btn_close_icon = gui.get_node("btn-close-template/btn_icon"),
+		btn_save = gui.get_node("save-template/btn_wrap"),
+		btn_save_title = gui.get_node("save-template/btn_title"),
+
+		wrap_input = gui.get_node("catalog_input"),
+		wrap_content = gui.get_node("catalog_content"),
+
+		scroll_caret = gui.get_node("scroll_template/scroll"),
+		scroll_line = gui.get_node("scroll_template/line"),
+	}
+
+	self.druid = druid.new(self)
+
+	self.player_index = 0
+
+	self.btns = {
+		-- Кнопка закрытия
+		{
+			id = "close", 
+			type = "btn", 
+			section = "close", 
+			node = self.nodes.btn_close, 
+			wrap_node = self.nodes.btn_close_icon, 
+			node_title = false, 
+			icon = "btn_circle_bg_red_", 
+			wrap_icon = "btn_icon_close_"
+		}
+	}
+
+	self.scroll = self.druid:new_scroll(self.nodes.wrap_input, self.nodes.wrap_content)
+	self.scroll:set_horizontal_scroll(false)
+
+	local height_scroll_line = gui.get_size(self.nodes.scroll_line).y - gui.get_size(self.nodes.scroll_caret).y 
+
+	self.scroll.on_scroll:subscribe(function(_, point)
+		local height_content = gui.get_size(self.nodes.wrap_content).y
+
+		local percent = point.y / height_content
+		local caret_position =  -height_scroll_line *  (1 - self.scroll:get_percent().y)
+
+		-- Передвигаем каретку
+		if caret_position > -2 then
+			caret_position = -2
+		elseif (caret_position) < -(height_scroll_line - gui.get_size(self.nodes.scroll_caret).y + 2) then
+			caret_position = caret_position + 7
+		end
+
+		gui.animate(self.nodes.scroll_caret, "position.y", caret_position, gui.EASING_LINEAR, 0.1)
+	end)
+
+end
+
+function final(self)
+	gui_manager.remove_screen(self.id, msg.url())
+	self.druid:final()
+	gui_input.on_final(self)
+end
+
+function update(self, dt)
+	self.druid:update(dt)
+end
+
+function on_message(self, message_id, message, sender)
+	input_remote_tv.on_message(self, message_id, message, sender)
+	gui_loyouts.on_message(self, message_id, message)
+	self.druid:on_message(message_id, message, sender)
+
+	if message_id == hash("focus") then
+		gui_input.set_focus(self, message.focus)
+
+	elseif message_id == hash("visible") then
+		-- Показываем окно
+		self.add_balance = message.add_balance
+		gui_animate.show_bottom(self, self.nodes.wrap , nil)
+
+		game_family_shop_render.show(self)
+
+	-- Пришло сообщение
+	elseif message_id == hash("set_status") then
+		if message.type == "result_set_name" then
+			local value = message.value
+			if value.status == "error" then
+				-- Сообщение ошибки
+				local id_error_msg
+				if value.msg then
+					id_error_msg = "_set_name_error_"..value.msg
+				else
+					id_error_msg = "_error_default"
+				end
+
+				self.btns_id.edit_name.set_status(self, id_error_msg, "red")
+
+			elseif value.status == "success" then
+				self.btns_id.edit_name.set_status(self, "_set_name_success", "lime")
+			end
+
+			gui_input.set_disabled(self, self.btns_id.save_name, false)
+			self.btns_id.edit_name.input:set_text(value.name)
+		end
+
+	end
+end
+
+function on_input(self, action_id, action)
+	action_id, action = input_remote_tv.on_input(self, action_id, action)
+	self.druid:on_input(action_id, action)
+
+	function function_back(self)
+		gui_animate.hidden_bottom(self, self.nodes.wrap, function (self)
+			msg.post("/loader_gui", "visible", {
+				id = self.id,
+				visible = false
+			})
+			msg.post("/core_screens", "constructor_family", {})
+		end)
+	end
+
+	local function function_post_focus(self, index, btn)
+		-- Находим
+		if btn.is_card then
+			local center_view = gui.get_position(btn.node).y + gui.get_size(self.nodes.wrap_input).y /2 - gui.get_size(btn.node).y /2
+
+			if center_view > 0 then center_view = 0 end
+
+			self.scroll:scroll_to(vmath.vector3(0, center_view, 0), false)
+		end
+	end
+
+	-- Нажатие на кнопки
+	local function function_activate(self, focus_btn_id, action_id, action)
+		local btn = self.btns[focus_btn_id]
+
+		-- Кнопка заблокирована
+		if btn.disabled or self.blocking then
+			return false
+		end
+		
+		local node = btn.node or btn.wrap_node or btn.node_bg
+		
+		msg.post("main:/sound", "play", {sound_id = "activate_btn"})
+
+		if btn.id == "close" then
+			gui_animate.activate(self, node)
+			function_back(self)
+
+		elseif btn.is_card then
+			if gui_input.is_touch(self, action_id, action) then
+
+				if gui.pick_node(btn.wrap_node, action.x, action.y) then
+					gui_animate.activate(self, node)
+					game_family_shop_functions.buy(self, btn.id, game_family_shop_render)
+				end
+				return
+			end
+
+			gui_animate.activate(self, node)
+			game_family_shop_functions.buy(self, btn.id, game_family_shop_render)
+			
+
+		elseif btn.id == "play" then
+			gui_animate.activate(self, node)
+			if game_family_shop_functions.get_player_index(self) then
+				-- Если есть другие игроки, показываем покупки для них
+				game_family_shop_render.next_player(self)
+
+			else
+				-- Других игроков нет, начинаем игру
+				gui_animate.hidden_bottom(self, self.nodes.wrap, function (self)
+					msg.post("game-room:/core_game", "start_family", {})
+
+					msg.post("/loader_gui", "visible", {
+						id = self.id,
+						visible = false
+					})
+				end)
+			end
+		end
+	end
+
+	if not action_id and action.x and action.y and gui.pick_node(self.nodes.btn_save, action.x, action.y) then
+		gui_input.set_focus(self, #self.btns, function_post_focus, is_remove_other_focus)
+		return true
+	elseif gui_input.is_touch(self, action_id, action) and gui.pick_node(self.nodes.btn_save, action.x, action.y) then
+		function_activate(self, #self.btns, action_id, action)
+		return true
+	end
+
+	if gui_input.on_input(self, action_id, action, function_focus, function_activate, function_back, function_post_focus) then
+		return true
+	end
+end
+
+function on_reload(self)
+
+end
