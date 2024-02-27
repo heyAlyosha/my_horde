@@ -39,32 +39,6 @@ function on_message(self, message_id, message, sender)
 		}
 
 		if message.distance > 0 then
-			--[[
-			self.input = self.input or vmath.vector3(0)
-			self.input = vmath.normalize(self.position_to - go.get_position())
-
-			local proj = vmath.project(self.correction, message.normal * message.distance)
-			if proj < 1 then
-				self.comp = (message.distance - message.distance * proj) * message.normal
-				go.set_position(go.get_position() + self.input + self.comp)
-				--go.set_position(message.position)
-				self.correction = self.correction + self.comp
-				self.position_to = nil
-			end
-			--]]
-
-			--pprint(v)
-			
-			--]]
-			--go.animate(url, property, playback, to, easing, duration)
-			--go.animate(".", "position", go.PLAYBACK_ONCE_FORWARD, go.get_position() + message.normal * message.distanc, go.EASING_LINEAR, 0.1)
-			--go.set_position(go.get_position() + message.normal * message.distance)
-			--self.position_to
-			--local position_to = vmath.normalize(go.get_position() - self.position_to)
-			--go.set_position(self.position_to + (position_to + message.normal) * message.distance)
-			--go.set_position(self.position_to + message.normal)
-			
-			--pprint("contact_point_response", proj)
 		else
 			self.comp = nil
 		end
