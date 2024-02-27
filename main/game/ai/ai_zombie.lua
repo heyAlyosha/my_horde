@@ -22,23 +22,43 @@ function M.condition_attack(self, url)
 end
 
 -- Возвращение в орду
-function M.condition_to_horde(self, url)
+function M.condition_to_horde(self)
 	self.condition = hash("run_to_horde")
-	self.target = url
+	self.target = self.parent
 
-	self.is_attack = true
+	-- Находим место в орде
+	if go_controller.url_to_key(self.parent) ~= go_controller.url_to_key(msg.url()) then
+		local url_script = msg.url(self.parent.socket, self.parent.path, "script")
+		local target_add_horde = go.get(url_script, "target_add_horde")
+		local dir = target_add_horde - go.get_position(self.target)
+		self.target_vector = dir
 
-	local function handle_success(self)
-		print("Success")
+		local function handle_success(self)
+			msg.post(self.parent, "add_horde", {
+				skin_id = self.skin_id,
+				human_id = self.human_id,
+			})
+			go.delete()
+		end
+
+		local function handle_error(self, error_code)
+			local duration = vmath.length(target_add_horde - go.get_position()) / self.speed
+			go.animate(msg.url(), "position", go.PLAYBACK_ONCE_FORWARD, target_add_horde, go.EASING_LINEAR, duration, 0, function (self)
+				print("condition_to_horde", "success")
+			end)
+		end
+
+		ai_attack.add_target(self, self.target)
+		ai_move.move_to_object(self, self.target, handle_success, handle_error, handle_no_object_target, is_dynamic)
 	end
 
-	local function handle_error(self, error_code)
-		print("Error", error_code)
+	-- Обозреваем вокруг
+	if not self.view then
+		self.view = ai_zombie.view(self, function (self, visible_items)
+			ai_zombie.condition_attack(self, visible_items[1].url)
+			return true
+		end)
 	end
-
-	ai_attack.add_target(self, self.target)
-	ai_move.move_to_object(self, self.target, handle_success, handle_error, handle_no_object_target)
-	self.check_attak = M.check_distantion_attack(self, self.target)
 end
 
 -- Обзор окружения
@@ -46,7 +66,6 @@ function M.view(self, handle_enemy)
 	local function view(self)
 		local visible_items = ai_vision.get_visible(self, self.visible_object_id, self.distantion_visible)
 
-		
 		if visible_items and #visible_items > 0 and handle_enemy then
 			pprint("handle_enemy")
 			if handle_enemy(self, visible_items) and self.view then
@@ -72,6 +91,34 @@ function M.view(self, handle_enemy)
 
 	return {stop = stop}
 end
+
+-- Дистанция для атаки
+function M.check_distantion_attack(self, url)
+	local function attack(self)
+		if ai_attack.check_distance_attack(self, url) then
+			ai_move.stop(self)
+			self.fire = M.fire(self, self.target)
+		end
+	end
+
+	local function stop(self)
+		if self.timer_check_distation_attack then
+			timer.cancel(self.timer_check_distation_attack)
+			self.timer_check_distation_attack = nil
+		end
+	end
+
+	stop(self)
+
+	-- Высчитываем дистанцию
+	attack(self)
+	self.timer_check_distation_attack = timer.delay(0.2, true, function (self)
+		attack(self)
+	end)
+
+	return {stop = stop}
+end
+
 
 -- Дистанция для атаки
 function M.check_distantion_attack(self, url)

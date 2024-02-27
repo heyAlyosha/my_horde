@@ -21,7 +21,7 @@ handle_success(self) -- Цель достигнута
 handle_error(self, error_code) -- Невозможно достигнуть цели
 handle_no_object_target(self) -- Объект удалён из мира
 --]]
-function M.move_to_object(self, url, handle_success, handle_error, handle_no_object_target)
+function M.move_to_object(self, url, handle_success, handle_error, handle_no_object_target, is_dinamyc)
 	local position = go.get_position()
 
 	if not go_controller.is_object(url) then
@@ -47,6 +47,9 @@ function M.move_to_object(self, url, handle_success, handle_error, handle_no_obj
 
 	elseif dist < distantion_magnite then
 		-- Маленькое расстояние до цели
+		if is_dynamic then
+			--self.target_position = go.get_position(url) + self.target_vector
+		end
 		M.move_item(self, self.target_position, handle_success)
 	else
 		local result, path_size, totalcost, path = astar_functions.get_path(self, self.target_position)
@@ -59,6 +62,7 @@ function M.move_to_object(self, url, handle_success, handle_error, handle_no_obj
 			end
 		else
 			table.remove(path, 1)
+
 			-- Двигамеся по сетке астар
 			if not path or #path < 1 then
 				if handle_success then

@@ -1,7 +1,7 @@
 go.property("damage", 1)
 go.property("live", 10)
 go.property("speed_damage", 0.25)
-go.property("speed", 50)
+go.property("speed", 60)
 go.property("distantion_visible", 30)
 go.property("distantion_attack", 10)
 go.property("command", hash("player"))
@@ -77,7 +77,6 @@ function update(self, dt)
 		for i, v in ipairs(self.debug_lines_to_tile) do
 			draw.line(v.from, v.to)
 		end
-		
 	end
 end
 
@@ -88,10 +87,7 @@ function on_message(self, message_id, message, sender)
 			ai_attack.delete_target(self, self.target)
 			ai_zombie.clear_coditions(self)
 
-			self.view = ai_zombie.view(self, function (self, visible_items)
-				ai_zombie.condition_attack(self, visible_items[1].url)
-				return true
-			end)
+			ai_zombie.condition_to_horde(self)
 		end
 
 	elseif message_id == hash("damage") then

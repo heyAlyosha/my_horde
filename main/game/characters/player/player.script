@@ -10,6 +10,7 @@ go.property("distantion_attack_zombie_horde", 100)
 go.property("targets", 8)
 go.property("target_dist", vmath.vector3(6, 0, 0))
 go.property("target_useful", 0)
+go.property("target_add_horde", vmath.vector3())
 
 function init(self)
 	msg.post(".", "acquire_input_focus")
@@ -144,6 +145,15 @@ function on_message(self, message_id, message, sender)
 		-- Атакуюющий зомбик умер
 		local url = go_controller.url_object(sender)
 		self.zombies[go_controller.url_to_key(url)] = nil
+
+	elseif message_id == hash("add_horde") then
+		-- Добавляем зомбика в орду
+		local url = go_controller.url_object(sender)
+		self.zombies[go_controller.url_to_key(url)] = nil
+
+		local skin_id = message.skin_id or 0
+		local human_id = message.human_id or 0
+		horde.add_zombie_horde(self, skin_id, human_id)
 	end
 	
 end

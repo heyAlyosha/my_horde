@@ -18,6 +18,7 @@ function M.add_zombie_horde(self, skin_id, human_id)
 		skin_id = skin_id,
 		human_id = human_id,
 	}
+
 	local id = factory.create("#zombie_horde_factory", position, rotation, properties)
 	self.horde[#self.horde + 1] = {
 		id = id,
@@ -27,6 +28,8 @@ function M.add_zombie_horde(self, skin_id, human_id)
 		skin_id = skin_id,
 		human_id = human_id,
 	}
+
+	self.target_add_horde = M.get_position(self, go.get_position(), #self.horde)
 end
 
 -- Передвижение орды игрока
