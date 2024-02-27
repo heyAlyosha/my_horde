@@ -3,8 +3,8 @@ instances {
   id: "player"
   prototype: "/main/game/characters/player/player.go"
   position {
-    x: 98.0
-    y: 22.0
+    x: 220.0
+    y: 82.0
     z: 1.0
   }
   rotation {
@@ -243,8 +243,8 @@ instances {
   id: "zombie_enemy"
   prototype: "/main/game/characters/zombie/zombie.go"
   position {
-    x: 231.0
-    y: 95.0
+    x: 365.0
+    y: 87.0
     z: 0.0
   }
   rotation {
@@ -255,6 +255,11 @@ instances {
   }
   component_properties {
     id: "script"
+    properties {
+      id: "live"
+      value: "100.0"
+      type: PROPERTY_TYPE_NUMBER
+    }
     properties {
       id: "command"
       value: "zombie_enemy"
@@ -281,8 +286,8 @@ instances {
   id: "zombie_enemy1"
   prototype: "/main/game/characters/zombie/zombie.go"
   position {
-    x: 221.0
-    y: 111.0
+    x: 355.0
+    y: 103.0
     z: 0.0
   }
   rotation {
@@ -293,6 +298,11 @@ instances {
   }
   component_properties {
     id: "script"
+    properties {
+      id: "live"
+      value: "100.0"
+      type: PROPERTY_TYPE_NUMBER
+    }
     properties {
       id: "command"
       value: "zombie_enemy"
@@ -319,8 +329,8 @@ instances {
   id: "zombie_enemy2"
   prototype: "/main/game/characters/zombie/zombie.go"
   position {
-    x: 223.0
-    y: 75.0
+    x: 357.0
+    y: 67.0
     z: 0.0
   }
   rotation {
@@ -331,6 +341,11 @@ instances {
   }
   component_properties {
     id: "script"
+    properties {
+      id: "live"
+      value: "100.0"
+      type: PROPERTY_TYPE_NUMBER
+    }
     properties {
       id: "command"
       value: "zombie_enemy"

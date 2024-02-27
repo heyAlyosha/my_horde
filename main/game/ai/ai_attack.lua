@@ -67,9 +67,13 @@ function M.delete_target(self, url_target)
 end
 
 -- Хватает дистанции для атаки
-function M.check_distance_attack(self, url)
+function M.check_distance_attack(self, url, handle_error)
 	self.distantion_attack = self.distantion_attack or 0
-	if self.distantion_attack >= vmath.length(go.get_position(url) - go.get_position()) then
+	if not go_controller.is_object(url) then
+		if handle_error then
+			handle_error(self)
+		end
+	elseif self.distantion_attack >= vmath.length(go.get_position(url) - go.get_position()) then
 		local result = physics.raycast(go.get_position(), go.get_position(url), {hash("default")}, options)
 		return not result or #result == 0
 	end

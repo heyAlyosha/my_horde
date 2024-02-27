@@ -79,36 +79,13 @@ end
 
 -- Дистанция для атаки
 function M.check_distantion_attack(self, url)
-	local function attack(self)
-		if ai_attack.check_distance_attack(self, url) then
-			ai_move.stop(self)
-			self.fire = M.fire(self, self.target)
-		end
+	local function hendle_error(self)
+		M.clear_coditions(self, url)
+		M.condition_to_horde(self)
 	end
 
-	local function stop(self)
-		if self.timer_check_distation_attack then
-			timer.cancel(self.timer_check_distation_attack)
-			self.timer_check_distation_attack = nil
-		end
-	end
-
-	stop(self)
-
-	-- Высчитываем дистанцию
-	attack(self)
-	self.timer_check_distation_attack = timer.delay(0.2, true, function (self)
-		attack(self)
-	end)
-
-	return {stop = stop}
-end
-
-
--- Дистанция для атаки
-function M.check_distantion_attack(self, url)
 	local function attack(self)
-		if ai_attack.check_distance_attack(self, url) then
+		if ai_attack.check_distance_attack(self, url, hendle_error) then
 			ai_move.stop(self)
 			self.fire = M.fire(self, self.target)
 		end

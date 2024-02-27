@@ -17,7 +17,10 @@ go.property("target_useful", 2)
 go.property("time_view", 0.5)
 
 function init(self)
-	go_controller.add(self)
+	timer.delay(0.1, false, function (self)
+		go_controller.add(self)
+	end)
+	
 
 	sprite.play_flipbook("#body", "zombie_"..self.skin_id.."_"..self.human_id .. "_default")
 	position_functions.go_set_perspective_z()
