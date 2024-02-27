@@ -18,6 +18,11 @@ components {
     type: PROPERTY_TYPE_NUMBER
   }
   properties {
+    id: "distantion_attack"
+    value: "20.0"
+    type: PROPERTY_TYPE_NUMBER
+  }
+  properties {
     id: "target"
     value: ""
     type: PROPERTY_TYPE_URL

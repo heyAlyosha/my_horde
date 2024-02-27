@@ -30,6 +30,7 @@ function init(self)
 	ai_move = require("main.game.ai.ai_move")
 	ai_attack = require("main.game.ai.ai_attack")
 	ai_vision = require("main.game.ai.ai_vision")
+	ai_zombie = require("main.game.ai.ai_zombie")
 
 	--profiler.enable_ui(true)
 

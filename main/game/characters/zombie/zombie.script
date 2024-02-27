@@ -36,21 +36,8 @@ function init(self)
 	timer.delay(0.25, true, function (self, handle)
 		local visible_items = ai_vision.get_visible(self, self.visible_object_id, self.distantion_visible)
 
-		if visible_items then
-			self.target = visible_items[1].url
-			self.is_attack = true
-		end
-
-		if self.target then
-			timer.cancel(handle)
-			local function handle_success(self)
-				print("Success")
-			end
-			local function handle_error(self, error_code)
-				print("Error", error_code)
-			end
-			ai_attack.add_target(self, self.target)
-			ai_move.move_to_object(self, self.target, handle_success, handle_error, handle_no_object_target)
+		if visible_items and #visible_items > 0 and visible_items[1].url then
+			ai_zombie.condition_attack(self, visible_items[1].url)
 		end
 	end)
 end

@@ -32,22 +32,6 @@ function M.move_to_object(self, url, handle_success, handle_error, handle_no_obj
 		return
 	end
 
-	-- Если атакует, чекаем расстояние
-	if self.is_attack and not self.timer_check_distation_attack then
-		self.timer_check_distation_attack = timer.delay(0.2, true, function (self)
-			print("check_distance_attack", ai_attack.check_distance_attack(self, url))
-			if ai_attack.check_distance_attack(self, url) then
-				M.stop(self)
-				timer.delay(0.25, true, function (self)
-					if ai_attack.check_distance_attack(self, url) then
-						character_attack.attack(self, url)
-					end
-				end)
-			end
-			
-		end)
-	end
-
 	self.target_vector = self.target_vector or vmath.vector3(0)
 	self.target_position = go.get_position(url) + self.target_vector
 
