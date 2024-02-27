@@ -29,6 +29,8 @@ function M.add_zombie_attack(self, horde_index, position, target)
 			skin_id = item.skin_id,
 			human_id = item.human_id,
 		}
+
+		self.target_add_horde = horde.get_position(self, go.get_position(), #self.horde)
 	end
 end
 

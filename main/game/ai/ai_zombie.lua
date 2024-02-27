@@ -21,6 +21,14 @@ function M.condition_attack(self, url)
 	self.check_attak = M.check_distantion_attack(self, self.target)
 end
 
+-- Получение места в орде
+function M.get_horde_position(self)
+	local url_script = msg.url(self.parent.socket, self.parent.path, "script")
+	local target_add_horde = go.get(url_script, "target_add_horde")
+	local dir = target_add_horde - go.get_position(self.target)
+	return dir, target_add_horde
+end
+
 -- Возвращение в орду
 function M.condition_to_horde(self)
 	self.condition = hash("run_to_horde")
@@ -28,10 +36,7 @@ function M.condition_to_horde(self)
 
 	-- Находим место в орде
 	if go_controller.url_to_key(self.parent) ~= go_controller.url_to_key(msg.url()) then
-		local url_script = msg.url(self.parent.socket, self.parent.path, "script")
-		local target_add_horde = go.get(url_script, "target_add_horde")
-		local dir = target_add_horde - go.get_position(self.target)
-		self.target_vector = dir
+		self.target_vector, self.target_add_horde = M.get_horde_position(self)
 
 		local function handle_success(self)
 			msg.post(self.parent, "add_horde", {
@@ -42,14 +47,23 @@ function M.condition_to_horde(self)
 		end
 
 		local function handle_error(self, error_code)
-			local duration = vmath.length(target_add_horde - go.get_position()) / self.speed
-			go.animate(msg.url(), "position", go.PLAYBACK_ONCE_FORWARD, target_add_horde, go.EASING_LINEAR, duration, 0, function (self)
-				print("condition_to_horde", "success")
+			self.target_vector, self.target_add_horde = M.get_horde_position(self)
+			local duration = vmath.length(self.target_add_horde - go.get_position()) / self.speed
+			go.animate(go.get_id(), "position", go.PLAYBACK_ONCE_FORWARD, self.target_add_horde, go.EASING_LINEAR, duration, 0, function (self)
+				msg.post(self.parent, "add_horde", {
+					skin_id = self.skin_id,
+					human_id = self.human_id,
+				})
+				go.delete()
 			end)
 		end
 
+		local function handle_item_move(self)
+			--self.target_vector, self.target_add_horde = M.get_horde_position(self)
+		end
+
 		ai_attack.add_target(self, self.target)
-		ai_move.move_to_object(self, self.target, handle_success, handle_error, handle_no_object_target, is_dynamic)
+		ai_move.move_to_object(self, self.target, handle_success, handle_error, handle_no_object_target, handle_item_move)
 	end
 
 	-- Обозреваем вокруг

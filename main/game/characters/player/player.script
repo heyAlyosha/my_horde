@@ -122,10 +122,10 @@ function on_message(self, message_id, message, sender)
 		end
 
 	elseif message_id == hash("trigger_response") and message.own_group == hash("attack") then
-		
 		if message.enter then
 			-- Объект для повреждения вошёл поле атаки
 			self.message = message
+			pprint(self.message)
 			if character_attack.attack(self) then
 				self.timer_atack = timer.delay(self.speed_damage, true, function (self, handle, time_elapsed)
 					if not character_attack.attack(self) then
