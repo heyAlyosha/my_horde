@@ -7,7 +7,7 @@ function M.condition_attack(self, url)
 	-- НЕ может найти путь для атаки
 	local handle_error = function (self, error_code)
 		pprint("handle_error", ai_attack.check_distance_attack(self, url, hendle_error))
-		M.condition_to_horde(self)
+		--M.condition_to_horde(self)
 	end
 	-- Добежал до цели
 	local handle_success = handle_success or function (self)
