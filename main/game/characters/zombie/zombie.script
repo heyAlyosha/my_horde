@@ -14,6 +14,7 @@ go.property("type_object", hash("zombie_player"))
 go.property("targets", 8)
 go.property("target_dist", vmath.vector3(6, 0, 0))
 go.property("target_useful", 2)
+go.property("time_view", 0.5)
 
 function init(self)
 	go_controller.add(self)
@@ -40,12 +41,9 @@ function init(self)
 		ai_zombie.condition_attack(self, self.target)
 
 	else
-		timer.delay(0.25, true, function (self, handle)
-			local visible_items = ai_vision.get_visible(self, self.visible_object_id, self.distantion_visible)
-
-			if visible_items and #visible_items > 0 and visible_items[1].url then
-				ai_zombie.condition_attack(self, visible_items[1].url)
-			end
+		self.view = ai_zombie.view(self, function (self, visible_items)
+			ai_zombie.condition_attack(self, visible_items[1].url)
+			return true
 		end)
 
 	end
@@ -55,7 +53,6 @@ function final(self)
 	go_controller.delete(self)
 
 	-- Удаляем из орды, если была
-	pprint("zombie_attack_death",self.parent, go_controller.is_object(self.parent))
 	if go_controller.url_to_key(self.parent) ~= go_controller.url_to_key(msg.url()) and go_controller.is_object(self.parent) then
 		msg.post(self.parent, "zombie_attack_death")
 	end
@@ -90,10 +87,14 @@ function on_message(self, message_id, message, sender)
 		if self.target then
 			ai_attack.delete_target(self, self.target)
 			ai_zombie.clear_coditions(self)
+
+			self.view = ai_zombie.view(self, function (self, visible_items)
+				ai_zombie.condition_attack(self, visible_items[1].url)
+				return true
+			end)
 		end
 
 	elseif message_id == hash("damage") then
-		pprint(message_id, message)
 		-- Получили урон
 		local damage = message.damage or 0
 		self.from_id_object = message.from_id_object 
