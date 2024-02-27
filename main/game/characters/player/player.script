@@ -139,6 +139,11 @@ function on_message(self, message_id, message, sender)
 				self.timer_atack = nil
 			end
 		end
+
+	elseif message_id == hash("zombie_attack_death") then
+		-- Атакуюющий зомбик умер
+		local url = go_controller.url_object(sender)
+		self.zombies[go_controller.url_to_key(url)] = nil
 	end
 	
 end

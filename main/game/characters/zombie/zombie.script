@@ -31,15 +31,14 @@ function init(self)
 	self.group_name = "visible_object"
 	self.group_id, self.visible_object_id = ai_vision.add_dynamic_object(self, self.group_name)
 
-	print("self.target", self.target, msg.url())
 	-- Если нет цели
 	if go_controller.url_to_key(self.target) == go_controller.url_to_key(msg.url()) then
 		self.target = nil
 	end
 
 	if self.target then
-		print(self.target)
 		ai_zombie.condition_attack(self, self.target)
+
 	else
 		timer.delay(0.25, true, function (self, handle)
 			local visible_items = ai_vision.get_visible(self, self.visible_object_id, self.distantion_visible)
@@ -48,20 +47,18 @@ function init(self)
 				ai_zombie.condition_attack(self, visible_items[1].url)
 			end
 		end)
+
 	end
-
-	print("self.post_target", self.target)
-
-	
-
-	
-
-	
 end
 
 function final(self)
 	go_controller.delete(self)
-	msg.post(".", "release_input_focus")
+
+	-- Удаляем из орды, если была
+	pprint("zombie_attack_death",self.parent, go_controller.is_object(self.parent))
+	if go_controller.url_to_key(self.parent) ~= go_controller.url_to_key(msg.url()) and go_controller.is_object(self.parent) then
+		msg.post(self.parent, "zombie_attack_death")
+	end
 end
 
 function fixed_update(self, dt)

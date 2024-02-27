@@ -96,11 +96,10 @@ end
 
 -- url в ключ для массива
 function M.url_to_key(url)
-	pprint(url)
 	return hash_to_hex(url.socket or hash("")) .. hash_to_hex(url.path) .. hash_to_hex(url.fragment or hash(""))
 end
 
--- Url объекта
+-- Url без фрагмента
 function M.url_object(url)
 	return msg.url(url.socket, url.path, nil)
 end
