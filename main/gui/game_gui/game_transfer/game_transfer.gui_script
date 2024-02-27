@@ -1,0 +1,130 @@
+local storage_gui = require "main.storage.storage_gui"
+local game_transfer_functions = require "main.gui.game_gui.game_transfer.modules.game_transfer_functions"
+local core_functions_array = require "main.core.functions.core_functions_array"
+local gui_integer = require "main.gui.modules.gui_integer"
+local gui_input = require "main.gui.modules.gui_input"
+
+
+function init(self)
+	gui.set_render_order(storage_gui.orders.transfer)
+
+	self.nodes = {
+		elem = gui.get_node('elem')
+	}
+
+	gui.set_enabled(self.nodes.elem, false)
+
+	-- Генерируем иконку для добавления
+	local type = 'score'
+	local position_start = vmath.vector3(250, 250, 1)
+	local position_end = vmath.vector3(50, 1000, 1)
+	local count = 10
+	local params = {
+		duration = 0.5
+	}
+
+	--[[
+	timer.delay(0.2, true, function (self)
+		add_elem(self, type, position_start, count, params)
+	end)
+	--]]
+
+end
+
+function final(self)
+	gui_input.on_final(self)
+end
+
+function update(self, dt)
+	-- Add update code here
+	-- Learn more: https://defold.com/manuals/script/
+	-- Remove this function if not needed
+end
+
+function on_message(self, message_id, message, sender)
+	input_remote_tv.on_message(self, message_id, message, sender)
+	if message.type == "transfer" then
+		local data = message.value
+		local score_step = 25
+		local coins_step = 25
+
+		local coins =  data.count.coins or 0
+		local score =  data.count.score or 0
+		local where = data.where
+		local to = data.to
+
+		local items = {}
+
+		-- Генерируем кучу монет 
+		local index = 0
+
+		gui_integer.to_parts(self, coins, coins_step, function (self, value)
+			index = index + 1
+			items[#items + 1] = {
+				index = index,
+				type_valute = 'coins',
+				count = value,
+			}
+		end)
+
+		-- Генерируем кучу опыта 
+		gui_integer.to_parts(self, score, score_step, function (self, value)
+			index = index + 1
+			items[#items + 1] = {
+				index = index,
+				type_valute = 'score',
+				count = value,
+			}
+		end)
+
+		core_functions_array.shake(items)
+
+		-- Генерация элементов
+		local function generated_element(self, item)
+			local type_valute = item.type_valute
+			local count = item.count 
+			local index = item.index
+			local function_end = nil
+			local where = where
+			local to = to
+			game_transfer_functions.add_elem_curve(self, type_valute, count, index, where, to, message, function_end)
+
+			-- Последний элемент
+			if i == #items then
+				for id, url in pairs(storage_gui.components_visible) do
+					if id ~= "game_transfer" and id ~= hash("game_transfer") then
+						msg.post("/loader_gui", "set_status", {
+							id = id,
+							type = "stack_success",
+							value = message.setting_stack
+						})
+					end
+				end
+
+			end
+		end
+
+		for i = 1, #items do
+			local item = items[i]
+			-- Если это анимированное выпадение кучи золота
+			if animate_stack then
+				timer.delay(0.005 * i, false, function (self)
+					generated_element(self, item)
+				end)
+
+			else
+				generated_element(self, item)
+
+			end
+		end
+	end
+end
+
+function on_input(self, action_id, action)
+	action_id, action = input_remote_tv.on_input(self, action_id, action)
+	
+end
+
+function on_reload(self)
+	
+end
