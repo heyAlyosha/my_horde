@@ -24,7 +24,8 @@ function M.attack(self, url_object)
 		damage = self.damage,
 		damage_count_object = 5,
 		type = hash("hit"),
-		parent = msg.url()
+		parent = msg.url(),
+		visible_attack = self.visible_attack
 	}
 
 	-- Место спавна пули
@@ -41,7 +42,6 @@ function M.attack(self, url_object)
 		rot = vmath.vector3(1, 0, 0)
 		rotation = vmath.quat_rotation_z(math.atan2(rot.y, rot.x))
 	end
-	--print(rotation)
 	factory.create("#bullet_hit_factory", position, rotation, properties)
 
 	sprite.set_hflip("#body", rot.x < 0)

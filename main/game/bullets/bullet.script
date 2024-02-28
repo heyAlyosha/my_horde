@@ -4,10 +4,14 @@ go.property("damage_count_object", 5)
 go.property("command", hash("player")) -- Id комманды, объектам которой наносится урон
 go.property("type", hash("hit")) -- Тип пули (hit)
 go.property("parent", msg.url())
+go.property("visible_attack", true)
 
 function init(self)
 	if self.type == hash("hit") then
 		-- Если удар
+		if not self.visible_attack then
+			msg.post("#body", "disable")
+		end
 		sprite.play_flipbook("#body", "attack_default", function (self)
 			go.delete()
 		end)

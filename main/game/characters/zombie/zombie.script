@@ -16,6 +16,7 @@ go.property("target_dist", vmath.vector3(6, 0, 0))
 go.property("target_useful", 2)
 go.property("time_view", 0.5)
 go.property("damage_blood", true)
+go.property("visible_attack", false)
 
 function init(self)
 	timer.delay(0.1, false, function (self)
