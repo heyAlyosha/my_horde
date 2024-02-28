@@ -4,7 +4,6 @@ function init(self)
 	storage_game.map.url = self.map_url
 	
 	storage_game.map.url_script = msg.url()
-	pprint("storage_game.map.url_script", storage_game.map.url_script)
 	local levelx, levely, w, h = tilemap.get_bounds(self.map_url)
 	local tile, coord_x, coord_y = 0
 	local pos = vmath.vector3()
@@ -80,9 +79,16 @@ function fixed_update(self, dt)
 end
 
 function on_message(self, message_id, message, sender)
-	-- Add message-handling code here
-	-- Learn more: https://defold.com/manuals/message-passing/
-	-- Remove this function if not needed
+	pprint("on_message", message_id, message)
+	if message_id == hash("effect") then
+		-- Добавление эффектов
+		local properties = {
+			animation_id = message.animation_id,
+			timer_delete = message.timer_delete,
+			shake = message.shake
+		}
+		factory.create("#effect_factory", message.position, message.rotation, properties)
+	end
 end
 
 function on_input(self, action_id, action)

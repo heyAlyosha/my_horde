@@ -105,6 +105,16 @@ function on_message(self, message_id, message, sender)
 		--go.animate(".", "position", go.PLAYBACK_ONCE_PINGPONG, 1.1, go.EASING_OUTBACK, 0.25, 0)
 
 		if self.live <= 0 then
+			pprint("storage_game.map.url", storage_game.map.url)
+			pprint(go.get("#body", "size").y)
+			local position = go.get_position()
+			position.y = position.y + go.get("#body", "size").y / 2
+			
+			msg.post(storage_game.map.url_script, "effect", {
+				position = position,
+				animation_id = hash("effect_zombie_death"), 
+				timer_delete = 3
+			})
 			go.delete()
 		end
 	end

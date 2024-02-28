@@ -58,6 +58,7 @@ M.groups_aabbcc = {}
 -- Текущая карта
 M.map = {
 	url = nil,
+	url_script = nil,
 	size = vmath.vector3(2000, 1000, 0)
 }
 

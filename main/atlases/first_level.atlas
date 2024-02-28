@@ -565,23 +565,7 @@ animations {
 animations {
   id: "effect_zombie_death"
   images {
-    image: "/assets/images/game/characters/zombie_death_8.png"
-    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
-  }
-  images {
-    image: "/assets/images/game/characters/zombie_death_3.png"
-    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
-  }
-  images {
-    image: "/assets/images/game/characters/zombie_death_9.png"
-    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
-  }
-  images {
     image: "/assets/images/game/characters/zombie_death_1.png"
-    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
-  }
-  images {
-    image: "/assets/images/game/characters/zombie_death_4.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   images {
@@ -589,7 +573,11 @@ animations {
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   images {
-    image: "/assets/images/game/characters/zombie_death_7.png"
+    image: "/assets/images/game/characters/zombie_death_3.png"
+    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+  }
+  images {
+    image: "/assets/images/game/characters/zombie_death_4.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   images {
@@ -600,8 +588,20 @@ animations {
     image: "/assets/images/game/characters/zombie_death_6.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
-  playback: PLAYBACK_LOOP_FORWARD
-  fps: 20
+  images {
+    image: "/assets/images/game/characters/zombie_death_7.png"
+    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+  }
+  images {
+    image: "/assets/images/game/characters/zombie_death_8.png"
+    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+  }
+  images {
+    image: "/assets/images/game/characters/zombie_death_9.png"
+    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+  }
+  playback: PLAYBACK_ONCE_FORWARD
+  fps: 12
   flip_horizontal: 0
   flip_vertical: 0
 }
