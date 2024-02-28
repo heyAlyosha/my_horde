@@ -23,6 +23,7 @@ function init(self)
 	input_remote_tv = require "input.input_remote_tv.modules.input_remote_tv"
 	character_animations = require "main.game.animations.character_animations"
 	character_attack = require "main.game.characters.modules.character_attack"
+	character_damage = require "main.game.characters.modules.character_damage"
 	position_functions = require "main.modules.position_functions"
 	draw = require "main.modules.draw"
 	astar_settings = require("main.game.astar.astar_settings")
