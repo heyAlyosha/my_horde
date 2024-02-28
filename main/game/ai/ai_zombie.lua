@@ -3,15 +3,12 @@ local M = {}
 
 -- Атака
 function M.condition_attack(self, url)
-	pprint("condition_attack")
 	-- НЕ может найти путь для атаки
 	local handle_error = function (self, error_code)
-		pprint("handle_error", ai_attack.check_distance_attack(self, url, hendle_error))
 		--M.condition_to_horde(self)
 	end
 	-- Добежал до цели
 	local handle_success = handle_success or function (self)
-		pprint("handle_success", ai_attack.check_distance_attack(self, url, hendle_error))
 		if not ai_attack.check_distance_attack(self, url, handle_distantion_error) then
 			ai_zombie.condition_attack(self, url)
 		else
@@ -20,7 +17,6 @@ function M.condition_attack(self, url)
 	end
 	-- Обработка 
 	local handle_fire = function (self)
-		pprint("handle_fire", ai_attack.check_distance_attack(self, url, hendle_error))
 		if ai_attack.check_distance_attack(self, url, hendle_error) then
 			character_attack.attack(self, url)
 
