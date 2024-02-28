@@ -11,10 +11,15 @@ function init(self)
 		-- Если удар
 		if not self.visible_attack then
 			msg.post("#body", "disable")
+			timer.delay(0.1, false, function (self)
+				go.delete()
+			end)
+		else
+			sprite.play_flipbook("#body", "attack_default", function (self)
+				go.delete()
+			end)
 		end
-		sprite.play_flipbook("#body", "attack_default", function (self)
-			go.delete()
-		end)
+		
 	end
 end
 
