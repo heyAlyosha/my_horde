@@ -43,11 +43,14 @@ function M.damage(self, from_object_damage)
 			position.y = position.y - 3
 			particle_name = "#blood_left"
 		end
+		position = position_functions.go_get_perspective_z(position)
 		go.animate(".", "position.x", go.PLAYBACK_ONCE_FORWARD, position.x, go.EASING_LINEAR, duration, 0)
 		go.animate(".", "position.y", go.PLAYBACK_ONCE_PINGPONG, position.y, go.EASING_LINEAR, duration, 0)
 
+		-- Покраснение
 		go.set("#body", "tint", vmath.vector4(1, 0.6, 0.6, 1)) -- <1>
 
+		-- Кровь
 		if self.damage_blood then
 			particlefx.play(particle_name)
 		end
