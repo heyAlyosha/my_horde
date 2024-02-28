@@ -4,6 +4,7 @@ go.property("type_object", hash("building_ruin"))
 go.property("targets", 8)
 go.property("target_dist", vmath.vector3(6, 0, 0))
 go.property("target_useful", 0)
+go.property("damage_blood", true)
 
 -- Разрушаемые объекты
 function init(self)
@@ -49,7 +50,7 @@ function on_message(self, message_id, message, sender)
 
 			-- Кровь
 			if self.damage_blood then
-				particlefx.play(particle_name)
+				particlefx.play("#destroy")
 			end
 			self.animate_damage = true
 			timer.delay(duration + 0.05, false, function (self)
@@ -60,10 +61,10 @@ function on_message(self, message_id, message, sender)
 		end
 
 		if self.live <= 0 then
+			-- Эффект разрушения
 			local position = go.get_position()
 			position.y = position.y + go.get("#object", "size").y / 2
 			position.z = 2
-			
 			msg.post(storage_game.map.url_script, "effect", {
 				position = position,
 				animation_id = hash("destroy"), 

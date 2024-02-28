@@ -14,13 +14,28 @@ components {
   }
   properties {
     id: "live"
-    value: "10.0"
+    value: "100.0"
     type: PROPERTY_TYPE_NUMBER
   }
   properties {
     id: "target_dist"
     value: "10.0, 0.0, 0.0"
     type: PROPERTY_TYPE_VECTOR3
+  }
+}
+components {
+  id: "destroy"
+  component: "/main/game/effects/destroy.particlefx"
+  position {
+    x: 0.0
+    y: 4.0
+    z: -1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.70710677
+    w: 0.70710677
   }
 }
 embedded_components {
