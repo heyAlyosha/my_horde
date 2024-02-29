@@ -4,16 +4,12 @@ local M = {}
 -- Передвиджение от точки
 function M.move_item_from(self, position_from, handle)
 	local position = go.get_position()
-	local tile_x, tile_y = astar_utils:screen_to_coords(position.x, position.y)
-
 	local dir = (position_from - position) * (-1)
-	local len = vmath.length(dir)
-	local speed = self.speed_from or self.speed
-
-	local duration = len / speed
 
 	local start_x, start_y = astar_utils:screen_to_coords(position.x, position.y)
-	local max_cost = 3.0 -- near
+	--start_x = start_x + 1
+	--start_y = start_y + 1
+	local max_cost = 1.0 -- near
 
 	local near_result, near_size, nears = astar.solve_near(start_x, start_y, max_cost)
 
@@ -43,6 +39,10 @@ function M.move_item_from(self, position_from, handle)
 			return a.sort > b.sort
 		end)
 		local position_to = result[1].position
+		local len = vmath.length(position_to - position)
+		local speed = self.speed_from or self.speed
+		local duration = len / speed
+
 		go.animate(go.get_id(), "position", go.PLAYBACK_ONCE_FORWARD, position_functions.go_get_perspective_z(position_to), go.EASING_LINEAR, duration, 0, handle)
 	else
 		if handle then
@@ -128,10 +128,7 @@ function M.move_to_object(self, url, handle_success, handle_error, handle_no_obj
 				end)
 			end
 		end
-
-		
 	end
-
 end
 
 -- Остановка движения
