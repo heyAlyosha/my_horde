@@ -1,9 +1,16 @@
 go.property("type_valute", hash("coin"))
 go.property("count", 1)
-go.property("distantion", 30)
+go.property("value", 0)
+go.property("distantion", 25)
 go.property("duration_animate", 0.75)
 
 function init(self)
+	self.types_valute = {}
+	self.types_valute[hash("coin")] = "coin"
+	self.types_valute[hash("xp")] = "xp"
+	self.types_valute[hash("trash")] = "trash"
+	self.types_valute[hash("trophy")] = "trophy"
+
 	-- Случайное направление выброса предметов
 	--local random_dir = vmath.normalize(vmath.vector3(math.random(-100, 100), math.random(-100, 100), 0)) * self.distantion
 	local random_dir = vmath.vector3(1, 0, 0)
@@ -13,10 +20,11 @@ function init(self)
 	random_dir = vmath.rotate(rot, random_dir) * self.distantion
 
 	local position_to = go.get_position() + random_dir
+	position_to = position_functions.add_perspective_z(position_to)
 
 	-- Анимация полёта
 	go.animate(".", "position.x", go.PLAYBACK_ONCE_FORWARD, position_to.x, go.EASING_LINEAR, self.duration_animate)
-	go.animate(".", "position.y", go.PLAYBACK_ONCE_FORWARD, position_to.y + 7, go.EASING_OUTCUBIC, self.duration_animate * 0.25, 0, function (self)
+	go.animate(".", "position.y", go.PLAYBACK_ONCE_FORWARD, position_to.y + 10, go.EASING_OUTCUBIC, self.duration_animate * 0.25, 0, function (self)
 		go.animate(".", "position.y", go.PLAYBACK_ONCE_FORWARD, position_to.y, go.EASING_OUTBOUNCE, self.duration_animate * 0.75)
 	end)
 
@@ -26,6 +34,8 @@ function init(self)
 		-- Анимация полёта
 		msg.post("#shadow", "disable")
 		go.animate(".", "position.y", go.PLAYBACK_LOOP_PINGPONG, position_to.y + 5, go.EASING_INOUTCUBIC, 2)
+		-- Создаём тень
+		self.shadow = factory.create("#shadow_factory", position_to)
 	end)
 end
 

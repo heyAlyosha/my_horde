@@ -6,7 +6,7 @@ go.property("distantion_attack", 15)
 go.property("command", hash("player"))
 go.property("skin_id", 0)
 go.property("human_id", 0)
-go.property("horde_count", 10)
+go.property("horde_count", 0)
 go.property("visible_horde_min", 100)
 go.property("distantion_attack_zombie_horde", 100)
 go.property("targets", 8)
@@ -34,6 +34,16 @@ function init(self)
 	self.zombies = {}
 
 	timer.delay(0.1, false, function (self)
+		timer.delay(0.5, true, function (self)
+			msg.post(storage_game.map.url_script, "valute", {
+				position = go.get_position(),
+				type_valute = hash("coin"),
+				count = 1,
+				value = 0, -- Данные для влаюты
+			})
+		end)
+		
+
 		go_controller.add(self)
 
 		local сenter_position = vmath.vector3(0)
