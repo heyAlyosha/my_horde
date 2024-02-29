@@ -1,18 +1,22 @@
 go.property("type_valute", hash("coin"))
 go.property("count", 1)
 go.property("value", 0)
-go.property("distantion", 25)
-go.property("duration_animate", 0.75)
+go.property("distantion", 15)
+go.property("duration_animate", 0.5)
 
 function init(self)
 	self.types_valute = {}
-	self.types_valute[hash("coin")] = "coin"
-	self.types_valute[hash("xp")] = "xp"
-	self.types_valute[hash("trash")] = "trash"
-	self.types_valute[hash("trophy")] = "trophy"
+	self.types_valute[hash("coin")] = {id = "coin", animation_id = "icon-gold-1"}
+	self.types_valute[hash("xp")] = {id = "xp", animation_id = "icon-gold-1"}
+	self.types_valute[hash("trash")] = {id = "trash", animation_id = "icon-gold-1"}
+	self.types_valute[hash("trophy")] = {id = "trash", animation_id = "icon-gold-1"}
+
+	self.item = self.types_valute[self.type_valute]
+
+	-- Иконка
+	sprite.play_flipbook("#object", self.item.animation_id)
 
 	-- Случайное направление выброса предметов
-	--local random_dir = vmath.normalize(vmath.vector3(math.random(-100, 100), math.random(-100, 100), 0)) * self.distantion
 	local random_dir = vmath.vector3(1, 0, 0)
 	math.randomseed()
 	local random_p = math.random(1, 628) / 100
@@ -28,11 +32,7 @@ function init(self)
 		
 	end
 
-	pprint("result", result)
-
 	position_to = position_functions.add_perspective_z(position_to)
-	pprint("position_to", position_to)
-	
 
 	-- Анимация полёта
 	go.animate(".", "position.x", go.PLAYBACK_ONCE_FORWARD, position_to.x, go.EASING_LINEAR, self.duration_animate)
@@ -49,6 +49,12 @@ function init(self)
 		-- Создаём тень
 		self.shadow = factory.create("#shadow_factory", position_to)
 	end)
+end
+
+function on_final(self)
+	if self.shadow then
+		
+	end
 end
 
 function on_message(self, message_id, message, sender)
