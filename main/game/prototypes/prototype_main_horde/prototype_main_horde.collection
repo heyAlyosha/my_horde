@@ -3,8 +3,8 @@ instances {
   id: "player"
   prototype: "/main/game/characters/player/player.go"
   position {
-    x: 191.0
-    y: 80.0
+    x: 102.0
+    y: 37.0
     z: 1.0
   }
   rotation {
@@ -23,8 +23,8 @@ instances {
   id: "trash_can"
   prototype: "/main/game/objects/objects_ruin/trash_can.go"
   position {
-    x: 208.0
-    y: 83.0
+    x: 317.0
+    y: 131.0
     z: 1.0
   }
   rotation {
@@ -183,8 +183,8 @@ instances {
   id: "trash_can1"
   prototype: "/main/game/objects/objects_ruin/trash_can.go"
   position {
-    x: 235.0
-    y: 83.0
+    x: 344.0
+    y: 131.0
     z: 1.0
   }
   rotation {
@@ -203,8 +203,8 @@ instances {
   id: "trash_can2"
   prototype: "/main/game/objects/objects_ruin/trash_can.go"
   position {
-    x: 262.0
-    y: 83.0
+    x: 371.0
+    y: 131.0
     z: 1.0
   }
   rotation {
@@ -223,8 +223,8 @@ instances {
   id: "trash_can3"
   prototype: "/main/game/objects/objects_ruin/trash_can.go"
   position {
-    x: 289.0
-    y: 83.0
+    x: 398.0
+    y: 131.0
     z: 1.0
   }
   rotation {
