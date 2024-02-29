@@ -58,7 +58,6 @@ end
 -- Удаление
 function M.delete_object(self, group_name, aabb_id)
 	if storage_game.groups_aabbcc[group_name] and storage_game.groups_aabbcc[group_name].objects[aabb_id] then
-		pprint("Удалено", storage_game.groups_aabbcc[group_name], aabb_id)
 		aabb.remove(storage_game.groups_aabbcc[group_name].id, aabb_id)
 		storage_game.groups_aabbcc[group_name].objects[aabb_id] = nil
 	end
@@ -111,10 +110,12 @@ function M.get_visible(self, exclude_aabb_id, distantion)
 			local url = visible_object.url
 			if self.command ~= visible_object.command then
 				local target =  storage_game.go_targets[go_controller.url_to_key(url)]
-				local add_item = {
-					url = url, sort = target.target_useful - target.target_current
-				}
-				objects[#objects + 1] = add_item
+				if target then
+					local add_item = {
+						url = url, sort = target.target_useful - target.target_current
+					}
+					objects[#objects + 1] = add_item
+				end
 			end
 		end
 	end

@@ -3,8 +3,8 @@ instances {
   id: "player"
   prototype: "/main/game/characters/player/player.go"
   position {
-    x: 56.0
-    y: 122.0
+    x: 535.0
+    y: 22.0
     z: 1.0
   }
   rotation {
@@ -286,8 +286,8 @@ instances {
   id: "zombie_enemy1"
   prototype: "/main/game/characters/zombie/zombie.go"
   position {
-    x: 683.0
-    y: 126.0
+    x: 584.0
+    y: 118.0
     z: 0.0
   }
   rotation {
@@ -381,6 +381,87 @@ instances {
     y: 0.0
     z: 0.0
     w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "human"
+  prototype: "/main/game/characters/human/human.go"
+  position {
+    x: 117.0
+    y: 69.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "human1"
+  prototype: "/main/game/characters/human/human.go"
+  position {
+    x: 99.0
+    y: 92.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "script"
+    properties {
+      id: "human_id"
+      value: "2.0"
+      type: PROPERTY_TYPE_NUMBER
+    }
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "human2"
+  prototype: "/main/game/characters/human/human.go"
+  position {
+    x: 75.0
+    y: 63.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "script"
+    properties {
+      id: "command"
+      value: "humans_1"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "human_id"
+      value: "3.0"
+      type: PROPERTY_TYPE_NUMBER
+    }
   }
   scale3 {
     x: 1.0

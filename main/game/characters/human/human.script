@@ -1,33 +1,28 @@
-go.property("damage", 1)
-go.property("live", 10)
-go.property("speed_damage", 0.25)
-go.property("speed", 60)
+go.property("activation", true)
+go.property("live", 1)
+go.property("speed", 10)
+go.property("speed_from", 15)
+go.property("to_point", false)
 go.property("distantion_visible", 30)
-go.property("distantion_attack", 3)
-go.property("command", hash("player"))
-go.property("skin_id", 0)
+go.property("command", hash("humans"))
 go.property("human_id", 1)
-go.property("parent", msg.url())
-go.property("position_to", vmath.vector3())
 go.property("target", msg.url())
-go.property("type_object", hash("zombie_player"))
+go.property("type_object", hash("humans"))
 go.property("targets", 8)
 go.property("target_dist", vmath.vector3(6, 0, 0))
-go.property("target_useful", 2)
-go.property("time_view", 0.5)
+go.property("target_useful", 1)
+go.property("time_view", 1)
 go.property("damage_blood", true)
-go.property("visible_attack", false)
 
 function init(self)
 	timer.delay(0.1, false, function (self)
 		go_controller.add(self)
 	end)
 
-	sprite.play_flipbook("#body", "zombie_"..self.skin_id.."_"..self.human_id .. "_default")
+	sprite.play_flipbook("#body", "human_"..self.human_id .. "_default")
 	position_functions.go_set_perspective_z()
 
 	self.max_live = self.live
-	label.set_text("#label", self.live .. "/"..self.max_live)
 
 	self.input = vmath.vector3(0)
 	self.velocity = vmath.vector3(0)
@@ -36,31 +31,33 @@ function init(self)
 	self.group_name = "visible_object"
 	self.group_id, self.visible_object_id = ai_vision.add_dynamic_object(self, self.group_name)
 
-	-- Если нет цели
-	if go_controller.url_to_key(self.target) == go_controller.url_to_key(msg.url()) then
-		self.target = nil
-	end
-
-	if self.target then
-		ai_zombie.condition_attack(self, self.target)
-	else
+	-- Поведение
+	if self.activation then
+		
 		self.view = ai_core.view(self, function (self, visible_items)
 			if visible_items then
-				ai_zombie.condition_attack(self, visible_items[1].url)
-				return true
+				-- Убегает от врагов
+				sprite.play_flipbook("#body", "human_"..self.human_id .. "_running")
+				ai_move.move_item_from(self, go.get_position(visible_items[1].url), function (self)
+					sprite.play_flipbook("#body", "human_"..self.human_id .. "_default")
+				end)
+				--return true
+			else
+				-- Гуляет
+				if not self.to_point then
+					-- Нет точек следования
+					if not self.animation_walking then
+						
+					end
+				else
+				end
 			end
 		end)
-
 	end
 end
 
 function final(self)
 	go_controller.delete(self)
-
-	-- Удаляем из орды, если была
-	if go_controller.url_to_key(self.parent) ~= go_controller.url_to_key(msg.url()) and go_controller.is_object(self.parent) then
-		msg.post(self.parent, "zombie_attack_death")
-	end
 end
 
 function fixed_update(self, dt)
@@ -86,16 +83,8 @@ function update(self, dt)
 end
 
 function on_message(self, message_id, message, sender)
-	if message_id == hash("object_visible_kill") then
-		-- Прицеливаемый объект уничтожен
-		if self.target then
-			ai_attack.delete_target(self, self.target)
-			ai_core.clear_coditions(self)
-
-			ai_zombie.condition_to_horde(self)
-		end
-
-	elseif message_id == hash("damage") then
+	if message_id == hash("damage") then
+		-- Урон
 		character_damage.damage_zombie(self, message)
 	end
 end

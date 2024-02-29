@@ -1,6 +1,58 @@
 -- Передвижение ботов
 local M = {}
 
+-- Передвиджение от точки
+function M.move_item_from(self, position_from, handle)
+	local position = go.get_position()
+	local tile_x, tile_y = astar_utils:screen_to_coords(position.x, position.y)
+
+	local dir = (position_from - position) * (-1)
+	local len = vmath.length(dir)
+	local speed = self.speed_from or self.speed
+
+	local duration = len / speed
+
+	local start_x, start_y = astar_utils:screen_to_coords(position.x, position.y)
+	local max_cost = 3.0 -- near
+
+	local near_result, near_size, nears = astar.solve_near(start_x, start_y, max_cost)
+
+	local result = {}
+	if near_result == astar.SOLVED then
+		print("SOLVED")
+		for i, v in ipairs(nears) do
+			local x,y = astar_utils:coords_to_screen(v.x, v.y)
+			local position_to = vmath.vector3(x, y, 0)
+			local dot = vmath.dot(dir, position_to - position)
+			if dot >= 0 then
+				table.insert(result, {
+					position = position_to,
+					sort = dot
+				})
+			end
+			print("Tile: ", v.x .. "-" .. v.y)
+		end
+	elseif near_result == astar.NO_SOLUTION then
+		print("NO_SOLUTION")
+	elseif near_result == astar.START_END_SAME then
+		print("START_END_SAME")
+	end
+
+	if #result > 0 then
+		table.sort(result, function (a, b)
+			return a.sort > b.sort
+		end)
+		local position_to = result[1].position
+		go.animate(go.get_id(), "position", go.PLAYBACK_ONCE_FORWARD, position_functions.go_get_perspective_z(position_to), go.EASING_LINEAR, duration, 0, handle)
+	else
+		if handle then
+			handle(self)
+		end
+	end
+
+	sprite.set_hflip("#body", dir.x < 0)
+end
+
 -- Пердвижение к точке
 function M.move_item(self, position_to, handle)
 	local position = go.get_position()
@@ -75,7 +127,6 @@ function M.move_to_object(self, url, handle_success, handle_error, handle_no_obj
 					M.move_to_object(self, url, handle_success, handle_error)
 				end)
 			end
-			
 		end
 
 		

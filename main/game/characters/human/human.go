@@ -1,6 +1,6 @@
 components {
   id: "script"
-  component: "/main/game/characters/zombie/zombie.script"
+  component: "/main/game/characters/human/human.script"
   position {
     x: 0.0
     y: 0.0
@@ -11,21 +11,6 @@ components {
     y: 0.0
     z: 0.0
     w: 1.0
-  }
-  properties {
-    id: "distantion_visible"
-    value: "60.0"
-    type: PROPERTY_TYPE_NUMBER
-  }
-  properties {
-    id: "distantion_attack"
-    value: "20.0"
-    type: PROPERTY_TYPE_NUMBER
-  }
-  properties {
-    id: "command"
-    value: "humans"
-    type: PROPERTY_TYPE_HASH
   }
 }
 embedded_components {
