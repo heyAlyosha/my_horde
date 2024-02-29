@@ -2,7 +2,7 @@
 local M = {}
 
 -- Передвиджение от точки
-function M.move_item_from(self, position_from, handle)
+function M.move_item_from(self, position_from, handle, speed)
 	local position = go.get_position()
 	local dir = (position_from - position) * (-1)
 
@@ -37,7 +37,6 @@ function M.move_item_from(self, position_from, handle)
 		end)
 		local position_to = result[1].position
 		local len = vmath.length(position_to - position)
-		local speed = self.speed_from or self.speed
 		local duration = len / speed
 
 		go.cancel_animations(".", "position")

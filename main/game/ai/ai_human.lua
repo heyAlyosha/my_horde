@@ -12,7 +12,7 @@ function M.live(self)
 				ai_move.move_item_from(self, go.get_position(visible_items[1].url), function (self)
 					sprite.play_flipbook("#body", "human_"..self.human_id .. "_default")
 					self.animation_run = nil
-				end)
+				end, self.speed_from)
 			end
 			--return true
 		else
@@ -40,7 +40,7 @@ function M.live(self)
 							self.animation_walking = nil
 							sprite.play_flipbook("#body", "human_"..self.human_id .. "_default")
 							M.live(self)
-						end)
+						end, self.speed)
 					else
 						-- Просто стоит
 						timer.delay(2, false, function (self)
