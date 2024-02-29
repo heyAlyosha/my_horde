@@ -40,7 +40,7 @@ function init(self)
 
 	math.randomseed = function (seed)
 		storage_game.randomseed = storage_game.randomseed or 0
-		storage_game.randomseed = storage_game.randomseed + 2
+		storage_game.randomseed = storage_game.randomseed + 2 + os.clock()
 
 		splitmix64.randomseed(storage_game.randomseed)
 	end
