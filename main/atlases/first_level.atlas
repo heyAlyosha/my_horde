@@ -14,6 +14,14 @@ images {
   image: "/assets/images/game/points/point_green.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
+images {
+  image: "/assets/images/game/objects/icon-gold-1.png"
+  sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+}
+images {
+  image: "/assets/images/game/effects/shadow.png"
+  sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+}
 animations {
   id: "zombie_0_0_run"
   images {

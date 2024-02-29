@@ -67,7 +67,7 @@ emitters {
     key: EMITTER_KEY_PARTICLE_LIFE_TIME
     points {
       x: 0.0
-      y: 0.4
+      y: 0.3
       t_x: 1.0
       t_y: 0.0
     }
@@ -77,7 +77,7 @@ emitters {
     key: EMITTER_KEY_PARTICLE_SPEED
     points {
       x: 0.0
-      y: 10.0
+      y: 35.0
       t_x: 1.0
       t_y: 0.0
     }
@@ -97,7 +97,7 @@ emitters {
     key: EMITTER_KEY_PARTICLE_RED
     points {
       x: 0.0
-      y: 0.5
+      y: 0.85
       t_x: 1.0
       t_y: 0.0
     }
@@ -107,7 +107,7 @@ emitters {
     key: EMITTER_KEY_PARTICLE_GREEN
     points {
       x: 0.0
-      y: 0.5
+      y: 0.85
       t_x: 1.0
       t_y: 0.0
     }
@@ -117,7 +117,7 @@ emitters {
     key: EMITTER_KEY_PARTICLE_BLUE
     points {
       x: 0.0
-      y: 0.5
+      y: 0.85
       t_x: 1.0
       t_y: 0.0
     }
