@@ -103,9 +103,15 @@ function init(self)
 				end
 			end
 		end
-	end)
 
-	
+		-- Предметы, чтобы подобрать
+		local group_name = "items"
+		local items = ai_vision.get_objects_group(self, exclude_aabb_id, group_name, self.distantion_visible)
+		for i = 1, #items do
+			msg.post(items[i].url, "activate")
+		end
+		pprint("items", items)
+	end)
 end
 
 function final(self)

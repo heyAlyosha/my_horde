@@ -58,9 +58,40 @@ end
 -- Удаление
 function M.delete_object(self, group_name, aabb_id)
 	if storage_game.groups_aabbcc[group_name] and storage_game.groups_aabbcc[group_name].objects[aabb_id] then
+		pprint("Удалено", storage_game.groups_aabbcc[group_name], aabb_id)
 		aabb.remove(storage_game.groups_aabbcc[group_name].id, aabb_id)
 		storage_game.groups_aabbcc[group_name].objects[aabb_id] = nil
 	end
+end
+
+-- Получение объектов для группы
+function M.get_objects_group(self, exclude_aabb_id, group_name, distantion)
+	if not storage_game.groups_aabbcc[group_name] then
+		return {}
+	end
+	local position = go.get_position()
+	local width = distantion * 2
+	local height = distantion * 2
+	local group_id = storage_game.groups_aabbcc[group_name].id
+	local result, count = aabb.query(group_id, position.x, position.y, width, height)
+
+	local objects = {}
+
+	if result then
+		for i = 1, #result do
+			local aabb_id = result[i]
+			if exclude_aabb_id ~= aabb_id then
+				local object = storage_game.groups_aabbcc[group_name].objects[aabb_id]
+				local url = object.url
+				local add_item = {
+					url = url
+				}
+				objects[#objects + 1] = add_item
+			end
+		end
+	end
+
+	return objects
 end
 
 -- ВИдимые объекты
@@ -97,6 +128,8 @@ function M.get_visible(self, exclude_aabb_id, distantion)
 		return false
 	end
 end
+
+
 
 
 

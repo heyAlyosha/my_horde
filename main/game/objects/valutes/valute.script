@@ -48,17 +48,26 @@ function init(self)
 		go.animate(".", "position.y", go.PLAYBACK_LOOP_PINGPONG, position_to.y + 5, go.EASING_INOUTCUBIC, 2)
 		-- Создаём тень
 		self.shadow = factory.create("#shadow_factory", position_to)
+
+		-- Добавляем предмет для подбора
+		self.group_name = "items"
+		self.group_id, self.items_id = ai_vision.add_static_object(self, self.group_name)
 	end)
 end
 
-function on_final(self)
+function final(self)
 	if self.shadow then
-		
+		go.delete(self.shadow)
 	end
+
+	pprint("on_final")
+
+	ai_vision.delete_object(self, self.group_name, self.items_id)
 end
 
 function on_message(self, message_id, message, sender)
-	-- Add message-handling code here
-	-- Learn more: https://defold.com/manuals/message-passing/
-	-- Remove this function if not needed
+	if message_id == hash("activate") then
+		-- Подьираем предмет
+		go.delete()
+	end
 end
