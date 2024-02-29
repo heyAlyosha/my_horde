@@ -3,8 +3,8 @@ instances {
   id: "player"
   prototype: "/main/game/characters/player/player.go"
   position {
-    x: 102.0
-    y: 37.0
+    x: 56.0
+    y: 122.0
     z: 1.0
   }
   rotation {

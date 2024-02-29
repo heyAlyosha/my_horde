@@ -20,7 +20,19 @@ function init(self)
 	random_dir = vmath.rotate(rot, random_dir) * self.distantion
 
 	local position_to = go.get_position() + random_dir
+
+	-- Проверяем столкновения коллизии
+	local result = physics.raycast(go.get_position(), position_to, {hash("default")}, options)
+	if result  then
+		position_to = result.position
+		
+	end
+
+	pprint("result", result)
+
 	position_to = position_functions.add_perspective_z(position_to)
+	pprint("position_to", position_to)
+	
 
 	-- Анимация полёта
 	go.animate(".", "position.x", go.PLAYBACK_ONCE_FORWARD, position_to.x, go.EASING_LINEAR, self.duration_animate)
