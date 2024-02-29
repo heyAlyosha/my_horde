@@ -35,6 +35,7 @@ function init(self)
 	ai_vision = require("main.game.ai.ai_vision")
 	ai_zombie = require("main.game.ai.ai_zombie")
 	character_zombie_main = require("main.game.characters.modules.character_zombie_main")
+	items_functions = require("main.game.objects.items.modules.items_functions")
 
 	--profiler.enable_ui(true)
 

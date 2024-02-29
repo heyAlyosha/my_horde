@@ -75,15 +75,7 @@ function on_message(self, message_id, message, sender)
 				shake = false, -- Тряска камеры при эффекте
 			})
 
-			-- Спавн предметов 
-			for i = 1, self.spawn_trash do
-				msg.post(storage_game.map.url_script, "add_item", {
-					position = go.get_position(),
-					type_valute = hash("trash"),
-					count = 1,
-					value = 0, -- Данные для влаюты
-				})
-			end
+			items_functions.spawn(self)
 			
 			go.delete()
 		end
