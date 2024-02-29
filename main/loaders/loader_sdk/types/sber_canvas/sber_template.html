@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, minimal-ui, shrink-to-fit=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+	<title>{{project.title}}</title>
+	<style type='text/css'>
+	/* Disable user selection to avoid strange bug in Chrome on Windows:
+	* Selecting a text outside the canvas, then clicking+draging would
+	* drag the selected text but block mouse down/up events to the engine.
+	*/
+	body {
+		font-family: Tahoma, Geneva, sans-serif;
+	{{^DEFOLD_SCALE_MODE_IS_NO_SCALE}}
+		position: fixed; /* Prevent overscroll */
+	{{/DEFOLD_SCALE_MODE_IS_NO_SCALE}}
+		margin:0;
+		padding:0;
+	}
+
+	.canvas-app-container {
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		align-items: center;
+		justify-content: center;
+		overflow: hidden;
+	}
+
+	.canvas-app-container:-webkit-full-screen {
+		/* Auto width and height in Safari/Chrome fullscreen. */
+		width: auto;
+		height: auto;
+	}
+
+	#canvas {
+		outline: none;
+		border: 0;
+		width: 100%;
+		vertical-align: bottom;
+	}
+
+	#canvas-container {
+		position: relative;
+	}
+
+	canvas:focus, canvas:active {
+		outline: none;
+		border: 0;
+		ie-dummy: expression(this.hideFocus=true);
+		-moz-outline-style: none;
+	}
+
+	div {
+		-webkit-tap-highlight-color: rgba(0,0,0,0);
+		-webkit-touch-callout: none;
+		-webkit-user-select: none;
+		-khtml-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+	}
+
+	{{{DEFOLD_CUSTOM_CSS_INLINE}}}
+	</style>
+
+	<script crossorigin  src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@sberdevices/assistant-client@3.4.2/umd/assistant.min.js"></script>
+    <script src="https://cdn-app.sberdevices.ru/shared-static/0.0.0/js/@sberdevices/ad-sdk/ad-sdk.min.js"></script>
+    <script>
+    	const IS_DEVELOPMENT = {{developers.is_debug}};
+		const DEV_TOKEN = "{{developers.token}}";
+		const DEV_PHRASE = "{{developers.phrase}}";
+
+    	document.addEventListener("DOMContentLoaded", function(event) { 
+
+    		/*
+
+		  	if (IS_DEVELOPMENT){
+	    		window.assistant_client = window.assistant.createSmartappDebugger({
+		            // Токен из Кабинета разработчика
+		            token: DEV_TOKEN,
+		            // Пример фразы для запуска смартапа
+		            initPhrase: DEV_PHRASE,
+		            // Текущее состояние смартапа
+		            getState: () => ({}),
+		            // Состояние смартапа, с которым он будет восстановлен при следующем запуске
+		            getRecoveryState: () => ({}),
+		        });
+
+	    	}else{
+	    		window.assistant_client = window.assistant.createAssistant({
+	    			getState: () => {
+	    				return {};
+	    			},
+	    		});
+	    	}
+
+	    	console.log(window.assistant_client);
+	    	console.log(window.SberDevicesAdSDK)
+
+	    	*/
+
+	    	const onSuccess = () => {
+				console.log('AdSDK Success Init', err);
+		    };
+		    const onError = (err) => {
+				console.error('AdSDK Init Error', err);
+		    };
+	    	
+
+	    	// Реклама сбера
+		    if (IS_DEVELOPMENT) {
+		        window.SberDevicesAdSDK.initDev(
+		        	{
+		        		token: DEV_TOKEN, 
+		        		initPhrase: DEV_PHRASE, 
+		        		onSuccess, 
+		        		onError,
+		        		test: true 
+		        	}
+		        );
+
+		    } else {
+		        window.SberDevicesAdSDK.init(
+		        	{ 
+		        		onSuccess, 
+		        		onError, 
+		        		test: true 
+		        	}
+		        );
+		    }
+
+		    const assistantRef = window.SberDevicesAdSDK.getAssistantRef();
+			window.assistant_client = assistantRef.current;
+
+			//приходят какие-то данные с сервера сбера
+	    	window.assistant_client.on('data', (command) => {
+	    		//console.log(command);
+	    		JsToDef.send("SberData", command);
+	    	})
+
+		});
+   </script>
+</head>
+<body>
+	<!--<div class="console_log" style="width: 50vh;"><button>Click</button><p>Console:</p></div>-->
+	<div id="app-container" class="canvas-app-container">
+		<div id="canvas-container" class="canvas-app-canvas-container">
+			<canvas id="canvas" class="canvas-app-canvas" tabindex="1" width="{{display.width}}" height="{{display.height}}"></canvas>
+			<span id="canvas-version">{{project.version}}</span>
+		</div>
+		<div class="buttons-background">
+{{#html5.show_fullscreen_button}}
+			<div class="button" onclick="Module.toggleFullscreen();">Fullscreen</div>
+{{/html5.show_fullscreen_button}}
+{{#html5.show_made_with_defold}}
+			<div class="link">Made with <a href="https://defold.com/" target="_blank">Defold</a></div>
+{{/html5.show_made_with_defold}}
+		</div>
+	</div>
+	<!-- -->
+	<script id='engine-loader' type='text/javascript' src="js/console_log.js"></script>
+	<script id='engine-loader' type='text/javascript' src="js/dmloader.js"></script>
+	<!--<script id='engine-loader' type='text/javascript' src="js/init.js"></script>-->
+	<script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+	<script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+	<script src="https://unpkg.com/@sberdevices/assistant-client@4.7.0/umd/assistant.development.min.js"></script>
+	<script id='engine-loader' type='text/javascript' src="js/sber_devices_sdk.js"></script>
+	<!-- Содержимое в зависимости от языка -->
+	<script id='engine-setup' type='text/javascript'>
+		//Контент для прелоадера
+		var content_preloader = {
+			ru: {
+				title: "Моя Орда io",
+				logo: "logo_ru.png",
+				load: "Идёт загрузка игры...",
+				error_webgl: "ОШИБКА: Ваш браузер не поддерживает WebGL. Для продолжения игры используйте последнюю версию браузеров Google Chrome, Opera, Mozilla Firefox, Safari, Microsoft Edge или Яндекс.Браузер",
+				error_download: "ОШИБКА: Не удалось загрузить файлы игры. Проверьте подключение к интернету."
+			},
+			en: {
+				title: "My Horde io",
+				logo: "logo_en.png",
+				load: "Loading...",
+				error_webgl: "ERROR: Your browser does not support WebGL. To continue the game, use the latest version of Google Chrome, Opera, Mozilla Firefox, Safari, Microsoft Edge or Yandex.Browser",
+				error_download: "ERROR: Failed to download game files. Check your internet connection."
+			}
+		};
+
+		// Возможные языки
+		var langs = {
+			ru: ["ru", "ab", "be", "ky", "uz", "uk", "kk", "et", "lv", "lt"]
+		}
+		// Находим язык браузера пользователя
+		var language_user = window.navigator ? (window.navigator.language ||
+									window.navigator.systemLanguage ||
+									window.navigator.userLanguage) : "en";
+		language_user = language_user.substr(0, 2).toLowerCase();
+
+	
+		const keys = Object.keys(langs)
+		for (const key of keys) {
+			let item = langs[key]
+		  	for (let i_l = 0; i_l < item.length; i_l++) {
+				if (item[i_l] == language_user){
+					language_user = key
+					break
+				}
+			}
+		}
+
+		// Поолучаем данные
+		var content_user_lang = content_preloader[language_user]
+
+		// Вставляем логотип
+		var pc = document.getElementById("canvas-container");
+		var img = new Image();
+		img.src = 'images/'+content_user_lang.logo
+		img.id = "canvas-logo";
+		pc.appendChild(img);
+
+		//console.log("язык пользователя:", language_user)
+		
+	</script>
+	<!-- -->
+	<script id='engine-setup' type='text/javascript'>
+		console.log("Работаем с канвасом")
+	var extra_params = {
+		archive_location_filter: function( path ) {
+			return ("{{DEFOLD_ARCHIVE_LOCATION_PREFIX}}" + path + "{{DEFOLD_ARCHIVE_LOCATION_SUFFIX}}");
+		},
+		engine_arguments: [{{#DEFOLD_ENGINE_ARGUMENTS}}"{{.}}",{{/DEFOLD_ENGINE_ARGUMENTS}}],
+		custom_heap_size: {{DEFOLD_HEAP_SIZE}},
+		full_screen_container: "#canvas-preloader",
+		disable_context_menu: true
+	}
+
+	Module['INITIAL_MEMORY'] = extra_params.custom_heap_size;
+
+	Module['onRuntimeInitialized'] = function() {
+		Module.runApp("canvas", extra_params);
+	};
+
+	Module["locateFile"] = function(path, scriptDirectory)
+	{
+		// dmengine*.wasm is hardcoded in the built JS loader for WASM,
+		// we need to replace it here with the correct project name.
+		if (path == "dmengine.wasm" || path == "dmengine_release.wasm" || path == "dmengine_headless.wasm") {
+			path = "{{exe-name}}.wasm";
+		}
+		return scriptDirectory + path;
+	};
+
+	var is_iOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+	var buttonHeight = 0;
+	var prevInnerWidth = -1;
+	var prevInnerHeight = -1;
+{{#html5.show_made_with_defold}}
+	buttonHeight = 42;
+{{/html5.show_made_with_defold}}
+{{#html5.show_fullscreen_button}}
+	buttonHeight = 42;
+{{/html5.show_fullscreen_button}}
+	function resize_game_canvas() {
+		// Hack for iOS when exit from Fullscreen mode
+		if (is_iOS) {
+			window.scrollTo(0, 0);
+		}
+
+		var app_container = document.getElementById('app-container');
+		var game_canvas = document.getElementById('canvas');
+		var innerWidth = window.innerWidth;
+		var innerHeight = window.innerHeight - buttonHeight;
+		if (prevInnerWidth == innerWidth && prevInnerHeight == innerHeight)
+		{
+			return;
+		}
+		prevInnerWidth = innerWidth;
+		prevInnerHeight = innerHeight;
+		var width = {{display.width}};
+		var height = {{display.height}};
+		var targetRatio = width / height;
+		var actualRatio = innerWidth / innerHeight;
+	{{#DEFOLD_SCALE_MODE_IS_DOWNSCALE_FIT}}
+		//Downscale fit
+		if (innerWidth < width || innerHeight < height) {
+			if (actualRatio > targetRatio) {
+				width = innerHeight * targetRatio;
+				height = innerHeight;
+				app_container.style.marginLeft = ((innerWidth - width) / 2) + "px";
+				app_container.style.marginTop = "0px";
+			}
+			else {
+				width = innerWidth;
+				height = innerWidth / targetRatio;
+				app_container.style.marginLeft = "0px";
+				app_container.style.marginTop = ((innerHeight - height) / 2) + "px";
+			}
+		}
+		else {
+			app_container.style.marginLeft = ((innerWidth - width) / 2) + "px";
+			app_container.style.marginTop = ((innerHeight - height) / 2) + "px";
+		}
+	{{/DEFOLD_SCALE_MODE_IS_DOWNSCALE_FIT}}
+	{{#DEFOLD_SCALE_MODE_IS_STRETCH}}
+		//Stretch
+		width = innerWidth;
+		height = innerHeight;
+	{{/DEFOLD_SCALE_MODE_IS_STRETCH}}
+	{{#DEFOLD_SCALE_MODE_IS_FIT}}
+		//Fit
+		if (actualRatio > targetRatio) {
+			width = innerHeight * targetRatio;
+			height = innerHeight;
+			app_container.style.marginLeft = ((innerWidth - width) / 2) + "px";
+			app_container.style.marginTop = "0px";
+		}
+		else {
+			width = innerWidth;
+			height = innerWidth / targetRatio;
+			app_container.style.marginLeft = "0px";
+			app_container.style.marginTop = ((innerHeight - height) / 2) + "px";
+		}
+	{{/DEFOLD_SCALE_MODE_IS_FIT}}
+	{{#DEFOLD_SCALE_MODE_IS_NO_SCALE}}
+		//No scale
+		var margin_left = ((innerWidth - width) / 2);
+		margin_left = margin_left > 0 ? margin_left : 0; 
+		var margin_top = ((innerHeight - height) / 2);
+		margin_top = margin_top > 0 ? margin_top : 0;
+		app_container.style.marginLeft = margin_left + "px";
+		app_container.style.marginTop = margin_top + "px";
+	{{/DEFOLD_SCALE_MODE_IS_NO_SCALE}}
+		// Определяем Горизонтальная ли это ориентация
+
+		app_container.style.width = width + "px";
+		app_container.style.height = height + buttonHeight + "px";
+		game_canvas.width = width;
+		game_canvas.height = height;
+	}
+	resize_game_canvas();
+	window.addEventListener('resize', resize_game_canvas, false);
+	window.addEventListener('orientationchange', resize_game_canvas, false);
+	window.addEventListener('focus', resize_game_canvas, false);
+	</script>
+
+	<script id='engine-start' type='text/javascript'>
+		EngineLoader.load("canvas", "{{exe-name}}");
+
+		// Добавляем заголовок к прогресс бару
+		var progress_bar_wrapper = document.getElementById('canvas-app-progress-wrapper');
+		var progress_title = document.createElement("div");
+		progress_title.innerText = content_user_lang.load
+		progress_title.id = 'canvas-app-progress-title';
+		progress_bar_wrapper.prepend(progress_title)
+
+		extra_params.unsupported_webgl_callback = function () {
+			// Удаляем прогресс-бар
+			var bar = document.getElementById('canvas-app-progress-wrapper');
+			bar.remove();
+
+			// Вставляем сообщение об ошибке
+			var newDiv = document.createElement("div");
+			newDiv.className = "canvas-error";
+        	newDiv.innerHTML = '<img class="canvas-error-icon" src="images/warning.png"><div class="canvas-error-msg">'+content_user_lang.error_webgl+'</div>';
+        	var pc = document.getElementById("canvas-container");
+			pc.appendChild(newDiv);
+
+            //setStatus("ERROR: WebGL is not supported by your browser.");
+        };
+
+        extra_params.can_not_download_file_callback = function () {
+        	// Удаляем прогресс-бар
+			var bar = document.getElementById('canvas-app-progress-wrapper');
+			bar.remove();
+
+			// Вставляем сообщение об ошибке
+            var newDiv = document.createElement("div");
+			newDiv.className = "canvas-error";
+        	newDiv.innerHTML = '<img class="canvas-error-icon" src="images/warning.png"><div class="canvas-error-msg">'+content_user_lang.error_download+'</div>';
+        	var pc = document.getElementById("canvas-container");
+			pc.appendChild(newDiv);
+
+			//setStatus("ERROR: Can't download files.");
+        };
+	</script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+function init(self)
+	self.scene = {
+		open = vmath.vector3(981, 1200, 5),
+		close = vmath.vector3(981, 780, 5),
+	}
+
+	self.duration = 0.5
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("open_scene") or message_id == hash("close_scene") then
+
+		local position = self.scene.close
+		local animate = message.animate or 0
+
+		if message_id == hash("open_scene") then
+			position = self.scene.open
+		end
+
+		-- Открываем сцену
+		if message.animate then
+			if animate > 0 then
+				msg.post("main:/sound", "play", {sound_id = "game_result_open"})
+			end
+			go.animate("scene_curtain", "position", go.PLAYBACK_ONCE_FORWARD, position, go.EASING_LINEAR, animate)
+		end
+	end
+end
