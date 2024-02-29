@@ -53,9 +53,9 @@ embedded_components {
   }
 }
 embedded_components {
-  id: "valute_factory"
+  id: "item_factory"
   type: "factory"
-  data: "prototype: \"/main/game/objects/valutes/valute.go\"\n"
+  data: "prototype: \"/main/game/objects/items/item.go\"\n"
   "load_dynamically: false\n"
   "dynamic_prototype: false\n"
   ""

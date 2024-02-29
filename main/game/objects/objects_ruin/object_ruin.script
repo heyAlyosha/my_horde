@@ -5,6 +5,9 @@ go.property("targets", 8)
 go.property("target_dist", vmath.vector3(6, 0, 0))
 go.property("target_useful", 0)
 go.property("damage_blood", true)
+go.property("spawn_coins", 0)
+go.property("spawn_trash", 1)
+go.property("spawn_xp", 0)
 
 -- Разрушаемые объекты
 function init(self)
@@ -71,6 +74,17 @@ function on_message(self, message_id, message, sender)
 				timer_delete = 0,
 				shake = false, -- Тряска камеры при эффекте
 			})
+
+			-- Спавн предметов 
+			for i = 1, self.spawn_trash do
+				msg.post(storage_game.map.url_script, "add_item", {
+					position = go.get_position(),
+					type_valute = hash("trash"),
+					count = 1,
+					value = 0, -- Данные для влаюты
+				})
+			end
+			
 			go.delete()
 		end
 	end

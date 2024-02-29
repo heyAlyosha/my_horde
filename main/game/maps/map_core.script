@@ -2,7 +2,6 @@ go.property("map_url", msg.url())
 
 function init(self)
 	storage_game.map.url = self.map_url
-	
 	storage_game.map.url_script = msg.url()
 	local levelx, levely, w, h = tilemap.get_bounds(self.map_url)
 	local tile, coord_x, coord_y = 0
@@ -88,8 +87,8 @@ function on_message(self, message_id, message, sender)
 		}
 		factory.create("#effect_factory", message.position, message.rotation, properties)
 
-	elseif message_id == hash("valute") then
-			-- Добавление эффектов
+	elseif message_id == hash("add_item") then
+			-- Добавление предметов
 			local properties = {
 				type_valute = message.type_valute,
 				count = message.count,
@@ -97,7 +96,7 @@ function on_message(self, message_id, message, sender)
 				distantion = message.distantion,
 				duration_animate = message.duration_animate,
 			}
-			factory.create("#valute_factory", message.position, message.rotation, properties)
+			factory.create("#item_factory", message.position, message.rotation, properties)
 	end
 end
 

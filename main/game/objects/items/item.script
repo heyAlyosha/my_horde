@@ -60,8 +60,6 @@ function final(self)
 		go.delete(self.shadow)
 	end
 
-	pprint("on_final")
-
 	ai_vision.delete_object(self, self.group_name, self.items_id)
 end
 

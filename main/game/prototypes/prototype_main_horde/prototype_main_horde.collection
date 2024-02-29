@@ -370,7 +370,7 @@ instances {
 }
 instances {
   id: "valute"
-  prototype: "/main/game/objects/valutes/valute.go"
+  prototype: "/main/game/objects/items/item.go"
   position {
     x: 218.0
     y: 86.0

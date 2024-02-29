@@ -34,16 +34,6 @@ function init(self)
 	self.zombies = {}
 
 	timer.delay(0.1, false, function (self)
-		timer.delay(0.5, true, function (self)
-			msg.post(storage_game.map.url_script, "valute", {
-				position = go.get_position(),
-				type_valute = hash("coin"),
-				count = 1,
-				value = 0, -- Данные для влаюты
-			})
-		end)
-		
-
 		go_controller.add(self)
 
 		local сenter_position = vmath.vector3(0)
@@ -110,7 +100,6 @@ function init(self)
 		for i = 1, #items do
 			msg.post(items[i].url, "activate")
 		end
-		pprint("items", items)
 	end)
 end
 
