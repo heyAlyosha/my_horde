@@ -2,6 +2,7 @@ go.property("activation", true)
 go.property("animation_running", false)
 go.property("to_point", false)
 go.property("to_point_position", vmath.vector3())
+go.property("human_id_random", false)
 go.property("live", 1)
 go.property("speed", 10)
 go.property("speed_from", 15)
@@ -22,6 +23,11 @@ function init(self)
 		go_controller.add(self)
 	end)
 	pprint("msg.url()", msg.url())
+
+	if self.human_id_random then
+		math.randomseed(3)
+		self.human_id = math.random(1,9)
+	end
 
 	sprite.play_flipbook("#body", "human_"..self.human_id .. "_default")
 	position_functions.go_set_perspective_z()
@@ -72,7 +78,8 @@ end
 function on_message(self, message_id, message, sender)
 	if message_id == hash("damage") then
 		-- Урон
-		character_damage.damage_zombie(self, message)
+		local animation_death = hash("effect_infection")
+		character_damage.damage_human(self, message, animation_death)
 
 	elseif message_id == hash("set_point") then
 		self.to_point = true
