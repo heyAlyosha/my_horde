@@ -51,7 +51,7 @@ function M.move_item_from(self, position_from, handle, speed)
 end
 
 -- Пердвижение к точке
-function M.move_item(self, position_to, handle)
+function M.move_item(self, position_to, handle, not_animate)
 	local position = go.get_position()
 
 	local dir = position_to - position
@@ -122,6 +122,59 @@ function M.move_to_object(self, url, handle_success, handle_error, handle_no_obj
 						handle_item_move(self)
 					end
 					M.move_to_object(self, url, handle_success, handle_error)
+				end)
+			end
+		end
+	end
+end
+
+-- Пердвижение к цели
+--[[
+handle_success(self) -- Цель достигнута
+handle_error(self, error_code) -- Невозможно достигнуть цели
+handle_no_object_target(self) -- Объект удалён из мира
+--]]
+function M.move_to_position(self, move_position_to, handle_success, handle_error)
+	local position = go.get_position()
+
+	local dir = move_position_to - position
+	local distantion_magnite = 16
+	local dist = vmath.length(dir)
+
+	if dist == 0 then
+		-- Объект на позиции
+		if handle_success then
+			handle_success(self)
+		end
+
+	elseif dist < distantion_magnite then
+		-- Маленькое расстояние до цели
+		M.move_item(self, move_position_to, handle_success)
+	else
+		local result, path_size, totalcost, path = astar_functions.get_path(self, move_position_to)
+
+		if not result then
+			-- Нет доступа к цели
+			if handle_error then
+				local error_code = path_size
+				handle_error(self, error_code)
+			end
+		else
+			table.remove(path, 1)
+
+			-- Двигамеся по сетке астар
+			if not path or #path < 1 then
+				if handle_success then
+					handle_success(self)
+				end
+			else
+				local x,y = astar_utils:coords_to_screen(path[1].x, path[1].y)
+				local position_to = vmath.vector3(x, y, 0)
+				M.move_item(self, position_to, function (self)
+					if handle_item_move then
+						handle_item_move(self)
+					end
+					M.move_to_position(self, move_position_to, handle_success, handle_error)
 				end)
 			end
 		end

@@ -389,11 +389,11 @@ instances {
   }
 }
 instances {
-  id: "human2"
+  id: "human"
   prototype: "/main/game/characters/human/human.go"
   position {
-    x: 81.0
-    y: 38.0
+    x: 27.0
+    y: 113.0
     z: 0.0
   }
   rotation {
@@ -405,14 +405,14 @@ instances {
   component_properties {
     id: "script"
     properties {
-      id: "command"
-      value: "humans_1"
-      type: PROPERTY_TYPE_HASH
+      id: "to_point"
+      value: "true"
+      type: PROPERTY_TYPE_BOOLEAN
     }
     properties {
-      id: "human_id"
-      value: "3.0"
-      type: PROPERTY_TYPE_NUMBER
+      id: "to_point_position"
+      value: "130.0, 50.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
     }
   }
   scale3 {
