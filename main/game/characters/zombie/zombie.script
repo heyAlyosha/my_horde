@@ -10,7 +10,7 @@ go.property("human_id", 1)
 go.property("parent", msg.url())
 go.property("position_to", vmath.vector3())
 go.property("target", msg.url())
-go.property("type_object", hash("zombie_player"))
+go.property("type_object", hash("zombie_dynamic"))
 go.property("targets", 8)
 go.property("target_dist", vmath.vector3(6, 0, 0))
 go.property("target_useful", 2)
@@ -44,11 +44,13 @@ function init(self)
 		self.target = nil
 	end
 
+	print(self.target)
 	if self.target then
 		ai_zombie.condition_attack(self, self.target)
 	else
 		self.view = ai_core.view(self, function (self, visible_items)
 			if visible_items then
+				pprint("ai_zombie.condition_attack", visible_items[1].url)
 				ai_zombie.condition_attack(self, visible_items[1].url)
 				return true
 			end
@@ -66,6 +68,7 @@ function final(self)
 	end
 end
 
+--[[
 function fixed_update(self, dt)
 	-- This function is called if 'Fixed Update Frequency' is enabled in the Engine section of game.project
 	-- Can be coupled with fixed updates of the physics simulation if 'Use Fixed Timestep' is enabled in
@@ -87,6 +90,7 @@ function update(self, dt)
 		end
 	end
 end
+--]]
 
 function on_message(self, message_id, message, sender)
 	if message_id == hash("object_visible_kill") then

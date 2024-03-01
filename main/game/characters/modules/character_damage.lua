@@ -23,6 +23,8 @@ function M.damage_zombie(self, message)
 		})
 		items_functions.spawn(self)
 		go.delete()
+
+		
 	end
 end
 
@@ -43,7 +45,23 @@ function M.damage_human(self, message)
 			timer_delete = 0
 		})
 		items_functions.spawn(self)
+
 		go.delete()
+
+		-- Генерируем зомбиков
+		local url_zombie = message.parent
+		local type_object = go.get(url_zombie, "type_object")
+		if type_object == hash("zombie_main") then
+			msg.post(url_zombie, "create_zombie", {
+				human_id = self.human_id, position = go.get_position()
+			})
+		elseif type_object == hash("zombie_dynamic") then
+			local parent = go.get(url_zombie, "parent")
+			msg.post(parent, "create_zombie", {
+				human_id = self.human_id, position = go.get_position()
+			})
+		end
+		
 	end
 end
 

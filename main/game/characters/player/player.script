@@ -15,6 +15,7 @@ go.property("target_useful", 0)
 go.property("target_add_horde", vmath.vector3())
 go.property("time_view", 0.1)
 go.property("damage_blood", true)
+go.property("type_object", hash("zombie_main"))
 
 function init(self)
 	msg.post(".", "acquire_input_focus")
@@ -177,6 +178,14 @@ function on_message(self, message_id, message, sender)
 		if self.animation_horde == "run" then
 			sprite.play_flipbook(self.horde[#self.horde].url_sprite, "zombie_"..skin_id.."_"..human_id .. "_run")
 		end
+
+	elseif message_id == hash("create_zombie") then
+		-- Создаём зомбика
+		local position = message.position
+		if position then
+			character_zombie_main.add_zombie_attack(self, horde_index, position, target, message)
+		end
+
 	end
 	
 end
