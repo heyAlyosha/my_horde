@@ -21,6 +21,7 @@ function M.damage_zombie(self, message)
 			animation_id = hash("effect_zombie_death"), 
 			timer_delete = 3
 		})
+		items_functions.spawn(self)
 		go.delete()
 	end
 end
@@ -41,6 +42,7 @@ function M.damage_human(self, message)
 			animation_id = hash("effect_infection"), 
 			timer_delete = 0
 		})
+		items_functions.spawn(self)
 		go.delete()
 	end
 end
