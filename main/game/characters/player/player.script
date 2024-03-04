@@ -123,6 +123,10 @@ function update(self, dt)
 		--self.position_center_horde.y = self.position_center_horde.y - 6
 		go.set_position(self.position_to)
 
+		if #self.horde > 0 then
+			self.target_add_horde = horde.get_position(self, go.get_position(), #self.horde)
+		end
+
 		-- Анимация
 		if vmath.length(self.movement) > 0 then
 			character_animations.play(self, "move")

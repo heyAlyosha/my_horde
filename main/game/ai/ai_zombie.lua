@@ -15,7 +15,6 @@ function M.behavior(self)
 				
 				-- НЕ может найти путь для атаки
 				local handle_error = function (self, error_code)
-					print("handle_error")
 					-- Не может найти путь для атаки, повторяем поиск
 					self.target = nil
 					self.condition_attack = nil
@@ -24,7 +23,6 @@ function M.behavior(self)
 
 				-- Добежал до цели
 				local handle_success = function (self)
-					print("handle_success")
 					if self.target and go_controller.is_object(self.target) and ai_attack.check_distance_attack(self, self.target, handle_distantion_error) then
 						-- Атакуем
 						local handle_fire = function (self)
@@ -57,7 +55,7 @@ function M.behavior(self)
 				end
 
 				-- Обработка удара (заглушка)
-				local handle_fire = function (self) print("handle_fire") end
+				local handle_fire = function (self) end
 
 				ai_core.condition_attack(self, self.target, handle_success, handle_error, handle_success)
 			end
@@ -91,11 +89,15 @@ function M.behavior(self)
 
 					if self.parent and go_controller.url_to_key(self.parent) ~= go_controller.url_to_key(msg.url()) and go_controller.is_object(self.parent) then
 						self.target_vector, self.target_add_horde = M.get_horde_position(self)
-
 						local function handle_success(self)
 							--Добежал до пункта
-							if vmath.length(self.target_add_horde - go.get_position()) <= 5 then
+							self.target_vector, self.target_add_horde = M.get_horde_position(self)
+
+							-- Смотрим дистацию до игрока
+							local dist = vmath.length(self.target_add_horde - go.get_position())
+							if dist <= 10 then
 								-- Добежал
+								print("handle_success", dist, self.target_add_horde)
 								msg.post(self.parent, "add_horde", {
 									skin_id = self.skin_id,
 									human_id = self.human_id,
@@ -115,6 +117,7 @@ function M.behavior(self)
 							-- Не может найти путь к месту в орде
 							self.target_vector, self.target_add_horde = M.get_horde_position(self)
 							local duration = vmath.length(self.target_add_horde - go.get_position()) / self.speed
+							print("handle_error")
 							go.animate(go.get_id(), "position", go.PLAYBACK_ONCE_FORWARD, self.target_add_horde, go.EASING_LINEAR, duration, 0, function (self)
 								msg.post(self.parent, "add_horde", {
 									skin_id = self.skin_id,
@@ -125,7 +128,7 @@ function M.behavior(self)
 						end
 
 						-- Пересчитываем каждый тайтл пути
-						local function handle_item_move(self)end
+						local function handle_item_move(self) end
 						ai_move.move_to_position(self, self.target_add_horde, handle_success, handle_error, handle_no_object_target, handle_item_move)
 
 					else

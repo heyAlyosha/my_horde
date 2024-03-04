@@ -3,7 +3,7 @@ local M = {}
 
 -- Спавн предметов
 function M.spawn(self)
-	if self.spawn_items and self.command == hash("player") then
+	if self.spawn_items or self.command == hash("player") then
 		return true
 	end 
 	self.spawn_items = true 
