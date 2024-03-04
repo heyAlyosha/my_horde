@@ -22,6 +22,10 @@ images {
   image: "/assets/images/game/effects/shadow.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
+images {
+  image: "/assets/images/game/bullets/bullet_default.png"
+  sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+}
 animations {
   id: "zombie_0_0_run"
   images {

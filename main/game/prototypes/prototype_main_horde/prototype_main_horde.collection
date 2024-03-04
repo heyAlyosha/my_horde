@@ -3,8 +3,8 @@ instances {
   id: "player"
   prototype: "/main/game/characters/player/player.go"
   position {
-    x: 119.0
-    y: 79.0
+    x: 272.0
+    y: 77.0
     z: 1.0
   }
   rotation {
@@ -243,8 +243,8 @@ instances {
   id: "zombie_enemy"
   prototype: "/main/game/characters/zombie/zombie.go"
   position {
-    x: 506.0
-    y: 130.0
+    x: 597.0
+    y: 182.0
     z: 0.0
   }
   rotation {
@@ -286,8 +286,8 @@ instances {
   id: "zombie_enemy1"
   prototype: "/main/game/characters/zombie/zombie.go"
   position {
-    x: 584.0
-    y: 118.0
+    x: 553.0
+    y: 182.0
     z: 0.0
   }
   rotation {
@@ -329,8 +329,8 @@ instances {
   id: "zombie_enemy2"
   prototype: "/main/game/characters/zombie/zombie.go"
   position {
-    x: 498.0
-    y: 110.0
+    x: 570.0
+    y: 182.0
     z: 0.0
   }
   rotation {
@@ -638,6 +638,66 @@ instances {
       value: "true"
       type: PROPERTY_TYPE_BOOLEAN
     }
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "police"
+  prototype: "/main/game/characters/soldier/police.go"
+  position {
+    x: 324.0
+    y: 75.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "police1"
+  prototype: "/main/game/characters/soldier/police.go"
+  position {
+    x: 335.0
+    y: 100.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "police2"
+  prototype: "/main/game/characters/soldier/police.go"
+  position {
+    x: 340.0
+    y: 48.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
   }
   scale3 {
     x: 1.0

@@ -36,6 +36,7 @@ function init(self)
 	ai_vision = require("main.game.ai.ai_vision")
 	ai_zombie = require("main.game.ai.ai_zombie")
 	ai_human = require("main.game.ai.ai_human")
+	ai_soldier = require("main.game.ai.ai_soldier")
 	character_zombie_main = require("main.game.characters.modules.character_zombie_main")
 	items_functions = require("main.game.objects.items.modules.items_functions")
 

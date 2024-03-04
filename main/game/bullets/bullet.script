@@ -5,6 +5,9 @@ go.property("command", hash("player")) -- Id комманды, объектам 
 go.property("type", hash("hit")) -- Тип пули (hit)
 go.property("parent", msg.url())
 go.property("visible_attack", true)
+go.property("distantion", 75)
+go.property("speed", 75)
+go.property("dir", vmath.vector3())
 
 function init(self)
 	if self.type == hash("hit") then
@@ -19,7 +22,18 @@ function init(self)
 				go.delete()
 			end)
 		end
-		
+
+	elseif self.type == hash("bullet") then
+		print("bullet", self.dir)
+		local position_to = self.dir * self.distantion
+		local duration = vmath.length(go.get_position() - position_to) / self.speed
+
+		-- Переворачиваем спрайт пули в напралвении
+		sprite.set_hflip("#body", self.dir.x > 0)
+
+		go.animate(".", "position", go.PLAYBACK_ONCE_FORWARD, position_to, go.EASING_LINEAR, duration, 0, function (self)
+			go.delete()
+		end)
 	end
 end
 
@@ -51,14 +65,15 @@ function on_message(self, message_id, message, sender)
 		if message.enter and self.damage_count_object > 0 then 
 			-- В кого то попадает
 			if self.type == hash("hit") then
-				-- Проверяем, что объект из другой команды
-				local url_script = msg.url(nil, message.other_id, "script")
-				local command_object = go.get(url_script, "command")
 				
-				if self.command ~= command_object then
-					self.damage_count_object = self.damage_count_object - 1
-					msg.post(message.other_id, "damage", {damage = self.damage, parent = self.parent, position = go.get_position()})
-				end
+			end
+			-- Проверяем, что объект из другой команды
+			local url_script = msg.url(nil, message.other_id, "script")
+			local command_object = go.get(url_script, "command")
+
+			if self.command ~= command_object then
+				self.damage_count_object = self.damage_count_object - 1
+				msg.post(message.other_id, "damage", {damage = self.damage, parent = self.parent, position = go.get_position()})
 			end
 		end
 	end

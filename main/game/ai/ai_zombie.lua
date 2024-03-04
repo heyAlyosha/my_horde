@@ -134,7 +134,6 @@ function M.behavior(self)
 					else
 						--
 						ai_attack.delete_target(self, self.parent)
-						
 						self.condition_to_horde = nil
 						self.target = nil
 						self.condition_attack = nil
