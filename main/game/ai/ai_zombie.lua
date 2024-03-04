@@ -1,112 +1,153 @@
 -- ИИ зомби
 local M = {}
 
--- Атака
-function M.condition_attack(self, url)
-	-- НЕ может найти путь для атаки
-	local handle_error = function (self, error_code)
-		--M.condition_to_horde(self)
-	end
-	-- Добежал до цели
-	local handle_success = handle_success or function (self)
-		if not ai_attack.check_distance_attack(self, url, handle_distantion_error) then
-			ai_zombie.condition_attack(self, url)
-		else
-			ai_zombie.condition_attack(self, url)
-		end
-	end
-	-- Обработка 
-	local handle_fire = function (self)
-		if ai_attack.check_distance_attack(self, url, hendle_error) then
-			character_attack.attack(self, url)
-
-		else
-			ai_zombie.condition_attack(self, url, handle_success, handle_error, handle_fire)
-		end
-	end
-
-	ai_core.condition_attack(self, url, handle_success, handle_error, handle_fire)
-end
-
--- Получение места в орде
-function M.get_horde_position(self)
-	local url_script = msg.url(self.parent.socket, self.parent.path, "script")
-	local target_add_horde = go.get(url_script, "target_add_horde")
-	local dir = target_add_horde - go.get_position(self.target)
-	return dir, target_add_horde
-end
-
--- Получение места в орде
-function M.get_horde_position(self)
-	local url_script = msg.url(self.parent.socket, self.parent.path, "script")
-	local target_add_horde = go.get(url_script, "target_add_horde")
-	local dir = target_add_horde - go.get_position(self.target)
-	return dir, target_add_horde
-end
-
--- Возвращение в орду
-function M.condition_to_horde(self)
-	pprint("condition_to_horde")
-	self.condition = hash("run_to_horde")
-	self.target = self.parent
-
-	-- Находим место в орде
-	if go_controller.url_to_key(self.parent) ~= go_controller.url_to_key(msg.url()) then
-		self.target_vector, self.target_add_horde = M.get_horde_position(self)
-
-		local function handle_success(self)
-			msg.post(self.parent, "add_horde", {
-				skin_id = self.skin_id,
-				human_id = self.human_id,
-			})
-			go.delete()
-		end
-
-		local function handle_error(self, error_code)
-			self.target_vector, self.target_add_horde = M.get_horde_position(self)
-			local duration = vmath.length(self.target_add_horde - go.get_position()) / self.speed
-			go.animate(go.get_id(), "position", go.PLAYBACK_ONCE_FORWARD, self.target_add_horde, go.EASING_LINEAR, duration, 0, function (self)
-				msg.post(self.parent, "add_horde", {
-					skin_id = self.skin_id,
-					human_id = self.human_id,
-				})
-				go.delete()
-			end)
-		end
-
-		local function handle_item_move(self)
-			--self.target_vector, self.target_add_horde = M.get_horde_position(self)
-		end
-
-		ai_attack.add_target(self, self.target)
-		ai_move.move_to_object(self, self.target, handle_success, handle_error, handle_no_object_target, handle_item_move)
-
-	else
-		ai_attack.delete_target(self, self.target)
-		ai_core.clear_coditions(self)
-
-		-- Обозреваем вокруг
-		if not self.view then
-			self.view = ai_core.view(self, function (self, visible_items)
-				if visible_items then
-					ai_zombie.condition_attack(self, visible_items[1].url)
-					return true
+-- Поведение
+function M.behavior(self)
+	self.view = ai_core.view(self, function (self, visible_items)
+		if self.target and go_controller.is_object(self.target) then
+			-- Есть цель и она существует
+			-- Следуем к ней
+			if not self.condition_attack then
+				-- Прокладываем путь для атаки
+				self.condition_attack = true
+				self.condition_to_horde = nil
+				ai_move.stop(self)
+				
+				-- НЕ может найти путь для атаки
+				local handle_error = function (self, error_code)
+					print("handle_error")
+					-- Не может найти путь для атаки, повторяем поиск
+					self.target = nil
+					self.condition_attack = nil
+					ai_zombie.behavior(self)
 				end
-			end)
-		end
 
-	end
+				-- Добежал до цели
+				local handle_success = function (self)
+					print("handle_success")
+					if go_controller.is_object(self.target) and ai_attack.check_distance_attack(self, self.target, handle_distantion_error) then
+						-- Атакуем
+						local handle_fire = function (self)
+							if self.target and go_controller.is_object(self.target) and ai_attack.check_distance_attack(self, self.target, handle_distantion_error) then
+								-- Цель есть, атакуем
+								character_attack.attack(self, self.target)
+							else
+								-- Цели нет, либо убежала далеко, повторяем
+								self.target = nil
+								if self.attack then
+									self.attack.stop(self)
+									self.attack = nil
+								end
+								self.condition_attack = nil
 
-	-- Обозреваем вокруг
-	if not self.view then
-		self.view = ai_core.view(self, function (self, visible_items)
-			
-			if visible_items then
-				ai_zombie.condition_attack(self, visible_items[1].url)
-				return true
+								ai_zombie.behavior(self)
+							end
+						end
+						self.attack = ai_core.fire(self, self.target, handle_fire)
+					else
+						-- Цели нет, подходим
+						self.condition_attack = nil
+						if self.attack then
+							self.attack.stop(self)
+							self.attack = nil
+						end
+						ai_zombie.behavior(self)
+					end
+				end
+
+				-- Обработка удара (заглушка)
+				local handle_fire = function (self) print("handle_fire") end
+
+				ai_core.condition_attack(self, self.target, handle_success, handle_error, handle_success)
 			end
-		end)
-	end
+			
+		else
+			-- Нет цели, ищем возможные вокруг
+			if visible_items then
+				for i = 1, #visible_items do
+					local visible_item = visible_items[i]
+					if go_controller.is_object(visible_item.url) then
+						-- Есть объект для атаки
+						-- Помечаем целью
+						self.target = visible_item.url
+						ai_zombie.behavior(self)
+						return true
+					end
+				end
+
+				-- Найденные объекты удалены из игры
+				-- Перезапускаем поиск вокруг
+				self.target = nil
+				self.condition_attack = nil
+				ai_zombie.behavior(self)
+			else
+				-- Цели нет, возвращаемся в орду
+				if not self.condition_to_horde then
+					-- Ищем путь к месту в орде
+					self.condition_to_horde = true
+					self.target = nil
+					self.condition_attack = nil
+
+					if self.parent and go_controller.url_to_key(self.parent) ~= go_controller.url_to_key(msg.url()) and go_controller.is_object(self.parent) then
+						self.target_vector, self.target_add_horde = M.get_horde_position(self)
+
+						local function handle_success(self)
+							--Добежал до пункта
+							if vmath.length(self.target_add_horde - go.get_position()) <= 5 then
+								-- Добежал
+								msg.post(self.parent, "add_horde", {
+									skin_id = self.skin_id,
+									human_id = self.human_id,
+								})
+								go.delete()
+							else
+								-- До позиции далеко
+								self.condition_to_horde = nil
+								self.target = nil
+								self.condition_attack = nil
+
+								ai_zombie.behavior(self)
+							end
+						end
+
+						local function handle_error(self, error_code)
+							-- Не может найти путь к месту в орде
+							self.target_vector, self.target_add_horde = M.get_horde_position(self)
+							local duration = vmath.length(self.target_add_horde - go.get_position()) / self.speed
+							go.animate(go.get_id(), "position", go.PLAYBACK_ONCE_FORWARD, self.target_add_horde, go.EASING_LINEAR, duration, 0, function (self)
+								msg.post(self.parent, "add_horde", {
+									skin_id = self.skin_id,
+									human_id = self.human_id,
+								})
+								go.delete()
+							end)
+						end
+
+						-- Пересчитываем каждый тайтл пути
+						local function handle_item_move(self)end
+						ai_move.move_to_position(self, self.target_add_horde, handle_success, handle_error, handle_no_object_target, handle_item_move)
+
+					else
+						--
+						ai_attack.delete_target(self, self.parent)
+						ai_core.clear_coditions(self)
+						self.condition_to_horde = nil
+						self.target = nil
+						self.condition_attack = nil
+					end
+				end
+				
+			end
+		end
+	end)
+end
+
+-- Получение места в орде
+function M.get_horde_position(self, url)
+	local url_script = msg.url(self.parent.socket, self.parent.path, "script")
+	local target_add_horde = go.get(url_script, "target_add_horde")
+	local dir = target_add_horde - go.get_position(url)
+	return dir, target_add_horde
 end
 
 return M

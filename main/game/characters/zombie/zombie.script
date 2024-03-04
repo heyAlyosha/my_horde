@@ -22,9 +22,7 @@ go.property("spawn_trash", 0)
 go.property("spawn_xp", 1)
 
 function init(self)
-	timer.delay(0.1, false, function (self)
-		go_controller.add(self)
-	end)
+	go_controller.add(self)
 
 	sprite.play_flipbook("#body", "zombie_"..self.skin_id.."_"..self.human_id .. "_default")
 	position_functions.go_set_perspective_z()
@@ -45,6 +43,8 @@ function init(self)
 	end
 
 	print(self.target)
+	ai_zombie.behavior(self)
+	--[[
 	if self.target then
 		ai_zombie.condition_attack(self, self.target)
 	else
@@ -55,8 +55,8 @@ function init(self)
 				return true
 			end
 		end)
-
 	end
+	--]]
 end
 
 function final(self)
@@ -96,10 +96,14 @@ function on_message(self, message_id, message, sender)
 	if message_id == hash("object_visible_kill") then
 		-- Прицеливаемый объект уничтожен
 		if self.target then
+			--[[
 			ai_attack.delete_target(self, self.target)
 			ai_core.clear_coditions(self)
 
 			ai_zombie.condition_to_horde(self)
+			--]]
+			self.target = nil
+			ai_zombie.behavior(self)
 		end
 
 	elseif message_id == hash("damage") then
