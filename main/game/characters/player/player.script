@@ -102,6 +102,8 @@ function init(self)
 			msg.post(items[i].url, "activate")
 		end
 	end)
+
+	camera.follow(camera_id, msg.url(), options)
 end
 
 function final(self)

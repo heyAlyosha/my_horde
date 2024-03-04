@@ -1,7 +1,6 @@
 local storage_player = require "main.storage.storage_player"
 
 local function set_position_up_scene(self)
-
 	self.position.y = storage_player.camera_yoffset
 	go.set_position(self.position)
 end
