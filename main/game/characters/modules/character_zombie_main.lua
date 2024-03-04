@@ -54,10 +54,22 @@ function M.add_zombie_attack(self, horde_index, position, target, message)
 		}
 	end
 
-	-- Позиция для добавления зомбиков
-	if #self.horde > 0 then
-		self.target_add_horde = horde.get_position(self, go.get_position(), #self.horde)
+	character_zombie_main.change_horde(self)
+end
+
+-- Отслеживание изменений в орде
+function M.change_horde(self)
+	local max_index = #self.horde
+	if max_index < 1 then
+		max_index = 1
 	end
+	-- Позиция для добавления зомбиков
+	self.target_add_horde = horde.get_position(self, go.get_position(), max_index)
+
+	local dist_max_horde = vmath.length(self.target_add_horde - self.target_add_horde)
+
+	self.visible_horde = self.visible_horde_min + dist_max_horde
+	self.distantion_visible = self.distantion_attack + dist_max_horde
 end
 
 return M
