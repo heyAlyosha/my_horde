@@ -25,7 +25,7 @@ function M.behavior(self)
 				-- Добежал до цели
 				local handle_success = function (self)
 					print("handle_success")
-					if go_controller.is_object(self.target) and ai_attack.check_distance_attack(self, self.target, handle_distantion_error) then
+					if self.target and go_controller.is_object(self.target) and ai_attack.check_distance_attack(self, self.target, handle_distantion_error) then
 						-- Атакуем
 						local handle_fire = function (self)
 							if self.target and go_controller.is_object(self.target) and ai_attack.check_distance_attack(self, self.target, handle_distantion_error) then

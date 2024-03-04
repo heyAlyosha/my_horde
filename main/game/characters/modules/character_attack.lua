@@ -30,6 +30,7 @@ function M.attack(self, url_object)
 
 	-- Место спавна пули
 	local position = go.get_position()
+	position.y = position.y + go.get("#body", "size").y / 2
 	local position_to = go.get_position(url_object)
 	local dir = position_to - position
 	-- Поворачиваем пулю в нужное управление
