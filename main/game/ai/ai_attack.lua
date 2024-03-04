@@ -79,6 +79,7 @@ function M.check_distance_attack(self, url, handle_error)
 		end
 	elseif self.distantion_attack >= vmath.length(go.get_position(url) - go.get_position()) then
 		local result = physics.raycast(go.get_position(), go.get_position(url), {hash("default")}, options)
+		pprint("check_distance_attack", url)
 		return not result or #result == 0
 	end
 

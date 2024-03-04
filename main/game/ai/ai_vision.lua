@@ -110,8 +110,6 @@ function M.get_visible(self, exclude_aabb_id, distantion, exclude_commands)
 		if exclude_aabb_id ~= aabb_id then
 			local visible_object = storage_game.groups_aabbcc.visible_object.objects[aabb_id]
 			local url = visible_object.url
-			print("exclude_commands", msg.url(), self.command, visible_object.command, exclude_commands[visible_object.command])
-			pprint(visible_object)
 			if self.command ~= visible_object.command and not exclude_commands[visible_object.command] then
 				local target =  storage_game.go_targets[go_controller.url_to_key(url)]
 				if target then

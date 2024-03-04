@@ -54,9 +54,10 @@ function M.behavior(self)
 								self.attack = nil
 							end
 							M.behavior(self)
+							
 						end
 					end
-
+					print("ai_core.condition_attack", self.target)
 					ai_core.condition_attack(self, self.target, handle_success, handle_error, handle_success)
 				end
 			else
@@ -100,7 +101,7 @@ function M.behavior(self)
 						ai_move.move_item_from(self, random_position, function (self)
 							self.animation_walking = nil
 							character_animations.play(self, "idle")
-							M.live(self)
+							M.behavior(self)
 						end, self.speed)
 					else
 						-- Просто стоит
@@ -122,7 +123,7 @@ function M.behavior(self)
 
 					local function handle_success(self)
 						self.animation_walking = nil
-						ai_human.live(self)
+						M.behavior(self)
 					end
 					if self.move_to_point then
 						ai_move.move_to_position(self, self.to_point_position, handle_success, handle_error)

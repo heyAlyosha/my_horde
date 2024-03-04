@@ -91,6 +91,9 @@ end
 
 -- Есть ли объект
 function M.is_object(url)
+	if not url then
+		return false
+	end
 	return storage_game.go_keys[M.url_to_key(url)]
 end
 

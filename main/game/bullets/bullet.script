@@ -61,7 +61,10 @@ function fixed_update(self, dt)
 end
 
 function on_message(self, message_id, message, sender)
-	if message_id == hash("trigger_response") and message.own_group == hash("bullet") then
+	if message_id == hash("trigger_response") and message.other_group == hash("default") then
+		go.delete()
+
+	elseif message_id == hash("trigger_response") and message.own_group == hash("bullet") then
 		if message.enter and self.damage_count_object > 0 then 
 			-- В кого то попадает
 			if self.type == hash("hit") then

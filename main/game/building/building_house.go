@@ -24,6 +24,7 @@ embedded_components {
   "group: \"default\"\n"
   "mask: \"default\"\n"
   "mask: \"physic_item_horde\"\n"
+  "mask: \"bullet\"\n"
   "embedded_collision_shape {\n"
   "  shapes {\n"
   "    shape_type: TYPE_BOX\n"
