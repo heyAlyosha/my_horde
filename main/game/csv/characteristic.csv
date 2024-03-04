@@ -1,0 +1,6 @@
+id;sort;img_preview;step;start_value;level;buff;next_buff;title_id_string;description_id_string
+mind;5;mind;10;0;0;0;0;_characteristic_title_mind;_characteristic_description_mind
+accuracy;4;accuracy;7;0;0;0;0;_characteristic_title_accuracy;_characteristic_description_accuracy
+speed_caret;3;speed_caret;7;0;0;0;0;_characteristic_title_speed_caret;_characteristic_description_speed_caret
+trade;2;trade;5;5;0;0;0;_characteristic_title_trade;_characteristic_description_trade
+charisma;1;charisma;1;5;0;0;0;_characteristic_title_charisma;_characteristic_description_charisma

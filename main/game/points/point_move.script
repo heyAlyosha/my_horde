@@ -1,0 +1,10 @@
+go.property("active", false)
+go.property("url_go", msg.url())
+go.property("type_move", hash("run"))
+
+function init(self)
+	if self.active then
+		msg.post(self.url_go, "set_point", {position = go.get_position(), type_move = self.type_move})
+	end
+	go.delete()
+end

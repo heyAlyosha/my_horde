@@ -1,0 +1,212 @@
+local druid = require("druid.druid")
+local gui_input = require "main.gui.modules.gui_input"
+local gui_animate = require "main.gui.modules.gui_animate"
+local storage_gui = require "main.storage.storage_gui"
+local storage_player = require "main.storage.storage_player"
+local gui_manager = require "main.gui.modules.gui_manager"
+local game_hud_buff_horisontal_functions = require "main.gui.game_gui.game_hud_buff_horisontal.functions.game_hud_buff_horisontal_functions"
+local gui_loyouts = require "main.gui.modules.gui_loyouts"
+local gui_lang = require "main.lang.gui_lang"
+local storage_game = require "main.game.storage.storage_game"
+
+function init(self)
+	msg.post(".", "acquire_input_focus")
+	gui_manager.add_screen("game_hud_buff_horisontal", msg.url())
+	gui.set_render_order(3)
+	self.type = "buff_horisontal"
+	self.id_catalog = "buff_horisontal"
+	self.id = "game_hud_buff_horisontal"
+
+	self.nodes = {
+		wrap = gui.get_node("wrap"),
+		wrap_description = gui.get_node("wrap_description"),
+		title = gui.get_node("title"),
+		description = gui.get_node("description"),
+		catalog_view = gui.get_node("wrap_bg"),
+		catalog_content = gui.get_node("wrap_buff"),
+		catalog_input = gui.get_node("wrap_bg"),
+		
+		btn_close = gui.get_node("btn-close-template/btn_wrap"),
+		btn_close_title = gui.get_node("btn-close-template/btn_title"),
+	}
+
+	gui_lang.set_text_upper(self, self.nodes.title, "_catch_sector", before_str, after_str)
+	gui_lang.set_text_upper(self, self.nodes.btn_close_title, "_no", before_str, after_str)
+
+	self.druid = druid.new(self)
+end
+
+function final(self)
+	gui_manager.remove_screen("game_hud_buff_horisontal", msg.url())
+	gui_input.on_final(self)
+	self.druid:final()
+
+	msg.post("game-room:/loader_gui", "set_status", {
+		id = "game_wheel",
+		type = "preview_artifact",
+		visible = false,
+		value = {}
+	})
+
+	-- Скрыть
+	msg.post("main:/loader_gui", "visible", {
+		id = "study",
+		visible = false
+	})
+end
+
+function on_message(self, message_id, message, sender)
+	input_remote_tv.on_message(self, message_id, message, sender)
+	self.druid:on_message(message_id, message, sender)
+
+	gui_loyouts.on_message(self, message_id, message)
+
+	if message_id == hash("layout_changed") then
+		--[[
+		msg.post("game-room:/loader_gui", "set_status", {
+			id = "game_wheel",
+			type = "focus_wheel",
+			visible = true,
+			value = {type = "bottom"}
+		})
+
+		-- Если обучение
+		-- Скрыть
+		msg.post("main:/loader_gui", "visible", {
+			id = "study",
+			visible = false
+		})
+		for i, btn in ipairs(self.btns) do
+			if storage_game.game.study and btn.count and btn.count > 0 then
+				-- Если обучение
+				timer.delay(0.25, false, function (self)
+					msg.post("main:/loader_gui", "set_status", {
+						id = "study",
+						type = "set_items",
+						timeline = {
+							{
+								type = "touch",
+								position_end = gui.get_screen_position(btn.node)
+							}
+						}
+					})
+				end)
+				break
+			end
+		end
+		--]]
+
+	elseif message_id == hash("focus") then
+		gui_input.set_focus(self, message.focus)
+
+	elseif message_id == hash("visible") then
+		local data = message.value
+		self.is_reward = data.is_reward
+
+		game_hud_buff_horisontal_functions.visible(self, data)
+
+	elseif message_id == hash("set_status") and message.type == "update" then
+		local is_update = true
+		game_hud_buff_horisontal_functions.visible(self, {}, is_update)
+
+	elseif message_id == hash("set_status") and message.type == "reward" then
+		local value = message.value or {}
+
+		if value.status == "success" and message.type == "reward" then
+			
+			local is_update = true
+			game_hud_buff_horisontal_functions.visible(self, {}, is_update)
+			game_hud_buff_horisontal_functions.activate_buff(self, self.btns_id[value.item_id])
+		end
+		
+
+	elseif message_id == hash("hidden") then
+		gui_animate.hidden_bottom(self, self.nodes.wrap, function (self)
+			msg.post("/loader_gui", "visible", {
+				id = "game_hud_buff_horisontal",
+				visible = false,
+			})
+		end)
+	end
+end
+
+function update(self, dt)
+	self.druid:update(dt)
+
+	for i = 1, 5 do
+		storage_gui.positions[self.id] = storage_gui.positions[self.id] or {}
+		storage_gui.positions[self.id]["buff_"..i] = gui.get_screen_position(gui.get_node("item_template_"..i.."/icon_wrap"))
+	end
+
+end
+
+function on_input(self, action_id, action)
+	action_id, action = input_remote_tv.on_input(self, action_id, action)
+	if storage_gui.components_visible.modal_pause then
+		return true
+	end
+
+	--Клики по кнопке подробнее
+	if gui_input.is_touch(self, action_id, action) then
+		for i, btn in ipairs(self.btns) do
+			if btn.node_info and gui.pick_node(btn.node_info, action.x, action.y) then
+				game_hud_buff_horisontal_functions.render_detail(self, btn.id)
+				return
+			end
+		end
+	end
+
+	local function_back = game_hud_buff_horisontal_functions.close
+	
+	if action_id == hash("back") and action.pressed then
+		function_back(self)
+		return true
+
+	elseif action_id == hash("up") and action.pressed then
+		if self.focus_btn_id and self.btns[self.focus_btn_id].section == "card_1" then
+			msg.post("/loader_gui", "focus", {
+				id = "interface", -- id компонента в лоадер гуи
+				focus = 1 -- кнопка фокуса
+			})
+
+			msg.post("main:/sound", "play", {sound_id = "focus_main_menu"})
+
+			return 
+
+		elseif self.focus_btn_id and self.btns[self.focus_btn_id].section == "body" then
+			for i, item in ipairs(self.btns) do
+				if not item.disabled and item.section == "card_1" then
+					return gui_input.set_focus(self, i)
+				end
+			end
+
+		end
+	elseif action_id == hash("down") and action.pressed then
+		
+	end
+	-- Нажатие на кнопки
+	local function function_activate(self, focus_btn_id)
+		local btn = self.btns[focus_btn_id]
+
+		if btn.disabled and self.disabled then
+			return false
+
+		elseif btn.id == "close" then
+			game_hud_buff_horisontal_functions.close(self)
+
+		elseif btn.id == "confirm" then
+			game_hud_buff_horisontal_functions.activate_buff(self, btn)
+
+		elseif btn.is_card then
+			game_hud_buff_horisontal_functions.activate_buff(self, btn)
+
+		end
+	end
+
+	if self.druid:on_input(action_id, action) then
+		return true
+	end
+
+	return gui_input.on_input(self, action_id, action, function_focus, function_activate, function_back)
+
+end

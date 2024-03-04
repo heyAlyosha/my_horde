@@ -1,0 +1,127 @@
+local storage_sdk = require "main.storage.storage_sdk"
+local yagames = require("yagames.yagames")
+local ads_functions = require "main.ads.modules.ads_functions"
+local gui_input = require "main.gui.modules.gui_input"
+
+
+function init(self)
+	msg.post(".", "acquire_input_focus")
+	gui.set_render_order(15)
+	self.nodes = {
+		wrap = gui.get_node("wrap"),
+		title = gui.get_node("title"),
+		btn_close = gui.get_node("close_btn"),
+	}
+
+	self.visible = false
+end
+
+
+
+function final(self)
+	-- Add finalization code here
+	-- Learn more: https://defold.com/manuals/script/
+	-- Remove this function if not needed
+end
+
+function update(self, dt)
+	msg.post(".", "acquire_input_focus")
+end
+
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("fullscreen") then
+		self.sender = sender
+
+		if storage_sdk.stats.platform_id == "yandex_games" then
+			ads_functions.show_ads(self, "fullscreen")
+
+			local function adv_open(self)
+				-- You should switch off all sounds!
+			end
+
+			local function adv_close(self, was_shown)
+				ads_functions.hidden_ads(self, "fullscreen", "close")
+			end
+
+			local function adv_offline(self)
+				ads_functions.hidden_ads(self, "fullscreen", "close")
+			end
+
+			local function adv_error(self, err)
+				ads_functions.hidden_ads(self, "fullscreen", "close")
+			end
+
+			yagames.adv_show_fullscreen_adv({
+				open = adv_open,
+				close = adv_close,
+				offline = adv_offline,
+				error = adv_error
+			})
+		end
+
+	elseif message_id == hash("reward") then
+		self.sender = sender
+
+		if storage_sdk.stats.platform_id == "yandex_games" then
+			ads_functions.show_ads(self, "reward")
+
+			local function rewarded_open(self)
+				-- You should switch off all sounds!
+			end
+
+			local function rewarded_rewarded(self)
+				self.success_reward = true
+				--ads_functions.hidden_ads(self, "reward", "success")
+
+			end
+
+			local function rewarded_close(self)
+				if html5 then
+					if self.success_reward then
+						ads_functions.hidden_ads(self, "reward", "success")
+						self.success_reward = nil
+					else
+						ads_functions.hidden_ads(self, "reward", "close")
+					end
+				else
+					-- Для теста
+					timer.delay(2, false, function (self)
+						ads_functions.hidden_ads(self, "reward", "success")
+					end)
+					self.success_reward = nil
+
+				end
+			end
+
+			local function rewarded_error(self, err)
+				ads_functions.hidden_ads(self, "reward", "error")
+				self.success_reward = nil
+
+			end
+
+			yagames.adv_show_rewarded_video({
+				open = rewarded_open,
+				rewarded = rewarded_rewarded,
+				close = rewarded_close,
+				error = rewarded_error
+			})
+		end
+	end
+end
+
+--
+function on_input(self, action_id, action)
+	if self.visible then
+		if self.btn_active and gui_input.is_touch(self, action_id, action) and gui.pick_node(self.nodes.btn_close, action.x, action.y) then
+			ads_functions.hidden_ads(self, nil, "close")
+		end
+		return true
+	end
+end
+
+function on_reload(self)
+	-- Add reload-handling code here
+	-- Learn more: https://defold.com/manuals/hot-reload/
+	-- Remove this function if not needed
+end
