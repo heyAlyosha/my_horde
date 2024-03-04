@@ -65,6 +65,14 @@ end
 function on_message(self, message_id, message, sender)
 	if message_id == hash("activate") then
 		-- Подьираем предмет
-		go.delete()
+		if not self.activate then
+			self.activate = true
+			local duration = 0.1
+			go.cancel_animations(".", "position")
+			go.animate(".", "position", go.PLAYBACK_ONCE_FORWARD, go.get_position(sender), go.EASING_LINEAR, duration)
+			timer.delay(duration, false, function (self)
+				go.delete()
+			end)
+		end
 	end
 end
