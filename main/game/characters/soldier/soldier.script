@@ -88,7 +88,7 @@ function on_message(self, message_id, message, sender)
 	if message_id == hash("damage") then
 		-- Урон
 		local animation_death = hash("effect_infection")
-		character_damage.damage_human(self, message, animation_death)
+		character_damage.damage_soldier(self, message, animation_death)
 
 	elseif message_id == hash("set_point") then
 		self.to_point = true
