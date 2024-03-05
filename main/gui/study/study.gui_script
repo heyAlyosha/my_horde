@@ -1,0 +1,40 @@
+local gui_input = require "main.gui.modules.gui_input"
+local gui_loyouts = require "main.gui.modules.gui_loyouts"
+local gui_animate = require "main.gui.modules.gui_animate"
+local gui_lang = require "main.lang.gui_lang"
+local storage_gui = require "main.storage.storage_gui"
+local gui_study_functions = require "main.gui.study.modules.gui_study_functions"
+
+function init(self)
+	self.nodes = {
+		cursor = gui.get_node("cursor")
+	}
+	gui.set_render_order(15)
+end
+
+function final(self)
+	gui_input.on_final(self)
+end
+
+function on_message(self, message_id, message, sender)
+	input_remote_tv.on_message(self, message_id, message, sender)
+	gui_loyouts.on_message(self, message_id, message)
+
+	if message.type == "set_items" then
+		self.timeline = message.timeline
+
+		gui_study_functions.render_timeline(self)
+
+	elseif (message_id == hash("layout_changed") or message_id == hash("window_resize")) and self.timeline then
+		
+		if self.timer_resize then
+			timer.cancel(self.timer_resize)
+			self.timer_resize = nil
+		end
+
+		self.timer_resize = timer.delay(0.2, false, function (self)
+			gui_study_functions.render_timeline(self)
+		end)
+	end
+
+end

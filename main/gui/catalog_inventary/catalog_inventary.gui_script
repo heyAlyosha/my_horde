@@ -1,0 +1,201 @@
+local druid = require("druid.druid")
+local gui_catalog = require "main.gui.modules.gui_catalog"
+local gui_input = require "main.gui.modules.gui_input"
+local storage_gui = require "main.storage.storage_gui"
+local gui_animate = require "main.gui.modules.gui_animate"
+local gui_manager = require "main.gui.modules.gui_manager"
+local api_player = require "main.game.api.api_player"
+local game_content_prize = require "main.game.content.game_content_prize"
+local gui_loader = require "main.gui.modules.gui_loader"
+local catalog_inventary_functions = require "main.gui.catalog_inventary.catalog_inventary.modules.catalog_inventary_functions"
+local gui_loyouts = require "main.gui.modules.gui_loyouts"
+local gui_lang = require "main.lang.gui_lang"
+local sound_render = require "main.sound.modules.sound_render"
+local live_update_atlas = require "main.game.live_update.atlas.live_update_atlas"
+
+function init(self)
+	msg.post(".", "acquire_input_focus")
+	gui.set_render_order(storage_gui.orders.inventary_component)
+
+	self.type = "inventary"
+	self.type_gui = "inventary"
+
+	self.focus_btn_id = nil
+	self.btns = {}
+
+	self.id = "catalog_inventary"
+	self.id_catalog = self.id
+
+	gui_manager.add_screen("catalog_inventary", msg.url())
+
+	msg.post("main:/music", "play", {sound = "music-catalog"})
+	sound_render.play("inventary_category_listen", url_object)
+
+	self.nodes = {
+		wrap = gui.get_node("wrap_catalog"),
+		scroll_wrap = gui.get_node("scroll_template/line"),
+		scroll_caret = gui.get_node("scroll_template/scroll"),
+		node_for_clone = gui.get_node("item_template/wrap"),
+		catalog_view = gui.get_node("catalog_view"),
+		catalog_content = gui.get_node("catalog_content"),
+		catalog_input = gui.get_node("catalog_input"),
+		wrap_detail = gui.get_node("wrap_detail"),
+		detail_loader = gui.get_node("loader_icon_template/loader_icon"),
+		detail_icon = gui.get_node("detail_icon"),
+		detail_icon_size = gui.get_node("detail_icon_size"),
+		detail_title = gui.get_node("detail_title"),
+		detail_description = gui.get_node("detail_description"),
+		detail_description_mini = gui.get_node("detail_description_mini"),
+		detail_gift = gui.get_node("detail_gift"),
+
+		btn_close = gui.get_node("btn-close-template/btn"),
+		btn_close_icon = gui.get_node("btn-close-template/btn_icon"),
+		btn_smart = gui.get_node("btn_smart_template/btn_wrap"),
+		btn_smart_title = gui.get_node("btn_smart_template/btn_title"),
+	}
+
+	self.druid = druid.new(self)
+end
+
+function final(self)
+	gui_manager.remove_screen("catalog_inventary", msg.url())
+	self.druid:final()
+	gui_input.on_final(self)
+	live_update_atlas.on_final_gui(self)
+end
+
+function update(self, dt)
+	self.druid:update(dt)
+
+	-- Сохраняем позиции кнопок
+	storage_gui.positions[self.id] = {}
+	if self.btns then
+		for i = 1, #self.btns do
+			local btn = self.btns[i]
+
+			if btn.id ~= "close" and not btn.disabled and not btn.scroll then
+				table.insert(storage_gui.positions[self.id], gui.get_screen_position(btn.node))
+
+			elseif not btn.disabled and btn.scroll and btn.scroll:is_node_in_view(btn.wrap_node) then
+				table.insert(storage_gui.positions[self.id], gui.get_screen_position(btn.wrap_node))
+			end
+		end
+	end
+end
+
+function on_message(self, message_id, message, sender)
+	input_remote_tv.on_message(self, message_id, message, sender)
+	self.druid:on_message(message_id, message, sender)
+	gui_loyouts.on_message(self, message_id, message)
+	live_update_atlas.on_message_gui(self, message_id, message, sender)
+
+	if message_id == hash("layout_changed") then
+		msg.post("/loader_gui", "reload_gui_component", {id = self.id})
+
+	elseif message_id == hash("focus") then
+		gui_input.set_focus(self, message.focus)
+
+	elseif message_id == hash("visible") and message.visible then
+		self.modal = message.modal
+		self.btn_close = message.btn_close
+		self.btn_smart = message.btn_smart
+
+		gui_animate.show_bottom(self, self.nodes.wrap , nil)
+
+		catalog_inventary_functions.render_catalog(self)
+
+		if not self.modal then
+			-- Если это не модальное окно
+			-- Сообщаем обёртке, что раздел открыт
+			msg.post("main:/loader_gui", "set_status", {
+				id = "inventary_wrap",
+				section_id = self.type,
+				type = "open_section",
+			})
+		end
+
+		timer.delay(0.1, false, function(self)
+			if #self.btns > 0 then
+				gui_input.set_focus(self, 1)
+			end
+			gui_loader.visible(false, node_wrap, node_icon, node_body, self)
+		end)
+
+	elseif message_id == hash("set_status") then
+		-- Результат покупки
+		if message.type == "result_sell" then
+			local object = message.value.prize
+
+			if message.value.status == "error" then
+				catalog_inventary_functions.render_catalog(self)
+			else
+				catalog_inventary_functions.result_sell(self, object)
+
+				local object = message.value.prize
+				local type_object = message.value.type_object 
+				local coins = message.value.coins
+				local score = message.value.score
+				local status = message.value.status
+				catalog_inventary_functions.result_sell_detail(self, status, object, type_object, coins, score, inventary_detail_function)
+			end
+
+		elseif message.type == "update" then
+			catalog_inventary_functions.render_catalog(self)
+		end
+	end
+end
+
+function on_input(self, action_id, action)
+	action_id, action = input_remote_tv.on_input(self, action_id, action)
+	self.druid:on_input(action_id, action)
+
+	local function function_back(self)
+		msg.post("main:/loader_gui", "visible", {
+			id = "inventary_wrap",
+			visible = false
+		})
+	end
+
+	-- Нажатие на кнопки
+	local function function_activate(self, focus_btn_id)
+		local btn = self.btns[focus_btn_id]
+
+		if btn.disabled then
+			return
+		end
+
+		sound_render.play("activate_btn", url_object)
+
+		-- если это клик или тач не по кнопке
+		if gui_input.is_touch(self, action_id, action) and not gui.pick_node(btn.wrap_node or btn.node, action.x, action.y) then
+
+		elseif gui_input.is_touch(self, action_id, action) and not gui.pick_node(btn.wrap_node or btn.node, action.x, action.y) then
+			
+		else
+			gui_animate.activate(self, btn.wrap_node or btn.node)
+
+			
+			if btn.is_card then
+				local type = "prize"
+				local id = btn.id
+				catalog_inventary_functions.sell(self, id, type)
+			elseif btn.id == "btn_smart" and self.btn_smart.type == "message" then
+				msg.post(self.btn_smart.message_url, self.btn_smart.message_id,self.btn_smart.message)
+			end
+		end
+	end
+
+	if self.btn_smart and not action_id and action.x and action.y and gui.pick_node(self.nodes.btn_smart, action.x, action.y) then
+		gui_input.set_focus(self, #self.btns, function_post_focus, is_remove_other_focus)
+		return true
+	elseif self.btn_smart and gui_input.is_touch(self, action_id, action) and gui.pick_node(self.nodes.btn_smart, action.x, action.y) then
+		function_activate(self, #self.btns, action_id, action)
+		return true
+	end
+
+	return gui_catalog.catalog_input(self, self.id_catalog, action_id, action, self.type, function_activate, function_back)
+end
+
+function on_reload(self)
+
+end
