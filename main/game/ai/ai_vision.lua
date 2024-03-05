@@ -132,8 +132,4 @@ function M.get_visible(self, exclude_aabb_id, distantion, exclude_commands)
 	end
 end
 
-
-
-
-
 return M

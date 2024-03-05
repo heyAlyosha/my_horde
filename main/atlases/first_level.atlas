@@ -1228,6 +1228,10 @@ animations {
     image: "/assets/images/game/humans/human_5_aim_3.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
+  images {
+    image: "/assets/images/game/humans/human_5_aim_1.png"
+    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+  }
   playback: PLAYBACK_ONCE_FORWARD
   fps: 10
   flip_horizontal: 0

@@ -3,8 +3,8 @@ instances {
   id: "player"
   prototype: "/main/game/characters/player/player.go"
   position {
-    x: 211.0
-    y: 180.0
+    x: 316.0
+    y: 85.0
     z: 1.0
   }
   rotation {
@@ -12,6 +12,14 @@ instances {
     y: 0.0
     z: 0.0
     w: 1.0
+  }
+  component_properties {
+    id: "script"
+    properties {
+      id: "live"
+      value: "10000.0"
+      type: PROPERTY_TYPE_NUMBER
+    }
   }
   scale3 {
     x: 1.0
@@ -669,8 +677,8 @@ instances {
   id: "police1"
   prototype: "/main/game/characters/soldier/police.go"
   position {
-    x: 228.0
-    y: 121.0
+    x: 378.0
+    y: 59.0
     z: 0.0
   }
   rotation {

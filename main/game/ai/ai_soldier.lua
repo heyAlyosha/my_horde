@@ -27,6 +27,7 @@ function M.behavior(self)
 					-- Добежал до цели
 					local handle_success = function (self)
 						if self.target and go_controller.is_object(self.target) and ai_attack.check_distance_attack(self, self.target, handle_distantion_error) then
+							character_animations.play(self, "aim")
 							-- Атакуем
 							local handle_fire = function (self)
 								if self.target and go_controller.is_object(self.target) and ai_attack.check_distance_attack(self, self.target, handle_distantion_error) then
@@ -47,6 +48,7 @@ function M.behavior(self)
 							self.attack = ai_core.fire(self, self.target, handle_fire)
 						else
 							-- Цели нет, подходим
+							character_animations.play(self, "move")
 							self.condition_attack = nil
 							self.target = nil
 							if self.attack then
@@ -54,10 +56,8 @@ function M.behavior(self)
 								self.attack = nil
 							end
 							M.behavior(self)
-							
 						end
 					end
-					print("ai_core.condition_attack", self.target)
 					ai_core.condition_attack(self, self.target, handle_success, handle_error, handle_success)
 				end
 			else
@@ -65,17 +65,6 @@ function M.behavior(self)
 				self.target = nil
 				M.behavior(self)
 			end
-			--[[
-			self.animation_walking = nil
-			if not self.animation_run then
-				self.running = true
-				character_animations.play(self, "move")
-				ai_move.move_item_from(self, go.get_position(visible_items[1].url), function (self)
-					character_animations.play(self, "idle")
-					self.animation_run = nil
-				end, self.speed_from)
-			end
-			--]]
 		else
 			-- Гуляет
 			if not self.to_point then

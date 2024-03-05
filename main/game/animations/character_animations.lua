@@ -22,6 +22,31 @@ function M.play(self, animation_id)
 			end
 		end
 
+	elseif self.animation_type == hash("soldier") then
+		print("animation_type", animation_id)
+		if animation_id == "move" or animation_id == "idle" then
+			if animation_id == "move" then
+				if self.running then
+					self.animation_current = "human_"..self.human_id .. "_walking"
+				else
+					self.animation_current = "human_"..self.human_id .. "_walking"
+				end
+
+			elseif animation_id == "idle" then
+				self.animation_current = "human_"..self.human_id .. "_default"
+			end
+
+			if self.last_animation ~= self.animation_current then
+				sprite.play_flipbook("#body", self.animation_current)
+				self.last_animation = self.animation_current
+			end
+
+		elseif animation_id == "aim" or animation_id == "attack" then
+			self.animation_current = "human_"..self.human_id .. "_"..animation_id
+			self.last_animation = self.animation_current
+			sprite.play_flipbook("#body", self.animation_current)
+		end
+
 	else
 		if animation_id == "move" or animation_id == "idle" then
 			if animation_id == "move" then
