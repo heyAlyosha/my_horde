@@ -27,9 +27,11 @@ function init(self)
 	end)
 	pprint("msg.url()", msg.url())
 
+	self.random_skins = {1,2,3,4,7,8,9}
+
 	if self.human_id_random then
-		math.randomseed(3)
-		self.human_id = math.random(1,9)
+		math.randomseed()
+		self.human_id = self.random_skins[math.random(1,#self.random_skins)]
 	end
 
 	sprite.play_flipbook("#body", "human_"..self.human_id .. "_default")

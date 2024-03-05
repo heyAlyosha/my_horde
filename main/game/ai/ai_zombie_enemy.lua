@@ -40,9 +40,7 @@ function M.behavior(self)
 										self.timer_attack = timer.delay(self.speed_damage, true, function (self, handle)
 											if self.target and go_controller.is_object(self.target) and ai_attack.check_distance_attack(self, self.target, handle_distantion_error) then
 												character_attack.attack(self, self.target)
-												
 											else
-												
 												timer.cancel(handle)
 												self.is_attack_fire = nil
 												self.target = nil
