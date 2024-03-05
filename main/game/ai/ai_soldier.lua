@@ -10,6 +10,7 @@ function M.behavior(self)
 		if visible_items then
 			-- Бежит к врагу
 			self.target = visible_items[1].url
+			self.animation_walking = nil
 			if go_controller.is_object(self.target) then
 				if not self.condition_attack then
 					-- Прокладываем путь для атаки
@@ -32,12 +33,23 @@ function M.behavior(self)
 							local handle_fire = function (self)
 								if self.target and go_controller.is_object(self.target) and ai_attack.check_distance_attack(self, self.target, handle_distantion_error) then
 									-- Цель есть, атакуем
-									print("fire_timer", self.is_attack_fire)
+									
 									if not self.is_attack_fire then
 										self.is_attack_fire = true
 										character_attack.attack_bullet(self, self.target)
-										self.timer_attack = timer.delay(self.speed_damage, true, function (self)
-											character_attack.attack_bullet(self, self.target)
+										self.timer_attack = timer.delay(self.speed_damage, true, function (self, handle)
+											print("attack_bullet", self.is_attack_fire)
+											if self.target and go_controller.is_object(self.target) and ai_attack.check_distance_attack(self, self.target, handle_distantion_error) then
+												character_attack.attack_bullet(self, self.target)
+												
+											else
+												
+												timer.cancel(handle)
+												self.is_attack_fire = nil
+												self.target = nil
+												self.condition_attack = nil
+												M.behavior(self)
+											end
 										end)
 									end
 								else
@@ -89,6 +101,7 @@ function M.behavior(self)
 			else
 				-- Цель была удалена
 				self.target = nil
+				self.condition_attack = nil
 				-- Отключаем атаку
 				self.is_attack_fire = nil
 				if self.timer_attack then
@@ -101,6 +114,7 @@ function M.behavior(self)
 			-- Гуляет
 			-- Отключаем атаку
 			self.is_attack_fire = nil
+			self.condition_attack = nil
 			if self.timer_attack then
 				timer.cancel(self.timer_attack)
 				self.timer_attack = nil
