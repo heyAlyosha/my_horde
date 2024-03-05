@@ -9,6 +9,7 @@ function M.behavior(self)
 	self.view = ai_core.view(self, function (self, visible_items)
 		if visible_items then
 			-- Бежит к врагу
+			self.speed = self.speed_attack
 			self.target = visible_items[1].url
 			self.animation_walking = nil
 			if go_controller.is_object(self.target) then
@@ -118,6 +119,9 @@ function M.behavior(self)
 				timer.cancel(self.timer_attack)
 				self.timer_attack = nil
 			end
+
+			-- Обычная скорость
+			self.speed = self.speed_default
 
 			if not self.to_point then
 				-- Нет точек следования

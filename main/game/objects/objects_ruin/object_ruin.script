@@ -11,7 +11,10 @@ go.property("spawn_xp", 0)
 
 -- Разрушаемые объекты
 function init(self)
-	go_controller.add(self)
+	timer.delay(0.1, false, function (self)
+		go_controller.add(self)
+	end)
+
 	position_functions.go_set_perspective_z()
 	self.max_live = self.live
 	label.set_text("#label", self.live .. "/"..self.max_live)

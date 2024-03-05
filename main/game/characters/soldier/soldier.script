@@ -6,8 +6,8 @@ go.property("human_id_random", false)
 go.property("live", 20)
 go.property("speed_damage", 2)
 go.property("fire_queue", 5)
-go.property("speed", 10)
-go.property("speed_from", 20)
+go.property("speed_default", 10)
+go.property("speed_attack", 20)
 go.property("distantion_visible", 120)
 go.property("distantion_attack", 100)
 go.property("attack_type", hash("bullet"))
@@ -36,6 +36,8 @@ function init(self)
 		math.randomseed(3)
 		self.human_id = math.random(1,9)
 	end
+
+	self.speed = self.speed_default
 
 	sprite.play_flipbook("#body", "human_"..self.human_id .. "_default")
 	position_functions.go_set_perspective_z()
