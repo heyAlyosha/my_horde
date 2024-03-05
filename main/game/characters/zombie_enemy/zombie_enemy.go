@@ -1,6 +1,6 @@
 components {
   id: "script"
-  component: "/main/game/characters/player/player.script"
+  component: "/main/game/characters/zombie_enemy/zombie_enemy.script"
   position {
     x: 0.0
     y: 0.0
@@ -11,26 +11,6 @@ components {
     y: 0.0
     z: 0.0
     w: 1.0
-  }
-  properties {
-    id: "damage"
-    value: "5.0"
-    type: PROPERTY_TYPE_NUMBER
-  }
-  properties {
-    id: "live"
-    value: "100.0"
-    type: PROPERTY_TYPE_NUMBER
-  }
-  properties {
-    id: "speed_damage"
-    value: "0.5"
-    type: PROPERTY_TYPE_NUMBER
-  }
-  properties {
-    id: "speed"
-    value: "50.0"
-    type: PROPERTY_TYPE_NUMBER
   }
 }
 components {
@@ -63,10 +43,40 @@ components {
     w: 0.70710677
   }
 }
+components {
+  id: "shot_right"
+  component: "/main/game/effects/shot.particlefx"
+  position {
+    x: 1.0
+    y: 4.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: -0.70710677
+    w: 0.70710677
+  }
+}
+components {
+  id: "shot_left"
+  component: "/main/game/effects/shot.particlefx"
+  position {
+    x: -1.0
+    y: 4.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.70710677
+    w: 0.70710677
+  }
+}
 embedded_components {
   id: "body"
   type: "sprite"
-  data: "default_animation: \"zombie_0_0_default\"\n"
+  data: "default_animation: \"zombie_0_2_default\"\n"
   "material: \"/builtins/materials/sprite.material\"\n"
   "blend_mode: BLEND_MODE_ALPHA\n"
   "textures {\n"
@@ -76,60 +86,8 @@ embedded_components {
   ""
   position {
     x: 0.0
-    y: 8.0
+    y: 6.0
     z: 1.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale {
-    x: 1.2
-    y: 1.2
-    z: 1.0
-  }
-}
-embedded_components {
-  id: "collision_physic"
-  type: "collisionobject"
-  data: "collision_shape: \"\"\n"
-  "type: COLLISION_OBJECT_TYPE_KINEMATIC\n"
-  "mass: 0.0\n"
-  "friction: 0.1\n"
-  "restitution: 0.5\n"
-  "group: \"default\"\n"
-  "mask: \"default\"\n"
-  "embedded_collision_shape {\n"
-  "  shapes {\n"
-  "    shape_type: TYPE_SPHERE\n"
-  "    position {\n"
-  "      x: 0.0\n"
-  "      y: 0.0\n"
-  "      z: 0.0\n"
-  "    }\n"
-  "    rotation {\n"
-  "      x: 0.0\n"
-  "      y: 0.0\n"
-  "      z: 0.0\n"
-  "      w: 1.0\n"
-  "    }\n"
-  "    index: 0\n"
-  "    count: 1\n"
-  "    id: \"\"\n"
-  "  }\n"
-  "  data: 2.5\n"
-  "}\n"
-  "linear_damping: 0.0\n"
-  "angular_damping: 0.0\n"
-  "locked_rotation: false\n"
-  "bullet: false\n"
-  ""
-  position {
-    x: 0.0
-    y: 0.0
-    z: 0.0
   }
   rotation {
     x: 0.0
@@ -141,45 +99,7 @@ embedded_components {
 embedded_components {
   id: "bullet_factory"
   type: "factory"
-  data: "prototype: \"/main/game/bullets/bullet_hit.go\"\n"
-  "load_dynamically: false\n"
-  "dynamic_prototype: false\n"
-  ""
-  position {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-}
-embedded_components {
-  id: "zombie_factory"
-  type: "factory"
-  data: "prototype: \"/main/game/characters/zombie/zombie.go\"\n"
-  "load_dynamically: false\n"
-  "dynamic_prototype: false\n"
-  ""
-  position {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-}
-embedded_components {
-  id: "zombie_horde_factory"
-  type: "factory"
-  data: "prototype: \"/main/game/characters/zombie_horde/zombie_horde.go\"\n"
+  data: "prototype: \"/main/game/bullets/bullet_default.go\"\n"
   "load_dynamically: false\n"
   "dynamic_prototype: false\n"
   ""
@@ -246,6 +166,29 @@ embedded_components {
   }
 }
 embedded_components {
+  id: "shadow"
+  type: "sprite"
+  data: "default_animation: \"shadow\"\n"
+  "material: \"/builtins/materials/sprite.material\"\n"
+  "blend_mode: BLEND_MODE_ALPHA\n"
+  "textures {\n"
+  "  sampler: \"texture_sampler\"\n"
+  "  texture: \"/main/atlases/first_level.atlas\"\n"
+  "}\n"
+  ""
+  position {
+    x: 0.0
+    y: -1.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}
+embedded_components {
   id: "label"
   type: "label"
   data: "size {\n"
@@ -296,28 +239,5 @@ embedded_components {
     x: 0.25
     y: 0.25
     z: 1.0
-  }
-}
-embedded_components {
-  id: "shadow"
-  type: "sprite"
-  data: "default_animation: \"shadow\"\n"
-  "material: \"/builtins/materials/sprite.material\"\n"
-  "blend_mode: BLEND_MODE_ALPHA\n"
-  "textures {\n"
-  "  sampler: \"texture_sampler\"\n"
-  "  texture: \"/main/atlases/first_level.atlas\"\n"
-  "}\n"
-  ""
-  position {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
   }
 }

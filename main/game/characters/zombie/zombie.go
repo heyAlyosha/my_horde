@@ -77,7 +77,7 @@ embedded_components {
   }
 }
 embedded_components {
-  id: "bullet_hit_factory"
+  id: "bullet_factory"
   type: "factory"
   data: "prototype: \"/main/game/bullets/bullet_hit.go\"\n"
   "load_dynamically: false\n"
