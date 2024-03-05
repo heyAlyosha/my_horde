@@ -23,8 +23,6 @@ function M.damage_zombie(self, message)
 		})
 		items_functions.spawn(self)
 		go.delete()
-
-		
 	end
 end
 
