@@ -133,7 +133,6 @@ function M.fire(self, url, handle_fire)
 
 	handle_fire(self)
 	self.timer_fire = timer.delay(self.speed_damage, true, function (self)
-		print("handle_fire")
 		handle_fire(self)
 	end)
 

@@ -26,8 +26,6 @@ function init(self)
 	elseif self.type == hash("bullet") then
 		local dir = vmath.normalize(self.dir)
 
-		print("bullet", dir)
-		
 		local position_to = go.get_position() + dir * self.distantion
 		local duration = vmath.length(go.get_position() - position_to) / self.speed
 

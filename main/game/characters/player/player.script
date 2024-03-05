@@ -51,6 +51,7 @@ function init(self)
 		self.view = ai_core.view(self, function (self, visible_items)
 			if visible_items then
 				if not self.timer_atack then
+					print("character_attack")
 					character_attack.attack(self, visible_items[1].url)
 					self.timer_atack = timer.delay(self.speed_damage, true, function (self, handle, time_elapsed)
 						if not character_attack.attack(self, visible_items[1].url) then

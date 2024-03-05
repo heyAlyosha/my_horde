@@ -20,8 +20,9 @@ function M.attack(self, url_object)
 				M.attack_bullet(self, url_object)
 			end)
 		end
+		return true
 	else
-		M.attack_hit(self, url_object)
+		return M.attack_hit(self, url_object)
 	end
 end
 
