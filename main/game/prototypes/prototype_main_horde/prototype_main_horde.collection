@@ -667,6 +667,19 @@ instances {
     z: 0.0
     w: 1.0
   }
+  component_properties {
+    id: "script"
+    properties {
+      id: "to_point"
+      value: "true"
+      type: PROPERTY_TYPE_BOOLEAN
+    }
+    properties {
+      id: "to_point_position"
+      value: "450.0, 100.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
+    }
+  }
   scale3 {
     x: 1.0
     y: 1.0

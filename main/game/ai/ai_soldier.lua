@@ -36,11 +36,11 @@ function M.behavior(self)
 									
 									if not self.is_attack_fire then
 										self.is_attack_fire = true
-										character_attack.attack_bullet(self, self.target)
+										character_attack.attack(self, self.target)
 										self.timer_attack = timer.delay(self.speed_damage, true, function (self, handle)
 											print("attack_bullet", self.is_attack_fire)
 											if self.target and go_controller.is_object(self.target) and ai_attack.check_distance_attack(self, self.target, handle_distantion_error) then
-												character_attack.attack_bullet(self, self.target)
+												character_attack.attack(self, self.target)
 												
 											else
 												

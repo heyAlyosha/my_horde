@@ -11,7 +11,15 @@ function M.attack(self, url_object)
 
 	-- Типы атак
 	if self.attack_type == hash("bullet") then
+		self.fire_queue = self.fire_queue or 1
+		local add_time = 0
 		M.attack_bullet(self, url_object)
+		for i = 1, self.fire_queue - 1 do
+			add_time = add_time + 0.2
+			timer.delay(add_time, false, function (self)
+				M.attack_bullet(self, url_object)
+			end)
+		end
 	else
 		M.attack_hit(self, url_object)
 	end
