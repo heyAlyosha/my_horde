@@ -23,7 +23,7 @@ go.property("target_useful", 1)
 go.property("time_view", 0.5)
 go.property("damage_blood", true)
 go.property("animation_type", hash("soldier"))
-go.property("spawn_coins", 1)
+go.property("spawn_coins", 2)
 go.property("spawn_trash", 0)
 go.property("spawn_xp", 1)
 
@@ -41,6 +41,7 @@ function init(self)
 	position_functions.go_set_perspective_z()
 
 	self.max_live = self.live
+	label.set_text("#label", self.live .. "/"..self.max_live)
 
 	self.input = vmath.vector3(0)
 	self.velocity = vmath.vector3(0)

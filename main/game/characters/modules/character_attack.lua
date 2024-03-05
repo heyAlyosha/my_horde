@@ -52,6 +52,14 @@ function M.attack_bullet(self, url_object)
 		rotation = vmath.quat_rotation_z(math.atan2(rot.y, rot.x))
 	end
 	properties.dir = dir
+
+	-- Эффект выстрела
+	if dir.x > 0 then
+		particlefx.play("#shot_right")
+	else
+		particlefx.play("#shot_left")
+	end
+	
 	factory.create("#bullet_factory", position, rotation, properties)
 
 	sprite.set_hflip("#body", rot.x < 0)

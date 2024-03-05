@@ -41,22 +41,7 @@ function init(self)
 	if go_controller.url_to_key(self.target) == go_controller.url_to_key(msg.url()) then
 		self.target = nil
 	end
-
-	print(self.target)
 	ai_zombie.behavior(self)
-	--[[
-	if self.target then
-		ai_zombie.condition_attack(self, self.target)
-	else
-		self.view = ai_core.view(self, function (self, visible_items)
-			if visible_items then
-				pprint("ai_zombie.condition_attack", visible_items[1].url)
-				ai_zombie.condition_attack(self, visible_items[1].url)
-				return true
-			end
-		end)
-	end
-	--]]
 end
 
 function final(self)
