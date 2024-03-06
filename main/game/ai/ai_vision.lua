@@ -98,6 +98,7 @@ function M.get_visible(self, exclude_aabb_id, distantion, exclude_commands)
 	local position = go.get_position()
 	local width = distantion * 2
 	local height = distantion * 2
+	print("get_visible", go.get_id(), width, height, position)
 	local group_id = storage_game.groups_aabbcc.visible_object.id
 	local result, count = aabb.query(group_id, position.x, position.y, width, height)
 	local exclude_commands = exclude_commands or {}

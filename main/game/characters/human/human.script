@@ -25,7 +25,6 @@ function init(self)
 	timer.delay(0.1, false, function (self)
 		go_controller.add(self)
 	end)
-	pprint("msg.url()", msg.url())
 
 	self.random_skins = {1,2,3,4,7,8,9}
 

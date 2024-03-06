@@ -12,16 +12,6 @@ components {
     z: 0.0
     w: 1.0
   }
-  properties {
-    id: "distantion_visible"
-    value: "60.0"
-    type: PROPERTY_TYPE_NUMBER
-  }
-  properties {
-    id: "distantion_attack"
-    value: "20.0"
-    type: PROPERTY_TYPE_NUMBER
-  }
 }
 components {
   id: "blood_right"
