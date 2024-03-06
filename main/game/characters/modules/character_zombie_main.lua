@@ -65,6 +65,7 @@ function M.change_horde(self)
 	end
 	-- Позиция для добавления зомбиков
 	self.target_add_horde = horde.get_position(self, go.get_position(), max_index)
+	print("M.change_horde", self.target_add_horde)
 
 	local dist_max_horde = vmath.length(self.target_add_horde - self.target_add_horde)
 

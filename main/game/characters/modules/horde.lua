@@ -205,4 +205,16 @@ function M.get_position(self, сenter_position, index_to_horde)
 	end
 end
 
+-- Дистанция для добавления в орду
+function M.check_distantion_add_horde(self, parent, position_from, position_parent)
+	local target_add_horde = go.get(msg.url(parent.socket, parent.path, "script"), "target_add_horde")
+	local position_parent = position_parent or go.get_position(parent)
+	local position_from = position_from or go.get_position()
+
+	local dist_add_horde = vmath.length(target_add_horde - position_parent) + 10
+	local dist_to_parent = vmath.length(position_from - position_parent)
+	print("check_distantion_add_horde", target_add_horde, dist_to_parent, dist_add_horde)
+	return dist_to_parent <= dist_add_horde
+end
+
 return M
