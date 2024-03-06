@@ -200,7 +200,8 @@ function on_message(self, message_id, message, sender)
 
 		local skin_id = message.skin_id or 0
 		local human_id = message.human_id or 0
-		horde.add_zombie_horde(self, skin_id, human_id)
+		pprint(message_id, message.position_from)
+		horde.add_zombie_horde(self, skin_id, human_id, message.position_from)
 
 		if self.animation_horde == "run" then
 			sprite.play_flipbook(self.horde[#self.horde].url_sprite, "zombie_"..skin_id.."_"..human_id .. "_run")

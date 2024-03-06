@@ -11,8 +11,8 @@ M.interval_zombie = 20
 M.positions = {}
 
 -- Добавление зомбика в орду
-function M.add_zombie_horde(self, skin_id, human_id)
-	local position = M.get_position(self, go.get_position(), #self.horde + 1)
+function M.add_zombie_horde(self, skin_id, human_id, position)
+	local position = position or M.get_position(self, go.get_position(), #self.horde + 1)
 	local properties = {
 		parent = msg.url(),
 		skin_id = skin_id,

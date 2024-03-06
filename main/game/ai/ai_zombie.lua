@@ -133,20 +133,7 @@ function M.behavior(self)
 
 						-- Пересчитываем каждый тайтл пути
 						local handle_item_move = function (self)
-							local position_from = go.get_position()
-							if horde.check_distantion_add_horde(self, self.parent, position_from, position_to) then
-								-- Добежал
-								msg.post(self.parent, "add_horde", {
-									skin_id = self.skin_id,
-									human_id = self.human_id,
-									position_from = position_from
-								})
-								go.delete()
-							else
-								handle_success(self)
-							end
-							
-							
+							handle_success(self)
 						end
 						ai_move.move_to_position(self, self.target_add_horde, handle_success, handle_error, handle_no_object_target, handle_item_move)
 
@@ -158,8 +145,18 @@ function M.behavior(self)
 						self.condition_attack = nil
 					end
 				end
-				
 			end
+		end
+
+		if self.condition_to_horde and horde.check_distantion_add_horde(self, self.parent, position_from, position_to) then
+			-- Добежал
+			local position_from = go.get_position()
+			msg.post(self.parent, "add_horde", {
+				skin_id = self.skin_id,
+				human_id = self.human_id,
+				position_from = position_from
+			})
+			go.delete()
 		end
 	end)
 end
