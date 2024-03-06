@@ -32,6 +32,8 @@ function M.add_zombie_horde(self, skin_id, human_id, position)
 	self.target_add_horde = M.get_position(self, go.get_position(), #self.horde)
 
 	character_zombie_main.change_horde(self)
+
+	M.move_horde_player(self)
 end
 
 -- Передвижение орды игрока
@@ -213,7 +215,7 @@ function M.check_distantion_add_horde(self, parent, position_from, position_pare
 
 	local dist_add_horde = vmath.length(target_add_horde - position_parent) + 10
 	local dist_to_parent = vmath.length(position_from - position_parent)
-	print("check_distantion_add_horde", target_add_horde, dist_to_parent, dist_add_horde)
+
 	return dist_to_parent <= dist_add_horde
 end
 
