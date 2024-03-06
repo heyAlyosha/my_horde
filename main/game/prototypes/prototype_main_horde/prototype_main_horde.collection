@@ -400,8 +400,8 @@ instances {
   id: "human"
   prototype: "/main/game/characters/human/human.go"
   position {
-    x: 42.0
-    y: 121.0
+    x: 16.0
+    y: 72.0
     z: 0.0
   }
   rotation {
@@ -433,8 +433,8 @@ instances {
   id: "human1"
   prototype: "/main/game/characters/human/human.go"
   position {
-    x: 135.0
-    y: 118.0
+    x: 34.0
+    y: 84.0
     z: 0.0
   }
   rotation {
@@ -461,8 +461,8 @@ instances {
   id: "human2"
   prototype: "/main/game/characters/human/human.go"
   position {
-    x: 274.0
-    y: 116.0
+    x: 106.0
+    y: 79.0
     z: 0.0
   }
   rotation {
@@ -489,8 +489,8 @@ instances {
   id: "human3"
   prototype: "/main/game/characters/human/human.go"
   position {
-    x: 168.0
-    y: 117.0
+    x: 67.0
+    y: 83.0
     z: 0.0
   }
   rotation {
@@ -517,8 +517,8 @@ instances {
   id: "human4"
   prototype: "/main/game/characters/human/human.go"
   position {
-    x: 70.0
-    y: 119.0
+    x: 44.0
+    y: 70.0
     z: 0.0
   }
   rotation {
@@ -545,8 +545,8 @@ instances {
   id: "human5"
   prototype: "/main/game/characters/human/human.go"
   position {
-    x: 219.0
-    y: 116.0
+    x: 93.0
+    y: 91.0
     z: 0.0
   }
   rotation {
