@@ -6,7 +6,7 @@ go.property("distantion_attack", 15)
 go.property("command", hash("player"))
 go.property("skin_id", 0)
 go.property("human_id", 0)
-go.property("horde_count", 1)
+go.property("horde_count", 0)
 go.property("visible_horde_min", 75)
 go.property("distantion_attack_zombie_horde", 75)
 go.property("targets", 8)
@@ -106,8 +106,7 @@ function init(self)
 
 	camera.follow(camera_id, msg.url(), options)
 
-	self.hp_bar = collectionfactory.create("/prototype_main_horde/markers_core#live_bar_collectionfactory", go.get_position())
-	pprint("self.hp_bar", self.hp_bar)
+	live_bar.create(self)
 end
 
 function final(self)
@@ -145,9 +144,7 @@ function update(self, dt)
 			character_animations.play(self, "idle")
 		end
 
-		if self.hp_bar then
-			go.set_position(go.get_position(), self.hp_bar[hash("/live_bar")])
-		end
+		live_bar.update_position(self)
 	end
 
 	horde.on_update(self)
@@ -175,6 +172,8 @@ function on_message(self, message_id, message, sender)
 		label.set_text("#label", self.live .. "/"..self.max_live)
 
 		character_animations.damage_player(self, message.parent)
+
+		live_bar.set_hp(self, self.live, self.max_live)
 
 		if self.live <= 0 then
 			local position = go.get_position()

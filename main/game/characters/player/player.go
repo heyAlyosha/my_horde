@@ -13,16 +13,6 @@ components {
     w: 1.0
   }
   properties {
-    id: "damage"
-    value: "5.0"
-    type: PROPERTY_TYPE_NUMBER
-  }
-  properties {
-    id: "live"
-    value: "100.0"
-    type: PROPERTY_TYPE_NUMBER
-  }
-  properties {
     id: "speed_damage"
     value: "0.5"
     type: PROPERTY_TYPE_NUMBER

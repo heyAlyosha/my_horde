@@ -3,8 +3,8 @@ instances {
   id: "player"
   prototype: "/main/game/characters/player/player.go"
   position {
-    x: 117.0
-    y: 32.0
+    x: 552.0
+    y: 139.0
     z: 1.0
   }
   rotation {
@@ -12,14 +12,6 @@ instances {
     y: 0.0
     z: 0.0
     w: 1.0
-  }
-  component_properties {
-    id: "script"
-    properties {
-      id: "live"
-      value: "10000.0"
-      type: PROPERTY_TYPE_NUMBER
-    }
   }
   scale3 {
     x: 1.0
@@ -264,11 +256,6 @@ instances {
   component_properties {
     id: "script"
     properties {
-      id: "live"
-      value: "100.0"
-      type: PROPERTY_TYPE_NUMBER
-    }
-    properties {
       id: "command"
       value: "zombie_enemy"
       type: PROPERTY_TYPE_HASH
@@ -307,11 +294,6 @@ instances {
   component_properties {
     id: "script"
     properties {
-      id: "live"
-      value: "100.0"
-      type: PROPERTY_TYPE_NUMBER
-    }
-    properties {
       id: "command"
       value: "zombie_enemy"
       type: PROPERTY_TYPE_HASH
@@ -349,11 +331,6 @@ instances {
   }
   component_properties {
     id: "script"
-    properties {
-      id: "live"
-      value: "100.0"
-      type: PROPERTY_TYPE_NUMBER
-    }
     properties {
       id: "command"
       value: "zombie_enemy"
