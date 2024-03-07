@@ -13,6 +13,36 @@ components {
     w: 1.0
   }
 }
+components {
+  id: "blood_left"
+  component: "/main/game/effects/blood.particlefx"
+  position {
+    x: -5.0
+    y: 6.0
+    z: -1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.70710677
+    w: 0.70710677
+  }
+}
+components {
+  id: "blood_right"
+  component: "/main/game/effects/blood.particlefx"
+  position {
+    x: 5.0
+    y: 6.0
+    z: -1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: -0.70710677
+    w: 0.70710677
+  }
+}
 embedded_components {
   id: "body"
   type: "sprite"

@@ -33,6 +33,8 @@ function M.damage_human(self, message)
 	self.from_id_object = message.from_id_object 
 	self.live = self.live - damage
 
+	character_animations.damage(self, message.parent)
+
 	if self.live <= 0 then
 		local position = go.get_position()
 		position.y = position.y + go.get("#body", "size").y / 2

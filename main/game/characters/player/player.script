@@ -105,6 +105,9 @@ function init(self)
 	end)
 
 	camera.follow(camera_id, msg.url(), options)
+
+	self.hp_bar = collectionfactory.create("/prototype_main_horde/markers_core#live_bar_collectionfactory", go.get_position())
+	pprint("self.hp_bar", self.hp_bar)
 end
 
 function final(self)
@@ -136,8 +139,14 @@ function update(self, dt)
 			if not self.hflip_stop then
 				sprite.set_hflip("#body", self.movement.x < 0)
 			end
+
+			
 		else
 			character_animations.play(self, "idle")
+		end
+
+		if self.hp_bar then
+			go.set_position(go.get_position(), self.hp_bar[hash("/live_bar")])
 		end
 	end
 
@@ -147,6 +156,9 @@ function update(self, dt)
 
 	self.input = vmath.vector3()
 	self.correction = vmath.vector3()
+
+
+	
 end
 
 function fixed_update(self, dt)
