@@ -1,7 +1,12 @@
+-- Скрипты для карты
 function init(self)
-	-- Add initialization code here
-	-- Learn more: https://defold.com/manuals/script/
-	-- Remove this function if not needed
+	sprite.set_hflip("human_plug_2#body", true)
+
+	self.human_plugs_1 = {
+		{url = msg.url("human_plug_1"), human_id = 3},
+		{url = msg.url("human_plug_2"), human_id = 9},
+		{url = msg.url("human_plug_3"), human_id = 4}
+	}
 end
 
 function final(self)
@@ -11,9 +16,7 @@ function final(self)
 end
 
 function update(self, dt)
-	-- Add update code here
-	-- Learn more: https://defold.com/manuals/script/
-	-- Remove this function if not needed
+	
 end
 
 function fixed_update(self, dt)

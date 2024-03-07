@@ -16,6 +16,7 @@ go.property("target_add_horde", vmath.vector3())
 go.property("time_view", 0.1)
 go.property("damage_blood", true)
 go.property("type_object", hash("zombie_main"))
+go.property("activate", hash("zombie_main"))
 
 function init(self)
 	msg.post(".", "acquire_input_focus")
@@ -23,7 +24,6 @@ function init(self)
 	position_functions.go_set_perspective_z()
 
 	self.max_live = self.live
-
 
 	self.input = vmath.vector3(0)
 	self.velocity = vmath.vector3(0)
