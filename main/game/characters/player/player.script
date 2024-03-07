@@ -16,12 +16,17 @@ go.property("target_add_horde", vmath.vector3())
 go.property("time_view", 0.1)
 go.property("damage_blood", true)
 go.property("type_object", hash("zombie_main"))
-go.property("activate", hash("zombie_main"))
+go.property("activate", true)
 
 function init(self)
 	msg.post(".", "acquire_input_focus")
 
-	position_functions.go_set_perspective_z()
+	if self.activate then
+		go_controller.add(self)
+		position_functions.go_set_perspective_z()
+		camera.follow(camera_id, msg.url(), options)
+		live_bar.create(self)
+	end
 
 	self.max_live = self.live
 
@@ -35,7 +40,6 @@ function init(self)
 	self.zombies = {}
 
 	timer.delay(0.1, false, function (self)
-		go_controller.add(self)
 
 		local сenter_position = vmath.vector3(0)
 		local index_to_horde = self.horde_count
@@ -103,10 +107,6 @@ function init(self)
 			msg.post(items[i].url, "activate")
 		end
 	end)
-
-	camera.follow(camera_id, msg.url(), options)
-
-	live_bar.create(self)
 end
 
 function final(self)
@@ -115,6 +115,10 @@ function final(self)
 end
 
 function update(self, dt)
+	if not self.activate then
+		return
+	end
+
 	if not self.move_stop then
 		if vmath.length_sqr(self.input) > 1 then
 			self.input = vmath.normalize(self.input)
@@ -163,7 +167,13 @@ function fixed_update(self, dt)
 end
 
 function on_message(self, message_id, message, sender)
-	if message_id == hash("damage") then
+	if message_id == hash("activate") then
+		self.activate = true
+		go_controller.add(self)
+		position_functions.go_set_perspective_z()
+		camera.follow(camera_id, msg.url(), options)
+		live_bar.create(self)
+	elseif message_id == hash("damage") then
 		-- Получили урон
 		local damage = message.damage or 0
 		self.from_id_object = message.from_id_object 
