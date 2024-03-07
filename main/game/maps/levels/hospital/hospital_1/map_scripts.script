@@ -3,10 +3,12 @@ function init(self)
 	sprite.set_hflip("human_plug_2#body", true)
 
 	self.human_plugs_1 = {
-		{url = msg.url("human_plug_1"), human_id = 3},
-		{url = msg.url("human_plug_2"), human_id = 9},
-		{url = msg.url("human_plug_3"), human_id = 4}
+		{id = "human_plug_1", human_id = 3},
+		{id = "human_plug_2", human_id = 9},
+		{id = "human_plug_3", human_id = 4}
 	}
+
+	msg.post(".", "start")
 end
 
 function final(self)
@@ -29,9 +31,41 @@ function fixed_update(self, dt)
 end
 
 function on_message(self, message_id, message, sender)
-	-- Add message-handling code here
-	-- Learn more: https://defold.com/manuals/message-passing/
-	-- Remove this function if not needed
+	if message_id == hash("start") then
+		-- Зомби просыпается
+		timer_linear.add(self, "start", 1, function (self)
+			sprite.play_flipbook("player_plug#body", hash("zombie_0_0_default"))
+		end, delay)
+
+		-- Встаёт
+		timer_linear.add(self, "start", 1, function (self)
+			local duration = 0.25
+			go.animate("player_plug", "position.x", go.PLAYBACK_ONCE_FORWARD, go.get_position("player").x, go.EASING_INOUTCUBIC, duration)
+			go.animate("player_plug", "position.y", go.PLAYBACK_ONCE_FORWARD, go.get_position("player").y + 5, go.EASING_INOUTCUBIC, duration / 2, 0 , function (self)
+				go.animate("player_plug", "position.y", go.PLAYBACK_ONCE_FORWARD, go.get_position("player").y, go.EASING_INOUTCUBIC, duration / 2)
+			end)
+		end, delay)
+
+		-- Человечки обращают на него внимание
+		timer_linear.add(self, "start", 1, function (self)
+			for i, human in ipairs(self.human_plugs_1) do
+				-- Скрываем их маркеры
+				msg.post(human.id .. "#marker", "disable")
+				sprite.set_hflip(human.id .. "#body", true)
+				sprite.play_flipbook(human.id .. "#body", hash("human_"..human.human_id.."_default"))
+			end
+		end, delay)
+
+		-- Человечки обращают на него внимание
+		timer_linear.add(self, "start", 1, function (self)
+			for i, human in ipairs(self.human_plugs_1) do
+				-- Скрываем их маркеры
+				msg.post(human.id .. "#marker", "disable")
+				sprite.set_hflip(human.id .. "#body", true)
+				sprite.play_flipbook(human.id .. "#body", hash("human_"..human.human_id.."_default"))
+			end
+		end, delay)
+	end
 end
 
 function on_input(self, action_id, action)
