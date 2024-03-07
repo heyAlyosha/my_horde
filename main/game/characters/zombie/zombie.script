@@ -28,7 +28,6 @@ function init(self)
 	position_functions.go_set_perspective_z()
 
 	self.max_live = self.live
-	label.set_text("#label", self.live .. "/"..self.max_live)
 
 	self.input = vmath.vector3(0)
 	self.velocity = vmath.vector3(0)

@@ -17,10 +17,11 @@ function init(self)
 
 	position_functions.go_set_perspective_z()
 	self.max_live = self.live
-	label.set_text("#label", self.live .. "/"..self.max_live)
 
 	self.group_name = "visible_object"
 	self.group_id, self.visible_object_id = ai_vision.add_static_object(self, self.group_name)
+
+	live_bar.create(self)
 end
 
 function final(self)
@@ -33,8 +34,6 @@ function on_message(self, message_id, message, sender)
 		local damage = message.damage or 0
 		self.from_id_object = message.parent 
 		self.live = self.live - damage
-
-		label.set_text("#label", self.live .. "/"..self.max_live)
 
 		-- Анимация дамага
 		if not self.animate_damage then
@@ -53,6 +52,8 @@ function on_message(self, message_id, message, sender)
 
 			-- Покраснение
 			go.set("#object", "tint", vmath.vector4(1, 0.6, 0.6, 1))
+
+			live_bar.set_hp(self, self.live, self.max_live)
 
 			-- Кровь
 			if self.damage_blood then

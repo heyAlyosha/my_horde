@@ -11,7 +11,7 @@ go.property("speed_attack", 20)
 go.property("distantion_visible", 150)
 go.property("distantion_attack", 100)
 go.property("attack_type", hash("bullet"))
-go.property("bullet_damage", 10)
+go.property("bullet_damage", 5)
 go.property("bullet_distantion", 120)
 go.property("command", hash("humans"))
 go.property("human_id", 1)
@@ -43,7 +43,6 @@ function init(self)
 	position_functions.go_set_perspective_z()
 
 	self.max_live = self.live
-	label.set_text("#label", self.live .. "/"..self.max_live)
 
 	self.input = vmath.vector3(0)
 	self.velocity = vmath.vector3(0)
