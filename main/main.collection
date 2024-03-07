@@ -338,8 +338,8 @@ instances {
   }
 }
 collection_instances {
-  id: "prototype_main_horde"
-  collection: "/main/game/prototypes/prototype_main_horde/prototype_main_horde.collection"
+  id: "hospital_1"
+  collection: "/main/game/maps/levels/hospital/hospital_1.collection"
   position {
     x: 0.0
     y: 0.0

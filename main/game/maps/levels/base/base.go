@@ -33,6 +33,21 @@ components {
     w: 1.0
   }
 }
+components {
+  id: "map_scripts"
+  component: "/main/game/maps/levels/base/map_scripts.script"
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}
 embedded_components {
   id: "effect_factory"
   type: "factory"
