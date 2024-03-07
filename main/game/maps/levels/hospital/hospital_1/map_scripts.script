@@ -65,6 +65,42 @@ function on_message(self, message_id, message, sender)
 				sprite.play_flipbook(human.id .. "#body", hash("human_"..human.human_id.."_default"))
 			end
 		end, delay)
+
+		-- Показывается игрок
+		timer_linear.add(self, "start", 1, function (self)
+			go.delete("player_plug")
+			msg.post("player", "activate")
+		end, delay)
+
+		-- Человечки напряглись
+		timer_linear.add(self, "start", 1, function (self)
+			for i, human in ipairs(self.human_plugs_1) do
+				-- Скрываем их маркеры
+				msg.post(human.id .. "#marker", "enable")
+				sprite.play_flipbook(human.id .. "#marker", hash("marker_attention"))
+			end
+
+			-- Женщина встаёт с постели
+			local duration = 0.25
+			go.animate("human_plug_3", "position.x", go.PLAYBACK_ONCE_FORWARD, go.get_position("human_plug_3").x - 20, go.EASING_INOUTCUBIC, duration)
+			go.animate("human_plug_3", "position.y", go.PLAYBACK_ONCE_FORWARD, go.get_position("human_plug_3").y + 5, go.EASING_INOUTCUBIC, duration / 2, 0 , function (self)
+				go.animate("human_plug_3", "position.y", go.PLAYBACK_ONCE_FORWARD, go.get_position("human_plug_3").y - 5, go.EASING_INOUTCUBIC, duration / 2)
+			end)
+		end, delay)
+
+		-- Создаём настощих человечков
+
+		timer_linear.add(self, "start", 1, function (self)
+			for i, human in ipairs(self.human_plugs_1) do
+				-- Скрываем их маркеры
+				local properties = {
+					human_id = human.human_id
+				}
+	
+				factory.create("#human_factory", go.get_position(human.id), rotation, properties, scale)
+				go.delete(human.id)
+			end
+		end, delay)
 	end
 end
 

@@ -25,6 +25,7 @@ function M.add(self)
 		local target_item = storage_game.go_targets[M.url_to_key(url)]
 		local position = go.get_position()
 		--print(msg.url("map#map_core"))
+		pprint(v)
 		local map_url = go.get(storage_game.map.url_script, "map_url")
 
 		for i = 1, self.targets do
