@@ -20,7 +20,7 @@ components {
 }
 components {
   id: "nature"
-  component: "/main/game/maps/levels/hospital/hospital_1.tilemap"
+  component: "/main/game/maps/levels/hospital/hospital_1/hospital_1.tilemap"
   position {
     x: 0.0
     y: 0.0

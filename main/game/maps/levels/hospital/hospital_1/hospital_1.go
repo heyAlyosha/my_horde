@@ -20,7 +20,22 @@ components {
 }
 components {
   id: "nature"
-  component: "/main/game/maps/levels/hospital/hospital_1.tilemap"
+  component: "/main/game/maps/levels/hospital/hospital_1/hospital_1.tilemap"
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}
+components {
+  id: "map_scripts"
+  component: "/main/game/maps/levels/hospital/hospital_1/map_scripts.script"
   position {
     x: 0.0
     y: 0.0
