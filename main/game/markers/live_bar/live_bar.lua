@@ -9,12 +9,14 @@ end
 
 function M.update_position(self)
 	if self.hp_bar then
+		go.cancel_animations(self.hp_bar[hash("/live_bar")], "position")
 		go.set_position(go.get_position(), self.hp_bar[hash("/live_bar")])
 	end
 end
 
 function M.position_to(self, position, duration)
 	if self.hp_bar then
+		go.cancel_animations(self.hp_bar[hash("/live_bar")], "position")
 		go.animate(self.hp_bar[hash("/live_bar")], "position", go.PLAYBACK_ONCE_FORWARD, position, go.EASING_LINEAR, duration)
 	end
 end

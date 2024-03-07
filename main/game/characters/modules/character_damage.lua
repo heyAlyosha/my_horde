@@ -8,7 +8,8 @@ function M.damage_zombie(self, message)
 	self.from_id_object = message.from_id_object 
 	self.live = self.live - damage
 
-	label.set_text("#label", self.live .. "/"..self.max_live)
+	live_bar.create(self)
+	live_bar.set_hp(self, self.live, self.max_live)
 
 	character_animations.damage(self, message.parent)
 
@@ -34,6 +35,9 @@ function M.damage_human(self, message)
 	self.live = self.live - damage
 
 	character_animations.damage(self, message.parent)
+
+	live_bar.create(self)
+	live_bar.set_hp(self, self.live, self.max_live)
 
 	if self.live <= 0 then
 		local position = go.get_position()
@@ -72,7 +76,8 @@ function M.damage_soldier(self, message)
 	self.from_id_object = message.from_id_object 
 	self.live = self.live - damage
 
-	label.set_text("#label", self.live .. "/"..self.max_live)
+	live_bar.create(self)
+	live_bar.set_hp(self, self.live, self.max_live)
 
 	character_animations.damage(self, message.parent)
 

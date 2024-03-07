@@ -40,6 +40,8 @@ function M.move_item_from(self, position_from, handle, speed)
 		local duration = len / speed
 
 		go.cancel_animations(".", "position")
+
+		live_bar.position_to(self, position_to, duration)
 		go.animate(".", "position", go.PLAYBACK_ONCE_FORWARD, position_functions.go_get_perspective_z(position_to), go.EASING_LINEAR, duration, 0, handle)
 	else
 		if handle then
@@ -58,6 +60,7 @@ function M.move_item(self, position_to, handle, not_animate)
 	local len = vmath.length(dir)
 
 	local duration = len / self.speed
+	live_bar.position_to(self, position_to, duration)
 	go.animate(go.get_id(), "position", go.PLAYBACK_ONCE_FORWARD, position_functions.go_get_perspective_z(position_to), go.EASING_LINEAR, duration, 0, handle)
 
 	character_animations.play(self, "move")
@@ -183,7 +186,8 @@ end
 
 -- Остановка движения
 function M.stop(self)
-	go.cancel_animations(go.get_id(), "position")
+	--go.cancel_animations(go.get_id(), "position")
+	live_bar.update_position(self)
 
 	if self.timer_check_distation_attack then
 		timer.cancel(self.timer_check_distation_attack)

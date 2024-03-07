@@ -87,6 +87,8 @@ function M.delete(self)
 	if self.group_name and self.group_id and self.visible_object_id then
 		ai_vision.delete_object(self, self.group_name, self.visible_object_id)
 	end
+
+	live_bar.delete(self)
 end
 
 -- Есть ли объект
