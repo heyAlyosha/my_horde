@@ -64,6 +64,9 @@ function on_message(self, message_id, message, sender)
 				sprite.set_hflip(human.id .. "#body", true)
 				sprite.play_flipbook(human.id .. "#body", hash("human_"..human.human_id.."_default"))
 			end
+			local duration = 0.25
+			go.animate("/camera", "position.x", go.PLAYBACK_ONCE_FORWARD, go.get_position("player").x, go.EASING_LINEAR, duration)
+			go.animate("/camera", "position.y", go.PLAYBACK_ONCE_FORWARD, go.get_position("player").y, go.EASING_LINEAR, duration)
 		end, delay)
 
 		-- Показывается игрок
@@ -95,8 +98,8 @@ function on_message(self, message_id, message, sender)
 				local properties = {
 					human_id = human.human_id
 				}
-	
-				factory.create("#human_factory", go.get_position(human.id), rotation, properties, scale)
+
+				self.human_plugs_1[i].url_go = factory.create("#human_factory", go.get_position(human.id), rotation, properties, scale)
 				go.delete(human.id)
 			end
 		end, delay)

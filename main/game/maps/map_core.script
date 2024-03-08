@@ -16,7 +16,6 @@ function init(self)
 	}
 	local costs = {}
 
-	print(tilemap.get_bounds(self.map_url))
 	local tile, coord_x, coord_y = 0
 	local pos = vmath.vector3()
 	for ly = 0, h - 1 do

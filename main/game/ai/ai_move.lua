@@ -49,8 +49,6 @@ function M.move_item_from(self, position_from, handle, speed)
 		end
 		sprite.set_hflip("#body", dir.x < 0)
 	end
-
-	
 end
 
 -- Пердвижение к точке
