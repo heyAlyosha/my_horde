@@ -1,0 +1,399 @@
+name: "main"
+instances {
+  id: "loader_gui"
+  prototype: "/main/loaders/loader_gui/loader_gui.go"
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "loader_main"
+  prototype: "/main/game/loader_main/loader_main.go"
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "core_player"
+  prototype: "/main/core/core_player/core_player.go"
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "core_reward"
+  prototype: "/main/core/core_reward/core_reward.go"
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "core_stars"
+  prototype: "/main/core/core_stars/core_stars.go"
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "core_screens"
+  prototype: "/main/game/screens/core_screens.go"
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "sound"
+  prototype: "/main/sound/sound.go"
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "music"
+  prototype: "/main/music/music.go"
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "loader_sdk"
+  prototype: "/main/loaders/loader_sdk/loader_sdk.go"
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "camera"
+  prototype: "/orthographic/camera.go"
+  position {
+    x: 187.0
+    y: 104.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "script"
+    properties {
+      id: "near_z"
+      value: "-500.0"
+      type: PROPERTY_TYPE_NUMBER
+    }
+    properties {
+      id: "far_z"
+      value: "500.0"
+      type: PROPERTY_TYPE_NUMBER
+    }
+    properties {
+      id: "zoom"
+      value: "1.0"
+      type: PROPERTY_TYPE_NUMBER
+    }
+    properties {
+      id: "projection"
+      value: "FIXED_AUTO"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "follow_horizontal"
+      value: "false"
+      type: PROPERTY_TYPE_BOOLEAN
+    }
+    properties {
+      id: "follow_vertical"
+      value: "false"
+      type: PROPERTY_TYPE_BOOLEAN
+    }
+    properties {
+      id: "follow_target"
+      value: "prototype_main_horde/player"
+      type: PROPERTY_TYPE_HASH
+    }
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "ads"
+  prototype: "/main/ads/ads.go"
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "live_update_atlas"
+  prototype: "/main/game/live_update/atlas/live_update_atlas.go"
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "live_update_sound"
+  prototype: "/main/game/live_update/sounds/live_update_sound.go"
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "input_remote_tv"
+  prototype: "/input/input_remote_tv/input_remote_tv.go"
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "core_study"
+  prototype: "/main/game/study/core_study.go"
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+collection_instances {
+  id: "hospital_1"
+  collection: "/main/game/maps/levels/hospital/hospital_1/hospital_1.collection"
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+scale_along_z: 0
+embedded_instances {
+  id: "main"
+  children: "loader_gui"
+  children: "loader_main"
+  data: "components {\n"
+  "  id: \"main\"\n"
+  "  component: \"/main/main.script\"\n"
+  "  position {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "  }\n"
+  "  rotation {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "    w: 1.0\n"
+  "  }\n"
+  "  property_decls {\n"
+  "  }\n"
+  "}\n"
+  ""
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
