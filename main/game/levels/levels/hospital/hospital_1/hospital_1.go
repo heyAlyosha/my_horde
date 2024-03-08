@@ -774,3 +774,60 @@ embedded_components {
     w: 1.0
   }
 }
+embedded_components {
+  id: "door_factory"
+  type: "factory"
+  data: "prototype: \"/main/game/objects/objects_ruin/door_blue.go\"\n"
+  "load_dynamically: false\n"
+  "dynamic_prototype: false\n"
+  ""
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}
+embedded_components {
+  id: "pedestal_1_factory"
+  type: "factory"
+  data: "prototype: \"/main/game/objects/objects_ruin/pedestal_1.go\"\n"
+  "load_dynamically: false\n"
+  "dynamic_prototype: false\n"
+  ""
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}
+embedded_components {
+  id: "pedestal_2_factory"
+  type: "factory"
+  data: "prototype: \"/main/game/objects/objects_ruin/pedestal_2.go\"\n"
+  "load_dynamically: false\n"
+  "dynamic_prototype: false\n"
+  ""
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}

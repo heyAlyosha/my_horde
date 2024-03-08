@@ -8,6 +8,13 @@ function init(self)
 		{id = "human_plug_3", human_id = 4}
 	}
 
+	--Предметы для начала игры
+	self.objects_start = {
+		{plug_id = "door_plug", factory_id = "#door_factory"},
+		{plug_id = "pidestal_plug_left", factory_id = "#pedestal_1_factory"},
+		{plug_id = "pidestal_plug_right", factory_id = "#pedestal_2_factory"}
+	}
+
 	msg.post(".", "start")
 end
 
@@ -110,7 +117,21 @@ function on_message(self, message_id, message, sender)
 			end
 
 			levels_script_functions.add_goal_ruins(self, goals, function (self)
-				pprint("Есть")
+				msg.post(".", "get_ruin_door")
+			end)
+		end, delay)
+
+	elseif message_id == hash("get_ruin_door") then
+		-- Уничтожить дверь и тумбы
+		timer_linear.add(self, "start", 1, function (self)
+			local goals = {}
+			for i, object in ipairs(self.objects_start) do
+				goals[i] = msg.url(factory.create(object.factory_id, go.get_position(object.plug_id)))
+				go.delete(object.plug_id)
+			end
+
+			levels_script_functions.add_goal_ruins(self, goals, function (self)
+				--msg.post(".", "get_ruin_door")
 			end)
 		end, delay)
 	end
