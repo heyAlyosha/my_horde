@@ -17,6 +17,7 @@ local druid_castom_style = require "main.gui.modules.druid_castom_style"
 
 function init(self)
 	camera = require "orthographic.camera"
+	levels_script_functions = require "main.game.levels.modules.levels_script_functions"
 	go_controller = require "main.game.controllers.go_controller"
 	timer_linear = require "main.modules.timer_linear"
 	camera = require "orthographic.camera"

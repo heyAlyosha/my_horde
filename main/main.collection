@@ -339,7 +339,7 @@ instances {
 }
 collection_instances {
   id: "hospital_1"
-  collection: "/main/game/maps/levels/hospital/hospital_1/hospital_1.collection"
+  collection: "/main/game/levels/levels/hospital/hospital_1/hospital_1.collection"
   position {
     x: 0.0
     y: 0.0

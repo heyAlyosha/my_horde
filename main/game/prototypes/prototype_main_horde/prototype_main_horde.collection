@@ -161,7 +161,7 @@ instances {
 }
 instances {
   id: "map"
-  prototype: "/main/game/maps/levels/map_prototype.go"
+  prototype: "/main/game/levels/levels/map_prototype.go"
   position {
     x: 0.0
     y: 0.0

@@ -1,7 +1,7 @@
 name: "base"
 instances {
   id: "map"
-  prototype: "/main/game/maps/levels/base/base.go"
+  prototype: "/main/game/levels/levels/base/base.go"
   position {
     x: 0.0
     y: 0.0

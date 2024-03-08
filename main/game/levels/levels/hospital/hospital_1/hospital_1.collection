@@ -1,7 +1,7 @@
 name: "hospital_1"
 instances {
   id: "map"
-  prototype: "/main/game/maps/levels/hospital/hospital_1/hospital_1.go"
+  prototype: "/main/game/levels/levels/hospital/hospital_1/hospital_1.go"
   position {
     x: 0.0
     y: 0.0

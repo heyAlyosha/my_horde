@@ -1,6 +1,6 @@
 components {
   id: "map_core"
-  component: "/main/game/maps/map_core.script"
+  component: "/main/game/levels/map_core.script"
   position {
     x: 0.0
     y: 0.0
@@ -20,7 +20,7 @@ components {
 }
 components {
   id: "tilemap"
-  component: "/main/game/maps/levels/hospital/hospital_1/hospital_1.tilemap"
+  component: "/main/game/levels/levels/hospital/hospital_1/hospital_1.tilemap"
   position {
     x: 0.0
     y: 0.0
@@ -35,7 +35,7 @@ components {
 }
 components {
   id: "map_scripts"
-  component: "/main/game/maps/levels/hospital/hospital_1/map_scripts.script"
+  component: "/main/game/levels/levels/base/map_scripts.script"
   position {
     x: 0.0
     y: 0.0
@@ -96,7 +96,6 @@ embedded_components {
   "restitution: 0.5\n"
   "group: \"default\"\n"
   "mask: \"default\"\n"
-  "mask: \"physic_item_horde\"\n"
   "embedded_collision_shape {\n"
   "  shapes {\n"
   "    shape_type: TYPE_BOX\n"
@@ -723,25 +722,6 @@ embedded_components {
   "angular_damping: 0.0\n"
   "locked_rotation: false\n"
   "bullet: false\n"
-  ""
-  position {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-}
-embedded_components {
-  id: "human_factory"
-  type: "factory"
-  data: "prototype: \"/main/game/characters/human/human.go\"\n"
-  "load_dynamically: false\n"
-  "dynamic_prototype: false\n"
   ""
   position {
     x: 0.0

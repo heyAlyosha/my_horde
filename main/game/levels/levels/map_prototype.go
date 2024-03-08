@@ -15,7 +15,7 @@ components {
 }
 components {
   id: "map_core"
-  component: "/main/game/maps/map_core.script"
+  component: "/main/game/levels/map_core.script"
   position {
     x: 0.0
     y: 0.0

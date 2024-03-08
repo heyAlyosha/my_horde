@@ -22,9 +22,7 @@ go.property("spawn_trash", 0)
 go.property("spawn_xp", 1)
 
 function init(self)
-	timer.delay(0.1, false, function (self)
-		go_controller.add(self)
-	end)
+	go_controller.add(self)
 
 	self.random_skins = {1,2,3,4,7,8,9}
 
