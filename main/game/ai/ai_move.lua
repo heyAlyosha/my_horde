@@ -41,14 +41,16 @@ function M.move_item_from(self, position_from, handle, speed)
 		go.cancel_animations(".", "position")
 
 		live_bar.position_to(self, position_to, duration)
+		sprite.set_hflip("#body", vmath.normalize(position_to - position).x < 0)
 		go.animate(".", "position", go.PLAYBACK_ONCE_FORWARD, position_functions.go_get_perspective_z(position_to), go.EASING_LINEAR, duration, 0, handle)
 	else
 		if handle then
 			handle(self)
 		end
+		sprite.set_hflip("#body", dir.x < 0)
 	end
 
-	sprite.set_hflip("#body", dir.x < 0)
+	
 end
 
 -- Пердвижение к точке
