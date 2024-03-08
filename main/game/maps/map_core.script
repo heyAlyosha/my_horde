@@ -4,15 +4,21 @@ function init(self)
 	storage_game.map.url = self.map_url
 	storage_game.map.url_script = msg.url()
 	local levelx, levely, w, h = tilemap.get_bounds(self.map_url)
+
+	print(tilemap.get_bounds(self.map_url))
 	local tile, coord_x, coord_y = 0
 	local pos = vmath.vector3()
 	for ly = 0, h - 1 do
 		for lx = 0, w - 1 do
 			tile = tilemap.get_tile(self.map_url, hash("move"), lx + 1, ly + 1)
 
-			astar_settings.world[ly * w + lx + 1] = tile -- World table for path
+			print(ly, lx, tile, hash("move"))
 
-			if tile ~= 0 then --Ground tile ID
+			astar_settings.world[ly * w + lx + 1] = tile or 0 -- World table for path
+			print("tile_pred", tile)
+			print("tile", tile, lx, ly, coord_x, coord_y)
+			if tile and tile ~= 0 then --Ground tile ID
+				
 				coord_x, coord_y = astar_utils:coords_to_screen(lx, ly)
 				pos = vmath.vector3(coord_x, coord_y, 0.3)
 				table.insert(astar_settings.tiles, {x = lx, y = ly, position = pos}) -- Tile position table
@@ -45,8 +51,32 @@ function init(self)
 			1.41
 		}
 	}
+	costs[97] = costs[206]
+	costs[98] = costs[206]
+	costs[99] = costs[206]
+	costs[113] = costs[206]
+	costs[114] = costs[206]
+	costs[115] = costs[206]
+	costs[129] = costs[206]
+	costs[130] = costs[206]
+	costs[131] = costs[206]
+	costs[145] = costs[206]
+	costs[146] = costs[206]
+	costs[147] = costs[206]
 
-	--pprint(astar_settings.world)
+	pprint("#astar_settings.world", #astar_settings.world)
+	for i, v in ipairs(astar_settings.world) do
+		--pprint("astar_settings.world", #astar_settings.world)
+		if v ~= 0 then
+			pprint("astar_settings.world", i, v)
+		end
+	end
+	--[[
+	for i = 1, 10 do
+		pprint("astar_settings.world", #astar_settings.world)
+	end
+	--]]
+	
 	astar.setup(astar_settings.mapWidth, astar_settings.mapHeight, astar_settings.direction, astar_settings.allocate, astar_settings.typical_adjacent, astar_settings.cache)
 	astar.set_map(astar_settings.world)
 	astar.set_costs(costs)

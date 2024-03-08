@@ -29,6 +29,8 @@ function M.add_zombie_horde(self, skin_id, human_id, position)
 		human_id = human_id,
 	}
 
+	print("#zombie_horde_factory", self.horde[#self.horde])
+
 	self.target_add_horde = M.get_position(self, go.get_position(), #self.horde)
 
 	character_zombie_main.change_horde(self)

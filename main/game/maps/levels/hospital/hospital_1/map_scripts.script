@@ -89,7 +89,6 @@ function on_message(self, message_id, message, sender)
 		end, delay)
 
 		-- Создаём настощих человечков
-
 		timer_linear.add(self, "start", 1, function (self)
 			for i, human in ipairs(self.human_plugs_1) do
 				-- Скрываем их маркеры

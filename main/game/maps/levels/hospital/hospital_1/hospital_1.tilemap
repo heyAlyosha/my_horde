@@ -2640,6 +2640,22 @@ layers {
     v_flip: 0
     rotate90: 0
   }
+  cell {
+    x: 44
+    y: 23
+    tile: 0
+    h_flip: 0
+    v_flip: 0
+    rotate90: 0
+  }
+  cell {
+    x: 55
+    y: 31
+    tile: 0
+    h_flip: 0
+    v_flip: 0
+    rotate90: 0
+  }
 }
 layers {
   id: "walls"
@@ -5686,11 +5702,6 @@ layers {
 layers {
   id: "object_perspective"
   z: 0.2
-  is_visible: 1
-}
-layers {
-  id: "layer"
-  z: 1.0
   is_visible: 1
 }
 material: "/builtins/materials/tile_map.material"

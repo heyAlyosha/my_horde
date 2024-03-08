@@ -12,6 +12,7 @@ function M.move_item_from(self, position_from, handle, speed)
 	local near_result, near_size, nears = astar.solve_near(start_x, start_y, max_cost)
 
 	local result = {}
+	print("move_item_from", position, start_x, start_y, astar.solve_near(start_x, start_y, max_cost))
 	if near_result == astar.SOLVED then
 		print("SOLVED")
 		for i, v in ipairs(nears) do
