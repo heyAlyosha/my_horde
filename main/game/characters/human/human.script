@@ -20,9 +20,17 @@ go.property("animation_type", hash("human"))
 go.property("spawn_coins", 1)
 go.property("spawn_trash", 0)
 go.property("spawn_xp", 1)
+go.property("id_activation", hash(""))
 
 function init(self)
 	go_controller.add(self)
+
+	-- Добавляем активацию объекта в скрипт карты
+	if self.id_activation ~= hash("") then
+		msg.post("map#map_scripts", "add_activation_object", {
+			id_activation = self.id_activation
+		})
+	end
 
 	self.random_skins = {1,2,3,4,7,8,9}
 

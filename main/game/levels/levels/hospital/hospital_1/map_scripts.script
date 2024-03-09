@@ -1,5 +1,8 @@
 -- Скрипты для карты
 function init(self)
+	-- Объекты для активации
+	self.activation_objects = {}
+
 	sprite.set_hflip("human_plug_2#body", true)
 
 	self.human_plugs_1 = {
@@ -135,6 +138,21 @@ function on_message(self, message_id, message, sender)
 				--msg.post(".", "get_ruin_door")
 			end)
 		end, delay)
+
+	elseif message_id == hash("add_activation_object") then
+		-- Добавляем объект в активацию
+		local id_activation = message.id_activation
+		self.activation_objects[id_activation] = self.activation_objects[id_activation] or {}
+		table.insert(self.activation_objects[id_activation], sender)
+
+	elseif message_id == hash("activation_point") then
+		-- Активация объектов по поинту
+		local id_activation = message.id_activation
+		if self.activation_objects[id_activation] then
+			for i, url in ipairs(self.activation_objects[id_activation]) do
+				msg.post(url, "activation")
+			end
+		end
 	end
 end
 
