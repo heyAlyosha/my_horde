@@ -8,6 +8,7 @@ go.property("damage_blood", true)
 go.property("spawn_coins", 0)
 go.property("spawn_trash", 1)
 go.property("spawn_xp", 0)
+go.property("hflip", false)
 
 -- Разрушаемые объекты
 function init(self)
@@ -20,6 +21,8 @@ function init(self)
 	self.group_id, self.visible_object_id = ai_vision.add_static_object(self, self.group_name)
 
 	live_bar.create(self)
+
+	sprite.set_hflip("#object", self.hflip)
 end
 
 function final(self)

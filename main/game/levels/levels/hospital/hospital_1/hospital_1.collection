@@ -147,6 +147,94 @@ instances {
     z: 1.0
   }
 }
+instances {
+  id: "wheelachair"
+  prototype: "/main/game/objects/objects_ruin/wheelachair.go"
+  position {
+    x: 140.0
+    y: 165.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "script"
+    properties {
+      id: "hflip"
+      value: "true"
+      type: PROPERTY_TYPE_BOOLEAN
+    }
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "outdoor_flower_mini"
+  prototype: "/main/game/objects/objects_ruin/outdoor_flower_mini.go"
+  position {
+    x: 230.0
+    y: 216.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "outdoor_flower_mini1"
+  prototype: "/main/game/objects/objects_ruin/table_mini.go"
+  position {
+    x: 245.0
+    y: 216.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "chair_blue2"
+  prototype: "/main/game/objects/objects_ruin/chair_blue.go"
+  position {
+    x: 263.0
+    y: 215.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
 scale_along_z: 0
 embedded_instances {
   id: "pidestal_plug_left"
