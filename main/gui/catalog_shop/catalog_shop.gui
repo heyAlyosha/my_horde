@@ -1475,7 +1475,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "objects_mini/accuracy_1"
+  texture: ""
   id: "item_template/icon"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -3846,7 +3846,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "objects_mini/accuracy_1"
+  texture: ""
   id: "detail_icon"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE

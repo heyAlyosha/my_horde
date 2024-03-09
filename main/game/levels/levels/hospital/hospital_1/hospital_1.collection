@@ -67,6 +67,46 @@ instances {
     z: 1.0
   }
 }
+instances {
+  id: "table_big_hospital_1"
+  prototype: "/main/game/objects/objects_ruin/table_big_hospital_1.go"
+  position {
+    x: 118.0
+    y: 219.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "outdoor_flower_big"
+  prototype: "/main/game/objects/objects_ruin/outdoor_flower_big.go"
+  position {
+    x: 25.0
+    y: 217.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
 scale_along_z: 0
 embedded_instances {
   id: "pidestal_plug_left"

@@ -1285,7 +1285,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "objects_mini/try_1"
+  texture: ""
   id: "icon"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE

@@ -339,7 +339,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "objects_mini/accuracy_1"
+  texture: ""
   id: "object_template/image"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE

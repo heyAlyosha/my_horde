@@ -413,101 +413,6 @@ embedded_components {
   }
 }
 embedded_components {
-  id: "game_hud_buff_horisontal_factory"
-  type: "factory"
-  data: "prototype: \"/main/gui/game_gui/game_hud_buff_horisontal/game_hud_buff_horisontal.go\"\n"
-  "load_dynamically: false\n"
-  "dynamic_prototype: false\n"
-  ""
-  position {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-}
-embedded_components {
-  id: "game_word_factory"
-  type: "factory"
-  data: "prototype: \"/main/gui/game_gui/game_word/game_word.go\"\n"
-  "load_dynamically: false\n"
-  "dynamic_prototype: false\n"
-  ""
-  position {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-}
-embedded_components {
-  id: "game_wheel_factory"
-  type: "factory"
-  data: "prototype: \"/main/gui/game_gui/game_wheel/game_wheel.go\"\n"
-  "load_dynamically: false\n"
-  "dynamic_prototype: false\n"
-  ""
-  position {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-}
-embedded_components {
-  id: "scale_power_factory"
-  type: "factory"
-  data: "prototype: \"/main/gui/game_gui/scale_power/scale_power.go\"\n"
-  "load_dynamically: false\n"
-  "dynamic_prototype: false\n"
-  ""
-  position {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-}
-embedded_components {
-  id: "game_open_symbol_factory"
-  type: "factory"
-  data: "prototype: \"/main/gui/game_gui/game_open_symbol/game_open_symbol.go\"\n"
-  "load_dynamically: false\n"
-  "dynamic_prototype: false\n"
-  ""
-  position {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-}
-embedded_components {
   id: "dialog_bubble_factory"
   type: "factory"
   data: "prototype: \"/main/gui/dialog_bubble/dialog_bubble.go\"\n"
@@ -530,44 +435,6 @@ embedded_components {
   id: "main_title_factory"
   type: "factory"
   data: "prototype: \"/main/gui/main_title/main_title.go\"\n"
-  "load_dynamically: false\n"
-  "dynamic_prototype: false\n"
-  ""
-  position {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-}
-embedded_components {
-  id: "game_transfer_factory"
-  type: "factory"
-  data: "prototype: \"/main/gui/game_gui/game_transfer/game_transfer.go\"\n"
-  "load_dynamically: false\n"
-  "dynamic_prototype: false\n"
-  ""
-  position {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-}
-embedded_components {
-  id: "game_confirm_obereg_factory"
-  type: "factory"
-  data: "prototype: \"/main/gui/game_gui/game_confirm_obereg/game_confirm_obereg.go\"\n"
   "load_dynamically: false\n"
   "dynamic_prototype: false\n"
   ""
@@ -622,85 +489,9 @@ embedded_components {
   }
 }
 embedded_components {
-  id: "up_label_scene_factory"
-  type: "factory"
-  data: "prototype: \"/main/gui/game_gui/up_label_scene/up_label_scene.go\"\n"
-  "load_dynamically: false\n"
-  "dynamic_prototype: false\n"
-  ""
-  position {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-}
-embedded_components {
   id: "test_position_factory"
   type: "factory"
   data: "prototype: \"/main/gui/test_position/test_position.go\"\n"
-  "load_dynamically: false\n"
-  "dynamic_prototype: false\n"
-  ""
-  position {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-}
-embedded_components {
-  id: "game_constructor_factory"
-  type: "factory"
-  data: "prototype: \"/main/gui/game_gui/game_constructor/game_constructor.go\"\n"
-  "load_dynamically: false\n"
-  "dynamic_prototype: false\n"
-  ""
-  position {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-}
-embedded_components {
-  id: "game_constructor_player_factory"
-  type: "factory"
-  data: "prototype: \"/main/gui/game_gui/game_constructor_player/game_constructor_player.go\"\n"
-  "load_dynamically: false\n"
-  "dynamic_prototype: false\n"
-  ""
-  position {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-}
-embedded_components {
-  id: "game_family_shop_factory"
-  type: "factory"
-  data: "prototype: \"/main/gui/game_gui/game_family_shop/game_family_shop.go\"\n"
   "load_dynamically: false\n"
   "dynamic_prototype: false\n"
   ""
@@ -834,63 +625,6 @@ embedded_components {
   id: "modal_reset_factory"
   type: "factory"
   data: "prototype: \"/main/gui/modals/modal_reset/modal_reset.go\"\n"
-  "load_dynamically: false\n"
-  "dynamic_prototype: false\n"
-  ""
-  position {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-}
-embedded_components {
-  id: "character_dialog_factory"
-  type: "factory"
-  data: "prototype: \"/main/gui/character_dialog/character_dialog.go\"\n"
-  "load_dynamically: false\n"
-  "dynamic_prototype: false\n"
-  ""
-  position {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-}
-embedded_components {
-  id: "quest_image_factory"
-  type: "factory"
-  data: "prototype: \"/main/gui/game_gui/quest_image/quest_image.go\"\n"
-  "load_dynamically: false\n"
-  "dynamic_prototype: false\n"
-  ""
-  position {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-}
-embedded_components {
-  id: "quest_music_factory"
-  type: "factory"
-  data: "prototype: \"/main/gui/game_gui/quest_music/quest_music.go\"\n"
   "load_dynamically: false\n"
   "dynamic_prototype: false\n"
   ""
