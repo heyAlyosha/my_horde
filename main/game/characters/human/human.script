@@ -21,9 +21,12 @@ go.property("spawn_coins", 1)
 go.property("spawn_trash", 0)
 go.property("spawn_xp", 1)
 go.property("id_activation", hash(""))
+go.property("hflip", false)
 
 function init(self)
 	go_controller.add(self)
+
+	sprite.set_hflip("#body", self.hflip)
 
 	-- Добавляем активацию объекта в скрипт карты
 	if self.id_activation ~= hash("") then
