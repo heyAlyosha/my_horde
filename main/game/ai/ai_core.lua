@@ -27,7 +27,16 @@ function M.condition_attack(self, url, handle_success, handle_error, handle_fire
 		M.condition_to_horde(self)
 	end
 
+	--[[
+	if not self.last_target or go_controller.url_to_key(self.target) ~= go_controller.url_to_key(self.last_target) then
+		
+		print("condition_attack", self.last_target, self.target, go_controller.url_to_key(self.target) ~= go_controller.url_to_key(self.last_target))
+	end
+	--]]
+
 	ai_attack.add_target(self, self.target)
+	self.last_target = self.target
+
 	ai_move.move_to_object(self, self.target, handle_success, handle_error, handle_no_object_target)
 
 	self.check_attak = ai_core.check_distantion_attack(self, self.target, handle_distantion_success, handle_distantion_error)

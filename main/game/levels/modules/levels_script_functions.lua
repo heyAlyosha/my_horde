@@ -31,7 +31,6 @@ function M.on_update(self)
 		-- Удаляем старые цели
 		local index = 0
 		for k, item in pairs(self.goal_ruins) do
-			print("M.on_update(self)")
 			-- Есть ли объект прицеливания
 			if go_controller.is_object(item.id) then
 				-- Обновляем позицию

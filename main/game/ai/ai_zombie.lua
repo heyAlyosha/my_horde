@@ -23,7 +23,7 @@ function M.behavior(self)
 
 				-- Добежал до цели
 				local handle_success = function (self)
-					if self.target and go_controller.is_object(self.target) and ai_attack.check_distance_attack(self, self.target, handle_distantion_error) then
+					if self.target and go_controller.is_object(self.target) then
 						-- Атакуем
 						local handle_fire = function (self)
 							if self.target and go_controller.is_object(self.target) and ai_attack.check_distance_attack(self, self.target, handle_distantion_error) then
@@ -36,7 +36,6 @@ function M.behavior(self)
 											character_attack.attack(self, self.target)
 
 										else
-
 											timer.cancel(handle)
 											self.is_attack_fire = nil
 											self.target = nil
@@ -83,7 +82,6 @@ function M.behavior(self)
 						ai_zombie.behavior(self)
 					end
 				end
-
 				ai_core.condition_attack(self, self.target, handle_success, handle_error, handle_success)
 			end
 			

@@ -14,7 +14,7 @@ components {
   }
   properties {
     id: "live"
-    value: "20.0"
+    value: "5.0"
     type: PROPERTY_TYPE_NUMBER
   }
   properties {

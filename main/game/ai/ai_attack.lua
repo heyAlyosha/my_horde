@@ -31,6 +31,7 @@ function M.add_target(self, url_target)
 
 	if possible_targets[1] then
 		self.target = url_target
+		print("add_target", self.target, possible_targets[1].vector_target)
 		self.target_vector = possible_targets[1].vector_target
 		self.target_id_point = possible_targets[1].id
 

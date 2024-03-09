@@ -14,13 +14,8 @@ components {
   }
   properties {
     id: "live"
-    value: "20.0"
+    value: "5.0"
     type: PROPERTY_TYPE_NUMBER
-  }
-  properties {
-    id: "target_dist"
-    value: "10.0, 0.0, 0.0"
-    type: PROPERTY_TYPE_VECTOR3
   }
   properties {
     id: "spawn_trash"

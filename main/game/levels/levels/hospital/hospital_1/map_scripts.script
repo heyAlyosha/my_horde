@@ -15,8 +15,8 @@ function init(self)
 		{plug_id = "pidestal_plug_right", factory_id = "#pedestal_2_factory"}
 	}
 
-	msg.post(".", "start")
-	--msg.post(".", "get_ruin_door")
+	--msg.post(".", "start")
+	msg.post(".", "get_ruin_door")
 end
 
 function final(self)
