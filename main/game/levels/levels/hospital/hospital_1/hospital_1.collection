@@ -43,8 +43,8 @@ instances {
   id: "player"
   prototype: "/main/game/characters/player/player.go"
   position {
-    x: 36.0
-    y: 54.0
+    x: 46.0
+    y: 161.0
     z: -2.0
   }
   rotation {
@@ -93,6 +93,46 @@ instances {
   position {
     x: 25.0
     y: 217.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "chair_blue"
+  prototype: "/main/game/objects/objects_ruin/chair_blue.go"
+  position {
+    x: 97.0
+    y: 216.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "chair_blue1"
+  prototype: "/main/game/objects/objects_ruin/chair_blue.go"
+  position {
+    x: 139.0
+    y: 216.0
     z: 0.0
   }
   rotation {
