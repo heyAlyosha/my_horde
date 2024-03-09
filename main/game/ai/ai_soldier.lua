@@ -34,7 +34,6 @@ function M.behavior(self)
 							local handle_fire = function (self)
 								if self.target and go_controller.is_object(self.target) and ai_attack.check_distance_attack(self, self.target, handle_distantion_error) then
 									-- Цель есть, атакуем
-									
 									if not self.is_attack_fire then
 										self.is_attack_fire = true
 										character_attack.attack(self, self.target)

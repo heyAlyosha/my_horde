@@ -28,7 +28,23 @@ function M.behavior(self)
 						local handle_fire = function (self)
 							if self.target and go_controller.is_object(self.target) and ai_attack.check_distance_attack(self, self.target, handle_distantion_error) then
 								-- Цель есть, атакуем
-								character_attack.attack(self, self.target)
+								if not self.is_attack_fire then
+									self.is_attack_fire = true
+									character_attack.attack(self, self.target)
+									self.timer_attack = timer.delay(self.speed_damage, true, function (self, handle)
+										if self.target and go_controller.is_object(self.target) and ai_attack.check_distance_attack(self, self.target, handle_distantion_error) then
+											character_attack.attack(self, self.target)
+
+										else
+
+											timer.cancel(handle)
+											self.is_attack_fire = nil
+											self.target = nil
+											self.condition_attack = nil
+											M.behavior(self)
+										end
+									end)
+								end
 							else
 								-- Цели нет, либо убежала далеко, повторяем
 								self.target = nil
@@ -37,6 +53,13 @@ function M.behavior(self)
 									self.attack = nil
 								end
 								self.condition_attack = nil
+
+								-- Отключаем атаку
+								self.is_attack_fire = nil
+								if self.timer_attack then
+									timer.cancel(self.timer_attack)
+									self.timer_attack = nil
+								end
 
 								ai_zombie.behavior(self)
 							end
@@ -50,18 +73,24 @@ function M.behavior(self)
 							self.attack.stop(self)
 							self.attack = nil
 						end
+
+						-- Отключаем атаку
+						self.is_attack_fire = nil
+						if self.timer_attack then
+							timer.cancel(self.timer_attack)
+							self.timer_attack = nil
+						end
 						ai_zombie.behavior(self)
 					end
 				end
-
-				-- Обработка удара (заглушка)
-				local handle_fire = function (self) end
 
 				ai_core.condition_attack(self, self.target, handle_success, handle_error, handle_success)
 			end
 			
 		else
 			-- Нет цели, ищем возможные вокруг
+			self.is_attack_fire = nil
+
 			if visible_items then
 				for i = 1, #visible_items do
 					local visible_item = visible_items[i]

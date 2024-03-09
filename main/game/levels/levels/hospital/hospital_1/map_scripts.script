@@ -16,6 +16,7 @@ function init(self)
 	}
 
 	msg.post(".", "start")
+	--msg.post(".", "get_ruin_door")
 end
 
 function final(self)
