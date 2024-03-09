@@ -45,6 +45,11 @@ function init(self)
 	live_bar = require "main.game.markers.live_bar.live_bar"
 
 	--profiler.enable_ui(true)
+	--profiler.set_ui_mode(profiler.MODE_RECORD)
+	--profiler.set_ui_view_mode(profiler.VIEW_MODE_MINIMIZED)
+	--profiler.enable_ui(true)
+	--profiler.set_ui_view_mode(true)
+	--profiler.view_recorded_frame(true)
 
 	math.randomseed = function (seed)
 		storage_game.randomseed = storage_game.randomseed or 0
