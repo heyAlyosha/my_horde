@@ -40,6 +40,13 @@ function init(self)
 	if go_controller.url_to_key(self.target) == go_controller.url_to_key(msg.url()) then
 		self.target = nil
 	end
+
+	if self.target then
+		-- 
+		print("ai_attack.add_target")
+		print(ai_attack.add_target(self, self.target))
+		
+	end
 	ai_zombie.behavior(self)
 end
 

@@ -16,18 +16,22 @@ function M.move_item_from(self, position_from, handle, speed)
 		for i, v in ipairs(nears) do
 			local x,y = astar_utils:coords_to_screen(v.x, v.y)
 			if v.x ~= start_x or v.y ~= start_y then
+				local sort = 0
 				local position_to = vmath.vector3(x, y, 0)
-				local dot = vmath.dot(dir, position_to - position)
+				local result_collision = physics.raycast(go.get_position(), position_to, {hash("default")}, options)
+				if result_collision then
+					sort = sort - 100
+				end
+				local dot = vmath.dot(dir, position_to - position) * 0.00001
+				sort = sort + dot
+				print("sort", sort, result_collision)
 				table.insert(result, {
 					position = position_to,
-					sort = dot
+					sort = sort,
+					collision = result_collision
 				})
 			end
 		end
-	elseif near_result == astar.NO_SOLUTION then
-		print("NO_SOLUTION")
-	elseif near_result == astar.START_END_SAME then
-		print("START_END_SAME")
 	end
 
 	if #result > 0 then
@@ -35,14 +39,10 @@ function M.move_item_from(self, position_from, handle, speed)
 			return a.sort > b.sort
 		end)
 		local position_to = result[1].position
-		local len = vmath.length(position_to - position)
-		local duration = len / speed
 
-		go.cancel_animations(".", "position")
+		pprint(result, "-----------------")
 
-		live_bar.position_to(self, position_to, duration)
-		sprite.set_hflip("#body", vmath.normalize(position_to - position).x < 0)
-		go.animate(".", "position", go.PLAYBACK_ONCE_FORWARD, position_functions.go_get_perspective_z(position_to), go.EASING_LINEAR, duration, 0, handle)
+		M.move_item(self, position_functions.go_get_perspective_z(position_to), handle)
 	else
 		if handle then
 			handle(self)
@@ -60,6 +60,7 @@ function M.move_item(self, position_to, handle)
 
 	local duration = len / self.speed
 	live_bar.position_to(self, position_to, duration)
+	go.cancel_animations(".", "position")
 	go.animate(go.get_id(), "position", go.PLAYBACK_ONCE_FORWARD, position_functions.go_get_perspective_z(position_to), go.EASING_LINEAR, duration, 0, handle)
 
 	character_animations.play(self, "move")
@@ -110,6 +111,7 @@ function M.move_to_object(self, url, handle_success, handle_error, handle_no_obj
 				handle_error(self, error_code)
 			end
 			--]]
+			print(self.target_position, self.target_vector)
 			M.move_item(self, self.target_position, handle_success)
 		else
 			table.remove(path, 1)

@@ -35,8 +35,6 @@ function M.condition_attack(self, url, handle_success, handle_error, handle_fire
 	--]]
 
 	ai_attack.add_target(self, self.target)
-	self.last_target = self.target
-
 	ai_move.move_to_object(self, self.target, handle_success, handle_error, handle_no_object_target)
 
 	self.check_attak = ai_core.check_distantion_attack(self, self.target, handle_distantion_success, handle_distantion_error)

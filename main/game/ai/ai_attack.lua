@@ -7,6 +7,7 @@ function M.add_target(self, url_target)
 	local key_target = go_controller.url_to_key(url_target)
 	local target = storage_game.go_targets[key_target]
 
+	pprint("M.add_target", go_controller.is_object(url_target), target)
 	if not go_controller.is_object(url_target) then
 		return false
 	end
@@ -31,7 +32,6 @@ function M.add_target(self, url_target)
 
 	if possible_targets[1] then
 		self.target = url_target
-		print("add_target", self.target, possible_targets[1].vector_target)
 		self.target_vector = possible_targets[1].vector_target
 		self.target_id_point = possible_targets[1].id
 
