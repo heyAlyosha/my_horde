@@ -1,3 +1,4 @@
+go.property("activation", true)
 go.property("live", 10)
 go.property("command", hash("building_ruin"))
 go.property("type_object", hash("building_ruin"))
@@ -9,9 +10,10 @@ go.property("spawn_coins", 0)
 go.property("spawn_trash", 1)
 go.property("spawn_xp", 0)
 go.property("hflip", false)
+go.property("id_activation", hash(""))
 
 -- Разрушаемые объекты
-function init(self)
+local function activate_init(self)
 	go_controller.add(self)
 
 	position_functions.go_set_perspective_z()
@@ -25,8 +27,25 @@ function init(self)
 	sprite.set_hflip("#object", self.hflip)
 end
 
+function init(self)
+	-- Добавляем активацию объекта в скрипт карты
+	if self.id_activation ~= hash("") then
+		msg.post("map#map_scripts", "add_activation_object", {
+			id_activation = self.id_activation
+		})
+	end
+
+	position_functions.go_set_perspective_z()
+
+	if self.activation then
+		activate_init(self)
+	end
+end
+
 function final(self)
-	go_controller.delete(self)
+	if self.activation then
+		go_controller.delete(self)
+	end
 end
 
 function on_message(self, message_id, message, sender)
@@ -84,6 +103,11 @@ function on_message(self, message_id, message, sender)
 			
 			go.delete()
 		end
+
+	elseif message_id == hash("activation") then
+		-- Активируем персонажа
+		self.activation = true
+		activate_init(self)
 	end
 end
 

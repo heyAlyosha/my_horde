@@ -24,9 +24,28 @@ go.property("spawn_xp", 1)
 go.property("id_activation", hash(""))
 go.property("hflip", false)
 
-function init(self)
+-- Активация человечка
+local function activate_init(self)
 	go_controller.add(self)
 
+	position_functions.go_set_perspective_z()
+
+	self.max_live = self.live
+
+	self.input = vmath.vector3(0)
+	self.velocity = vmath.vector3(0)
+	self.correction = vmath.vector3()
+
+	self.group_name = "visible_object"
+	self.group_id, self.visible_object_id = ai_vision.add_dynamic_object(self, self.group_name)
+	self.running = self.animation_running
+	self.from_point_position = go.get_position()
+
+	-- Поведение
+	ai_human.live(self)
+end
+
+function init(self)
 	sprite.set_hflip("#body", self.hflip)
 
 	-- Добавляем активацию объекта в скрипт карты
@@ -44,29 +63,21 @@ function init(self)
 	end
 
 	sprite.play_flipbook("#body", "human_"..self.human_id .. "_default")
+
 	position_functions.go_set_perspective_z()
 
-	self.max_live = self.live
-
-	self.input = vmath.vector3(0)
-	self.velocity = vmath.vector3(0)
-	self.correction = vmath.vector3()
-
-	self.group_name = "visible_object"
-	self.group_id, self.visible_object_id = ai_vision.add_dynamic_object(self, self.group_name)
-	self.running = self.animation_running
-	self.from_point_position = go.get_position()
-
-	-- Поведение
 	if self.activation then
-		ai_human.live(self)
+		activate_init(self)
 	end
 end
 
 function final(self)
-	go_controller.delete(self)
+	if self.activation then
+		go_controller.delete(self)
+	end
 end
 
+--[[
 function fixed_update(self, dt)
 	-- This function is called if 'Fixed Update Frequency' is enabled in the Engine section of game.project
 	-- Can be coupled with fixed updates of the physics simulation if 'Use Fixed Timestep' is enabled in
@@ -88,6 +99,7 @@ function update(self, dt)
 		end
 	end
 end
+--]]
 
 function on_message(self, message_id, message, sender)
 	if message_id == hash("damage") then
@@ -104,7 +116,7 @@ function on_message(self, message_id, message, sender)
 	elseif message_id == hash("activation") then
 		-- Активируем персонажа
 		self.activation = true
-		ai_human.live(self)
+		activate_init(self)
 	end
 end
 
