@@ -1,0 +1,18 @@
+go.property("id_activation", hash(""))
+
+function init(self)
+	-- Add initialization code here
+	-- Learn more: https://defold.com/manuals/script/
+	-- Remove this function if not needed
+end
+
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("trigger_response")then
+		print("ACTIVATION")
+		msg.post("map#map_scripts", "activation_point", {
+			id_activation = self.id_activation
+		})
+		go.delete()
+	end
+end

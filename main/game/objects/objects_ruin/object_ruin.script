@@ -1,0 +1,94 @@
+go.property("live", 10)
+go.property("command", hash("building_ruin"))
+go.property("type_object", hash("building_ruin"))
+go.property("targets", 8)
+go.property("target_dist", vmath.vector3(6, 0, 0))
+go.property("target_useful", 0)
+go.property("damage_blood", true)
+go.property("spawn_coins", 0)
+go.property("spawn_trash", 1)
+go.property("spawn_xp", 0)
+go.property("hflip", false)
+
+-- Разрушаемые объекты
+function init(self)
+	go_controller.add(self)
+
+	position_functions.go_set_perspective_z()
+	self.max_live = self.live
+
+	self.group_name = "visible_object"
+	self.group_id, self.visible_object_id = ai_vision.add_static_object(self, self.group_name)
+
+	live_bar.create(self)
+
+	sprite.set_hflip("#object", self.hflip)
+end
+
+function final(self)
+	go_controller.delete(self)
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("damage") then
+		-- Получили урон
+		local damage = message.damage or 0
+		self.from_id_object = message.parent 
+		self.live = self.live - damage
+
+		-- Анимация дамага
+		if not self.animate_damage then
+			local duration = 0.15
+			local position = go.get_position()
+			local dir = go.get_position(message.parent) - position
+			-- Противоположное направление
+			--dir = vmath.normalize(dir * (-1))
+			if dir.x < 0 then
+				dir = vmath.vector3(1, 0, 0)
+			else
+				dir = vmath.vector3(-1, 0, 0)
+			end
+
+			go.animate(".", "position", go.PLAYBACK_ONCE_FORWARD, position + dir, go.EASING_INOUTBACK, duration)
+
+			-- Покраснение
+			go.set("#object", "tint", vmath.vector4(1, 0.6, 0.6, 1))
+
+			live_bar.set_hp(self, self.live, self.max_live)
+
+			-- Кровь
+			if self.damage_blood then
+				particlefx.play("#destroy")
+			end
+			self.animate_damage = true
+			timer.delay(duration + 0.05, false, function (self)
+				go.set_position(position)
+				go.set("#object", "tint", vmath.vector4(1, 1, 1, 1)) -- <1>
+				self.animate_damage = nil
+			end)
+		end
+
+		if self.live <= 0 then
+			-- Эффект разрушения
+			local position = go.get_position()
+			position.y = position.y + go.get("#object", "size").y / 2
+			position.z = 2
+			msg.post(storage_game.map.url_script, "effect", {
+				position = position,
+				animation_id = hash("destroy"), 
+				timer_delete = 0,
+				shake = false, -- Тряска камеры при эффекте
+			})
+
+			items_functions.spawn(self)
+			
+			go.delete()
+		end
+	end
+end
+
+function on_reload(self)
+	-- Add reload-handling code here
+	-- Learn more: https://defold.com/manuals/hot-reload/
+	-- Remove this function if not needed
+end

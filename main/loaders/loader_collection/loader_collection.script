@@ -1,0 +1,128 @@
+local storage_collection = require "main.storage.storage_collection"
+local storage_loader = require "main.storage.storage_loader"
+
+function init(self)
+	msg.post(".", "acquire_input_focus")
+	storage_collection.components_visible = {}
+	-- Прелоадеры для коллекций
+	self.preloaders = {
+		inventary = "preloader_inventary",
+		start = "preloader_level",
+		io_1_online = "preloader_level",
+		io_1 = "preloader_level",
+	}
+end
+
+function final(self)
+	
+end
+
+function on_message(self, message_id, message, sender)
+	
+	--html5.run("console.log('"..message_id.."', '"..message.."')")
+	
+	--html5.run("console.log('"..sharelog.get_log().."')")
+	-- Сообщения скрытия/показа коллекций
+	if message_id == hash("visible") then
+		local url = msg.url("main", "/loader_collection", message.id .. "_collection")
+		local key = url.fragment
+
+		if message.visible and not storage_collection.components_visible[key] then
+			-- Добавляем коллекции
+			-- Если тип коллекции один единственный, то удаляем все остальные запущенные коллекции с такми типом
+			if message.type == hash("one_collection") then
+				for k, item in pairs(storage_collection.components_visible) do
+					if item.type == hash("one_collection") then
+						msg.post(".", "visible", {id = item.id, visible = false})
+					end
+				end
+
+				-- Показываем прелоадер, если есть
+				if message.load_type == "async_load" and self.preloaders[message.id] then
+					msg.post("main:/loader_gui", "visible", {id = self.preloaders[message.id], visible = true})
+				end
+			end
+
+			-- Обрабатываем данные для конкретных коллекций
+			if message.id == "inventary" then
+				if message.inventary_id then
+					storage_loader.inventary_id = message.inventary_id
+				end
+			end
+
+			-- Показываем
+			storage_collection.components_visible[key] = {
+				id = message.id,
+				url = url,
+				type = message.type,
+				status = "load",
+				preloader = (message.load_type == "async_load" and self.preloaders[message.id])
+			}
+
+			local load_type = message.load_type or "load"
+			msg.post(url, load_type)
+
+		elseif not message.visible and storage_collection.components_visible[key] and storage_collection.components_visible[key].status == "loaded" then
+			-- Удаляем коллекцию, если она полностью загрузилась
+			-- Удаляем мир
+			msg.post(url, "disable")
+			msg.post(url, "final")
+			msg.post(url, "unload")
+
+			storage_collection.components_visible[key] = nil
+
+		elseif not message.visible and storage_collection.components_visible[key] and storage_collection.components_visible[key].status == "load" then
+			-- Удаляем коллекцию, если она не успела загрузиться полностью
+			storage_collection.components_visible[key] = nil
+
+		end
+
+	elseif message_id == hash("visible_or_reload") then
+		-- Перезагрузить коллекцию
+		local url = msg.url("main", "/loader_collection", message.id .. "_collection")
+		local key = url.fragment
+
+		if not storage_collection.components_visible[key] then
+			-- Если эта коллекция ещё не была загружена,  просто загружаем её
+			msg.post(".", "visible", {id = message.id, visible = true, type = message.type, load_type = message.load_type})
+
+		else
+			-- Если эта коллекция была загружена прямо сейчас
+			msg.post(".", "visible", {id = message.id, visible = false})
+
+			-- Показываем прелоадер, если есть
+			if message.load_type == "async_load" and self.preloaders[message.id] then
+				msg.post("main:/loader_gui", "visible", {id = self.preloaders[message.id], visible = true})
+			end
+
+			-- С небольшой задержкой загружаем коллекцию заново 
+			timer.delay(0.5, false, function ()
+				msg.post(".", "visible", {id = message.id, visible = true, type = message.type, load_type = message.load_type})
+			end)
+			
+		end
+		
+	elseif message_id == hash("proxy_loaded") then
+		local key = sender.fragment
+
+		if storage_collection.components_visible[key] and storage_collection.components_visible[key].status == "load" then
+			-- Если коллекция загружается. инициализируем
+			local item = storage_collection.components_visible[key]
+
+			-- Новый мир загружен. Инициировать и активировать его.
+			msg.post(sender, "init")
+			msg.post(sender, "enable")
+			msg.post(".", "acquire_input_focus")
+
+			-- Убираем прелоадер, если был
+			if item.preloader then
+				msg.post("main:/loader_gui", "visible", {id = self.preloaders[item.id], visible = false})
+			end
+			item.status = "loaded"
+
+		elseif not storage_collection.components_visible[key] then
+			-- Если коллекция была удалена до окончания загрузки
+			msg.post(sender, "unload")
+		end
+	end
+end
