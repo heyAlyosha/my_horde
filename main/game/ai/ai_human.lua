@@ -7,8 +7,6 @@ function M.live(self)
 	self.exclude_commands[hash("building_ruin")] = true
 
 	self.view = ai_core.view(self, function (self, visible_items)
-		pprint("visible_items", visible_items)
-		
 		if visible_items then
 			-- Убегает от врагов
 			self.animation_walking = nil
@@ -27,6 +25,7 @@ function M.live(self)
 		else
 			-- Гуляет
 			self.animation_run = nil
+			self.speed = self.speed_walking
 			if not self.to_point then
 				-- Нет точек следования
 				if not self.animation_walking then

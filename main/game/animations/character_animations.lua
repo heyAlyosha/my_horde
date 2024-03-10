@@ -81,16 +81,28 @@ function M.damage(self, from_object_damage)
 		local dir = go.get_position(from_object_damage) - position
 		local particle_name
 
+		
 		-- Отпрыгивание
 		if dir.x < 0 then
 			position.x = position.x + 3
-			position.y = position.y + 3
+			
 			particle_name = "#blood_right"
 		else
 			position.x = position.x - 3
-			position.y = position.y - 3
 			particle_name = "#blood_left"
 		end
+		
+		-- Если есть коллизии
+		local collision = physics.raycast(go.get_position(), position, {hash("default")}, options)
+
+		
+		if collision then
+			pprint("collision", collision)
+			position.x = go.get_position().x
+		end
+
+		position.y = position.y + 3
+		
 		live_bar.position_to(self, position, duration)
 		position = position_functions.go_get_perspective_z(position)
 		go.animate(".", "position.x", go.PLAYBACK_ONCE_FORWARD, position.x, go.EASING_LINEAR, duration, 0)

@@ -7,7 +7,6 @@ function M.add_target(self, url_target)
 	local key_target = go_controller.url_to_key(url_target)
 	local target = storage_game.go_targets[key_target]
 
-	pprint("M.add_target", go_controller.is_object(url_target), target)
 	if not go_controller.is_object(url_target) then
 		return false
 	end
