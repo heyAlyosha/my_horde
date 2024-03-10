@@ -157,9 +157,6 @@ function update(self, dt)
 
 	self.input = vmath.vector3()
 	self.correction = vmath.vector3()
-
-
-	
 end
 
 function fixed_update(self, dt)
@@ -219,7 +216,7 @@ function on_message(self, message_id, message, sender)
 
 		local skin_id = message.skin_id or 0
 		local human_id = message.human_id or 0
-		pprint(message_id, message.position_from)
+		pprint(message_id, message)
 		horde.add_zombie_horde(self, skin_id, human_id, message.position_from)
 
 		if self.animation_horde == "run" then

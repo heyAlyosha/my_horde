@@ -46,7 +46,7 @@ function M.behavior(self)
 								end
 							else
 								-- Цели нет, либо убежала далеко, повторяем
-								self.target = nil
+								--self.target = nil
 								if self.attack then
 									self.attack.stop(self)
 									self.attack = nil
@@ -82,6 +82,7 @@ function M.behavior(self)
 						ai_zombie.behavior(self)
 					end
 				end
+				print("ai_core.condition_attack")
 				ai_core.condition_attack(self, self.target, handle_success, handle_error, handle_success)
 			end
 			
@@ -116,6 +117,7 @@ function M.behavior(self)
 
 					if self.parent and go_controller.url_to_key(self.parent) ~= go_controller.url_to_key(msg.url()) and go_controller.is_object(self.parent) then
 						self.target_add_horde = go.get_position(self.parent)
+
 						local function handle_success(self)
 							--Добежал до пункта
 							-- Цель до орды
@@ -125,12 +127,15 @@ function M.behavior(self)
 							local position_from = go.get_position()
 							if horde.check_distantion_add_horde(self, self.parent, position_from, self.target_add_horde) then
 								-- Добежал
+								print("Успешно добежал")
 								msg.post(self.parent, "add_horde", {
 									skin_id = self.skin_id,
 									human_id = self.human_id,
 									position_from = position_from
 								})
 								go.delete()
+								self.add_horde = true
+								return
 							else
 								-- До позиции далеко
 								self.condition_to_horde = nil
@@ -149,11 +154,13 @@ function M.behavior(self)
 							local duration = vmath.length(self.target_add_horde - position_from) / self.speed
 							
 							go.animate(go.get_id(), "position", go.PLAYBACK_ONCE_FORWARD, self.target_add_horde, go.EASING_LINEAR, duration, 0, function (self)
+								print("Анимация")
 								msg.post(self.parent, "add_horde", {
 									skin_id = self.skin_id,
 									human_id = self.human_id,
 									position_from = position_from
 								})
+								self.add_horde = true
 								go.delete()
 							end)
 						end
@@ -175,7 +182,7 @@ function M.behavior(self)
 			end
 		end
 
-		if self.condition_to_horde and horde.check_distantion_add_horde(self, self.parent, position_from, position_to) then
+		if not self.add_horde and  self.condition_to_horde and horde.check_distantion_add_horde(self, self.parent, position_from, position_to) then
 			-- Добежал
 			local position_from = go.get_position()
 			msg.post(self.parent, "add_horde", {

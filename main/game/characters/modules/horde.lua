@@ -46,7 +46,7 @@ function M.move_horde_player(self)
 		local position_to
 		local position = M.get_position(self, self.position_center_horde, i)
 
-		if storage_game.go_objects[item.id].collision_physic then
+		if item.id and storage_game.go_objects[item.id].collision_physic then
 			-- Если есть коллизии столкновений
 			local collision_message =  storage_game.go_objects[item.id].collision_physic.message
 			local storage_item = storage_game.go_objects[item.id].storage or {}

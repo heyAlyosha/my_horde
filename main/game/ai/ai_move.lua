@@ -52,7 +52,7 @@ function M.move_item_from(self, position_from, handle, speed)
 end
 
 -- Пердвижение к точке
-function M.move_item(self, position_to, handle, not_animate)
+function M.move_item(self, position_to, handle)
 	local position = go.get_position()
 
 	local dir = position_to - position
@@ -104,10 +104,13 @@ function M.move_to_object(self, url, handle_success, handle_error, handle_no_obj
 
 		if not result then
 			-- Нет доступа к цели
+			--[[
 			if handle_error then
 				local error_code = path_size
 				handle_error(self, error_code)
 			end
+			--]]
+			M.move_item(self, self.target_position, handle_success)
 		else
 			table.remove(path, 1)
 
@@ -157,10 +160,13 @@ function M.move_to_position(self, move_position_to, handle_success, handle_error
 
 		if not result then
 			-- Нет доступа к цели
+			--[[
 			if handle_error then
 				local error_code = path_size
 				handle_error(self, error_code)
 			end
+			]]--
+			M.move_item(self, move_position_to, handle_success)
 		else
 			table.remove(path, 1)
 
