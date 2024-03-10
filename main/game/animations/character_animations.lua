@@ -126,7 +126,7 @@ end
 function M.damage_player(self, from_object_damage)
 	-- Анимация дамага
 	if not self.particle then
-		local duration = 0.15
+		local duration = 0.1
 		local position = go.get_position()
 		local dir = go.get_position(from_object_damage) - position
 		local particle_name
