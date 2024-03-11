@@ -17,7 +17,8 @@ go.property("time_view", 0.1)
 go.property("damage_blood", true)
 go.property("type_object", hash("zombie_main"))
 go.property("activate", true)
-go.property("horde_count", 0)
+go.property("horde_count_current", 0)
+go.property("active_input", true)
 
 function init(self)
 	msg.post(".", "acquire_input_focus")
@@ -41,7 +42,6 @@ function init(self)
 	self.zombies = {}
 
 	timer.delay(0.1, false, function (self)
-
 		local сenter_position = vmath.vector3(0)
 		local index_to_horde = self.horde_count
 		horde.get_position(self, сenter_position, 250)
@@ -56,7 +56,6 @@ function init(self)
 		self.view = ai_core.view(self, function (self, visible_items)
 			if visible_items then
 				if not self.timer_atack then
-					print("character_attack")
 					character_attack.attack(self, visible_items[1].url)
 					self.timer_atack = timer.delay(self.speed_damage, true, function (self, handle, time_elapsed)
 						if not character_attack.attack(self, visible_items[1].url) then
@@ -93,7 +92,6 @@ function init(self)
 						local position_zombie = go.get_position(item.url)
 
 						if vmath.length(position_target - position_zombie) <= self.distantion_attack_zombie_horde then
-							print("horde_index", horde_index)
 							character_zombie_main.add_zombie_attack(self, horde_index, position_zombie, target.url)
 						end
 					end
@@ -236,6 +234,10 @@ function on_message(self, message_id, message, sender)
 end
 
 function on_input(self, action_id, action)
+	if not self.active_input then
+		return
+	end
+
 	if action_id == hash("up") then
 		self.input.y = 1                     -- [1]
 	elseif action_id == hash("down") then

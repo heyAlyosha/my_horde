@@ -1,6 +1,6 @@
 components {
   id: "map_core"
-  component: "/main/game/levels/map_core.script"
+  component: "/main/game/levels/levels/hospital/hospital_2/map_scripts.script"
   position {
     x: 0.0
     y: 0.0
@@ -12,15 +12,10 @@ components {
     z: 0.0
     w: 1.0
   }
-  properties {
-    id: "map_url"
-    value: "#tilemap"
-    type: PROPERTY_TYPE_URL
-  }
 }
 components {
   id: "tilemap"
-  component: "/main/game/levels/levels/hospital/hospital_1/hospital_1.tilemap"
+  component: "/main/game/levels/levels/hospital/hospital_2/hospital_2.tilemap"
   position {
     x: 0.0
     y: 0.0
@@ -747,10 +742,10 @@ embedded_components {
   "  data: 41.281654\n"
   "  data: 55.744247\n"
   "  data: 10.4\n"
-  "  data: 41.281654\n"
+  "  data: 312.87604\n"
   "  data: 24.399214\n"
   "  data: 10.4\n"
-  "  data: 150.06644\n"
+  "  data: 63.259613\n"
   "  data: 24.399214\n"
   "  data: 10.4\n"
   "  data: 44.218105\n"

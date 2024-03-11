@@ -34,7 +34,7 @@ function on_message(self, message_id, message, sender)
 			local url = msg.url(message.other_id)
 			local url_script = msg.url(url.socket, url.path, "script")
 
-			local horde_count = go.get(url_script, "horde_count")
+			local horde_count = go.get(url_script, "horde_count_current")
 
 			-- Достаточное ли количество
 			if horde_count >= self.count then

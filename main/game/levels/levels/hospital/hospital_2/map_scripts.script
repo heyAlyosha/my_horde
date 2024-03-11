@@ -19,8 +19,7 @@ function init(self)
 	}
 
 	--msg.post(".", "start")
-	--msg.post(".", "get_ruin_door")
-	msg.post(".", "get_to_end")
+	msg.post(".", "get_ruin_door")
 end
 
 function final(self)
@@ -136,35 +135,9 @@ function on_message(self, message_id, message, sender)
 			end
 
 			levels_script_functions.add_goal_ruins(self, goals, function (self)
-				timer.delay(1, false, function (self)
-					msg.post(".", "get_to_end")
-				end)
-				
+				--msg.post(".", "get_ruin_door")
 			end)
 		end, delay)
-
-	elseif message_id == hash("get_to_end") then
-		-- Показываем что делать для окончания игры
-		go.set("player#script", "active_input", false)
-
-		-- Напрявляем 
-		camera.unfollow()
-		local position_to = go.get_position("door_win")
-		go.animate("/camera", "position", go.PLAYBACK_ONCE_FORWARD, position_to, go.EASING_OUTCUBIC, 1, 0 , function (self)
-			go.animate("/camera", "position", go.PLAYBACK_ONCE_FORWARD, go.get_position("player"), go.EASING_OUTCUBIC, 1, 2 , function (self)
-				go.set("player#script", "active_input", true)
-				camera.follow(camera_id, msg.url("player"), options)
-			end)
-		end)
-
-		
-
-		local goals = {msg.url("door_win")}
-		levels_script_functions.add_goal_ruins(self, goals, function (self)
-			print("WIN")
-		end)
-
-
 
 	elseif message_id == hash("add_activation_object") then
 		-- Добавляем объект в активацию
