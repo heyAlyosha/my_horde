@@ -59,7 +59,8 @@ end
 
 -- Отслеживание изменений в орде
 function M.change_horde(self)
-	local max_index = #self.horde
+	self.horde_count =  #self.horde
+	local max_index = self.horde_count
 	if max_index < 1 then
 		max_index = 1
 	end

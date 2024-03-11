@@ -1,7 +1,8 @@
-
 go.property("count", 10)
-go.property("sprite_count", sprite)
+go.property("type", hash("horde"))
+go.property("icon", hash("zombie_0_2_default"))
 go.property("activation", true)
+go.property("id_activation", hash(""))
 
 function init(self)
 	msg.post(".", "activation", {activation = self.activation})
@@ -27,20 +28,25 @@ function on_message(self, message_id, message, sender)
 			msg.post("#count" , "disable")
 			sprite.play_flipbook("#sprite", "btn_map_activation")
 		end
+
+	elseif message_id == hash("trigger_response") then
+		if self.activation then
+			local url = msg.url(message.other_id)
+			local url_script = msg.url(url.socket, url.path, "script")
+
+			local horde_count = go.get(url_script, "horde_count")
+
+			-- Достаточное ли количество
+			if horde_count >= self.count then
+				msg.post("map#map_scripts", "activation_point", {
+					id_activation = self.id_activation
+				})
+				msg.post(".", "activation", {activation = false})
+			end
+		end
 	end
 end
 
-function on_input(self, action_id, action)
-	-- Add input-handling code here. The game object this script is attached to
-	-- must have acquired input focus:
-	--
-	--    msg.post(".", "acquire_input_focus")
-	--
-	-- All mapped input bindings will be received. Mouse and touch input will
-	-- be received regardless of where on the screen it happened.
-	-- Learn more: https://defold.com/manuals/input/
-	-- Remove this function if not needed
-end
 
 function on_reload(self)
 	-- Add reload-handling code here
