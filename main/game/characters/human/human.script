@@ -30,8 +30,6 @@ local function activate_init(self)
 
 	position_functions.go_set_perspective_z()
 
-	self.max_live = self.live
-
 	self.input = vmath.vector3(0)
 	self.velocity = vmath.vector3(0)
 	self.correction = vmath.vector3()
@@ -46,6 +44,8 @@ local function activate_init(self)
 end
 
 function init(self)
+	self.max_live = self.live
+
 	sprite.set_hflip("#body", self.hflip)
 
 	-- Добавляем активацию объекта в скрипт карты

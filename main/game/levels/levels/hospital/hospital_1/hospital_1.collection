@@ -1220,6 +1220,187 @@ instances {
     z: 1.0
   }
 }
+instances {
+  id: "chair_blue9"
+  prototype: "/main/game/objects/objects_ruin/chair_blue.go"
+  position {
+    x: 775.0
+    y: 297.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "outdoor_flower_mini7"
+  prototype: "/main/game/objects/objects_ruin/table_mini.go"
+  position {
+    x: 792.0
+    y: 296.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "outdoor_flower_mini8"
+  prototype: "/main/game/objects/objects_ruin/outdoor_flower_big.go"
+  position {
+    x: 703.0
+    y: 296.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "wheelachair2"
+  prototype: "/main/game/objects/objects_ruin/wheelachair.go"
+  position {
+    x: 700.0
+    y: 232.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "human15"
+  prototype: "/main/game/characters/human/human.go"
+  position {
+    x: 591.0
+    y: 321.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "script"
+    properties {
+      id: "activation"
+      value: "false"
+      type: PROPERTY_TYPE_BOOLEAN
+    }
+    properties {
+      id: "human_id_random"
+      value: "true"
+      type: PROPERTY_TYPE_BOOLEAN
+    }
+    properties {
+      id: "id_activation"
+      value: "palat_right"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "hflip"
+      value: "true"
+      type: PROPERTY_TYPE_BOOLEAN
+    }
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "human16"
+  prototype: "/main/game/characters/human/human.go"
+  position {
+    x: 743.0
+    y: 289.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "script"
+    properties {
+      id: "activation"
+      value: "false"
+      type: PROPERTY_TYPE_BOOLEAN
+    }
+    properties {
+      id: "human_id_random"
+      value: "true"
+      type: PROPERTY_TYPE_BOOLEAN
+    }
+    properties {
+      id: "hflip"
+      value: "true"
+      type: PROPERTY_TYPE_BOOLEAN
+    }
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "zone_count"
+  prototype: "/main/game/markers/zones/btn_zone_count.go"
+  position {
+    x: 483.0
+    y: 158.0
+    z: 0.1
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
 scale_along_z: 0
 embedded_instances {
   id: "pidestal_plug_left"
@@ -2977,7 +3158,7 @@ embedded_instances {
   "  }\n"
   "  properties {\n"
   "    id: \"id_activation\"\n"
-  "    value: \"palat_right\"\n"
+  "    value: \"last_room\"\n"
   "    type: PROPERTY_TYPE_HASH\n"
   "  }\n"
   "  property_decls {\n"

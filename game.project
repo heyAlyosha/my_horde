@@ -140,3 +140,7 @@ wipe_on_start = 1
 [collection_proxy]
 max_count = 16
 
+[particle_fx]
+max_count = 1024
+max_emitter_count = 1024
+
