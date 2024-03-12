@@ -1,6 +1,6 @@
 function init(self)
 	self.nodes = {
-		
+		shadow = gui.get_node("shadow")
 	}
 
 	self.positions_cloud = {}
@@ -69,6 +69,7 @@ function init(self)
 				local sprite = lightning_sprite[math.random(1, 2)]
 				gui.set_enabled(node_lightning, true)
 				gui.play_flipbook(node_lightning, sprite)
+				gui.set_color(self.nodes.shadow, vmath.vector4(0, 0, 0, 0.3))
 
 				timer.delay(duration_lightning/2, false, function (self)
 					if math.random(0, 1) == 1 then
@@ -83,10 +84,12 @@ function init(self)
 
 							timer.delay(duration_lightning/2, false, function (self)
 								gui.set_enabled(node_lightning, false)
+								gui.set_color(self.nodes.shadow, vmath.vector4(0, 0, 0, 0.5))
 							end)
 						end)
 					else
 						gui.set_enabled(node_lightning, false)
+						gui.set_color(self.nodes.shadow, vmath.vector4(0, 0, 0, 0.5))
 					end
 				end)
 			end
