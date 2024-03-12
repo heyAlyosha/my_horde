@@ -23,11 +23,14 @@ go.property("active_input", true)
 function init(self)
 	msg.post(".", "acquire_input_focus")
 
-	for i = 1, 100 do
-		local position = go.get_position()
-		local properties = {index = i, parent = msg.url()}
-		factory.create("#zombie_animation_horde_factory", position, rotation, properties)
-	end
+	timer.delay(0.5, false, function (self)
+		for i = 1, 100 do
+			local position = go.get_position()
+			local properties = {index = i, parent = msg.url()}
+			factory.create("#zombie_animation_horde_factory", position, rotation, properties)
+		end
+	end)
+	
 
 	if self.activate then
 		go_controller.add(self)
