@@ -41,7 +41,7 @@ instances {
 }
 instances {
   id: "player"
-  prototype: "/main/game/characters/player/player.go"
+  prototype: "/main/game/characters/player/player_first_level.go"
   position {
     x: 461.0
     y: 176.0

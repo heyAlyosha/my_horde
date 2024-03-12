@@ -23,10 +23,6 @@ go.property("active_input", true)
 function init(self)
 	msg.post(".", "acquire_input_focus")
 
-	timer.delay(0.5, false, function (self)
-		msg.post(".", "win")
-	end)
-
 	if self.activate then
 		go_controller.add(self)
 		position_functions.go_set_perspective_z()
@@ -234,7 +230,7 @@ function on_message(self, message_id, message, sender)
 
 	elseif message_id == hash("win") then
 		-- Анимация победы
-		self.win = true
+		self.activate = true
 		self.move_stop = true
 		character_animations.play(self, "win")
 		-- Спавн анимированных зомбиков 

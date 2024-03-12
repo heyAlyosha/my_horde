@@ -47,7 +47,6 @@ function M.play(self, animation_id)
 		end
 
 	else
-		print("animation_id", msg.url(), animation_id)
 		if animation_id == "move" or animation_id == "idle" or animation_id == "win" then
 			if animation_id == "move" then
 				self.animation_current = "zombie_"..self.skin_id.."_"..self.human_id.."_run"

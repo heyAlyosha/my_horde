@@ -1,7 +1,7 @@
 name: "prototype_main_horde"
 instances {
   id: "player"
-  prototype: "/main/game/characters/player/player.go"
+  prototype: "/main/game/characters/player/player_first_level.go"
   position {
     x: 552.0
     y: 139.0

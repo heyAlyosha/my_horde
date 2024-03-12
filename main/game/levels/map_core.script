@@ -99,8 +99,13 @@ function on_message(self, message_id, message, sender)
 
 	elseif message_id == hash("win") then
 		-- Победа игрока
-		local url_player = message.url or msg.url("player")
-		
+		msg.post("player", "win")
+
+		--Анимация грозы для победы в гуи
+		msg.post("/loader_gui", "visible", {
+			id = "win_player",
+			visible = true
+		})
 		
 	end
 end

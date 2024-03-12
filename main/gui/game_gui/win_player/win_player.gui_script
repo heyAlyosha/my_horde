@@ -102,7 +102,7 @@ function init(self)
 	end)
 
 	timer.delay(2, false, function (self)
-		msg.post(".", hash("hidden"))
+		--msg.post(".", hash("hidden"))
 	end)
 end
 

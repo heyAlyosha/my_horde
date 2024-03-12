@@ -20,7 +20,8 @@ function init(self)
 
 	--msg.post(".", "start")
 	--msg.post(".", "get_ruin_door")
-	--msg.post(".", "get_to_end")
+	msg.post(".", "get_to_end")
+	
 end
 
 function final(self)
@@ -157,16 +158,12 @@ function on_message(self, message_id, message, sender)
 			end)
 		end)
 
-		
-
 		local goals = {msg.url("door_win")}
 		levels_script_functions.add_goal_ruins(self, goals, function (self)
 			print("WIN")
-			--Анимация грозы для победы в гуи
-			msg.post("/loader_gui", "visible", {
-				id = "win_player",
-				visible = true
-			})
+			timer.delay(1, false, function (self)
+				msg.post("#map_core", "win")
+			end)
 		end)
 
 
