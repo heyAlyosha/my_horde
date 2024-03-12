@@ -165,7 +165,7 @@ nodes {
   adjust_mode: ADJUST_MODE_ZOOM
   parent: "pie"
   layer: "cloud_2"
-  inherit_alpha: true
+  inherit_alpha: false
   slice9 {
     x: 0.0
     y: 0.0
@@ -275,7 +275,7 @@ nodes {
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
   texture: "first_level/cloud_2"
-  id: "cloud1"
+  id: "cloud2"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
@@ -339,7 +339,7 @@ nodes {
   yanchor: YANCHOR_NONE
   pivot: PIVOT_N
   adjust_mode: ADJUST_MODE_FIT
-  parent: "cloud1"
+  parent: "cloud2"
   layer: "cloud_2"
   inherit_alpha: true
   slice9 {
@@ -393,7 +393,7 @@ nodes {
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
   texture: "first_level/cloud_2"
-  id: "cloud2"
+  id: "cloud1"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
@@ -457,7 +457,7 @@ nodes {
   yanchor: YANCHOR_NONE
   pivot: PIVOT_N
   adjust_mode: ADJUST_MODE_FIT
-  parent: "cloud2"
+  parent: "cloud1"
   layer: "cloud_2"
   inherit_alpha: true
   slice9 {
@@ -708,7 +708,7 @@ layouts {
     adjust_mode: ADJUST_MODE_ZOOM
     parent: "pie"
     layer: "cloud_2"
-    inherit_alpha: true
+    inherit_alpha: false
     slice9 {
       x: 0.0
       y: 0.0
