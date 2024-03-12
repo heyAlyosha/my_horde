@@ -1,0 +1,183 @@
+local druid = require("druid.druid")
+local gui_input = require "main.gui.modules.gui_input"
+local storage_gui = require "main.storage.storage_gui"
+local storage_player = require "main.storage.storage_player"
+local gui_animate = require "main.gui.modules.gui_animate"
+local gui_manager = require "main.gui.modules.gui_manager"
+local gui_scale = require "main.gui.modules.gui_scale"
+local gui_size = require 'main.gui.modules.gui_size'
+local api_player = require 'main.game.api.api_player'
+local color = require("color-lib.color")
+local game_content_text = require "main.game.content.game_content_text"
+local gui_lang = require "main.lang.gui_lang"
+local lang_core = require "main.lang.lang_core"
+local gui_loyouts = require "main.gui.modules.gui_loyouts"
+local loader_sdk_modules = require "main.loaders.loader_sdk.modules.loader_sdk_modules"
+
+function init(self)
+	msg.post(".", "acquire_input_focus")
+
+	self.id = "modal_exit"
+
+	gui.set_render_order(storage_gui.orders.modal_exit)
+	gui_manager.add_screen(self.id, msg.url())
+
+	self.is_modal = true
+
+	self.nodes = {
+		wrap = gui.get_node("wrap"),
+		title = gui.get_node("title"),
+		wrap_btns = gui.get_node("wrap_btns"),
+		btn_yes = gui.get_node("btn_yes_template/btn_wrap"),
+		btn_yes_title = gui.get_node("btn_yes_template/btn_title"),
+		btn_no = gui.get_node("btn_no_template/btn_wrap"),
+		btn_no_title = gui.get_node("btn_no_template/btn_title"),
+	}
+
+	gui_lang.set_text_upper(self, self.nodes.title, "_exit_from_game", before_str, after_str)
+	gui_lang.set_text_upper(self, self.nodes.btn_yes_title, "_yes", before_str, after_str)
+	gui_lang.set_text_upper(self, self.nodes.btn_no_title, "_no", before_str, after_str)
+
+	--gui_animate.show_bottom(self, self.nodes.wrap , nil)
+	self.druid = druid.new(self)
+
+	self.btns = {
+		{
+			id = "yes",
+			type = "btn",
+			section = "body", 
+			node = self.nodes.btn_yes,
+			node_title = self.nodes.btn_yes_title, 
+			icon = "btn_ellipse_red_"
+		},
+		{
+			id = "no",
+			type = "btn",
+			section = "body", 
+			node = self.nodes.btn_no,
+			node_title = self.nodes.btn_no_title, 
+			icon = "btn_ellipse_green_"
+		},
+	}
+end
+
+function final(self)
+	msg.post("/loader_gui", "visible", {
+		id = "bg",
+		visible = false,
+		parent_id = self.id,
+		type = hash("animated_close"),
+	})
+
+	gui_manager.remove_screen(self.id, msg.url())
+	gui_input.on_final(self)
+	self.druid:final()
+end
+
+function update(self, dt)
+	self.druid:update(dt)
+end
+
+function on_message(self, message_id, message, sender)
+	input_remote_tv.on_message(self, message_id, message, sender)
+	self.druid:on_message(message_id, message, sender)
+
+	gui_loyouts.on_message(self, message_id, message)
+
+	if message_id == hash("focus") then
+		gui_input.set_focus(self, message.focus)
+
+	elseif message_id == hash("visible") then
+		-- Показываем окно
+		self.data = message.value
+		
+		self.type = message.type
+		gui_animate.show_bottom(self, self.nodes.wrap , function (self)
+			timer.delay(0.2, false, function (self)
+				gui_input.set_focus(self, 2)
+			end)
+		end)
+
+	elseif message_id == hash("hidden") then
+		gui_animate.hidden_bottom(self, self.nodes.wrap, function (self)
+			msg.post("/loader_gui", "visible", {
+				id = "modal_exit",
+				visible = false,
+			})
+		end)
+
+	end
+end
+
+function on_input(self, action_id, action)
+	action_id, action = input_remote_tv.on_input(self, action_id, action)
+	if storage_gui.components_visible.modal_pause then
+		return true
+	end
+
+	self.druid:on_input(action_id, action)
+
+	-- Нажатие на кнопки
+	local function function_activate(self, focus_btn_id)
+		local btn = self.btns[focus_btn_id]
+		msg.post("main:/sound", "play", {sound_id = "activate_btn"})
+
+		-- Кнопка заблокирована
+		if btn.disabled or self.disabled then
+			return false
+		end
+
+		local node = btn.node or btn.wrap_node or btn.node_bg
+		gui_animate.activate(self, node)
+
+		if btn.id == "no" then
+			gui_animate.hidden_bottom(self, self.nodes.wrap, function (self)
+				msg.post("/loader_gui", "visible", {
+					id = "modal_exit",
+					visible = false,
+					type = hash("animated_close")
+				})
+			end)
+
+		elseif btn.id == "yes" then
+			loader_sdk_modules.exit()
+
+		end
+	end
+
+	if action_id == hash("action") and  action.pressed then
+		function_activate(self, 1)
+		return false
+
+	elseif action_id == hash("up") and action.pressed then
+		msg.post("/loader_gui", "focus", {
+			id = "interface", -- id компонента в лоадер гуи
+			focus = 1 -- кнопка фокуса
+		})
+
+		msg.post("main:/sound", "play", {sound_id = "focus_main_menu"})
+		return 
+
+	elseif self.disabled then
+		return false
+	end
+
+	local function function_back(self)
+		gui_animate.hidden_bottom(self, self.nodes.wrap, function (self)
+			msg.post("/loader_gui", "visible", {
+				id = "modal_exit",
+				visible = false,
+				type = hash("animated_close")
+			})
+		end)
+	end
+
+	gui_input.on_input(self, action_id, action, function_focus, function_activate, function_back, function_post_focus)
+
+	return true
+
+end
+
+function on_reload(self)
+
+end

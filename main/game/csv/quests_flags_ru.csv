@@ -1,0 +1,61 @@
+index;level_id;type;resource;word;quest
+1;1;image;flags/quest_3.jpg;Литва;Чей это флаг?
+2;1;image;flags/quest_2.jpg;Россия;Чей это флаг?
+3;1;image;flags/quest_1.jpg;США;Чей это флаг?
+4;2;image;flags/quest_5.jpg;Латвия;Чей это флаг?
+5;2;image;flags/quest_4.jpg;Белорусия;Чей это флаг?
+6;2;image;flags/quest_6.jpg;Эстония;Чей это флаг?
+7;3;image;flags/quest_7.jpg;Казахстан;Чей это флаг?
+8;3;image;flags/quest_8.jpg;Германия;Чей это флаг?
+9;3;image;flags/quest_9.jpg;Франция;Чей это флаг?
+10;4;image;flags/quest_10.jpg;Великобритания;
+11;4;image;flags/quest_11.jpg;Европейский союз;Чей это флаг?
+12;4;image;flags/quest_12.jpg;Содружество независимых государств;Чей это флаг?
+13;5;image;flags/quest_13.jpg;Финляндия;Чей это флаг?
+14;5;image;flags/quest_14.jpg;Мексика;Чей это флаг?
+15;5;image;flags/quest_15.jpg;Бразилия;Чей это флаг?
+16;6;image;flags/quest_16.jpg;Грузия;Чей это флаг?
+17;6;image;flags/quest_17.jpg;Армения;Чей это флаг?
+18;6;image;flags/quest_18.jpg;Китай;Чей это флаг?
+19;7;image;flags/quest_19.jpg;Япония;Чей это флаг?
+20;7;image;flags/quest_20.jpg;Индия;Чей это флаг?
+21;7;image;flags/quest_21.jpg;Турция;Чей это флаг?
+22;8;image;flags/quest_22.jpg;Канада;Чей это флаг?
+23;8;image;flags/quest_23.jpg;Вьетнам;Чей это флаг?
+24;8;image;flags/quest_24.jpg;Узбекистан;Чей это флаг?
+25;9;image;flags/quest_25.jpg;Южная корея;Чей это флаг?
+26;9;image;flags/quest_26.jpg;Таджикистан;Чей это флаг?
+27;9;image;flags/quest_27.jpg;Танзания;Чей это флаг?
+28;10;image;flags/quest_28.jpg;Ватикан;Чей это флаг?
+29;10;image;flags/quest_29.jpg;Индонезия;Чей это флаг?
+30;10;image;flags/quest_30.jpg;Азербайджан;Чей это флаг?
+31;11;image;flags/quest_31.jpg;Антарктида;Чей это флаг?
+32;11;image;flags/quest_32.jpg;Монголия;Чей это флаг?
+33;11;image;flags/quest_33.jpg;Филиппины;Чей это флаг?
+34;12;image;flags/quest_34.jpg;Иран;Чей это флаг?
+35;12;image;flags/quest_35.jpg;Конго;Чей это флаг?
+36;12;image;flags/quest_36.jpg;Танзания;Чей это флаг?
+37;13;image;flags/quest_37.jpg;Весёлый роджер;Как называется этот флаг?
+38;13;image;flags/quest_38.jpg;Кения;Чей это флаг?
+39;13;image;flags/quest_39.jpg;Мьянма;Чей это флаг?
+40;14;image;flags/quest_40.jpg;Северная Корея;Чей это флаг?
+41;14;image;flags/quest_41.jpg;Ангола;Чей это флаг?
+42;14;image;flags/quest_42.jpg;Венесуэла;Чей это флаг?
+43;15;image;flags/quest_43.jpg;Аргентина;Чей это флаг?
+44;15;image;flags/quest_44.jpg;Марокко;Чей это флаг?
+45;15;image;flags/quest_45.jpg;Малайзия;Чей это флаг?
+46;16;image;flags/quest_46.jpg;Афганистан;Чей это флаг?
+47;16;image;flags/quest_47.jpg;Мозамбик;Чей это флаг?
+48;16;image;flags/quest_48.jpg;Зимбабве;Чей это флаг?
+49;17;image;flags/quest_49.jpg;Венгрия;Чей это флаг?
+50;17;image;flags/quest_50.jpg;Швеция;Чей это флаг?
+51;17;image;flags/quest_51.jpg;Греция;Чей это флаг?
+52;18;image;flags/quest_52.jpg;Гондурас;Чей это флаг?
+53;18;image;flags/quest_53.jpg;Парагвай;Чей это флаг?
+54;18;image;flags/quest_54.jpg;Сальвадор;Чей это флаг?
+55;19;image;flags/quest_55.jpg;Коста-Рика;Чей это флаг?
+56;19;image;flags/quest_56.jpg;Либерия;Чей это флаг?
+57;19;image;flags/quest_57.jpg;Ирландия;Чей это флаг?
+58;20;image;flags/quest_58.jpg;Мавритания;Чей это флаг?
+59;20;image;flags/quest_59.jpg;Хорватия;Чей это флаг?
+60;20;image;flags/quest_60.jpg;Панама;Чей это флаг?
