@@ -1,0 +1,750 @@
+script: ""
+fonts {
+  name: "font_standart_normal"
+  font: "/assets/fonts/font_standart_normal.font"
+}
+fonts {
+  name: "font_standart_mini"
+  font: "/assets/fonts/font_standart_normal.font"
+}
+textures {
+  name: "gui"
+  texture: "/main/atlases/gui.atlas"
+}
+textures {
+  name: "objects"
+  texture: "/main/game/objects.atlas"
+}
+background_color {
+  x: 0.0
+  y: 0.0
+  z: 0.0
+  w: 0.0
+}
+nodes {
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 950.0
+    y: 120.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_BOX
+  blend_mode: BLEND_MODE_ALPHA
+  texture: "gui/bg_modal_default"
+  id: "wrap"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_NW
+  adjust_mode: ADJUST_MODE_FIT
+  layer: ""
+  inherit_alpha: true
+  slice9 {
+    x: 41.0
+    y: 45.0
+    z: 41.0
+    w: 45.0
+  }
+  clipping_mode: CLIPPING_MODE_NONE
+  clipping_visible: true
+  clipping_inverted: false
+  alpha: 1.0
+  template_node_child: false
+  size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
+  enabled: true
+  visible: true
+  material: ""
+}
+nodes {
+  position {
+    x: 69.85714
+    y: -57.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 750.0
+    y: 100.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_BOX
+  blend_mode: BLEND_MODE_ALPHA
+  texture: ""
+  id: "wrap-content"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_W
+  adjust_mode: ADJUST_MODE_FIT
+  parent: "wrap"
+  layer: ""
+  inherit_alpha: true
+  slice9 {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 0.0
+  }
+  clipping_mode: CLIPPING_MODE_NONE
+  clipping_visible: true
+  clipping_inverted: false
+  alpha: 0.0
+  template_node_child: false
+  size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
+  enabled: true
+  visible: true
+  material: ""
+}
+nodes {
+  position {
+    x: 148.28572
+    y: -0.857141
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 60.0
+    y: 60.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_BOX
+  blend_mode: BLEND_MODE_ALPHA
+  texture: "gui/icon_rating_1"
+  id: "icon_trofey"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_CENTER
+  adjust_mode: ADJUST_MODE_FIT
+  parent: "wrap-content"
+  layer: ""
+  inherit_alpha: false
+  slice9 {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 0.0
+  }
+  clipping_mode: CLIPPING_MODE_NONE
+  clipping_visible: true
+  clipping_inverted: false
+  alpha: 1.0
+  template_node_child: false
+  size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
+  enabled: true
+  visible: true
+  material: ""
+}
+nodes {
+  position {
+    x: 198.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.25
+    y: 1.25
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 400.0
+    y: 70.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_TEXT
+  blend_mode: BLEND_MODE_ALPHA
+  text: "\320\237\320\240\320\230\320\234\320\225\320\240 \320\230\320\234\320\225\320\235\320\230 \320\230\320\223\320\240\320\236\320\232\320\220 \320\242\320\225\320\241\320\242\n"
+  ""
+  font: "font_standart_normal"
+  id: "title"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_W
+  outline {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  shadow {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  adjust_mode: ADJUST_MODE_FIT
+  line_break: true
+  parent: "wrap-content"
+  layer: ""
+  inherit_alpha: false
+  alpha: 1.0
+  outline_alpha: 1.0
+  shadow_alpha: 1.0
+  template_node_child: false
+  text_leading: 0.8
+  text_tracking: 0.0
+  custom_type: 0
+  enabled: true
+  visible: true
+  material: ""
+}
+nodes {
+  position {
+    x: 51.0
+    y: 0.667
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+    w: 1.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_PIE
+  blend_mode: BLEND_MODE_ALPHA
+  texture: "gui/account_avatar_bg"
+  id: "avatar_border"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_CENTER
+  adjust_mode: ADJUST_MODE_FIT
+  parent: "wrap-content"
+  layer: ""
+  inherit_alpha: false
+  outerBounds: PIEBOUNDS_ELLIPSE
+  innerRadius: 0.0
+  perimeterVertices: 25
+  pieFillAngle: 360.0
+  clipping_mode: CLIPPING_MODE_STENCIL
+  clipping_visible: true
+  clipping_inverted: false
+  alpha: 1.0
+  template_node_child: false
+  size_mode: SIZE_MODE_AUTO
+  custom_type: 0
+  enabled: true
+  visible: true
+  material: ""
+}
+nodes {
+  position {
+    x: 0.0
+    y: 1.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 145.0
+    y: 145.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_PIE
+  blend_mode: BLEND_MODE_ALPHA
+  texture: "gui/account_avatar_border"
+  id: "avatar_border_bg"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_CENTER
+  adjust_mode: ADJUST_MODE_FIT
+  parent: "avatar_border"
+  layer: ""
+  inherit_alpha: true
+  outerBounds: PIEBOUNDS_ELLIPSE
+  innerRadius: 0.0
+  perimeterVertices: 25
+  pieFillAngle: 360.0
+  clipping_mode: CLIPPING_MODE_STENCIL
+  clipping_visible: true
+  clipping_inverted: false
+  alpha: 1.0
+  template_node_child: false
+  size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
+  enabled: true
+  visible: true
+  material: ""
+}
+nodes {
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 145.0
+    y: 145.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_BOX
+  blend_mode: BLEND_MODE_ALPHA
+  texture: "gui/account_anonim"
+  id: "avatar_img"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_CENTER
+  adjust_mode: ADJUST_MODE_FIT
+  parent: "avatar_border_bg"
+  layer: ""
+  inherit_alpha: true
+  slice9 {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 0.0
+  }
+  clipping_mode: CLIPPING_MODE_NONE
+  clipping_visible: true
+  clipping_inverted: false
+  alpha: 1.0
+  template_node_child: false
+  size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
+  enabled: true
+  visible: true
+  material: ""
+}
+nodes {
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_PIE
+  blend_mode: BLEND_MODE_ALPHA
+  texture: "gui/account_border_line_bg"
+  id: "avatar_line"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_CENTER
+  adjust_mode: ADJUST_MODE_FIT
+  parent: "avatar_border"
+  layer: ""
+  inherit_alpha: true
+  outerBounds: PIEBOUNDS_ELLIPSE
+  innerRadius: 0.0
+  perimeterVertices: 30
+  pieFillAngle: 360.0
+  clipping_mode: CLIPPING_MODE_NONE
+  clipping_visible: true
+  clipping_inverted: false
+  alpha: 1.0
+  template_node_child: false
+  size_mode: SIZE_MODE_AUTO
+  custom_type: 0
+  enabled: true
+  visible: true
+  material: ""
+}
+nodes {
+  position {
+    x: 0.0
+    y: 1.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 165.0
+    y: 165.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_PIE
+  blend_mode: BLEND_MODE_ALPHA
+  texture: "gui/account_border_line"
+  id: "avatar_line_active"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_CENTER
+  adjust_mode: ADJUST_MODE_FIT
+  parent: "avatar_border"
+  layer: ""
+  inherit_alpha: true
+  outerBounds: PIEBOUNDS_ELLIPSE
+  innerRadius: 0.0
+  perimeterVertices: 30
+  pieFillAngle: 360.0
+  clipping_mode: CLIPPING_MODE_NONE
+  clipping_visible: true
+  clipping_inverted: false
+  alpha: 1.0
+  template_node_child: false
+  size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
+  enabled: true
+  visible: true
+  material: ""
+}
+nodes {
+  position {
+    x: 18.0
+    y: -60.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 0.8
+    w: 1.0
+  }
+  size {
+    x: 50.0
+    y: 50.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_TEXT
+  blend_mode: BLEND_MODE_ALPHA
+  text: "1"
+  font: "font_standart_normal"
+  id: "ranks"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_W
+  outline {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  shadow {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  adjust_mode: ADJUST_MODE_FIT
+  line_break: true
+  parent: "wrap"
+  layer: ""
+  inherit_alpha: true
+  alpha: 1.0
+  outline_alpha: 1.0
+  shadow_alpha: 1.0
+  template_node_child: false
+  text_leading: 1.0
+  text_tracking: 0.0
+  custom_type: 0
+  enabled: true
+  visible: true
+  material: ""
+}
+nodes {
+  position {
+    x: 891.0
+    y: -60.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 120.0
+    y: 40.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_TEXT
+  blend_mode: BLEND_MODE_ALPHA
+  text: "9999999"
+  font: "font_standart_normal"
+  id: "title_price"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_E
+  outline {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  shadow {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  adjust_mode: ADJUST_MODE_FIT
+  line_break: false
+  parent: "wrap"
+  layer: ""
+  inherit_alpha: false
+  alpha: 1.0
+  outline_alpha: 1.0
+  shadow_alpha: 1.0
+  template_node_child: false
+  text_leading: 1.0
+  text_tracking: 0.0
+  custom_type: 0
+  enabled: true
+  visible: true
+  material: ""
+}
+nodes {
+  position {
+    x: 892.0
+    y: -59.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 0.8
+    y: 0.8
+    z: 0.8
+    w: 1.0
+  }
+  size {
+    x: 61.0
+    y: 59.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_BOX
+  blend_mode: BLEND_MODE_ALPHA
+  texture: "gui/icon_score"
+  id: "icon_price"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_W
+  adjust_mode: ADJUST_MODE_FIT
+  parent: "wrap"
+  layer: ""
+  inherit_alpha: false
+  slice9 {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 0.0
+  }
+  clipping_mode: CLIPPING_MODE_NONE
+  clipping_visible: true
+  clipping_inverted: false
+  alpha: 1.0
+  template_node_child: false
+  size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
+  enabled: true
+  visible: true
+  material: ""
+}
+material: "/builtins/materials/gui.material"
+adjust_reference: ADJUST_REFERENCE_PARENT
+max_nodes: 512

@@ -1,0 +1,34 @@
+local color = require("color-lib.color")
+go.property("score", 100)
+
+function init(self)
+	self.duration = 2
+	self.add_y = 100
+
+	if self.score > 0 then
+		label.set_text("#label", "+" .. self.score)
+		go.set("#label", "color", color.lime)
+	else
+		go.set("#label", "color", color.red)
+		label.set_text("#label", self.score)
+
+	end
+
+	local position = go.get_position()
+	position.y = position.y + self.add_y
+	go.animate(".", "position", go.PLAYBACK_LOOP_FORWARD, position, go.EASING_LINEAR, self.duration, 0)
+
+	local current_color = go.get("#label", "color")
+
+	current_color.w = 0
+	go.animate("#label", "color", go.PLAYBACK_ONCE_FORWARD, current_color, go.EASING_LINEAR, self.duration - 0.1, 0, function ()
+		go.delete()
+	end)
+
+	go.animate("#label", "shadow.w", go.PLAYBACK_ONCE_FORWARD, 0, go.EASING_LINEAR, self.duration - 0.1)
+	go.animate("#label", "outline.w", go.PLAYBACK_ONCE_FORWARD, 0, go.EASING_LINEAR, self.duration - 0.1)
+end
+
+function final(self)
+	
+end

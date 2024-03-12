@@ -1,0 +1,114 @@
+-- Зомби моб (враг)
+go.property("activation", true)
+go.property("animation_running", false)
+go.property("to_point", false)
+go.property("to_point_position", vmath.vector3())
+go.property("human_id_random", false)
+go.property("live", 10)
+go.property("speed_damage", 0.25)
+go.property("fire_queue", 1)
+go.property("speed_default", 10)
+go.property("speed_attack", 30)
+go.property("distantion_visible", 50)
+go.property("distantion_attack", 12)
+go.property("attack_type", hash("bullet_hit"))
+go.property("bullet_damage", 10)
+go.property("bullet_distantion", 120)
+go.property("command", hash("zombie_enemy"))
+go.property("human_id", 1)
+go.property("skin_id", 0)
+go.property("target", msg.url())
+go.property("type_object", hash("zombie_enemy"))
+go.property("targets", 8)
+go.property("target_dist", vmath.vector3(6, 0, 0))
+go.property("target_useful", 1)
+go.property("time_view", 0.5)
+go.property("damage_blood", true)
+go.property("visible_attack", false)
+go.property("animation_type", hash("zombie"))
+go.property("spawn_coins", 0)
+go.property("spawn_trash", 0)
+go.property("spawn_xp", 1)
+
+function init(self)
+	timer.delay(0.1, false, function (self)
+		go_controller.add(self)
+	end)
+
+	if self.human_id_random then
+		math.randomseed(3)
+		self.human_id = math.random(1,9)
+	end
+
+	self.speed = self.speed_default
+
+	sprite.play_flipbook("#body", "zombie_"..self.skin_id.."_"..self.human_id .. "_default")
+	position_functions.go_set_perspective_z()
+
+	self.max_live = self.live
+
+	self.input = vmath.vector3(0)
+	self.velocity = vmath.vector3(0)
+	self.correction = vmath.vector3()
+
+	self.group_name = "visible_object"
+	self.group_id, self.visible_object_id = ai_vision.add_dynamic_object(self, self.group_name)
+	self.running = self.animation_running
+	self.from_point_position = go.get_position()
+
+	-- Поведение
+	if self.activation then
+		ai_zombie_enemy.behavior(self)
+	end
+end
+
+function final(self)
+	go_controller.delete(self)
+end
+
+function fixed_update(self, dt)
+	-- This function is called if 'Fixed Update Frequency' is enabled in the Engine section of game.project
+	-- Can be coupled with fixed updates of the physics simulation if 'Use Fixed Timestep' is enabled in
+	-- Physics section of game.project
+	-- Add update code here
+	-- Learn more: https://defold.com/manuals/script/
+	-- Remove this function if not needed
+end
+
+function update(self, dt)
+	if self.debug_lines_to_target then
+		draw.line(self.debug_lines_to_target.from, self.debug_lines_to_target.to)
+	end
+
+	if self.debug_lines_to_tile then
+		--pprint(self.debug_lines_to_tile)
+		for i, v in ipairs(self.debug_lines_to_tile) do
+			draw.line(v.from, v.to)
+		end
+	end
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("damage") then
+		-- Урон
+		local animation_death = hash("effect_infection")
+		character_damage.damage_zombie(self, message, animation_death)
+
+	elseif message_id == hash("set_point") then
+		self.to_point = true
+		self.to_point_position = message.position
+		self.activation = true
+		ai_zombie_enemy.behavior(self)
+
+	elseif message_id == hash("activation") then
+		-- Активируем персонажа
+		self.activation = true
+		ai_zombie_enemy.behavior(self)
+	end
+end
+
+function on_reload(self)
+	-- Add reload-handling code here
+	-- Learn more: https://defold.com/manuals/hot-reload/
+	-- Remove this function if not needed
+end
