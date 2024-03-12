@@ -970,6 +970,26 @@ instances {
     z: 1.0
   }
 }
+instances {
+  id: "win_player"
+  prototype: "/main/gui/game_gui/win_player/win_player.go"
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
 scale_along_z: 0
 embedded_instances {
   id: "pidestal_plug_left"
@@ -1820,6 +1840,26 @@ embedded_instances {
   position {
     x: 321.0
     y: 176.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+embedded_instances {
+  id: "win_point"
+  data: ""
+  position {
+    x: 744.0
+    y: 268.0
     z: 0.0
   }
   rotation {

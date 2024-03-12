@@ -82,7 +82,6 @@ function M.behavior(self)
 						ai_zombie.behavior(self)
 					end
 				end
-				print("ai_core.condition_attack")
 				ai_core.condition_attack(self, self.target, handle_success, handle_error, handle_success)
 			end
 			
@@ -127,7 +126,6 @@ function M.behavior(self)
 							local position_from = go.get_position()
 							if horde.check_distantion_add_horde(self, self.parent, position_from, self.target_add_horde) then
 								-- Добежал
-								print("Успешно добежал")
 								msg.post(self.parent, "add_horde", {
 									skin_id = self.skin_id,
 									human_id = self.human_id,
@@ -154,7 +152,6 @@ function M.behavior(self)
 							local duration = vmath.length(self.target_add_horde - position_from) / self.speed
 							
 							go.animate(go.get_id(), "position", go.PLAYBACK_ONCE_FORWARD, self.target_add_horde, go.EASING_LINEAR, duration, 0, function (self)
-								print("Анимация")
 								msg.post(self.parent, "add_horde", {
 									skin_id = self.skin_id,
 									human_id = self.human_id,
