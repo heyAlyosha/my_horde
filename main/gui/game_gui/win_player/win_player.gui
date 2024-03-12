@@ -275,7 +275,7 @@ nodes {
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
   texture: "first_level/cloud_2"
-  id: "cloud"
+  id: "cloud1"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
@@ -334,7 +334,7 @@ nodes {
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
   texture: "first_level/cloud_2"
-  id: "cloud1"
+  id: "cloud2"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
@@ -393,7 +393,7 @@ nodes {
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
   texture: "first_level/cloud_2"
-  id: "cloud2"
+  id: "cloud3"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
@@ -452,7 +452,7 @@ nodes {
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
   texture: "first_level/lightning_3"
-  id: "lightning"
+  id: "lightning1"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_N
@@ -511,7 +511,7 @@ nodes {
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
   texture: "first_level/lightning_2"
-  id: "lightning1"
+  id: "lightning2"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_N
@@ -570,7 +570,7 @@ nodes {
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
   texture: "first_level/lightning_2"
-  id: "lightning2"
+  id: "lightning3"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_N
@@ -820,7 +820,7 @@ layouts {
     type: TYPE_BOX
     blend_mode: BLEND_MODE_ALPHA
     texture: "first_level/lightning_2"
-    id: "lightning"
+    id: "lightning1"
     xanchor: XANCHOR_NONE
     yanchor: YANCHOR_NONE
     pivot: PIVOT_N
@@ -880,7 +880,7 @@ layouts {
     type: TYPE_BOX
     blend_mode: BLEND_MODE_ALPHA
     texture: "first_level/lightning_3"
-    id: "lightning2"
+    id: "lightning3"
     xanchor: XANCHOR_NONE
     yanchor: YANCHOR_NONE
     pivot: PIVOT_N

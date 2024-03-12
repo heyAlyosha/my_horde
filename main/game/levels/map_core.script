@@ -87,15 +87,21 @@ function on_message(self, message_id, message, sender)
 		factory.create("#effect_factory", message.position, message.rotation, properties)
 
 	elseif message_id == hash("add_item") then
-			-- Добавление предметов
-			local properties = {
-				type_valute = message.type_valute,
-				count = message.count,
-				value = message.value,
-				distantion = message.distantion,
-				duration_animate = message.duration_animate,
-			}
-			factory.create("#item_factory", message.position, message.rotation, properties)
+		-- Добавление предметов
+		local properties = {
+			type_valute = message.type_valute,
+			count = message.count,
+			value = message.value,
+			distantion = message.distantion,
+			duration_animate = message.duration_animate,
+		}
+		factory.create("#item_factory", message.position, message.rotation, properties)
+
+	elseif message_id == hash("win") then
+		-- Победа игрока
+		local url_player = message.url or msg.url("player")
+		
+		
 	end
 end
 
