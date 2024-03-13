@@ -95,7 +95,7 @@ function M.update_name(self)
 	local node_wrap = self.nodes.user_name_wrap
 
 	gui_loyouts.set_text(self, node, utf8.upper(storage_player.name))
-	local margin = 10
+	local margin = 4
 	gui_size.set_gui_wrap_from_text(node, node_wrap, nil, margin, self)
 end
 
