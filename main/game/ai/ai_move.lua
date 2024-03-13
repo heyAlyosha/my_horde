@@ -61,7 +61,14 @@ function M.move_item(self, position_to, handle)
 	local duration = len / self.speed
 	live_bar.position_to(self, position_to, duration)
 	go.cancel_animations(".", "position")
-	go.animate(go.get_id(), "position", go.PLAYBACK_ONCE_FORWARD, position_functions.go_get_perspective_z(position_to), go.EASING_LINEAR, duration, 0, handle)
+	if len > 3 then
+		go.animate(".", "position", go.PLAYBACK_ONCE_FORWARD, position_functions.go_get_perspective_z(position_to), go.EASING_LINEAR, duration, 0, handle)
+	else
+		position_functions.go_set_perspective_z(position_to)
+		if handle then
+			handle(self)
+		end
+	end
 
 	character_animations.play(self, "move")
 	sprite.set_hflip("#body", dir.x < 0)

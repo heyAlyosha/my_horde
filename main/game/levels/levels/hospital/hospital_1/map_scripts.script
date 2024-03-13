@@ -162,7 +162,8 @@ function on_message(self, message_id, message, sender)
 		levels_script_functions.add_goal_ruins(self, goals, function (self)
 			print("WIN")
 			timer.delay(1, false, function (self)
-				msg.post("#map_core", "win")
+				-- Победа
+				msg.post("#map_core", "win", {point_win = msg.url("win_point")})
 			end)
 		end)
 

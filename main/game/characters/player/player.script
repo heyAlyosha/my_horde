@@ -163,6 +163,7 @@ function fixed_update(self, dt)
 end
 
 function on_message(self, message_id, message, sender)
+	
 	if message_id == hash("activate") then
 		self.activate = true
 		go_controller.add(self)
@@ -229,22 +230,36 @@ function on_message(self, message_id, message, sender)
 		end
 
 	elseif message_id == hash("win") then
+		
 		-- Анимация победы
 		self.activate = true
 		self.move_stop = true
-		character_animations.play(self, "win")
-		-- Спавн анимированных зомбиков 
-		local index_zombie_animation = 0
-		for key = #self.horde, 1, -1 do
-			index_zombie_animation = index_zombie_animation + 1
-			character_zombie_main.add_zombie_animation(self, "horde", key, index_zombie_animation)
-		end
+		local function animate_win(self)
+			character_animations.play(self, "win")
+			-- Спавн анимированных зомбиков 
+			local index_zombie_animation = 0
+			for key = #self.horde, 1, -1 do
+				index_zombie_animation = index_zombie_animation + 1
+				character_zombie_main.add_zombie_animation(self, "horde", key, index_zombie_animation)
+			end
 
-		-- Спавн анимированных зомбиков 
-		for key, v in pairs(self.zombies) do
-			index_zombie_animation = index_zombie_animation + 1
-			character_zombie_main.add_zombie_animation(self, "zombie_attack", key, index_zombie_animation)
+			-- Спавн анимированных зомбиков 
+			for key, v in pairs(self.zombies) do
+				index_zombie_animation = index_zombie_animation + 1
+				character_zombie_main.add_zombie_animation(self, "zombie_attack", key, index_zombie_animation)
+			end
 		end
+		pprint("message", message, message.point_win)
+		if message.point_win then
+			-- Последовать к точке
+			
+			ai_move.move_item(self, go.get_position(message.point_win), function (self)
+				animate_win(self)
+			end)
+		else
+			animate_win(self)
+		end
+		
 	end
 	
 end

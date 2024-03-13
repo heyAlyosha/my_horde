@@ -99,7 +99,7 @@ function on_message(self, message_id, message, sender)
 
 	elseif message_id == hash("win") then
 		-- Победа игрока
-		msg.post("player", "win")
+		msg.post("player", "win", message)
 
 		--Анимация грозы для победы в гуи
 		msg.post("/loader_gui", "visible", {
