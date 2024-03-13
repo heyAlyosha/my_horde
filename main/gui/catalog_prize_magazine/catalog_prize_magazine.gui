@@ -3529,14 +3529,14 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 1.0
-    y: 1.0
+    x: 0.5
+    y: 0.5
     z: 1.0
     w: 1.0
   }
   size {
-    x: 150.0
-    y: 37.0
+    x: 100.0
+    y: 32.0
     z: 0.0
     w: 1.0
   }
@@ -3548,7 +3548,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "gui/account_border_score"
+  texture: "first_level/account_border"
   id: "balance-template/wrap"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -3558,10 +3558,10 @@ nodes {
   layer: ""
   inherit_alpha: true
   slice9 {
-    x: 20.0
-    y: 0.0
-    z: 20.0
-    w: 0.0
+    x: 15.0
+    y: 15.0
+    z: 15.0
+    w: 15.0
   }
   clipping_mode: CLIPPING_MODE_NONE
   clipping_visible: true
@@ -3594,8 +3594,8 @@ nodes {
     w: 1.0
   }
   size {
-    x: 200.0
-    y: 100.0
+    x: 40.0
+    y: 40.0
     z: 0.0
     w: 1.0
   }
@@ -3628,7 +3628,7 @@ nodes {
   alpha: 1.0
   overridden_fields: 9
   template_node_child: true
-  size_mode: SIZE_MODE_AUTO
+  size_mode: SIZE_MODE_MANUAL
   custom_type: 0
   enabled: true
   visible: true
@@ -3636,7 +3636,7 @@ nodes {
 }
 nodes {
   position {
-    x: 140.0
+    x: 93.0
     y: 0.0
     z: 0.0
     w: 1.0
@@ -3648,8 +3648,8 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 0.75
-    y: 0.75
+    x: 0.5
+    y: 0.5
     z: 1.0
     w: 1.0
   }
@@ -4426,14 +4426,14 @@ layouts {
       w: 1.0
     }
     scale {
-      x: 1.0
-      y: 1.0
+      x: 0.5
+      y: 0.5
       z: 1.0
       w: 1.0
     }
     size {
-      x: 150.0
-      y: 37.0
+      x: 100.0
+      y: 32.0
       z: 0.0
       w: 1.0
     }
@@ -4445,7 +4445,7 @@ layouts {
     }
     type: TYPE_BOX
     blend_mode: BLEND_MODE_ALPHA
-    texture: "gui/account_border_score"
+    texture: "first_level/account_border"
     id: "balance-template/wrap"
     xanchor: XANCHOR_NONE
     yanchor: YANCHOR_NONE
@@ -4455,10 +4455,10 @@ layouts {
     layer: ""
     inherit_alpha: true
     slice9 {
-      x: 20.0
-      y: 0.0
-      z: 20.0
-      w: 0.0
+      x: 15.0
+      y: 15.0
+      z: 15.0
+      w: 15.0
     }
     clipping_mode: CLIPPING_MODE_NONE
     clipping_visible: true
