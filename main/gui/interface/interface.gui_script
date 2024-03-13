@@ -37,7 +37,6 @@ function init(self)
 		account_wrap = gui.get_node("account_wrap"),
 		avatar_wrap = gui.get_node('avatar_border'),
 		avatar_img = gui.get_node("avatar_img"),
-		score_line = gui.get_node('avatar_line_active'),
 		name_wrap = gui.get_node('account_name_bg'),
 		account_level = gui.get_node('account_level'),
 

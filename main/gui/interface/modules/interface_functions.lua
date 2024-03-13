@@ -72,8 +72,6 @@ function M.update_balance(self)
 			line_active = 360
 		end
 
-		gui_loyouts.set_fill_angle(self, node_line, line_active)
-
 		if score_player_data.procent_to_next_level >= 100 then
 			core_player_function.level_up(self)
 		end
