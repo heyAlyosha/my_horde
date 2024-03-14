@@ -8,7 +8,7 @@ function init(self)
 	self.types_valute = {}
 	self.types_valute[hash("coin")] = {id = "coin", animation_id = "icon-gold-1"}
 	self.types_valute[hash("xp")] = {id = "xp", animation_id = "game-icon-mutate"}
-	self.types_valute[hash("trash")] = {id = "trash", animation_id = "icon-gold-1"}
+	self.types_valute[hash("trash")] = {id = "trash", animation_id = "game-icon-resource"}
 	self.types_valute[hash("trophy")] = {id = "trash", animation_id = "icon-gold-1"}
 
 	self.item = self.types_valute[self.type_valute]
