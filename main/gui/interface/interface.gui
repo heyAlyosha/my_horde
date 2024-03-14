@@ -725,8 +725,8 @@ nodes {
 }
 nodes {
   position {
-    x: 266.0
-    y: -109.0
+    x: 268.0
+    y: -106.0
     z: 0.0
     w: 1.0
   }
@@ -955,7 +955,7 @@ nodes {
 }
 nodes {
   position {
-    x: 455.0
+    x: 459.0
     y: -108.0
     z: 0.0
     w: 1.0
@@ -1184,8 +1184,8 @@ nodes {
 }
 nodes {
   position {
-    x: 643.0
-    y: -99.0
+    x: 644.0
+    y: -104.0
     z: 0.0
     w: 1.0
   }
@@ -1245,7 +1245,7 @@ nodes {
 nodes {
   position {
     x: 0.0
-    y: 2.333333
+    y: -2.666667
     z: 0.0
     w: 1.0
   }
@@ -1275,7 +1275,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "first_level/game-icon-resource"
+  texture: "first_level/interface-icon-resource"
   id: "rating_template/icon"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
