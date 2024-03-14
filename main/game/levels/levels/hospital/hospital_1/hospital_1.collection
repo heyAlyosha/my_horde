@@ -970,6 +970,34 @@ instances {
     z: 1.0
   }
 }
+instances {
+  id: "item"
+  prototype: "/main/game/objects/items/item.go"
+  position {
+    x: 778.0
+    y: 243.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "script"
+    properties {
+      id: "type_valute"
+      value: "xp"
+      type: PROPERTY_TYPE_HASH
+    }
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
 scale_along_z: 0
 embedded_instances {
   id: "pidestal_plug_left"

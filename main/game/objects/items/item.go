@@ -16,7 +16,7 @@ components {
 embedded_components {
   id: "object"
   type: "sprite"
-  data: "default_animation: \"icon-gold-1\"\n"
+  data: "default_animation: \"game-icon-mutate\"\n"
   "material: \"/builtins/materials/sprite.material\"\n"
   "blend_mode: BLEND_MODE_ALPHA\n"
   "textures {\n"
@@ -26,7 +26,7 @@ embedded_components {
   ""
   position {
     x: 0.0
-    y: 4.0
+    y: 6.0
     z: 1.0
   }
   rotation {
