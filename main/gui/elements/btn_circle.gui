@@ -7,6 +7,10 @@ textures {
   name: "main"
   texture: "/main/main.atlas"
 }
+textures {
+  name: "first_level"
+  texture: "/main/atlases/first_level.atlas"
+}
 background_color {
   x: 0.0
   y: 0.0
@@ -46,7 +50,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "gui/btn_circle_bg_orange_default"
+  texture: "first_level/account_border"
   id: "btn"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -127,7 +131,7 @@ nodes {
   size_mode: SIZE_MODE_AUTO
   custom_type: 0
   enabled: true
-  visible: true
+  visible: false
   material: ""
 }
 nodes {
@@ -186,7 +190,7 @@ nodes {
   size_mode: SIZE_MODE_AUTO
   custom_type: 0
   enabled: true
-  visible: true
+  visible: false
   material: ""
 }
 material: "/builtins/materials/gui.material"

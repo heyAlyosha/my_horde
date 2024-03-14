@@ -3248,7 +3248,7 @@ nodes {
   size_mode: SIZE_MODE_AUTO
   custom_type: 0
   enabled: true
-  visible: true
+  visible: false
   material: ""
 }
 nodes {
@@ -3308,7 +3308,7 @@ nodes {
   size_mode: SIZE_MODE_AUTO
   custom_type: 0
   enabled: true
-  visible: true
+  visible: false
   material: ""
 }
 nodes {
@@ -3762,7 +3762,7 @@ nodes {
   size_mode: SIZE_MODE_AUTO
   custom_type: 0
   enabled: true
-  visible: true
+  visible: false
   material: ""
 }
 nodes {
@@ -3823,7 +3823,7 @@ nodes {
   size_mode: SIZE_MODE_AUTO
   custom_type: 0
   enabled: true
-  visible: true
+  visible: false
   material: ""
 }
 layers {
@@ -4310,7 +4310,7 @@ layouts {
     size_mode: SIZE_MODE_AUTO
     custom_type: 0
     enabled: true
-    visible: true
+    visible: false
     material: ""
   }
   nodes {

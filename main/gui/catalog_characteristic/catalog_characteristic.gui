@@ -1063,7 +1063,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "gui/btn_circle_bg_orange_default"
+  texture: "first_level/account_border"
   id: "btn-close-template/btn"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -1146,7 +1146,7 @@ nodes {
   size_mode: SIZE_MODE_AUTO
   custom_type: 0
   enabled: true
-  visible: true
+  visible: false
   material: ""
 }
 nodes {
@@ -1205,7 +1205,7 @@ nodes {
   size_mode: SIZE_MODE_AUTO
   custom_type: 0
   enabled: true
-  visible: true
+  visible: false
   material: ""
 }
 nodes {
