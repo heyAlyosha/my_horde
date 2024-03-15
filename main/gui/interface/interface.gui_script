@@ -29,11 +29,12 @@ function init(self)
 		user_name = gui.get_node("account_name"),
 		user_name_wrap = gui.get_node("account_name_bg"),
 		coin_wrap = gui.get_node("gold_template/wrap"),
-		score_wrap = gui.get_node("score_template/wrap"),
-		rating_wrap = gui.get_node("rating_template/wrap"),
+		xp_wrap = gui.get_node("xp_template/wrap"),
+		resource_wrap = gui.get_node("resource_template/wrap"),
 		coin = gui.get_node("gold_template/number"),
-		score = gui.get_node("score_template/number"),
-		rating = gui.get_node("rating_template/number"),
+		xp = gui.get_node("xp_template/number"),
+		resource = gui.get_node("resource_template/number"),
+		score = gui.get_node("account_level"),
 		account_wrap = gui.get_node("account_wrap"),
 		avatar_wrap = gui.get_node('avatar_border'),
 		avatar_img = gui.get_node("avatar_img"),
@@ -89,7 +90,6 @@ function init(self)
 	}
 
 	interface_functions.update_balance(self)
-	interface_functions.update_level(self)
 	interface_functions.update_name(self)
 	interface_functions.update_volume(self)
 	interface_functions.update_avatar(self)
@@ -152,7 +152,6 @@ function on_message(self, message_id, message, sender)
 	elseif message_id == hash("set_status") then
 		if message.type == 'update_all' then
 			interface_functions.update_balance(self)
-			interface_functions.update_level(self)
 			interface_functions.update_name(self)
 			interface_functions.update_volume(self)
 			interface_functions.update_avatar(self)
@@ -172,7 +171,7 @@ function on_message(self, message_id, message, sender)
 			end
 
 			-- Обновляем баланс
-			local values_keys = {'coins', 'score', 'rating'}
+			local values_keys = {'coins', 'score', 'xp', 'resource'}
 			-- Смотрим. что изменилось 
 			local update_score
 			for i, key in ipairs(values_keys) do
@@ -186,15 +185,17 @@ function on_message(self, message_id, message, sender)
 
 					-- Если изменился опыт, обновляем полоску опыта
 					if key == "score" then
-						update_score = true
-						local score_player_data = core_player_function.get_level_data_user()
-						interface_animations.set_score_line(self, score_player_data.procent_to_next_level)
 						sound_render.play("add_score", url_object)
+
 					elseif key == "coins" then
 						sound_render.play("add_gold", url_object)
 
-					elseif key == "rating" then
+					elseif key == "xp" then
 						sound_render.play("update_rating", url_object)
+
+					elseif key == "resource" then
+						sound_render.play("update_rating", url_object)
+
 					end
 
 					-- Обновляем на стороне сервера c задержкой

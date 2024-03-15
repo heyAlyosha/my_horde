@@ -1356,7 +1356,7 @@ nodes {
     w: 1.0
   }
   type: TYPE_TEMPLATE
-  id: "score_template"
+  id: "xp_template"
   parent: "account"
   layer: "box"
   inherit_alpha: true
@@ -1400,12 +1400,12 @@ nodes {
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
   texture: "first_level/account_border"
-  id: "score_template/wrap"
+  id: "xp_template/wrap"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_W
   adjust_mode: ADJUST_MODE_FIT
-  parent: "score_template"
+  parent: "xp_template"
   layer: ""
   inherit_alpha: true
   slice9 {
@@ -1460,12 +1460,12 @@ nodes {
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
   texture: "first_level/interface-icon-mutate"
-  id: "score_template/icon"
+  id: "xp_template/icon"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
-  parent: "score_template/wrap"
+  parent: "xp_template/wrap"
   layer: ""
   inherit_alpha: true
   slice9 {
@@ -1521,7 +1521,7 @@ nodes {
   blend_mode: BLEND_MODE_ALPHA
   text: "999999"
   font: "font_standart_normal"
-  id: "score_template/number"
+  id: "xp_template/number"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_E
@@ -1539,7 +1539,7 @@ nodes {
   }
   adjust_mode: ADJUST_MODE_FIT
   line_break: false
-  parent: "score_template/wrap"
+  parent: "xp_template/wrap"
   layer: ""
   inherit_alpha: true
   alpha: 1.0
@@ -1585,7 +1585,7 @@ nodes {
     w: 1.0
   }
   type: TYPE_TEMPLATE
-  id: "rating_template"
+  id: "resource_template"
   parent: "account"
   layer: "box"
   inherit_alpha: true
@@ -1629,12 +1629,12 @@ nodes {
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
   texture: "first_level/account_border"
-  id: "rating_template/wrap"
+  id: "resource_template/wrap"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_W
   adjust_mode: ADJUST_MODE_FIT
-  parent: "rating_template"
+  parent: "resource_template"
   layer: ""
   inherit_alpha: true
   slice9 {
@@ -1689,12 +1689,12 @@ nodes {
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
   texture: "first_level/interface-icon-resource"
-  id: "rating_template/icon"
+  id: "resource_template/icon"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
-  parent: "rating_template/wrap"
+  parent: "resource_template/wrap"
   layer: ""
   inherit_alpha: true
   slice9 {
@@ -1751,7 +1751,7 @@ nodes {
   blend_mode: BLEND_MODE_ALPHA
   text: "999999"
   font: "font_standart_normal"
-  id: "rating_template/number"
+  id: "resource_template/number"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_E
@@ -1769,7 +1769,7 @@ nodes {
   }
   adjust_mode: ADJUST_MODE_FIT
   line_break: false
-  parent: "rating_template/wrap"
+  parent: "resource_template/wrap"
   layer: ""
   inherit_alpha: true
   alpha: 1.0
@@ -2561,9 +2561,6 @@ layers {
   name: "box"
 }
 layers {
-  name: "text"
-}
-layers {
   name: "study_bg"
 }
 layers {
@@ -2574,6 +2571,9 @@ layers {
 }
 layers {
   name: "avatar_content"
+}
+layers {
+  name: "text"
 }
 material: "/builtins/materials/gui.material"
 layouts {

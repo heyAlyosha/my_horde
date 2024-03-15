@@ -27,7 +27,9 @@ function M.set_position_balance(self)
 	-- Записываем позицию 
 	storage_gui.interface = {
 		position_coin_screen = gui.get_screen_position(self.nodes.coin_wrap),
-		position_score_screen = gui.get_screen_position(self.nodes.score_wrap)
+		position_xp_screen = gui.get_screen_position(self.nodes.xp_wrap),
+		position_resource_screen = gui.get_screen_position(self.nodes.resource_wrap),
+		position_score_screen = gui.get_screen_position(self.nodes.score)
 	}
 end
 
@@ -43,50 +45,17 @@ end
 -- Обновление баланса
 function M.update_balance(self)
 	local node_coin = self.nodes.coin
+	local node_xp = self.nodes.xp
+	local node_resource = self.nodes.resource
 	local node_score = self.nodes.score
-	local node_rating = self.nodes.rating
-	local node_line = self.nodes.score_line
-	local max_line = M.max_line
 
 	gui_loyouts.set_text(self, node_coin, storage_player.coins)
+	gui_loyouts.set_text(self, node_xp, storage_player.xp)
+	gui_loyouts.set_text(self, node_resource, storage_player.resource)
 	gui_loyouts.set_text(self, node_score, storage_player.score)
-	gui_loyouts.set_text(self, node_rating, storage_player.rating or '0')
 
 	self.current_values.coins = storage_player.coins
 	self.current_values.rating = storage_player.rating
-
-	-- Если изменились очки, обновляем линию опыта
-	if storage_player.score ~= self.current_values.score then
-		self.current_values.score = storage_player.score
-
-		local score_player_data = core_player_function.get_level_data_user()
-		local line_active = max_line * score_player_data.procent_to_next_level * 0.01
-
-		if score_player_data.procent_to_next_level < 0 then
-			line_active = 0
-		end
-
-		if line_active < -360 then
-			line_active = -360
-		elseif line_active > 360 then
-			line_active = 360
-		end
-
-		if score_player_data.procent_to_next_level >= 100 then
-			core_player_function.level_up(self)
-		end
-	end
-
-	--
-end
-
--- Обновление уровня
-function M.update_level(self, level)
-	local level = level or storage_player.level
-	local node_level = self.nodes.account_level
-	local level_text = M.level_text
-
-	gui_loyouts.set_text(self, node_level, level_text .. ' ' .. level)
 end
 
 -- Обновление имени
