@@ -230,4 +230,25 @@ function M.study(self, id)
 
 end
 
+-- Запись направления
+function M.set_dir_goal(self, dir_goal)
+	if self.dir_goal ~= dir_goal then
+		if dir_goal then
+			local angle = math.atan2(dir_goal.y, dir_goal.x)    -- [1]
+			local rot = vmath.quat_rotation_z(angle)
+			gui.set_rotation(self.nodes.marker_wrap, rot)
+			gui.set_enabled(self.nodes.marker_wrap, true)
+
+			if not self.dir_goal_pulse then
+				self.dir_goal_pulse = true
+				gui.animate(self.nodes.marker_goal, "position.x", 118, gui.EASING_INOUTCUBIC, 1, 0, handle, gui.PLAYBACK_LOOP_PINGPONG)
+			end
+		else
+			gui.set_enabled(self.nodes.marker_wrap, false)
+		end
+	end
+
+	self.dir_goal = dir_goal
+end
+
 return M

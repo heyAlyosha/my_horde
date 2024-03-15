@@ -1,7 +1,7 @@
 -- Работа с кнопками пульта
 local M = {}
 
-local storage_gui = require "main.storage.storage_gui"
+
 
 M.pressed_button_id = nil
 M.input_back = nil

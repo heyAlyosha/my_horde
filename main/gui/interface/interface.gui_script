@@ -40,6 +40,8 @@ function init(self)
 		avatar_img = gui.get_node("avatar_img"),
 		name_wrap = gui.get_node('account_name_bg'),
 		account_level = gui.get_node('account_level'),
+		marker_wrap = gui.get_node("marker_wrap"),
+		marker_goal = gui.get_node("marker_goal"),
 
 		btns = gui.get_node("btns"),
 		btn_1_wrap = gui.get_node("btn_1_template/btn"),
@@ -146,6 +148,9 @@ function on_message(self, message_id, message, sender)
 			interface_stars.visible(self, self.visible_stars)
 
 			gui_input.init(self)
+
+		elseif message.type == 'set_dir_goal' then
+			interface_functions.set_dir_goal(self, message.dir_goal)
 
 		end
 

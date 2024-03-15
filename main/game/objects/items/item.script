@@ -73,7 +73,6 @@ function on_message(self, message_id, message, sender)
 			go.animate(".", "scale", go.PLAYBACK_ONCE_FORWARD, vmath.vector3(0.5), go.EASING_LINEAR, duration)
 
 			local start_podition = camera.world_to_screen(camera_id, go.get_position(), gui.ADJUST_STRETCH)
-			print("start_podition", start_podition)
 			timer.delay(duration, false, function (self)
 				msg.post("/loader_gui", "set_status", {
 					id = "add_balance",

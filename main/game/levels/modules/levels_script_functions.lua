@@ -26,16 +26,29 @@ end
 
 -- Следим за целями для уничтожения
 function M.on_update(self)
+	-- Расстояние до цели для отображения направления
+	local view_dist_goal = 240
 	-- Есть цели для уничтожения
 	if self.goal_ruins then
-		-- Удаляем старые цели
+		-- Обрабатываем цели
 		local index = 0
+		local position_player = go.get_position("player")
+
 		for k, item in pairs(self.goal_ruins) do
 			-- Есть ли объект прицеливания
 			if go_controller.is_object(item.id) then
 				-- Обновляем позицию
-				go.set_position(go.get_position(item.id), item.urls[hash("/marker_goal")])
+				local position_object = go.get_position(item.id)
+				go.set_position(position_object, item.urls[hash("/marker_goal")])
 				index = index + 1
+
+				-- Расстояние до цели, чтобы показать указатель на неё
+				self.dir_goal = position_object - position_player
+				if vmath.length(self.dir_goal) > view_dist_goal then
+					self.dir_goal = vmath.normalize(self.dir_goal)
+				else
+					self.dir_goal = nil
+				end
 
 			else
 				-- Удаляем цель, если объекта нет
@@ -50,6 +63,13 @@ function M.on_update(self)
 			end
 			self.goal_ruins = nil
 		end
+
+		--если изменилось направление указателя цели
+		if self.dir_goal ~= self.last_dir_goal and storage_gui.components_visible.interface then
+			msg.post(storage_gui.components_visible.interface, "set_content", {type = "set_dir_goal", dir_goal = self.dir_goal})
+		end
+
+		self.last_dir_goal = self.dir_goal
 		
 	end
 end

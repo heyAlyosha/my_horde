@@ -1,5 +1,4 @@
 local api_core_rating = require "main.core.api.api_core_rating"
-local storage_gui = require "main.storage.storage_gui"
 local game_content_notify_add = require "main.game.content.game_content_notify_add"
 local loader_sdk_modules = require "main.loaders.loader_sdk.modules.loader_sdk_modules"
 local loader_main_event_logout = require "main.game.loader_main.modules.loader_main_event_logout"
@@ -14,8 +13,8 @@ local defsave = require("defsave.defsave")
 local druid = require("druid.druid")
 local druid_castom_style = require "main.gui.modules.druid_castom_style"
 
-
 function init(self)
+	storage_gui = require "main.storage.storage_gui"
 	camera = require "orthographic.camera"
 	gui_loyouts = require "main.gui.modules.gui_loyouts"
 	levels_script_functions = require "main.game.levels.modules.levels_script_functions"
