@@ -70,7 +70,9 @@ function on_message(self, message_id, message, sender)
 			local duration = 0.1
 			go.cancel_animations(".", "position")
 			go.animate(".", "position", go.PLAYBACK_ONCE_FORWARD, go.get_position(sender), go.EASING_LINEAR, duration)
+			go.animate(".", "scale", go.PLAYBACK_ONCE_FORWARD, vmath.vector3(0.5), go.EASING_LINEAR, duration)
 			timer.delay(duration, false, function (self)
+				
 				go.delete()
 			end)
 		end
