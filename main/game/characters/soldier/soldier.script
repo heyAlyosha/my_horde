@@ -26,6 +26,7 @@ go.property("animation_type", hash("soldier"))
 go.property("spawn_coins", 2)
 go.property("spawn_trash", 0)
 go.property("spawn_xp", 1)
+go.property("spawn_star", 0)
 
 function init(self)
 	timer.delay(0.1, false, function (self)

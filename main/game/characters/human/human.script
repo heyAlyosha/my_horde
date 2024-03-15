@@ -21,6 +21,7 @@ go.property("animation_type", hash("human"))
 go.property("spawn_coins", 1)
 go.property("spawn_trash", 0)
 go.property("spawn_xp", 1)
+go.property("spawn_star", 0)
 go.property("id_activation", hash(""))
 go.property("hflip", false)
 

@@ -9,6 +9,7 @@ go.property("damage_blood", true)
 go.property("spawn_coins", 0)
 go.property("spawn_trash", 1)
 go.property("spawn_xp", 0)
+go.property("spawn_star", 0)
 go.property("hflip", false)
 go.property("id_activation", hash(""))
 

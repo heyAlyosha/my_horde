@@ -54,6 +54,18 @@ function M.spawn(self)
 			})
 		end
 	end
+
+	-- Спавн звёзд 
+	if self.spawn_star then
+		for i = 1, self.spawn_star do
+			msg.post(storage_game.map.url_script, "add_item", {
+				position = go.get_position(),
+				type_valute = hash("star"),
+				count = 1,
+				value = 0, -- Данные для влаюты
+			})
+		end
+	end
 end
 
 return M

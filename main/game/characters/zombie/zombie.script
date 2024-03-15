@@ -20,6 +20,7 @@ go.property("visible_attack", false)
 go.property("spawn_coins", 0)
 go.property("spawn_trash", 0)
 go.property("spawn_xp", 1)
+go.property("spawn_star", 0)
 
 function init(self)
 	go_controller.add(self)

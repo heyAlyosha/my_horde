@@ -10,6 +10,7 @@ function init(self)
 	self.types_valute[hash("xp")] = {id = "xp", animation_id = "game-icon-mutate"}
 	self.types_valute[hash("trash")] = {id = "resource", animation_id = "game-icon-resource"}
 	self.types_valute[hash("trophy")] = {id = "trophy", animation_id = "icon-gold-1"}
+	self.types_valute[hash("star")] = {id = "star", animation_id = "game-icon-star"}
 
 	self.item = self.types_valute[self.type_valute]
 
@@ -74,6 +75,8 @@ function on_message(self, message_id, message, sender)
 
 			local start_podition = camera.world_to_screen(camera_id, go.get_position(), gui.ADJUST_STRETCH)
 			timer.delay(duration, false, function (self)
+				-- Заичлсяем игроку
+				if 
 				msg.post("/loader_gui", "set_status", {
 					id = "add_balance",
 					type = self.item.id,

@@ -1016,7 +1016,7 @@ instances {
     id: "script"
     properties {
       id: "type_valute"
-      value: "trash"
+      value: "star"
       type: PROPERTY_TYPE_HASH
     }
   }
