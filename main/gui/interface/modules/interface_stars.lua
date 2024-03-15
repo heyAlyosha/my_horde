@@ -16,7 +16,9 @@ function M.visible(self, visible)
 
 	if not visible then
 		--Сбрасываем заполненные звёздочки
-		gui.animate(self.nodes.wrap_stars_active, "size.x", 0, gui.EASING_OUTCUBIC, 0.001)
+		gui.animate(self.nodes.wrap_stars_active, "size.x", 0, gui.EASING_OUTCUBIC, 0.001, 0, function (self)
+			gui_loyouts.set_size(self, self.nodes.wrap_stars_active,  0, "x")
+		end)
 	end
 end
 
@@ -30,7 +32,9 @@ function M.set_star(self, stars, unwrap)
 	-- Анимация звёздочек
 	timer_linear.add(self, "stars", 0.1, function (self)
 		local size_wrap_start_active = gui.get_size(self.nodes.wrap_stars_bg).x / 3 * stars
-		gui.animate(self.nodes.wrap_stars_active, "size.x", size_wrap_start_active, gui.EASING_OUTCUBIC, 0.25)
+		gui.animate(self.nodes.wrap_stars_active, "size.x", size_wrap_start_active, gui.EASING_OUTCUBIC, 0.25, 0, function (self)
+			gui_loyouts.set_size(self, self.nodes.wrap_stars_active,  size_wrap_start_active, "x")
+		end)
 	end)
 
 	-- Анимация звёздочек
