@@ -39,7 +39,7 @@ function M.render_btns_set(self, set_id)
 					node = node_btn, 
 					wrap_node = node_icon,
 					node_title = false, 
-					icon = "btn_circle_bg_orange_",
+					icon = "btn_interface_",
 					wrap_icon = btn_content.icon.."_"
 				})
 			end

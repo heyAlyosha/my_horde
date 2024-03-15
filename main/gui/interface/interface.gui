@@ -1,4 +1,4 @@
-script: ""
+script: "/main/gui/interface/interface.gui_script"
 fonts {
   name: "font_standart_normal"
   font: "/assets/fonts/font_standart_normal.font"

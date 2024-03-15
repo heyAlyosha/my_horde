@@ -54,22 +54,9 @@ function init(self)
 		stars_wrap = gui.get_node("stars_wrap"),
 		stars = gui.get_node("stars"),
 		stars_body = gui.get_node("stars_body"),
-		wrap_list = gui.get_node("wrap_list"),
 		star_1 = gui.get_node("star_1"),
 		star_2 = gui.get_node("star_2"),
 		star_3 = gui.get_node("star_3"),
-		list_item_1 = {
-			icon = gui.get_node("list_item_1_template/icon"),
-			content = gui.get_node("list_item_1_template/content")
-		},
-		list_item_2 = {
-			icon = gui.get_node("list_item_2_template/icon"),
-			content = gui.get_node("list_item_2_template/content")
-		},
-		list_item_3 = {
-			icon = gui.get_node("list_item_3_template/icon"),
-			content = gui.get_node("list_item_3_template/content")
-		},
 	}
 
 	self.btns_content = {
@@ -107,7 +94,6 @@ function init(self)
 	interface_functions.update_volume(self)
 	interface_functions.update_avatar(self)
 
-	interface_stars.unwrap(self, false)
 	interface_stars.visible(self, false)
 end
 

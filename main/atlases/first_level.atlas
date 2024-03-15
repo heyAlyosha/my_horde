@@ -246,6 +246,10 @@ images {
   image: "/assets/images/gui/star_rating_default.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
+images {
+  image: "/assets/images/gui/btn_interface_focus.png"
+  sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+}
 animations {
   id: "zombie_0_0_run"
   images {
@@ -1454,6 +1458,17 @@ animations {
   }
   playback: PLAYBACK_ONCE_FORWARD
   fps: 10
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "btn_interface_default"
+  images {
+    image: "/assets/images/gui/account_border.png"
+    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 60
   flip_horizontal: 0
   flip_vertical: 0
 }

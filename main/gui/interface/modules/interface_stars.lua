@@ -24,44 +24,6 @@ M.sizes_wrap = {
 -- Добавил или убавили звёздочки
 function M.visible(self, visible)
 	self.visible_stars = visible
-
-	for i = #self.btns, 1, -1 do
-		local btn = self.btns[i]
-
-		if btn.id == "stars" then
-			table.remove(self.btns, i)
-		end
-	end
-
-	if visible then
-		-- ставим после кнопок 
-		local position_x = 0
-		for i, btn in ipairs(self.btns) do
-			if btn.id ~= "stars" then
-				position_x = position_x + gui.get_size(btn.node).x + 20
-			end
-		end
-
-		--gui_loyouts.set_position(self, self.nodes.stars_wrap, -position_x, "x")
-
-		-- Добавляем кнопку
-		table.insert(self.btns, 1, {
-			id = "stars", 
-			type = "btn", 
-			section = "interface_right", 
-			node = self.nodes.stars,
-			wrap_node = self.nodes.stars,
-			node_title = false, 
-			wrap_icon = "bg_modal_"
-		})
-	else
-		-- Удаляем кнопку, если есть
-		for i, btn in ipairs(self.btns) do
-			if btn.id == "stars" then
-				table.remove(self.btns, i)
-			end
-		end
-	end
 	gui_loyouts.set_enabled(self, self.nodes.stars_wrap, visible)
 end
 
@@ -109,49 +71,6 @@ function M.set_star(self, stars, unwrap)
 		end)
 		
 	end
-end
-
--- Развернуть или свернуть
-function M.unwrap(self, unwrap, animated)
-	local duration = 0.25
-	if not animated then
-		duration = 0
-	end
-	local function function_unwrap(self)
-		local sizes
-		msg.post("main:/sound", "play", {sound_id = "popup_hidden"})
-		if self.timer_unwrap then
-			timer.cancel(self.timer_unwrap)
-			self.timer_unwrap = nil
-		end
-		self.unwrap = unwrap
-		if unwrap then
-			sizes = M.sizes_wrap.visible
-
-			self.timer_unwrap = timer.delay(10, false, function (self)
-				M.unwrap(self, false)
-			end)
-		else
-			sizes = M.sizes_wrap.hidden
-		end
-
-		gui_loyouts.set_enabled(self, self.nodes.wrap_list, unwrap)
-
-		gui.animate(self.nodes.stars, 'size', sizes.stars, gui.EASING_LINEAR, duration, 0,  function (self)
-			gui_loyouts.set_size(self, self.nodes.stars, sizes.stars)
-		end)
-		gui.animate(self.nodes.stars_body, 'size', sizes.stars_body, gui.EASING_LINEAR, duration, 0, function (self)
-			gui_loyouts.set_size(self, self.nodes.stars_body, sizes.stars_body)
-		end)
-	end
-
-	if not animated then
-		duration = 0
-		function_unwrap(self)
-	else
-		gui_animate.pulse(self, self.nodes.stars, scale, duration, delay, function_unwrap)
-	end
-
 end
 
 -- Записываем контент
