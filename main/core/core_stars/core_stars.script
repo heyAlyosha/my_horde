@@ -55,7 +55,27 @@ function on_message(self, message_id, message, sender)
 
 	elseif message_id == hash("add_level_star") then
 		-- Игрок подобрал звезду на уровне
-		pprint(message_id, message)
+		local count = message.count or 1
+
+		storage_game.map.player_star = storage_game.map.player_star or 0 
+		storage_game.map.player_star = storage_game.map.player_star + count
+
+		-- Формируем количество звёзд
+		local count_stars_map = storage_game.map.count_star
+		local count_stars_player = storage_game.map.player_star
+
+		-- кол-во звёздочек для 1
+		local item_stars = count_stars_map / 3
+		local stars = count_stars_player / item_stars
+
+		--  Запись изменения звёздочек
+		msg.post("/loader_gui", "set_content", {
+			id = "interface",
+			type = "set_star",
+			values = {
+				stars = stars
+			}
+		})
 	end
 end
 

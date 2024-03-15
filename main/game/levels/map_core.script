@@ -61,6 +61,7 @@ function init(self)
 	end
 
 	-- ЗВЁЗДЫ
+	storage_game.map.player_stars = 0
 	-- Выключаем предыдущие звёзды
 	msg.post("/loader_gui", "set_status", {
 		id = "interface",
@@ -69,8 +70,6 @@ function init(self)
 	})
 
 	-- Выводим количество предметов в объектах
-	
-
 	timer.delay(0.5, false, function (self)
 		if self.print_count_items then
 			local item_types = {"coins", "xp", "trash", "star"}

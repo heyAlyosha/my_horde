@@ -60,6 +60,8 @@ function init(self)
 		star_1 = gui.get_node("star_1"),
 		star_2 = gui.get_node("star_2"),
 		star_3 = gui.get_node("star_3"),
+		wrap_stars_active = gui.get_node("wrap_stars_active"),
+		wrap_stars_bg = gui.get_node("wrap_stars_bg"),
 	}
 
 	self.btns_content = {
