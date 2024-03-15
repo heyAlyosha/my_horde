@@ -87,7 +87,9 @@ function M.add_elem(self, type, position_start, count, params)
 	print("storage_gui.interface", "position_"..type.."_screen")
 	position_end = storage_gui.interface["position_"..type.."_screen"]
 
-	--position_start = gui.screen_to_local(node, position_start)
+	if not params.not_screen_to_local then
+		position_start = gui.screen_to_local(node, position_start)
+	end
 	position_end = gui.screen_to_local(node, position_end)
 
 	gui.set_rotation(node, vmath.vector3(0, 0, math.random(360)))

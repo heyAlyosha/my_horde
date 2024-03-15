@@ -79,7 +79,8 @@ function on_message(self, message_id, message, sender)
 					id = "add_balance",
 					type = self.item.id,
 					start_position = start_podition,
-					value = self.count
+					value = self.count,
+					not_screen_to_local = true
 				})
 				go.delete()
 			end)
