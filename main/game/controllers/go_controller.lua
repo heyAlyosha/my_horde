@@ -92,6 +92,19 @@ function M.delete(self)
 	live_bar.delete(self)
 end
 
+-- Записываем предметы объекта на карту
+function M.object_items_spawn_to_map(self)
+	-- Записываем предметы для карты
+	local item_types = {"coins", "xp", "trash", "star"}
+
+	for i, id_item in ipairs(item_types) do
+		if self["spawn_"..id_item] and self["spawn_"..id_item] > 0 then
+			storage_game.map["count_"..id_item] = storage_game.map["count_"..id_item] or 0
+			storage_game.map["count_"..id_item] = storage_game.map["count_"..id_item] + self["spawn_"..id_item] 
+		end
+	end
+end
+
 -- Есть ли объект
 function M.is_object(url)
 	if not url then

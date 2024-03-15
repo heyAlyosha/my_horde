@@ -23,6 +23,8 @@ go.property("spawn_xp", 1)
 go.property("spawn_star", 0)
 
 function init(self)
+	go_controller.object_items_spawn_to_map(self)
+
 	go_controller.add(self)
 
 	sprite.play_flipbook("#body", "zombie_"..self.skin_id.."_"..self.human_id .. "_default")

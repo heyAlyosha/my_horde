@@ -223,7 +223,7 @@ function on_message(self, message_id, message, sender)
 						end
 						api_player.update_wallet(self, data, metadata, function_result)
 
-						msg.post("/core_achieve", "update_progress")
+						--msg.post("/core_achieve", "update_progress")
 					end)
 				end
 			end

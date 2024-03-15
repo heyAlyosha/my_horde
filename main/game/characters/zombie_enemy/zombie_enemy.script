@@ -32,6 +32,8 @@ go.property("spawn_xp", 1)
 go.property("spawn_star", 0)
 
 function init(self)
+	go_controller.object_items_spawn_to_map(self)
+
 	timer.delay(0.1, false, function (self)
 		go_controller.add(self)
 	end)

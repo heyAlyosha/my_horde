@@ -80,6 +80,7 @@ function M.add_elem(self, type, position_start, count, params)
 		coins = {icon = "icon-gold-1"},
 		xp = {icon = "game-icon-mutate"},
 		resource = {icon = "game-icon-resource"},
+		star = {icon = "game-icon-star"},
 	}
 
 	add_values[type] = count
@@ -106,11 +107,17 @@ function M.add_elem(self, type, position_start, count, params)
 		gui.delete_node(node)
 
 		-- Окончание 
-		msg.post("main:/core_player", "balance", {
-			operation = "add",
-			values = add_values,
-			animate = true,
-		})
+		if type == "star" then
+			msg.post("main:/core_stars", "add_level_star", {
+				count = count,
+			})
+		else
+			msg.post("main:/core_player", "balance", {
+				operation = "add",
+				values = add_values,
+				animate = true,
+			})
+		end
 	end)
 
 	timer.delay(duration - duration_fade, false, function (self)

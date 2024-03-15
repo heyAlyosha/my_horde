@@ -70,6 +70,8 @@ function init(self)
 	if self.activation then
 		activate_init(self)
 	end
+
+	go_controller.object_items_spawn_to_map(self)
 end
 
 function final(self)

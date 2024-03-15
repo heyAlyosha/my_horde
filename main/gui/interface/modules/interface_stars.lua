@@ -9,18 +9,6 @@ local timer_linear = require "main.modules.timer_linear"
 local gui_loyouts = require "main.gui.modules.gui_loyouts"
 local lang_core = require "main.lang.lang_core"
 
--- Размеры
-M.sizes_wrap = {
-	hidden  = {
-		stars = vmath.vector3(300, 98, 0),
-		stars_body = vmath.vector3(295, 95, 0),
-	},
-	visible  = {
-		stars = vmath.vector3(300, 300, 0),
-		stars_body = vmath.vector3(295, 295, 0),
-	},
-}
-
 -- Добавил или убавили звёздочки
 function M.visible(self, visible)
 	self.visible_stars = visible
@@ -70,49 +58,6 @@ function M.set_star(self, stars, unwrap)
 			M.unwrap(self, false, true)
 		end)
 		
-	end
-end
-
--- Записываем контент
-function M.set_content(self, stars, list)
-	self._stars_content = self._stars_content or {}
-
-	self.stars = stars or 0
-	local list = list or {}
-
-	for i = 1, 3 do
-		-- Отрисовываем завёздочки
-		if stars < i   then
-			gui_loyouts.play_flipbook(self, self.nodes["star_"..i], "star_default")
-			gui_loyouts.play_flipbook(self, self.nodes["list_item_"..i].icon, "star_default")
-			
-		else
-			gui_loyouts.play_flipbook(self, self.nodes["star_"..i], "star_active")
-			gui_loyouts.play_flipbook(self, self.nodes["list_item_"..i].icon, "star_active")
-		end
-
-		-- Отрисовываем текст в списке
-		local item_list = list[i]
-
-		local node_content = self.nodes["list_item_" .. i].content
-		local text = ""
-
-		local id = gui.get_id(node_content)
-
-		if item_list then
-			text = item_list
-		end
-
-		--[[
-		if not self._stars_content[id] then
-			
-			self._stars_content[id] = self.druid:new_text(, )
-		else
-			self._stars_content[id]:set_to(text)
-		end
-		--]]
-		
-		gui_loyouts.set_druid_text(self, node_content, text)
 	end
 end
 

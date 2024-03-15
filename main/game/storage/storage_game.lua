@@ -59,7 +59,14 @@ M.groups_aabbcc = {}
 M.map = {
 	url = nil,
 	url_script = nil,
-	size = vmath.vector3(2000, 1000, 0)
+	size = vmath.vector3(2000, 1000, 0),
+	-- Для звёзд
+	player_stars = 0,
+	count_stars = nil,
+	-- Остальные предметы для карты
+	count_coins = nil,
+	count_trash = nil,
+	count_xp = nil
 }
 
 return M

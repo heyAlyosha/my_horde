@@ -53,7 +53,7 @@ function on_message(self, message_id, message, sender)
 		local id = message.id
 		local set_nakama = true
 		local result = api_core_player.set_characteristic(self, id, operation, value, set_nakama, function (self)
-			msg.post("/core_achieve", "update_progress")
+			--msg.post("/core_achieve", "update_progress")
 		end)
 
 		-- Определяем какому компоненту отсылать

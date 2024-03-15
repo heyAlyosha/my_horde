@@ -15,6 +15,7 @@ go.property("id_activation", hash(""))
 
 -- Разрушаемые объекты
 local function activate_init(self)
+	go_controller.object_items_spawn_to_map(self)
 	go_controller.add(self)
 
 	position_functions.go_set_perspective_z()

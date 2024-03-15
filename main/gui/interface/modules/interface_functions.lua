@@ -29,7 +29,8 @@ function M.set_position_balance(self)
 		position_coins_screen = gui.get_screen_position(self.nodes.coin_wrap),
 		position_xp_screen = gui.get_screen_position(self.nodes.xp_wrap),
 		position_resource_screen = gui.get_screen_position(self.nodes.resource_wrap),
-		position_score_screen = gui.get_screen_position(self.nodes.score)
+		position_score_screen = gui.get_screen_position(self.nodes.score),
+		position_star_screen = gui.get_screen_position(self.nodes.stars_wrap),
 	}
 end
 

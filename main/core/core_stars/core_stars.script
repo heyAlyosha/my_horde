@@ -52,6 +52,10 @@ function on_message(self, message_id, message, sender)
 
 	elseif message_id == hash("stop") then
 		storage_game.stars = {}
+
+	elseif message_id == hash("add_level_star") then
+		-- Игрок подобрал звезду на уровне
+		pprint(message_id, message)
 	end
 end
 
