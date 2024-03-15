@@ -76,6 +76,11 @@ function init(self)
 	msg.post("camera", "acquire_camera_focus")
 	--msg.post("#camera", "acquire_camera_focus")
 
+	msg.post("/loader_gui", "visible", {
+		id = "interface",
+		visible = true
+	})
+
 	--game_content_prize.init(self)
 	--game_content_artifact.init(self)
 	--game_content_achieve.init(self)

@@ -26,7 +26,7 @@ function M.set_position_balance(self)
 
 	-- Записываем позицию 
 	storage_gui.interface = {
-		position_coin_screen = gui.get_screen_position(self.nodes.coin_wrap),
+		position_coins_screen = gui.get_screen_position(self.nodes.coin_wrap),
 		position_xp_screen = gui.get_screen_position(self.nodes.xp_wrap),
 		position_resource_screen = gui.get_screen_position(self.nodes.resource_wrap),
 		position_score_screen = gui.get_screen_position(self.nodes.score)

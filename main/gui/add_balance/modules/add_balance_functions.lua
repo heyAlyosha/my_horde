@@ -74,19 +74,20 @@ function M.add_elem(self, type, position_start, count, params)
 	local duration = params.duration or 0.5
 	local duration_show = duration * 0.15
 	local duration_fade = duration * 0.15
-	local add_values = {coins = 0, score = 0, rating = 0}
+	local add_values = {coins = 0, score = 0, xp = 0, resource = 0}
 
-	if type == 'score' then
-		add_values.score = count
-		icon = params.icon or 'icon_score'
-		position_end = storage_gui.interface.position_score_screen
-	else
-		add_values.coins = count
-		icon = params.icon or 'icon_gold'
-		position_end = storage_gui.interface.position_coin_screen
-	end
+	local types_valute = {
+		coins = {icon = "icon-gold-1"},
+		xp = {icon = "game-icon-mutate"},
+		resource = {icon = "game-icon-resource"},
+	}
 
-	position_start = gui.screen_to_local(node, position_start)
+	add_values[type] = count
+	icon = types_valute[type].icon
+	print("storage_gui.interface", "position_"..type.."_screen")
+	position_end = storage_gui.interface["position_"..type.."_screen"]
+
+	--position_start = gui.screen_to_local(node, position_start)
 	position_end = gui.screen_to_local(node, position_end)
 
 	gui.set_rotation(node, vmath.vector3(0, 0, math.random(360)))

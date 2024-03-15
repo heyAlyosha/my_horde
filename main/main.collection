@@ -337,26 +337,6 @@ instances {
     z: 1.0
   }
 }
-instances {
-  id: "interface"
-  prototype: "/main/gui/interface/interface.go"
-  position {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
 collection_instances {
   id: "hospital_1"
   collection: "/main/game/levels/levels/hospital/hospital_1/hospital_1.collection"

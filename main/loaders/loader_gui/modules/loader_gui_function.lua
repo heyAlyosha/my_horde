@@ -14,8 +14,8 @@ function M.create_component(self, id, message, sender, message_id)
 	local url = msg.url(factory.create("#"..message.id .. "_factory", nil, nil, message.properties))
 	storage_gui.components_visible[message.id] = url
 
-	msg.post("game-room:/core_game", "event", {id = "visible_gui", component_id = message.id, value = message.value or message.values })
-	msg.post("main:/core_study", "event", {id = "visible_gui", component_id = message.id, value = message.value or message.values })
+	--msg.post("game-room:/core_game", "event", {id = "visible_gui", component_id = message.id, value = message.value or message.values })
+	--msg.post("main:/core_study", "event", {id = "visible_gui", component_id = message.id, value = message.value or message.values })
 	
 	if message_id == hash("visible") then
 		msg.post(storage_gui.components_visible[message.id], message_id, message)

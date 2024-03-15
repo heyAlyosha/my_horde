@@ -22,13 +22,29 @@ function M.set_balance(self, type, value)
 	local color_text = color.white
 	local text = nil
 
-	if type == 'score' then
-		node_wrap = self.nodes.score_wrap
-		node_text = self.nodes.score
-	elseif type == 'rating' then
-		node_wrap = self.nodes.rating_wrap
-		node_text = self.nodes.rating
-	end
+	local types = {
+		coins = {
+			node_wrap = self.nodes.coin_wrap,
+			node_text = self.nodes.coin
+		},
+		score = {
+			node_wrap = self.nodes.avatar_wrap,
+			node_text = self.nodes.score
+		},
+		xp = {
+			node_wrap = self.nodes.xp_wrap,
+			node_text = self.nodes.xp
+		},
+		resource = {
+			node_wrap = self.nodes.resource_wrap,
+			node_text = self.nodes.resource
+		},
+	}
+
+	node_wrap = types[type].node_wrap
+	node_text = types[type].node_text
+
+	pprint("type", type, node_wrap, node_text)
 
 	local current_balance = tonumber(gui.get_text(node_text))
 	local difference_balance = value - current_balance
@@ -97,86 +113,6 @@ function M.set_score_line(self, procent, duration, function_end)
 				end
 			end)
 		end
-	end)
-	
-end
-
--- Анимированное обновление уровня
-function M.set_level(self, level, function_end)
-	local node_wrap = self.nodes.account_wrap
-	local node_level_text = self.nodes.account_level
-	local node_line = self.nodes.score_line
-	local duration_all = 2
-	local delay_update_text = 0.3
-	local delay = 0
-
-	local duration_animate = 0.1
-	local duration_line = 0.1
-
-	if self.current_level == level or self.animate_up_level then
-		return
-	end
-
-	timer_linear.skip(self, "score_line")
-
-	self.animate_up_level = true
-	self.current_values.level = self.current_values.level + 1
-
-	timer_linear.add(self, "set_level", 0, function (self)
-		sound_render.play("level_up")
-
-		-- Анимация увеличения плашки с уровнем
-		gui.animate(node_wrap, 'scale', 1.1, gui.EASING_LINEAR, duration_animate, delay, function (self)
-		end)
-		-- Анимация увеличения линии полностью
-		gui.animate(node_line, 'fill_angle', M.max_line, gui.EASING_OUTSINE, duration_line)
-		-- Красим линию в белый цвет
-		gui_loyouts.set_blend_mode(self, node_line, gui.BLEND_ADD)
-
-		-- Анимация появления ареола вокруг плашки
-		local name_template = 'areol_template'
-		local speed_to_second = 90
-		local duration = "loop"
-		self.areol_level = gui_animate.areol(self, name_template, speed_to_second, duration, function_end, scale)
-	end)
-
-	timer_linear.add(self, "set_level", 0.3, function (self)
-		-- Анимация изменения номера уровня
-		interface_functions.update_level(self, self.current_values.level)
-		gui.animate(node_level_text, 'scale', vmath.vector3(1.3), gui.EASING_LINEAR, 0.2, 0, nil, gui.PLAYBACK_ONCE_PINGPONG)
-	end)
-
-	timer_linear.add(self, "set_level", 1.7, function (self)
-		-- Анимация уменьшения плашки с уровнем
-		-- Красим линию в обычный цвет
-		gui_loyouts.set_blend_mode(self, node_line, gui.BLEND_ADD)
-		-- Возвращаем линию в нулевое положение
-		gui.animate(node_line, 'fill_angle', M.min_line, gui.EASING_OUTSINE, duration_animate)
-		if  self.areol_level then
-			self.areol_level.stop(self)
-		end
-
-		gui_loyouts.set_blend_mode(self, node_line, gui.BLEND_ADD)
-		timer.delay(duration_animate, false, function (self)
-			self.animate_up_level = nil
-		end)
-		
-		gui.animate(node_wrap, 'scale', 1, gui.EASING_LINEAR, duration_animate, delay, function (self)
-
-			if self.current_values.level < storage_player.level then
-				M.set_level(self, self.current_values.level, function_end)
-			else
-				-- Завершаем анимацию повышения уровня
-				-- Отрисовываем линию опыта с очками, которые приходили за время анимации
-				local score_player_data = core_player_function.get_level_data_user()
-				M.set_score_line(self, score_player_data.procent_to_next_level)
-
-				-- запускаем функцию после окончания, сели она есть
-				if function_end then
-					function_end(self)
-				end
-			end
-		end)
 	end)
 end
 

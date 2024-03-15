@@ -153,6 +153,7 @@ function on_message(self, message_id, message, sender)
 			return true
 		end
 		-- Передача контента в компоненты gui
+		print("storage_gui.components_visible", message.id, message)
 		if not storage_gui.components_visible[message.id] then
 			loader_gui_function.create_component(self, message.id, message, sender, message_id)
 		end
