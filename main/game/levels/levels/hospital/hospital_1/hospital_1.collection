@@ -43,8 +43,8 @@ instances {
   id: "player"
   prototype: "/main/game/characters/player/player_first_level.go"
   position {
-    x: 747.0
-    y: 272.0
+    x: 552.0
+    y: 166.0
     z: 2.0
   }
   rotation {
@@ -1018,6 +1018,34 @@ instances {
       id: "type_valute"
       value: "star"
       type: PROPERTY_TYPE_HASH
+    }
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "outdoor_flower_mini5"
+  prototype: "/main/game/objects/objects_ruin/outdoor_flower_big.go"
+  position {
+    x: 570.0
+    y: 166.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "script"
+    properties {
+      id: "spawn_star"
+      value: "3.0"
+      type: PROPERTY_TYPE_NUMBER
     }
   }
   scale3 {

@@ -1,4 +1,5 @@
 go.property("map_url", msg.url())
+go.property("stars", true)
 go.property("print_count_items", true)
 
 function init(self)
@@ -60,7 +61,7 @@ function init(self)
 	end
 
 	-- ЗВЁЗДЫ
-	-- Выключаем звёзды
+	-- Выключаем предыдущие звёзды
 	msg.post("/loader_gui", "set_status", {
 		id = "interface",
 		type = "stars_visible",
@@ -73,14 +74,26 @@ function init(self)
 	timer.delay(0.5, false, function (self)
 		if self.print_count_items then
 			local item_types = {"coins", "xp", "trash", "star"}
+			print("-----------------")
 			print("ПРЕДМЕТЫ НА КАРТЕ:")
 			for i, id_item in ipairs(item_types) do
 				if storage_game.map["count_"..id_item] then
 					print(utf8.upper(id_item).. ":" .. storage_game.map["count_"..id_item])
 				end
 			end
+			print("-----------------")
 		end
+
+		
 	end)
+
+	if self.stars then
+		msg.post("/loader_gui", "set_status", {
+			id = "interface",
+			type = "stars_visible",
+			visible = true
+		})
+	end
 	
 end
 
