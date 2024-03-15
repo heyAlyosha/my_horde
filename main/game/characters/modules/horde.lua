@@ -115,7 +115,7 @@ end
 function M.on_update(self)
 	-- УСтанавливаем расположение орды
 	self.collisions_zombie = self.collisions_zombie or {}
-	if vmath.length(self.movement) > 0 then
+	if self.movement and vmath.length(self.movement) > 0 then
 		self.animation_horde = "run"
 		M.move_horde_player(self)
 

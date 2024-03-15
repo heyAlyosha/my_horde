@@ -25,8 +25,12 @@ local core_layouts = require "main.core.core_layouts"
 function init(self)
 	msg.post(".", "acquire_input_focus")
 	gui.set_render_order(3)
+	if true then
+		return
+	end
 	gui_manager.add_screen("modal_result_single", msg.url())
 	self.id = "modal_result_single"
+
 	pprint("modal_result_single")
 
 	self.nodes = {
@@ -108,6 +112,7 @@ function final(self)
 	core_layouts.clear_data()
 end
 
+--[[
 function update(self, dt)
 	self.druid:update(dt)
 
@@ -116,6 +121,7 @@ function update(self, dt)
 		storage_gui.positions[self.id]["btn_"..i] = gui.get_screen_position(btn.node or btn.wrap_node)
 	end
 end
+--]]
 
 function on_message(self, message_id, message, sender)
 	input_remote_tv.on_message(self, message_id, message, sender)
