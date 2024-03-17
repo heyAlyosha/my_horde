@@ -255,7 +255,7 @@ images {
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/assets/images/gui/icon_zombie.png"
+  image: "/assets/images/gui/icon_zombie_default.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
@@ -263,27 +263,27 @@ images {
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/assets/images/gui/icon_pause.png"
+  image: "/assets/images/gui/icon_pause_default.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/assets/images/gui/icon_play.png"
+  image: "/assets/images/gui/icon_play_default.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/assets/images/gui/icon_refresh.png"
+  image: "/assets/images/gui/icon_refresh_default.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/assets/images/gui/icon_settings.png"
+  image: "/assets/images/gui/icon_settings_default.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/assets/images/gui/icon_back.png"
+  image: "/assets/images/gui/icon_back_default.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/assets/images/gui/icon_volume.png"
+  image: "/assets/images/gui/icon_volume_default.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 animations {

@@ -2450,14 +2450,14 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 1.0
-    y: 1.0
-    z: 1.0
+    x: 0.55
+    y: 0.55
+    z: 0.55
     w: 1.0
   }
   size {
-    x: 18.0
-    y: 18.0
+    x: 200.0
+    y: 100.0
     z: 0.0
     w: 1.0
   }
@@ -2469,7 +2469,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "first_level/icon_zombie"
+  texture: "first_level/icon_pause_default"
   id: "btn_1_template/btn_icon"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -2488,8 +2488,11 @@ nodes {
   clipping_visible: true
   clipping_inverted: false
   alpha: 1.0
+  overridden_fields: 1
+  overridden_fields: 3
+  overridden_fields: 9
   template_node_child: true
-  size_mode: SIZE_MODE_MANUAL
+  size_mode: SIZE_MODE_AUTO
   custom_type: 0
   enabled: true
   visible: true
@@ -2669,14 +2672,14 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 1.0
-    y: 1.0
+    x: 0.55
+    y: 0.55
     z: 1.0
     w: 1.0
   }
   size {
-    x: 18.0
-    y: 18.0
+    x: 200.0
+    y: 100.0
     z: 0.0
     w: 1.0
   }
@@ -2688,7 +2691,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "first_level/icon_zombie"
+  texture: "first_level/icon_refresh_default"
   id: "btn_2_template/btn_icon"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -2707,8 +2710,11 @@ nodes {
   clipping_visible: true
   clipping_inverted: false
   alpha: 1.0
+  overridden_fields: 1
+  overridden_fields: 3
+  overridden_fields: 9
   template_node_child: true
-  size_mode: SIZE_MODE_MANUAL
+  size_mode: SIZE_MODE_AUTO
   custom_type: 0
   enabled: true
   visible: true
@@ -2751,7 +2757,7 @@ nodes {
   layer: "box"
   inherit_alpha: true
   alpha: 1.0
-  template: "/main/gui/elements/btn_circle.gui"
+  template: "/main/gui/elements/btn_circle_up.gui"
   template_node_child: false
   custom_type: 0
   enabled: true
@@ -2888,14 +2894,14 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 1.0
-    y: 1.0
-    z: 1.0
+    x: 0.6
+    y: 0.6
+    z: 0.6
     w: 1.0
   }
   size {
-    x: 18.0
-    y: 18.0
+    x: 200.0
+    y: 100.0
     z: 0.0
     w: 1.0
   }
@@ -2907,7 +2913,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "first_level/icon_zombie"
+  texture: "first_level/icon_zombie_default"
   id: "btn_3_template/btn_icon"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -2927,7 +2933,66 @@ nodes {
   clipping_inverted: false
   alpha: 1.0
   template_node_child: true
-  size_mode: SIZE_MODE_MANUAL
+  size_mode: SIZE_MODE_AUTO
+  custom_type: 0
+  enabled: true
+  visible: true
+  material: ""
+}
+nodes {
+  position {
+    x: -5.0
+    y: 7.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 0.6
+    y: 0.6
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_BOX
+  blend_mode: BLEND_MODE_ALPHA
+  texture: "first_level/icon_up_arrow"
+  id: "btn_3_template/up"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_CENTER
+  adjust_mode: ADJUST_MODE_FIT
+  parent: "btn_3_template/btn_icon_wrap"
+  layer: ""
+  inherit_alpha: true
+  slice9 {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 0.0
+  }
+  clipping_mode: CLIPPING_MODE_NONE
+  clipping_visible: true
+  clipping_inverted: false
+  alpha: 1.0
+  template_node_child: true
+  size_mode: SIZE_MODE_AUTO
   custom_type: 0
   enabled: true
   visible: true

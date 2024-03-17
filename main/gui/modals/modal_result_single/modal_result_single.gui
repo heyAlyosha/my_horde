@@ -376,7 +376,7 @@ nodes {
 }
 nodes {
   position {
-    x: 0.0
+    x: 1.0
     y: 0.0
     z: 0.0
     w: 1.0
@@ -388,14 +388,14 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 1.0
-    y: 1.0
+    x: 0.65
+    y: 0.65
     z: 1.0
     w: 1.0
   }
   size {
-    x: 18.0
-    y: 18.0
+    x: 200.0
+    y: 100.0
     z: 0.0
     w: 1.0
   }
@@ -428,7 +428,7 @@ nodes {
   alpha: 1.0
   overridden_fields: 9
   template_node_child: true
-  size_mode: SIZE_MODE_MANUAL
+  size_mode: SIZE_MODE_AUTO
   custom_type: 0
   enabled: true
   visible: true
@@ -1852,7 +1852,7 @@ nodes {
 }
 nodes {
   position {
-    x: 0.0
+    x: 1.0
     y: 0.0
     z: 0.0
     w: 1.0
@@ -1864,14 +1864,14 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 1.0
-    y: 1.0
+    x: 0.65
+    y: 0.65
     z: 1.0
     w: 1.0
   }
   size {
-    x: 18.0
-    y: 18.0
+    x: 200.0
+    y: 100.0
     z: 0.0
     w: 1.0
   }
@@ -1883,7 +1883,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "first_level/icon_zombie"
+  texture: "first_level/icon_play_default"
   id: "btn_fail_back_template/btn_icon"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -1903,7 +1903,7 @@ nodes {
   clipping_inverted: false
   alpha: 1.0
   template_node_child: true
-  size_mode: SIZE_MODE_MANUAL
+  size_mode: SIZE_MODE_AUTO
   custom_type: 0
   enabled: true
   visible: true
@@ -2073,7 +2073,7 @@ nodes {
 }
 nodes {
   position {
-    x: 0.0
+    x: 1.0
     y: 0.0
     z: 0.0
     w: 1.0
@@ -2085,14 +2085,14 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 1.0
-    y: 1.0
+    x: 0.65
+    y: 0.65
     z: 1.0
     w: 1.0
   }
   size {
-    x: 18.0
-    y: 18.0
+    x: 200.0
+    y: 100.0
     z: 0.0
     w: 1.0
   }
@@ -2104,7 +2104,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "first_level/icon_zombie"
+  texture: "first_level/icon_play_default"
   id: "btn_fail_refresh_template/btn_icon"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -2124,7 +2124,7 @@ nodes {
   clipping_inverted: false
   alpha: 1.0
   template_node_child: true
-  size_mode: SIZE_MODE_MANUAL
+  size_mode: SIZE_MODE_AUTO
   custom_type: 0
   enabled: true
   visible: true
@@ -2292,7 +2292,7 @@ nodes {
 }
 nodes {
   position {
-    x: 0.0
+    x: 1.0
     y: 0.0
     z: 0.0
     w: 1.0
@@ -2304,14 +2304,14 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 1.0
-    y: 1.0
+    x: 0.65
+    y: 0.65
     z: 1.0
     w: 1.0
   }
   size {
-    x: 18.0
-    y: 18.0
+    x: 200.0
+    y: 100.0
     z: 0.0
     w: 1.0
   }
@@ -2323,7 +2323,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "first_level/icon_zombie"
+  texture: "first_level/icon_play_default"
   id: "btn_fail_home_template/btn_icon"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -2343,7 +2343,7 @@ nodes {
   clipping_inverted: false
   alpha: 1.0
   template_node_child: true
-  size_mode: SIZE_MODE_MANUAL
+  size_mode: SIZE_MODE_AUTO
   custom_type: 0
   enabled: true
   visible: true
@@ -26588,14 +26588,14 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 1.0
-    y: 1.0
+    x: 0.65
+    y: 0.65
     z: 1.0
     w: 1.0
   }
   size {
-    x: 18.0
-    y: 18.0
+    x: 200.0
+    y: 100.0
     z: 0.0
     w: 1.0
   }
@@ -26607,7 +26607,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "first_level/icon_zombie"
+  texture: "first_level/icon_back_default"
   id: "btn_win_back_template/btn_icon"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -26626,8 +26626,10 @@ nodes {
   clipping_visible: true
   clipping_inverted: false
   alpha: 1.0
+  overridden_fields: 1
+  overridden_fields: 9
   template_node_child: true
-  size_mode: SIZE_MODE_MANUAL
+  size_mode: SIZE_MODE_AUTO
   custom_type: 0
   enabled: true
   visible: true
@@ -26796,7 +26798,7 @@ nodes {
 }
 nodes {
   position {
-    x: 0.0
+    x: 2.0
     y: 0.0
     z: 0.0
     w: 1.0
@@ -26808,26 +26810,26 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 1.0
-    y: 1.0
+    x: 0.65
+    y: 0.65
     z: 1.0
     w: 1.0
   }
   size {
-    x: 18.0
-    y: 18.0
+    x: 200.0
+    y: 100.0
     z: 0.0
     w: 1.0
   }
   color {
-    x: 1.0
+    x: 0.0
     y: 1.0
-    z: 1.0
+    z: 0.0
     w: 1.0
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "first_level/icon_zombie"
+  texture: "first_level/icon_play_default"
   id: "btn_win_continue_template/btn_icon"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -26846,8 +26848,12 @@ nodes {
   clipping_visible: true
   clipping_inverted: false
   alpha: 1.0
+  overridden_fields: 1
+  overridden_fields: 5
+  overridden_fields: 9
+  overridden_fields: 38
   template_node_child: true
-  size_mode: SIZE_MODE_MANUAL
+  size_mode: SIZE_MODE_AUTO
   custom_type: 0
   enabled: true
   visible: true
@@ -27046,7 +27052,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "first_level/icon_zombie"
+  texture: "first_level/icon_zombie_default"
   id: "btn_win_refresh_template/btn_icon"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -30359,7 +30365,7 @@ nodes {
 }
 nodes {
   position {
-    x: 0.0
+    x: 1.0
     y: 0.0
     z: 0.0
     w: 1.0
@@ -30371,14 +30377,14 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 1.0
-    y: 1.0
+    x: 0.65
+    y: 0.65
     z: 1.0
     w: 1.0
   }
   size {
-    x: 18.0
-    y: 18.0
+    x: 200.0
+    y: 100.0
     z: 0.0
     w: 1.0
   }
@@ -30411,7 +30417,7 @@ nodes {
   alpha: 1.0
   overridden_fields: 9
   template_node_child: true
-  size_mode: SIZE_MODE_MANUAL
+  size_mode: SIZE_MODE_AUTO
   custom_type: 0
   enabled: true
   visible: true
@@ -30885,14 +30891,14 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 1.0
-    y: 1.0
+    x: 0.65
+    y: 0.65
     z: 1.0
     w: 1.0
   }
   size {
-    x: 18.0
-    y: 18.0
+    x: 200.0
+    y: 100.0
     z: 0.0
     w: 1.0
   }
@@ -30926,7 +30932,7 @@ nodes {
   overridden_fields: 1
   overridden_fields: 9
   template_node_child: true
-  size_mode: SIZE_MODE_MANUAL
+  size_mode: SIZE_MODE_AUTO
   custom_type: 0
   enabled: true
   visible: true
@@ -31875,7 +31881,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "first_level/icon_zombie"
+  texture: "first_level/icon_zombie_default"
   id: "trophy_score_template/icon"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE

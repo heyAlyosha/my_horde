@@ -30,7 +30,7 @@ function M.render_btns_set(self, set_id)
 				gui_loyouts.set_enabled(self, node_btn, false)
 			else
 				gui_loyouts.set_enabled(self, node_btn, true)
-				gui_size.play_flipbook_ratio(self, node_icon, node_btn_icon_wrap, btn_content.icon.."_default", 70, 70)
+				--gui_size.play_flipbook_ratio(self, node_icon, node_btn_icon_wrap, btn_content.icon.."_default", 70, 70)
 
 				table.insert(btns, 1, {
 					id = btn_content.id, 

@@ -65,12 +65,13 @@ function init(self)
 	}
 
 	self.btns_content = {
-		shop = {id = "shop", icon = "btn_icon_shop"},
-		pause = {id = "pause", icon = "btn_icon_pause"},
-		play = {id = "play", icon = "btn_icon_play"},
-		settings = {id = "settings", icon = "btn_icon_settings"},
-		volume = {id = "volume", icon = "btn_icon_volume"},
-		back = {id = "back", icon = "btn_icon_back"},
+		refresh = {id = "refresh", icon = "icon_refresh"},
+		shop = {id = "shop", icon = "icon_zombie"},
+		pause = {id = "pause", icon = "icon_pause"},
+		play = {id = "play", icon = "icon_play"},
+		settings = {id = "settings", icon = "icon_settings"},
+		volume = {id = "volume", icon = "icon_volume"},
+		back = {id = "back", icon = "icon_back"},
 		home = {id = "home", icon = "btn_icon_home"},
 		animate_rating = {id = "animate_rating", icon = "btn_icon_home"},
 	}
@@ -95,7 +96,7 @@ function init(self)
 
 	interface_functions.update_balance(self)
 	interface_functions.update_name(self)
-	interface_functions.update_volume(self)
+	--interface_functions.update_volume(self)
 	interface_functions.update_avatar(self)
 
 	interface_stars.visible(self, false)

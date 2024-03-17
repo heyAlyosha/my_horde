@@ -557,7 +557,7 @@ nodes {
 }
 nodes {
   position {
-    x: 0.0
+    x: 1.0
     y: 0.0
     z: 0.0
     w: 1.0
@@ -569,14 +569,14 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 1.0
-    y: 1.0
+    x: 0.65
+    y: 0.65
     z: 1.0
     w: 1.0
   }
   size {
-    x: 18.0
-    y: 18.0
+    x: 200.0
+    y: 100.0
     z: 0.0
     w: 1.0
   }
@@ -609,7 +609,7 @@ nodes {
   alpha: 1.0
   overridden_fields: 9
   template_node_child: true
-  size_mode: SIZE_MODE_MANUAL
+  size_mode: SIZE_MODE_AUTO
   custom_type: 0
   enabled: true
   visible: true
@@ -1738,7 +1738,7 @@ layouts {
   }
   nodes {
     position {
-      x: 0.0
+      x: 1.0
       y: 0.0
       z: 0.0
       w: 1.0
@@ -1750,14 +1750,14 @@ layouts {
       w: 1.0
     }
     scale {
-      x: 1.0
-      y: 1.0
+      x: 0.65
+      y: 0.65
       z: 1.0
       w: 1.0
     }
     size {
-      x: 18.0
-      y: 18.0
+      x: 200.0
+      y: 100.0
       z: 0.0
       w: 1.0
     }
@@ -1790,7 +1790,7 @@ layouts {
     alpha: 1.0
     overridden_fields: 9
     template_node_child: true
-    size_mode: SIZE_MODE_MANUAL
+    size_mode: SIZE_MODE_AUTO
     custom_type: 0
     enabled: true
     visible: true
