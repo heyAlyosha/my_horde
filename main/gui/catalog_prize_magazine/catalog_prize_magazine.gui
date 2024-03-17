@@ -679,8 +679,8 @@ nodes {
     w: 1.0
   }
   size {
-    x: 16.0
-    y: 16.0
+    x: 18.0
+    y: 18.0
     z: 0.0
     w: 1.0
   }
@@ -716,7 +716,7 @@ nodes {
   size_mode: SIZE_MODE_MANUAL
   custom_type: 0
   enabled: true
-  visible: false
+  visible: true
   material: ""
 }
 nodes {
@@ -4026,8 +4026,8 @@ layouts {
       w: 1.0
     }
     size {
-      x: 16.0
-      y: 16.0
+      x: 18.0
+      y: 18.0
       z: 0.0
       w: 1.0
     }
@@ -4063,7 +4063,7 @@ layouts {
     size_mode: SIZE_MODE_MANUAL
     custom_type: 0
     enabled: true
-    visible: false
+    visible: true
     material: ""
   }
   nodes {

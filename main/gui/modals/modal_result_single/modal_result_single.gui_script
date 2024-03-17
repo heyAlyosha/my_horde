@@ -31,8 +31,6 @@ function init(self)
 	gui_manager.add_screen("modal_result_single", msg.url())
 	self.id = "modal_result_single"
 
-	pprint("modal_result_single")
-
 	self.nodes = {
 		wrap = gui.get_node("wrap"),
 		title = gui.get_node("title"),

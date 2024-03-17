@@ -392,8 +392,8 @@ nodes {
     w: 1.0
   }
   size {
-    x: 16.0
-    y: 16.0
+    x: 18.0
+    y: 18.0
     z: 0.0
     w: 1.0
   }
@@ -429,7 +429,7 @@ nodes {
   size_mode: SIZE_MODE_MANUAL
   custom_type: 0
   enabled: true
-  visible: false
+  visible: true
   material: ""
 }
 nodes {
@@ -3836,8 +3836,8 @@ nodes {
     w: 1.0
   }
   size {
-    x: 16.0
-    y: 16.0
+    x: 18.0
+    y: 18.0
     z: 0.0
     w: 1.0
   }
@@ -3874,7 +3874,7 @@ nodes {
   size_mode: SIZE_MODE_MANUAL
   custom_type: 0
   enabled: true
-  visible: false
+  visible: true
   material: ""
 }
 nodes {
@@ -4059,8 +4059,8 @@ nodes {
     w: 1.0
   }
   size {
-    x: 16.0
-    y: 16.0
+    x: 18.0
+    y: 18.0
     z: 0.0
     w: 1.0
   }
@@ -4097,7 +4097,7 @@ nodes {
   size_mode: SIZE_MODE_MANUAL
   custom_type: 0
   enabled: true
-  visible: false
+  visible: true
   material: ""
 }
 nodes {
@@ -4280,8 +4280,8 @@ nodes {
     w: 1.0
   }
   size {
-    x: 16.0
-    y: 16.0
+    x: 18.0
+    y: 18.0
     z: 0.0
     w: 1.0
   }
@@ -4293,7 +4293,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "gui/btn_icon_home_default"
+  texture: "first_level/icon_zombie"
   id: "btn_win_home_template/btn_icon"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -4316,7 +4316,7 @@ nodes {
   size_mode: SIZE_MODE_MANUAL
   custom_type: 0
   enabled: true
-  visible: false
+  visible: true
   material: ""
 }
 layers {
