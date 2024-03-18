@@ -183,7 +183,7 @@ function on_message(self, message_id, message, sender)
 		-- Следующий уровень
 
 	elseif message_id == hash("pause") then
-		msg.post("game-room:/core_game", "set_active", {
+		msg.post("main:/core_game", "set_active", {
 			active = true
 		})
 

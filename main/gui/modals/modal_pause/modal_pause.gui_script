@@ -30,8 +30,6 @@ function init(self)
 	self.nodes = {
 		wrap = gui.get_node("wrap"),
 		title = gui.get_node("title"),
-		btn_close = gui.get_node("btn-close-template/btn"),
-		btn_close_icon = gui.get_node("btn-close-template/btn_icon"),
 		btn_back = gui.get_node("btn_back_template/btn"),
 		btn_back_icon = gui.get_node("btn_back_template/btn_icon"),
 		btn_continue = gui.get_node("btn_continue_template/btn"),
@@ -55,10 +53,9 @@ function init(self)
 	self.druid = druid.new(self)
 
 	self.btns = {
-		{id = "close", type = "btn", section = "close", node = self.nodes.btn_close, wrap_node = self.nodes.btn_close_icon, node_title = false, icon = "btn_circle_bg_red_", wrap_icon = "btn_icon_close_",},
-		{id = "back", type = "btn", section = "body", node = self.nodes.btn_back, wrap_node = self.nodes.btn_back_icon, node_title = false, icon = "btn_circle_bg_orange_", wrap_icon = "btn_icon_back_",},
-		{id = "continue", type = "btn", section = "body", node = self.nodes.btn_continue, wrap_node = self.nodes.btn_continue_icon, node_title = false, icon = "btn_circle_bg_green_", wrap_icon = "btn_icon_play_",},
-		{id = "refresh", type = "btn", section = "body", node = self.nodes.btn_refresh, wrap_node = self.nodes.btn_refresh_icon, node_title = false, icon = "btn_circle_bg_orange_", wrap_icon = "btn_icon_refresh_",},
+		{id = "back", type = "btn", section = "body", node = self.nodes.btn_back, node_title = self.nodes.btn_back_icon, icon = "btn_interface_"},
+		{id = "continue", type = "btn", section = "body", node = self.nodes.btn_continue, node_title = self.nodes.btn_continue_icon, icon = "btn_interface_"},
+		{id = "settings", type = "btn", section = "body", node = self.nodes.btn_refresh, node_title = self.nodes.btn_refresh_icon, icon = "btn_interface_"},
 	}
 
 	if storage_game.game.study_level and storage_game.game.study_level > 0 then
@@ -68,7 +65,7 @@ function init(self)
 	msg.post("/core_screens", "pause")
 
 	timer.delay(0.25, false, function(self)
-		gui_input.set_focus(self, 3)
+		gui_input.set_focus(self, 2)
 
 		-- Прячем мещающиеся окна
 		if storage_gui.components_visible.main_title then
