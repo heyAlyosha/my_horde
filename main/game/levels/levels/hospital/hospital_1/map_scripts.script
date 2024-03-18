@@ -158,8 +158,9 @@ function on_message(self, message_id, message, sender)
 		-- Напрявляем 
 		camera.unfollow()
 		local position_to = go.get_position("door_win")
-		go.animate("/camera", "position", go.PLAYBACK_ONCE_FORWARD, position_to, go.EASING_OUTCUBIC, 1, 0 , function (self)
-			go.animate("/camera", "position", go.PLAYBACK_ONCE_FORWARD, go.get_position("player"), go.EASING_OUTCUBIC, 1, 2 , function (self)
+
+		go.animate("camera", "position", go.PLAYBACK_ONCE_FORWARD, position_to, go.EASING_OUTCUBIC, 1, 0 , function (self)
+			go.animate("camera", "position", go.PLAYBACK_ONCE_FORWARD, go.get_position("player"), go.EASING_OUTCUBIC, 1, 2 , function (self)
 				go.set("player#script", "active_input", true)
 				camera.follow(camera_id, msg.url("player"), options)
 			end)

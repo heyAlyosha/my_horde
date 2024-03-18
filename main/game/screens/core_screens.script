@@ -167,7 +167,7 @@ function on_message(self, message_id, message, sender)
 		})
 
 	elseif message_id == hash("continue_game_from_pause") then
-		msg.post("game-room:/core_game", "set_active", {
+		msg.post("main:/core_game", "set_active", {
 			active = true
 		})
 
@@ -200,8 +200,7 @@ function on_message(self, message_id, message, sender)
 		})
 
 		msg.post("/loader_main", "pause")
-		
-		
+
 	elseif message_id == hash("continue_game") then
 		msg.post("/loader_gui", "set_content", {id = "interface", type = "set_btns", 
 			value = {

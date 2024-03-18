@@ -28,7 +28,7 @@ function init(self)
 	if self.activate then
 		go_controller.add(self)
 		position_functions.go_set_perspective_z()
-		camera.follow(camera_id, msg.url(), options)
+		--camera.follow(camera_id, msg.url(), options)
 		live_bar.create(self)
 	end
 
@@ -170,7 +170,7 @@ function on_message(self, message_id, message, sender)
 		self.activate = true
 		go_controller.add(self)
 		position_functions.go_set_perspective_z()
-		camera.follow(camera_id, msg.url(), options)
+		--camera.follow(camera_id, msg.url(), options)
 		live_bar.create(self)
 	elseif message_id == hash("damage") then
 		-- Получили урон

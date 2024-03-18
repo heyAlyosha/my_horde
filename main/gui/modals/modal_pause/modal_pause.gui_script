@@ -62,7 +62,7 @@ function init(self)
 		gui_input.set_disabled(self, self.btns[4], true)
 	end
 
-	msg.post("/core_screens", "pause")
+	msg.post("main:/core_screens", "pause")
 
 	timer.delay(0.25, false, function(self)
 		gui_input.set_focus(self, 2)

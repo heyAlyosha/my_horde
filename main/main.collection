@@ -180,64 +180,6 @@ instances {
   }
 }
 instances {
-  id: "camera"
-  prototype: "/orthographic/camera.go"
-  position {
-    x: 187.0
-    y: 104.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  component_properties {
-    id: "script"
-    properties {
-      id: "near_z"
-      value: "-500.0"
-      type: PROPERTY_TYPE_NUMBER
-    }
-    properties {
-      id: "far_z"
-      value: "500.0"
-      type: PROPERTY_TYPE_NUMBER
-    }
-    properties {
-      id: "zoom"
-      value: "1.0"
-      type: PROPERTY_TYPE_NUMBER
-    }
-    properties {
-      id: "projection"
-      value: "FIXED_AUTO"
-      type: PROPERTY_TYPE_HASH
-    }
-    properties {
-      id: "follow_horizontal"
-      value: "false"
-      type: PROPERTY_TYPE_BOOLEAN
-    }
-    properties {
-      id: "follow_vertical"
-      value: "false"
-      type: PROPERTY_TYPE_BOOLEAN
-    }
-    properties {
-      id: "follow_target"
-      value: "prototype_main_horde/player"
-      type: PROPERTY_TYPE_HASH
-    }
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
   id: "ads"
   prototype: "/main/ads/ads.go"
   position {
@@ -337,9 +279,9 @@ instances {
     z: 1.0
   }
 }
-collection_instances {
-  id: "hospital_1"
-  collection: "/main/game/levels/levels/hospital/hospital_1/hospital_1.collection"
+instances {
+  id: "core_game"
+  prototype: "/main/game/core/core_game.go"
   position {
     x: 0.0
     y: 0.0

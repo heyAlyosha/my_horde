@@ -76,7 +76,7 @@ function on_message(self, message_id, message, sender)
 			local start_podition = camera.world_to_screen(camera_id, go.get_position(), gui.ADJUST_STRETCH)
 			timer.delay(duration, false, function (self)
 				-- Заичлсяем игроку
-				msg.post("/loader_gui", "set_status", {
+				msg.post("main:/loader_gui", "set_status", {
 					id = "add_balance",
 					type = self.item.id,
 					start_position = start_podition,

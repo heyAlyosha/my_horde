@@ -36,7 +36,7 @@ function M.delete_component(self, id, all_msg)
 			msg.post(url, "event", {id = "close_gui", component_id = id})
 		end
 	end
-	msg.post("game-room:/core_game", "event", {id = "close_gui", component_id = id})
+	msg.post("main:/core_game", "event", {id = "close_gui", component_id = id})
 	msg.post("main:/core_study", "event", {id = "close_gui", component_id = id})
 end
 

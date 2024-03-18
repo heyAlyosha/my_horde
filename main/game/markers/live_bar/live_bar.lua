@@ -3,7 +3,7 @@ local M = {}
 
 function M.create(self)
 	if not self.hp_bar then
-		self.hp_bar = collectionfactory.create("/hospital_1/markers_core#live_bar_collectionfactory", go.get_position())
+		self.hp_bar = collectionfactory.create("markers_core#live_bar_collectionfactory", go.get_position())
 	end
 end
 

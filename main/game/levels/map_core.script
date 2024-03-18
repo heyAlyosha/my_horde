@@ -63,7 +63,7 @@ function init(self)
 	-- ЗВЁЗДЫ
 	storage_game.map.player_stars = 0
 	-- Выключаем предыдущие звёзды
-	msg.post("/loader_gui", "set_status", {
+	msg.post("main:/loader_gui", "set_status", {
 		id = "interface",
 		type = "stars_visible",
 		visible = false
@@ -93,7 +93,7 @@ function init(self)
 	end)
 
 	if self.stars then
-		msg.post("/loader_gui", "set_status", {
+		msg.post("main:/loader_gui", "set_status", {
 			id = "interface",
 			type = "stars_visible",
 			visible = true
@@ -149,13 +149,13 @@ function on_message(self, message_id, message, sender)
 		msg.post("player", "win", message)
 
 		--Анимация грозы для победы в гуи
-		msg.post("/loader_gui", "visible", {
+		msg.post("main:/loader_gui", "visible", {
 			id = "win_player",
 			visible = true
 		})
 
 		timer.delay(1, false, function (self)
-			msg.post("/loader_gui", "visible", {
+			msg.post("main:/loader_gui", "visible", {
 				id = "modal_result",
 				visible = true,
 				value = {
