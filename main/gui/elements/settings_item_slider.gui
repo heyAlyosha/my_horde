@@ -29,7 +29,7 @@ nodes {
     w: 1.0
   }
   size {
-    x: 700.0
+    x: 280.0
     y: 50.0
     z: 0.0
     w: 1.0
@@ -69,8 +69,8 @@ nodes {
 }
 nodes {
   position {
-    x: 389.0
-    y: 2.0
+    x: 168.0
+    y: 0.0
     z: 0.0
     w: 1.0
   }
@@ -129,8 +129,8 @@ nodes {
     w: 1.0
   }
   size {
-    x: 100.0
-    y: 50.0
+    x: 80.0
+    y: 20.0
     z: 0.0
     w: 1.0
   }
@@ -182,13 +182,13 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 1.0
-    y: 0.5
+    x: 0.25
+    y: 0.25
     z: 1.0
     w: 1.0
   }
   size {
-    x: 300.0
+    x: 400.0
     y: 31.0
     z: 0.0
     w: 1.0
@@ -201,7 +201,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "gui/progress_line_bg"
+  texture: "first_level/bg_popup_body"
   id: "slider_template/bg_line"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -211,9 +211,9 @@ nodes {
   layer: ""
   inherit_alpha: true
   slice9 {
-    x: 15.0
+    x: 16.0
     y: 15.0
-    z: 15.0
+    z: 16.0
     w: 25.0
   }
   clipping_mode: CLIPPING_MODE_NONE
@@ -229,7 +229,7 @@ nodes {
 }
 nodes {
   position {
-    x: 285.0
+    x: 52.0
     y: 0.0
     z: 0.0
     w: 1.0
@@ -247,8 +247,8 @@ nodes {
     w: 1.0
   }
   size {
-    x: 50.0
-    y: 50.0
+    x: 20.0
+    y: 20.0
     z: 0.0
     w: 1.0
   }
@@ -260,7 +260,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "gui/btn_circle_bg_green_default"
+  texture: "first_level/button_green_default"
   id: "slider_template/circle"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -270,10 +270,10 @@ nodes {
   layer: ""
   inherit_alpha: true
   slice9 {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 0.0
+    x: 8.0
+    y: 8.0
+    z: 8.0
+    w: 8.0
   }
   clipping_mode: CLIPPING_MODE_NONE
   clipping_visible: true
@@ -300,13 +300,13 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 1.0
-    y: 1.0
+    x: 0.4
+    y: 0.4
     z: 1.0
     w: 1.0
   }
   size {
-    x: 400.0
+    x: 250.0
     y: 50.0
     z: 0.0
     w: 1.0

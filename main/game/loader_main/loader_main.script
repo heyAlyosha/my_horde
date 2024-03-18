@@ -81,8 +81,14 @@ function init(self)
 		visible = true
 	})
 
-	msg.post(".", "load_level", {
+	msg.post("main:/loader_main", "load_level", {
 		company_id = "city_hospital", level_id = "hospital_1"
+	})
+
+	msg.post("main:/loader_gui", "visible", {
+		id = "modal_settings",
+		visible = true,
+		type = hash("popup")
 	})
 
 	--game_content_prize.init(self)
@@ -116,9 +122,6 @@ function init(self)
 
 	defos.set_view_size(0, 0, 1000, 512)
 
-
-	
-	
 end
 
 function final(self)
@@ -139,17 +142,27 @@ function on_message(self, message_id, message, sender)
 
 		msg.post("#level_"..self.level_id.."_collectionproxy", "load")
 
-	elseif message_id == hash("reload_game_room") then
+	elseif message_id == hash("reload_level") then
 		self.refresh_game = message.refresh_game
-		loader_gui_function.clear_collections_visible(self, "game-room")
+		loader_gui_function.clear_collections_visible(self, self.level_id)
 		msg.post(storage_collection.path_proxy_game, "disable")
 		msg.post(storage_collection.path_proxy_game, "final")
 		msg.post(storage_collection.path_proxy_game, "unload")
+		self.reload = true
 
 	elseif message_id == hash("load_level") then
 		msg.post(storage_collection.path_proxy_game, "load")
 	elseif message_id == hash("proxy_unloaded") then
-		msg.post(storage_collection.path_proxy_game, "load")
+		--Коллекция удалена
+		if self.reload then
+			-- Если перезапуск миссии
+			-- Запускаем по новой
+			msg.post("main:/loader_main", "load_level", {
+				company_id = self.company_id, level_id = self.level_id
+			})
+		else
+			msg.post(storage_collection.path_proxy_game, "load")
+		end
 
 	elseif message_id == hash("proxy_loaded") then
 		-- Новый мир загружен. Инициировать и активировать его.

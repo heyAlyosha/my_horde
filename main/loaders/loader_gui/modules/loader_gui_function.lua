@@ -58,13 +58,10 @@ end
 -- Удаляем компоненты из коллекции
 function M.clear_collections_visible(self, socket)
 	for id, url in pairs(storage_gui.components_visible) do
-		
 		if url.socket == hash(socket) then
 			storage_gui.components_visible[id] = nil 
 		end
 	end
-
-	
 
 end
 

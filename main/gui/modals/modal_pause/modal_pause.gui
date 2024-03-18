@@ -12,14 +12,6 @@ fonts {
   font: "/assets/fonts/font_standart_normal.font"
 }
 textures {
-  name: "gui"
-  texture: "/main/atlases/gui.atlas"
-}
-textures {
-  name: "main"
-  texture: "/main/main.atlas"
-}
-textures {
   name: "first_level"
   texture: "/main/atlases/first_level.atlas"
 }
@@ -233,8 +225,8 @@ nodes {
     w: 1.0
   }
   size {
-    x: 550.0
-    y: 190.0
+    x: 120.0
+    y: 40.0
     z: 0.0
     w: 1.0
   }

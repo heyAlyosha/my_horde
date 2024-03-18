@@ -15,12 +15,12 @@ function M.add_btns(self)
 			type = "btn", 
 			section = "close", 
 			node = self.nodes.btn_close, 
-			wrap_node = self.nodes.btn_close_icon, 
-			node_title = false, 
-			icon = "btn_circle_bg_red_", 
-			wrap_icon = "btn_icon_close_"
+			node_title = self.nodes.btn_close_icon, 
+			icon = "btn_interface_", 
+			
 		},
 		-- Блок с id
+		--[[
 		{
 			id = "id",
 			type = "text", 
@@ -74,6 +74,7 @@ function M.add_btns(self)
 			node_wrap_title = gui.get_node("color_template/title"),
 			node_title = gui.get_node("color_template/color_template/right_arrow"),
 		},
+		--]]
 		-- Громкость музыки
 		{
 			id = "music",
@@ -84,7 +85,7 @@ function M.add_btns(self)
 				line = gui.get_node("volume_music_template/slider_template/bg_line"), -- 
 				circle = gui.get_node("volume_music_template/slider_template/circle"), -- качелька
 			},
-			bg_image = "btn_circle_bg_green_",
+			bg_image = "button_green_",
 
 		},
 		-- Громкость эффектов
@@ -97,9 +98,10 @@ function M.add_btns(self)
 				line = gui.get_node("volume_effects_template/slider_template/bg_line"), -- 
 				circle = gui.get_node("volume_effects_template/slider_template/circle"), -- качелька
 			},
-			bg_image = "btn_circle_bg_green_"
+			bg_image = "button_green_"
 		},
 		-- переключатель
+		--[[
 		{
 			id = "study",
 			type = "switch", 
@@ -133,11 +135,13 @@ function M.add_btns(self)
 			disabled = storage_game.is_game,
 			icon = "button_default_red_"
 		}
+		--]]
 	}
 
 	-- Блокируем кнопку сброса прогресса во время игры
-	gui_input.set_disabled(self, self.btns[#self.btns], storage_game.is_game)
+	--gui_input.set_disabled(self, self.btns[#self.btns], storage_game.is_game)
 
+	--[[
 	if not storage_sdk.edit_name then
 		for i, btn in ipairs(self.btns) do
 			if btn.id == "save_name" then
@@ -147,6 +151,7 @@ function M.add_btns(self)
 			
 		end
 	end
+	--]]
 
 	return self.btns
 end

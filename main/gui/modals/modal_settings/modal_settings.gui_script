@@ -30,20 +30,18 @@ function init(self)
 	self.nodes = {
 		wrap = gui.get_node("wrap"),
 
-		color_box = gui.get_node("color_template/color_template/pie"),
-
 		btn_close = gui.get_node("btn-close-template/btn"),
 		btn_close_icon = gui.get_node("btn-close-template/btn_icon"),
 
-		btn_save_name = gui.get_node("name_template/input_template/save_btn_template/btn_wrap"),
-		btn_save_name_title = gui.get_node("name_template/input_template/save_btn_template/btn_title"),
-		id_value = gui.get_node("id_template/value"),
+		--btn_save_name = gui.get_node("name_template/input_template/save_btn_template/btn_wrap"),
+		--btn_save_name_title = gui.get_node("name_template/input_template/save_btn_template/btn_title"),
+		--id_value = gui.get_node("id_template/value"),
 
 		title = gui.get_node("title"),
-		id_title = gui.get_node("id_template/title"),
+		--id_title = gui.get_node("id_template/title"),
 		
-		name_title = gui.get_node("name_template/title"),
-		color_title = gui.get_node("color_template/title"),
+		--name_title = gui.get_node("name_template/title"),
+		--color_title = gui.get_node("color_template/title"),
 		volume_music_title = gui.get_node("volume_music_template/title"),
 		volume_effects_title = gui.get_node("volume_effects_template/title"),
 
@@ -52,13 +50,11 @@ function init(self)
 	}
 
 	gui_lang.set_text_upper(self, self.nodes.title, "_settings")
-	gui_lang.set_text(self, self.nodes.id_title, "_id_to_game")
-	gui_lang.set_text(self, self.nodes.name_title, "_name_to_game")
-	gui_lang.set_text_upper(self, self.nodes.btn_save_name_title, "_save")
-	gui_lang.set_text(self, self.nodes.color_title, "_color_player_to_game")
+	--gui_lang.set_text(self, self.nodes.id_title, "_id_to_game")
+	--gui_lang.set_text(self, self.nodes.name_title, "_name_to_game")
+	--gui_lang.set_text_upper(self, self.nodes.btn_save_name_title, "_save")
+	--gui_lang.set_text(self, self.nodes.color_title, "_color_player_to_game")
 	gui_lang.set_text(self, self.nodes.volume_music_title, "_volume_music")
-	gui_lang.set_text(self, self.nodes.volume_effects_title, "_volume_effects")
-
 	gui_lang.set_text(self, self.nodes.volume_effects_title, "_volume_effects")
 
 	self.btns = modal_settings_btns.add_btns(self)
@@ -68,21 +64,21 @@ function init(self)
 	self.druid = druid.new(self)
 
 	gui_input.init(self)
-	self.druid:new_text(self.nodes.id_value, storage_player.id)
+	--self.druid:new_text(self.nodes.id_value, storage_player.id)
 
 	-- Начинаем устанавливать значения
 	-- Цвет
 	local settings = api_player.get_settings(self)
 	local volume_music = settings.volume_music or 0.5
 	local volume_effects = settings.volume_effects or 0.5
-	local name = storage_player.name or  ''
-	self.current_color_name = settings.color 
+	--local name = storage_player.name or  ''
+	--self.current_color_name = settings.color 
 	self.settings = settings
 
-	modal_settings_color.listen(self)
+	--modal_settings_color.listen(self)
 
 	-- Имя
-	self.btns_id.edit_name.input:set_text(name)
+	--self.btns_id.edit_name.input:set_text(name)
 
 	-- Громкость
 	self.btns_id.music.slider:set(volume_music)
@@ -103,6 +99,7 @@ function init(self)
 	end
 
 	-- максимальная длина имени
+	--[[
 	self.btns_id.edit_name.input:set_max_length(30)
 	self.btns_id.edit_name.on_input_select = function (self, btn, node)
 		if not storage_sdk.edit_name then
@@ -111,6 +108,7 @@ function init(self)
 			btn.set_status(self, "_set_name_msg")
 		end
 	end
+	
 
 	-- Обучение
 	self.btns_id.study.set(self, self.settings.study)
@@ -123,15 +121,16 @@ function init(self)
 	self.btns_id.help_shop.on = function (self, value)
 		self.settings.help_shop = value
 	end
+	--]]
 end
 
 function final(self)
 	msg.post("main:/core_player", "save_settings", {
-		color = self.current_color_name,
+		--color = self.current_color_name,
 		volume_music = self.settings.volume_music,
 		volume_effects = self.settings.volume_effects,
-		study = self.settings.study,
-		help_shop = self.settings.help_shop,
+		--study = self.settings.study,
+		--help_shop = self.settings.help_shop,
 	})
 	pprint(self.settings)
 

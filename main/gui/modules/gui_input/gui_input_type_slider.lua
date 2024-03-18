@@ -8,6 +8,7 @@ local gui_size = require "main.gui.modules.gui_size"
 function M.init(self, btn)
 	-- находим  максимальную позицию ползунка
 	local end_position = gui.get_size(btn.nodes.line)
+	end_position.x = end_position.x * gui.get_scale(btn.nodes.line).x
 	end_position.y = gui.get_position(btn.nodes.circle).y
 
 	--Ставим ползунок на старт
