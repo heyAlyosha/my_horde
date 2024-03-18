@@ -18,7 +18,7 @@ components {
     type: PROPERTY_TYPE_NUMBER
   }
   properties {
-    id: "spawn_trash"
+    id: "spawn_resource"
     value: "1.0"
     type: PROPERTY_TYPE_NUMBER
   }

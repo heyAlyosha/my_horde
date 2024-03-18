@@ -23,7 +23,7 @@ components {
     type: PROPERTY_TYPE_VECTOR3
   }
   properties {
-    id: "spawn_trash"
+    id: "spawn_resource"
     value: "3.0"
     type: PROPERTY_TYPE_NUMBER
   }

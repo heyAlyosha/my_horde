@@ -23,7 +23,7 @@ components {
     type: PROPERTY_TYPE_VECTOR3
   }
   properties {
-    id: "spawn_trash"
+    id: "spawn_resource"
     value: "5.0"
     type: PROPERTY_TYPE_NUMBER
   }
@@ -94,7 +94,7 @@ embedded_components {
 embedded_components {
   id: "object"
   type: "sprite"
-  data: "default_animation: \"trash_can\"\n"
+  data: "default_animation: \"resource_can\"\n"
   "material: \"/builtins/materials/sprite.material\"\n"
   "blend_mode: BLEND_MODE_ALPHA\n"
   "textures {\n"

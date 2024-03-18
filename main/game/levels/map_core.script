@@ -70,9 +70,16 @@ function init(self)
 	})
 
 	-- Выводим количество предметов в объектах
-	timer.delay(0.5, false, function (self)
+	timer.delay(0.1, false, function (self)
+		local item_types = {"coins", "xp", "resource", "star"}
+		-- Подобрал предметов игрок
+		storage_game.map.player_add_items = {}
+		for i, id_item in ipairs(item_types) do
+			storage_game.map.player_add_items[id_item] = 0
+		end
+
+		-- Сколько предметов на карте
 		if self.print_count_items then
-			local item_types = {"coins", "xp", "trash", "star"}
 			print("-----------------")
 			print("ПРЕДМЕТЫ НА КАРТЕ:")
 			for i, id_item in ipairs(item_types) do
@@ -82,8 +89,6 @@ function init(self)
 			end
 			print("-----------------")
 		end
-
-		
 	end)
 
 	if self.stars then
@@ -147,7 +152,23 @@ function on_message(self, message_id, message, sender)
 			id = "win_player",
 			visible = true
 		})
-		
+
+		timer.delay(2, false, function (self)
+			msg.post("/loader_gui", "visible", {
+				id = "modal_result",
+				visible = true,
+				value = {
+					type_result = "fail",
+					prizes = {
+						coins = 100,
+						xp = 200,
+						resource = 400,
+						trofey = 2
+					},
+					hidden_btns = {"back", "shop"}
+				},
+			})
+		end)
 	end
 end
 

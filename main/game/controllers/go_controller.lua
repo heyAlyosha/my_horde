@@ -95,7 +95,7 @@ end
 -- Записываем предметы объекта на карту
 function M.object_items_spawn_to_map(self)
 	-- Записываем предметы для карты
-	local item_types = {"coins", "xp", "trash", "star"}
+	local item_types = {"coins", "xp", "resource", "star"}
 
 	for i, id_item in ipairs(item_types) do
 		if self["spawn_"..id_item] and self["spawn_"..id_item] > 0 then

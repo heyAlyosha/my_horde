@@ -81,21 +81,6 @@ function init(self)
 		visible = true
 	})
 
-	msg.post("/loader_gui", "visible", {
-		id = "modal_result",
-		visible = true,
-		value = {
-			type_result = "win",
-			prizes = {
-				coins = 100,
-				xp = 200,
-				resource = 400,
-				trofey = 2
-			},
-			hidden_btns = {"back", "shop"}
-		},
-	})
-
 	--game_content_prize.init(self)
 	--game_content_artifact.init(self)
 	--game_content_achieve.init(self)

@@ -20,11 +20,11 @@ function M.spawn(self)
 	end
 
 	-- Спавн мусора 
-	if self.spawn_trash then
-		for i = 1, self.spawn_trash do
+	if self.spawn_resource then
+		for i = 1, self.spawn_resource do
 			msg.post(storage_game.map.url_script, "add_item", {
 				position = go.get_position(),
-				type_valute = hash("trash"),
+				type_valute = hash("resource"),
 				count = 1,
 				value = 0, -- Данные для влаюты
 			})

@@ -65,8 +65,14 @@ M.map = {
 	count_stars = nil,
 	-- Остальные предметы для карты
 	count_coins = nil,
-	count_trash = nil,
-	count_xp = nil
+	count_resource = nil,
+	count_xp = nil,
+	-- Подобрал предметов игрок
+	player_add_items = {
+		coins = 0,
+		xp = 0,
+		resource = 0,
+	}
 }
 
 return M
