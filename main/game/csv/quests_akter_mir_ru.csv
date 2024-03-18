@@ -1,0 +1,44 @@
+index;level_id;type;resource;word;quest
+1;1;image;acter_mir/Brad_Pitt.jpg;Брэд Питт;Что это за актёр?
+2;1;image;acter_mir/Matt_Damon.jpg;Мэтт Дэймон;Что это за актёр?
+3;1;image;acter_mir/Tom_Hardy_.jpg;Том Харди;Что это за актёр?
+4;2;image;acter_mir/Keanu_Reeves.jpg;Киану Ривз;Что это за актёр?
+5;2;image;acter_mir/Jason_Statham.jpg;Джейсон Стэйтем;Что это за актёр?
+6;2;image;acter_mir/Sylvester_Stallone.jpg;Сильвестр Сталлоне;Что это за актёр?
+7;3;image;acter_mir/Jim_Carrey.jpg;Джим Керри;Что это за актёр?
+8;3;image;acter_mir/Leonardo_DiCaprio.jpg;Леонардо Ди Каприо;Что это за актёр?
+9;3;image;acter_mir/Morgan_Freeman.jpg;Морган Фримен;Что это за актёр?
+10;4;image;acter_mir/Meryl_Streep.jpg;Мерил Стрип;Что это за актриса?
+11;4;image;acter_mir/Jodie_Foster.jpg;Джоди Фостер;Что это за актриса?
+12;4;image;acter_mir/Julia_Roberts.jpg;Джулия Робертс;Что это за актриса?
+13;5;image;acter_mir/Matthew_McConaughey.jpg;Мэттью Макконахи;Что это за актёр?
+14;5;image;acter_mir/Cillian_Murphy.jpg;Киллиан Мёрфи;Что это за актёр?
+15;5;image;acter_mir/Clint_Eastwood.jpg;Клинт Иствуд;Что это за актёр?
+16;6;image;acter_mir/Oscar_Isaac.jpg;Оскар Айзек;Что это за актёр?
+17;6;image;acter_mir/John_Malkovich.jpg;Джон Малкович;Что это за актёр?
+18;6;image;acter_mir/Samuel_L_Jackson.jpg;Сэмюэл Л Джексон;Что это за актёр?
+19;7;image;acter_mir/Willem_Dafoe.jpg;Уиллем Дефо;Что это за актёр?
+20;7;image;acter_mir/Daniel_Day-Lewis.jpg;Дэниел Дэй-Льюис;Что это за актёр?
+21;7;image;acter_mir/Denzel_Washington.jpg;Дензел Вашингтон;Что это за актёр?
+22;8;image;acter_mir/Marlene_Dietrich.jpg;Марлен Дитрих;Что это за актриса?
+23;8;image;acter_mir/Sophia_Loren.jpg;Софи Лорен;Что это за актриса?
+24;8;image;acter_mir/Ingrid_Bergman.jpg;Ингрид Бергман;Что это за актёр?
+25;9;image;acter_mir/Al_Pacino.jpg;Аль Пачино;Что это за актёр?
+26;9;image;acter_mir/Kevin_Costner.jpg;Кевин Костнер;Что это за актёр?
+27;9;image;acter_mir/Ian_McKellen_.jpg;Иэн Маккеллен;Что это за актёр?
+28;10;image;acter_mir/Robert_De_Niro.jpg;Роберт Де Ниро;Что это за актёр?
+29;10;image;acter_mir/Viggo_Mortensen.jpg;Вигго Мортенсен;Что это за актёр?
+30;10;image;acter_mir/Jeff_Bridges.jpg;Джефф Бриджес;Что это за актёр?
+31;11;image;acter_mir/Jack_Nicholson.jpg;Джек Николсон;Что это за актёр?
+32;11;image;acter_mir/Michael_Caine.jpg;Майкл Кейн;Что это за актёр?
+33;11;image;acter_mir/Paul_Newman.jpg;Пол Ньюман;Что это за актёр?
+34;12;image;acter_mir/Anthony_Hopkins.jpg;Энтони Хопкинс;Что это за актёр?
+35;12;image;acter_mir/Dustin_Hoffman.jpg;Дастин Хоффман;Что это за актёр?
+36;12;image;acter_mir/Charles-Chaplin.jpg;Чарльз Чаплин;Что это за актёр?
+37;13;image;acter_mir/Orson_Welles.jpg;Орсон Уэллс;Что это за актёр?
+38;13;image;acter_mir/Tom_Hanks.jpg;Том Хэнкс;Что это за актёр?
+39;13;image;acter_mir/Alec_Guinness.jpg;Алек Гиннесс;Что это за актёр?
+40;14;image;acter_mir/Hepburn_Katharine.jpg;Кэтрин Хепберн;Что это за актриса?
+41;14;image;acter_mir/Audrey_Hepburn.jpg;Одри Хепберн;Что это за актриса?
+42;14;image;acter_mir/Marlon_Brando.jpg;Марлон Брандо;Что это за актёр?
+43;14;image;acter_mir/Sidney_Poitier_.jpg;Сидни Пуатье;Что это за актёр?

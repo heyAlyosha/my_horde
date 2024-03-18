@@ -1,0 +1,427 @@
+local druid = require("druid.druid")
+local nakama = require "nakama.nakama"
+local gui_interface_btns = require "main.gui.modules.gui_interface_btns"
+local gui_input = require "main.gui.modules.gui_input"
+local gui_animate = require "main.gui.modules.gui_animate"
+local storage_gui = require "main.storage.storage_gui"
+local storage_player = require "main.storage.storage_player"
+local sound_render = require "main.sound.modules.sound_render"
+local gui_manager = require "main.gui.modules.gui_manager"
+local interface_animations = require "main.gui.interface.modules.interface_animations"
+local core_player_function = require "main.core.core_player.modules.core_player_function"
+local interface_functions = require "main.gui.interface.modules.interface_functions"
+local interface_stars = require "main.gui.interface.modules.interface_stars"
+local loader_gui_history = require "main.loaders.loader_gui.modules.loader_gui_history"
+local gui_loyouts = require "main.gui.modules.gui_loyouts"
+local api_player = require "main.game.api.api_player"
+local api_core_rating = require "main.core.api.api_core_rating"
+local online_image = require "main.online.online_image"
+local input_remote_tv = require "input.input_remote_tv.modules.input_remote_tv"
+
+function init(self)
+	self.id = "interface"
+	msg.post(".", "acquire_input_focus")
+	gui.set_render_order(storage_gui.orders.interface)
+	self.visible_btns = true
+
+	self.nodes = {
+		study_bg = gui.get_node("study_bg"),
+		user_name = gui.get_node("account_name"),
+		user_name_wrap = gui.get_node("account_name_bg"),
+		coin_wrap = gui.get_node("gold_template/wrap"),
+		xp_wrap = gui.get_node("xp_template/wrap"),
+		resource_wrap = gui.get_node("resource_template/wrap"),
+		coin = gui.get_node("gold_template/number"),
+		xp = gui.get_node("xp_template/number"),
+		resource = gui.get_node("resource_template/number"),
+		score = gui.get_node("account_level"),
+		account_wrap = gui.get_node("account_wrap"),
+		avatar_wrap = gui.get_node('avatar_border'),
+		avatar_img = gui.get_node("avatar_img"),
+		name_wrap = gui.get_node('account_name_bg'),
+		account_level = gui.get_node('account_level'),
+		marker_wrap = gui.get_node("marker_wrap"),
+		marker_goal = gui.get_node("marker_goal"),
+
+		btns = gui.get_node("btns"),
+		btn_1_wrap = gui.get_node("btn_1_template/btn"),
+		btn_1_icon = gui.get_node("btn_1_template/btn_icon"),
+		btn_1_icon_wrap = gui.get_node("btn_1_template/btn_icon_wrap"),
+		btn_2_wrap = gui.get_node("btn_2_template/btn"),
+		btn_2_icon = gui.get_node("btn_2_template/btn_icon"),
+		btn_2_icon_wrap = gui.get_node("btn_2_template/btn_icon_wrap"),
+		btn_3_wrap = gui.get_node("btn_3_template/btn"),
+		btn_3_icon = gui.get_node("btn_3_template/btn_icon"),
+		btn_3_icon_wrap = gui.get_node("btn_3_template/btn_icon_wrap"),
+
+		stars_wrap = gui.get_node("stars_wrap"),
+		stars = gui.get_node("stars"),
+		stars_body = gui.get_node("stars_body"),
+		star_1 = gui.get_node("star_1"),
+		star_2 = gui.get_node("star_2"),
+		star_3 = gui.get_node("star_3"),
+		wrap_stars_active = gui.get_node("wrap_stars_active"),
+		wrap_stars_bg = gui.get_node("wrap_stars_bg"),
+	}
+
+	self.btns_content = {
+		refresh = {id = "refresh", icon = "icon_refresh"},
+		shop = {id = "shop", icon = "icon_zombie"},
+		pause = {id = "pause", icon = "icon_pause"},
+		play = {id = "play", icon = "icon_play"},
+		settings = {id = "settings", icon = "icon_settings"},
+		volume = {id = "volume", icon = "icon_volume"},
+		back = {id = "back", icon = "icon_back"},
+		home = {id = "home", icon = "btn_icon_home"},
+		animate_rating = {id = "animate_rating", icon = "btn_icon_home"},
+	}
+
+	self.focus_btn_id = nil
+	self.btns_render = gui_interface_btns.render_btns_set(self, "default")
+	interface_functions.set_position_balance(self)
+	if self.btns_render then
+		self.btns = self.btns_render
+	end
+
+	gui_input.init(self)
+
+	-- Текущие отображаемые значения
+	self.current_values = {
+		coins = nil,
+		score = nil,
+		rating = nil,
+		level = storage_player.level,
+		name = nil,
+	}
+
+	interface_functions.update_balance(self)
+	interface_functions.update_name(self)
+	--interface_functions.update_volume(self)
+	interface_functions.update_avatar(self)
+
+	interface_stars.visible(self, false)
+end
+
+function final(self)
+	gui_input.on_final(self)
+	gui_manager.remove_screen("interface", msg.url())
+	self.druid:final()
+end
+
+
+function on_message(self, message_id, message, sender)
+	input_remote_tv.on_message(self, message_id, message, sender)
+	gui_loyouts.on_message(self, message_id, message)
+
+	self.druid:on_message(message_id, message, sender)
+	if message_id == hash("window_resize") then
+		interface_functions.set_position_balance(self)
+
+	elseif message_id == hash("focus") then
+		gui_input.set_focus(self, message.focus)
+
+	elseif message_id == hash("set_content") then
+		if message.type == 'stars' then
+			local data = message.values or {}
+			local list = data.list
+			local stars = data.stars
+			interface_stars.set_content(self, stars, list)
+
+		elseif message.type == 'set_star' then
+			-- добавление звёздочеку
+			local data = message.values or {}
+			local stars = data.stars
+			local unwrap = data.unwrap
+			interface_stars.set_star(self, stars, unwrap)
+
+		elseif message.type == 'set_btns' then
+			-- добавление звёздочеку
+			local data = message.value or {}
+			local id = data.id
+			self.set_btns_id = id
+
+			btns_render = gui_interface_btns.render_btns_set(self, id)
+
+			--pprint(btns_render, id, storage_gui.iterface_btns_set_current)
+			interface_functions.set_position_balance(self)
+			if btns_render then
+				self.btns = btns_render
+			end
+
+			interface_stars.visible(self, self.visible_stars)
+
+			gui_input.init(self)
+
+		elseif message.type == 'set_dir_goal' then
+			interface_functions.set_dir_goal(self, message.dir_goal)
+
+		end
+
+	elseif message_id == hash("set_status") then
+		if message.type == 'update_all' then
+			interface_functions.update_balance(self)
+			interface_functions.update_name(self)
+			interface_functions.update_volume(self)
+			interface_functions.update_avatar(self)
+
+		elseif message.type == 'stars_unwrap' then
+			local data = message.values or {}
+			local unwrap = data.unwrap
+			local animated = data.animated
+			interface_stars.unwrap(self, unwrap, animated)
+
+		elseif message.type == 'stars_visible' then
+			interface_stars.visible(self, message.visible)
+
+		elseif message.type == 'update_balance' then
+			if not message.animate then
+				return interface_functions.update_balance(self)
+			end
+
+			-- Обновляем баланс
+			local values_keys = {'coins', 'score', 'xp', 'resource'}
+			-- Смотрим. что изменилось 
+			local update_score
+			for i, key in ipairs(values_keys) do
+				local value_storage = storage_player[key]
+				local value_current = self.current_values[key]
+
+				-- Если изменилось
+				if value_storage ~= value_current then
+					self.current_values[key] = value_storage
+					interface_animations.set_balance(self, key, self.current_values[key])
+
+					-- Если изменился опыт, обновляем полоску опыта
+					if key == "score" then
+						sound_render.play("add_score", url_object)
+
+					elseif key == "coins" then
+						sound_render.play("add_gold", url_object)
+
+					elseif key == "xp" then
+						sound_render.play("update_rating", url_object)
+
+					elseif key == "resource" then
+						sound_render.play("update_rating", url_object)
+
+					end
+
+					-- Обновляем на стороне сервера c задержкой
+					if self.timer_update_balance_nakama then
+						timer.cancel(self.timer_update_balance_nakama)
+						self.timer_update_balance_nakama = nil
+					end
+
+					self.timer_update_balance_nakama = timer.delay(0.5, false, function (self)
+						local data = {
+							coins = self.current_values.coins or 0,
+							score = self.current_values.score or 0
+						}
+						local function function_result(self)
+							api_core_rating.update_rating_player(self, self.current_values.score, function (self, err)
+								if not err then
+									api_player.get_rating(self, true, false)
+								end
+							end)
+						end
+						api_player.update_wallet(self, data, metadata, function_result)
+
+						--msg.post("/core_achieve", "update_progress")
+					end)
+				end
+			end
+
+		elseif message.type == 'level_up' then
+			if self.current_values.level ~= storage_player.level then
+				interface_animations.set_level(self, self.current_values.level)
+			end
+
+		elseif message.type == 'update_name' then
+			interface_functions.update_name(self)
+
+		elseif message.type == 'update_volume' then
+			interface_functions.update_volume(self)
+
+		elseif message.type == 'visible_btns' then
+			self.visible_btns = message.visible
+			gui_loyouts.set_enabled(self, self.nodes.btns, self.visible_btns)
+
+		elseif message.type == 'study' then
+			local data = message.value or {}
+			interface_functions.study(self, data.id)
+
+		end
+	end
+end
+
+function on_input(self, action_id, action)
+	action_id, action = input_remote_tv.on_input(self, action_id, action)
+
+	if not self.visible_btns then
+		return
+	end
+
+	-- Нажатие на кнопки
+	local function function_activate(self, focus_btn_id)
+		local btn = self.btns[focus_btn_id]
+
+		gui_animate.activate(self, btn.node)
+		sound_render.play("activate_btn", url_object)
+
+		if btn.id == "stars" then
+			interface_stars.unwrap(self, not self.unwrap, true)
+
+		elseif btn.id == "pause" then
+			msg.post("/loader_gui", "visible", {
+				id = "modal_pause",
+				visible = true,
+				type = hash("popup")
+			})
+
+		elseif btn.id == "settings" then
+			msg.post("/loader_gui", "visible", {
+				id = "modal_settings",
+				visible = true,
+				type = hash("popup")
+			})
+
+		elseif btn.id == "shop" then
+			msg.post("main:/loader_gui", "visible", {
+				id = "catalog_shop",
+				visible = true,
+				modal = false,
+				-- Кнопка внизу
+				btn_smart = {
+					type = "message",
+					title_id = "_ready",
+					message_url = "main:/loader_gui",
+					message_id = "visible",
+					message = {
+						id = "inventary_wrap",
+						visible = false
+					},
+				},
+			})
+
+		elseif btn.id == "volume" then
+			local volume
+
+			if storage_player.settings.volume_music > 0 or storage_player.settings.volume_effects > 0 then
+				volume = 0
+			else
+				volume = 0.5
+			end
+
+			msg.post("main:/music", "volume", {volume = volume})
+			msg.post("main:/sound", "volume", {volume = volume})
+
+			msg.post("main:/core_player", "save_settings", {
+				volume_music = volume,
+				volume_effects = volume,
+			})
+
+		elseif btn.id == "animate_rating" then
+			-- Тест анимирвоанного рейтинга
+			msg.post("main:/core_player", "balance", {
+				operation = "add",
+				values = {
+					score = 0
+				},
+				animate = false,
+			})
+			timer.delay(3, false, function (self)
+				api_core_rating.get_rating_gamer(self, count, function (self, err, result)
+					storage_gui.old_personal_rating = result
+				end)
+				
+				timer.delay(2, false, function (self)
+					msg.post("main:/core_player", "balance", {
+						operation = "add",
+						values = {
+							score = 1000
+						},
+						animate = false,
+					})
+
+					timer.delay(1.5, false, function (self)
+						msg.post("main:/loader_gui", "visible", {
+							id = "catalog_rating",
+							visible = true,
+							type = hash("animated_close"),
+							value = {
+								hidden_bg = false,
+								type_rating = 'change_animated'
+							}
+						})
+					end)
+				end)
+			end)
+			
+		end
+	end
+
+	if self.focus_btn_id and action_id == hash("down") then
+		if storage_gui.components_visible.modal_settings then
+			msg.post("/loader_gui", "focus", {
+				id = "modal_settings", -- id компонента в лоадер гуи
+				focus = 1 -- кнопка фокуса
+			})
+			sound_render.play("focus_main_menu")
+			return
+
+		elseif storage_gui.components_visible.modal_pause then
+			msg.post("/loader_gui", "focus", {
+				id = "modal_pause", -- id компонента в лоадер гуи
+				focus = 1 -- кнопка фокуса
+			})
+			sound_render.play("focus_main_menu")
+			return
+
+		elseif storage_gui.components_visible['inventary_wrap'] then
+			msg.post("main:/loader_gui", "focus", {
+				id = "inventary_wrap", -- id компонента в лоадер гуи
+				focus = 1 -- кнопка фокуса
+			})
+			sound_render.play("focus_main_menu")
+			return
+
+		elseif storage_gui.components_gui[1] then
+			gui_input.set_last_focus_component(self, msg.url().fragment)
+			sound_render.play("focus_main_menu")
+			--msg.post(storage_gui.components_gui[1], "focus", {focus = 1})
+			return
+
+			
+
+		end
+	end
+
+	local function function_back(self)
+		msg.post("main:/sound", "play", {sound_id = "activate_btn"})
+		if self.set_btns_id == "game_play" then
+			msg.post("main:/loader_gui", "visible", {
+				id = "modal_pause",
+				visible = true,
+				type = hash("popup")
+			})
+
+		elseif self.set_btns_id == "game_pause" then
+				msg.post("main:/loader_gui", "visible", {
+					id = "modal_pause",
+					visible = false,
+					type = hash("animated_hidden")
+				})
+		end
+	end
+
+	if self.druid:on_input(action_id, action) then
+		return true
+	end
+
+	return gui_input.on_input(self, action_id, action, function_focus, function_activate, function_back, function_post_focus)
+
+end
+
+function on_reload(self)
+
+end

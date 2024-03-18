@@ -1,0 +1,247 @@
+local storage_gui = require "main.storage.storage_gui"
+local loader_gui_history = require "main.loaders.loader_gui.modules.loader_gui_history"
+local gui_lang = require "main.lang.gui_lang"
+local lang_core = require "main.lang.lang_core"
+local loader_gui_function = require "main.loaders.loader_gui.modules.loader_gui_function"
+
+function init(self)
+	msg.post(".", "acquire_input_focus")
+
+	self.temp_storage = {
+		popup_notify = {}
+	}
+
+	-- Устанавливаем перевод
+	lang_core.init(self)
+end
+
+function final(self)
+	
+end
+
+function on_message(self, message_id, message, sender)
+	loader_gui_history.on_message(self, message_id, message, sender)
+
+
+	if message_id == hash("visible") then
+		-- Сообщения скрытия/показа компонентов
+		if message.id == "bg" then
+			-- Если это затемнённый фон
+			local parent_id = message.parent_id or "default"
+
+			if message.visible and not storage_gui.components_bg[parent_id] then
+				-- Показываем фон 
+				loader_gui_function.create_bg(self, parent_id, message_id, message, sender)
+
+			elseif not message.visible and storage_gui.components_bg[parent_id] then
+				-- Скрываем фон
+				if message.type == hash("animated_close") then
+					-- Анимирвоанно скрваем
+					msg.post(storage_gui.components_bg[parent_id], "hidden")
+
+				else
+					loader_gui_function.delete_bg(self, parent_id, message_id, message, sender)
+
+				end
+
+			end
+
+		elseif message.visible then
+			-- Если это уведомление
+			if message.id == "notify" then
+				message.data = storage_gui.notify[1].data
+				message.type = storage_gui.notify[1].type
+			end
+
+			-- Обычный компонент
+			-- Если ещё нет компонента
+			if not storage_gui.components_visible[message.id] then
+				loader_gui_function.create_component(self, message.id, message, sender, message_id)
+			end
+
+			if message.type == hash("popup") then
+				for i = 1, #self.temp_storage.popup_notify do
+					local item = self.temp_storage.popup_notify[i]
+					msg.post(storage_gui.components_visible[message.id], "add_popup", item)
+				end
+				self.temp_storage.popup_notify = {}
+			end
+
+		elseif not message.visible and storage_gui.components_visible[message.id] then
+			-- Смотрим какой тип компонента закрывать
+			if message.type == hash("modal") 
+			or message.type == hash("help") 
+			or message.type == hash("preloader")
+			or message.type == hash("opening")
+			or message.type == hash("game_screen")
+			or message.type == hash("main_menu") 
+			or message.type == hash("animated_close") then
+				msg.post(storage_gui.components_visible[message.id], "hidden")
+			else
+				loader_gui_function.delete_component(self, message.id, message.all_msg)
+
+				-- Если это скрывается уведомление
+				if message.id == "notify" then
+					-- Удаляем уведомление из очереди
+					table.remove(storage_gui.notify, 1)
+
+					-- Если есть ещё уведомления, показываем их
+					if #storage_gui.notify > 0 then
+						timer.delay(0.5, false, function (self)
+							
+						end)
+
+						local message = storage_gui.notify[1]
+						msg.post("/loader_gui", "visible", {
+							id = "notify",
+							visible = true
+						})
+					end
+				end
+
+			end
+		end
+
+	elseif message_id == hash("reload_gui_component") then
+		-- Перезагружаем гуи компоненты
+		local status = storage_gui.components_status[message.id]
+		local content = storage_gui.components_content[message.id]
+
+		local data = {}
+
+		for k, v in pairs(message) do
+			data[k] = v
+		end
+		data.reload = true
+
+		data.visible = false
+		msg.post("/loader_gui", "visible", data)
+
+		data.visible = true
+		msg.post("/loader_gui", "visible", data)
+
+	elseif message_id == hash("set_content") then
+		-- Передача контента в компоненты gui
+		if not storage_gui.components_visible[message.id] then
+			loader_gui_function.create_component(self, message.id, message, sender, message_id)
+		end
+
+		if not storage_gui.components_content[message.id] then
+			storage_gui.components_content[message.id] = {}
+		end
+
+		msg.post(storage_gui.components_visible[message.id], "set_content", message)
+
+	elseif message_id == hash("set_status") then
+		-- Если это сообщение для всех 
+		if message.id == "all" then
+			for id, component in pairs(storage_gui.components_visible) do
+				if message.is_from_msg then
+					message.id = id
+					msg.post("/loader_gui", "set_status", message)
+
+				elseif message.from_id ~= id and message.from_id ~= hash(id) then
+					message.id = id
+					msg.post("/loader_gui", "set_status", message)
+
+				end
+			end
+
+			-- Отправляем в обучение
+			msg.post("main:/core_study", "set_status", message)
+
+			return true
+		end
+
+		-- Передача контента в компоненты gui
+		if not storage_gui.components_visible[message.id] then
+			loader_gui_function.create_component(self, message.id, message, sender, message_id)
+		end
+
+		if not storage_gui.components_status[message.id] then
+			storage_gui.components_status[message.id] = {}
+		end
+		table.insert(storage_gui.components_status[message.id], message)
+
+		msg.post(storage_gui.components_visible[message.id], "set_status", message)
+
+	elseif message_id == hash("add_popup_notify") then
+		-- Добавление и показ попап окон с уведомлениями
+		local id = "popup_notify"
+
+		if not storage_gui.components_visible[id] then
+			table.insert(self.temp_storage.popup_notify, message)
+			msg.post(".", "visible", {visible = true, id = id, type = hash("popup")})
+
+		else
+			self.temp_storage.popup_notify = {}
+			msg.post(storage_gui.components_visible[id], "add_popup", message)
+
+		end
+
+		
+	elseif message_id == hash("add_notify") then
+		-- Показ уведомлений 
+		if not storage_gui.notify[1] then
+			timer.delay(0.5, false, function (self)
+				
+			end)
+			msg.post("main:/loader_gui", "visible", {
+				id = "notify",
+				visible = true
+			})
+		end
+
+		-- Добавляем в очередь уведомление
+		table.insert(storage_gui.notify, message)
+
+	-- ставим фокус
+	elseif message_id == hash("focus") then
+		local id = message.id
+		if storage_gui.components_visible[id] then
+			msg.post(storage_gui.components_visible[id], "focus", message)
+		end
+
+	elseif message_id == hash("proxy_loaded") then
+		-- Прокси коллекция с гуи компонентом загружена
+		msg.post(sender, "init")
+		msg.post(sender, "enable")
+
+
+		local id = storage_gui.components_visible_sender_fragment_to_id[msg.url(sender).fragment]
+		local proxy_collection = self.collections_proxy[id]
+
+		if proxy_collection and proxy_collection.messages then
+			for i, value in ipairs(proxy_collection.messages) do
+				msg.post(storage_gui.components_visible[id], value.message_id, value.message)
+
+			end
+
+			self.collections_proxy[id].messages = nil
+		end
+	end
+
+	-- Если показывается попап и открывается какое-то другое гуи, то снова фокусируем управление на попапе
+	if storage_gui.components_visible.popup_notify then
+		msg.post(storage_gui.components_visible.popup_notify, "acquire_input_focus")
+	end
+end
+--[[
+function on_input(self, action_id, action)
+	-- Add input-handling code here. The game object this script is attached to
+	-- must have acquired input focus:
+	--
+	--    msg.post(".", "acquire_input_focus")
+	--
+	-- All mapped input bindings will be received. Mouse and touch input will
+	-- be received regardless of where on the screen it happened.
+	-- Learn more: https://defold.com/manuals/input/
+	-- Remove this function if not needed
+end
+
+function on_reload(self)
+	-- Add reload-handling code here
+	-- Learn more: https://defold.com/manuals/hot-reload/
+	-- Remove this function if not needed
+end
+--]]

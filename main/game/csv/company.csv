@@ -1,0 +1,6 @@
+id;sort;name;score;description;type
+city_robots;5;_company_name_city_robots;750;;default
+city_ufo;4;_company_name_city_ufo;500;;default
+city_military;3;_company_name_city_military;300;;default
+city_policy;2;_company_name_city_policy;200;;default
+city_hospital;1;_company_name_city_hospital;0;;default
