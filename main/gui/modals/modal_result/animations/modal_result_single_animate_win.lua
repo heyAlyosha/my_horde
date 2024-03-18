@@ -2,7 +2,7 @@
 local M = {}
 
 local gui_animate = require "main.gui.modules.gui_animate"
-local modal_result_single_animations = require "main.gui.modals.modal_result_single.animations.modal_result_single_animations"
+local modal_result_single_animations = require "main.gui.modals.modal_result.animations.modal_result_single_animations"
 local game_content_stars = require "main.game.content.game_content_stars"
 local gui_manager = require "main.gui.modules.gui_manager"
 local game_content_levels = require "main.game.content.game_content_levels"

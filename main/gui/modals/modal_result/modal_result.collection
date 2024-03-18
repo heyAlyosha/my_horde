@@ -1,7 +1,7 @@
 name: "modal_result_single"
 instances {
   id: "modal_result_single"
-  prototype: "/main/gui/modals/modal_result_single/modal_result_single.go"
+  prototype: "/main/gui/modals/modal_result/modal_result.go"
   position {
     x: 0.0
     y: 0.0

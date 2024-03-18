@@ -14,6 +14,7 @@ local druid = require("druid.druid")
 local druid_castom_style = require "main.gui.modules.druid_castom_style"
 
 function init(self)
+	color = require("color-lib.color")
 	storage_gui = require "main.storage.storage_gui"
 	camera = require "orthographic.camera"
 	gui_loyouts = require "main.gui.modules.gui_loyouts"
@@ -78,6 +79,20 @@ function init(self)
 	msg.post("/loader_gui", "visible", {
 		id = "interface",
 		visible = true
+	})
+
+	msg.post("/loader_gui", "visible", {
+		id = "modal_result",
+		visible = true,
+		value = {
+			type_result = "win",
+			prizes = {
+				coins = 0,
+				xp = 0,
+				resourses = 0,
+				trofey = 0
+			},
+		},
 	})
 
 	--game_content_prize.init(self)

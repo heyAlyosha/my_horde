@@ -1,6 +1,6 @@
 components {
-  id: "modal_result_single"
-  component: "/main/gui/modals/modal_result_single/modal_result_single.gui"
+  id: "modal_result"
+  component: "/main/gui/modals/modal_result/modal_result.gui"
   position {
     x: 0.0
     y: 0.0

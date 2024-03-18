@@ -584,9 +584,9 @@ embedded_components {
   }
 }
 embedded_components {
-  id: "modal_result_single_factory"
+  id: "modal_result_factory"
   type: "factory"
-  data: "prototype: \"/main/gui/modals/modal_result_single/modal_result_single.go\"\n"
+  data: "prototype: \"/main/gui/modals/modal_result/modal_result.go\"\n"
   "load_dynamically: false\n"
   "dynamic_prototype: false\n"
   ""

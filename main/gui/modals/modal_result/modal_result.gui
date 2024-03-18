@@ -1,11 +1,23 @@
-script: "/main/gui/interface/interface.gui_script"
+script: "/main/gui/modals/modal_result/modal_result.gui_script"
 fonts {
   name: "font_standart_normal"
   font: "/assets/fonts/font_standart_normal.font"
 }
 fonts {
+  name: "font_standart_big"
+  font: "/assets/fonts/font_standart_normal.font"
+}
+fonts {
   name: "font_standart_mini"
   font: "/assets/fonts/font_standart_normal.font"
+}
+textures {
+  name: "gui"
+  texture: "/main/atlases/gui.atlas"
+}
+textures {
+  name: "main"
+  texture: "/main/main.atlas"
 }
 textures {
   name: "first_level"
@@ -20,7 +32,7 @@ background_color {
 nodes {
   position {
     x: 240.0
-    y: 258.0
+    y: 228.0
     z: 0.0
     w: 1.0
   }
@@ -31,71 +43,13 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 1.0
-    y: 1.0
+    x: 0.5
+    y: 0.5
     z: 1.0
     w: 1.0
   }
   size {
-    x: 10.0
-    y: 10.0
-    z: 0.0
-    w: 1.0
-  }
-  color {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  type: TYPE_BOX
-  blend_mode: BLEND_MODE_MULT
-  texture: ""
-  id: "top"
-  xanchor: XANCHOR_NONE
-  yanchor: YANCHOR_NONE
-  pivot: PIVOT_CENTER
-  adjust_mode: ADJUST_MODE_STRETCH
-  layer: "box"
-  inherit_alpha: true
-  slice9 {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 0.0
-  }
-  clipping_mode: CLIPPING_MODE_NONE
-  clipping_visible: true
-  clipping_inverted: false
-  alpha: 1.0
-  template_node_child: false
-  size_mode: SIZE_MODE_MANUAL
-  custom_type: 0
-  enabled: true
-  visible: true
-  material: ""
-}
-nodes {
-  position {
-    x: 0.0
-    y: -3.333333
-    z: 0.0
-    w: 1.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale {
-    x: 0.75
-    y: 0.75
-    z: 1.0
-    w: 1.0
-  }
-  size {
-    x: 98.0
+    x: 300.0
     y: 40.0
     z: 0.0
     w: 1.0
@@ -109,23 +63,22 @@ nodes {
   type: TYPE_BOX
   blend_mode: BLEND_MODE_MULT
   texture: ""
-  id: "stars_wrap"
+  id: "title_wrap"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
-  parent: "top"
   layer: "box"
   inherit_alpha: true
   slice9 {
-    x: 30.0
-    y: 25.0
-    z: 30.0
-    w: 25.0
+    x: 155.0
+    y: 0.0
+    z: 155.0
+    w: 0.0
   }
   clipping_mode: CLIPPING_MODE_NONE
-  clipping_visible: false
-  clipping_inverted: true
+  clipping_visible: true
+  clipping_inverted: false
   alpha: 1.0
   template_node_child: false
   size_mode: SIZE_MODE_MANUAL
@@ -137,7 +90,7 @@ nodes {
 nodes {
   position {
     x: 0.0
-    y: 21.0
+    y: 0.0
     z: 0.0
     w: 1.0
   }
@@ -148,1058 +101,31 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 1.0
-    y: 1.0
-    z: 1.0
+    x: 1.25
+    y: 1.25
+    z: 1.25
     w: 1.0
   }
   size {
-    x: 98.0
+    x: 200.0
     y: 40.0
     z: 0.0
     w: 1.0
   }
   color {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  type: TYPE_BOX
-  blend_mode: BLEND_MODE_MULT
-  texture: ""
-  id: "stars"
-  xanchor: XANCHOR_NONE
-  yanchor: YANCHOR_NONE
-  pivot: PIVOT_N
-  adjust_mode: ADJUST_MODE_FIT
-  parent: "stars_wrap"
-  layer: "box"
-  inherit_alpha: true
-  slice9 {
-    x: 30.0
-    y: 25.0
-    z: 30.0
-    w: 25.0
-  }
-  clipping_mode: CLIPPING_MODE_NONE
-  clipping_visible: false
-  clipping_inverted: true
-  alpha: 1.0
-  template_node_child: false
-  size_mode: SIZE_MODE_MANUAL
-  custom_type: 0
-  enabled: true
-  visible: true
-  material: ""
-}
-nodes {
-  position {
     x: 0.0
-    y: -4.0
-    z: 0.0
-    w: 1.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  size {
-    x: 98.0
-    y: 40.0
-    z: 0.0
-    w: 1.0
-  }
-  color {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  type: TYPE_BOX
-  blend_mode: BLEND_MODE_MULT
-  texture: ""
-  id: "stars_body"
-  xanchor: XANCHOR_NONE
-  yanchor: YANCHOR_NONE
-  pivot: PIVOT_N
-  adjust_mode: ADJUST_MODE_FIT
-  parent: "stars"
-  layer: "box"
-  inherit_alpha: true
-  slice9 {
-    x: 30.0
-    y: 25.0
-    z: 30.0
-    w: 30.0
-  }
-  clipping_mode: CLIPPING_MODE_NONE
-  clipping_visible: true
-  clipping_inverted: false
-  alpha: 1.0
-  template_node_child: false
-  size_mode: SIZE_MODE_MANUAL
-  custom_type: 0
-  enabled: true
-  visible: true
-  material: ""
-}
-nodes {
-  position {
-    x: -49.0
-    y: -17.666668
-    z: 0.0
-    w: 1.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  size {
-    x: 98.0
-    y: 40.0
-    z: 0.0
-    w: 1.0
-  }
-  color {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  type: TYPE_BOX
-  blend_mode: BLEND_MODE_MULT
-  texture: ""
-  id: "wrap_stars_bg"
-  xanchor: XANCHOR_NONE
-  yanchor: YANCHOR_NONE
-  pivot: PIVOT_W
-  adjust_mode: ADJUST_MODE_FIT
-  parent: "stars_body"
-  layer: "box"
-  inherit_alpha: true
-  slice9 {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 0.0
-  }
-  clipping_mode: CLIPPING_MODE_NONE
-  clipping_visible: true
-  clipping_inverted: false
-  alpha: 1.0
-  template_node_child: false
-  size_mode: SIZE_MODE_MANUAL
-  custom_type: 0
-  enabled: true
-  visible: true
-  material: ""
-}
-nodes {
-  position {
-    x: 16.0
-    y: -0.333333
-    z: 0.0
-    w: 1.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  size {
-    x: 200.0
-    y: 100.0
-    z: 0.0
-    w: 1.0
-  }
-  color {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  type: TYPE_BOX
-  blend_mode: BLEND_MODE_ALPHA
-  texture: "first_level/star_rating_default"
-  id: "star_"
-  xanchor: XANCHOR_NONE
-  yanchor: YANCHOR_NONE
-  pivot: PIVOT_CENTER
-  adjust_mode: ADJUST_MODE_FIT
-  parent: "wrap_stars_bg"
-  layer: "avatar_border"
-  inherit_alpha: true
-  slice9 {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 0.0
-  }
-  clipping_mode: CLIPPING_MODE_NONE
-  clipping_visible: true
-  clipping_inverted: false
-  alpha: 1.0
-  template_node_child: false
-  size_mode: SIZE_MODE_AUTO
-  custom_type: 0
-  enabled: true
-  visible: true
-  material: ""
-}
-nodes {
-  position {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  size {
-    x: 1.0
     y: 1.0
     z: 0.0
-    w: 1.0
-  }
-  color {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  type: TYPE_PARTICLEFX
-  id: "active_star_1"
-  xanchor: XANCHOR_NONE
-  yanchor: YANCHOR_NONE
-  adjust_mode: ADJUST_MODE_FIT
-  parent: "star_"
-  layer: "box"
-  inherit_alpha: true
-  alpha: 1.0
-  template_node_child: false
-  size_mode: SIZE_MODE_AUTO
-  particlefx: "stars_active"
-  custom_type: 0
-  enabled: true
-  visible: true
-  material: ""
-}
-nodes {
-  position {
-    x: 49.0
-    y: -0.333333
-    z: 0.0
-    w: 1.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  size {
-    x: 200.0
-    y: 100.0
-    z: 0.0
-    w: 1.0
-  }
-  color {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  type: TYPE_BOX
-  blend_mode: BLEND_MODE_ALPHA
-  texture: "first_level/star_rating_default"
-  id: "star_4"
-  xanchor: XANCHOR_NONE
-  yanchor: YANCHOR_NONE
-  pivot: PIVOT_CENTER
-  adjust_mode: ADJUST_MODE_FIT
-  parent: "wrap_stars_bg"
-  layer: "avatar_border"
-  inherit_alpha: true
-  slice9 {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 0.0
-  }
-  clipping_mode: CLIPPING_MODE_NONE
-  clipping_visible: true
-  clipping_inverted: false
-  alpha: 1.0
-  template_node_child: false
-  size_mode: SIZE_MODE_AUTO
-  custom_type: 0
-  enabled: true
-  visible: true
-  material: ""
-}
-nodes {
-  position {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  size {
-    x: 1.0
-    y: 1.0
-    z: 0.0
-    w: 1.0
-  }
-  color {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  type: TYPE_PARTICLEFX
-  id: "active_star_2"
-  xanchor: XANCHOR_NONE
-  yanchor: YANCHOR_NONE
-  adjust_mode: ADJUST_MODE_FIT
-  parent: "star_4"
-  layer: "box"
-  inherit_alpha: true
-  alpha: 1.0
-  template_node_child: false
-  size_mode: SIZE_MODE_AUTO
-  particlefx: "stars_active"
-  custom_type: 0
-  enabled: true
-  visible: true
-  material: ""
-}
-nodes {
-  position {
-    x: 82.0
-    y: -0.333333
-    z: 0.0
-    w: 1.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  size {
-    x: 200.0
-    y: 100.0
-    z: 0.0
-    w: 1.0
-  }
-  color {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  type: TYPE_BOX
-  blend_mode: BLEND_MODE_ALPHA
-  texture: "first_level/star_rating_default"
-  id: "star_5"
-  xanchor: XANCHOR_NONE
-  yanchor: YANCHOR_NONE
-  pivot: PIVOT_CENTER
-  adjust_mode: ADJUST_MODE_FIT
-  parent: "wrap_stars_bg"
-  layer: "avatar_border"
-  inherit_alpha: true
-  slice9 {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 0.0
-  }
-  clipping_mode: CLIPPING_MODE_NONE
-  clipping_visible: true
-  clipping_inverted: false
-  alpha: 1.0
-  template_node_child: false
-  size_mode: SIZE_MODE_AUTO
-  custom_type: 0
-  enabled: true
-  visible: true
-  material: ""
-}
-nodes {
-  position {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  size {
-    x: 1.0
-    y: 1.0
-    z: 0.0
-    w: 1.0
-  }
-  color {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  type: TYPE_PARTICLEFX
-  id: "active_star_3"
-  xanchor: XANCHOR_NONE
-  yanchor: YANCHOR_NONE
-  adjust_mode: ADJUST_MODE_FIT
-  parent: "star_5"
-  layer: "box"
-  inherit_alpha: true
-  alpha: 1.0
-  template_node_child: false
-  size_mode: SIZE_MODE_AUTO
-  particlefx: "stars_active"
-  custom_type: 0
-  enabled: true
-  visible: true
-  material: ""
-}
-nodes {
-  position {
-    x: -49.0
-    y: -17.666668
-    z: 0.0
-    w: 1.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  size {
-    x: 0.0
-    y: 40.0
-    z: 0.0
-    w: 1.0
-  }
-  color {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  type: TYPE_BOX
-  blend_mode: BLEND_MODE_MULT
-  texture: ""
-  id: "wrap_stars_active"
-  xanchor: XANCHOR_NONE
-  yanchor: YANCHOR_NONE
-  pivot: PIVOT_W
-  adjust_mode: ADJUST_MODE_FIT
-  parent: "stars_body"
-  layer: "box"
-  inherit_alpha: true
-  slice9 {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 0.0
-  }
-  clipping_mode: CLIPPING_MODE_STENCIL
-  clipping_visible: true
-  clipping_inverted: false
-  alpha: 1.0
-  template_node_child: false
-  size_mode: SIZE_MODE_MANUAL
-  custom_type: 0
-  enabled: true
-  visible: true
-  material: ""
-}
-nodes {
-  position {
-    x: 16.0
-    y: -0.333333
-    z: 0.0
-    w: 1.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  size {
-    x: 200.0
-    y: 100.0
-    z: 0.0
-    w: 1.0
-  }
-  color {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  type: TYPE_BOX
-  blend_mode: BLEND_MODE_ALPHA
-  texture: "first_level/star_rating_active"
-  id: "star_1"
-  xanchor: XANCHOR_NONE
-  yanchor: YANCHOR_NONE
-  pivot: PIVOT_CENTER
-  adjust_mode: ADJUST_MODE_FIT
-  parent: "wrap_stars_active"
-  layer: "avatar_border"
-  inherit_alpha: true
-  slice9 {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 0.0
-  }
-  clipping_mode: CLIPPING_MODE_NONE
-  clipping_visible: true
-  clipping_inverted: false
-  alpha: 1.0
-  template_node_child: false
-  size_mode: SIZE_MODE_AUTO
-  custom_type: 0
-  enabled: true
-  visible: true
-  material: ""
-}
-nodes {
-  position {
-    x: 49.0
-    y: -0.333333
-    z: 0.0
-    w: 1.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  size {
-    x: 200.0
-    y: 100.0
-    z: 0.0
-    w: 1.0
-  }
-  color {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  type: TYPE_BOX
-  blend_mode: BLEND_MODE_ALPHA
-  texture: "first_level/star_rating_active"
-  id: "star_2"
-  xanchor: XANCHOR_NONE
-  yanchor: YANCHOR_NONE
-  pivot: PIVOT_CENTER
-  adjust_mode: ADJUST_MODE_FIT
-  parent: "wrap_stars_active"
-  layer: "avatar_border"
-  inherit_alpha: true
-  slice9 {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 0.0
-  }
-  clipping_mode: CLIPPING_MODE_NONE
-  clipping_visible: true
-  clipping_inverted: false
-  alpha: 1.0
-  template_node_child: false
-  size_mode: SIZE_MODE_AUTO
-  custom_type: 0
-  enabled: true
-  visible: true
-  material: ""
-}
-nodes {
-  position {
-    x: 82.0
-    y: -0.333333
-    z: 0.0
-    w: 1.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  size {
-    x: 200.0
-    y: 100.0
-    z: 0.0
-    w: 1.0
-  }
-  color {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  type: TYPE_BOX
-  blend_mode: BLEND_MODE_ALPHA
-  texture: "first_level/star_rating_active"
-  id: "star_3"
-  xanchor: XANCHOR_NONE
-  yanchor: YANCHOR_NONE
-  pivot: PIVOT_CENTER
-  adjust_mode: ADJUST_MODE_FIT
-  parent: "wrap_stars_active"
-  layer: "avatar_border"
-  inherit_alpha: true
-  slice9 {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 0.0
-  }
-  clipping_mode: CLIPPING_MODE_NONE
-  clipping_visible: true
-  clipping_inverted: false
-  alpha: 1.0
-  template_node_child: false
-  size_mode: SIZE_MODE_AUTO
-  custom_type: 0
-  enabled: true
-  visible: true
-  material: ""
-}
-nodes {
-  position {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  size {
-    x: 1920.0
-    y: 1080.0
-    z: 0.0
-    w: 1.0
-  }
-  color {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  type: TYPE_BOX
-  blend_mode: BLEND_MODE_ALPHA
-  texture: ""
-  id: "study_bg"
-  xanchor: XANCHOR_NONE
-  yanchor: YANCHOR_NONE
-  pivot: PIVOT_SW
-  adjust_mode: ADJUST_MODE_STRETCH
-  layer: "study_bg"
-  inherit_alpha: true
-  slice9 {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 0.0
-  }
-  clipping_mode: CLIPPING_MODE_NONE
-  clipping_visible: true
-  clipping_inverted: false
-  alpha: 0.85
-  template_node_child: false
-  size_mode: SIZE_MODE_MANUAL
-  custom_type: 0
-  enabled: false
-  visible: true
-  material: ""
-}
-nodes {
-  position {
-    x: 57.0
-    y: 244.0
-    z: 0.0
-    w: 1.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale {
-    x: 0.75
-    y: 0.75
-    z: 1.0
-    w: 1.0
-  }
-  size {
-    x: 200.0
-    y: 100.0
-    z: 0.0
-    w: 1.0
-  }
-  color {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  type: TYPE_BOX
-  blend_mode: BLEND_MODE_MULT
-  texture: ""
-  id: "top_left"
-  xanchor: XANCHOR_NONE
-  yanchor: YANCHOR_NONE
-  pivot: PIVOT_CENTER
-  adjust_mode: ADJUST_MODE_STRETCH
-  layer: "box"
-  inherit_alpha: true
-  slice9 {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 0.0
-  }
-  clipping_mode: CLIPPING_MODE_NONE
-  clipping_visible: true
-  clipping_inverted: false
-  alpha: 1.0
-  template_node_child: false
-  size_mode: SIZE_MODE_AUTO
-  custom_type: 0
-  enabled: true
-  visible: true
-  material: ""
-}
-nodes {
-  position {
-    x: -146.0
-    y: 94.0
-    z: 0.0
-    w: 1.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  size {
-    x: 200.0
-    y: 220.0
-    z: 0.0
-    w: 1.0
-  }
-  color {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  type: TYPE_BOX
-  blend_mode: BLEND_MODE_MULT
-  texture: ""
-  id: "account"
-  xanchor: XANCHOR_NONE
-  yanchor: YANCHOR_NONE
-  pivot: PIVOT_NW
-  adjust_mode: ADJUST_MODE_FIT
-  parent: "top_left"
-  layer: "box"
-  inherit_alpha: true
-  slice9 {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 0.0
-  }
-  clipping_mode: CLIPPING_MODE_NONE
-  clipping_visible: true
-  clipping_inverted: false
-  alpha: 1.0
-  template_node_child: false
-  size_mode: SIZE_MODE_MANUAL
-  custom_type: 0
-  enabled: true
-  visible: true
-  material: ""
-}
-nodes {
-  position {
-    x: 111.0
-    y: -109.0
-    z: 0.0
-    w: 1.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  size {
-    x: 200.0
-    y: 200.0
-    z: 0.0
-    w: 1.0
-  }
-  color {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  type: TYPE_BOX
-  blend_mode: BLEND_MODE_MULT
-  texture: ""
-  id: "account_wrap"
-  xanchor: XANCHOR_NONE
-  yanchor: YANCHOR_NONE
-  pivot: PIVOT_CENTER
-  adjust_mode: ADJUST_MODE_FIT
-  parent: "account"
-  layer: "box"
-  inherit_alpha: true
-  slice9 {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 0.0
-  }
-  clipping_mode: CLIPPING_MODE_NONE
-  clipping_visible: true
-  clipping_inverted: false
-  alpha: 1.0
-  template_node_child: false
-  size_mode: SIZE_MODE_MANUAL
-  custom_type: 0
-  enabled: true
-  visible: true
-  material: ""
-}
-nodes {
-  position {
-    x: -1.0
-    y: -27.0
-    z: 0.0
-    w: 1.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  size {
-    x: 80.0
-    y: 17.0
-    z: 0.0
-    w: 1.0
-  }
-  color {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  type: TYPE_BOX
-  blend_mode: BLEND_MODE_ALPHA
-  texture: "first_level/border_dark"
-  id: "account_name_bg"
-  xanchor: XANCHOR_NONE
-  yanchor: YANCHOR_NONE
-  pivot: PIVOT_N
-  adjust_mode: ADJUST_MODE_FIT
-  parent: "account_wrap"
-  layer: "box"
-  inherit_alpha: true
-  slice9 {
-    x: 7.0
-    y: 10.0
-    z: 7.0
-    w: 9.0
-  }
-  clipping_mode: CLIPPING_MODE_NONE
-  clipping_visible: true
-  clipping_inverted: false
-  alpha: 1.0
-  template_node_child: false
-  size_mode: SIZE_MODE_MANUAL
-  custom_type: 0
-  enabled: true
-  visible: true
-  material: ""
-}
-nodes {
-  position {
-    x: 0.0
-    y: -3.0
-    z: 0.0
-    w: 1.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale {
-    x: 0.2
-    y: 0.2
-    z: 1.0
-    w: 1.0
-  }
-  size {
-    x: 350.0
-    y: 40.0
-    z: 0.0
-    w: 1.0
-  }
-  color {
-    x: 1.0
-    y: 1.0
-    z: 1.0
     w: 1.0
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "\320\237\320\240\320\230\320\234\320\225\320\240"
-  font: "font_standart_mini"
-  id: "account_name"
+  text: "\320\237\320\236\320\221\320\225\320\224\320\220"
+  font: "font_standart_normal"
+  id: "title"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
-  pivot: PIVOT_N
+  pivot: PIVOT_CENTER
   outline {
     x: 0.0
     y: 0.0
@@ -1214,7 +140,7 @@ nodes {
   }
   adjust_mode: ADJUST_MODE_FIT
   line_break: true
-  parent: "account_name_bg"
+  parent: "title_wrap"
   layer: "text"
   inherit_alpha: true
   alpha: 1.0
@@ -1230,8 +156,8 @@ nodes {
 }
 nodes {
   position {
-    x: -2.0
-    y: 11.0
+    x: 240.0
+    y: 64.0
     z: 0.0
     w: 1.0
   }
@@ -1242,14 +168,14 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 1.0
-    y: 1.0
-    z: 1.0
+    x: 0.8
+    y: 0.8
+    z: 0.8
     w: 1.0
   }
   size {
     x: 200.0
-    y: 100.0
+    y: 50.0
     z: 0.0
     w: 1.0
   }
@@ -1260,79 +186,21 @@ nodes {
     w: 1.0
   }
   type: TYPE_BOX
-  blend_mode: BLEND_MODE_ALPHA
-  texture: "first_level/border_avatar"
-  id: "avatar_border"
+  blend_mode: BLEND_MODE_MULT
+  texture: ""
+  id: "wrap_trophy"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
-  parent: "account_wrap"
-  layer: "avatar_border"
+  layer: "box"
   inherit_alpha: true
   slice9 {
-    x: 0.0
+    x: 155.0
     y: 0.0
-    z: 0.0
+    z: 155.0
     w: 0.0
   }
-  clipping_mode: CLIPPING_MODE_NONE
-  clipping_visible: true
-  clipping_inverted: false
-  alpha: 1.0
-  template_node_child: false
-  size_mode: SIZE_MODE_AUTO
-  custom_type: 0
-  enabled: true
-  visible: true
-  material: ""
-}
-nodes {
-  position {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  size {
-    x: 72.0
-    y: 72.0
-    z: 0.0
-    w: 1.0
-  }
-  color {
-    x: 0.31
-    y: 0.294
-    z: 0.404
-    w: 1.0
-  }
-  type: TYPE_PIE
-  blend_mode: BLEND_MODE_ALPHA
-  texture: ""
-  id: "avatar_border_bg"
-  xanchor: XANCHOR_NONE
-  yanchor: YANCHOR_NONE
-  pivot: PIVOT_CENTER
-  adjust_mode: ADJUST_MODE_FIT
-  parent: "avatar_border"
-  layer: "box"
-  inherit_alpha: false
-  outerBounds: PIEBOUNDS_ELLIPSE
-  innerRadius: 0.0
-  perimeterVertices: 25
-  pieFillAngle: 360.0
   clipping_mode: CLIPPING_MODE_NONE
   clipping_visible: true
   clipping_inverted: false
@@ -1347,7 +215,7 @@ nodes {
 nodes {
   position {
     x: 0.0
-    y: 0.0
+    y: 18.0
     z: 0.0
     w: 1.0
   }
@@ -1358,73 +226,14 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 1.0
-    y: 1.0
-    z: 1.0
+    x: 0.3
+    y: 0.3
+    z: 0.3
     w: 1.0
   }
   size {
     x: 200.0
-    y: 100.0
-    z: 0.0
-    w: 1.0
-  }
-  color {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  type: TYPE_BOX
-  blend_mode: BLEND_MODE_ALPHA
-  texture: "first_level/trofey_head_1"
-  id: "avatar_img"
-  xanchor: XANCHOR_NONE
-  yanchor: YANCHOR_NONE
-  pivot: PIVOT_CENTER
-  adjust_mode: ADJUST_MODE_FIT
-  parent: "avatar_border_bg"
-  layer: "box"
-  inherit_alpha: true
-  slice9 {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 0.0
-  }
-  clipping_mode: CLIPPING_MODE_NONE
-  clipping_visible: true
-  clipping_inverted: false
-  alpha: 1.0
-  template_node_child: false
-  size_mode: SIZE_MODE_AUTO
-  custom_type: 0
-  enabled: true
-  visible: true
-  material: ""
-}
-nodes {
-  position {
-    x: -1.0
-    y: -24.0
-    z: 0.0
-    w: 1.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale {
-    x: 0.4
-    y: 0.4
-    z: 1.0
-    w: 1.0
-  }
-  size {
-    x: 50.0
-    y: 30.0
+    y: 40.0
     z: 0.0
     w: 1.0
   }
@@ -1436,9 +245,10 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "1"
-  font: "font_standart_mini"
-  id: "account_level"
+  text: "\320\235\320\220\320\223\320\240\320\220\320\224\320\220:\n"
+  ""
+  font: "font_standart_normal"
+  id: "prize_title"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
@@ -1455,8 +265,8 @@ nodes {
     w: 1.0
   }
   adjust_mode: ADJUST_MODE_FIT
-  line_break: false
-  parent: "avatar_border"
+  line_break: true
+  parent: "wrap_trophy"
   layer: "text"
   inherit_alpha: true
   alpha: 1.0
@@ -1472,8 +282,8 @@ nodes {
 }
 nodes {
   position {
-    x: -110.0
-    y: 36.0
+    x: -81.0
+    y: -8.0
     z: 0.0
     w: 1.0
   }
@@ -1502,20 +312,20 @@ nodes {
     w: 1.0
   }
   type: TYPE_TEMPLATE
-  id: "gold_template"
-  parent: "account"
-  layer: "box"
+  id: "trophy_coins_template"
+  parent: "wrap_trophy"
+  layer: ""
   inherit_alpha: true
   alpha: 1.0
-  template: "/main/gui/elements/account_score.gui"
+  template: "/main/gui/elements/trophy_item.gui"
   template_node_child: false
   custom_type: 0
   enabled: true
 }
 nodes {
   position {
-    x: 268.0
-    y: -106.0
+    x: 0.0
+    y: 0.0
     z: 0.0
     w: 1.0
   }
@@ -1526,14 +336,14 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 0.5
-    y: 0.5
+    x: 1.0
+    y: 1.0
     z: 1.0
     w: 1.0
   }
   size {
-    x: 100.0
-    y: 27.0
+    x: 30.0
+    y: 40.0
     z: 0.0
     w: 1.0
   }
@@ -1544,27 +354,26 @@ nodes {
     w: 1.0
   }
   type: TYPE_BOX
-  blend_mode: BLEND_MODE_ALPHA
-  texture: "first_level/account_border"
-  id: "gold_template/wrap"
+  blend_mode: BLEND_MODE_MULT
+  texture: ""
+  id: "trophy_coins_template/wrap"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
-  pivot: PIVOT_W
+  pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
-  parent: "gold_template"
+  parent: "trophy_coins_template"
   layer: ""
   inherit_alpha: true
   slice9 {
-    x: 15.0
-    y: 13.0
-    z: 15.0
-    w: 14.0
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 0.0
   }
   clipping_mode: CLIPPING_MODE_NONE
   clipping_visible: true
   clipping_inverted: false
   alpha: 1.0
-  overridden_fields: 1
   template_node_child: true
   size_mode: SIZE_MODE_MANUAL
   custom_type: 0
@@ -1575,7 +384,7 @@ nodes {
 nodes {
   position {
     x: 0.0
-    y: 0.0
+    y: 7.0
     z: 0.0
     w: 1.0
   }
@@ -1586,8 +395,8 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 2.0
-    y: 2.0
+    x: 1.0
+    y: 1.0
     z: 1.0
     w: 1.0
   }
@@ -1606,12 +415,12 @@ nodes {
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
   texture: "first_level/interface-icon-gold"
-  id: "gold_template/icon"
+  id: "trophy_coins_template/icon"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
-  parent: "gold_template/wrap"
+  parent: "trophy_coins_template/wrap"
   layer: ""
   inherit_alpha: true
   slice9 {
@@ -1624,8 +433,6 @@ nodes {
   clipping_visible: true
   clipping_inverted: false
   alpha: 1.0
-  overridden_fields: 9
-  overridden_fields: 38
   template_node_child: true
   size_mode: SIZE_MODE_AUTO
   custom_type: 0
@@ -1635,8 +442,8 @@ nodes {
 }
 nodes {
   position {
-    x: 93.0
-    y: 0.0
+    x: -12.0
+    y: 7.0
     z: 0.0
     w: 1.0
   }
@@ -1647,13 +454,13 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 0.5
-    y: 0.5
-    z: 1.0
+    x: 0.4
+    y: 0.4
+    z: 0.3
     w: 1.0
   }
   size {
-    x: 200.0
+    x: 75.0
     y: 40.0
     z: 0.0
     w: 1.0
@@ -1666,9 +473,9 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "999999"
+  text: "999"
   font: "font_standart_normal"
-  id: "gold_template/number"
+  id: "trophy_coins_template/count"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_E
@@ -1685,8 +492,8 @@ nodes {
     w: 1.0
   }
   adjust_mode: ADJUST_MODE_FIT
-  line_break: false
-  parent: "gold_template/wrap"
+  line_break: true
+  parent: "trophy_coins_template/wrap"
   layer: ""
   inherit_alpha: true
   alpha: 1.0
@@ -1702,8 +509,8 @@ nodes {
 }
 nodes {
   position {
-    x: -292.0
-    y: 12.0
+    x: -19.0
+    y: -8.0
     z: 0.0
     w: 1.0
   }
@@ -1732,20 +539,20 @@ nodes {
     w: 1.0
   }
   type: TYPE_TEMPLATE
-  id: "xp_template"
-  parent: "account"
-  layer: "box"
+  id: "trophy_xp_template"
+  parent: "wrap_trophy"
+  layer: ""
   inherit_alpha: true
   alpha: 1.0
-  template: "/main/gui/elements/account_score.gui"
+  template: "/main/gui/elements/trophy_item.gui"
   template_node_child: false
   custom_type: 0
   enabled: true
 }
 nodes {
   position {
-    x: 459.0
-    y: -108.0
+    x: 0.0
+    y: 0.0
     z: 0.0
     w: 1.0
   }
@@ -1756,14 +563,14 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 0.5
-    y: 0.5
+    x: 1.0
+    y: 1.0
     z: 1.0
     w: 1.0
   }
   size {
-    x: 100.0
-    y: 27.0
+    x: 30.0
+    y: 40.0
     z: 0.0
     w: 1.0
   }
@@ -1774,27 +581,26 @@ nodes {
     w: 1.0
   }
   type: TYPE_BOX
-  blend_mode: BLEND_MODE_ALPHA
-  texture: "first_level/account_border"
-  id: "xp_template/wrap"
+  blend_mode: BLEND_MODE_MULT
+  texture: ""
+  id: "trophy_xp_template/wrap"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
-  pivot: PIVOT_W
+  pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
-  parent: "xp_template"
+  parent: "trophy_xp_template"
   layer: ""
   inherit_alpha: true
   slice9 {
-    x: 15.0
-    y: 13.0
-    z: 15.0
-    w: 14.0
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 0.0
   }
   clipping_mode: CLIPPING_MODE_NONE
   clipping_visible: true
   clipping_inverted: false
   alpha: 1.0
-  overridden_fields: 1
   template_node_child: true
   size_mode: SIZE_MODE_MANUAL
   custom_type: 0
@@ -1805,7 +611,7 @@ nodes {
 nodes {
   position {
     x: 0.0
-    y: 0.0
+    y: 7.0
     z: 0.0
     w: 1.0
   }
@@ -1816,8 +622,8 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 2.0
-    y: 2.0
+    x: 1.0
+    y: 1.0
     z: 1.0
     w: 1.0
   }
@@ -1836,12 +642,12 @@ nodes {
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
   texture: "first_level/interface-icon-mutate"
-  id: "xp_template/icon"
+  id: "trophy_xp_template/icon"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
-  parent: "xp_template/wrap"
+  parent: "trophy_xp_template/wrap"
   layer: ""
   inherit_alpha: true
   slice9 {
@@ -1864,8 +670,8 @@ nodes {
 }
 nodes {
   position {
-    x: 93.0
-    y: 0.0
+    x: -12.0
+    y: 7.0
     z: 0.0
     w: 1.0
   }
@@ -1876,13 +682,13 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 0.5
-    y: 0.5
-    z: 1.0
+    x: 0.4
+    y: 0.4
+    z: 0.3
     w: 1.0
   }
   size {
-    x: 200.0
+    x: 75.0
     y: 40.0
     z: 0.0
     w: 1.0
@@ -1895,9 +701,9 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "999999"
+  text: "999"
   font: "font_standart_normal"
-  id: "xp_template/number"
+  id: "trophy_xp_template/count"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_E
@@ -1914,8 +720,8 @@ nodes {
     w: 1.0
   }
   adjust_mode: ADJUST_MODE_FIT
-  line_break: false
-  parent: "xp_template/wrap"
+  line_break: true
+  parent: "trophy_xp_template/wrap"
   layer: ""
   inherit_alpha: true
   alpha: 1.0
@@ -1931,8 +737,8 @@ nodes {
 }
 nodes {
   position {
-    x: -487.0
-    y: -21.0
+    x: 42.0
+    y: -8.0
     z: 0.0
     w: 1.0
   }
@@ -1961,20 +767,20 @@ nodes {
     w: 1.0
   }
   type: TYPE_TEMPLATE
-  id: "resource_template"
-  parent: "account"
-  layer: "box"
+  id: "trophy_resource_template"
+  parent: "wrap_trophy"
+  layer: ""
   inherit_alpha: true
   alpha: 1.0
-  template: "/main/gui/elements/account_score.gui"
+  template: "/main/gui/elements/trophy_item.gui"
   template_node_child: false
   custom_type: 0
   enabled: true
 }
 nodes {
   position {
-    x: 644.0
-    y: -104.0
+    x: 0.0
+    y: 0.0
     z: 0.0
     w: 1.0
   }
@@ -1985,14 +791,14 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 0.5
-    y: 0.5
+    x: 1.0
+    y: 1.0
     z: 1.0
     w: 1.0
   }
   size {
-    x: 100.0
-    y: 27.0
+    x: 30.0
+    y: 40.0
     z: 0.0
     w: 1.0
   }
@@ -2003,27 +809,26 @@ nodes {
     w: 1.0
   }
   type: TYPE_BOX
-  blend_mode: BLEND_MODE_ALPHA
-  texture: "first_level/account_border"
-  id: "resource_template/wrap"
+  blend_mode: BLEND_MODE_MULT
+  texture: ""
+  id: "trophy_resource_template/wrap"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
-  pivot: PIVOT_W
+  pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
-  parent: "resource_template"
+  parent: "trophy_resource_template"
   layer: ""
   inherit_alpha: true
   slice9 {
-    x: 15.0
-    y: 13.0
-    z: 15.0
-    w: 14.0
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 0.0
   }
   clipping_mode: CLIPPING_MODE_NONE
   clipping_visible: true
   clipping_inverted: false
   alpha: 1.0
-  overridden_fields: 1
   template_node_child: true
   size_mode: SIZE_MODE_MANUAL
   custom_type: 0
@@ -2034,7 +839,7 @@ nodes {
 nodes {
   position {
     x: 0.0
-    y: -2.666667
+    y: 7.0
     z: 0.0
     w: 1.0
   }
@@ -2045,8 +850,8 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 2.0
-    y: 2.0
+    x: 1.0
+    y: 1.0
     z: 1.0
     w: 1.0
   }
@@ -2065,12 +870,12 @@ nodes {
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
   texture: "first_level/interface-icon-resource"
-  id: "resource_template/icon"
+  id: "trophy_resource_template/icon"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
-  parent: "resource_template/wrap"
+  parent: "trophy_resource_template/wrap"
   layer: ""
   inherit_alpha: true
   slice9 {
@@ -2083,7 +888,6 @@ nodes {
   clipping_visible: true
   clipping_inverted: false
   alpha: 1.0
-  overridden_fields: 1
   overridden_fields: 9
   template_node_child: true
   size_mode: SIZE_MODE_AUTO
@@ -2094,8 +898,8 @@ nodes {
 }
 nodes {
   position {
-    x: 93.0
-    y: 0.0
+    x: -12.0
+    y: 7.0
     z: 0.0
     w: 1.0
   }
@@ -2106,13 +910,13 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 0.5
-    y: 0.5
-    z: 1.0
+    x: 0.4
+    y: 0.4
+    z: 0.3
     w: 1.0
   }
   size {
-    x: 200.0
+    x: 75.0
     y: 40.0
     z: 0.0
     w: 1.0
@@ -2125,9 +929,9 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "999999"
+  text: "999"
   font: "font_standart_normal"
-  id: "resource_template/number"
+  id: "trophy_resource_template/count"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_E
@@ -2144,8 +948,8 @@ nodes {
     w: 1.0
   }
   adjust_mode: ADJUST_MODE_FIT
-  line_break: false
-  parent: "resource_template/wrap"
+  line_break: true
+  parent: "trophy_resource_template/wrap"
   layer: ""
   inherit_alpha: true
   alpha: 1.0
@@ -2161,125 +965,8 @@ nodes {
 }
 nodes {
   position {
-    x: 474.0
-    y: 256.0
-    z: 0.0
-    w: 1.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  size {
-    x: 10.0
-    y: 10.0
-    z: 0.0
-    w: 1.0
-  }
-  color {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  type: TYPE_BOX
-  blend_mode: BLEND_MODE_MULT
-  texture: ""
-  id: "top_right"
-  xanchor: XANCHOR_NONE
-  yanchor: YANCHOR_NONE
-  pivot: PIVOT_CENTER
-  adjust_mode: ADJUST_MODE_STRETCH
-  layer: "box"
-  inherit_alpha: true
-  slice9 {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 0.0
-  }
-  clipping_mode: CLIPPING_MODE_NONE
-  clipping_visible: true
-  clipping_inverted: false
-  alpha: 1.0
-  template_node_child: false
-  size_mode: SIZE_MODE_MANUAL
-  custom_type: 0
-  enabled: true
-  visible: true
-  material: ""
-}
-nodes {
-  position {
-    x: 1.333336
-    y: 7.333332
-    z: 0.0
-    w: 1.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  size {
-    x: 100.0
-    y: 32.0
-    z: 0.0
-    w: 1.0
-  }
-  color {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  type: TYPE_BOX
-  blend_mode: BLEND_MODE_MULT
-  texture: ""
-  id: "btns"
-  xanchor: XANCHOR_NONE
-  yanchor: YANCHOR_NONE
-  pivot: PIVOT_NE
-  adjust_mode: ADJUST_MODE_FIT
-  parent: "top_right"
-  layer: "box"
-  inherit_alpha: true
-  slice9 {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 0.0
-  }
-  clipping_mode: CLIPPING_MODE_NONE
-  clipping_visible: true
-  clipping_inverted: false
-  alpha: 1.0
-  template_node_child: false
-  size_mode: SIZE_MODE_MANUAL
-  custom_type: 0
-  enabled: true
-  visible: true
-  material: ""
-}
-nodes {
-  position {
-    x: -14.333328
-    y: -16.0
+    x: 104.0
+    y: -8.0
     z: 0.0
     w: 1.0
   }
@@ -2308,10 +995,296 @@ nodes {
     w: 1.0
   }
   type: TYPE_TEMPLATE
-  id: "btn_1_template"
-  parent: "btns"
-  layer: "box"
+  id: "trophy_score_template"
+  parent: "wrap_trophy"
+  layer: ""
   inherit_alpha: true
+  alpha: 1.0
+  template: "/main/gui/elements/trophy_item.gui"
+  template_node_child: false
+  custom_type: 0
+  enabled: true
+}
+nodes {
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 30.0
+    y: 40.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_BOX
+  blend_mode: BLEND_MODE_MULT
+  texture: ""
+  id: "trophy_score_template/wrap"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_CENTER
+  adjust_mode: ADJUST_MODE_FIT
+  parent: "trophy_score_template"
+  layer: ""
+  inherit_alpha: true
+  slice9 {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 0.0
+  }
+  clipping_mode: CLIPPING_MODE_NONE
+  clipping_visible: true
+  clipping_inverted: false
+  alpha: 1.0
+  template_node_child: true
+  size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
+  enabled: true
+  visible: true
+  material: ""
+}
+nodes {
+  position {
+    x: 0.0
+    y: 7.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_BOX
+  blend_mode: BLEND_MODE_ALPHA
+  texture: "first_level/icon_zombie_default"
+  id: "trophy_score_template/icon"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_CENTER
+  adjust_mode: ADJUST_MODE_FIT
+  parent: "trophy_score_template/wrap"
+  layer: ""
+  inherit_alpha: true
+  slice9 {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 0.0
+  }
+  clipping_mode: CLIPPING_MODE_NONE
+  clipping_visible: true
+  clipping_inverted: false
+  alpha: 1.0
+  overridden_fields: 9
+  template_node_child: true
+  size_mode: SIZE_MODE_AUTO
+  custom_type: 0
+  enabled: true
+  visible: true
+  material: ""
+}
+nodes {
+  position {
+    x: -12.0
+    y: 7.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 0.4
+    y: 0.4
+    z: 0.3
+    w: 1.0
+  }
+  size {
+    x: 75.0
+    y: 40.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_TEXT
+  blend_mode: BLEND_MODE_ALPHA
+  text: "999"
+  font: "font_standart_normal"
+  id: "trophy_score_template/count"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_E
+  outline {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  shadow {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  adjust_mode: ADJUST_MODE_FIT
+  line_break: true
+  parent: "trophy_score_template/wrap"
+  layer: ""
+  inherit_alpha: true
+  alpha: 1.0
+  outline_alpha: 1.0
+  shadow_alpha: 1.0
+  template_node_child: true
+  text_leading: 1.0
+  text_tracking: 0.0
+  custom_type: 0
+  enabled: true
+  visible: true
+  material: ""
+}
+nodes {
+  position {
+    x: 240.0
+    y: 28.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.25
+    y: 1.25
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 130.0
+    y: 50.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_BOX
+  blend_mode: BLEND_MODE_ALPHA
+  texture: ""
+  id: "wrap_btns_win"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_CENTER
+  adjust_mode: ADJUST_MODE_FIT
+  layer: "box"
+  inherit_alpha: false
+  slice9 {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 0.0
+  }
+  clipping_mode: CLIPPING_MODE_NONE
+  clipping_visible: true
+  clipping_inverted: false
+  alpha: 0.0
+  template_node_child: false
+  size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
+  enabled: true
+  visible: false
+  material: ""
+}
+nodes {
+  position {
+    x: -47.2
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_TEMPLATE
+  id: "btn_win_1_template"
+  parent: "wrap_btns_win"
+  layer: "box"
+  inherit_alpha: false
   alpha: 1.0
   template: "/main/gui/elements/btn_circle.gui"
   template_node_child: false
@@ -2352,12 +1325,12 @@ nodes {
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
   texture: "first_level/account_border"
-  id: "btn_1_template/btn"
+  id: "btn_win_1_template/btn"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
-  parent: "btn_1_template"
+  parent: "btn_win_1_template"
   layer: ""
   inherit_alpha: true
   slice9 {
@@ -2411,12 +1384,12 @@ nodes {
   type: TYPE_BOX
   blend_mode: BLEND_MODE_MULT
   texture: ""
-  id: "btn_1_template/btn_icon_wrap"
+  id: "btn_win_1_template/btn_icon_wrap"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
-  parent: "btn_1_template/btn"
+  parent: "btn_win_1_template/btn"
   layer: ""
   inherit_alpha: true
   slice9 {
@@ -2450,9 +1423,9 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 0.55
-    y: 0.55
-    z: 0.55
+    x: 0.65
+    y: 0.65
+    z: 1.0
     w: 1.0
   }
   size {
@@ -2469,13 +1442,13 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "first_level/icon_pause_default"
-  id: "btn_1_template/btn_icon"
+  texture: "first_level/icon_back_default"
+  id: "btn_win_1_template/btn_icon"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
-  parent: "btn_1_template/btn_icon_wrap"
+  parent: "btn_win_1_template/btn_icon_wrap"
   layer: ""
   inherit_alpha: true
   slice9 {
@@ -2489,7 +1462,6 @@ nodes {
   clipping_inverted: false
   alpha: 1.0
   overridden_fields: 1
-  overridden_fields: 3
   overridden_fields: 9
   template_node_child: true
   size_mode: SIZE_MODE_AUTO
@@ -2500,8 +1472,8 @@ nodes {
 }
 nodes {
   position {
-    x: -50.33333
-    y: -16.0
+    x: 0.0
+    y: 0.0
     z: 0.0
     w: 1.0
   }
@@ -2530,10 +1502,10 @@ nodes {
     w: 1.0
   }
   type: TYPE_TEMPLATE
-  id: "btn_2_template"
-  parent: "btns"
+  id: "btn_win_2_template"
+  parent: "wrap_btns_win"
   layer: "box"
-  inherit_alpha: true
+  inherit_alpha: false
   alpha: 1.0
   template: "/main/gui/elements/btn_circle.gui"
   template_node_child: false
@@ -2554,8 +1526,8 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 1.0
-    y: 1.0
+    x: 1.25
+    y: 1.25
     z: 1.0
     w: 1.0
   }
@@ -2574,12 +1546,12 @@ nodes {
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
   texture: "first_level/account_border"
-  id: "btn_2_template/btn"
+  id: "btn_win_2_template/btn"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
-  parent: "btn_2_template"
+  parent: "btn_win_2_template"
   layer: ""
   inherit_alpha: true
   slice9 {
@@ -2592,6 +1564,7 @@ nodes {
   clipping_visible: true
   clipping_inverted: false
   alpha: 1.0
+  overridden_fields: 3
   template_node_child: true
   size_mode: SIZE_MODE_AUTO
   custom_type: 0
@@ -2633,12 +1606,12 @@ nodes {
   type: TYPE_BOX
   blend_mode: BLEND_MODE_MULT
   texture: ""
-  id: "btn_2_template/btn_icon_wrap"
+  id: "btn_win_2_template/btn_icon_wrap"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
-  parent: "btn_2_template/btn"
+  parent: "btn_win_2_template/btn"
   layer: ""
   inherit_alpha: true
   slice9 {
@@ -2660,7 +1633,7 @@ nodes {
 }
 nodes {
   position {
-    x: 0.0
+    x: 2.0
     y: 0.0
     z: 0.0
     w: 1.0
@@ -2672,8 +1645,8 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 0.7
-    y: 0.7
+    x: 0.65
+    y: 0.65
     z: 1.0
     w: 1.0
   }
@@ -2684,20 +1657,20 @@ nodes {
     w: 1.0
   }
   color {
-    x: 1.0
+    x: 0.0
     y: 1.0
-    z: 1.0
+    z: 0.0
     w: 1.0
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "first_level/icon_refresh_default"
-  id: "btn_2_template/btn_icon"
+  texture: "first_level/icon_play_default"
+  id: "btn_win_2_template/btn_icon"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
-  parent: "btn_2_template/btn_icon_wrap"
+  parent: "btn_win_2_template/btn_icon_wrap"
   layer: ""
   inherit_alpha: true
   slice9 {
@@ -2711,8 +1684,9 @@ nodes {
   clipping_inverted: false
   alpha: 1.0
   overridden_fields: 1
-  overridden_fields: 3
+  overridden_fields: 5
   overridden_fields: 9
+  overridden_fields: 38
   template_node_child: true
   size_mode: SIZE_MODE_AUTO
   custom_type: 0
@@ -2722,8 +1696,8 @@ nodes {
 }
 nodes {
   position {
-    x: -86.0
-    y: -16.333336
+    x: 47.4
+    y: 0.0
     z: 0.0
     w: 1.0
   }
@@ -2752,10 +1726,10 @@ nodes {
     w: 1.0
   }
   type: TYPE_TEMPLATE
-  id: "btn_3_template"
-  parent: "btns"
+  id: "btn_win_3_template"
+  parent: "wrap_btns_win"
   layer: "box"
-  inherit_alpha: true
+  inherit_alpha: false
   alpha: 1.0
   template: "/main/gui/elements/btn_circle_up.gui"
   template_node_child: false
@@ -2796,12 +1770,12 @@ nodes {
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
   texture: "first_level/account_border"
-  id: "btn_3_template/btn"
+  id: "btn_win_3_template/btn"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
-  parent: "btn_3_template"
+  parent: "btn_win_3_template"
   layer: ""
   inherit_alpha: true
   slice9 {
@@ -2831,7 +1805,7 @@ nodes {
   rotation {
     x: 0.0
     y: 0.0
-    z: 0.474
+    z: 0.0
     w: 1.0
   }
   scale {
@@ -2855,12 +1829,12 @@ nodes {
   type: TYPE_BOX
   blend_mode: BLEND_MODE_MULT
   texture: ""
-  id: "btn_3_template/btn_icon_wrap"
+  id: "btn_win_3_template/btn_icon_wrap"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
-  parent: "btn_3_template/btn"
+  parent: "btn_win_3_template/btn"
   layer: ""
   inherit_alpha: true
   slice9 {
@@ -2873,7 +1847,6 @@ nodes {
   clipping_visible: true
   clipping_inverted: false
   alpha: 1.0
-  overridden_fields: 2
   template_node_child: true
   size_mode: SIZE_MODE_MANUAL
   custom_type: 0
@@ -2915,12 +1888,12 @@ nodes {
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
   texture: "first_level/icon_zombie_default"
-  id: "btn_3_template/btn_icon"
+  id: "btn_win_3_template/btn_icon"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
-  parent: "btn_3_template/btn_icon_wrap"
+  parent: "btn_win_3_template/btn_icon_wrap"
   layer: ""
   inherit_alpha: true
   slice9 {
@@ -2974,12 +1947,12 @@ nodes {
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
   texture: "first_level/icon_up_arrow"
-  id: "btn_3_template/up"
+  id: "btn_win_3_template/up"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
-  parent: "btn_3_template/btn_icon_wrap"
+  parent: "btn_win_3_template/btn_icon_wrap"
   layer: ""
   inherit_alpha: true
   slice9 {
@@ -3002,7 +1975,65 @@ nodes {
 nodes {
   position {
     x: 240.0
-    y: 135.0
+    y: 28.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.25
+    y: 1.25
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 130.0
+    y: 50.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_BOX
+  blend_mode: BLEND_MODE_ALPHA
+  texture: ""
+  id: "wrap_btns_fail"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_CENTER
+  adjust_mode: ADJUST_MODE_FIT
+  layer: "box"
+  inherit_alpha: false
+  slice9 {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 0.0
+  }
+  clipping_mode: CLIPPING_MODE_NONE
+  clipping_visible: true
+  clipping_inverted: false
+  alpha: 0.0
+  template_node_child: false
+  size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
+  enabled: true
+  visible: true
+  material: ""
+}
+nodes {
+  position {
+    x: -47.2
+    y: 0.0
     z: 0.0
     w: 1.0
   }
@@ -3019,8 +2050,8 @@ nodes {
     w: 1.0
   }
   size {
-    x: 120.0
-    y: 10.0
+    x: 200.0
+    y: 100.0
     z: 0.0
     w: 1.0
   }
@@ -3030,36 +2061,20 @@ nodes {
     z: 1.0
     w: 1.0
   }
-  type: TYPE_BOX
-  blend_mode: BLEND_MODE_MULT
-  texture: ""
-  id: "marker_wrap"
-  xanchor: XANCHOR_NONE
-  yanchor: YANCHOR_NONE
-  pivot: PIVOT_W
-  adjust_mode: ADJUST_MODE_FIT
-  layer: ""
-  inherit_alpha: true
-  slice9 {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 0.0
-  }
-  clipping_mode: CLIPPING_MODE_NONE
-  clipping_visible: true
-  clipping_inverted: false
+  type: TYPE_TEMPLATE
+  id: "btn_fail_1_template"
+  parent: "wrap_btns_fail"
+  layer: "box"
+  inherit_alpha: false
   alpha: 1.0
+  template: "/main/gui/elements/btn_circle.gui"
   template_node_child: false
-  size_mode: SIZE_MODE_MANUAL
   custom_type: 0
-  enabled: false
-  visible: true
-  material: ""
+  enabled: true
 }
 nodes {
   position {
-    x: 120.0
+    x: 0.0
     y: 0.0
     z: 0.0
     w: 1.0
@@ -3067,7 +2082,7 @@ nodes {
   rotation {
     x: 0.0
     y: 0.0
-    z: 90.0
+    z: 0.0
     w: 1.0
   }
   scale {
@@ -3090,13 +2105,13 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "first_level/marker_goal"
-  id: "marker_goal"
+  texture: "first_level/account_border"
+  id: "btn_fail_1_template/btn"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
-  parent: "marker_wrap"
+  parent: "btn_fail_1_template"
   layer: ""
   inherit_alpha: true
   slice9 {
@@ -3109,7 +2124,630 @@ nodes {
   clipping_visible: true
   clipping_inverted: false
   alpha: 1.0
+  template_node_child: true
+  size_mode: SIZE_MODE_AUTO
+  custom_type: 0
+  enabled: true
+  visible: true
+  material: ""
+}
+nodes {
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 32.0
+    y: 32.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_BOX
+  blend_mode: BLEND_MODE_MULT
+  texture: ""
+  id: "btn_fail_1_template/btn_icon_wrap"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_CENTER
+  adjust_mode: ADJUST_MODE_FIT
+  parent: "btn_fail_1_template/btn"
+  layer: ""
+  inherit_alpha: true
+  slice9 {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 0.0
+  }
+  clipping_mode: CLIPPING_MODE_NONE
+  clipping_visible: true
+  clipping_inverted: false
+  alpha: 1.0
+  template_node_child: true
+  size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
+  enabled: true
+  visible: false
+  material: ""
+}
+nodes {
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 0.65
+    y: 0.65
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_BOX
+  blend_mode: BLEND_MODE_ALPHA
+  texture: "first_level/icon_back_default"
+  id: "btn_fail_1_template/btn_icon"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_CENTER
+  adjust_mode: ADJUST_MODE_FIT
+  parent: "btn_fail_1_template/btn_icon_wrap"
+  layer: ""
+  inherit_alpha: true
+  slice9 {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 0.0
+  }
+  clipping_mode: CLIPPING_MODE_NONE
+  clipping_visible: true
+  clipping_inverted: false
+  alpha: 1.0
+  overridden_fields: 1
+  overridden_fields: 9
+  template_node_child: true
+  size_mode: SIZE_MODE_AUTO
+  custom_type: 0
+  enabled: true
+  visible: true
+  material: ""
+}
+nodes {
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_TEMPLATE
+  id: "btn_fail_2_template"
+  parent: "wrap_btns_fail"
+  layer: "box"
+  inherit_alpha: false
+  alpha: 1.0
+  template: "/main/gui/elements/btn_circle.gui"
   template_node_child: false
+  custom_type: 0
+  enabled: true
+}
+nodes {
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.25
+    y: 1.25
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_BOX
+  blend_mode: BLEND_MODE_ALPHA
+  texture: "first_level/account_border"
+  id: "btn_fail_2_template/btn"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_CENTER
+  adjust_mode: ADJUST_MODE_FIT
+  parent: "btn_fail_2_template"
+  layer: ""
+  inherit_alpha: true
+  slice9 {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 0.0
+  }
+  clipping_mode: CLIPPING_MODE_NONE
+  clipping_visible: true
+  clipping_inverted: false
+  alpha: 1.0
+  overridden_fields: 3
+  template_node_child: true
+  size_mode: SIZE_MODE_AUTO
+  custom_type: 0
+  enabled: true
+  visible: true
+  material: ""
+}
+nodes {
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 32.0
+    y: 32.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_BOX
+  blend_mode: BLEND_MODE_MULT
+  texture: ""
+  id: "btn_fail_2_template/btn_icon_wrap"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_CENTER
+  adjust_mode: ADJUST_MODE_FIT
+  parent: "btn_fail_2_template/btn"
+  layer: ""
+  inherit_alpha: true
+  slice9 {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 0.0
+  }
+  clipping_mode: CLIPPING_MODE_NONE
+  clipping_visible: true
+  clipping_inverted: false
+  alpha: 1.0
+  template_node_child: true
+  size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
+  enabled: true
+  visible: false
+  material: ""
+}
+nodes {
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 0.7
+    y: 0.7
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 0.0
+    y: 1.0
+    z: 0.0
+    w: 1.0
+  }
+  type: TYPE_BOX
+  blend_mode: BLEND_MODE_ALPHA
+  texture: "first_level/icon_refresh_default"
+  id: "btn_fail_2_template/btn_icon"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_CENTER
+  adjust_mode: ADJUST_MODE_FIT
+  parent: "btn_fail_2_template/btn_icon_wrap"
+  layer: ""
+  inherit_alpha: true
+  slice9 {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 0.0
+  }
+  clipping_mode: CLIPPING_MODE_NONE
+  clipping_visible: true
+  clipping_inverted: false
+  alpha: 1.0
+  overridden_fields: 1
+  overridden_fields: 3
+  overridden_fields: 5
+  overridden_fields: 9
+  overridden_fields: 38
+  template_node_child: true
+  size_mode: SIZE_MODE_AUTO
+  custom_type: 0
+  enabled: true
+  visible: true
+  material: ""
+}
+nodes {
+  position {
+    x: 47.4
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_TEMPLATE
+  id: "btn_fail_3_template"
+  parent: "wrap_btns_fail"
+  layer: "box"
+  inherit_alpha: false
+  alpha: 1.0
+  template: "/main/gui/elements/btn_circle_up.gui"
+  template_node_child: false
+  custom_type: 0
+  enabled: true
+}
+nodes {
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_BOX
+  blend_mode: BLEND_MODE_ALPHA
+  texture: "first_level/account_border"
+  id: "btn_fail_3_template/btn"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_CENTER
+  adjust_mode: ADJUST_MODE_FIT
+  parent: "btn_fail_3_template"
+  layer: ""
+  inherit_alpha: true
+  slice9 {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 0.0
+  }
+  clipping_mode: CLIPPING_MODE_NONE
+  clipping_visible: true
+  clipping_inverted: false
+  alpha: 1.0
+  template_node_child: true
+  size_mode: SIZE_MODE_AUTO
+  custom_type: 0
+  enabled: true
+  visible: true
+  material: ""
+}
+nodes {
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 32.0
+    y: 32.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_BOX
+  blend_mode: BLEND_MODE_MULT
+  texture: ""
+  id: "btn_fail_3_template/btn_icon_wrap"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_CENTER
+  adjust_mode: ADJUST_MODE_FIT
+  parent: "btn_fail_3_template/btn"
+  layer: ""
+  inherit_alpha: true
+  slice9 {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 0.0
+  }
+  clipping_mode: CLIPPING_MODE_NONE
+  clipping_visible: true
+  clipping_inverted: false
+  alpha: 1.0
+  template_node_child: true
+  size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
+  enabled: true
+  visible: false
+  material: ""
+}
+nodes {
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 0.6
+    y: 0.6
+    z: 0.6
+    w: 1.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_BOX
+  blend_mode: BLEND_MODE_ALPHA
+  texture: "first_level/icon_zombie_default"
+  id: "btn_fail_3_template/btn_icon"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_CENTER
+  adjust_mode: ADJUST_MODE_FIT
+  parent: "btn_fail_3_template/btn_icon_wrap"
+  layer: ""
+  inherit_alpha: true
+  slice9 {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 0.0
+  }
+  clipping_mode: CLIPPING_MODE_NONE
+  clipping_visible: true
+  clipping_inverted: false
+  alpha: 1.0
+  template_node_child: true
+  size_mode: SIZE_MODE_AUTO
+  custom_type: 0
+  enabled: true
+  visible: true
+  material: ""
+}
+nodes {
+  position {
+    x: -5.0
+    y: 7.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 0.6
+    y: 0.6
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_BOX
+  blend_mode: BLEND_MODE_ALPHA
+  texture: "first_level/icon_up_arrow"
+  id: "btn_fail_3_template/up"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_CENTER
+  adjust_mode: ADJUST_MODE_FIT
+  parent: "btn_fail_3_template/btn_icon_wrap"
+  layer: ""
+  inherit_alpha: true
+  slice9 {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 0.0
+  }
+  clipping_mode: CLIPPING_MODE_NONE
+  clipping_visible: true
+  clipping_inverted: false
+  alpha: 1.0
+  template_node_child: true
   size_mode: SIZE_MODE_AUTO
   custom_type: 0
   enabled: true
@@ -3120,328 +2758,14 @@ layers {
   name: "box"
 }
 layers {
-  name: "study_bg"
-}
-layers {
-  name: "study_focus"
-}
-layers {
-  name: "avatar_border"
-}
-layers {
-  name: "avatar_content"
-}
-layers {
   name: "text"
 }
 material: "/builtins/materials/gui.material"
 layouts {
-  name: "Portrait"
-  nodes {
-    position {
-      x: 262.0
-      y: 433.0
-      z: 0.0
-      w: 1.0
-    }
-    rotation {
-      x: 0.0
-      y: 0.0
-      z: 0.0
-      w: 1.0
-    }
-    scale {
-      x: 1.0
-      y: 1.0
-      z: 1.0
-      w: 1.0
-    }
-    size {
-      x: 10.0
-      y: 10.0
-      z: 0.0
-      w: 1.0
-    }
-    color {
-      x: 1.0
-      y: 1.0
-      z: 1.0
-      w: 1.0
-    }
-    type: TYPE_BOX
-    blend_mode: BLEND_MODE_MULT
-    texture: ""
-    id: "top"
-    xanchor: XANCHOR_NONE
-    yanchor: YANCHOR_NONE
-    pivot: PIVOT_E
-    adjust_mode: ADJUST_MODE_STRETCH
-    layer: "box"
-    inherit_alpha: true
-    slice9 {
-      x: 0.0
-      y: 0.0
-      z: 0.0
-      w: 0.0
-    }
-    clipping_mode: CLIPPING_MODE_NONE
-    clipping_visible: true
-    clipping_inverted: false
-    alpha: 1.0
-    overridden_fields: 1
-    overridden_fields: 14
-    template_node_child: false
-    size_mode: SIZE_MODE_MANUAL
-    custom_type: 0
-    enabled: true
-    visible: true
-    material: ""
-  }
-  nodes {
-    position {
-      x: -37.0
-      y: -3.333333
-      z: 0.0
-      w: 1.0
-    }
-    rotation {
-      x: 0.0
-      y: 0.0
-      z: 0.0
-      w: 1.0
-    }
-    scale {
-      x: 0.75
-      y: 0.75
-      z: 1.0
-      w: 1.0
-    }
-    size {
-      x: 98.0
-      y: 40.0
-      z: 0.0
-      w: 1.0
-    }
-    color {
-      x: 1.0
-      y: 1.0
-      z: 1.0
-      w: 1.0
-    }
-    type: TYPE_BOX
-    blend_mode: BLEND_MODE_MULT
-    texture: ""
-    id: "stars_wrap"
-    xanchor: XANCHOR_NONE
-    yanchor: YANCHOR_NONE
-    pivot: PIVOT_CENTER
-    adjust_mode: ADJUST_MODE_FIT
-    parent: "top"
-    layer: "box"
-    inherit_alpha: true
-    slice9 {
-      x: 30.0
-      y: 25.0
-      z: 30.0
-      w: 25.0
-    }
-    clipping_mode: CLIPPING_MODE_NONE
-    clipping_visible: false
-    clipping_inverted: true
-    alpha: 1.0
-    overridden_fields: 1
-    template_node_child: false
-    size_mode: SIZE_MODE_MANUAL
-    custom_type: 0
-    enabled: true
-    visible: true
-    material: ""
-  }
-  nodes {
-    position {
-      x: 0.0
-      y: 0.0
-      z: 0.0
-      w: 1.0
-    }
-    rotation {
-      x: 0.0
-      y: 0.0
-      z: 0.0
-      w: 1.0
-    }
-    scale {
-      x: 1.0
-      y: 1.0
-      z: 1.0
-      w: 1.0
-    }
-    size {
-      x: 1080.0
-      y: 1920.0
-      z: 0.0
-      w: 1.0
-    }
-    color {
-      x: 0.0
-      y: 0.0
-      z: 0.0
-      w: 1.0
-    }
-    type: TYPE_BOX
-    blend_mode: BLEND_MODE_ALPHA
-    texture: ""
-    id: "study_bg"
-    xanchor: XANCHOR_NONE
-    yanchor: YANCHOR_NONE
-    pivot: PIVOT_SW
-    adjust_mode: ADJUST_MODE_STRETCH
-    layer: "study_bg"
-    inherit_alpha: true
-    slice9 {
-      x: 0.0
-      y: 0.0
-      z: 0.0
-      w: 0.0
-    }
-    clipping_mode: CLIPPING_MODE_NONE
-    clipping_visible: true
-    clipping_inverted: false
-    alpha: 0.85
-    overridden_fields: 4
-    template_node_child: false
-    size_mode: SIZE_MODE_MANUAL
-    custom_type: 0
-    enabled: false
-    visible: true
-    material: ""
-  }
-  nodes {
-    position {
-      x: 63.0
-      y: 451.0
-      z: 0.0
-      w: 1.0
-    }
-    rotation {
-      x: 0.0
-      y: 0.0
-      z: 0.0
-      w: 1.0
-    }
-    scale {
-      x: 0.8
-      y: 0.8
-      z: 1.0
-      w: 1.0
-    }
-    size {
-      x: 200.0
-      y: 100.0
-      z: 0.0
-      w: 1.0
-    }
-    color {
-      x: 1.0
-      y: 1.0
-      z: 1.0
-      w: 1.0
-    }
-    type: TYPE_BOX
-    blend_mode: BLEND_MODE_MULT
-    texture: ""
-    id: "top_left"
-    xanchor: XANCHOR_NONE
-    yanchor: YANCHOR_NONE
-    pivot: PIVOT_CENTER
-    adjust_mode: ADJUST_MODE_STRETCH
-    layer: "box"
-    inherit_alpha: true
-    slice9 {
-      x: 0.0
-      y: 0.0
-      z: 0.0
-      w: 0.0
-    }
-    clipping_mode: CLIPPING_MODE_NONE
-    clipping_visible: true
-    clipping_inverted: false
-    alpha: 1.0
-    overridden_fields: 1
-    overridden_fields: 3
-    template_node_child: false
-    size_mode: SIZE_MODE_AUTO
-    custom_type: 0
-    enabled: true
-    visible: true
-    material: ""
-  }
-  nodes {
-    position {
-      x: 261.0
-      y: 471.0
-      z: 0.0
-      w: 1.0
-    }
-    rotation {
-      x: 0.0
-      y: 0.0
-      z: 0.0
-      w: 1.0
-    }
-    scale {
-      x: 1.0
-      y: 1.0
-      z: 1.0
-      w: 1.0
-    }
-    size {
-      x: 10.0
-      y: 10.0
-      z: 0.0
-      w: 1.0
-    }
-    color {
-      x: 1.0
-      y: 1.0
-      z: 1.0
-      w: 1.0
-    }
-    type: TYPE_BOX
-    blend_mode: BLEND_MODE_MULT
-    texture: ""
-    id: "top_right"
-    xanchor: XANCHOR_NONE
-    yanchor: YANCHOR_NONE
-    pivot: PIVOT_CENTER
-    adjust_mode: ADJUST_MODE_STRETCH
-    layer: "box"
-    inherit_alpha: true
-    slice9 {
-      x: 0.0
-      y: 0.0
-      z: 0.0
-      w: 0.0
-    }
-    clipping_mode: CLIPPING_MODE_NONE
-    clipping_visible: true
-    clipping_inverted: false
-    alpha: 1.0
-    overridden_fields: 1
-    template_node_child: false
-    size_mode: SIZE_MODE_MANUAL
-    custom_type: 0
-    enabled: true
-    visible: true
-    material: ""
-  }
-}
-layouts {
   name: "Landscape"
 }
-adjust_reference: ADJUST_REFERENCE_PARENT
-max_nodes: 512
-particlefxs {
-  name: "stars_active"
-  particlefx: "/main/game/effects/stars_active.particlefx"
+layouts {
+  name: "Portrait"
 }
+adjust_reference: ADJUST_REFERENCE_PARENT
+max_nodes: 1024

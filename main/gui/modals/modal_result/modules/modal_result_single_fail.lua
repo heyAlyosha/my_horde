@@ -1,13 +1,13 @@
 -- Отрисовка победы в окне результатов игры
 local M = {}
 
-local modal_result_single_btns = require "main.gui.modals.modal_result_single.modules.modal_result_single_btns"
+local modal_result_single_btns = require "main.gui.modals.modal_result.modules.modal_result_single_btns"
 local druid = require("druid.druid")
 local gui_input = require "main.gui.modules.gui_input"
 local storage_gui = require "main.storage.storage_gui"
 local gui_animate = require "main.gui.modules.gui_animate"
-local modal_result_single_animations = require "main.gui.modals.modal_result_single.animations.modal_result_single_animations"
-local modal_result_single_animate_win = require "main.gui.modals.modal_result_single.animations.modal_result_single_animate_win"
+local modal_result_single_animations = require "main.gui.modals.modal_result.animations.modal_result_single_animations"
+local modal_result_single_animate_win = require "main.gui.modals.modal_result.animations.modal_result_single_animate_win"
 local gui_manager = require "main.gui.modules.gui_manager"
 local game_content_levels = require "main.game.content.game_content_levels"
 local game_content_company = require "main.game.content.game_content_company"
