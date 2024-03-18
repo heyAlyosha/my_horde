@@ -22,7 +22,10 @@ function M.render_btns_set(self, set_id)
 
 			local node_btn = self.nodes["btn_"..i.."_wrap"]
 			local node_btn_icon_wrap = self.nodes["btn_"..i.."_icon_wrap"]
-			local node_icon = self.nodes["btn_"..i.."_icon"]
+			local node_icon
+			if i ~= 3 then
+				node_icon = self.nodes["btn_"..i.."_icon"]
+			end
 			local btn_content = self.btns_content[btn_id]
 
 			if not btn_id then
@@ -37,8 +40,8 @@ function M.render_btns_set(self, set_id)
 					type = "btn", 
 					section = "interface_right", 
 					node = node_btn, 
-					wrap_node = node_icon,
-					node_title = false, 
+					--wrap_node = node_icon,
+					node_title = node_icon, 
 					icon = "btn_interface_",
 					wrap_icon = btn_content.icon.."_"
 				})
