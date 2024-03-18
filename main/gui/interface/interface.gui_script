@@ -279,6 +279,7 @@ function on_input(self, action_id, action)
 			})
 
 		elseif btn.id == "refresh" then
+			
 			msg.post("main:/loader_main", "reload_level")
 
 		elseif btn.id == "settings" then

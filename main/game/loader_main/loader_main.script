@@ -85,12 +85,6 @@ function init(self)
 		company_id = "city_hospital", level_id = "hospital_1"
 	})
 
-	msg.post("main:/loader_gui", "visible", {
-		id = "modal_settings",
-		visible = true,
-		type = hash("popup")
-	})
-
 	--game_content_prize.init(self)
 	--game_content_artifact.init(self)
 	--game_content_achieve.init(self)
@@ -152,7 +146,24 @@ function on_message(self, message_id, message, sender)
 
 	elseif message_id == hash("load_level") then
 		msg.post(storage_collection.path_proxy_game, "load")
+
 	elseif message_id == hash("proxy_unloaded") then
+		if storage_gui.components_visible.modal_settings then
+			msg.post("main:/loader_gui", "visible", {
+				id = "modal_settings",
+				visible = false,
+				type = hash("animated_close")
+			})
+		end
+
+		if storage_gui.components_visible.modal_pause then
+			msg.post("main:/loader_gui", "visible", {
+				id = "modal_pause",
+				visible = false,
+				type = hash("animated_close")
+			})
+		end
+
 		--Коллекция удалена
 		if self.reload then
 			-- Если перезапуск миссии
