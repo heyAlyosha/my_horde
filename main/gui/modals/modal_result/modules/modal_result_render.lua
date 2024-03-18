@@ -39,7 +39,7 @@ function M.visible(self, data)
 		-- Добавляем кнопки
 		self.btns = {
 			{id = "back", type = "btn", section = "body",  icon = "btn_interface_"},
-			{id = "continue", type = "btn", section = "body",  icon = "btn_interface_"},
+			{id = "continue", type = "btn", section = "body",  icon = "btn_interface_", color = color.lime},
 			{id = "shop", type = "btn", section = "body", icon = "btn_interface_"},
 		}
 
@@ -56,7 +56,7 @@ function M.visible(self, data)
 		--
 		self.btns = {
 			{id = "back", type = "btn", section = "body", icon = "btn_interface_"},
-			{id = "refresh", type = "btn", section = "body", icon = "btn_interface_"},
+			{id = "refresh", type = "btn", section = "body", icon = "btn_interface_", color = color.lime},
 			{id = "shop", type = "btn", section = "body", icon = "btn_interface_"},
 		}
 
@@ -73,6 +73,8 @@ function M.visible(self, data)
 			self.btns[i].node_title = gui.get_node("btn_"..self.data.type_result.."_"..i.."_template/btn_icon")
 		end
 	end
+
+	self.druid = druid.new(self)
 
 	-- АНИМАЦИЯ ПОЯВЛЕНИЯ ЭЛЕМЕНТОВ
 	local delay = 0
@@ -111,15 +113,22 @@ function M.visible(self, data)
 			gui_animate.counter(self, array)
 		end)
 	end
-	
-	--[[
-	modal_result_single_animate_win.start(self, data, nil, function (self)
+
+	-- Кнопки
+	timer_linear.add(self, "start", 0, function (self)
+		-- Фокус
+		for i, btn in ipairs(self.btns) do
+			if btn.id == "continue" or btn.id == "refresh" then
+				gui_input.set_focus(self, i)
+				gui_animate.pulse_loop(self, btn.node, 2)
+				break
+			end
+		end
+
 		--modal_result_single_btns.render_login_btn(self)
 		self.druid = druid.new(self)
-		--gui_input.set_focus(self, 2)
 		--msg.post("game-room:/core_game", "event", {id = "visible_game_result"})
 	end)
-	--]]
 
 	-- Отрисовываем кнопки
 	gui_input.render_btns(self)
