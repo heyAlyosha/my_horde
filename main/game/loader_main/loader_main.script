@@ -87,10 +87,10 @@ function init(self)
 		value = {
 			type_result = "win",
 			prizes = {
-				coins = 0,
-				xp = 0,
-				resourses = 0,
-				trofey = 0
+				coins = 100,
+				xp = 200,
+				resource = 400,
+				trofey = 2
 			},
 		},
 	})

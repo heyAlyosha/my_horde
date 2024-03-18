@@ -163,7 +163,7 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "999"
+  text: "0"
   font: "font_standart_normal"
   id: "count"
   xanchor: XANCHOR_NONE

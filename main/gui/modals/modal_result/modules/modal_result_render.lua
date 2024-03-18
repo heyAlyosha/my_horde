@@ -90,7 +90,25 @@ function M.visible(self, data)
 	-- Награда
 	if self.data.type_result == "win" then
 		timer_linear.add(self, "start", 0, function (self)
-			
+			local array = {
+				{
+					node = gui.get_node("trophy_coins_template/count"),
+					count = self.data.prizes.coins or 0
+				},
+				{
+					node = gui.get_node("trophy_xp_template/count"),
+					count = self.data.prizes.xp or 0
+				},
+				{
+					node = gui.get_node("trophy_resource_template/count"),
+					count = self.data.prizes.resource or 0
+				},
+				{
+					node = gui.get_node("trophy_trofey_template/count"),
+					count = self.data.prizes.trofey or 0
+				},
+			}
+			gui_animate.counter(self, array)
 		end)
 	end
 	

@@ -473,7 +473,7 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "999"
+  text: "0"
   font: "font_standart_normal"
   id: "trophy_coins_template/count"
   xanchor: XANCHOR_NONE
@@ -701,7 +701,7 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "999"
+  text: "0"
   font: "font_standart_normal"
   id: "trophy_xp_template/count"
   xanchor: XANCHOR_NONE
@@ -929,7 +929,7 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "999"
+  text: "0"
   font: "font_standart_normal"
   id: "trophy_resource_template/count"
   xanchor: XANCHOR_NONE
@@ -995,7 +995,7 @@ nodes {
     w: 1.0
   }
   type: TYPE_TEMPLATE
-  id: "trophy_score_template"
+  id: "trophy_trofey_template"
   parent: "wrap_trophy"
   layer: ""
   inherit_alpha: true
@@ -1039,12 +1039,12 @@ nodes {
   type: TYPE_BOX
   blend_mode: BLEND_MODE_MULT
   texture: ""
-  id: "trophy_score_template/wrap"
+  id: "trophy_trofey_template/wrap"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
-  parent: "trophy_score_template"
+  parent: "trophy_trofey_template"
   layer: ""
   inherit_alpha: true
   slice9 {
@@ -1098,12 +1098,12 @@ nodes {
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
   texture: "first_level/icon_zombie_default"
-  id: "trophy_score_template/icon"
+  id: "trophy_trofey_template/icon"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
-  parent: "trophy_score_template/wrap"
+  parent: "trophy_trofey_template/wrap"
   layer: ""
   inherit_alpha: true
   slice9 {
@@ -1157,9 +1157,9 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "999"
+  text: "0"
   font: "font_standart_normal"
-  id: "trophy_score_template/count"
+  id: "trophy_trofey_template/count"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_E
@@ -1177,7 +1177,7 @@ nodes {
   }
   adjust_mode: ADJUST_MODE_FIT
   line_break: true
-  parent: "trophy_score_template/wrap"
+  parent: "trophy_trofey_template/wrap"
   layer: ""
   inherit_alpha: true
   alpha: 1.0

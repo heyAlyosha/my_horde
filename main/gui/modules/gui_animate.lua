@@ -580,4 +580,24 @@ function M.strikethrough(self, name_template, duration, delay)
 	return delay + duration * 2
 end
 
+-- Анимация счётчика
+function M.counter(self, array)
+	timer.delay(0.01, true, function (self, handle)
+		local end_counter = true
+		for i = 1, #array do
+			local item =  array[i]
+			local current_count = tonumber(gui.get_text(item.node))
+
+			if current_count < item.count then
+				current_count = current_count + 1
+				gui_loyouts.set_text(self, item.node, current_count)
+				end_counter = false
+			end
+		end
+
+		if end_counter then
+			timer.cancel(handle)
+		end
+	end)
+end
 return M
