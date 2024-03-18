@@ -92,7 +92,7 @@ _shop_prizes;;Магазин призов;;;;
 _buy_prizes_points_you_win;;Купи призы на выигранные очки;;;;
 _victory;;Победа;;;;
 _defeat;;Поражение;;;;
-_prizes;;Призы;;;;
+_prizes;;Награда;;;;
 _company_passed;;КОМПАНИЯ ПРОЙДЕНА;;;;
 _more_prizes;;И ещё {{more_count}}…;;;;
 _skip;;ПРОПУСТИТЬ;;;;

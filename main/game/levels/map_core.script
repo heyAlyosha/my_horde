@@ -77,6 +77,7 @@ function init(self)
 		for i, id_item in ipairs(item_types) do
 			storage_game.map.player_add_items[id_item] = 0
 		end
+		storage_game.map.player_add_items.trofey = 0
 
 		-- Сколько предметов на карте
 		if self.print_count_items then
@@ -153,17 +154,17 @@ function on_message(self, message_id, message, sender)
 			visible = true
 		})
 
-		timer.delay(2, false, function (self)
+		timer.delay(1, false, function (self)
 			msg.post("/loader_gui", "visible", {
 				id = "modal_result",
 				visible = true,
 				value = {
 					type_result = "fail",
 					prizes = {
-						coins = 100,
-						xp = 200,
-						resource = 400,
-						trofey = 2
+						coins = storage_game.map.player_add_items.coins,
+						xp = storage_game.map.player_add_items.xp,
+						resource = storage_game.map.player_add_items.resource,
+						trofey = storage_game.map.player_add_items.trofey
 					},
 					hidden_btns = {"back", "shop"}
 				},

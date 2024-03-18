@@ -51,7 +51,7 @@ function M.visible(self, data)
 	else
 		-- 
 		gui_loyouts.set_color(self, self.nodes.title, color.red)
-		gui_lang.set_text_upper(self, self.nodes.title, "_fail")
+		gui_lang.set_text_upper(self, self.nodes.title, "_defeat")
 
 		--
 		self.btns = {
