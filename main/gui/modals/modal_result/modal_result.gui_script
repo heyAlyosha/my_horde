@@ -82,7 +82,6 @@ function on_message(self, message_id, message, sender)
 		-- Показываем окно
 		self.data = message.value
 		modal_result_render.visible(self, self.data)
-		
 
 	elseif message.type == "login" then
 		modal_result_single_btns.render_login_btn(self)
@@ -111,7 +110,7 @@ function on_input(self, action_id, action)
 		return true
 	end
 
-	if self.focus_btn_id == 1 and action_id == hash("up") and action.pressed then
+	if self.focus_btn_id and self.btns[self.focus_btn_id].section == "body" and action_id == hash("up") and action.pressed then
 		msg.post(storage_gui.components_visible.interface, "focus", {focus = 1})
 
 		msg.post("main:/sound", "play", {sound_id = "focus_main_menu"})

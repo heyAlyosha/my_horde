@@ -39,7 +39,7 @@ function M.visible(self, data)
 		-- Добавляем кнопки
 		self.btns = {
 			{id = "back", type = "btn", section = "body",  icon = "btn_interface_"},
-			{id = "continue", type = "btn", section = "body",  icon = "btn_interface_", color = color.lime},
+			{id = "continue", type = "btn", section = "body",  icon = "btn_interface_", color_icon = color.lime},
 			{id = "shop", type = "btn", section = "body", icon = "btn_interface_"},
 		}
 
@@ -56,7 +56,7 @@ function M.visible(self, data)
 		--
 		self.btns = {
 			{id = "back", type = "btn", section = "body", icon = "btn_interface_"},
-			{id = "refresh", type = "btn", section = "body", icon = "btn_interface_", color = color.lime},
+			{id = "refresh", type = "btn", section = "body", icon = "btn_interface_", color_icon = color.lime},
 			{id = "shop", type = "btn", section = "body", icon = "btn_interface_"},
 		}
 
@@ -73,6 +73,21 @@ function M.visible(self, data)
 			self.btns[i].node_title = gui.get_node("btn_"..self.data.type_result.."_"..i.."_template/btn_icon")
 		end
 	end
+
+	-- Отклюбчаем кнопки, если есть
+	if self.data.hidden_btns then
+		pprint("hidden_btns", self.data.hidden_btns)
+		for i_hidden_btn, hidden_btn_id in ipairs(self.data.hidden_btns) do
+			for i, btn in ipairs(self.btns) do
+				if btn.id == hidden_btn_id then
+					gui_loyouts.set_enabled(self, btn.node, false)
+					table.remove(self.btns, i)
+					break
+				end
+			end
+		end
+	end
+	
 
 	self.druid = druid.new(self)
 

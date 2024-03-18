@@ -92,6 +92,7 @@ function init(self)
 				resource = 400,
 				trofey = 2
 			},
+			hidden_btns = {"back", "shop"}
 		},
 	})
 
