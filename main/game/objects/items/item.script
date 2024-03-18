@@ -84,6 +84,10 @@ function on_message(self, message_id, message, sender)
 					not_screen_to_local = true
 				})
 
+				-- Заносим в данные карты
+				storage_game.map.player_add_items[self.item.id] = storage_game.map.player_add_items[self.item.id] or 0
+				storage_game.map.player_add_items[self.item.id] = storage_game.map.player_add_items[self.item.id] + self.count
+
 				go.delete()
 			end)
 		end

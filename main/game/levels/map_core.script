@@ -159,7 +159,7 @@ function on_message(self, message_id, message, sender)
 				id = "modal_result",
 				visible = true,
 				value = {
-					type_result = "fail",
+					type_result = "win",
 					prizes = {
 						coins = storage_game.map.player_add_items.coins,
 						xp = storage_game.map.player_add_items.xp,
