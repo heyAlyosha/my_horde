@@ -82,7 +82,7 @@ function on_message(self, message_id, message, sender)
 		-- Показываем окно
 		self.data = message.value
 		modal_result_render.visible(self, self.data)
-		gui_animate.show_elem_popping(self, self.nodes.wrap , nil)
+		
 
 	elseif message.type == "login" then
 		modal_result_single_btns.render_login_btn(self)
