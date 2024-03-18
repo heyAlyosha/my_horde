@@ -18,6 +18,12 @@ function init(self)
 		{plug_id = "pidestal_plug_right", factory_id = "#pedestal_2_factory"}
 	}
 
+	msg.post("main:/loader_gui", "set_content", {id = "interface", type = "set_btns", 
+		value = {
+			id =  "game_play_first_level"
+		}
+	})
+
 	--msg.post(".", "start")
 	--msg.post(".", "get_ruin_door")
 	msg.post(".", "get_to_end")
