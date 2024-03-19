@@ -1,3 +1,4 @@
+go.property("atlas", resource.atlas("/main/atlases/first_level.atlas"))
 go.property("index", 1)
 go.property("speed", 50)
 go.property("skin_id", 0)

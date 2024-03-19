@@ -12,6 +12,11 @@ components {
     z: 0.0
     w: 1.0
   }
+  properties {
+    id: "atlas"
+    value: "/main/atlases/first_level.atlas"
+    type: PROPERTY_TYPE_HASH
+  }
 }
 embedded_components {
   id: "body"

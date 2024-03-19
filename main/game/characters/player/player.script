@@ -238,10 +238,25 @@ function on_message(self, message_id, message, sender)
 		end
 
 	elseif message_id == hash("position_to") then
-		pprint("position_to", message.position_to)
 		ai_move.move_item(self, message.position_to, function (self)
 			msg.post(sender, "player_position_success")
 		end)
+
+	elseif message_id == hash("horde_to_score") then
+		-- Орду в очки
+		for i, item in ipairs(self.animation_zombies) do
+			msg.post("main:/loader_gui", "set_status", {
+				id = "add_balance",
+				type = "score",
+				start_position =  camera.world_to_screen(camera_id, go.get_position(item.url), gui.ADJUST_STRETCH),
+				value = 1,
+				not_screen_to_local = true,
+				icon = "zombie_0_"..item.human_id.."_default",
+				--atlas = atlas
+			})
+			go.delete(item.url)
+		end
+		
 
 	elseif message_id == hash("win") then
 		-- Анимация победы

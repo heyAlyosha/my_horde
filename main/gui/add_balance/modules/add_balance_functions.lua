@@ -83,9 +83,18 @@ function M.add_elem(self, type, position_start, count, params)
 		star = {icon = "game-icon-star"},
 	}
 
+	icon = params.icon or types_valute[type].icon
 	add_values[type] = count
-	icon = types_valute[type].icon
-	print("storage_gui.interface", "position_"..type.."_screen")
+
+	if params.atlas then
+		self.atlases = self.atlases or {}
+		if not self.atlases[params.atlas] then
+			--go.set(url_gui, "textures", atlas, {key = "my_atlas"})
+		end
+		
+		gui.set_texture(node, params.atlas)
+	end
+
 	position_end = storage_gui.interface["position_"..type.."_screen"]
 
 	if not params.not_screen_to_local then

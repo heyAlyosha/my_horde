@@ -118,7 +118,9 @@ function on_message(self, message_id, message, sender)
 		else
 			local params = {
 				duration = 0.5,
-				not_screen_to_local = message.not_screen_to_local
+				not_screen_to_local = message.not_screen_to_local,
+				icon = message.icon,
+				texture = message.texture,
 			}
 			add_balance_functions.add_elem(self, message.type, message.start_position, message.value, params)
 		end

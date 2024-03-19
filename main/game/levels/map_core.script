@@ -69,6 +69,11 @@ function init(self)
 		visible = false
 	})
 
+	msg.post("main:/loader_gui", "visible", {
+		id = "add_balance",
+		visible = true,
+	})
+
 	-- Выводим количество предметов в объектах
 	timer.delay(0.1, false, function (self)
 		local item_types = {"coins", "xp", "resource", "star"}
@@ -119,7 +124,6 @@ function fixed_update(self, dt)
 end
 
 function on_message(self, message_id, message, sender)
-	print("message_id", message_id)
 	if message_id == hash("effect") then
 		-- Добавление эффектов
 		local properties = {
@@ -172,8 +176,11 @@ function on_message(self, message_id, message, sender)
 
 	elseif message_id == hash("next") then
 		-- Следующий уровень или окончание компании
+
+		msg.post("player", "horde_to_score")
+
+		
 		local function animate_next(self)
-			msg.post("player", "horde_to_score")
 			local duration = 1
 			msg.post("main:/loader_gui", "visible", {
 				visible = true, 
@@ -183,14 +190,20 @@ function on_message(self, message_id, message, sender)
 			})
 		end
 
-		if self.next_level_point then
-			local position_to = go.get_position(self.next_level_point)
-			position_to = position_functions.add_perspective_z(position_to)
-			msg.post("player", "position_to", {position_to = position_to})
-			animate_next(self)
-		else
-			animate_next(self)
-		end
+		timer_linear.add(self, "next", 0.5, function (self)
+			if self.next_level_point then
+				local position_to = go.get_position(self.next_level_point)
+				position_to = position_functions.add_perspective_z(position_to)
+				msg.post("player", "position_to", {position_to = position_to})
+
+				timer_linear.add(self, "next", 0.5, function (self)
+					animate_next(self)
+				end, delay)
+			else
+				animate_next(self)
+			end
+		end, delay)
+		
 	end
 end
 

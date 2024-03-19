@@ -94,7 +94,14 @@ function M.add_zombie_animation(self, type_from_zombie, key, index)
 		skin_id = skin_id,
 	}
 
-	table.insert(self.animation_zombies, factory.create("#zombie_animation_horde_factory", position, rotation, properties))
+	local url = msg.url(factory.create("#zombie_animation_horde_factory", position, rotation, properties))
+	pprint(url)
+	table.insert(self.animation_zombies, {
+		url = url,
+		skin_id = skin_id,
+		human_id = human_id,
+		texture = go.get(msg.url(url.socket, url.path, "body"), "texture0")
+	})
 end
 
 -- Отслеживание изменений в орде
