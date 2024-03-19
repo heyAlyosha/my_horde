@@ -46,6 +46,17 @@ function init(self)
 	live_bar = require "main.game.markers.live_bar.live_bar"
 	core_prorgress = require "main.core.core_progress.core_prorgress"
 
+	game_content_company = require "main.game.content.game_content_company"
+
+	-- контент игры
+	--game_content_prize.init(self)
+	--game_content_artifact.init(self)
+	--game_content_achieve.init(self)
+	--game_content_characteristic.init(self)
+	game_content_company.init(self)
+
+	pprint(game_content_company.get_all(user_lang))
+
 	--profiler.enable_ui(true)
 	--profiler.set_ui_mode(profiler.MODE_RECORD)
 	--profiler.set_ui_view_mode(profiler.VIEW_MODE_MINIMIZED)
@@ -83,14 +94,8 @@ function init(self)
 	})
 
 	msg.post("main:/loader_main", "load_level", {
-		company_id = "city_hospital", level_id = "hospital_1"
+		company_id = "city_hospital", level_id = 1
 	})
-
-	--game_content_prize.init(self)
-	--game_content_artifact.init(self)
-	--game_content_achieve.init(self)
-	--game_content_characteristic.init(self)
-	--game_content_company.init(self)
 
 	-- Отображаем на доп мониторе
 	--[[
@@ -138,7 +143,11 @@ function on_message(self, message_id, message, sender)
 		storage_game.game.level_id = self.level_id
 		storage_game.game.company_id = self.company_id
 
-		msg.post("#level_"..self.level_id.."_collectionproxy", "load")
+		local content_company = game_content_company.get_id(self.company_id, user_lang)
+		local level = content_company.levels[self.level_id]
+		local collection_id = level.collection_id
+
+		msg.post("#level_"..collection_id.."_collectionproxy", "load")
 
 	elseif message_id == hash("reload_level") then
 		self.refresh_game = message.refresh_game

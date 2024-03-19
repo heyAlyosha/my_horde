@@ -16,21 +16,9 @@ function M.init(self)
 	game_content_functions.load_content(self, "company", group_columns, function (self, row_id, row_item)
 		local item = row_item
 		item.id = row_id
+		item.levels = {}
 
 		M.catalog_keys[row_id] = item
-
-		-- Закачиваем контент для переведённых уровней
-		local csv_name = "quests_"..row_id.."_ru"
-		local quests = {}
-		quests = game_content_functions.load_content(self, csv_name, group_columns, function (self, row_id, row_item)
-			row_item.index = tonumber(row_id)
-		end, is_replace_placeholder)
-		
-		M.quests_content[row_id] = game_content_functions.create_catalog(self, "index", quests, function (a, b)
-			return a.index < b.index
-		end)
-
-
 	end, is_replace_placeholder)
 
 	M.catalog = game_content_functions.create_catalog(self, "sort", M.catalog_keys, sort_function)
@@ -44,54 +32,10 @@ function M.init(self)
 			-- Загружаем отдельный уровень
 			M.catalog_keys[item.company_id].levels[item.id] = {
 				id = item.id,
-				quests = {},
-				-- Игроки
-				party = {
-					item.party_1, 
-					item.party_2, 
-					item.party_3
-				},
-				-- СЛожность
-				complexity = item.complexity,
-				-- Звёзды
-				stars = {
-					type = item.stars_type, 
-					values = {
-						item.star_1, 
-						item.star_2, 
-						item.star_3
-					},
-				}
+				collection_id = item.collection_id
 			}
 		end
 	end, is_replace_placeholder)
-
-	-- Присваиваем вопросы
-	for company_id, v in pairs(M.catalog_keys) do
-		for i, quest in ipairs(M.quests_content[company_id]) do
-			if M.catalog_keys[company_id].levels[quest.level_id] then
-				if company_id == "bloger" then
-					--pprint("quest_bloger", quest)
-				end
-
-				-- Если тип задания либо
-				if quest.type and quest.type ~= "text" then
-					M.catalog_keys[company_id].type = quest.type
-				end
-
-				table.insert(M.catalog_keys[company_id].levels[quest.level_id].quests, {
-					word = quest.word,
-					quest = quest.quest,
-					type = quest.type,
-					resource = quest.resource,
-					music = quest.music,
-				})
-			end
-		end
-	end
-
-	-- Записываю вопросы в турнир
-	M.quests_tournir = game_content_functions.load_content(self, "quests_tournir_ru", nil, nil, is_replace_placeholder)
 end
 
 -- Получение всех компаний игрока

@@ -188,6 +188,11 @@ function on_message(self, message_id, message, sender)
 				type = hash("animated_close"),
 				value = {duration = duration}
 			})
+
+			-- Загружаем следующий уровень если есть
+			timer.delay(duration, false, function (self)
+				msg.post("main:/core_game", "next_level")
+			end)
 		end
 
 		timer_linear.add(self, "next", 0.5, function (self)

@@ -32,10 +32,10 @@ function on_message(self, message_id, message, sender)
 	local message = message or {}
 	msg.post(".", "acquire_input_focus")
 
-	if message_id == hash("start_level") then
-		
+	if message_id == hash("next_level") then
+		-- Следующий уровень
 	end
-	print(message_id, message, sender)
+
 end
 
 --[[
