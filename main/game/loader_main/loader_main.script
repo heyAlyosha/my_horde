@@ -148,22 +148,6 @@ function on_message(self, message_id, message, sender)
 		msg.post(storage_collection.path_proxy_game, "load")
 
 	elseif message_id == hash("proxy_unloaded") then
-		if storage_gui.components_visible.modal_settings then
-			msg.post("main:/loader_gui", "visible", {
-				id = "modal_settings",
-				visible = false,
-				type = hash("animated_close")
-			})
-		end
-
-		if storage_gui.components_visible.modal_pause then
-			msg.post("main:/loader_gui", "visible", {
-				id = "modal_pause",
-				visible = false,
-				type = hash("animated_close")
-			})
-		end
-
 		--Коллекция удалена
 		if self.reload then
 			-- Если перезапуск миссии

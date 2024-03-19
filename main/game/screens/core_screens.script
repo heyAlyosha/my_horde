@@ -113,7 +113,6 @@ function on_message(self, message_id, message, sender)
 
 		local components_data = {}
 		core_screens_visible_gui.visible_components(self, {interface = true}, components_data)
-		msg.post("main:/music", "play", {sound = "music-start-game"})
 
 		if storage_gui.core_screens.visible_shop then
 			msg.post("main:/loader_gui", "set_content", {id = "interface", type = "set_btns", 
