@@ -241,7 +241,7 @@ instances {
 }
 instances {
   id: "zombie_enemy"
-  prototype: "/main/game/characters/zombie/zombie.go"
+  prototype: "/main/game/characters/zombie/zombie_first_level.go"
   position {
     x: 597.0
     y: 182.0
@@ -279,7 +279,7 @@ instances {
 }
 instances {
   id: "zombie_enemy1"
-  prototype: "/main/game/characters/zombie/zombie.go"
+  prototype: "/main/game/characters/zombie/zombie_first_level.go"
   position {
     x: 553.0
     y: 182.0
@@ -317,7 +317,7 @@ instances {
 }
 instances {
   id: "zombie_enemy2"
-  prototype: "/main/game/characters/zombie/zombie.go"
+  prototype: "/main/game/characters/zombie/zombie_first_level.go"
   position {
     x: 570.0
     y: 182.0

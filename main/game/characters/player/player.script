@@ -24,7 +24,6 @@ function init(self)
 	msg.post(".", "acquire_input_focus")
 
 	go_controller.object_items_spawn_to_map(self)
-	
 
 	if self.activate then
 		go_controller.add(self)

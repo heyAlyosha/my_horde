@@ -146,7 +146,7 @@ embedded_components {
 embedded_components {
   id: "zombie_factory"
   type: "factory"
-  data: "prototype: \"/main/game/characters/zombie/zombie.go\"\n"
+  data: "prototype: \"/main/game/characters/zombie/zombie_first_level.go\"\n"
   "load_dynamically: false\n"
   "dynamic_prototype: false\n"
   ""
@@ -165,7 +165,7 @@ embedded_components {
 embedded_components {
   id: "zombie_horde_factory"
   type: "factory"
-  data: "prototype: \"/main/game/characters/zombie_horde/zombie_horde.go\"\n"
+  data: "prototype: \"/main/game/characters/zombie_horde/zombie_horde_first_level.go\"\n"
   "load_dynamically: false\n"
   "dynamic_prototype: false\n"
   ""
@@ -257,7 +257,7 @@ embedded_components {
 embedded_components {
   id: "zombie_animation_horde_factory"
   type: "factory"
-  data: "prototype: \"/main/game/characters/zombie_animation_horde/zombie_animation_horde.go\"\n"
+  data: "prototype: \"/main/game/characters/zombie_animation_horde/zombie_animation_horde_first_level.go\"\n"
   "load_dynamically: false\n"
   "dynamic_prototype: false\n"
   ""
