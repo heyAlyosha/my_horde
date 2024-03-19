@@ -3,23 +3,9 @@ function init(self)
 	-- Объекты для активации
 	self.activation_objects = {}
 
-	sprite.set_hflip("human_plug_2#body", true)
-
-	self.human_plugs_1 = {
-		{id = "human_plug_1", human_id = 3},
-		{id = "human_plug_2", human_id = 9},
-		{id = "human_plug_3", human_id = 4}
-	}
-
-	--Предметы для начала игры
-	self.objects_start = {
-		{plug_id = "door_plug", factory_id = "#door_factory"},
-		{plug_id = "pidestal_plug_left", factory_id = "#pedestal_1_factory"},
-		{plug_id = "pidestal_plug_right", factory_id = "#pedestal_2_factory"}
-	}
-
-	--msg.post(".", "start")
-	msg.post(".", "get_ruin_door")
+	msg.post(".", "start")
+	--msg.post(".", "get_ruin_door")
+	
 end
 
 function final(self)
@@ -43,87 +29,7 @@ end
 
 function on_message(self, message_id, message, sender)
 	if message_id == hash("start") then
-		-- Зомби просыпается
-		--[[--]]
-		timer_linear.add(self, "start", 1, function (self)
-			sprite.play_flipbook("player_plug#body", hash("zombie_0_0_default"))
-		end, delay)
-
-		-- Встаёт
-		timer_linear.add(self, "start", 1, function (self)
-			local duration = 0.25
-			go.animate("player_plug", "position.x", go.PLAYBACK_ONCE_FORWARD, go.get_position("player").x, go.EASING_INOUTCUBIC, duration)
-			go.animate("player_plug", "position.y", go.PLAYBACK_ONCE_FORWARD, go.get_position("player").y + 5, go.EASING_INOUTCUBIC, duration / 2, 0 , function (self)
-				go.animate("player_plug", "position.y", go.PLAYBACK_ONCE_FORWARD, go.get_position("player").y, go.EASING_INOUTCUBIC, duration / 2)
-			end)
-		end, delay)
-
-		-- Человечки обращают на него внимание
-		timer_linear.add(self, "start", 1, function (self)
-			for i, human in ipairs(self.human_plugs_1) do
-				-- Скрываем их маркеры
-				msg.post(human.id .. "#marker", "disable")
-				sprite.set_hflip(human.id .. "#body", true)
-				sprite.play_flipbook(human.id .. "#body", hash("human_"..human.human_id.."_default"))
-			end
-		end, delay)
-
-		-- Человечки обращают на него внимание
-		timer_linear.add(self, "start", 1, function (self)
-			for i, human in ipairs(self.human_plugs_1) do
-				-- Скрываем их маркеры
-				msg.post(human.id .. "#marker", "disable")
-				sprite.set_hflip(human.id .. "#body", true)
-				sprite.play_flipbook(human.id .. "#body", hash("human_"..human.human_id.."_default"))
-			end
-			local duration = 0.25
-			go.animate("/camera", "position.x", go.PLAYBACK_ONCE_FORWARD, go.get_position("player").x, go.EASING_LINEAR, duration)
-			go.animate("/camera", "position.y", go.PLAYBACK_ONCE_FORWARD, go.get_position("player").y, go.EASING_LINEAR, duration)
-		end, delay)
-
-		-- Показывается игрок
-		timer_linear.add(self, "start", 1, function (self)
-			go.delete("player_plug")
-			msg.post("player", "activate")
-		end, delay)
-
-		-- Человечки напряглись
-		timer_linear.add(self, "start", 1, function (self)
-			for i, human in ipairs(self.human_plugs_1) do
-				-- Скрываем их маркеры
-				msg.post(human.id .. "#marker", "enable")
-				sprite.play_flipbook(human.id .. "#marker", hash("marker_attention"))
-			end
-
-			-- Женщина встаёт с постели
-			local duration = 0.25
-			go.animate("human_plug_3", "position.x", go.PLAYBACK_ONCE_FORWARD, go.get_position("human_plug_3").x - 20, go.EASING_INOUTCUBIC, duration)
-			go.animate("human_plug_3", "position.y", go.PLAYBACK_ONCE_FORWARD, go.get_position("human_plug_3").y + 5, go.EASING_INOUTCUBIC, duration / 2, 0 , function (self)
-				go.animate("human_plug_3", "position.y", go.PLAYBACK_ONCE_FORWARD, go.get_position("human_plug_3").y - 5, go.EASING_INOUTCUBIC, duration / 2)
-			end)
-		end, delay)
-
-		
-		-- Создаём настощих человечков
-		timer_linear.add(self, "start", 1, function (self)
-			local goals = {}
-
-			for i, human in ipairs(self.human_plugs_1) do
-				-- Скрываем их маркеры
-				local properties = {
-					human_id = human.human_id
-				}
-
-				self.human_plugs_1[i].url_go = factory.create("#human_factory", go.get_position(human.id), rotation, properties, scale)
-				go.delete(human.id)
-
-				goals[i] = msg.url(self.human_plugs_1[i].url_go)
-			end
-
-			levels_script_functions.add_goal_ruins(self, goals, function (self)
-				msg.post(".", "get_ruin_door")
-			end)
-		end, delay)
+		camera.follow(camera_id, msg.url("player"))
 
 	elseif message_id == hash("get_ruin_door") then
 		-- Уничтожить дверь и тумбы
