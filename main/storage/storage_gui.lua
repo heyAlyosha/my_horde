@@ -12,6 +12,10 @@ M.inventary_wrap = {
 	last_sound = nil,
 	last_focus = nil, -- {id_component = "test", index_btn = 1}
 }
+-- Настройки для ядра экранов
+M.core_screens = {
+	visible_shop = true
+}
 M.down_popup_main = {s = {}, api = {}}
 M.down_popup_nav = {s = {}, api = {}}
 M.components_visible_hash_to_id = {} -- Хранить id по хэшам

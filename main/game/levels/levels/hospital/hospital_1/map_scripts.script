@@ -18,11 +18,8 @@ function init(self)
 		{plug_id = "pidestal_plug_right", factory_id = "#pedestal_2_factory"}
 	}
 
-	msg.post("main:/loader_gui", "set_content", {id = "interface", type = "set_btns", 
-		value = {
-			id =  "game_play_first_level"
-		}
-	})
+	storage_gui.core_screens.visible_shop = false
+	msg.post("main:/core_screens", "game")
 
 	--msg.post(".", "start")
 	--msg.post(".", "get_ruin_door")

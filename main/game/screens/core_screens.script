@@ -102,12 +102,12 @@ function on_message(self, message_id, message, sender)
 		})
 
 	elseif message_id == hash("game") then
-		msg.post("/loader_gui", "visible", {
+		msg.post("main:/loader_gui", "visible", {
 			id = "bg",
 			visible = false
 		})
 
-		msg.post("game-room:/core_game", "set_active", {
+		msg.post("main:/core_game", "set_active", {
 			active = true
 		})
 
@@ -115,67 +115,38 @@ function on_message(self, message_id, message, sender)
 		core_screens_visible_gui.visible_components(self, {interface = true}, components_data)
 		msg.post("main:/music", "play", {sound = "music-start-game"})
 
-		msg.post("/loader_gui", "set_content", {id = "interface", type = "set_btns", 
-			value = {
-				id =  "game_play"
-			}
-		})
-
-	elseif message_id == hash("constructor_family") then
-		-- КОНСТРУКТОР СОВМЕСТНОГО РЕЖИМА
-		msg.post("/loader_gui", "visible", {
-			id = "bg",
-			visible = true
-		})
-
-		msg.post("game-room:/core_game", "set_active", {
-			active = false
-		})
-
-		local components_data = {}
-		core_screens_visible_gui.visible_components(self, {game_constructor = true, interface = true}, components_data)
-		
-		msg.post("main:/music", "play", {sound = "music-default"})
-
-		msg.post("/loader_gui", "set_content", {
-			id = "interface", 
-			type = "set_btns", 
-			value = {
-				id =  "default"
-			}
-		})
-
-	elseif message_id == hash("game_family_shop") then
-		-- МАГАЗИН СОВМЕСТНОГО РЕЖИМА
-		msg.post("/loader_gui", "visible", { id = "bg", visible = true})
-
-		msg.post("game-room:/core_game", "set_active", {
-			active = false
-		})
-
-		local components_data = {}
-		core_screens_visible_gui.visible_components(self, {game_family_shop = true, interface = true}, components_data)
-
-		msg.post("main:/music", "play", {sound = "music-shop"})
-
-		msg.post("/loader_gui", "set_content", {
-			id = "interface", 
-			type = "set_btns", 
-			value = {
-				id =  "default"
-			}
-		})
+		if storage_gui.core_screens.visible_shop then
+			msg.post("main:/loader_gui", "set_content", {id = "interface", type = "set_btns", 
+				value = {
+					id =  "game_play"
+				}
+			})
+		else
+			msg.post("main:/loader_gui", "set_content", {id = "interface", type = "set_btns", 
+				value = {
+					id =  "game_play_first_level"
+				}
+			})
+		end
 
 	elseif message_id == hash("continue_game_from_pause") then
 		msg.post("main:/core_game", "set_active", {
 			active = true
 		})
 
-		msg.post("/loader_gui", "set_content", {id = "interface", type = "set_btns", 
+		if storage_gui.core_screens.visible_shop then
+			msg.post("main:/loader_gui", "set_content", {id = "interface", type = "set_btns", 
 			value = {
 				id =  "game_play"
 			}
 		})
+		else
+			msg.post("main:/loader_gui", "set_content", {id = "interface", type = "set_btns", 
+				value = {
+					id =  "game_play_first_level"
+				}
+			})
+		end
 
 		msg.post("/loader_main", "game_continue")
 
