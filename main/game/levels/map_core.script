@@ -115,12 +115,7 @@ function update(self, dt)
 end
 
 function fixed_update(self, dt)
-	-- This function is called if 'Fixed Update Frequency' is enabled in the Engine section of game.project
-	-- Can be coupled with fixed updates of the physics simulation if 'Use Fixed Timestep' is enabled in
-	-- Physics section of game.project
-	-- Add update code here
-	-- Learn more: https://defold.com/manuals/script/
-	-- Remove this function if not needed
+	
 end
 
 function on_message(self, message_id, message, sender)
@@ -146,6 +141,31 @@ function on_message(self, message_id, message, sender)
 
 	elseif message_id == hash("win") then
 		-- Победа игрока
+		--записываем прогресс
+		local stars = 0
+		if self.stars then
+			storage_game.map.player_star = storage_game.map.player_star or 0
+
+			-- Формируем количество звёзд
+			local count_stars_map = storage_game.map.count_star
+			local count_stars_player = storage_game.map.player_star
+
+			-- Кол-во звёздочек для 1
+			local item_stars = count_stars_map / 3
+			stars = math.floor(count_stars_player / item_stars)
+
+			if stars > 3 then
+				stars = 3
+			elseif stars > 3 then
+				stars = 0
+			end
+			pprint("SET_STAR", count_stars_player / item_stars, stars)
+		end
+
+		pprint("GET_PROGRESS", core_prorgress.get_progress_level(storage_game.game.company_id, storage_game.game.level_id))
+		
+		core_prorgress.set_progress_level(storage_game.game.company_id, storage_game.game.level_id, stars)
+		
 		msg.post("player", "win", message)
 	end
 end

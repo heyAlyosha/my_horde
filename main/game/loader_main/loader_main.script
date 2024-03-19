@@ -44,6 +44,7 @@ function init(self)
 	character_zombie_main = require("main.game.characters.modules.character_zombie_main")
 	items_functions = require("main.game.objects.items.modules.items_functions")
 	live_bar = require "main.game.markers.live_bar.live_bar"
+	core_prorgress = require "main.core.core_progress.core_prorgress"
 
 	--profiler.enable_ui(true)
 	--profiler.set_ui_mode(profiler.MODE_RECORD)
@@ -133,6 +134,9 @@ function on_message(self, message_id, message, sender)
 		-- Запуск уровня
 		self.company_id = message.company_id
 		self.level_id = message.level_id
+
+		storage_game.game.level_id = self.level_id
+		storage_game.game.company_id = self.company_id
 
 		msg.post("#level_"..self.level_id.."_collectionproxy", "load")
 
