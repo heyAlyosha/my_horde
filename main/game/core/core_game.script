@@ -34,6 +34,21 @@ function on_message(self, message_id, message, sender)
 
 	if message_id == hash("next_level") then
 		-- Следующий уровень
+		self.company_id = storage_game.game.company_id
+		self.level_id = storage_game.game.level_id
+		print(self.company_id, self.level_id)
+		self.next_level_id = self.level_id + 1
+
+		local content_company = game_content_company.get_id(self.company_id, user_lang)
+		if #content_company.levels >= self.next_level_id then
+			-- Есть следующий уровень
+			msg.post("main:/loader_main", "load_level", {
+				company_id = self.company_id, level_id = self.next_level_id
+			})
+		else
+			-- Следующего уровня нет
+		end
+
 	end
 
 end

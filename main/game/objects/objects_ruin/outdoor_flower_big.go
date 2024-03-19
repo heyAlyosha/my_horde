@@ -17,11 +17,6 @@ components {
     value: "20.0"
     type: PROPERTY_TYPE_NUMBER
   }
-  properties {
-    id: "spawn_resource"
-    value: "1.0"
-    type: PROPERTY_TYPE_NUMBER
-  }
 }
 components {
   id: "destroy"

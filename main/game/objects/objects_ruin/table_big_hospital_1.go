@@ -22,11 +22,6 @@ components {
     value: "10.0, 0.0, 0.0"
     type: PROPERTY_TYPE_VECTOR3
   }
-  properties {
-    id: "spawn_resource"
-    value: "3.0"
-    type: PROPERTY_TYPE_NUMBER
-  }
 }
 components {
   id: "destroy"

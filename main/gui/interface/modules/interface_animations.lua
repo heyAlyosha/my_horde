@@ -44,8 +44,6 @@ function M.set_balance(self, type, value)
 	node_wrap = types[type].node_wrap
 	node_text = types[type].node_text
 
-	pprint("type", type, node_wrap, node_text)
-
 	local current_balance = tonumber(gui.get_text(node_text))
 	local difference_balance = value - current_balance
 

@@ -208,12 +208,7 @@ function on_message(self, message_id, message, sender)
 		msg.post("/loader_main", "reload_game_room", {refresh_game = true})
 
 	elseif message_id == hash("game_result") then
-		msg.post("/loader_gui", "visible", {
-			id = "bg",
-			visible = true
-		})
-
-		msg.post("game-room:/core_game", "set_active", {
+		msg.post("main:/core_game", "set_active", {
 			active = false
 		})
 
@@ -221,6 +216,7 @@ function on_message(self, message_id, message, sender)
 
 		core_screens_visible_gui.visible_components(self, {interface = true}, components_data)
 
+		--[[
 		if message.type == "win" then
 			msg.post("main:/music", "play", {sound = "music-default", loop = nil})
 
@@ -230,17 +226,12 @@ function on_message(self, message_id, message, sender)
 		elseif message.type == "family" then
 			msg.post("main:/music", "play", {sound = "music-fail", loop = nil})
 		end
+		--]]
 		
 		msg.post("/loader_gui", "set_content", {id = "interface", type = "set_btns", 
 			value = {
-				id =  "default"
+				id =  "game_pause"
 			}
-		})
-
-		msg.post("/loader_gui", "set_status", {
-			id = "interface",
-			type = "stars_visible",
-			visible = false
 		})
 
 	elseif message_id == hash("clear") then

@@ -1,6 +1,6 @@
 -- Хранилище для данных загрузчика разделов игры
 local M = {
-	path_proxy_game = "main:/main#game-room_collectionproxy",
+	path_proxy_game = nil,
 	-- Путь до коллекции стартового экрана
 	path_start_main = "/start-main/",
 	-- Какой показывается экран сейчас
