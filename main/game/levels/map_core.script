@@ -1,0 +1,169 @@
+go.property("map_url", msg.url())
+go.property("stars", true)
+go.property("print_count_items", true)
+
+function init(self)
+	storage_game.map.url = self.map_url
+	storage_game.map.url_script = msg.url()
+	local levelx, levely, w, h = tilemap.get_bounds(self.map_url)
+	local cost_template = {
+		1.0,
+		1.0,
+		1.0,
+		1.0,
+		1.41,
+		1.41,
+		1.41,
+		1.41
+	}
+	local costs = {}
+
+	local tile, coord_x, coord_y = 0
+	local pos = vmath.vector3()
+	for ly = 0, h - 1 do
+		for lx = 0, w - 1 do
+			tile = tilemap.get_tile(self.map_url, hash("move"), lx + 1, ly + 1)
+
+			astar_settings.world[ly * w + lx + 1] = tile or 0 -- World table for path
+			if tile and tile ~= 0 then --Ground tile ID
+				costs[tile] = cost_template
+				coord_x, coord_y = astar_utils:coords_to_screen(lx, ly)
+				pos = vmath.vector3(coord_x, coord_y, 0.3)
+				table.insert(astar_settings.tiles, {x = lx, y = ly, position = pos}) -- Tile position table
+			end
+
+			--[[
+			tile = tilemap.get_tile(self.map_url, hash("targets"), lx + 1, ly + 1)
+			if tile == 386 then -- Target tile ID
+				table.insert(astar_settings.targets, {x = lx, y = ly}) -- Targets table
+			end
+			--]]
+		end
+	end
+
+	astar_settings.target_count = #astar_settings.targets -- Total targets
+	astar_settings.tiles_count = #astar_settings.tiles -- Total tiles
+
+	astar_settings.mapWidth = w
+	astar_settings.mapHeight = h
+	astar_settings.allocate = w * h
+	
+	astar.setup(astar_settings.mapWidth, astar_settings.mapHeight, astar_settings.direction, astar_settings.allocate, astar_settings.typical_adjacent, astar_settings.cache)
+	astar.set_map(astar_settings.world)
+	astar.set_costs(costs)
+
+	touch_pos = vmath.vector3(168, 150, 0)
+	-- Записываем настройки карты
+
+	-- Отключаем метку направления
+	if storage_gui.components_visible.interface then
+		msg.post(storage_gui.components_visible.interface, "set_content", {type = "set_dir_goal", dir_goal = false})
+	end
+
+	-- ЗВЁЗДЫ
+	storage_game.map.player_stars = 0
+	-- Выключаем предыдущие звёзды
+	msg.post("main:/loader_gui", "set_status", {
+		id = "interface",
+		type = "stars_visible",
+		visible = false
+	})
+
+	-- Выводим количество предметов в объектах
+	timer.delay(0.1, false, function (self)
+		local item_types = {"coins", "xp", "resource", "star"}
+		-- Подобрал предметов игрок
+		storage_game.map.player_add_items = {}
+		for i, id_item in ipairs(item_types) do
+			storage_game.map.player_add_items[id_item] = 0
+		end
+		storage_game.map.player_add_items.trofey = 0
+
+		-- Сколько предметов на карте
+		if self.print_count_items then
+			print("-----------------")
+			print("ПРЕДМЕТЫ НА КАРТЕ:")
+			for i, id_item in ipairs(item_types) do
+				if storage_game.map["count_"..id_item] then
+					print(utf8.upper(id_item).. ":" .. storage_game.map["count_"..id_item])
+				end
+			end
+			print("-----------------")
+		end
+	end)
+
+	if self.stars then
+		msg.post("main:/loader_gui", "set_status", {
+			id = "interface",
+			type = "stars_visible",
+			visible = true
+		})
+	end
+	
+end
+
+function final(self)
+	-- Add finalization code here
+	-- Learn more: https://defold.com/manuals/script/
+	-- Remove this function if not needed
+end
+
+function update(self, dt)
+	-- Add update code here
+	-- Learn more: https://defold.com/manuals/script/
+	-- Remove this function if not needed
+end
+
+function fixed_update(self, dt)
+	-- This function is called if 'Fixed Update Frequency' is enabled in the Engine section of game.project
+	-- Can be coupled with fixed updates of the physics simulation if 'Use Fixed Timestep' is enabled in
+	-- Physics section of game.project
+	-- Add update code here
+	-- Learn more: https://defold.com/manuals/script/
+	-- Remove this function if not needed
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("effect") then
+		-- Добавление эффектов
+		local properties = {
+			animation_id = message.animation_id,
+			timer_delete = message.timer_delete,
+			shake = message.shake
+		}
+		factory.create("#effect_factory", message.position, message.rotation, properties)
+
+	elseif message_id == hash("add_item") then
+		-- Добавление предметов
+		local properties = {
+			type_valute = message.type_valute,
+			count = message.count,
+			value = message.value,
+			distantion = message.distantion,
+			duration_animate = message.duration_animate,
+		}
+		factory.create("#item_factory", message.position, message.rotation, properties)
+
+	elseif message_id == hash("win") then
+		-- Победа игрока
+		msg.post("player", "win", message)
+	end
+end
+
+function on_input(self, action_id, action)
+	-- Add input-handling code here. The game object this script is attached to
+	-- must have acquired input focus:
+	--
+	--    msg.post(".", "acquire_input_focus")
+	--
+	-- All mapped input bindings will be received. Mouse and touch input will
+	-- be received regardless of where on the screen it happened.
+	-- Learn more: https://defold.com/manuals/input/
+	-- Remove this function if not needed
+end
+
+function on_reload(self)
+	-- Add reload-handling code here
+	-- Learn more: https://defold.com/manuals/hot-reload/
+	-- Remove this function if not needed
+end

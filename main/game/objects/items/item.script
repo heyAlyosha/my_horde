@@ -1,0 +1,95 @@
+go.property("type_valute", hash("coin"))
+go.property("count", 1)
+go.property("value", 0)
+go.property("distantion", 15)
+go.property("duration_animate", 0.5)
+
+function init(self)
+	self.types_valute = {}
+	self.types_valute[hash("coin")] = {id = "coins", animation_id = "icon-gold-1"}
+	self.types_valute[hash("xp")] = {id = "xp", animation_id = "game-icon-mutate"}
+	self.types_valute[hash("resource")] = {id = "resource", animation_id = "game-icon-resource"}
+	self.types_valute[hash("trophy")] = {id = "trophy", animation_id = "icon-gold-1"}
+	self.types_valute[hash("star")] = {id = "star", animation_id = "game-icon-star"}
+
+	self.item = self.types_valute[self.type_valute]
+
+	-- Иконка
+	sprite.play_flipbook("#object", self.item.animation_id)
+
+	-- Случайное направление выброса предметов
+	local random_dir = vmath.vector3(1, 0, 0)
+	math.randomseed()
+	local random_p = math.random(1, 628) / 100
+	local rot = vmath.quat_rotation_z(random_p)
+	random_dir = vmath.rotate(rot, random_dir) * self.distantion
+
+	local position_to = go.get_position() + random_dir
+
+	-- Проверяем столкновения коллизии
+	local result = physics.raycast(go.get_position(), position_to, {hash("default")}, options)
+	if result  then
+		position_to = result.position
+	end
+
+	position_to = position_functions.add_perspective_z(position_to)
+
+	-- Анимация полёта
+	go.animate(".", "position.x", go.PLAYBACK_ONCE_FORWARD, position_to.x, go.EASING_LINEAR, self.duration_animate)
+	go.animate(".", "position.y", go.PLAYBACK_ONCE_FORWARD, position_to.y + 10, go.EASING_OUTCUBIC, self.duration_animate * 0.25, 0, function (self)
+		go.animate(".", "position.y", go.PLAYBACK_ONCE_FORWARD, position_to.y, go.EASING_OUTBOUNCE, self.duration_animate * 0.75)
+	end)
+
+	timer.delay(self.duration_animate, false, function (self)
+		-- Активируем валюту
+		go.set_position(position_to)
+		-- Анимация полёта
+		msg.post("#shadow", "disable")
+		go.animate(".", "position.y", go.PLAYBACK_LOOP_PINGPONG, position_to.y + 5, go.EASING_INOUTCUBIC, 2)
+		-- Создаём тень
+		self.shadow = factory.create("#shadow_factory", position_to)
+
+		-- Добавляем предмет для подбора
+		self.group_name = "items"
+		self.group_id, self.items_id = ai_vision.add_static_object(self, self.group_name)
+	end)
+end
+
+function final(self)
+	if self.shadow then
+		go.delete(self.shadow)
+	end
+
+	ai_vision.delete_object(self, self.group_name, self.items_id)
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("activate") then
+		-- Подьираем предмет
+		if not self.activate then
+			self.activate = true
+			local duration = 0.1
+			go.cancel_animations(".", "position")
+			go.animate(".", "position", go.PLAYBACK_ONCE_FORWARD, go.get_position(sender), go.EASING_LINEAR, duration)
+			go.animate(".", "scale", go.PLAYBACK_ONCE_FORWARD, vmath.vector3(0.5), go.EASING_LINEAR, duration)
+
+			local start_podition = camera.world_to_screen(camera_id, go.get_position(), gui.ADJUST_STRETCH)
+			timer.delay(duration, false, function (self)
+				-- Заичлсяем игроку
+				msg.post("main:/loader_gui", "set_status", {
+					id = "add_balance",
+					type = self.item.id,
+					start_position = start_podition,
+					value = self.count,
+					not_screen_to_local = true
+				})
+
+				-- Заносим в данные карты
+				storage_game.map.player_add_items[self.item.id] = storage_game.map.player_add_items[self.item.id] or 0
+				storage_game.map.player_add_items[self.item.id] = storage_game.map.player_add_items[self.item.id] + self.count
+
+				go.delete()
+			end)
+		end
+	end
+end

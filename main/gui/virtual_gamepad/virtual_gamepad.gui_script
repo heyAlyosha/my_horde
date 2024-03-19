@@ -1,0 +1,41 @@
+local virtual_gamepad_render = require "main.gui.virtual_gamepad.modules.virtual_gamepad_render"
+local onscreen = require "in.onscreen"
+local storage_gui = require "main.storage.storage_gui"
+local gui_input = require "main.gui.modules.gui_input"
+
+function init(self)
+	msg.post(".", "acquire_input_focus")
+	gui.set_render_order(15)
+	virtual_gamepad_render.init(self)
+	storage_gui.visible_virtual_gamepad = true
+end
+
+function final(self)
+	msg.post(".", "release_input_focus")
+	gui_input.on_final(self)
+	onscreen.reset()
+	storage_gui.visible_virtual_gamepad = nil
+end
+
+function update(self, dt)
+	virtual_gamepad_render.on_update(self)
+end
+
+--[[
+function on_message(self, message_id, message, sender)
+	input_remote_tv.on_message(self, message_id, message, sender)
+end
+--]]
+
+function on_input(self, action_id, action)
+	action_id, action = input_remote_tv.on_input(self, action_id, action)
+	virtual_gamepad_render.on_input(self, action_id, action)
+end
+
+--[[
+function on_reload(self)
+	-- Add reload-handling code here
+	-- Learn more: https://defold.com/manuals/hot-reload/
+	-- Remove this function if not needed
+end
+]]--

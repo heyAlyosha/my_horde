@@ -1,0 +1,41 @@
+local gui_input = require "main.gui.modules.gui_input"
+local gui_loyouts = require "main.gui.modules.gui_loyouts"
+local gui_lang = require "main.lang.gui_lang"
+local storage_gui = require "main.storage.storage_gui"
+
+function init(self)
+	self.node = gui.get_node("wrap")
+	gui_loyouts.set_color(self, self.node, vmath.vector4(0, 0, 0, 0))
+	gui.set_render_order(2)
+end
+
+function final(self)
+	gui_input.on_final(self)
+end
+
+function on_message(self, message_id, message, sender)
+	input_remote_tv.on_message(self, message_id, message, sender)
+	gui_loyouts.on_message(self, message_id, message)
+
+	if message_id == hash("visible") then
+		local data = message.value or {}
+		data.opacity = data.opacity or 0.5
+		data.order = data.order or 2
+		self.parent_id = message.parent_id
+
+		gui.set_render_order(data.order)
+		gui.animate(self.node, "color", vmath.vector4(0, 0, 0, data.opacity), gui.EASING_LINEAR, 0.25, 0, function (self)
+			gui_loyouts.set_color(self, self.node, vmath.vector4(0, 0, 0, data.opacity))
+		end)
+
+	elseif message_id == hash("hidden") then
+		gui.animate(self.node, "color", vmath.vector4(0, 0, 0, 0), gui.EASING_LINEAR, 0.25, 0 , function (self)
+			gui_loyouts.set_color(self, self.node, vmath.vector4(0, 0, 0, 0))
+			msg.post("/loader_gui", "visible", {
+				id = "bg",
+				visible = false,
+				parent_id = self.parent_id
+			})
+		end)
+	end
+end

@@ -1,0 +1,202 @@
+local api_core_rating = require "main.core.api.api_core_rating"
+local game_content_notify_add = require "main.game.content.game_content_notify_add"
+local loader_sdk_modules = require "main.loaders.loader_sdk.modules.loader_sdk_modules"
+local loader_main_event_logout = require "main.game.loader_main.modules.loader_main_event_logout"
+local game_content_prize = require "main.game.content.game_content_prize"
+local game_content_artifact = require "main.game.content.game_content_artifact"
+local game_content_achieve = require "main.game.content.game_content_achieve"
+local game_content_characteristic = require "main.game.content.game_content_characteristic"
+local game_content_company = require "main.game.content.game_content_company"
+local storage_collection = require "main.storage.storage_collection"
+local loader_gui_function = require "main.loaders.loader_gui.modules.loader_gui_function"
+local defsave = require("defsave.defsave")
+local druid = require("druid.druid")
+local druid_castom_style = require "main.gui.modules.druid_castom_style"
+
+function init(self)
+	color = require("color-lib.color")
+	storage_gui = require "main.storage.storage_gui"
+	camera = require "orthographic.camera"
+	gui_loyouts = require "main.gui.modules.gui_loyouts"
+	levels_script_functions = require "main.game.levels.modules.levels_script_functions"
+	go_controller = require "main.game.controllers.go_controller"
+	timer_linear = require "main.modules.timer_linear"
+	camera = require "orthographic.camera"
+	storage_game = require "main.game.storage.storage_game"
+	horde = require "main.game.characters.modules.horde"
+	input_remote_tv = require "input.input_remote_tv.modules.input_remote_tv"
+	character_animations = require "main.game.animations.character_animations"
+	character_attack = require "main.game.characters.modules.character_attack"
+	character_damage = require "main.game.characters.modules.character_damage"
+	position_functions = require "main.modules.position_functions"
+	draw = require "main.modules.draw"
+	astar_settings = require("main.game.astar.astar_settings")
+	astar_utils = require("main.game.astar.astar_utils")
+	astar_functions = require("main.game.astar.astar_functions")
+	ai_core = require("main.game.ai.ai_core")
+	ai_move = require("main.game.ai.ai_move")
+	ai_attack = require("main.game.ai.ai_attack")
+	ai_vision = require("main.game.ai.ai_vision")
+	ai_zombie = require("main.game.ai.ai_zombie")
+	ai_zombie_enemy = require("main.game.ai.ai_zombie_enemy")
+	ai_human = require("main.game.ai.ai_human")
+	ai_soldier = require("main.game.ai.ai_soldier")
+	character_zombie_main = require("main.game.characters.modules.character_zombie_main")
+	items_functions = require("main.game.objects.items.modules.items_functions")
+	live_bar = require "main.game.markers.live_bar.live_bar"
+
+	--profiler.enable_ui(true)
+	--profiler.set_ui_mode(profiler.MODE_RECORD)
+	--profiler.set_ui_view_mode(profiler.VIEW_MODE_MINIMIZED)
+	--profiler.enable_ui(true)
+	--profiler.set_ui_view_mode(true)
+	--profiler.view_recorded_frame(true)
+
+	math.randomseed = function (seed)
+		storage_game.randomseed = storage_game.randomseed or 0
+		storage_game.randomseed = storage_game.randomseed + 2 + os.clock()
+
+		splitmix64.randomseed(storage_game.randomseed)
+	end
+
+	math.random = splitmix64.random
+
+	druid.set_default_style(druid_castom_style)
+
+	-- Загрузка
+	msg.post(storage_collection.path_proxy_game, "load")
+
+	defsave.set_appname("whell_fortune")
+
+	-- Загружаем
+	--msg.post("@render:", "use_fixed_fit_projection", {near = -1000, far = 1000})
+	msg.post("@render:", "use_fixed_fit_projection", {near = -1000, far = 1000})
+	msg.post(".", "acquire_input_focus")
+	--msg.post("@render:", "use_camera_projection")
+	msg.post("camera", "acquire_camera_focus")
+	--msg.post("#camera", "acquire_camera_focus")
+
+	msg.post("/loader_gui", "visible", {
+		id = "interface",
+		visible = true
+	})
+
+	msg.post("main:/loader_main", "load_level", {
+		company_id = "city_hospital", level_id = "hospital_1"
+	})
+
+	--game_content_prize.init(self)
+	--game_content_artifact.init(self)
+	--game_content_achieve.init(self)
+	--game_content_characteristic.init(self)
+	--game_content_company.init(self)
+
+	-- Отображаем на доп мониторе
+	--[[
+	if true and not html5 then
+		local displays = defos.get_displays()
+
+		if displays[2] then
+			if true then
+				-- Горизонтальный экран
+				--defos.set_view_size(displays[2].bounds.x, displays[2].bounds.y, displays[2].bounds.width, displays[2].bounds.height)
+				defos.set_view_size(displays[1].bounds.x, displays[1].bounds.y, 1280, 720)
+			else
+				-- Вертикальный экран
+				defos.set_view_size(displays[2].bounds.x, displays[2].bounds.y, 320, 480)
+			end
+		else
+			-- Тестируем
+			--defos.set_view_size(displays[1].bounds.x, displays[1].bounds.y, 960, 540)
+			defos.set_view_size(displays[1].bounds.x, displays[1].bounds.y, 405, 720)
+		end
+		
+	end
+	--]]
+
+	defos.set_view_size(0, 0, 1000, 512)
+
+end
+
+function final(self)
+	
+end
+
+function on_message(self, message_id, message, sender)
+	-- Ловим события в игре 
+	if message_id == hash("event") then
+		if message.id == "logout" or message.id == "start_logout" then
+			loader_main_event_logout.on(self, message)
+		end
+
+	elseif message_id == hash("load_level") then
+		-- Запуск уровня
+		self.company_id = message.company_id
+		self.level_id = message.level_id
+
+		msg.post("#level_"..self.level_id.."_collectionproxy", "load")
+
+	elseif message_id == hash("reload_level") then
+		self.refresh_game = message.refresh_game
+		loader_gui_function.clear_collections_visible(self, self.level_id)
+		msg.post(storage_collection.path_proxy_game, "disable")
+		msg.post(storage_collection.path_proxy_game, "final")
+		msg.post(storage_collection.path_proxy_game, "unload")
+		self.reload = true
+
+	elseif message_id == hash("load_level") then
+		msg.post(storage_collection.path_proxy_game, "load")
+
+	elseif message_id == hash("proxy_unloaded") then
+		--Коллекция удалена
+		if self.reload then
+			-- Если перезапуск миссии
+			-- Запускаем по новой
+			msg.post("main:/loader_main", "load_level", {
+				company_id = self.company_id, level_id = self.level_id
+			})
+		else
+			msg.post(storage_collection.path_proxy_game, "load")
+		end
+
+	elseif message_id == hash("proxy_loaded") then
+		-- Новый мир загружен. Инициировать и активировать его.
+		msg.post(sender, "init")
+		msg.post(sender, "enable")
+		storage_collection.path_proxy_game = sender
+		msg.post(storage_collection.path_proxy_game, "set_time_step", {factor = 1, mode = 1})
+
+		-- Если включен перезапуск миссии
+		if self.refresh_game then
+			if storage_game.game.study then
+				msg.post("game-room:/core_game", "start_study", {})
+			else
+				msg.post("game-room:/core_game", storage_game.play_message.message_id, storage_game.play_message.message)
+			end
+			
+
+			self.refresh_game = nil
+		end
+
+	elseif message_id == hash("pause") then
+		-- Пауза в игре
+		msg.post(storage_collection.path_proxy_game, "set_time_step", {factor = 0, mode = 0})
+
+	elseif message_id == hash("game_continue") then
+		-- Продолжение после паузы
+		msg.post(storage_collection.path_proxy_game, "set_time_step", {factor = 1, mode = 1})
+
+	end
+end
+
+function on_input(self, action_id, action)
+	if action_id == hash("action") and not action.pressed then
+		--msg.post("game-room:/wheel/wheel#wheel", hash("rotate"), {})
+	end
+end
+
+function on_reload(self)
+	-- Add reload-handling code here
+	-- Learn more: https://defold.com/manuals/hot-reload/
+	-- Reai_move this function if not needed
+end
