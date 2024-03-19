@@ -24,7 +24,7 @@ instances {
   prototype: "/main/game/markers/markers_core.go"
   position {
     x: 0.0
-    y: 0.0
+    y: -74.0
     z: 0.0
   }
   rotation {
@@ -43,8 +43,8 @@ instances {
   id: "player"
   prototype: "/main/game/characters/player/player_first_level.go"
   position {
-    x: 54.0
-    y: 89.0
+    x: 69.0
+    y: 223.0
     z: 3.0
   }
   rotation {
@@ -64,7 +64,7 @@ instances {
   prototype: "/main/game/objects/objects_ruin/table_big_hospital_1.go"
   position {
     x: 118.0
-    y: 219.0
+    y: 145.0
     z: 0.0
   }
   rotation {
@@ -84,7 +84,7 @@ instances {
   prototype: "/main/game/objects/objects_ruin/outdoor_flower_big.go"
   position {
     x: 25.0
-    y: 216.0
+    y: 142.0
     z: 0.0
   }
   rotation {
@@ -104,7 +104,7 @@ instances {
   prototype: "/main/game/objects/objects_ruin/chair_blue.go"
   position {
     x: 97.0
-    y: 216.0
+    y: 142.0
     z: 0.0
   }
   rotation {
@@ -124,7 +124,7 @@ instances {
   prototype: "/main/game/objects/objects_ruin/chair_blue.go"
   position {
     x: 139.0
-    y: 216.0
+    y: 142.0
     z: 0.0
   }
   rotation {
@@ -144,7 +144,7 @@ instances {
   prototype: "/main/game/objects/objects_ruin/wheelachair.go"
   position {
     x: 507.0
-    y: 174.0
+    y: 100.0
     z: 0.0
   }
   rotation {
@@ -164,7 +164,7 @@ instances {
   prototype: "/main/game/objects/objects_ruin/outdoor_flower_mini.go"
   position {
     x: 230.0
-    y: 216.0
+    y: 142.0
     z: 0.0
   }
   rotation {
@@ -184,7 +184,7 @@ instances {
   prototype: "/main/game/objects/objects_ruin/table_mini.go"
   position {
     x: 245.0
-    y: 216.0
+    y: 142.0
     z: 0.0
   }
   rotation {
@@ -204,7 +204,7 @@ instances {
   prototype: "/main/game/objects/objects_ruin/chair_yellow.go"
   position {
     x: 263.0
-    y: 215.0
+    y: 141.0
     z: 0.0
   }
   rotation {
@@ -224,7 +224,7 @@ instances {
   prototype: "/main/game/characters/human/human.go"
   position {
     x: 47.0
-    y: 217.0
+    y: 143.0
     z: 0.0
   }
   rotation {
@@ -261,8 +261,8 @@ instances {
   id: "outdoor_flower_mini2"
   prototype: "/main/game/objects/objects_ruin/outdoor_flower_normal.go"
   position {
-    x: 398.0
-    y: 218.0
+    x: 399.0
+    y: 138.0
     z: 0.0
   }
   rotation {
@@ -281,8 +281,8 @@ instances {
   id: "outdoor_flower_mini3"
   prototype: "/main/game/objects/objects_ruin/outdoor_flower_mini.go"
   position {
-    x: 433.0
-    y: 219.0
+    x: 440.0
+    y: 139.0
     z: 0.0
   }
   rotation {
@@ -302,7 +302,7 @@ instances {
   prototype: "/main/game/objects/objects_ruin/chair_yellow.go"
   position {
     x: 471.0
-    y: 219.0
+    y: 145.0
     z: 0.0
   }
   rotation {
@@ -322,7 +322,7 @@ instances {
   prototype: "/main/game/objects/objects_ruin/chair_green.go"
   position {
     x: 487.0
-    y: 219.0
+    y: 145.0
     z: 0.0
   }
   rotation {
@@ -342,7 +342,7 @@ instances {
   prototype: "/main/game/objects/objects_ruin/chair_red.go"
   position {
     x: 504.0
-    y: 219.0
+    y: 145.0
     z: 0.0
   }
   rotation {
@@ -362,7 +362,7 @@ instances {
   prototype: "/main/game/objects/objects_ruin/chair_blue.go"
   position {
     x: 520.0
-    y: 219.0
+    y: 145.0
     z: 0.0
   }
   rotation {
@@ -382,7 +382,7 @@ instances {
   prototype: "/main/game/objects/objects_ruin/chair_blue_left.go"
   position {
     x: 633.0
-    y: 199.0
+    y: 125.0
     z: 0.0
   }
   rotation {
@@ -402,7 +402,7 @@ instances {
   prototype: "/main/game/objects/objects_ruin/chair_blue_left.go"
   position {
     x: 633.0
-    y: 184.0
+    y: 110.0
     z: 0.0
   }
   rotation {
@@ -422,7 +422,7 @@ instances {
   prototype: "/main/game/objects/objects_ruin/outdoor_flower_big.go"
   position {
     x: 549.0
-    y: 217.0
+    y: 143.0
     z: 0.0
   }
   rotation {
@@ -442,7 +442,7 @@ instances {
   prototype: "/main/game/objects/objects_ruin/door_blocking.go"
   position {
     x: 744.0
-    y: 305.0
+    y: 231.0
     z: 0.0
   }
   rotation {
@@ -462,7 +462,7 @@ instances {
   prototype: "/main/game/characters/human/human.go"
   position {
     x: 471.0
-    y: 209.0
+    y: 135.0
     z: 0.0
   }
   rotation {
@@ -500,7 +500,7 @@ instances {
   prototype: "/main/game/characters/human/human.go"
   position {
     x: 489.0
-    y: 209.0
+    y: 135.0
     z: 0.0
   }
   rotation {
@@ -543,7 +543,7 @@ instances {
   prototype: "/main/game/characters/human/human.go"
   position {
     x: 523.0
-    y: 173.0
+    y: 99.0
     z: 0.0
   }
   rotation {
@@ -581,7 +581,7 @@ instances {
   prototype: "/main/game/characters/human/human.go"
   position {
     x: 393.0
-    y: 176.0
+    y: 102.0
     z: 0.0
   }
   rotation {
@@ -619,7 +619,7 @@ instances {
   prototype: "/main/game/objects/objects_ruin/chair_blue.go"
   position {
     x: 775.0
-    y: 297.0
+    y: 223.0
     z: 0.0
   }
   rotation {
@@ -639,7 +639,7 @@ instances {
   prototype: "/main/game/objects/objects_ruin/table_mini.go"
   position {
     x: 792.0
-    y: 296.0
+    y: 222.0
     z: 0.0
   }
   rotation {
@@ -659,7 +659,7 @@ instances {
   prototype: "/main/game/objects/objects_ruin/outdoor_flower_big.go"
   position {
     x: 703.0
-    y: 296.0
+    y: 222.0
     z: 0.0
   }
   rotation {
@@ -679,7 +679,7 @@ instances {
   prototype: "/main/game/objects/objects_ruin/wheelachair.go"
   position {
     x: 700.0
-    y: 232.0
+    y: 158.0
     z: 0.0
   }
   rotation {
@@ -699,7 +699,7 @@ instances {
   prototype: "/main/game/characters/human/human.go"
   position {
     x: 743.0
-    y: 269.0
+    y: 195.0
     z: 0.0
   }
   rotation {
@@ -741,7 +741,7 @@ instances {
   children: "door_two_room4"
   position {
     x: 401.0
-    y: 324.0
+    y: 250.0
     z: 0.0
   }
   rotation {
@@ -784,7 +784,7 @@ instances {
   prototype: "/main/game/objects/objects_ruin/outdoor_flower_normal.go"
   position {
     x: 447.0
-    y: 281.0
+    y: 207.0
     z: 0.0
   }
   rotation {
@@ -817,7 +817,7 @@ instances {
   prototype: "/main/game/characters/human/human.go"
   position {
     x: 591.0
-    y: 326.0
+    y: 252.0
     z: 0.0
   }
   rotation {
@@ -860,7 +860,7 @@ instances {
   prototype: "/main/game/objects/objects_ruin/wheelachair_down.go"
   position {
     x: 607.0
-    y: 298.0
+    y: 224.0
     z: 0.0
   }
   rotation {
@@ -893,7 +893,7 @@ instances {
   prototype: "/main/game/objects/objects_ruin/outdoor_flower_mini.go"
   position {
     x: 466.0
-    y: 282.0
+    y: 208.0
     z: 0.0
   }
   rotation {
@@ -926,7 +926,7 @@ instances {
   prototype: "/main/game/characters/human/human.go"
   position {
     x: 402.0
-    y: 286.0
+    y: 212.0
     z: 0.0
   }
   rotation {
@@ -964,7 +964,7 @@ instances {
   prototype: "/main/game/characters/human/human.go"
   position {
     x: 548.0
-    y: 326.0
+    y: 252.0
     z: 0.0
   }
   rotation {
@@ -1002,7 +1002,7 @@ instances {
   prototype: "/main/game/characters/human/human.go"
   position {
     x: 549.0
-    y: 288.0
+    y: 214.0
     z: 0.0
   }
   rotation {
@@ -1040,7 +1040,7 @@ instances {
   prototype: "/main/game/characters/human/human.go"
   position {
     x: 444.0
-    y: 324.0
+    y: 250.0
     z: 0.0
   }
   rotation {
@@ -1083,7 +1083,7 @@ instances {
   prototype: "/main/game/objects/objects_ruin/pedestal_1.go"
   position {
     x: 408.0
-    y: 341.0
+    y: 267.0
     z: 0.0
   }
   rotation {
@@ -1177,7 +1177,7 @@ instances {
   prototype: "/main/camera/camera_ortographic.go"
   position {
     x: 0.0
-    y: 0.0
+    y: -74.0
     z: 0.0
   }
   rotation {
@@ -1197,7 +1197,7 @@ instances {
   prototype: "/main/game/characters/human/human.go"
   position {
     x: 13.0
-    y: 169.0
+    y: 95.0
     z: 0.0
   }
   rotation {
@@ -1235,7 +1235,7 @@ instances {
   prototype: "/main/game/characters/human/human.go"
   position {
     x: 99.0
-    y: 171.0
+    y: 97.0
     z: 0.0
   }
   rotation {
@@ -1268,7 +1268,7 @@ instances {
   prototype: "/main/game/characters/human/human.go"
   position {
     x: 216.0
-    y: 195.0
+    y: 121.0
     z: 0.0
   }
   rotation {
@@ -1306,7 +1306,7 @@ instances {
   prototype: "/main/game/characters/human/human.go"
   position {
     x: 48.0
-    y: 278.0
+    y: 204.0
     z: 0.0
   }
   rotation {
@@ -1339,7 +1339,7 @@ instances {
   prototype: "/main/game/characters/human/human.go"
   position {
     x: 52.0
-    y: 328.0
+    y: 254.0
     z: 0.0
   }
   rotation {
@@ -1372,7 +1372,7 @@ instances {
   prototype: "/main/game/characters/human/human.go"
   position {
     x: 93.0
-    y: 327.0
+    y: 253.0
     z: 0.0
   }
   rotation {
@@ -1389,13 +1389,8 @@ instances {
       type: PROPERTY_TYPE_BOOLEAN
     }
     properties {
-      id: "human_id"
-      value: "9.0"
-      type: PROPERTY_TYPE_NUMBER
-    }
-    properties {
       id: "spawn_star"
-      value: "1.0"
+      value: "0.0"
       type: PROPERTY_TYPE_NUMBER
     }
     properties {
@@ -1415,7 +1410,7 @@ instances {
   prototype: "/main/game/characters/human/human.go"
   position {
     x: 193.0
-    y: 278.0
+    y: 204.0
     z: 0.0
   }
   rotation {
@@ -1448,7 +1443,7 @@ instances {
   prototype: "/main/game/characters/human/human.go"
   position {
     x: 197.0
-    y: 328.0
+    y: 254.0
     z: 0.0
   }
   rotation {
@@ -1481,7 +1476,7 @@ instances {
   prototype: "/main/game/characters/human/human.go"
   position {
     x: 238.0
-    y: 327.0
+    y: 253.0
     z: 0.0
   }
   rotation {
@@ -1524,7 +1519,7 @@ instances {
   prototype: "/main/game/objects/objects_ruin/table_big_hospital_1.go"
   position {
     x: 70.0
-    y: 346.0
+    y: 272.0
     z: 0.0
   }
   rotation {
@@ -1544,7 +1539,7 @@ instances {
   prototype: "/main/game/objects/objects_ruin/table_big_hospital_2.go"
   position {
     x: 256.0
-    y: 297.0
+    y: 223.0
     z: 0.0
   }
   rotation {
@@ -1564,7 +1559,7 @@ instances {
   prototype: "/main/game/objects/objects_ruin/chair_green_left.go"
   position {
     x: 261.0
-    y: 278.0
+    y: 204.0
     z: 0.0
   }
   rotation {
@@ -1584,7 +1579,7 @@ instances {
   prototype: "/main/game/objects/objects_ruin/chair_yellow.go"
   position {
     x: 110.0
-    y: 304.0
+    y: 230.0
     z: 0.0
   }
   rotation {
@@ -1604,7 +1599,7 @@ instances {
   prototype: "/main/game/objects/objects_ruin/chair_red.go"
   position {
     x: 52.0
-    y: 345.0
+    y: 271.0
     z: 0.0
   }
   rotation {
@@ -1624,7 +1619,7 @@ instances {
   prototype: "/main/game/objects/objects_ruin/pedestal_1.go"
   position {
     x: 90.0
-    y: 342.0
+    y: 268.0
     z: 0.0
   }
   rotation {
@@ -1644,7 +1639,7 @@ instances {
   prototype: "/main/game/objects/objects_ruin/pedestal_2.go"
   position {
     x: 119.0
-    y: 276.0
+    y: 202.0
     z: 0.0
   }
   rotation {
@@ -1664,8 +1659,8 @@ instances {
   prototype: "/main/game/objects/objects_ruin/table_big_hospital_2.go"
   position {
     x: 208.0
-    y: 344.0
-    z: 0.0
+    y: 270.0
+    z: 3.0
   }
   rotation {
     x: 0.0
@@ -1692,7 +1687,7 @@ instances {
   prototype: "/main/game/objects/objects_ruin/pedestal_1.go"
   position {
     x: 175.0
-    y: 303.0
+    y: 229.0
     z: 0.0
   }
   rotation {
@@ -1712,7 +1707,7 @@ instances {
   prototype: "/main/game/objects/objects_ruin/chair_blue_left.go"
   position {
     x: 224.0
-    y: 342.0
+    y: 268.0
     z: 0.0
   }
   rotation {
@@ -1732,7 +1727,7 @@ instances {
   prototype: "/main/game/objects/objects_ruin/chair_blue_left.go"
   position {
     x: 191.0
-    y: 343.0
+    y: 269.0
     z: 0.0
   }
   rotation {
@@ -1760,7 +1755,7 @@ instances {
   prototype: "/main/game/objects/objects_ruin/outdoor_flower_big.go"
   position {
     x: 238.0
-    y: 347.0
+    y: 273.0
     z: 0.0
   }
   rotation {
@@ -1780,7 +1775,7 @@ instances {
   prototype: "/main/game/objects/objects_ruin/chair_blue.go"
   position {
     x: 520.0
-    y: 219.0
+    y: 145.0
     z: 0.0
   }
   rotation {
@@ -1800,7 +1795,7 @@ instances {
   prototype: "/main/game/characters/human/human.go"
   position {
     x: 400.0
-    y: 136.0
+    y: 62.0
     z: 0.0
   }
   rotation {
@@ -1838,7 +1833,7 @@ instances {
   prototype: "/main/game/characters/human/human.go"
   position {
     x: 420.0
-    y: 136.0
+    y: 62.0
     z: 0.0
   }
   rotation {
@@ -1881,7 +1876,7 @@ instances {
   prototype: "/main/game/markers/zones/btn_zone_count.go"
   position {
     x: 742.0
-    y: 246.0
+    y: 172.0
     z: 0.0
   }
   rotation {
@@ -1901,7 +1896,7 @@ instances {
   prototype: "/main/game/objects/objects_ruin/chair_blue_left.go"
   position {
     x: 792.0
-    y: 152.0
+    y: 78.0
     z: 0.0
   }
   rotation {
@@ -1921,7 +1916,7 @@ instances {
   prototype: "/main/game/objects/objects_ruin/chair_green_left.go"
   position {
     x: 792.0
-    y: 137.0
+    y: 63.0
     z: 0.0
   }
   rotation {
@@ -1941,7 +1936,7 @@ instances {
   prototype: "/main/game/objects/objects_ruin/chair_red_left.go"
   position {
     x: 793.0
-    y: 185.0
+    y: 111.0
     z: 0.0
   }
   rotation {
@@ -1961,7 +1956,7 @@ instances {
   prototype: "/main/game/objects/objects_ruin/chair_yellow_left.go"
   position {
     x: 793.0
-    y: 170.0
+    y: 96.0
     z: 0.0
   }
   rotation {
@@ -1981,7 +1976,7 @@ instances {
   prototype: "/main/game/objects/objects_ruin/chair_blue_left.go"
   position {
     x: 793.0
-    y: 216.0
+    y: 142.0
     z: 0.0
   }
   rotation {
@@ -2001,7 +1996,7 @@ instances {
   prototype: "/main/game/objects/objects_ruin/chair_blue_left.go"
   position {
     x: 793.0
-    y: 201.0
+    y: 127.0
     z: 0.0
   }
   rotation {
@@ -2021,7 +2016,7 @@ instances {
   prototype: "/main/game/objects/objects_ruin/outdoor_flower_big.go"
   position {
     x: 703.0
-    y: 296.0
+    y: 222.0
     z: 0.0
   }
   rotation {
@@ -2113,7 +2108,7 @@ embedded_instances {
   ""
   position {
     x: 57.0
-    y: 139.0
+    y: 65.0
     z: 0.0
   }
   rotation {
@@ -2204,7 +2199,7 @@ embedded_instances {
   ""
   position {
     x: 321.0
-    y: 176.0
+    y: 102.0
     z: 0.0
   }
   rotation {
@@ -2295,7 +2290,7 @@ embedded_instances {
   ""
   position {
     x: 743.0
-    y: 224.0
+    y: 150.0
     z: 0.0
   }
   rotation {
@@ -2526,7 +2521,7 @@ embedded_instances {
   ""
   position {
     x: 551.0
-    y: 343.0
+    y: 269.0
     z: 0.0
   }
   rotation {
@@ -2757,7 +2752,7 @@ embedded_instances {
   ""
   position {
     x: 445.0
-    y: 341.0
+    y: 267.0
     z: 0.0
   }
   rotation {
@@ -2988,7 +2983,7 @@ embedded_instances {
   ""
   position {
     x: 583.0
-    y: 343.0
+    y: 269.0
     z: 0.0
   }
   rotation {
@@ -3401,7 +3396,7 @@ embedded_instances {
   ""
   position {
     x: 445.0
-    y: 341.0
+    y: 267.0
     z: 0.0
   }
   rotation {
@@ -3632,7 +3627,7 @@ embedded_instances {
   ""
   position {
     x: 724.0
-    y: 294.0
+    y: 220.0
     z: 0.0
   }
   rotation {
