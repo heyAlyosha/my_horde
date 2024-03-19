@@ -18,8 +18,6 @@ local data_handler = require "main.data.data_handler"
 function init(self)
 	msg.post(".", "acquire_input_focus")
 
-	pprint("url_reset", msg.url())
-
 	self.id = "modal_reset"
 
 	gui.set_render_order(storage_gui.orders.modal_exit)

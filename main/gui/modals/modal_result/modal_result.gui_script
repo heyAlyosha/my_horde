@@ -29,6 +29,7 @@ function init(self)
 	self.id = "modal_result"
 
 	self.nodes = {
+		wrap = gui.get_node("wrap"),
 		title_wrap = gui.get_node("title_wrap"),
 		wrap_btns_win = gui.get_node("wrap_btns_win"),
 		wrap_btns_fail = gui.get_node("wrap_btns_fail"),

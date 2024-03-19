@@ -25,12 +25,12 @@ function init(self)
 
 	--msg.post(".", "start")
 	--msg.post(".", "get_ruin_door")
-	msg.post(".", "get_to_end")
+	--msg.post(".", "get_to_end")
 	
 	--msg.post("#map_core", "win")
 
 	timer.delay(0.2, false, function (self)
-		--msg.post("#map_core", "win", {point_win = msg.url("win_point")})
+		msg.post("#map_core", "win", {point_win = msg.url("win_point"), next_level_point = msg.url("next_level_point")})
 	end)
 end
 

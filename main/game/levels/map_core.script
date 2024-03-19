@@ -119,6 +119,7 @@ function fixed_update(self, dt)
 end
 
 function on_message(self, message_id, message, sender)
+	print("message_id", message_id)
 	if message_id == hash("effect") then
 		-- Добавление эффектов
 		local properties = {
@@ -141,7 +142,8 @@ function on_message(self, message_id, message, sender)
 
 	elseif message_id == hash("win") then
 		-- Победа игрока
-		--записываем прогресс
+		self.next_level_point = message.next_level_point
+		-- Записываем прогресс
 		local stars = 0
 		if self.stars then
 			storage_game.map.player_star = storage_game.map.player_star or 0
@@ -167,6 +169,28 @@ function on_message(self, message_id, message, sender)
 		core_prorgress.set_progress_level(storage_game.game.company_id, storage_game.game.level_id, stars)
 		
 		msg.post("player", "win", message)
+
+	elseif message_id == hash("next") then
+		-- Следующий уровень или окончание компании
+		local function animate_next(self)
+			msg.post("player", "horde_to_score")
+			local duration = 1
+			msg.post("main:/loader_gui", "visible", {
+				visible = true, 
+				id = "dark_screen", 
+				type = hash("animated_close"),
+				value = {duration = duration}
+			})
+		end
+
+		if self.next_level_point then
+			local position_to = go.get_position(self.next_level_point)
+			position_to = position_functions.add_perspective_z(position_to)
+			msg.post("player", "position_to", {position_to = position_to})
+			animate_next(self)
+		else
+			animate_next(self)
+		end
 	end
 end
 

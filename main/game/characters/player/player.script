@@ -237,6 +237,12 @@ function on_message(self, message_id, message, sender)
 			character_zombie_main.add_zombie_attack(self, horde_index, position, target, message)
 		end
 
+	elseif message_id == hash("position_to") then
+		pprint("position_to", message.position_to)
+		ai_move.move_item(self, message.position_to, function (self)
+			msg.post(sender, "player_position_success")
+		end)
+
 	elseif message_id == hash("win") then
 		-- Анимация победы
 		self.win = true

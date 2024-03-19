@@ -43,8 +43,8 @@ instances {
   id: "player"
   prototype: "/main/game/characters/player/player_first_level.go"
   position {
-    x: 552.0
-    y: 166.0
+    x: 744.0
+    y: 284.0
     z: 2.0
   }
   rotation {
@@ -1964,6 +1964,26 @@ embedded_instances {
   position {
     x: 744.0
     y: 268.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+embedded_instances {
+  id: "next_level_point"
+  data: ""
+  position {
+    x: 744.0
+    y: 368.0
     z: 0.0
   }
   rotation {

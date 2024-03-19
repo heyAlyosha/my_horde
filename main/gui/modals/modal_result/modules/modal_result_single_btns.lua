@@ -96,30 +96,15 @@ function M.function_activate(self, focus_btn_id)
 		storage_game.game.study_level = nil
 	end
 
-	if focus_btn_id == 3 and storage_game.game.study_level then
-		-- Продолжение обучения
-		-- Центральная кнопка 
-		
-		if storage_game.game.study_level < 3 then
-			-- следующий учебный уровень
-			msg.post("game-room:/core_game", "start_study", {})
-			return
-		else
-			-- Окончание обучения, назад в меню
-			storage_game.game.study_level = nil
-			msg.post("main:/core_screens", "back_menu", {})
-			return
-		end
+	
 
-	elseif btn.id == "close" or btn.id == "back" then
+	if btn.id == "close" or btn.id == "back" then
 		-- Закрытие/возврат назад
 		msg.post("main:/core_screens", "back_menu", {})
 
-	elseif btn.id == "continue_level" then
+	elseif btn.id == "continue" then
 		-- Следующий уровень
-		msg.post("game-room:/core_game", "start_company_level", {category_id = btn.category_id, level_id = btn.level_id})
-
-		--msg.post("main:/core_screens", "next_level", {})
+		msg.post(storage_game.map.url_script, "next")
 
 	elseif btn.id == "refresh" then
 		-- Повтор игры
