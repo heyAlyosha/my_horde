@@ -12,6 +12,11 @@ components {
     z: 0.0
     w: 1.0
   }
+  properties {
+    id: "activation"
+    value: "false"
+    type: PROPERTY_TYPE_BOOLEAN
+  }
 }
 embedded_components {
   id: "sprite"
@@ -19,6 +24,19 @@ embedded_components {
   data: "default_animation: \"btn_map_no_activation\"\n"
   "material: \"/builtins/materials/sprite.material\"\n"
   "blend_mode: BLEND_MODE_ALPHA\n"
+  "slice9 {\n"
+  "  x: 7.0\n"
+  "  y: 10.0\n"
+  "  z: 7.0\n"
+  "  w: 10.0\n"
+  "}\n"
+  "size {\n"
+  "  x: 30.0\n"
+  "  y: 30.0\n"
+  "  z: 0.0\n"
+  "  w: 0.0\n"
+  "}\n"
+  "size_mode: SIZE_MODE_MANUAL\n"
   "textures {\n"
   "  sampler: \"texture_sampler\"\n"
   "  texture: \"/main/atlases/first_level.atlas\"\n"
@@ -46,9 +64,9 @@ embedded_components {
   "  w: 0.0\n"
   "}\n"
   "color {\n"
-  "  x: 1.0\n"
-  "  y: 1.0\n"
-  "  z: 1.0\n"
+  "  x: 0.0\n"
+  "  y: 0.0\n"
+  "  z: 0.0\n"
   "  w: 1.0\n"
   "}\n"
   "outline {\n"
@@ -74,7 +92,7 @@ embedded_components {
   ""
   position {
     x: 0.0
-    y: -6.0
+    y: -7.0
     z: 0.1
   }
   rotation {
@@ -152,6 +170,42 @@ embedded_components {
   position {
     x: 0.0
     y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}
+embedded_components {
+  id: "shadow"
+  type: "sprite"
+  data: "default_animation: \"btn_map_no_activation\"\n"
+  "material: \"/builtins/materials/sprite.material\"\n"
+  "blend_mode: BLEND_MODE_ALPHA\n"
+  "slice9 {\n"
+  "  x: 7.0\n"
+  "  y: 10.0\n"
+  "  z: 7.0\n"
+  "  w: 10.0\n"
+  "}\n"
+  "size {\n"
+  "  x: 32.0\n"
+  "  y: 32.0\n"
+  "  z: 0.0\n"
+  "  w: 0.0\n"
+  "}\n"
+  "size_mode: SIZE_MODE_MANUAL\n"
+  "textures {\n"
+  "  sampler: \"texture_sampler\"\n"
+  "  texture: \"/main/atlases/first_level.atlas\"\n"
+  "}\n"
+  ""
+  position {
+    x: 0.0
+    y: -1.0
     z: 0.0
   }
   rotation {

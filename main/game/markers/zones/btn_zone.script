@@ -5,6 +5,7 @@ go.property("activation", true)
 go.property("id_activation", hash(""))
 
 function init(self)
+	go.set("#shadow", "tint", vmath.vector4(0, 0, 0, 0.2)) -- <1>
 	msg.post(".", "activation", {activation = self.activation})
 end
 

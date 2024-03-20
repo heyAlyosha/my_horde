@@ -179,14 +179,6 @@ images {
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/assets/images/game/markers/btn_map_activation.png"
-  sprite_trim_mode: SPRITE_TRIM_MODE_OFF
-}
-images {
-  image: "/assets/images/game/markers/btn_map_no_activation.png"
-  sprite_trim_mode: SPRITE_TRIM_MODE_OFF
-}
-images {
   image: "/assets/images/game/clouds/lightning_2.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
@@ -304,6 +296,10 @@ images {
 }
 images {
   image: "/assets/images/gui/icon_close_default.png"
+  sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+}
+images {
+  image: "/assets/images/gui/btn_map_activation.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 animations {
@@ -1521,6 +1517,17 @@ animations {
   id: "btn_interface_default"
   images {
     image: "/assets/images/gui/account_border.png"
+    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 60
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "btn_map_no_activation"
+  images {
+    image: "/assets/images/gui/button_green_default.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   playback: PLAYBACK_LOOP_FORWARD

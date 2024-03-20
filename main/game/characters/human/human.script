@@ -56,7 +56,7 @@ function init(self)
 		})
 	end
 
-	self.random_skins = {1,2,3,4,7,8,9}
+	self.random_skins = {1,2,3,4,9}
 
 	if self.human_id_random then
 		math.randomseed()

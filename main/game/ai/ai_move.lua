@@ -7,7 +7,7 @@ function M.move_item_from(self, position_from, handle, speed)
 	local dir = (position_from - position) * (-1)
 
 	local start_x, start_y = astar_utils:screen_to_coords(position.x, position.y)
-	local max_cost = 1 -- near
+	local max_cost = 2 -- near
 
 	local near_result, near_size, nears = astar.solve_near(start_x, start_y, max_cost)
 
@@ -20,10 +20,17 @@ function M.move_item_from(self, position_from, handle, speed)
 				local position_to = vmath.vector3(x, y, 0)
 				local result_collision = physics.raycast(go.get_position(), position_to, {hash("default")}, options)
 				if result_collision then
-					sort = sort - 100
+					sort = sort + 10000
+					
 				end
 				local dot = vmath.dot(dir, position_to - position) * 0.00001
 				sort = sort + dot
+
+				if result_collision then
+					sort = sort - 10000
+				else
+				end
+				
 				--print("sort", sort, result_collision)
 				table.insert(result, {
 					position = position_to,
@@ -45,7 +52,7 @@ function M.move_item_from(self, position_from, handle, speed)
 		M.move_item(self, position_functions.go_get_perspective_z(position_to), handle)
 	else
 		if handle then
-			handle(self)
+			timer.delay(1, false, handle)
 		end
 		sprite.set_hflip("#body", dir.x < 0)
 	end
