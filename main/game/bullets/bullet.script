@@ -18,7 +18,7 @@ function init(self)
 				go.delete()
 			end)
 		else
-			sprite.play_flipbook("#body", "attack_default", function (self)
+			sprite.play_flipbook("#body", "slash", function (self)
 				go.delete()
 			end)
 		end
@@ -44,13 +44,12 @@ function final(self)
 	-- Remove this function if not needed
 end
 
---[[
 function update(self, dt)
 	if self.type == hash("hit") then
 		go.set_position(go.get_position(self.parent))
 	end
 end
---]]
+
 
 function fixed_update(self, dt)
 	-- This function is called if 'Fixed Update Frequency' is enabled in the Engine section of game.project

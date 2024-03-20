@@ -71,8 +71,8 @@ embedded_components {
     w: 1.0
   }
   scale {
-    x: 1.2
-    y: 1.2
+    x: 1.25
+    y: 1.25
     z: 1.0
   }
 }
@@ -127,7 +127,7 @@ embedded_components {
 embedded_components {
   id: "bullet_factory"
   type: "factory"
-  data: "prototype: \"/main/game/bullets/bullet_hit.go\"\n"
+  data: "prototype: \"/main/game/bullets/bullet_hit_player.go\"\n"
   "load_dynamically: false\n"
   "dynamic_prototype: false\n"
   ""

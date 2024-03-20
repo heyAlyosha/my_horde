@@ -107,8 +107,8 @@ function M.damage(self, from_object_damage)
 		
 		live_bar.position_to(self, position, duration)
 		position = position_functions.go_get_perspective_z(position)
-		go.animate(".", "position.x", go.PLAYBACK_ONCE_FORWARD, position.x, go.EASING_LINEAR, duration, 0)
-		go.animate(".", "position.y", go.PLAYBACK_ONCE_PINGPONG, position.y, go.EASING_LINEAR, duration, 0)
+		go.animate(".", "position.x", go.PLAYBACK_ONCE_FORWARD, position.x, go.EASING_LINEAR, duration / 2, 0)
+		go.animate(".", "position.y", go.PLAYBACK_ONCE_PINGPONG, position.y, go.EASING_LINEAR, duration / 2, 0)
 
 		-- Покраснение
 		go.set("#body", "tint", vmath.vector4(1, 0.6, 0.6, 1)) -- <1>
