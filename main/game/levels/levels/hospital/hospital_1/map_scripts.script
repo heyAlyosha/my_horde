@@ -23,7 +23,7 @@ function init(self)
 
 	msg.post(".", "init")
 
-	--msg.post(".", "start")
+	msg.post(".", "start")
 	--msg.post(".", "get_ruin_door")
 	--msg.post(".", "get_to_end")
 	

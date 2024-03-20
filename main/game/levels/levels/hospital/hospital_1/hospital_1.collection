@@ -43,15 +43,23 @@ instances {
   id: "player"
   prototype: "/main/game/characters/player/player_first_level.go"
   position {
-    x: 744.0
-    y: 284.0
-    z: 2.0
+    x: 37.0
+    y: 53.0
+    z: -3.0
   }
   rotation {
     x: 0.0
     y: 0.0
     z: 0.0
     w: 1.0
+  }
+  component_properties {
+    id: "script"
+    properties {
+      id: "activate"
+      value: "false"
+      type: PROPERTY_TYPE_BOOLEAN
+    }
   }
   scale3 {
     x: 1.0
@@ -72,6 +80,14 @@ instances {
     y: 0.0
     z: 0.0
     w: 1.0
+  }
+  component_properties {
+    id: "script"
+    properties {
+      id: "spawn_star"
+      value: "1.0"
+      type: PROPERTY_TYPE_NUMBER
+    }
   }
   scale3 {
     x: 1.0
@@ -835,6 +851,14 @@ instances {
     z: 0.0
     w: 1.0
   }
+  component_properties {
+    id: "script"
+    properties {
+      id: "spawn_star"
+      value: "1.0"
+      type: PROPERTY_TYPE_NUMBER
+    }
+  }
   scale3 {
     x: 1.0
     y: 1.0
@@ -949,11 +973,6 @@ instances {
   component_properties {
     id: "script"
     properties {
-      id: "activation"
-      value: "false"
-      type: PROPERTY_TYPE_BOOLEAN
-    }
-    properties {
       id: "human_id_random"
       value: "true"
       type: PROPERTY_TYPE_BOOLEAN
@@ -971,67 +990,11 @@ instances {
   }
 }
 instances {
-  id: "item"
-  prototype: "/main/game/objects/items/item.go"
-  position {
-    x: 778.0
-    y: 243.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  component_properties {
-    id: "script"
-    properties {
-      id: "type_valute"
-      value: "xp"
-      type: PROPERTY_TYPE_HASH
-    }
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "item1"
-  prototype: "/main/game/objects/items/item.go"
-  position {
-    x: 751.0
-    y: 231.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  component_properties {
-    id: "script"
-    properties {
-      id: "type_valute"
-      value: "star"
-      type: PROPERTY_TYPE_HASH
-    }
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
   id: "outdoor_flower_mini5"
   prototype: "/main/game/objects/objects_ruin/outdoor_flower_big.go"
   position {
-    x: 570.0
-    y: 166.0
+    x: 633.0
+    y: 217.0
     z: 0.0
   }
   rotation {
@@ -1044,7 +1007,7 @@ instances {
     id: "script"
     properties {
       id: "spawn_star"
-      value: "3.0"
+      value: "1.0"
       type: PROPERTY_TYPE_NUMBER
     }
   }

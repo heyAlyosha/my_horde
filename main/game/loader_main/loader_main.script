@@ -88,7 +88,7 @@ function init(self)
 	})
 
 	msg.post("main:/loader_main", "load_level", {
-		company_id = "city_hospital", level_id = 2
+		company_id = "city_hospital", level_id = 1
 	})
 
 	-- Отображаем на доп мониторе
