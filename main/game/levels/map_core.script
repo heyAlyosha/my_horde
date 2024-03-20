@@ -53,12 +53,20 @@ function init(self)
 	astar.set_costs(costs)
 
 	touch_pos = vmath.vector3(168, 150, 0)
+	
 	-- Записываем настройки карты
 
 	-- Отключаем метку направления
 	if storage_gui.components_visible.interface then
 		msg.post(storage_gui.components_visible.interface, "set_content", {type = "set_dir_goal", dir_goal = false})
 	end
+
+	-- Отключаем затемнение эжкрана
+	msg.post("main:/loader_gui", "visible", {
+		visible = false, 
+		id = "dark_screen", 
+		type = hash("animated_close"),
+	})
 
 	msg.post("main:/loader_gui", "visible", {
 		visible = false, 

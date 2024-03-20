@@ -19,6 +19,7 @@ function init(self)
 			end)
 		else
 			sprite.play_flipbook("#body", "slash", function (self)
+				self.delete = true
 				go.delete()
 			end)
 		end
@@ -45,7 +46,7 @@ function final(self)
 end
 
 function update(self, dt)
-	if self.type == hash("hit") then
+	if self.type == hash("hit") and not self.delete then
 		go.set_position(go.get_position(self.parent))
 	end
 end
@@ -79,6 +80,7 @@ function on_message(self, message_id, message, sender)
 				msg.post(message.other_id, "damage", {damage = self.damage, parent = self.parent, position = go.get_position()})
 
 				if self.damage_count_object <= 0 then
+					self.delete = true
 					go.delete()
 				end
 			end

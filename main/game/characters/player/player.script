@@ -29,7 +29,8 @@ function init(self)
 		go_controller.add(self)
 		position_functions.go_set_perspective_z()
 		--camera.follow(camera_id, msg.url(), options)
-		live_bar.create(self)
+		local is_player = true
+		live_bar.create(self, is_player)
 	end
 
 	self.max_live = self.live
@@ -177,7 +178,8 @@ function on_message(self, message_id, message, sender)
 		go_controller.add(self)
 		position_functions.go_set_perspective_z()
 		--camera.follow(camera_id, msg.url(), options)
-		live_bar.create(self)
+		local is_player = true
+		live_bar.create(self, is_player)
 	elseif message_id == hash("damage") then
 		-- Получили урон
 		local damage = message.damage or 0
@@ -239,6 +241,7 @@ function on_message(self, message_id, message, sender)
 
 	elseif message_id == hash("position_to") then
 		ai_move.move_item(self, message.position_to, function (self)
+			character_animations.play(self, "idle")
 			msg.post(sender, "player_position_success")
 		end)
 

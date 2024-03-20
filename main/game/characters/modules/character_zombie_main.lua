@@ -118,6 +118,12 @@ function M.change_horde(self)
 
 	self.visible_horde = self.visible_horde_min + dist_max_horde
 	self.distantion_visible = self.distantion_attack + dist_max_horde
+
+	if self.hp_bar and self.hp_bar[hash("/count")] then
+		local url = msg.url(self.hp_bar[hash("/count")])
+		local url_label = msg.url(url.socket, url.path, "count_horde")
+		label.set_text(url_label, self.horde_count_current)
+	end
 end
 
 return M

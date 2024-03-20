@@ -3,6 +3,8 @@ function init(self)
 	-- Объекты для активации
 	self.activation_objects = {}
 
+	msg.post(".", "init")
+
 	msg.post(".", "start")
 	--msg.post(".", "get_ruin_door")
 	
@@ -28,8 +30,19 @@ function fixed_update(self, dt)
 end
 
 function on_message(self, message_id, message, sender)
-	if message_id == hash("start") then
-		camera.follow(camera_id, msg.url("player"))
+	if message_id == hash("init") then
+		-- Инициализация карты
+		camera.follow(camera_id, msg.url("player"), options)
+
+	elseif message_id == hash("start") then
+		-- Игрок идёт до стартовой точки уровня
+		local position_to = go.get_position("start_point")
+		position_to = position_functions.add_perspective_z(position_to)
+		msg.post("player", "position_to", {position_to = position_to})
+
+	elseif message_id == hash("player_position_success") then
+		-- Игрок дошёл, активируем его
+		msg.post("player", "activate")
 
 	elseif message_id == hash("get_ruin_door") then
 		-- Уничтожить дверь и тумбы

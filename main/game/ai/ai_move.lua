@@ -26,17 +26,13 @@ function M.move_item_from(self, position_from, handle, speed)
 				local dot = vmath.dot(dir, position_to - position) * 0.00001
 				sort = sort + dot
 
-				if result_collision then
-					sort = sort - 10000
-				else
+				if not result_collision then
+					table.insert(result, {
+						position = position_to,
+						sort = sort,
+						collision = result_collision
+					})
 				end
-				
-				--print("sort", sort, result_collision)
-				table.insert(result, {
-					position = position_to,
-					sort = sort,
-					collision = result_collision
-				})
 			end
 		end
 	end

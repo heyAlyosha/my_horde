@@ -1,9 +1,15 @@
 -- Функции для показа шкалы здоровья
 local M = {}
 
-function M.create(self)
+function M.create(self, is_player)
 	if not self.hp_bar then
-		self.hp_bar = collectionfactory.create("markers_core#live_bar_collectionfactory", go.get_position())
+		if is_player then
+			self.hp_bar = collectionfactory.create("#live_bar_collectionfactory", go.get_position())
+			pprint("self.hp_bar", self.hp_bar)
+		else
+			self.hp_bar = collectionfactory.create("markers_core#live_bar_collectionfactory", go.get_position())
+		end
+		
 	end
 end
 
