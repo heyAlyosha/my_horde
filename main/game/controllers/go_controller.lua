@@ -1,6 +1,8 @@
 -- КОнтроллер игровых объектов
 local M = {}
 
+
+
 -- Добавление go
 function M.add(self)
 	storage_game.go_urls[go.get_id()] = msg.url()

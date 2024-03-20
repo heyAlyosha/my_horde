@@ -15,8 +15,6 @@ go.property("id_activation", hash(""))
 
 -- Разрушаемые объекты
 local function activate_init(self)
-	go_controller.object_items_spawn_to_map(self)
-	go_controller.add(self)
 
 	position_functions.go_set_perspective_z()
 	self.max_live = self.live
@@ -30,6 +28,9 @@ local function activate_init(self)
 end
 
 function init(self)
+	go_controller.add(self)
+	go_controller.object_items_spawn_to_map(self)
+
 	-- Добавляем активацию объекта в скрипт карты
 	if self.id_activation ~= hash("") then
 		msg.post("map#map_scripts", "add_activation_object", {

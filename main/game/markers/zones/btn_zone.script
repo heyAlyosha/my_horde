@@ -43,6 +43,9 @@ function on_message(self, message_id, message, sender)
 				msg.post("map#map_scripts", "activation_point", {
 					id_activation = self.id_activation
 				})
+				msg.post(url, "activation_btn_zone", {
+					id_activation = self.id_activation
+				})
 				msg.post(".", "activation", {activation = false})
 			end
 		end

@@ -1,4 +1,4 @@
-go.property("damage", 0.25)
+go.property("damage", 0.5)
 go.property("live", 20)
 go.property("speed_damage", 0.75)
 go.property("speed", 60)

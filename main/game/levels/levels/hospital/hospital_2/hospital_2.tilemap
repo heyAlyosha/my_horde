@@ -6947,7 +6947,15 @@ layers {
     rotate90: 0
   }
   cell {
-    x: 50
+    x: 48
+    y: 14
+    tile: 255
+    h_flip: 0
+    v_flip: 0
+    rotate90: 0
+  }
+  cell {
+    x: 49
     y: 14
     tile: 152
     h_flip: 0
@@ -7099,15 +7107,15 @@ layers {
     rotate90: 0
   }
   cell {
-    x: 45
+    x: 48
     y: 15
-    tile: 135
+    tile: 239
     h_flip: 0
     v_flip: 0
     rotate90: 0
   }
   cell {
-    x: 50
+    x: 49
     y: 15
     tile: 136
     h_flip: 0

@@ -44,7 +44,7 @@ instances {
   prototype: "/main/game/characters/player/player_first_level.go"
   position {
     x: 55.0
-    y: 3.0
+    y: 7.0
     z: 3.0
   }
   rotation {
@@ -461,6 +461,11 @@ instances {
       value: "false"
       type: PROPERTY_TYPE_BOOLEAN
     }
+    properties {
+      id: "id_activation"
+      value: "door_exit"
+      type: PROPERTY_TYPE_HASH
+    }
   }
   scale3 {
     x: 1.0
@@ -727,9 +732,9 @@ instances {
       type: PROPERTY_TYPE_BOOLEAN
     }
     properties {
-      id: "human_id_random"
-      value: "true"
-      type: PROPERTY_TYPE_BOOLEAN
+      id: "human_id"
+      value: "9.0"
+      type: PROPERTY_TYPE_NUMBER
     }
     properties {
       id: "hflip"
@@ -1824,9 +1829,9 @@ instances {
       type: PROPERTY_TYPE_NUMBER
     }
     properties {
-      id: "activation"
-      value: "true"
-      type: PROPERTY_TYPE_BOOLEAN
+      id: "id_activation"
+      value: "door_exit"
+      type: PROPERTY_TYPE_HASH
     }
   }
   scale3 {
@@ -2041,6 +2046,26 @@ instances {
     z: 1.0
   }
 }
+collection_instances {
+  id: "marker_goal"
+  collection: "/main/game/markers/goal/marker_goal.collection"
+  position {
+    x: 744.0
+    y: 242.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
 scale_along_z: 0
 embedded_instances {
   id: "activation_point"
@@ -2209,7 +2234,7 @@ embedded_instances {
   ""
   position {
     x: 321.0
-    y: 102.0
+    y: 96.0
     z: 0.0
   }
   rotation {
@@ -2263,7 +2288,7 @@ embedded_instances {
   "    shape_type: TYPE_BOX\\n"
   "    position {\\n"
   "      x: 0.0\\n"
-  "      y: -34.0\\n"
+  "      y: 0.0\\n"
   "      z: 0.0\\n"
   "    }\\n"
   "    rotation {\\n"
@@ -2276,8 +2301,8 @@ embedded_instances {
   "    count: 3\\n"
   "    id: \\\"\\\"\\n"
   "  }\\n"
-  "  data: 64.79535\\n"
-  "  data: 15.0\\n"
+  "  data: 26.184015\\n"
+  "  data: 31.854687\\n"
   "  data: 10.0\\n"
   "}\\n"
   "linear_damping: 0.0\\n"
@@ -2299,8 +2324,8 @@ embedded_instances {
   "}\n"
   ""
   position {
-    x: 743.0
-    y: 150.0
+    x: 713.0
+    y: 79.0
     z: 0.0
   }
   rotation {
@@ -3273,11 +3298,6 @@ embedded_instances {
   "    w: 1.0\n"
   "  }\n"
   "  properties {\n"
-  "    id: \"activation\"\n"
-  "    value: \"false\"\n"
-  "    type: PROPERTY_TYPE_BOOLEAN\n"
-  "  }\n"
-  "  properties {\n"
   "    id: \"id_activation\"\n"
   "    value: \"palat_right\"\n"
   "    type: PROPERTY_TYPE_HASH\n"
@@ -3658,6 +3678,66 @@ embedded_instances {
   position {
     x: 56.0
     y: 61.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+embedded_instances {
+  id: "point_end_human"
+  data: ""
+  position {
+    x: 745.0
+    y: 404.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+embedded_instances {
+  id: "next_level_point"
+  data: ""
+  position {
+    x: 744.0
+    y: 301.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+embedded_instances {
+  id: "win_point"
+  data: ""
+  position {
+    x: 743.0
+    y: 173.0
     z: 0.0
   }
   rotation {

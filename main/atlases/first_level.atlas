@@ -1539,6 +1539,82 @@ animations {
   flip_horizontal: 0
   flip_vertical: 0
 }
+animations {
+  id: "door_opening"
+  images {
+    image: "/assets/images/game/objects/animations/animated_hospital_door_green_double-export.png"
+    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+  }
+  images {
+    image: "/assets/images/game/objects/animations/animated_hospital_door_green_double-export2.png"
+    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+  }
+  images {
+    image: "/assets/images/game/objects/animations/animated_hospital_door_green_double-export3.png"
+    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+  }
+  images {
+    image: "/assets/images/game/objects/animations/animated_hospital_door_green_double-export4.png"
+    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+  }
+  images {
+    image: "/assets/images/game/objects/animations/animated_hospital_door_green_double-export5.png"
+    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+  }
+  playback: PLAYBACK_ONCE_FORWARD
+  fps: 10
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "door_open"
+  images {
+    image: "/assets/images/game/objects/animations/animated_hospital_door_green_double-export5.png"
+    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+  }
+  playback: PLAYBACK_ONCE_FORWARD
+  fps: 10
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "door_close"
+  images {
+    image: "/assets/images/game/objects/animations/animated_hospital_door_green_double-export.png"
+    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+  }
+  playback: PLAYBACK_ONCE_FORWARD
+  fps: 10
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "door_closing"
+  images {
+    image: "/assets/images/game/objects/animations/animated_hospital_door_green_double-export.png"
+    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+  }
+  images {
+    image: "/assets/images/game/objects/animations/animated_hospital_door_green_double-export2.png"
+    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+  }
+  images {
+    image: "/assets/images/game/objects/animations/animated_hospital_door_green_double-export3.png"
+    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+  }
+  images {
+    image: "/assets/images/game/objects/animations/animated_hospital_door_green_double-export4.png"
+    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+  }
+  images {
+    image: "/assets/images/game/objects/animations/animated_hospital_door_green_double-export5.png"
+    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+  }
+  playback: PLAYBACK_ONCE_BACKWARD
+  fps: 10
+  flip_horizontal: 0
+  flip_vertical: 0
+}
 margin: 1
 extrude_borders: 0
 inner_padding: 0
