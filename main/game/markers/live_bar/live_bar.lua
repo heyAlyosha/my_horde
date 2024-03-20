@@ -5,7 +5,14 @@ function M.create(self, is_player)
 	if not self.hp_bar then
 		if is_player then
 			self.hp_bar = collectionfactory.create("#live_bar_collectionfactory", go.get_position())
-			pprint("self.hp_bar", self.hp_bar)
+
+			local url = msg.url(self.hp_bar[hash("/count")])
+			local url_label = msg.url(url.socket, url.path, "count_horde")
+			if self.horde_count_current < 1 then
+				msg.post(url_label, "disable")
+			else
+				msg.post(url_label, "enable")
+			end
 		else
 			self.hp_bar = collectionfactory.create("markers_core#live_bar_collectionfactory", go.get_position())
 		end

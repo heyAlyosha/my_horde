@@ -122,6 +122,11 @@ function M.change_horde(self)
 	if self.hp_bar and self.hp_bar[hash("/count")] then
 		local url = msg.url(self.hp_bar[hash("/count")])
 		local url_label = msg.url(url.socket, url.path, "count_horde")
+		if self.horde_count_current < 1 then
+			msg.post(url_label, "disable")
+		else
+			msg.post(url_label, "enable")
+		end
 		label.set_text(url_label, self.horde_count_current)
 	end
 end
