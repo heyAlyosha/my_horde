@@ -438,7 +438,7 @@ instances {
   }
 }
 instances {
-  id: "door_two_room"
+  id: "door_exit"
   prototype: "/main/game/objects/objects_ruin/door_blocking.go"
   position {
     x: 744.0
@@ -450,6 +450,14 @@ instances {
     y: 0.0
     z: 0.0
     w: 1.0
+  }
+  component_properties {
+    id: "script"
+    properties {
+      id: "activation"
+      value: "false"
+      type: PROPERTY_TYPE_BOOLEAN
+    }
   }
   scale3 {
     x: 1.0
@@ -695,7 +703,7 @@ instances {
   }
 }
 instances {
-  id: "human16"
+  id: "last_human"
   prototype: "/main/game/characters/human/human.go"
   position {
     x: 743.0
@@ -1814,6 +1822,19 @@ instances {
     y: 0.0
     z: 0.0
     w: 1.0
+  }
+  component_properties {
+    id: "zone"
+    properties {
+      id: "count"
+      value: "20.0"
+      type: PROPERTY_TYPE_NUMBER
+    }
+    properties {
+      id: "activation"
+      value: "true"
+      type: PROPERTY_TYPE_BOOLEAN
+    }
   }
   scale3 {
     x: 1.0
