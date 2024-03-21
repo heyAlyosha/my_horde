@@ -77,7 +77,7 @@ function M.add_elem(self, type, position_start, count, params)
 	local add_values = {coins = 0, score = 0, xp = 0, resource = 0}
 
 	local types_valute = {
-		coins = {icon = "icon-gold-1"},
+		coins = {icon = "game-icon-coin"},
 		xp = {icon = "game-icon-mutate"},
 		resource = {icon = "game-icon-resource"},
 		star = {icon = "game-icon-star"},

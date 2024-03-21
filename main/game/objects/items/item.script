@@ -6,7 +6,7 @@ go.property("duration_animate", 0.5)
 
 function init(self)
 	self.types_valute = {}
-	self.types_valute[hash("coin")] = {id = "coins", animation_id = "icon-gold-1"}
+	self.types_valute[hash("coin")] = {id = "coins", animation_id = "game-icon-coin"}
 	self.types_valute[hash("xp")] = {id = "xp", animation_id = "game-icon-mutate"}
 	self.types_valute[hash("resource")] = {id = "resource", animation_id = "game-icon-resource"}
 	self.types_valute[hash("trophy")] = {id = "trophy", animation_id = "icon-gold-1"}

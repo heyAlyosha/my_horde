@@ -76,7 +76,6 @@ function M.behavior(self)
 
 						elseif not ai_attack.check_distance_attack(self, self.target, handle_distantion_error) then
 							-- ЦЕль убежала, преследуем
-							print("distance")
 							self.condition_ai = hash("to_target")
 							M.behavior(self)
 
