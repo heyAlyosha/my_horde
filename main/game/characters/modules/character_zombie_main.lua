@@ -114,10 +114,10 @@ function M.change_horde(self)
 	-- Позиция для добавления зомбиков
 	self.target_add_horde = horde.get_position(self, go.get_position(), max_index)
 
-	local dist_max_horde = vmath.length(self.target_add_horde - self.target_add_horde)
+	local dist_max_horde = vmath.length(go.get_position() - self.target_add_horde)
 
 	self.visible_horde = self.visible_horde_min + dist_max_horde
-	self.distantion_visible = self.distantion_attack + dist_max_horde
+	self.distantion_visible = dist_max_horde
 
 	if self.hp_bar and self.hp_bar[hash("/count")] then
 		local url = msg.url(self.hp_bar[hash("/count")])
