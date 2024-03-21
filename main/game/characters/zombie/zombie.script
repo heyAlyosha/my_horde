@@ -2,7 +2,7 @@ go.property("damage", 0.5)
 go.property("live", 20)
 go.property("speed_damage", 0.75)
 go.property("speed", 60)
-go.property("distantion_visible", 20)
+go.property("distantion_visible", 50)
 go.property("distantion_attack", 10)
 go.property("command", hash("player"))
 go.property("skin_id", 0)
@@ -46,11 +46,13 @@ function init(self)
 
 	if self.target then
 		-- 
-		print("ai_attack.add_target")
-		print(ai_attack.add_target(self, self.target))
-		
+		self.condition_ai = hash("to_target")
+		ai_zombie.behavior(self)
+	else
+		self.condition_ai = nil
+		ai_zombie.behavior(self)
 	end
-	ai_zombie.behavior(self)
+	
 end
 
 function final(self)

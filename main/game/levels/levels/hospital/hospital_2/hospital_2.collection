@@ -1142,8 +1142,8 @@ instances {
   id: "human1"
   prototype: "/main/game/characters/human/human.go"
   position {
-    x: 13.0
-    y: 95.0
+    x: 55.0
+    y: 26.0
     z: 0.0
   }
   rotation {

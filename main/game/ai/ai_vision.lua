@@ -103,7 +103,6 @@ function M.get_visible(self, exclude_aabb_id, distantion, exclude_commands)
 	local result, count = aabb.query(group_id, position.x, position.y, width, height)
 	local exclude_commands = exclude_commands or {}
 
-
 	local objects = {}
 
 	for i = 1, #result do
@@ -115,7 +114,9 @@ function M.get_visible(self, exclude_aabb_id, distantion, exclude_commands)
 				local target =  storage_game.go_targets[go_controller.url_to_key(url)]
 				if target then
 					local add_item = {
-						url = url, sort = target.target_useful - target.target_current
+						url = url,
+						target_useful = target.target_useful or 0,
+						sort = target.target_useful * 10 - target.target_current
 					}
 					objects[#objects + 1] = add_item
 				end

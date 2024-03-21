@@ -10,8 +10,8 @@ function init(self)
 
 	msg.post(".", "init")
 
-	msg.post(".", "start")
-	--msg.post(".", "get_ruin_door")
+	--msg.post(".", "start")
+	msg.post(".", "test")
 	
 end
 
@@ -39,6 +39,11 @@ function on_message(self, message_id, message, sender)
 		-- Инициализация карты
 		camera.follow(camera_id, msg.url("player"), options)
 
+	elseif message_id == hash("test") then
+		-- Тестируем
+		camera.follow(camera_id, msg.url("player"), options)
+		msg.post("player", "activate")
+		
 	elseif message_id == hash("start") then
 		-- Игрок идёт до стартовой точки уровня
 		local position_to = go.get_position("start_point")
