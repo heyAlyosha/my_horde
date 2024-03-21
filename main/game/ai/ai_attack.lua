@@ -73,11 +73,12 @@ end
 -- Хватает дистанции для атаки
 function M.check_distance_attack(self, url, handle_error)
 	self.distantion_attack = self.distantion_attack or 0
+	local target_vector = self.target_vector or vmath.vector3(0)
 	if not go_controller.is_object(url) then
 		if handle_error then
 			handle_error(self)
 		end
-	elseif vmath.length(go.get_position(url) - go.get_position()) <= self.distantion_attack then
+	elseif vmath.length(go.get_position(url) + target_vector - go.get_position()) <= self.distantion_attack then
 		local result = physics.raycast(go.get_position(), go.get_position(url), {hash("default")}, options)
 		return not result or #result == 0
 	end

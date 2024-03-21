@@ -5,7 +5,7 @@ local M = {}
 function M.search_target(self)
 	if not self.view then
 		self.view = ai_core.view(self, function (self, visible_items)
-			if visible_items then
+			if visible_items and not self.no_view then
 				-- Есть цель
 				local visible_item = visible_items[1]
 				-- Если объект существует или он ценнее текущего
@@ -35,6 +35,21 @@ function M.behavior(self)
 	-- Состояние зомбика
 	self.condition_ai = self.condition_ai or nil
 
+	-- ДИСТАНЦИЯ ОТ ИГРОКА
+	if not self.check_distantion then
+		self.check_distantion = timer.delay(1, true, function (self)
+			if self.parent and go_controller.is_object(self.parent) and vmath.length(go.get_position() - go.get_position(self.parent)) >= 150 then
+				if self.view then
+					self.view.stop(self)
+				end
+				self.no_view = true
+				self.condition_ai = nil
+				M.behavior(self)
+				return
+			end
+		end)
+	end
+
 	-- АТАКА
 	if self.condition_ai == hash("attack") then
 		local handle_fire = function (self)
@@ -46,6 +61,7 @@ function M.behavior(self)
 			elseif not ai_attack.check_distance_attack(self, self.target, handle_distantion_error) then
 				-- Цель убежала далеко возвращаемся к ней
 				self.condition_ai = hash("to_target")
+				
 				M.behavior(self)
 
 			else
@@ -76,7 +92,9 @@ function M.behavior(self)
 		return true
 	end
 
-	M.search_target(self)
+	if not self.no_view then
+		M.search_target(self)
+	end
 
 	-- ОЧИЩАЕМ АТАКУ
 	if self.timer_attack then
