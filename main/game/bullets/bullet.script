@@ -46,8 +46,9 @@ function final(self)
 end
 
 function update(self, dt)
-	if self.type == hash("hit") and not self.delete then
-		go.set_position(go.get_position(self.parent))
+	if self.type == hash("hit") and go_controller.is_object(self.parent) then
+		local position_to = go.get_position(self.parent)
+		go.set_position(position_to)
 	end
 end
 

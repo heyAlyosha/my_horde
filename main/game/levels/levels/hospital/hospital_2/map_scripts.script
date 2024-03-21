@@ -5,6 +5,9 @@ function init(self)
 
 	sprite.play_flipbook("door_exit#object", hash("door_open"))
 
+	storage_gui.core_screens.visible_shop = false
+	msg.post("main:/core_screens", "game")
+
 	msg.post(".", "init")
 
 	msg.post(".", "start")

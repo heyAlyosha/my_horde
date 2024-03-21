@@ -44,15 +44,6 @@ function update(self, dt)
 	levels_script_functions.on_update(self)
 end
 
-function fixed_update(self, dt)
-	-- This function is called if 'Fixed Update Frequency' is enabled in the Engine section of game.project
-	-- Can be coupled with fixed updates of the physics simulation if 'Use Fixed Timestep' is enabled in
-	-- Physics section of game.project
-	-- Add update code here
-	-- Learn more: https://defold.com/manuals/script/
-	-- Remove this function if not needed
-end
-
 function on_message(self, message_id, message, sender)
 	if message_id == hash("init") then
 		-- Инициализация карты
@@ -144,7 +135,7 @@ function on_message(self, message_id, message, sender)
 
 	elseif message_id == hash("get_ruin_door") then
 		-- Уничтожить дверь и тумбы
-		timer_linear.add(self, "start", 1, function (self)
+		timer_linear.add(self, "start", 2, function (self)
 			local goals = {}
 			for i, object in ipairs(self.objects_start) do
 				goals[i] = msg.url(factory.create(object.factory_id, go.get_position(object.plug_id)))

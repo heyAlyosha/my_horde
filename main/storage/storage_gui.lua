@@ -6,6 +6,7 @@ local M = {}
 M.modal = false
 M.modals = {}
 M.visible_virtual_gamepad = nil
+M.active_input = true -- Активно ли управление
 -- Данные для инвентаря
 M.inventary_wrap = {
 	visible = false,

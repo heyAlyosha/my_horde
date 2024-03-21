@@ -166,6 +166,13 @@ function M.on_input(self, action_id, action, function_focus, function_activate, 
 	self._gui_input = self._gui_input or {}
 	self._gui_input.is_modal = self.is_modal
 
+	if not storage_gui.active_input then
+		if (action_id == hash("up") or action_id == hash("down") or action_id == hash("left") or action_id == hash("right") or action_id == hash("enter")) then
+			return 
+		end
+		--return 
+	end
+
 	-- Записываем какие типы управления доступны игроку
 	if M.is_touch(self, action_id, action) then
 		storage_player.input.touch = true
