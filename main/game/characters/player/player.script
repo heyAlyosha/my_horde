@@ -60,24 +60,12 @@ function init(self)
 		end
 
 		-- Обзор для удара по противникам
-		self.view = ai_core.view(self, function (self, visible_items)
-			if visible_items and not self.win then
-				if not self.timer_atack then
-					character_attack.attack(self, visible_items[1].url)
-					self.timer_atack = timer.delay(self.speed_damage, true, function (self, handle, time_elapsed)
-						if not character_attack.attack(self, visible_items[1].url) then
-							timer.cancel(handle)
-							self.timer_atack = nil
-						end
-					end)
-				end
-			else
-				if self.timer_atack then
-					timer.cancel(self.timer_atack)
-					self.timer_atack = nil
-				end
+		timer.delay(self.speed_damage, true, function (self)
+			local visible_items = ai_vision.get_visible(self, self.visible_object_id, self.distantion_visible, exclude_commands)
+			if visible_items and #visible_items > 0 then
+				-- Есть враги
+				character_attack.attack(self, visible_items[1].url)
 			end
-			
 		end)
 	end)
 
