@@ -2,6 +2,11 @@
 local M = {}
 
 -- Добавление цели мобу
+function M.is_target(self)
+	return self.target ~= nil or self.target ~= false
+end
+
+-- Добавление цели мобу
 function M.add_target(self, url_target)
 	local position = go.get_position()
 	local key_target = go_controller.url_to_key(url_target)
@@ -9,6 +14,10 @@ function M.add_target(self, url_target)
 
 	if not go_controller.is_object(url_target) then
 		return false
+	end
+
+	if self.target then
+		M.delete_target(self, self.target)
 	end
 
 	-- Ищем расположение
@@ -52,15 +61,19 @@ function M.delete_target(self, url_target)
 	local target = storage_game.go_targets[key_target]
 
 	if target then
-		storage_game.go_targets[key_target].targets[self.target_id_point].count_object = storage_game.go_targets[key_target].targets[self.target_id_point].count_object - 1
+		if self.target_id_point then
+			storage_game.go_targets[key_target].targets[self.target_id_point].count_object = storage_game.go_targets[key_target].targets[self.target_id_point].count_object - 1
+		end
 		storage_game.go_targets[key_target].target_current = storage_game.go_targets[key_target].target_current -1
 
 		-- Удаляем из массива объекта атакующего бота
-		local url_key = go_controller.url_to_key(msg.url(go.get_id()))
-		for i, url_attack_object in ipairs(storage_game.go_targets[key_target].targets[self.target_id_point].characters) do
-			if url_key == go_controller.url_to_key(url_attack_object) then
-				table.remove(storage_game.go_targets[key_target].targets[self.target_id_point].characters, i)
-				break
+		if self.target_id_point then
+			local url_key = go_controller.url_to_key(msg.url(go.get_id()))
+			for i, url_attack_object in ipairs(storage_game.go_targets[key_target].targets[self.target_id_point].characters) do
+				if url_key == go_controller.url_to_key(url_attack_object) then
+					table.remove(storage_game.go_targets[key_target].targets[self.target_id_point].characters, i)
+					break
+				end
 			end
 		end
 	end
@@ -78,9 +91,11 @@ function M.check_distance_attack(self, url, handle_error)
 		if handle_error then
 			handle_error(self)
 		end
+
 	elseif vmath.length(go.get_position(url) + target_vector - go.get_position()) <= self.distantion_attack then
 		local result = physics.raycast(go.get_position(), go.get_position(url), {hash("default")}, options)
 		return not result or #result == 0
+
 	end
 
 	return false

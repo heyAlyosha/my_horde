@@ -257,14 +257,14 @@ instances {
       type: PROPERTY_TYPE_BOOLEAN
     }
     properties {
-      id: "human_id"
-      value: "9.0"
-      type: PROPERTY_TYPE_NUMBER
-    }
-    properties {
       id: "id_activation"
       value: "first_room"
       type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "human_id"
+      value: "9.0"
+      type: PROPERTY_TYPE_NUMBER
     }
   }
   scale3 {
@@ -295,14 +295,14 @@ instances {
       type: PROPERTY_TYPE_BOOLEAN
     }
     properties {
-      id: "human_id"
-      value: "4.0"
-      type: PROPERTY_TYPE_NUMBER
-    }
-    properties {
       id: "id_activation"
       value: "first_room"
       type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "human_id"
+      value: "4.0"
+      type: PROPERTY_TYPE_NUMBER
     }
     properties {
       id: "hflip"
@@ -338,14 +338,14 @@ instances {
       type: PROPERTY_TYPE_BOOLEAN
     }
     properties {
-      id: "human_id"
-      value: "1.0"
-      type: PROPERTY_TYPE_NUMBER
-    }
-    properties {
       id: "id_activation"
       value: "first_room"
       type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "human_id"
+      value: "1.0"
+      type: PROPERTY_TYPE_NUMBER
     }
   }
   scale3 {
@@ -376,14 +376,14 @@ instances {
       type: PROPERTY_TYPE_BOOLEAN
     }
     properties {
-      id: "human_id"
-      value: "2.0"
-      type: PROPERTY_TYPE_NUMBER
-    }
-    properties {
       id: "id_activation"
       value: "first_room"
       type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "human_id"
+      value: "2.0"
+      type: PROPERTY_TYPE_NUMBER
     }
     properties {
       id: "hflip"
@@ -599,14 +599,14 @@ instances {
       type: PROPERTY_TYPE_BOOLEAN
     }
     properties {
-      id: "human_id"
-      value: "2.0"
-      type: PROPERTY_TYPE_NUMBER
-    }
-    properties {
       id: "id_activation"
       value: "first_room"
       type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "human_id"
+      value: "2.0"
+      type: PROPERTY_TYPE_NUMBER
     }
     properties {
       id: "hflip"
@@ -642,14 +642,14 @@ instances {
       type: PROPERTY_TYPE_BOOLEAN
     }
     properties {
-      id: "human_id"
-      value: "1.0"
-      type: PROPERTY_TYPE_NUMBER
-    }
-    properties {
       id: "id_activation"
       value: "two_room"
       type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "human_id"
+      value: "1.0"
+      type: PROPERTY_TYPE_NUMBER
     }
   }
   scale3 {
@@ -680,14 +680,14 @@ instances {
       type: PROPERTY_TYPE_BOOLEAN
     }
     properties {
-      id: "human_id"
-      value: "3.0"
-      type: PROPERTY_TYPE_NUMBER
-    }
-    properties {
       id: "id_activation"
       value: "two_room"
       type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "human_id"
+      value: "3.0"
+      type: PROPERTY_TYPE_NUMBER
     }
     properties {
       id: "hflip"
@@ -723,14 +723,14 @@ instances {
       type: PROPERTY_TYPE_BOOLEAN
     }
     properties {
-      id: "human_id"
-      value: "9.0"
-      type: PROPERTY_TYPE_NUMBER
-    }
-    properties {
       id: "id_activation"
       value: "two_room"
       type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "human_id"
+      value: "9.0"
+      type: PROPERTY_TYPE_NUMBER
     }
   }
   scale3 {
@@ -761,14 +761,14 @@ instances {
       type: PROPERTY_TYPE_BOOLEAN
     }
     properties {
-      id: "human_id"
-      value: "4.0"
-      type: PROPERTY_TYPE_NUMBER
-    }
-    properties {
       id: "id_activation"
       value: "two_room"
       type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "human_id"
+      value: "4.0"
+      type: PROPERTY_TYPE_NUMBER
     }
   }
   scale3 {
@@ -915,17 +915,17 @@ instances {
       type: PROPERTY_TYPE_BOOLEAN
     }
     properties {
-      id: "human_id_random"
-      value: "true"
-      type: PROPERTY_TYPE_BOOLEAN
-    }
-    properties {
       id: "id_activation"
       value: "two_room"
       type: PROPERTY_TYPE_HASH
     }
     properties {
       id: "hflip"
+      value: "true"
+      type: PROPERTY_TYPE_BOOLEAN
+    }
+    properties {
+      id: "human_id_random"
       value: "true"
       type: PROPERTY_TYPE_BOOLEAN
     }
@@ -973,12 +973,12 @@ instances {
   component_properties {
     id: "script"
     properties {
-      id: "human_id_random"
+      id: "hflip"
       value: "true"
       type: PROPERTY_TYPE_BOOLEAN
     }
     properties {
-      id: "hflip"
+      id: "human_id_random"
       value: "true"
       type: PROPERTY_TYPE_BOOLEAN
     }

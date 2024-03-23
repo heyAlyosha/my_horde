@@ -66,28 +66,14 @@ function M.behavior(self)
 
 			else
 				-- Цель есть, добежали
-				if not self.timer_attack then
-					character_attack.attack(self, self.target)
-					self.timer_attack = timer.delay(self.speed_damage, true, function (self, handle)
-						if not self.target or not go_controller.is_object(self.target) then
-							-- Цель пропала, возвращаемся в орду
-							self.condition_ai = nil
-							M.behavior(self)
-
-						elseif not ai_attack.check_distance_attack(self, self.target, handle_distantion_error) then
-							-- ЦЕль убежала, преследуем
-							self.condition_ai = hash("to_target")
-							M.behavior(self)
-
-						else
-							-- Атакуем
-							character_attack.attack(self, self.target)
-						end
-					end)
-				end
+				character_attack.attack(self, self.target)
 			end
 		end
-		self.attack = ai_core.fire(self, self.target, handle_fire)
+		if not self.timer_damage then
+			handle_fire(self)
+			self.timer_damage = timer.delay(self.speed_damage, true, handle_fire)
+		end
+		--self.attack = ai_core.fire(self, self.target, handle_fire)
 		return true
 	end
 
@@ -101,13 +87,13 @@ function M.behavior(self)
 		self.timer_attack = nil
 	end
 	if self.attack then
-		self.attack.stop(self)
+		--self.attack.stop(self)
 	end
 
 	-- К ЦЕЛИ
 	if self.condition_ai == hash("to_target") then
 		-- Прокладываем путь для атаки
-		ai_move.stop(self)
+		
 
 		-- НЕ может найти путь для атаки
 		local handle_error = function (self, error_code)
@@ -124,14 +110,15 @@ function M.behavior(self)
 				M.behavior(self)
 
 			else
-				-- Добежали до цели 
+				-- Добежали до цели
+				character_animations.play(self, "idle")
 				self.condition_ai = hash("attack")
 				M.behavior(self)
 				
 			end
 		end
+
 		if self.target and go_controller.is_object(self.target) then
-			print("ai_core.condition_attack")
 			ai_core.condition_attack(self, self.target, handle_success, handle_error)
 		else
 			-- Цели нет или она исчезла

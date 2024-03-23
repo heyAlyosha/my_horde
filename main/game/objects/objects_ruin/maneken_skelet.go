@@ -19,7 +19,7 @@ components {
   }
   properties {
     id: "spawn_resource"
-    value: "2.0"
+    value: "1.0"
     type: PROPERTY_TYPE_NUMBER
   }
   properties {
@@ -33,7 +33,7 @@ components {
   component: "/main/game/effects/destroy.particlefx"
   position {
     x: 0.0
-    y: 4.0
+    y: 12.0
     z: -1.0
   }
   rotation {
@@ -94,7 +94,7 @@ embedded_components {
 embedded_components {
   id: "object"
   type: "sprite"
-  data: "default_animation: \"trash_can\"\n"
+  data: "default_animation: \"maneken_skelet\"\n"
   "material: \"/builtins/materials/sprite.material\"\n"
   "blend_mode: BLEND_MODE_ALPHA\n"
   "textures {\n"
@@ -104,7 +104,7 @@ embedded_components {
   ""
   position {
     x: 0.0
-    y: 6.0
+    y: 11.0
     z: 1.0
   }
   rotation {

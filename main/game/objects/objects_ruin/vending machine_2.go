@@ -13,18 +13,23 @@ components {
     w: 1.0
   }
   properties {
+    id: "live"
+    value: "50.0"
+    type: PROPERTY_TYPE_NUMBER
+  }
+  properties {
     id: "target_dist"
-    value: "10.0, 0.0, 0.0"
+    value: "15.0, 0.0, 0.0"
     type: PROPERTY_TYPE_VECTOR3
+  }
+  properties {
+    id: "spawn_coins"
+    value: "5.0"
+    type: PROPERTY_TYPE_NUMBER
   }
   properties {
     id: "spawn_resource"
     value: "2.0"
-    type: PROPERTY_TYPE_NUMBER
-  }
-  properties {
-    id: "spawn_xp"
-    value: "1.0"
     type: PROPERTY_TYPE_NUMBER
   }
 }
@@ -72,7 +77,7 @@ embedded_components {
   "    count: 1\n"
   "    id: \"\"\n"
   "  }\n"
-  "  data: 5.9082737\n"
+  "  data: 9.0\n"
   "}\n"
   "linear_damping: 0.0\n"
   "angular_damping: 0.0\n"
@@ -94,7 +99,7 @@ embedded_components {
 embedded_components {
   id: "object"
   type: "sprite"
-  data: "default_animation: \"trash_can\"\n"
+  data: "default_animation: \"vending machine_2\"\n"
   "material: \"/builtins/materials/sprite.material\"\n"
   "blend_mode: BLEND_MODE_ALPHA\n"
   "textures {\n"
@@ -104,7 +109,7 @@ embedded_components {
   ""
   position {
     x: 0.0
-    y: 6.0
+    y: 12.0
     z: 1.0
   }
   rotation {
@@ -130,7 +135,7 @@ embedded_components {
   "    shape_type: TYPE_BOX\n"
   "    position {\n"
   "      x: 0.0\n"
-  "      y: 6.0\n"
+  "      y: 12.0\n"
   "      z: 0.0\n"
   "    }\n"
   "    rotation {\n"
@@ -143,8 +148,8 @@ embedded_components {
   "    count: 3\n"
   "    id: \"\"\n"
   "  }\n"
-  "  data: 5.70972\n"
-  "  data: 7.491492\n"
+  "  data: 11.0\n"
+  "  data: 17.0\n"
   "  data: 10.0\n"
   "}\n"
   "linear_damping: 0.0\n"
@@ -177,7 +182,7 @@ embedded_components {
   ""
   position {
     x: 0.0
-    y: 1.0
+    y: -1.0
     z: 0.0
   }
   rotation {

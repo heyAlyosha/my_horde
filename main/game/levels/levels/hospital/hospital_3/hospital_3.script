@@ -10,8 +10,8 @@ function init(self)
 
 	msg.post(".", "init")
 
-	msg.post(".", "start")
-	--msg.post(".", "test")
+	--msg.post(".", "start")
+	msg.post(".", "test")
 	
 end
 

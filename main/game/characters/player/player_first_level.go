@@ -17,6 +17,11 @@ components {
     value: "50.0"
     type: PROPERTY_TYPE_NUMBER
   }
+  properties {
+    id: "target_dist"
+    value: "10.0, 0.0, 0.0"
+    type: PROPERTY_TYPE_VECTOR3
+  }
 }
 components {
   id: "blood_left"

@@ -83,7 +83,6 @@ function M.damage(self, from_object_damage)
 		local dir = go.get_position(from_object_damage) - position
 		local particle_name
 
-		
 		-- Отпрыгивание
 		if dir.x < 0 then
 			position.x = position.x + 3
@@ -97,9 +96,7 @@ function M.damage(self, from_object_damage)
 		-- Если есть коллизии
 		local collision = physics.raycast(go.get_position(), position, {hash("default")}, options)
 
-		
 		if collision then
-			pprint("collision", collision)
 			position.x = go.get_position().x
 		end
 
@@ -107,6 +104,7 @@ function M.damage(self, from_object_damage)
 		
 		live_bar.position_to(self, position, duration)
 		position = position_functions.go_get_perspective_z(position)
+		
 		go.animate(".", "position.x", go.PLAYBACK_ONCE_FORWARD, position.x, go.EASING_LINEAR, duration / 2, 0)
 		go.animate(".", "position.y", go.PLAYBACK_ONCE_PINGPONG, position.y, go.EASING_LINEAR, duration / 2, 0)
 
@@ -134,18 +132,29 @@ function M.damage_player(self, from_object_damage)
 		local particle_name
 
 		-- Отпрыгивание
+		position.y = position.y + 3
 		if dir.x < 0 then
-			--position.x = position.x + 1
-			--position.y = position.y + 1
+			position.x = position.x + 3
 			particle_name = "#blood_right"
+			--camera.recoil(camera_id, vmath.vector3(-3,3, 0), duration)
 		else
-			--position.x = position.x - 1
-			--position.y = position.y - 1
+			position.x = position.x - 3
 			particle_name = "#blood_left"
+			--camera.recoil(camera_id, vmath.vector3(3,3, 0), duration)
 		end
 		position = position_functions.go_get_perspective_z(position)
-		--go.animate(".", "position.x", go.PLAYBACK_ONCE_FORWARD, position.x, go.EASING_LINEAR, duration, 0)
-		--go.animate(".", "position.y", go.PLAYBACK_ONCE_PINGPONG, position.y, go.EASING_LINEAR, duration, 0)
+		--camera.unfollow(camera_id, ".")
+		go.animate(".", "position.x", go.PLAYBACK_ONCE_FORWARD, position.x, go.EASING_LINEAR, duration, 0)
+		go.animate(".", "position.y", go.PLAYBACK_ONCE_PINGPONG, position.y, go.EASING_LINEAR, duration, 0)
+		--camera.shake(camera_id, 0.005, 0.1)
+
+
+		--[[
+		go.animate("camera", "position", go.PLAYBACK_ONCE_FORWARD, go.get_position(), go.EASING_LINEAR, duration, duration, function (self)
+			--camera.follow(camera_id, go.get_id())
+		end)
+		--]]
+		
 
 		-- Покраснение
 		go.set("#body", "tint", vmath.vector4(1, 0.6, 0.6, 1)) -- <1>
@@ -158,6 +167,15 @@ function M.damage_player(self, from_object_damage)
 		timer.delay(duration, false, function (self)
 			go.set("#body", "tint", vmath.vector4(1, 1, 1, 1)) -- <1>
 			self.particle = nil
+			
+			--go.cancel_animations("camera", "position")
+			if self.timer_camera_animation then
+				timer.cancel(self.timer_camera_animation)
+				self.timer_camera_animation = nil
+			end
+			self.timer_camera_animation = timer.delay(0.5, false, function (self)
+				
+			end)
 		end)
 	end
 end

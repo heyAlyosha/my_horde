@@ -32,6 +32,8 @@ end
 
 function on_message(self, message_id, message, sender)
 	if message_id == hash("contact_point_response") then
+		print("contact_point_response")
+		
 		-- СТолкновение с физическим объектом
 		storage_game.go_objects[go.get_id()].collision_physic = {
 			message_id = message_id,
@@ -46,6 +48,7 @@ function on_message(self, message_id, message, sender)
 		--[[
 		--]]
 	end
+	
 	
 end
 

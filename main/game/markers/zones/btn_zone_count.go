@@ -64,9 +64,9 @@ embedded_components {
   "  w: 0.0\n"
   "}\n"
   "color {\n"
-  "  x: 0.0\n"
-  "  y: 0.0\n"
-  "  z: 0.0\n"
+  "  x: 1.0\n"
+  "  y: 1.0\n"
+  "  z: 1.0\n"
   "  w: 1.0\n"
   "}\n"
   "outline {\n"
@@ -79,7 +79,7 @@ embedded_components {
   "  x: 0.0\n"
   "  y: 0.0\n"
   "  z: 0.0\n"
-  "  w: 1.0\n"
+  "  w: 0.0\n"
   "}\n"
   "leading: 1.0\n"
   "tracking: 0.0\n"
@@ -87,12 +87,12 @@ embedded_components {
   "blend_mode: BLEND_MODE_ALPHA\n"
   "line_break: false\n"
   "text: \"10\"\n"
-  "font: \"/builtins/fonts/system_font.font\"\n"
+  "font: \"/assets/fonts/font_standart_normal.font\"\n"
   "material: \"/builtins/fonts/label.material\"\n"
   ""
   position {
-    x: 0.0
-    y: -7.0
+    x: 1.0
+    y: -6.0
     z: 0.1
   }
   rotation {
@@ -102,8 +102,8 @@ embedded_components {
     w: 1.0
   }
   scale {
-    x: 0.75
-    y: 0.75
+    x: 0.3
+    y: 0.3
     z: 1.0
   }
 }

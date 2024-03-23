@@ -1,0 +1,20 @@
+-- Зона для скрытия части локации
+go.property("tint", vmath.vector3(0))
+go.property("id_activation", hash(""))
+
+function init(self)
+	go.set("#sprite", "tint", vmath.vector4(0, 0, 0, 1)) -- <1>
+	-- Добавляем активацию объекта в скрипт карты
+	if self.id_activation ~= hash("") then
+		msg.post("map#map_scripts", "add_activation_object", {
+			id_activation = self.id_activation
+		})
+	end
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("activation") then
+		-- Активация или не кнопки
+		go.delete()
+	end
+end

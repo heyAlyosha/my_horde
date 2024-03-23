@@ -7,10 +7,10 @@ function M.get_path(self, position_target)
 	local tile_x, tile_y = astar_utils:screen_to_coords(position.x, position.y)
 	local tile_x_to, tile_y_to = astar_utils:screen_to_coords(position_target.x, position_target.y)
 
-	self.debug_lines_to_target = {from = position, to = position_target}
-	self.debug_lines_to_tile = {}
+	--self.debug_lines_to_target = {from = position, to = position_target}
+	--self.debug_lines_to_tile = {}
 
-	result, path_size, totalcost, path =
+	local result, path_size, totalcost, path =
 	astar.solve(tile_x, tile_y, tile_x_to, tile_y_to)
 
 	if result == astar.SOLVED then
@@ -25,11 +25,11 @@ function M.get_path(self, position_target)
 			local to_x, to_y = astar_utils:coords_to_screen(item.x,item.y)
 			
 			if i == 1 then
-				table.insert(self.debug_lines_to_tile, {from = position, to = vmath.vector3(to_x, to_y, 0)})
+				--table.insert(self.debug_lines_to_tile, {from = position, to = vmath.vector3(to_x, to_y, 0)})
 			else
 				local prev_item = path[i - 1]
 				from_x, from_y = astar_utils:coords_to_screen(prev_item.x,prev_item.y)
-				table.insert(self.debug_lines_to_tile, {from = vmath.vector3(from_x, from_y, 0), to = vmath.vector3(to_x, to_y, 0)})
+				--table.insert(self.debug_lines_to_tile, {from = vmath.vector3(from_x, from_y, 0), to = vmath.vector3(to_x, to_y, 0)})
 			end
 		end
 		return result, path_size, totalcost, path

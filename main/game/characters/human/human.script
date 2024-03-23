@@ -1,15 +1,16 @@
 go.property("activation", true)
+go.property("id_activation", hash(""))
+go.property("human_id", 0)
+go.property("hflip", false)
 go.property("animation_running", false)
 go.property("to_point", false)
 go.property("to_point_position", vmath.vector3())
-go.property("human_id_random", false)
 go.property("live", 5)
 go.property("speed", 10)
 go.property("speed_from", 15)
 go.property("speed_walking", 10)
 go.property("distantion_visible", 100)
 go.property("command", hash("humans"))
-go.property("human_id", 1)
 go.property("target", msg.url())
 go.property("type_object", hash("humans"))
 go.property("targets", 8)
@@ -22,8 +23,7 @@ go.property("spawn_coins", 1)
 go.property("spawn_resource", 0)
 go.property("spawn_xp", 1)
 go.property("spawn_star", 0)
-go.property("id_activation", hash(""))
-go.property("hflip", false)
+go.property("human_id_random", false)
 
 -- Активация человечка
 local function activate_init(self)
@@ -58,7 +58,7 @@ function init(self)
 
 	self.random_skins = {1,2,3,4,9}
 
-	if self.human_id_random then
+	if self.human_id_random  or self.human_id == 0 then
 		math.randomseed()
 		self.human_id = self.random_skins[math.random(1,#self.random_skins)]
 	end

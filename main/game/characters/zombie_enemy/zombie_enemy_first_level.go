@@ -12,6 +12,11 @@ components {
     z: 0.0
     w: 1.0
   }
+  properties {
+    id: "skin_id"
+    value: "18.0"
+    type: PROPERTY_TYPE_NUMBER
+  }
 }
 components {
   id: "blood_left"
@@ -76,7 +81,7 @@ components {
 embedded_components {
   id: "body"
   type: "sprite"
-  data: "default_animation: \"zombie_0_2_default\"\n"
+  data: "default_animation: \"zombie_18_1_default\"\n"
   "material: \"/builtins/materials/sprite.material\"\n"
   "blend_mode: BLEND_MODE_ALPHA\n"
   "textures {\n"
@@ -99,7 +104,7 @@ embedded_components {
 embedded_components {
   id: "bullet_factory"
   type: "factory"
-  data: "prototype: \"/main/game/bullets/bullet_default.go\"\n"
+  data: "prototype: \"/main/game/bullets/bullet_hit.go\"\n"
   "load_dynamically: false\n"
   "dynamic_prototype: false\n"
   ""

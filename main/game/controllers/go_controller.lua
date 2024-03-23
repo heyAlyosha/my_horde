@@ -12,6 +12,7 @@ function M.add(self)
 	local url_original = msg.url()
 	local url = msg.url(url_original.socket, url_original.path, nil)
 	storage_game.go_keys[M.url_to_key(url)] = msg.url()
+	
 
 	-- Объект - цель
 	if self.targets and self.targets > 0 then
@@ -112,6 +113,8 @@ function M.is_object(url)
 	if not url then
 		return false
 	end
+	url = M.url_object(url)
+
 	return storage_game.go_keys[M.url_to_key(url)]
 end
 

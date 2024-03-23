@@ -1,7 +1,7 @@
 go.property("damage", 0.5)
 go.property("live", 20)
 go.property("speed_damage", 0.75)
-go.property("speed", 60)
+go.property("speed", 70)
 go.property("distantion_visible", 50)
 go.property("distantion_attack", 10)
 go.property("command", hash("player"))
@@ -13,7 +13,7 @@ go.property("target", msg.url())
 go.property("type_object", hash("zombie_dynamic"))
 go.property("targets", 8)
 go.property("target_dist", vmath.vector3(6, 0, 0))
-go.property("target_useful", 2)
+go.property("target_useful", 4)
 go.property("time_view", 0.5)
 go.property("damage_blood", true)
 go.property("visible_attack", false)
@@ -103,6 +103,11 @@ function on_message(self, message_id, message, sender)
 		end
 
 	elseif message_id == hash("damage") then
+		if message.parent then
+			self.target = message.parent
+			self.condition_ai = hash("to_target")
+			ai_zombie.behavior(self)
+		end
 		character_damage.damage_zombie(self, message)
 	end
 end

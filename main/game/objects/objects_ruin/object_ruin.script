@@ -1,4 +1,6 @@
 go.property("activation", true)
+go.property("id_activation", hash(""))
+go.property("hflip", false)
 go.property("live", 10)
 go.property("command", hash("building_ruin"))
 go.property("type_object", hash("building_ruin"))
@@ -10,12 +12,9 @@ go.property("spawn_coins", 0)
 go.property("spawn_resource", 1)
 go.property("spawn_xp", 0)
 go.property("spawn_star", 0)
-go.property("hflip", false)
-go.property("id_activation", hash(""))
 
 -- Разрушаемые объекты
 local function activate_init(self)
-
 	position_functions.go_set_perspective_z()
 	self.max_live = self.live
 
@@ -23,13 +22,13 @@ local function activate_init(self)
 	self.group_id, self.visible_object_id = ai_vision.add_static_object(self, self.group_name)
 
 	live_bar.create(self)
-
-	sprite.set_hflip("#object", self.hflip)
 end
 
 function init(self)
 	go_controller.add(self)
 	go_controller.object_items_spawn_to_map(self)
+
+	sprite.set_hflip("#object", self.hflip)
 
 	-- Добавляем активацию объекта в скрипт карты
 	if self.id_activation ~= hash("") then

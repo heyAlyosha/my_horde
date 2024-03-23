@@ -1,17 +1,17 @@
 go.property("damage", 2)
 go.property("live", 30)
-go.property("speed_damage", 0.6)
+go.property("speed_damage", 0.75)
 go.property("speed", 20)
 go.property("distantion_attack", 15)
 go.property("command", hash("player"))
 go.property("skin_id", 0)
 go.property("human_id", 0)
-go.property("horde_count", 0)
+go.property("horde_count", 4)
 go.property("visible_horde_min", 75)
 go.property("distantion_attack_zombie_horde", 75)
 go.property("targets", 8)
 go.property("target_dist", vmath.vector3(6, 0, 0))
-go.property("target_useful", 0)
+go.property("target_useful", 3)
 go.property("target_add_horde", vmath.vector3())
 go.property("time_view", 0.1)
 go.property("damage_blood", true)
@@ -46,6 +46,7 @@ function init(self)
 	self.horde = {}
 	self.zombies = {}
 
+	
 	timer.delay(0.1, false, function (self)
 		local сenter_position = vmath.vector3(0)
 		local index_to_horde = self.horde_count
@@ -107,7 +108,6 @@ function init(self)
 		-- Предметы, чтобы подобрать
 		local group_name = "items"
 		local items = ai_vision.get_objects_group(self, exclude_aabb_id, group_name, self.distantion_visible + 10)
-		pprint("self.distantion_visible", self.distantion_visible)
 		for i = 1, #items do
 			msg.post(items[i].url, "activate")
 		end
@@ -131,6 +131,7 @@ function update(self, dt)
 	if not self.move_stop then
 		if vmath.length_sqr(self.input) > 1 then
 			self.input = vmath.normalize(self.input)
+			
 		end
 
 		-- Движение
@@ -139,6 +140,7 @@ function update(self, dt)
 		else
 			self.movement = self.input * self.speed * dt
 		end
+		
 		local p = go.get_position()
 		self.position_to = p + self.movement
 		self.position_center_horde = vmath.vector3(self.position_to.x, self.position_to.y, self.position_to.z)
@@ -155,8 +157,6 @@ function update(self, dt)
 			if not self.hflip_stop then
 				sprite.set_hflip("#body", self.movement.x < 0)
 			end
-
-			
 		else
 			character_animations.play(self, "idle")
 		end

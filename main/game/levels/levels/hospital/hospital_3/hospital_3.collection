@@ -1,7 +1,7 @@
 name: "hospital_2"
 instances {
   id: "map"
-  prototype: "/main/game/levels/levels/hospital/hospital_2/hospital_2.go"
+  prototype: "/main/game/levels/levels/hospital/hospital_3/hospital_3.go"
   position {
     x: 0.0
     y: 0.0
@@ -43,8 +43,8 @@ instances {
   id: "player"
   prototype: "/main/game/characters/player/player_first_level.go"
   position {
-    x: 55.0
-    y: 7.0
+    x: 176.0
+    y: 118.0
     z: 3.0
   }
   rotation {
@@ -60,86 +60,6 @@ instances {
       value: "false"
       type: PROPERTY_TYPE_BOOLEAN
     }
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "table_big_hospital_1"
-  prototype: "/main/game/objects/objects_ruin/table_big_hospital_1.go"
-  position {
-    x: 118.0
-    y: 145.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "outdoor_flower_big"
-  prototype: "/main/game/objects/objects_ruin/outdoor_flower_big.go"
-  position {
-    x: 25.0
-    y: 142.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "chair_blue"
-  prototype: "/main/game/objects/objects_ruin/chair_blue.go"
-  position {
-    x: 97.0
-    y: 142.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "chair_blue1"
-  prototype: "/main/game/objects/objects_ruin/chair_blue.go"
-  position {
-    x: 139.0
-    y: 142.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
   }
   scale3 {
     x: 1.0
@@ -188,51 +108,11 @@ instances {
   }
 }
 instances {
-  id: "outdoor_flower_mini1"
-  prototype: "/main/game/objects/objects_ruin/table_mini.go"
-  position {
-    x: 245.0
-    y: 142.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "chair_blue2"
-  prototype: "/main/game/objects/objects_ruin/chair_yellow.go"
-  position {
-    x: 263.0
-    y: 141.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "human"
+  id: "human_first_room2"
   prototype: "/main/game/characters/human/human.go"
   position {
-    x: 47.0
-    y: 143.0
+    x: -136.0
+    y: 87.0
     z: 0.0
   }
   rotation {
@@ -441,11 +321,11 @@ instances {
   }
 }
 instances {
-  id: "door_exit"
+  id: "door_first_room_right"
   prototype: "/main/game/objects/objects_ruin/door_blocking.go"
   position {
-    x: 744.0
-    y: 231.0
+    x: 124.0
+    y: 195.0
     z: 0.0
   }
   rotation {
@@ -465,163 +345,6 @@ instances {
       id: "id_activation"
       value: "door_exit"
       type: PROPERTY_TYPE_HASH
-    }
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "human6"
-  prototype: "/main/game/characters/human/human.go"
-  position {
-    x: 471.0
-    y: 135.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  component_properties {
-    id: "script"
-    properties {
-      id: "activation"
-      value: "false"
-      type: PROPERTY_TYPE_BOOLEAN
-    }
-    properties {
-      id: "id_activation"
-      value: "two_room"
-      type: PROPERTY_TYPE_HASH
-    }
-    properties {
-      id: "human_id"
-      value: "1.0"
-      type: PROPERTY_TYPE_NUMBER
-    }
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "human7"
-  prototype: "/main/game/characters/human/human.go"
-  position {
-    x: 489.0
-    y: 135.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  component_properties {
-    id: "script"
-    properties {
-      id: "activation"
-      value: "false"
-      type: PROPERTY_TYPE_BOOLEAN
-    }
-    properties {
-      id: "id_activation"
-      value: "two_room"
-      type: PROPERTY_TYPE_HASH
-    }
-    properties {
-      id: "human_id"
-      value: "3.0"
-      type: PROPERTY_TYPE_NUMBER
-    }
-    properties {
-      id: "hflip"
-      value: "true"
-      type: PROPERTY_TYPE_BOOLEAN
-    }
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "human8"
-  prototype: "/main/game/characters/human/human.go"
-  position {
-    x: 523.0
-    y: 99.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  component_properties {
-    id: "script"
-    properties {
-      id: "activation"
-      value: "false"
-      type: PROPERTY_TYPE_BOOLEAN
-    }
-    properties {
-      id: "id_activation"
-      value: "two_room"
-      type: PROPERTY_TYPE_HASH
-    }
-    properties {
-      id: "human_id"
-      value: "9.0"
-      type: PROPERTY_TYPE_NUMBER
-    }
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "human11"
-  prototype: "/main/game/characters/human/human.go"
-  position {
-    x: 393.0
-    y: 102.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  component_properties {
-    id: "script"
-    properties {
-      id: "activation"
-      value: "false"
-      type: PROPERTY_TYPE_BOOLEAN
-    }
-    properties {
-      id: "id_activation"
-      value: "two_room"
-      type: PROPERTY_TYPE_HASH
-    }
-    properties {
-      id: "human_id"
-      value: "4.0"
-      type: PROPERTY_TYPE_NUMBER
     }
   }
   scale3 {
@@ -749,49 +472,6 @@ instances {
   }
 }
 instances {
-  id: "human14"
-  prototype: "/main/game/characters/human/human.go"
-  position {
-    x: 401.0
-    y: 250.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  component_properties {
-    id: "script"
-    properties {
-      id: "activation"
-      value: "false"
-      type: PROPERTY_TYPE_BOOLEAN
-    }
-    properties {
-      id: "id_activation"
-      value: "palat_left"
-      type: PROPERTY_TYPE_HASH
-    }
-    properties {
-      id: "spawn_star"
-      value: "1.0"
-      type: PROPERTY_TYPE_NUMBER
-    }
-    properties {
-      id: "human_id_random"
-      value: "true"
-      type: PROPERTY_TYPE_BOOLEAN
-    }
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
   id: "outdoor_flower_mini9"
   prototype: "/main/game/objects/objects_ruin/outdoor_flower_normal.go"
   position {
@@ -816,49 +496,6 @@ instances {
       id: "id_activation"
       value: "palat_left"
       type: PROPERTY_TYPE_HASH
-    }
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "human17"
-  prototype: "/main/game/characters/human/human.go"
-  position {
-    x: 591.0
-    y: 252.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  component_properties {
-    id: "script"
-    properties {
-      id: "activation"
-      value: "false"
-      type: PROPERTY_TYPE_BOOLEAN
-    }
-    properties {
-      id: "id_activation"
-      value: "palat_right"
-      type: PROPERTY_TYPE_HASH
-    }
-    properties {
-      id: "hflip"
-      value: "true"
-      type: PROPERTY_TYPE_BOOLEAN
-    }
-    properties {
-      id: "human_id_random"
-      value: "true"
-      type: PROPERTY_TYPE_BOOLEAN
     }
   }
   scale3 {
@@ -934,163 +571,6 @@ instances {
   }
 }
 instances {
-  id: "human18"
-  prototype: "/main/game/characters/human/human.go"
-  position {
-    x: 402.0
-    y: 212.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  component_properties {
-    id: "script"
-    properties {
-      id: "activation"
-      value: "false"
-      type: PROPERTY_TYPE_BOOLEAN
-    }
-    properties {
-      id: "id_activation"
-      value: "palat_left"
-      type: PROPERTY_TYPE_HASH
-    }
-    properties {
-      id: "human_id_random"
-      value: "true"
-      type: PROPERTY_TYPE_BOOLEAN
-    }
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "human19"
-  prototype: "/main/game/characters/human/human.go"
-  position {
-    x: 548.0
-    y: 252.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  component_properties {
-    id: "script"
-    properties {
-      id: "activation"
-      value: "false"
-      type: PROPERTY_TYPE_BOOLEAN
-    }
-    properties {
-      id: "id_activation"
-      value: "palat_right"
-      type: PROPERTY_TYPE_HASH
-    }
-    properties {
-      id: "human_id_random"
-      value: "true"
-      type: PROPERTY_TYPE_BOOLEAN
-    }
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "human20"
-  prototype: "/main/game/characters/human/human.go"
-  position {
-    x: 549.0
-    y: 214.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  component_properties {
-    id: "script"
-    properties {
-      id: "activation"
-      value: "false"
-      type: PROPERTY_TYPE_BOOLEAN
-    }
-    properties {
-      id: "id_activation"
-      value: "palat_right"
-      type: PROPERTY_TYPE_HASH
-    }
-    properties {
-      id: "human_id_random"
-      value: "true"
-      type: PROPERTY_TYPE_BOOLEAN
-    }
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "human21"
-  prototype: "/main/game/characters/human/human.go"
-  position {
-    x: 444.0
-    y: 250.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  component_properties {
-    id: "script"
-    properties {
-      id: "activation"
-      value: "false"
-      type: PROPERTY_TYPE_BOOLEAN
-    }
-    properties {
-      id: "id_activation"
-      value: "palat_left"
-      type: PROPERTY_TYPE_HASH
-    }
-    properties {
-      id: "hflip"
-      value: "true"
-      type: PROPERTY_TYPE_BOOLEAN
-    }
-    properties {
-      id: "human_id_random"
-      value: "true"
-      type: PROPERTY_TYPE_BOOLEAN
-    }
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
   id: "pedestal_"
   prototype: "/main/game/objects/objects_ruin/pedestal_1.go"
   position {
@@ -1139,11 +619,11 @@ instances {
   }
 }
 instances {
-  id: "human1"
+  id: "human_first_room"
   prototype: "/main/game/characters/human/human.go"
   position {
-    x: 12.0
-    y: 93.0
+    x: -127.0
+    y: 37.0
     z: 0.0
   }
   rotation {
@@ -1172,11 +652,11 @@ instances {
   }
 }
 instances {
-  id: "human2"
+  id: "human_first_room1"
   prototype: "/main/game/characters/human/human.go"
   position {
-    x: 99.0
-    y: 97.0
+    x: -110.0
+    y: 37.0
     z: 0.0
   }
   rotation {
@@ -1205,11 +685,11 @@ instances {
   }
 }
 instances {
-  id: "human3"
+  id: "human_first_room3"
   prototype: "/main/game/characters/human/human.go"
   position {
-    x: 216.0
-    y: 121.0
+    x: -31.0
+    y: 21.0
     z: 0.0
   }
   rotation {
@@ -1238,432 +718,11 @@ instances {
   }
 }
 instances {
-  id: "human4"
-  prototype: "/main/game/characters/human/human.go"
-  position {
-    x: 48.0
-    y: 204.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  component_properties {
-    id: "script"
-    properties {
-      id: "human_id"
-      value: "9.0"
-      type: PROPERTY_TYPE_NUMBER
-    }
-    properties {
-      id: "human_id_random"
-      value: "true"
-      type: PROPERTY_TYPE_BOOLEAN
-    }
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "human5"
-  prototype: "/main/game/characters/human/human.go"
-  position {
-    x: 52.0
-    y: 254.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  component_properties {
-    id: "script"
-    properties {
-      id: "human_id"
-      value: "9.0"
-      type: PROPERTY_TYPE_NUMBER
-    }
-    properties {
-      id: "human_id_random"
-      value: "true"
-      type: PROPERTY_TYPE_BOOLEAN
-    }
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "human9"
-  prototype: "/main/game/characters/human/human.go"
-  position {
-    x: 93.0
-    y: 253.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  component_properties {
-    id: "script"
-    properties {
-      id: "hflip"
-      value: "true"
-      type: PROPERTY_TYPE_BOOLEAN
-    }
-    properties {
-      id: "spawn_star"
-      value: "0.0"
-      type: PROPERTY_TYPE_NUMBER
-    }
-    properties {
-      id: "human_id_random"
-      value: "true"
-      type: PROPERTY_TYPE_BOOLEAN
-    }
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "human10"
-  prototype: "/main/game/characters/human/human.go"
-  position {
-    x: 193.0
-    y: 204.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  component_properties {
-    id: "script"
-    properties {
-      id: "human_id"
-      value: "9.0"
-      type: PROPERTY_TYPE_NUMBER
-    }
-    properties {
-      id: "human_id_random"
-      value: "true"
-      type: PROPERTY_TYPE_BOOLEAN
-    }
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "human12"
-  prototype: "/main/game/characters/human/human.go"
-  position {
-    x: 197.0
-    y: 254.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  component_properties {
-    id: "script"
-    properties {
-      id: "human_id"
-      value: "9.0"
-      type: PROPERTY_TYPE_NUMBER
-    }
-    properties {
-      id: "human_id_random"
-      value: "true"
-      type: PROPERTY_TYPE_BOOLEAN
-    }
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "human13"
-  prototype: "/main/game/characters/human/human.go"
-  position {
-    x: 238.0
-    y: 253.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  component_properties {
-    id: "script"
-    properties {
-      id: "human_id"
-      value: "9.0"
-      type: PROPERTY_TYPE_NUMBER
-    }
-    properties {
-      id: "hflip"
-      value: "true"
-      type: PROPERTY_TYPE_BOOLEAN
-    }
-    properties {
-      id: "spawn_star"
-      value: "1.0"
-      type: PROPERTY_TYPE_NUMBER
-    }
-    properties {
-      id: "human_id_random"
-      value: "true"
-      type: PROPERTY_TYPE_BOOLEAN
-    }
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "table_big_hospital_"
-  prototype: "/main/game/objects/objects_ruin/table_big_hospital_1.go"
-  position {
-    x: 70.0
-    y: 272.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "table_big_hospital_2"
-  prototype: "/main/game/objects/objects_ruin/table_big_hospital_2.go"
-  position {
-    x: 256.0
-    y: 223.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "chair_blue10"
-  prototype: "/main/game/objects/objects_ruin/chair_green_left.go"
-  position {
-    x: 261.0
-    y: 204.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "chair_blue11"
+  id: "first_room_object1"
   prototype: "/main/game/objects/objects_ruin/chair_yellow.go"
   position {
-    x: 110.0
-    y: 230.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "chair_blue12"
-  prototype: "/main/game/objects/objects_ruin/chair_red.go"
-  position {
-    x: 52.0
-    y: 271.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "pedestal_1"
-  prototype: "/main/game/objects/objects_ruin/pedestal_1.go"
-  position {
-    x: 90.0
-    y: 268.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "pedestal_2"
-  prototype: "/main/game/objects/objects_ruin/pedestal_2.go"
-  position {
-    x: 119.0
-    y: 202.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "table_big_hospital_3"
-  prototype: "/main/game/objects/objects_ruin/table_big_hospital_2.go"
-  position {
-    x: 208.0
-    y: 270.0
-    z: 3.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  component_properties {
-    id: "script"
-    properties {
-      id: "spawn_star"
-      value: "1.0"
-      type: PROPERTY_TYPE_NUMBER
-    }
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "pedestal_3"
-  prototype: "/main/game/objects/objects_ruin/pedestal_1.go"
-  position {
-    x: 175.0
-    y: 229.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "chair_blue13"
-  prototype: "/main/game/objects/objects_ruin/chair_blue_left.go"
-  position {
-    x: 224.0
-    y: 268.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "chair_blue14"
-  prototype: "/main/game/objects/objects_ruin/chair_blue_left.go"
-  position {
-    x: 191.0
-    y: 269.0
+    x: 135.0
+    y: 266.0
     z: 0.0
   }
   rotation {
@@ -1675,9 +734,9 @@ instances {
   component_properties {
     id: "script"
     properties {
-      id: "hflip"
-      value: "true"
-      type: PROPERTY_TYPE_BOOLEAN
+      id: "id_activation"
+      value: "first_room"
+      type: PROPERTY_TYPE_HASH
     }
   }
   scale3 {
@@ -1687,11 +746,11 @@ instances {
   }
 }
 instances {
-  id: "outdoor_flower_big1"
-  prototype: "/main/game/objects/objects_ruin/outdoor_flower_big.go"
+  id: "first_room_object2"
+  prototype: "/main/game/objects/objects_ruin/chair_blue_left.go"
   position {
-    x: 238.0
-    y: 273.0
+    x: 218.0
+    y: 257.0
     z: 0.0
   }
   rotation {
@@ -1699,6 +758,14 @@ instances {
     y: 0.0
     z: 0.0
     w: 1.0
+  }
+  component_properties {
+    id: "script"
+    properties {
+      id: "id_activation"
+      value: "first_room"
+      type: PROPERTY_TYPE_HASH
+    }
   }
   scale3 {
     x: 1.0
@@ -1719,87 +786,6 @@ instances {
     y: 0.0
     z: 0.0
     w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "human15"
-  prototype: "/main/game/characters/human/human.go"
-  position {
-    x: 400.0
-    y: 62.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  component_properties {
-    id: "script"
-    properties {
-      id: "activation"
-      value: "false"
-      type: PROPERTY_TYPE_BOOLEAN
-    }
-    properties {
-      id: "id_activation"
-      value: "two_room"
-      type: PROPERTY_TYPE_HASH
-    }
-    properties {
-      id: "human_id"
-      value: "9.0"
-      type: PROPERTY_TYPE_NUMBER
-    }
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "human22"
-  prototype: "/main/game/characters/human/human.go"
-  position {
-    x: 420.0
-    y: 62.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  component_properties {
-    id: "script"
-    properties {
-      id: "activation"
-      value: "false"
-      type: PROPERTY_TYPE_BOOLEAN
-    }
-    properties {
-      id: "id_activation"
-      value: "two_room"
-      type: PROPERTY_TYPE_HASH
-    }
-    properties {
-      id: "human_id"
-      value: "9.0"
-      type: PROPERTY_TYPE_NUMBER
-    }
-    properties {
-      id: "hflip"
-      value: "true"
-      type: PROPERTY_TYPE_BOOLEAN
-    }
   }
   scale3 {
     x: 1.0
@@ -2046,6 +1032,178 @@ instances {
     z: 1.0
   }
 }
+instances {
+  id: "vending machine_1"
+  prototype: "/main/game/objects/objects_ruin/vending machine_2.go"
+  position {
+    x: 101.0
+    y: 140.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "vending machine_"
+  prototype: "/main/game/objects/objects_ruin/trash_can.go"
+  position {
+    x: 71.0
+    y: 138.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "door_first_room_left"
+  prototype: "/main/game/objects/objects_ruin/door_blocking.go"
+  position {
+    x: 107.0
+    y: 195.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "script"
+    properties {
+      id: "activation"
+      value: "false"
+      type: PROPERTY_TYPE_BOOLEAN
+    }
+    properties {
+      id: "id_activation"
+      value: "door_exit"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "hflip"
+      value: "true"
+      type: PROPERTY_TYPE_BOOLEAN
+    }
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "first_room_object"
+  prototype: "/main/game/objects/objects_ruin/maneken_skelet.go"
+  position {
+    x: 184.0
+    y: 268.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "script"
+    properties {
+      id: "id_activation"
+      value: "first_room"
+      type: PROPERTY_TYPE_HASH
+    }
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "first_room_zombie"
+  prototype: "/main/game/characters/zombie_enemy/zombie_enemy_first_level.go"
+  position {
+    x: 150.0
+    y: 188.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "script"
+    properties {
+      id: "activation"
+      value: "false"
+      type: PROPERTY_TYPE_BOOLEAN
+    }
+    properties {
+      id: "id_activation"
+      value: "first_room"
+      type: PROPERTY_TYPE_HASH
+    }
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "first_room_zombie1"
+  prototype: "/main/game/characters/zombie_enemy/zombie_enemy_first_level.go"
+  position {
+    x: 170.0
+    y: 188.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "script"
+    properties {
+      id: "activation"
+      value: "false"
+      type: PROPERTY_TYPE_BOOLEAN
+    }
+    properties {
+      id: "human_id"
+      value: "2.0"
+      type: PROPERTY_TYPE_NUMBER
+    }
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
 collection_instances {
   id: "marker_goal"
   collection: "/main/game/markers/goal/marker_goal.collection"
@@ -2068,7 +1226,7 @@ collection_instances {
 }
 scale_along_z: 0
 embedded_instances {
-  id: "activation_point"
+  id: "activation_point1"
   data: "components {\n"
   "  id: \"activation_point\"\n"
   "  component: \"/main/game/points/activation_point.script\"\n"
@@ -2120,98 +1278,7 @@ embedded_instances {
   "    id: \\\"\\\"\\n"
   "  }\\n"
   "  data: 23.573896\\n"
-  "  data: 10.0\\n"
-  "  data: 10.0\\n"
-  "}\\n"
-  "linear_damping: 0.0\\n"
-  "angular_damping: 0.0\\n"
-  "locked_rotation: false\\n"
-  "bullet: false\\n"
-  "\"\n"
-  "  position {\n"
-  "    x: 0.0\n"
-  "    y: 0.0\n"
-  "    z: 0.0\n"
-  "  }\n"
-  "  rotation {\n"
-  "    x: 0.0\n"
-  "    y: 0.0\n"
-  "    z: 0.0\n"
-  "    w: 1.0\n"
-  "  }\n"
-  "}\n"
-  ""
-  position {
-    x: 57.0
-    y: 65.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-embedded_instances {
-  id: "activation_point1"
-  data: "components {\n"
-  "  id: \"activation_point\"\n"
-  "  component: \"/main/game/points/activation_point.script\"\n"
-  "  position {\n"
-  "    x: 0.0\n"
-  "    y: 0.0\n"
-  "    z: 0.0\n"
-  "  }\n"
-  "  rotation {\n"
-  "    x: 0.0\n"
-  "    y: 0.0\n"
-  "    z: 0.0\n"
-  "    w: 1.0\n"
-  "  }\n"
-  "  properties {\n"
-  "    id: \"id_activation\"\n"
-  "    value: \"two_room\"\n"
-  "    type: PROPERTY_TYPE_HASH\n"
-  "  }\n"
-  "  property_decls {\n"
-  "  }\n"
-  "}\n"
-  "embedded_components {\n"
-  "  id: \"collisionobject\"\n"
-  "  type: \"collisionobject\"\n"
-  "  data: \"collision_shape: \\\"\\\"\\n"
-  "type: COLLISION_OBJECT_TYPE_TRIGGER\\n"
-  "mass: 0.0\\n"
-  "friction: 0.1\\n"
-  "restitution: 0.5\\n"
-  "group: \\\"point\\\"\\n"
-  "mask: \\\"default\\\"\\n"
-  "embedded_collision_shape {\\n"
-  "  shapes {\\n"
-  "    shape_type: TYPE_BOX\\n"
-  "    position {\\n"
-  "      x: 0.0\\n"
-  "      y: 0.0\\n"
-  "      z: 0.0\\n"
-  "    }\\n"
-  "    rotation {\\n"
-  "      x: 0.0\\n"
-  "      y: 0.0\\n"
-  "      z: 0.0\\n"
-  "      w: 1.0\\n"
-  "    }\\n"
-  "    index: 0\\n"
-  "    count: 3\\n"
-  "    id: \\\"\\\"\\n"
-  "  }\\n"
-  "  data: 23.573896\\n"
-  "  data: 15.0\\n"
+  "  data: 55.51309\\n"
   "  data: 10.0\\n"
   "}\\n"
   "linear_damping: 0.0\\n"
@@ -2233,8 +1300,8 @@ embedded_instances {
   "}\n"
   ""
   position {
-    x: 321.0
-    y: 96.0
+    x: 235.0
+    y: 98.0
     z: 0.0
   }
   rotation {
@@ -3676,8 +2743,8 @@ embedded_instances {
   id: "start_point"
   data: ""
   position {
-    x: 56.0
-    y: 61.0
+    x: 7.0
+    y: 102.0
     z: 0.0
   }
   rotation {
@@ -3738,6 +2805,78 @@ embedded_instances {
   position {
     x: 743.0
     y: 173.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+embedded_instances {
+  id: "first_room_cover"
+  data: "components {\n"
+  "  id: \"cover_zone\"\n"
+  "  component: \"/main/game/markers/zones/cover_zone.script\"\n"
+  "  position {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "  }\n"
+  "  rotation {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "    w: 1.0\n"
+  "  }\n"
+  "  properties {\n"
+  "    id: \"id_activation\"\n"
+  "    value: \"first_room\"\n"
+  "    type: PROPERTY_TYPE_HASH\n"
+  "  }\n"
+  "  property_decls {\n"
+  "  }\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"sprite\"\n"
+  "  type: \"sprite\"\n"
+  "  data: \"default_animation: \\\"particle\\\"\\n"
+  "material: \\\"/builtins/materials/sprite.material\\\"\\n"
+  "blend_mode: BLEND_MODE_ALPHA\\n"
+  "size {\\n"
+  "  x: 200.0\\n"
+  "  y: 200.0\\n"
+  "  z: 0.0\\n"
+  "  w: 0.0\\n"
+  "}\\n"
+  "size_mode: SIZE_MODE_MANUAL\\n"
+  "textures {\\n"
+  "  sampler: \\\"texture_sampler\\\"\\n"
+  "  texture: \\\"/main/atlases/first_level.atlas\\\"\\n"
+  "}\\n"
+  "\"\n"
+  "  position {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "  }\n"
+  "  rotation {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "    w: 1.0\n"
+  "  }\n"
+  "}\n"
+  ""
+  position {
+    x: 162.0
+    y: 275.0
     z: 0.0
   }
   rotation {

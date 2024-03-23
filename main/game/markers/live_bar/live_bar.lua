@@ -13,8 +13,15 @@ function M.create(self, is_player)
 			else
 				msg.post(url_label, "enable")
 			end
+
+		elseif self.type_object == hash("building_ruin") then
+			local position = go.get_position()
+			position.y = position.y + go.get("#object", "size").y / 2 - 4
+			self.hp_bar = collectionfactory.create("markers_core#live_bar_collectionfactory", position)
+
 		else
 			self.hp_bar = collectionfactory.create("markers_core#live_bar_collectionfactory", go.get_position())
+
 		end
 		
 	end

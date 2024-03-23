@@ -75,6 +75,7 @@ function fixed_update(self, dt)
 	-- Remove this function if not needed
 end
 
+--[[
 function update(self, dt)
 	if self.debug_lines_to_target then
 		draw.line(self.debug_lines_to_target.from, self.debug_lines_to_target.to)
@@ -87,6 +88,7 @@ function update(self, dt)
 		end
 	end
 end
+--]]
 
 function on_message(self, message_id, message, sender)
 	if message_id == hash("damage") then

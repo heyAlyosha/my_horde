@@ -52,6 +52,7 @@ function update(self)
 			render.draw(self.tile_pred, {frustum = frustum})
 			render.draw(self.particle_pred, {frustum = frustum})
 			render.draw_debug3d()
+			
 		end
 	end
 	
@@ -96,7 +97,7 @@ function update(self)
 	--pprint("zoom", zoom)
 
 	storage_player.zoom = zoom
-	camera.set_zoom(camera_id, zoom)
+	--camera.set_zoom(camera_id, zoom)
 
 	-- CUSTOM PART --
 end

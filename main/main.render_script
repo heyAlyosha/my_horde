@@ -65,7 +65,7 @@ local function fixed_fit_projection(near, far)
         width = render.get_height()
         height = render.get_width()
         zoom = window_width / width
-        
+
     else
         -- Горизонтальная ориентация
         storage_player.orientation = "horisontal"

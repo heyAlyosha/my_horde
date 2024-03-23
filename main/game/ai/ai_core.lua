@@ -4,7 +4,7 @@ local M = {}
 -- Состояние атаки
 function M.condition_attack(self, url, handle_success, handle_error, handle_fire)
 	self.condition = hash("attack")
-	self.target = url
+	self.target = go_controller.url_object(url)
 	self.is_attack = true
 
 	local handle_success = handle_success or function (self)
@@ -37,7 +37,7 @@ function M.condition_attack(self, url, handle_success, handle_error, handle_fire
 	ai_attack.add_target(self, self.target)
 	ai_move.move_to_object(self, self.target, handle_success, handle_error, handle_no_object_target)
 
-	self.check_attak = ai_core.check_distantion_attack(self, self.target, handle_distantion_success, handle_distantion_error)
+	--self.check_attak = ai_core.check_distantion_attack(self, self.target, handle_distantion_success, handle_distantion_error)
 end
 
 -- Обзор окружения

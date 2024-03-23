@@ -49,22 +49,26 @@ function M.move_horde_player(self)
 			local collision_message =  storage_game.go_objects[item.id].collision_physic.message
 			local storage_item = storage_game.go_objects[item.id].storage or {}
 
-			local options = {all = true}
+			--local options = {all = true}
 			local result = physics.raycast(self.position_center_horde, position, {hash("default")}, options)
 			if result then
 				-- Смотрим в тот ли объект уткается  луч
-				local is_collision
+				local is_collision = true
+				--[[
+				-- Проверить В ту ли коллизию упёрся
 				for i = 1, #result do
 					local item_raycast_collision = result[i]
 					if item_raycast_collision.id == collision_message.other_id then
 						-- Если луч упёрся в ту коллизию
-						draw.line(self.position_center_horde, item_raycast_collision.position)
+						--draw.line(self.position_center_horde, item_raycast_collision.position)
 						position_to = position_functions.go_get_perspective_z(item_raycast_collision.position, item.url)
 
 						is_collision = true
 						break
 					end
 				end
+				--]]
+				position_to = position_functions.go_get_perspective_z(result.position, item.url)
 
 				if not is_collision then
 					-- Столкновения луча не подходят
@@ -198,7 +202,7 @@ function M.get_position(self, сenter_position, index_to_horde)
 			-- Добавляем небольшой рандом
 			math.randomseed(i)
 			x = x + math.random(-2, 2)
-			y = y + math.random(-2, 2)
+			y = y + math.random(-2, 2) - 3
 			M.positions[i] = vmath.vector3(x, y, 0)
 		end
 
