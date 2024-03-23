@@ -1193,6 +1193,11 @@ instances {
       type: PROPERTY_TYPE_BOOLEAN
     }
     properties {
+      id: "id_activation"
+      value: "first_room"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
       id: "human_id"
       value: "2.0"
       type: PROPERTY_TYPE_NUMBER

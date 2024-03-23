@@ -23,13 +23,31 @@ function M.add_target(self, url_target)
 	-- Ищем расположение
 	local possible_targets = {}
 	local position_target_object = go.get_position(url_target)
-	for k, item in pairs(target.targets) do
-		if item.is_move then
-			possible_targets[#possible_targets+1] = {
-				id = k,
-				vector_target = item.vector_target, 
-				sort = #item.characters * 1000 + vmath.length(item.position - position)
-			}
+
+	if not target.target_dynamic then
+		-- Если цель стоит на месте
+		for k, item in pairs(target.targets) do
+			if item.is_move then
+				possible_targets[#possible_targets+1] = {
+					id = k,
+					vector_target = item.vector_target, 
+					sort = #item.characters * 1000 + vmath.length(item.position - position)
+				}
+			end
+		end
+	else
+		-- Если цель двигается
+		for k, item in pairs(target.targets) do
+			if item.is_move then
+				-- Если цель стоит на месте
+				local dir = position_target_object + item.vector_target - position
+				print("dir", dir)
+				possible_targets[#possible_targets+1] = {
+					id = k,
+					vector_target = item.vector_target, 
+					sort = vmath.length(dir)
+				}
+			end
 		end
 	end
 
