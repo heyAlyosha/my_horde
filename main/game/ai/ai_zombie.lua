@@ -12,11 +12,6 @@ function M.search_target(self)
 				if not self.target or (self.target_useful and self.target_useful < visible_item.target_useful) then
 					-- Если нет цели
 					if go_controller.is_object(visible_item.url) then
-						if self.target and self.target_id_point and go_controller.is_object(self.target) then
-							ai_attack.delete_target(self, self.target)
-							self.target = nil
-						end
-
 						-- Помечаем целью
 						self.target = visible_item.url
 						self.target_useful = visible_item.target_useful
