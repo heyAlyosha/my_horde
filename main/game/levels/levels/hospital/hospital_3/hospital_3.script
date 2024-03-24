@@ -52,80 +52,89 @@ function on_message(self, message_id, message, sender)
 
 	elseif message_id == hash("player_position_success") then
 		-- Игрок дошёл до стартовой точки
+		msg.post("player", "activate")
 
-		-- Наводим камеру на цель
-		timer_linear.add(self, "start", 0.5, function (self)
-			camera.unfollow()
-			local position_to = go.get_position("door_exit")
-			go.animate("camera", "position", go.PLAYBACK_ONCE_FORWARD, position_to, go.EASING_OUTCUBIC, 1, 0)
-		end, delay)
+	elseif message_id == hash("activation_point") and message.id_activation == hash("first_room_end") then
+		-- Конец первой комнаты
+		-- Блокируют выход
+		local duration = 1
+		go.animate("bed_hospital_first_room", "position.x", go.PLAYBACK_ONCE_FORWARD, go.get_position("bed_hospital_first_room").x - 50, go.EASING_LINEAR, duration)
+		sprite.play_flipbook("bed_human_two_room#body", "human_1_walking")
+		go.animate("bed_human_two_room", "position.x", go.PLAYBACK_ONCE_FORWARD, go.get_position("bed_human_two_room").x - 50, go.EASING_LINEAR, duration)
+		sprite.play_flipbook("bed_human_two_room1#body", "human_2_walking")
+		go.animate("bed_human_two_room1", "position.x", go.PLAYBACK_ONCE_FORWARD, go.get_position("bed_human_two_room").x - 50, go.EASING_LINEAR, duration)
 
-		-- Возвращаем камеру на игрока
-		timer_linear.add(self, "start", 3, function (self)
-			go.animate("camera", "position", go.PLAYBACK_ONCE_FORWARD, go.get_position("player"), go.EASING_OUTCUBIC, 1, 0)
-		end, delay)
-
-		-- Активируем игрока
+		-- Убегают
 		timer_linear.add(self, "start", 1, function (self)
-			msg.post("player", "activate")
-			camera.follow(camera_id, msg.url("player"), options)
+			duration = 7
+			sprite.play_flipbook("bed_human_two_room#body", "human_1_running")
+			sprite.set_hflip("bed_human_two_room#body", false)
+			go.animate("bed_human_two_room", "position.x", go.PLAYBACK_ONCE_FORWARD, go.get_position("bed_human_two_room").x + 300, go.EASING_LINEAR, duration)
+			sprite.play_flipbook("bed_human_two_room1#body", "human_2_running")
+			sprite.set_hflip("bed_human_two_room1#body", false)
+			go.animate("bed_human_two_room1", "position.x", go.PLAYBACK_ONCE_FORWARD, go.get_position("bed_human_two_room").x + 300, go.EASING_LINEAR, duration)
+		end, delay)
 
-			go.delete("/marker_goal/marker_goal")
-			go.delete("/marker_goal/go")
+		-- Начинают ломать дверь
+		timer_linear.add(self, "start", 2, function (self)
+			camera.unfollow()
+			local position_to = go.get_position("door_first_room_right")
 
-			-- ЦЕЛЬ
-			local goals = {msg.url("door_exit")}
+			go.animate("camera", "position", go.PLAYBACK_ONCE_FORWARD, position_to, go.EASING_OUTCUBIC, 1, 0)
+
+			go.set("player#script", "active_input", false)
+		end, delay)
+
+		timer_linear.add(self, "start", 1, function (self)
+			msg.post("door_first_room_right", "damage", {damage = 1})
+			msg.post("door_first_room_left", "damage", {damage = 1})
+		end, delay)
+
+		timer_linear.add(self, "start", 0.5, function (self)
+			msg.post("door_first_room_right", "damage", {damage = 1})
+			msg.post("door_first_room_left", "damage", {damage = 1})
+		end, delay)
+
+		timer_linear.add(self, "start", 0.5, function (self)
+			msg.post("door_first_room_right", "damage", {damage = 1})
+			msg.post("door_first_room_left", "damage", {damage = 1})
+		end, delay)
+
+		timer_linear.add(self, "start", 0.5, function (self)
+			msg.post("door_first_room_right", "damage", {damage = 1000})
+			msg.post("door_first_room_left", "damage", {damage = 1000})
+		end, delay)
+
+		-- Поялвляются зомби
+		timer_linear.add(self, "start", 0.5, function (self)
+			msg.post(".", "activation_point", {id_activation = hash("first_room")})
+		end, delay)
+
+		-- Цели зомбики
+		timer_linear.add(self, "start", 0.1, function (self)
+			local goals = {msg.url("first_room_zombie"), msg.url("first_room_zombie1")}
 			levels_script_functions.add_goal_ruins(self, goals, function (self)
-				print("WIN")
-				timer.delay(1, false, function (self)
-					-- Победа
-					msg.post("#map_core", "win", {point_win = msg.url("win_point"), next_level_point = msg.url("next_level_point")})
+				msg.post(".", "activation_point", {id_activation = hash("two_room")})
+				timer.delay(0.5, false, function (self)
+					-- Зомбики убиты
+					-- Цель - кровать 
+					local goals = {msg.url("bed_hospital_first_room")}
+					levels_script_functions.add_goal_ruins(self, goals, function (self)
+						timer.delay(1, false, function (self)
+							--print("WIN")
+							-- Победа
+						end)
+					end)
 				end)
 			end)
 		end, delay)
 
-	elseif message_id == hash("activation_point")  and message.id_activation == hash("last_room") then
-		-- Входит в последнюю комнату
-
-		timer_linear.add(self, "start", 0.25, function (self)
-			-- Камера наезжает на дверь
-			go.set("player#script", "active_input", false)
-			camera.unfollow()
-			local position_to = go.get_position("door_exit")
-			go.animate("camera", "position", go.PLAYBACK_ONCE_FORWARD, position_to, go.EASING_OUTCUBIC, 1, 0)
-
-			-- человечек убегает
-			sprite.play_flipbook("last_human#body", "human_9_running")
-			go.animate("last_human", "position", go.PLAYBACK_ONCE_FORWARD, go.get_position("point_end_human"), go.EASING_OUTCUBIC, 20, 0, function (self)
-				go.delete("last_human")
-			end)
-
-			-- Закрывает за собой дверь
-			timer.delay(1.5, false, function (self)
-				sprite.play_flipbook("door_exit#body", hash("door_closing"))
-			end)
-			
-		end, delay)
-
-		-- Камера направляется на кнопку
-		timer_linear.add(self, "start", 2.5, function (self)
-			go.animate("camera", "position", go.PLAYBACK_ONCE_FORWARD, go.get_position("btn_zone_count"), go.EASING_OUTCUBIC, 0.5, 0, function (self)
-				msg.post("btn_zone_count", "activation", {activation = true})
-			end)
-
-		end, delay)
-
-		-- Камера направляется к игроку
-		timer_linear.add(self, "start", 1.5, function (self)
-			-- Камера возвращается к игроку
-			go.animate("camera", "position", go.PLAYBACK_ONCE_FORWARD, go.get_position("player"), go.EASING_OUTCUBIC, 1, 0, function (self)
+		
+		timer_linear.add(self, "start", 1, function (self)
+			go.animate("camera", "position", go.PLAYBACK_ONCE_FORWARD, go.get_position("player"), go.EASING_OUTCUBIC, 0.5, 0, function (self)
 				go.set("player#script", "active_input", true)
 				camera.follow(camera_id, msg.url("player"), options)
 			end)
-
-			-- Активируем двери
-			msg.post(".", "activation_point", {id_activation = hash("doors_palats")})
-
 		end, delay)
 
 	elseif message_id == hash("add_activation_object") then

@@ -96,4 +96,9 @@ function M.delete_goal(self, type_goal, key)
 	end
 end
 
+-- Перемещение 
+function M.human_position_to(self, position_to, human_id, animation_id)
+	
+end
+
 return M

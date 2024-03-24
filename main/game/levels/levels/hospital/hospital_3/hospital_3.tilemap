@@ -2921,22 +2921,6 @@ layers {
     rotate90: 0
   }
   cell {
-    x: 2
-    y: 7
-    tile: 112
-    h_flip: 0
-    v_flip: 0
-    rotate90: 0
-  }
-  cell {
-    x: 3
-    y: 7
-    tile: 114
-    h_flip: 0
-    v_flip: 0
-    rotate90: 0
-  }
-  cell {
     x: 4
     y: 7
     tile: 112
@@ -3436,22 +3420,6 @@ layers {
     x: 76
     y: 7
     tile: 114
-    h_flip: 0
-    v_flip: 0
-    rotate90: 0
-  }
-  cell {
-    x: 2
-    y: 8
-    tile: 96
-    h_flip: 0
-    v_flip: 0
-    rotate90: 0
-  }
-  cell {
-    x: 3
-    y: 8
-    tile: 97
     h_flip: 0
     v_flip: 0
     rotate90: 0

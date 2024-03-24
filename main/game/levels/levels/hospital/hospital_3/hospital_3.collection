@@ -43,8 +43,8 @@ instances {
   id: "player"
   prototype: "/main/game/characters/player/player_first_level.go"
   position {
-    x: 70.0
-    y: 98.0
+    x: 256.0
+    y: 93.0
     z: 3.0
   }
   rotation {
@@ -81,6 +81,24 @@ instances {
     z: 0.0
     w: 1.0
   }
+  component_properties {
+    id: "script"
+    properties {
+      id: "activation"
+      value: "false"
+      type: PROPERTY_TYPE_BOOLEAN
+    }
+    properties {
+      id: "id_activation"
+      value: "two_room"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "hflip"
+      value: "true"
+      type: PROPERTY_TYPE_BOOLEAN
+    }
+  }
   scale3 {
     x: 1.0
     y: 1.0
@@ -111,8 +129,8 @@ instances {
   id: "human_first_room2"
   prototype: "/main/game/characters/human/human.go"
   position {
-    x: -46.0
-    y: 0.0
+    x: 94.0
+    y: 116.0
     z: 0.0
   }
   rotation {
@@ -154,6 +172,19 @@ instances {
     z: 0.0
     w: 1.0
   }
+  component_properties {
+    id: "script"
+    properties {
+      id: "activation"
+      value: "false"
+      type: PROPERTY_TYPE_BOOLEAN
+    }
+    properties {
+      id: "id_activation"
+      value: "two_room"
+      type: PROPERTY_TYPE_HASH
+    }
+  }
   scale3 {
     x: 1.0
     y: 1.0
@@ -174,6 +205,19 @@ instances {
     z: 0.0
     w: 1.0
   }
+  component_properties {
+    id: "script"
+    properties {
+      id: "activation"
+      value: "false"
+      type: PROPERTY_TYPE_BOOLEAN
+    }
+    properties {
+      id: "id_activation"
+      value: "two_room"
+      type: PROPERTY_TYPE_HASH
+    }
+  }
   scale3 {
     x: 1.0
     y: 1.0
@@ -185,7 +229,7 @@ instances {
   prototype: "/main/game/objects/objects_ruin/chair_yellow.go"
   position {
     x: 471.0
-    y: 145.0
+    y: 142.0
     z: 0.0
   }
   rotation {
@@ -193,6 +237,19 @@ instances {
     y: 0.0
     z: 0.0
     w: 1.0
+  }
+  component_properties {
+    id: "script"
+    properties {
+      id: "activation"
+      value: "false"
+      type: PROPERTY_TYPE_BOOLEAN
+    }
+    properties {
+      id: "id_activation"
+      value: "two_room"
+      type: PROPERTY_TYPE_HASH
+    }
   }
   scale3 {
     x: 1.0
@@ -205,7 +262,7 @@ instances {
   prototype: "/main/game/objects/objects_ruin/chair_green.go"
   position {
     x: 487.0
-    y: 145.0
+    y: 142.0
     z: 0.0
   }
   rotation {
@@ -213,6 +270,19 @@ instances {
     y: 0.0
     z: 0.0
     w: 1.0
+  }
+  component_properties {
+    id: "script"
+    properties {
+      id: "activation"
+      value: "false"
+      type: PROPERTY_TYPE_BOOLEAN
+    }
+    properties {
+      id: "id_activation"
+      value: "two_room"
+      type: PROPERTY_TYPE_HASH
+    }
   }
   scale3 {
     x: 1.0
@@ -224,8 +294,8 @@ instances {
   id: "chair_blue5"
   prototype: "/main/game/objects/objects_ruin/chair_red.go"
   position {
-    x: 504.0
-    y: 145.0
+    x: 648.0
+    y: 138.0
     z: 0.0
   }
   rotation {
@@ -244,48 +314,8 @@ instances {
   id: "chair_blue6"
   prototype: "/main/game/objects/objects_ruin/chair_blue.go"
   position {
-    x: 520.0
-    y: 145.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "chair_blue7"
-  prototype: "/main/game/objects/objects_ruin/chair_blue_left.go"
-  position {
-    x: 633.0
-    y: 125.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "chair_blue8"
-  prototype: "/main/game/objects/objects_ruin/chair_blue_left.go"
-  position {
-    x: 633.0
-    y: 110.0
+    x: 664.0
+    y: 138.0
     z: 0.0
   }
   rotation {
@@ -354,124 +384,6 @@ instances {
   }
 }
 instances {
-  id: "chair_blue9"
-  prototype: "/main/game/objects/objects_ruin/chair_blue.go"
-  position {
-    x: 775.0
-    y: 223.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "outdoor_flower_mini7"
-  prototype: "/main/game/objects/objects_ruin/table_mini.go"
-  position {
-    x: 792.0
-    y: 222.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "outdoor_flower_mini8"
-  prototype: "/main/game/objects/objects_ruin/outdoor_flower_big.go"
-  position {
-    x: 703.0
-    y: 222.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "wheelachair2"
-  prototype: "/main/game/objects/objects_ruin/wheelachair.go"
-  position {
-    x: 700.0
-    y: 158.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "last_human"
-  prototype: "/main/game/characters/human/human.go"
-  position {
-    x: 743.0
-    y: 195.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  component_properties {
-    id: "script"
-    properties {
-      id: "activation"
-      value: "false"
-      type: PROPERTY_TYPE_BOOLEAN
-    }
-    properties {
-      id: "human_id"
-      value: "9.0"
-      type: PROPERTY_TYPE_NUMBER
-    }
-    properties {
-      id: "hflip"
-      value: "true"
-      type: PROPERTY_TYPE_BOOLEAN
-    }
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
   id: "outdoor_flower_mini9"
   prototype: "/main/game/objects/objects_ruin/outdoor_flower_normal.go"
   position {
@@ -484,19 +396,6 @@ instances {
     y: 0.0
     z: 0.0
     w: 1.0
-  }
-  component_properties {
-    id: "script"
-    properties {
-      id: "activation"
-      value: "false"
-      type: PROPERTY_TYPE_BOOLEAN
-    }
-    properties {
-      id: "id_activation"
-      value: "palat_left"
-      type: PROPERTY_TYPE_HASH
-    }
   }
   scale3 {
     x: 1.0
@@ -551,19 +450,6 @@ instances {
     z: 0.0
     w: 1.0
   }
-  component_properties {
-    id: "script"
-    properties {
-      id: "activation"
-      value: "false"
-      type: PROPERTY_TYPE_BOOLEAN
-    }
-    properties {
-      id: "id_activation"
-      value: "palat_left"
-      type: PROPERTY_TYPE_HASH
-    }
-  }
   scale3 {
     x: 1.0
     y: 1.0
@@ -583,14 +469,6 @@ instances {
     y: 0.0
     z: 0.0
     w: 1.0
-  }
-  component_properties {
-    id: "script"
-    properties {
-      id: "id_activation"
-      value: "palats"
-      type: PROPERTY_TYPE_HASH
-    }
   }
   scale3 {
     x: 1.0
@@ -622,8 +500,8 @@ instances {
   id: "human_first_room"
   prototype: "/main/game/characters/human/human.go"
   position {
-    x: -37.0
-    y: -50.0
+    x: 103.0
+    y: 66.0
     z: 0.0
   }
   rotation {
@@ -655,8 +533,8 @@ instances {
   id: "human_first_room1"
   prototype: "/main/game/characters/human/human.go"
   position {
-    x: -20.0
-    y: -50.0
+    x: 120.0
+    y: 66.0
     z: 0.0
   }
   rotation {
@@ -688,8 +566,8 @@ instances {
   id: "human_first_room3"
   prototype: "/main/game/characters/human/human.go"
   position {
-    x: 87.0
-    y: -2.0
+    x: 227.0
+    y: 114.0
     z: 0.0
   }
   rotation {
@@ -778,139 +656,6 @@ instances {
   prototype: "/main/game/objects/objects_ruin/chair_blue.go"
   position {
     x: 520.0
-    y: 145.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "btn_zone_count"
-  prototype: "/main/game/markers/zones/btn_zone_count.go"
-  position {
-    x: 742.0
-    y: 172.0
-    z: 1.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  component_properties {
-    id: "zone"
-    properties {
-      id: "count"
-      value: "20.0"
-      type: PROPERTY_TYPE_NUMBER
-    }
-    properties {
-      id: "id_activation"
-      value: "door_exit"
-      type: PROPERTY_TYPE_HASH
-    }
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "chair_blue16"
-  prototype: "/main/game/objects/objects_ruin/chair_blue_left.go"
-  position {
-    x: 792.0
-    y: 78.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "chair_blue17"
-  prototype: "/main/game/objects/objects_ruin/chair_green_left.go"
-  position {
-    x: 792.0
-    y: 63.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "chair_blue18"
-  prototype: "/main/game/objects/objects_ruin/chair_red_left.go"
-  position {
-    x: 793.0
-    y: 111.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "chair_blue19"
-  prototype: "/main/game/objects/objects_ruin/chair_yellow_left.go"
-  position {
-    x: 793.0
-    y: 96.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "chair_blue20"
-  prototype: "/main/game/objects/objects_ruin/chair_blue_left.go"
-  position {
-    x: 793.0
     y: 142.0
     z: 0.0
   }
@@ -919,112 +664,6 @@ instances {
     y: 0.0
     z: 0.0
     w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "chair_blue21"
-  prototype: "/main/game/objects/objects_ruin/chair_blue_left.go"
-  position {
-    x: 793.0
-    y: 127.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "outdoor_flower_mini5"
-  prototype: "/main/game/objects/objects_ruin/outdoor_flower_big.go"
-  position {
-    x: 703.0
-    y: 222.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "door_two_room1"
-  prototype: "/main/game/objects/objects_ruin/door_blue.go"
-  position {
-    x: 424.0
-    y: 153.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  component_properties {
-    id: "script"
-    properties {
-      id: "activation"
-      value: "false"
-      type: PROPERTY_TYPE_BOOLEAN
-    }
-    properties {
-      id: "id_activation"
-      value: "doors_palats"
-      type: PROPERTY_TYPE_HASH
-    }
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "door_two_room2"
-  prototype: "/main/game/objects/objects_ruin/door_blue.go"
-  position {
-    x: 568.0
-    y: 153.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  component_properties {
-    id: "script"
-    properties {
-      id: "activation"
-      value: "false"
-      type: PROPERTY_TYPE_BOOLEAN
-    }
-    properties {
-      id: "id_activation"
-      value: "doors_palats"
-      type: PROPERTY_TYPE_HASH
-    }
   }
   scale3 {
     x: 1.0
@@ -1131,6 +770,11 @@ instances {
       value: "first_room"
       type: PROPERTY_TYPE_HASH
     }
+    properties {
+      id: "spawn_star"
+      value: "1.0"
+      type: PROPERTY_TYPE_NUMBER
+    }
   }
   scale3 {
     x: 1.0
@@ -1210,11 +854,11 @@ instances {
   }
 }
 instances {
-  id: "first_room_zombie2"
-  prototype: "/main/game/characters/zombie_enemy/zombie_enemy_first_level.go"
+  id: "bed_human_two_room"
+  prototype: "/main/game/characters/human/human.go"
   position {
-    x: 153.0
-    y: 93.0
+    x: 405.0
+    y: 101.0
     z: 0.0
   }
   rotation {
@@ -1226,9 +870,24 @@ instances {
   component_properties {
     id: "script"
     properties {
+      id: "activation"
+      value: "false"
+      type: PROPERTY_TYPE_BOOLEAN
+    }
+    properties {
+      id: "id_activation"
+      value: "two_room"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
       id: "human_id"
-      value: "2.0"
+      value: "1.0"
       type: PROPERTY_TYPE_NUMBER
+    }
+    properties {
+      id: "hflip"
+      value: "true"
+      type: PROPERTY_TYPE_BOOLEAN
     }
   }
   scale3 {
@@ -1237,12 +896,12 @@ instances {
     z: 1.0
   }
 }
-collection_instances {
-  id: "marker_goal"
-  collection: "/main/game/markers/goal/marker_goal.collection"
+instances {
+  id: "bed_human_two_room1"
+  prototype: "/main/game/characters/human/human.go"
   position {
-    x: 744.0
-    y: 242.0
+    x: 405.0
+    y: 84.0
     z: 0.0
   }
   rotation {
@@ -1250,6 +909,29 @@ collection_instances {
     y: 0.0
     z: 0.0
     w: 1.0
+  }
+  component_properties {
+    id: "script"
+    properties {
+      id: "activation"
+      value: "false"
+      type: PROPERTY_TYPE_BOOLEAN
+    }
+    properties {
+      id: "id_activation"
+      value: "two_room"
+      type: PROPERTY_TYPE_HASH
+    }
+    properties {
+      id: "human_id"
+      value: "2.0"
+      type: PROPERTY_TYPE_NUMBER
+    }
+    properties {
+      id: "hflip"
+      value: "true"
+      type: PROPERTY_TYPE_BOOLEAN
+    }
   }
   scale3 {
     x: 1.0
@@ -1259,7 +941,7 @@ collection_instances {
 }
 scale_along_z: 0
 embedded_instances {
-  id: "activation_point1"
+  id: "activation_point_first_room"
   data: "components {\n"
   "  id: \"activation_point\"\n"
   "  component: \"/main/game/points/activation_point.script\"\n"
@@ -1276,7 +958,7 @@ embedded_instances {
   "  }\n"
   "  properties {\n"
   "    id: \"id_activation\"\n"
-  "    value: \"first_room\"\n"
+  "    value: \"first_room_end\"\n"
   "    type: PROPERTY_TYPE_HASH\n"
   "  }\n"
   "  property_decls {\n"
@@ -1703,16 +1385,6 @@ embedded_instances {
   "    y: 0.0\n"
   "    z: 0.0\n"
   "    w: 1.0\n"
-  "  }\n"
-  "  properties {\n"
-  "    id: \"activation\"\n"
-  "    value: \"false\"\n"
-  "    type: PROPERTY_TYPE_BOOLEAN\n"
-  "  }\n"
-  "  properties {\n"
-  "    id: \"id_activation\"\n"
-  "    value: \"palat_left\"\n"
-  "    type: PROPERTY_TYPE_HASH\n"
   "  }\n"
   "  property_decls {\n"
   "  }\n"
@@ -2166,16 +1838,6 @@ embedded_instances {
   "    z: 0.0\n"
   "    w: 1.0\n"
   "  }\n"
-  "  properties {\n"
-  "    id: \"activation\"\n"
-  "    value: \"false\"\n"
-  "    type: PROPERTY_TYPE_BOOLEAN\n"
-  "  }\n"
-  "  properties {\n"
-  "    id: \"id_activation\"\n"
-  "    value: \"palat_left\"\n"
-  "    type: PROPERTY_TYPE_HASH\n"
-  "  }\n"
   "  property_decls {\n"
   "  }\n"
   "}\n"
@@ -2350,232 +2012,6 @@ embedded_instances {
   position {
     x: 384.0
     y: 221.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-embedded_instances {
-  id: "pedestal1"
-  data: "components {\n"
-  "  id: \"destroy\"\n"
-  "  component: \"/main/game/effects/destroy.particlefx\"\n"
-  "  position {\n"
-  "    x: 0.0\n"
-  "    y: 4.0\n"
-  "    z: -1.0\n"
-  "  }\n"
-  "  rotation {\n"
-  "    x: 0.0\n"
-  "    y: 0.0\n"
-  "    z: 0.70710677\n"
-  "    w: 0.70710677\n"
-  "  }\n"
-  "  property_decls {\n"
-  "  }\n"
-  "}\n"
-  "components {\n"
-  "  id: \"script\"\n"
-  "  component: \"/main/game/objects/objects_ruin/object_ruin.script\"\n"
-  "  position {\n"
-  "    x: 0.0\n"
-  "    y: 0.0\n"
-  "    z: 0.0\n"
-  "  }\n"
-  "  rotation {\n"
-  "    x: 0.0\n"
-  "    y: 0.0\n"
-  "    z: 0.0\n"
-  "    w: 1.0\n"
-  "  }\n"
-  "  properties {\n"
-  "    id: \"id_activation\"\n"
-  "    value: \"palat_right\"\n"
-  "    type: PROPERTY_TYPE_HASH\n"
-  "  }\n"
-  "  property_decls {\n"
-  "  }\n"
-  "}\n"
-  "embedded_components {\n"
-  "  id: \"collision_damage\"\n"
-  "  type: \"collisionobject\"\n"
-  "  data: \"collision_shape: \\\"\\\"\\n"
-  "type: COLLISION_OBJECT_TYPE_TRIGGER\\n"
-  "mass: 0.0\\n"
-  "friction: 0.1\\n"
-  "restitution: 0.5\\n"
-  "group: \\\"damage\\\"\\n"
-  "mask: \\\"attack\\\"\\n"
-  "mask: \\\"bullet\\\"\\n"
-  "embedded_collision_shape {\\n"
-  "  shapes {\\n"
-  "    shape_type: TYPE_BOX\\n"
-  "    position {\\n"
-  "      x: 0.0\\n"
-  "      y: 4.0\\n"
-  "      z: 0.0\\n"
-  "    }\\n"
-  "    rotation {\\n"
-  "      x: 0.0\\n"
-  "      y: 0.0\\n"
-  "      z: 0.0\\n"
-  "      w: 1.0\\n"
-  "    }\\n"
-  "    index: 0\\n"
-  "    count: 3\\n"
-  "    id: \\\"\\\"\\n"
-  "  }\\n"
-  "  data: 3.9709575\\n"
-  "  data: 5.888661\\n"
-  "  data: 10.0\\n"
-  "}\\n"
-  "linear_damping: 0.0\\n"
-  "angular_damping: 0.0\\n"
-  "locked_rotation: false\\n"
-  "bullet: false\\n"
-  "\"\n"
-  "  position {\n"
-  "    x: 0.0\n"
-  "    y: 0.0\n"
-  "    z: 0.0\n"
-  "  }\n"
-  "  rotation {\n"
-  "    x: 0.0\n"
-  "    y: 0.0\n"
-  "    z: 0.0\n"
-  "    w: 1.0\n"
-  "  }\n"
-  "}\n"
-  "embedded_components {\n"
-  "  id: \"collision_physic\"\n"
-  "  type: \"collisionobject\"\n"
-  "  data: \"collision_shape: \\\"\\\"\\n"
-  "type: COLLISION_OBJECT_TYPE_STATIC\\n"
-  "mass: 0.0\\n"
-  "friction: 0.1\\n"
-  "restitution: 0.5\\n"
-  "group: \\\"default\\\"\\n"
-  "mask: \\\"default\\\"\\n"
-  "mask: \\\"attack\\\"\\n"
-  "embedded_collision_shape {\\n"
-  "  shapes {\\n"
-  "    shape_type: TYPE_SPHERE\\n"
-  "    position {\\n"
-  "      x: 0.0\\n"
-  "      y: 0.0\\n"
-  "      z: 0.0\\n"
-  "    }\\n"
-  "    rotation {\\n"
-  "      x: 0.4617486\\n"
-  "      y: 0.0\\n"
-  "      z: 0.0\\n"
-  "      w: 0.8870108\\n"
-  "    }\\n"
-  "    index: 0\\n"
-  "    count: 1\\n"
-  "    id: \\\"\\\"\\n"
-  "  }\\n"
-  "  data: 3.75\\n"
-  "}\\n"
-  "linear_damping: 0.0\\n"
-  "angular_damping: 0.0\\n"
-  "locked_rotation: false\\n"
-  "bullet: false\\n"
-  "\"\n"
-  "  position {\n"
-  "    x: 0.0\n"
-  "    y: 0.0\n"
-  "    z: 0.0\n"
-  "  }\n"
-  "  rotation {\n"
-  "    x: 0.0\n"
-  "    y: 0.0\n"
-  "    z: 0.0\n"
-  "    w: 1.0\n"
-  "  }\n"
-  "}\n"
-  "embedded_components {\n"
-  "  id: \"object\"\n"
-  "  type: \"sprite\"\n"
-  "  data: \"default_animation: \\\"pedestal-2\\\"\\n"
-  "material: \\\"/builtins/materials/sprite.material\\\"\\n"
-  "blend_mode: BLEND_MODE_ALPHA\\n"
-  "textures {\\n"
-  "  sampler: \\\"texture_sampler\\\"\\n"
-  "  texture: \\\"/main/atlases/first_level.atlas\\\"\\n"
-  "}\\n"
-  "\"\n"
-  "  position {\n"
-  "    x: 0.0\n"
-  "    y: 8.0\n"
-  "    z: 1.0\n"
-  "  }\n"
-  "  rotation {\n"
-  "    x: 0.0\n"
-  "    y: 0.0\n"
-  "    z: 0.0\n"
-  "    w: 1.0\n"
-  "  }\n"
-  "}\n"
-  "embedded_components {\n"
-  "  id: \"shadow\"\n"
-  "  type: \"sprite\"\n"
-  "  data: \"default_animation: \\\"shadow\\\"\\n"
-  "material: \\\"/builtins/materials/sprite.material\\\"\\n"
-  "blend_mode: BLEND_MODE_ALPHA\\n"
-  "textures {\\n"
-  "  sampler: \\\"texture_sampler\\\"\\n"
-  "  texture: \\\"/main/atlases/first_level.atlas\\\"\\n"
-  "}\\n"
-  "\"\n"
-  "  position {\n"
-  "    x: 0.0\n"
-  "    y: -1.0\n"
-  "    z: 0.0\n"
-  "  }\n"
-  "  rotation {\n"
-  "    x: 0.0\n"
-  "    y: 0.0\n"
-  "    z: 0.0\n"
-  "    w: 1.0\n"
-  "  }\n"
-  "}\n"
-  "embedded_components {\n"
-  "  id: \"sprite\"\n"
-  "  type: \"sprite\"\n"
-  "  data: \"default_animation: \\\"flower_4\\\"\\n"
-  "material: \\\"/builtins/materials/sprite.material\\\"\\n"
-  "blend_mode: BLEND_MODE_ALPHA\\n"
-  "textures {\\n"
-  "  sampler: \\\"texture_sampler\\\"\\n"
-  "  texture: \\\"/main/atlases/first_level.atlas\\\"\\n"
-  "}\\n"
-  "\"\n"
-  "  position {\n"
-  "    x: 0.0\n"
-  "    y: 17.0\n"
-  "    z: 2.0\n"
-  "  }\n"
-  "  rotation {\n"
-  "    x: 0.0\n"
-  "    y: 0.0\n"
-  "    z: 0.0\n"
-  "    w: 1.0\n"
-  "  }\n"
-  "}\n"
-  ""
-  position {
-    x: 724.0
-    y: 220.0
     z: 0.0
   }
   rotation {
@@ -2911,6 +2347,216 @@ embedded_instances {
     x: 162.0
     y: 275.0
     z: 5.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+embedded_instances {
+  id: "bed_hospital_first_room"
+  data: "components {\n"
+  "  id: \"destroy\"\n"
+  "  component: \"/main/game/effects/destroy.particlefx\"\n"
+  "  position {\n"
+  "    x: 0.0\n"
+  "    y: 4.0\n"
+  "    z: -1.0\n"
+  "  }\n"
+  "  rotation {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.70710677\n"
+  "    w: 0.70710677\n"
+  "  }\n"
+  "  property_decls {\n"
+  "  }\n"
+  "}\n"
+  "components {\n"
+  "  id: \"script\"\n"
+  "  component: \"/main/game/objects/objects_ruin/object_ruin.script\"\n"
+  "  position {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "  }\n"
+  "  rotation {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "    w: 1.0\n"
+  "  }\n"
+  "  properties {\n"
+  "    id: \"activation\"\n"
+  "    value: \"false\"\n"
+  "    type: PROPERTY_TYPE_BOOLEAN\n"
+  "  }\n"
+  "  properties {\n"
+  "    id: \"id_activation\"\n"
+  "    value: \"two_room\"\n"
+  "    type: PROPERTY_TYPE_HASH\n"
+  "  }\n"
+  "  property_decls {\n"
+  "  }\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"body\"\n"
+  "  type: \"sprite\"\n"
+  "  data: \"default_animation: \\\"bed_hospital\\\"\\n"
+  "material: \\\"/builtins/materials/sprite.material\\\"\\n"
+  "blend_mode: BLEND_MODE_ALPHA\\n"
+  "textures {\\n"
+  "  sampler: \\\"texture_sampler\\\"\\n"
+  "  texture: \\\"/main/atlases/first_level.atlas\\\"\\n"
+  "}\\n"
+  "\"\n"
+  "  position {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 1.0\n"
+  "  }\n"
+  "  rotation {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "    w: 1.0\n"
+  "  }\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"collision_damage\"\n"
+  "  type: \"collisionobject\"\n"
+  "  data: \"collision_shape: \\\"\\\"\\n"
+  "type: COLLISION_OBJECT_TYPE_TRIGGER\\n"
+  "mass: 0.0\\n"
+  "friction: 0.1\\n"
+  "restitution: 0.5\\n"
+  "group: \\\"damage\\\"\\n"
+  "mask: \\\"attack\\\"\\n"
+  "mask: \\\"bullet\\\"\\n"
+  "embedded_collision_shape {\\n"
+  "  shapes {\\n"
+  "    shape_type: TYPE_BOX\\n"
+  "    position {\\n"
+  "      x: 0.0\\n"
+  "      y: 0.0\\n"
+  "      z: 0.0\\n"
+  "    }\\n"
+  "    rotation {\\n"
+  "      x: 0.0\\n"
+  "      y: 0.0\\n"
+  "      z: 0.0\\n"
+  "      w: 1.0\\n"
+  "    }\\n"
+  "    index: 0\\n"
+  "    count: 3\\n"
+  "    id: \\\"\\\"\\n"
+  "  }\\n"
+  "  data: 11.285206\\n"
+  "  data: 19.391161\\n"
+  "  data: 10.0\\n"
+  "}\\n"
+  "linear_damping: 0.0\\n"
+  "angular_damping: 0.0\\n"
+  "locked_rotation: false\\n"
+  "bullet: false\\n"
+  "\"\n"
+  "  position {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "  }\n"
+  "  rotation {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "    w: 1.0\n"
+  "  }\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"collision_physic\"\n"
+  "  type: \"collisionobject\"\n"
+  "  data: \"collision_shape: \\\"\\\"\\n"
+  "type: COLLISION_OBJECT_TYPE_KINEMATIC\\n"
+  "mass: 0.0\\n"
+  "friction: 0.1\\n"
+  "restitution: 0.5\\n"
+  "group: \\\"default\\\"\\n"
+  "mask: \\\"default\\\"\\n"
+  "mask: \\\"attack\\\"\\n"
+  "embedded_collision_shape {\\n"
+  "  shapes {\\n"
+  "    shape_type: TYPE_BOX\\n"
+  "    position {\\n"
+  "      x: 0.0\\n"
+  "      y: 0.0\\n"
+  "      z: 0.0\\n"
+  "    }\\n"
+  "    rotation {\\n"
+  "      x: 0.0\\n"
+  "      y: 0.0\\n"
+  "      z: 0.0\\n"
+  "      w: 1.0\\n"
+  "    }\\n"
+  "    index: 0\\n"
+  "    count: 3\\n"
+  "    id: \\\"\\\"\\n"
+  "  }\\n"
+  "  data: 10.0\\n"
+  "  data: 20.555387\\n"
+  "  data: 10.0\\n"
+  "}\\n"
+  "linear_damping: 0.0\\n"
+  "angular_damping: 0.0\\n"
+  "locked_rotation: false\\n"
+  "bullet: false\\n"
+  "\"\n"
+  "  position {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "  }\n"
+  "  rotation {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "    w: 1.0\n"
+  "  }\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"shadow\"\n"
+  "  type: \"sprite\"\n"
+  "  data: \"default_animation: \\\"shadow\\\"\\n"
+  "material: \\\"/builtins/materials/sprite.material\\\"\\n"
+  "blend_mode: BLEND_MODE_ALPHA\\n"
+  "textures {\\n"
+  "  sampler: \\\"texture_sampler\\\"\\n"
+  "  texture: \\\"/main/atlases/first_level.atlas\\\"\\n"
+  "}\\n"
+  "\"\n"
+  "  position {\n"
+  "    x: 0.0\n"
+  "    y: -1.0\n"
+  "    z: 0.0\n"
+  "  }\n"
+  "  rotation {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "    w: 1.0\n"
+  "  }\n"
+  "}\n"
+  ""
+  position {
+    x: 390.0
+    y: 98.0
+    z: 0.0
   }
   rotation {
     x: 0.0
