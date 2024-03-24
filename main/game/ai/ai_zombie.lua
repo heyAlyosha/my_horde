@@ -3,21 +3,23 @@ local M = {}
 
 -- Поиск цели вокруг
 function M.search_target(self)
-	if not self.view then
+	if true or not self.view then
 		self.view = ai_core.view(self, function (self, visible_items)
-			if visible_items and not self.no_view then
+			if visible_items then
 				-- Есть цель
+				print("visible_items")
 				local visible_item = visible_items[1]
+				pprint("visible_item", visible_item.url, self.target_current_useful, visible_item.target_useful)
 				-- Если объект существует или он ценнее текущего
-				if not self.target or (self.target_useful and self.target_useful < visible_item.target_useful) then
+				if not self.target or (self.target_current_useful and self.target_current_useful < visible_item.target_useful) then
 					-- Если нет цели
 					if go_controller.is_object(visible_item.url) then
 						-- Помечаем целью
-						self.target = visible_item.url
-						self.target_useful = visible_item.target_useful
+						ai_attack.add_target(self, visible_item.url)
+						--self.target = visible_item.url
 
-						--self.condition_ai = hash("to_target")
-						--ai_zombie.behavior(self)
+						self.condition_ai = hash("to_target")
+						M.behavior(self)
 					end
 				end
 			end
@@ -29,6 +31,10 @@ end
 function M.behavior(self)
 	-- Состояние зомбика
 	self.condition_ai = self.condition_ai or nil
+
+	if true or not self.no_view then
+		M.search_target(self)
+	end
 
 	-- ДИСТАНЦИЯ ОТ ИГРОКА
 	if not self.check_distantion then
@@ -56,7 +62,6 @@ function M.behavior(self)
 			elseif not ai_attack.check_distance_attack(self, self.target, handle_distantion_error) then
 				-- Цель убежала далеко возвращаемся к ней
 				self.condition_ai = hash("to_target")
-				
 				M.behavior(self)
 
 			else
@@ -72,9 +77,7 @@ function M.behavior(self)
 		return true
 	end
 
-	if not self.no_view then
-		M.search_target(self)
-	end
+	
 
 	-- ОЧИЩАЕМ АТАКУ
 	if self.timer_attack then

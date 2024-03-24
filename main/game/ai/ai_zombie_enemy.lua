@@ -62,7 +62,6 @@ function M.behavior(self)
 	-- АТАКА
 	if self.condition_ai == hash("attack") then
 		local handle_fire = function (self)
-			print("handle_fire")
 			if not self.target or not go_controller.is_object(self.target) then
 				-- Цель пропала, возвращаемся в орду
 				self.condition_ai = nil

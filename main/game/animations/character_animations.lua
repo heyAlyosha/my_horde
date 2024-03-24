@@ -97,7 +97,9 @@ function M.damage(self, from_object_damage)
 		local collision = physics.raycast(go.get_position(), position, {hash("default")}, options)
 
 		if collision then
-			position.x = go.get_position().x
+			--position.x = go.get_position().x
+			position = collision.position
+			pprint("collision", collision)
 		end
 
 		position.y = position.y + 3
@@ -144,8 +146,8 @@ function M.damage_player(self, from_object_damage)
 		end
 		position = position_functions.go_get_perspective_z(position)
 		--camera.unfollow(camera_id, ".")
-		go.animate(".", "position.x", go.PLAYBACK_ONCE_FORWARD, position.x, go.EASING_LINEAR, duration, 0)
-		go.animate(".", "position.y", go.PLAYBACK_ONCE_PINGPONG, position.y, go.EASING_LINEAR, duration, 0)
+		--go.animate(".", "position.x", go.PLAYBACK_ONCE_FORWARD, position.x, go.EASING_LINEAR, duration, 0)
+		--go.animate(".", "position.y", go.PLAYBACK_ONCE_PINGPONG, position.y, go.EASING_LINEAR, duration, 0)
 		--camera.shake(camera_id, 0.005, 0.1)
 
 

@@ -6,7 +6,7 @@ go.property("distantion_attack", 15)
 go.property("command", hash("player"))
 go.property("skin_id", 0)
 go.property("human_id", 0)
-go.property("horde_count", 0)
+go.property("horde_count", 4)
 go.property("visible_horde_min", 75)
 go.property("distantion_attack_zombie_horde", 75)
 go.property("targets", 8)
@@ -47,7 +47,6 @@ function init(self)
 	self.horde = {}
 	self.zombies = {}
 
-	
 	timer.delay(0.1, false, function (self)
 		local сenter_position = vmath.vector3(0)
 		local index_to_horde = self.horde_count

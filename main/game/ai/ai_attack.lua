@@ -41,11 +41,19 @@ function M.add_target(self, url_target)
 			if item.is_move then
 				-- Если цель стоит на месте
 				local dir = position_target_object + item.vector_target - position
-				print("dir", dir)
+				local result = physics.raycast(position_target_object, position_target_object + item.vector_target, {hash("default")}, options)
+				pprint("result", result)
+				local sort = vmath.length(dir)
+
+				if result then
+					sort = sort + 10000
+					
+				end
+				
 				possible_targets[#possible_targets+1] = {
 					id = k,
 					vector_target = item.vector_target, 
-					sort = vmath.length(dir)
+					sort = sort
 				}
 			end
 		end
@@ -57,7 +65,9 @@ function M.add_target(self, url_target)
 	end)
 
 	if possible_targets[1] then
+		pprint("target.target_userful", target)
 		self.target = url_target
+		self.target_current_useful = target.target_useful
 		self.target_vector = possible_targets[1].vector_target
 		self.target_id_point = possible_targets[1].id
 
@@ -99,6 +109,7 @@ function M.delete_target(self, url_target)
 	self.target = nil
 	self.target_vector = nil
 	self.target_id_point = nil
+	self.target_current_userful = nil
 end
 
 -- Хватает дистанции для атаки
