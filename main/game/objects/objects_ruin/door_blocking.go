@@ -89,7 +89,7 @@ embedded_components {
   }
 }
 embedded_components {
-  id: "object"
+  id: "body"
   type: "sprite"
   data: "default_animation: \"door_close\"\n"
   "material: \"/builtins/materials/sprite.material\"\n"

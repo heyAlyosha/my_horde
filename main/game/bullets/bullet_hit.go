@@ -25,7 +25,7 @@ embedded_components {
   "}\n"
   ""
   position {
-    x: 6.0
+    x: 10.0
     y: 0.0
     z: 2.0
   }
@@ -36,8 +36,8 @@ embedded_components {
     w: 1.0
   }
   scale {
-    x: 0.3
-    y: 0.3
+    x: 0.5
+    y: 0.5
     z: 1.0
   }
 }
@@ -55,7 +55,7 @@ embedded_components {
   "  shapes {\n"
   "    shape_type: TYPE_BOX\n"
   "    position {\n"
-  "      x: 5.0\n"
+  "      x: 11.0\n"
   "      y: 0.0\n"
   "      z: 0.0\n"
   "    }\n"
@@ -69,7 +69,7 @@ embedded_components {
   "    count: 3\n"
   "    id: \"\"\n"
   "  }\n"
-  "  data: 5.0\n"
+  "  data: 10.0\n"
   "  data: 7.5\n"
   "  data: 10.0\n"
   "}\n"

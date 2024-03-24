@@ -3,7 +3,7 @@ function init(self)
 	-- Объекты для активации
 	self.activation_objects = {}
 
-	sprite.play_flipbook("door_exit#object", hash("door_open"))
+	sprite.play_flipbook("door_exit#body", hash("door_open"))
 
 	storage_gui.core_screens.visible_shop = false
 	msg.post("main:/core_screens", "game")
@@ -102,7 +102,7 @@ function on_message(self, message_id, message, sender)
 
 			-- Закрывает за собой дверь
 			timer.delay(1.5, false, function (self)
-				sprite.play_flipbook("door_exit#object", hash("door_closing"))
+				sprite.play_flipbook("door_exit#body", hash("door_closing"))
 			end)
 			
 		end, delay)

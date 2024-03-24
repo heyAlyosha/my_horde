@@ -167,7 +167,6 @@ embedded_components {
   "friction: 0.1\n"
   "restitution: 0.5\n"
   "group: \"default\"\n"
-  "mask: \"default\"\n"
   "embedded_collision_shape {\n"
   "  shapes {\n"
   "    shape_type: TYPE_SPHERE\n"

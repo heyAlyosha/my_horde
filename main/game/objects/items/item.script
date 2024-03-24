@@ -15,7 +15,7 @@ function init(self)
 	self.item = self.types_valute[self.type_valute]
 
 	-- Иконка
-	sprite.play_flipbook("#object", self.item.animation_id)
+	sprite.play_flipbook("#body", self.item.animation_id)
 
 	-- Случайное направление выброса предметов
 	local random_dir = vmath.vector3(1, 0, 0)

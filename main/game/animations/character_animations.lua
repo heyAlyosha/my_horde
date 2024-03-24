@@ -109,6 +109,7 @@ function M.damage(self, from_object_damage, handle)
 		
 		go.animate(".", "position.x", go.PLAYBACK_ONCE_FORWARD, position.x, go.EASING_LINEAR, duration / 2, 0)
 		go.animate(".", "position.y", go.PLAYBACK_ONCE_PINGPONG, position.y, go.EASING_LINEAR, duration / 2, 0)
+		go.animate(".", "position.z", go.PLAYBACK_ONCE_FORWARD, position.z, go.EASING_LINEAR, duration / 2, 0)
 
 		-- Покраснение
 		go.set("#body", "tint", vmath.vector4(1, 0.6, 0.6, 1)) -- <1>
@@ -150,8 +151,8 @@ function M.damage_player(self, from_object_damage)
 		end
 		position = position_functions.go_get_perspective_z(position)
 		--camera.unfollow(camera_id, ".")
-		--go.animate(".", "position.x", go.PLAYBACK_ONCE_FORWARD, position.x, go.EASING_LINEAR, duration, 0)
-		--go.animate(".", "position.y", go.PLAYBACK_ONCE_PINGPONG, position.y, go.EASING_LINEAR, duration, 0)
+		go.animate(".", "position.x", go.PLAYBACK_ONCE_FORWARD, position.x, go.EASING_LINEAR, duration, 0)
+		go.animate(".", "position.y", go.PLAYBACK_ONCE_PINGPONG, position.y, go.EASING_LINEAR, duration, 0)
 		--camera.shake(camera_id, 0.005, 0.1)
 
 

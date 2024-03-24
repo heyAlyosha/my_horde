@@ -17,7 +17,7 @@ function M.add_static_object(self, group_name)
 	end
 
 	self.pos = go.get_position(".")
-	self.size = go.get("#object", "size")
+	self.size = go.get("#body", "size")
 
 	local aabb_id = aabb.insert(group_id, self.pos.x , self.pos.y, self.size.x, self.size.y)
 

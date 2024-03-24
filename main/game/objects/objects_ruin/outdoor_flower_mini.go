@@ -82,7 +82,7 @@ embedded_components {
   }
 }
 embedded_components {
-  id: "object"
+  id: "body"
   type: "sprite"
   data: "default_animation: \"outdoor_flower_mini\"\n"
   "material: \"/builtins/materials/sprite.material\"\n"

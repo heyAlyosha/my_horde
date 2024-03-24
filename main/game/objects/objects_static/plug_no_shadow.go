@@ -62,7 +62,7 @@ embedded_components {
   }
 }
 embedded_components {
-  id: "object"
+  id: "body"
   type: "sprite"
   data: "default_animation: \"road_sign_stop\"\n"
   "material: \"/builtins/materials/sprite.material\"\n"

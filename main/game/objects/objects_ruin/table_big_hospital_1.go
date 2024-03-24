@@ -87,7 +87,7 @@ embedded_components {
   }
 }
 embedded_components {
-  id: "object"
+  id: "body"
   type: "sprite"
   data: "default_animation: \"table_big\"\n"
   "material: \"/builtins/materials/sprite.material\"\n"

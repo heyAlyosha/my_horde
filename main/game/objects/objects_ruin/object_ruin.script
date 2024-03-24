@@ -28,7 +28,7 @@ function init(self)
 	go_controller.add(self)
 	go_controller.object_items_spawn_to_map(self)
 
-	sprite.set_hflip("#object", self.hflip)
+	sprite.set_hflip("#body", self.hflip)
 
 	-- Добавляем активацию объекта в скрипт карты
 	if self.id_activation ~= hash("") then
@@ -73,7 +73,7 @@ function on_message(self, message_id, message, sender)
 			go.animate(".", "position", go.PLAYBACK_ONCE_FORWARD, position + dir, go.EASING_INOUTBACK, duration)
 
 			-- Покраснение
-			go.set("#object", "tint", vmath.vector4(1, 0.6, 0.6, 1))
+			go.set("#body", "tint", vmath.vector4(1, 0.6, 0.6, 1))
 
 			live_bar.set_hp(self, self.live, self.max_live)
 
@@ -84,7 +84,7 @@ function on_message(self, message_id, message, sender)
 			self.animate_damage = true
 			timer.delay(duration + 0.05, false, function (self)
 				go.set_position(position)
-				go.set("#object", "tint", vmath.vector4(1, 1, 1, 1)) -- <1>
+				go.set("#body", "tint", vmath.vector4(1, 1, 1, 1)) -- <1>
 				self.animate_damage = nil
 			end)
 		end
@@ -92,7 +92,7 @@ function on_message(self, message_id, message, sender)
 		if self.live <= 0 then
 			-- Эффект разрушения
 			local position = go.get_position()
-			position.y = position.y + go.get("#object", "size").y / 2
+			position.y = position.y + go.get("#body", "size").y / 2
 			position.z = 2
 			msg.post(storage_game.map.url_script, "effect", {
 				position = position,

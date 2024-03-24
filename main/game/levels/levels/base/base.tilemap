@@ -4719,7 +4719,7 @@ layers {
   }
 }
 layers {
-  id: "object"
+  id: "body"
   z: 0.2
   is_visible: 1
   cell {

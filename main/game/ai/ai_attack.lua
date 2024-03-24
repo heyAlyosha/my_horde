@@ -42,7 +42,7 @@ function M.add_target(self, url_target)
 				-- Если цель стоит на месте
 				local dir = position_target_object + item.vector_target - position
 				local result = physics.raycast(position_target_object, position_target_object + item.vector_target, {hash("default")}, options)
-				local sort = vmath.length(dir)
+				local sort = #item.characters * 1000 + vmath.length(dir)
 
 				if result then
 					sort = sort + 10000

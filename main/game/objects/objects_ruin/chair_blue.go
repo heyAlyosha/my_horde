@@ -92,7 +92,7 @@ embedded_components {
   }
 }
 embedded_components {
-  id: "object"
+  id: "body"
   type: "sprite"
   data: "default_animation: \"chair_blue\"\n"
   "material: \"/builtins/materials/sprite.material\"\n"
