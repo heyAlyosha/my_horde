@@ -18,6 +18,11 @@ components {
     type: PROPERTY_TYPE_NUMBER
   }
   properties {
+    id: "explosion"
+    value: "true"
+    type: PROPERTY_TYPE_BOOLEAN
+  }
+  properties {
     id: "target_dist"
     value: "15.0, 0.0, 0.0"
     type: PROPERTY_TYPE_VECTOR3

@@ -118,7 +118,8 @@ function M.damage(self, from_object_damage, handle)
 		if self.damage_blood then
 			particlefx.play(particle_name)
 		end
-		self.particle = true
+
+		--self.particle = true
 		timer.delay(duration, false, function (self)
 			go.set("#body", "tint", vmath.vector4(1, 1, 1, 1)) -- <1>
 			self.particle = nil
@@ -155,13 +156,11 @@ function M.damage_player(self, from_object_damage)
 		go.animate(".", "position.y", go.PLAYBACK_ONCE_PINGPONG, position.y, go.EASING_LINEAR, duration, 0)
 		--camera.shake(camera_id, 0.005, 0.1)
 
-
 		--[[
 		go.animate("camera", "position", go.PLAYBACK_ONCE_FORWARD, go.get_position(), go.EASING_LINEAR, duration, duration, function (self)
 			--camera.follow(camera_id, go.get_id())
 		end)
 		--]]
-		
 
 		-- Покраснение
 		go.set("#body", "tint", vmath.vector4(1, 0.6, 0.6, 1)) -- <1>

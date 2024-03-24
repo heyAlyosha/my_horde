@@ -2,6 +2,7 @@ go.property("activation", true)
 go.property("id_activation", hash(""))
 go.property("hflip", false)
 go.property("live", 10)
+go.property("explosion", false)
 go.property("command", hash("building_ruin"))
 go.property("type_object", hash("building_ruin"))
 go.property("targets", 8)
@@ -94,12 +95,22 @@ function on_message(self, message_id, message, sender)
 			local position = go.get_position()
 			position.y = position.y + go.get("#body", "size").y / 2
 			position.z = 2
-			msg.post(storage_game.map.url_script, "effect", {
-				position = position,
-				animation_id = hash("destroy"), 
-				timer_delete = 0,
-				shake = false, -- Тряска камеры при эффекте
-			})
+			if self.explosion then
+				msg.post(storage_game.map.url_script, "effect", {
+					position = position,
+					animation_id = hash("explosion"), 
+					timer_delete = 0,
+					shake = false, -- Тряска камеры при эффекте
+				})
+			else
+				msg.post(storage_game.map.url_script, "effect", {
+					position = position,
+					animation_id = hash("destroy"), 
+					timer_delete = 0,
+					shake = false, -- Тряска камеры при эффекте
+				})
+				
+			end
 
 			items_functions.spawn(self)
 			

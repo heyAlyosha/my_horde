@@ -830,11 +830,35 @@ animations {
 animations {
   id: "effect_zombie_death"
   images {
-    image: "/assets/images/game/characters/zombie_death_1.png"
+    image: "/assets/images/game/effects/explosion_1.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   images {
-    image: "/assets/images/game/characters/zombie_death_2.png"
+    image: "/assets/images/game/effects/explosion_2.png"
+    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+  }
+  images {
+    image: "/assets/images/game/effects/explosion_3.png"
+    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+  }
+  images {
+    image: "/assets/images/game/effects/explosion_4.png"
+    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+  }
+  images {
+    image: "/assets/images/game/effects/explosion_5.png"
+    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+  }
+  images {
+    image: "/assets/images/game/effects/explosion_6.png"
+    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+  }
+  images {
+    image: "/assets/images/game/effects/explosion_7.png"
+    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+  }
+  images {
+    image: "/assets/images/game/effects/explosion_8.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   images {
@@ -866,7 +890,7 @@ animations {
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   playback: PLAYBACK_ONCE_FORWARD
-  fps: 12
+  fps: 20
   flip_horizontal: 0
   flip_vertical: 0
 }
@@ -915,7 +939,7 @@ animations {
     image: "/assets/images/game/effects/explosion_8.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
-  playback: PLAYBACK_LOOP_FORWARD
+  playback: PLAYBACK_NONE
   fps: 12
   flip_horizontal: 0
   flip_vertical: 0

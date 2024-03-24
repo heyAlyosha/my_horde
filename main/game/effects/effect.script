@@ -3,7 +3,19 @@ go.property("timer_delete", 0)
 go.property("shake", false)
 
 function init(self)
+	local position = go.get_position()
+	position.z = 10
+	go.set_position(position)
+
+	if self.animation_id == hash("explosion") or self.shake then
+		local intensity = 0.01
+		camera.shake(camera_id, intensity)
+	end
+
+	
+
 	sprite.play_flipbook("#sprite", self.animation_id, function (self)
+		position_functions.go_set_perspective_z(position)
 		timer.delay(self.timer_delete, false, function (self)
 			go.delete()
 		end)

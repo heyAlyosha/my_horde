@@ -29,7 +29,7 @@ function init(self)
 
 	go_controller.object_items_spawn_to_map(self)
 
-	self.distantion_attack = self.distantion_attack * self.scale_attack
+	self.distantion_attack = self.distantion_attack * self.scale_attack - 3
 
 	self.targets_points = {
 		vmath.vector3(12, 6, 0),

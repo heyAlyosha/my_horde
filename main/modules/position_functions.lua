@@ -13,8 +13,10 @@ function M.add_perspective_z(position)
 end
 
 function M.go_set_perspective_z(position, url)
+	url = url or msg.url()
 	position = position or go.get_position()
 	position.z = M.get_perspective_z(position.y)
+	pprint(url)
 	go.set_position(position, url)
 
 	return position
