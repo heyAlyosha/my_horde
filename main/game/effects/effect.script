@@ -12,12 +12,14 @@ function init(self)
 		camera.shake(camera_id, intensity)
 	end
 
-	
-
 	sprite.play_flipbook("#sprite", self.animation_id, function (self)
 		position_functions.go_set_perspective_z(position)
-		timer.delay(self.timer_delete, false, function (self)
+		if self.timer_delete > 0 then
+			timer.delay(self.timer_delete, false, function (self)
+				go.delete()
+			end)
+		else
 			go.delete()
-		end)
+		end
 	end)
 end
