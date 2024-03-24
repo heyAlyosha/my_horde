@@ -45,7 +45,9 @@ function init(self)
 	items_functions = require("main.game.objects.items.modules.items_functions")
 	live_bar = require "main.game.markers.live_bar.live_bar"
 	core_prorgress = require "main.core.core_progress.core_prorgress"
+	game_content_functions = require "main.game.content.modules.game_content_functions"
 	game_content_company = require "main.game.content.game_content_company"
+	game_content_character_parametrs = require "main.game.content.game_content_character_parametrs"
 
 	-- контент игры
 	--game_content_prize.init(self)
@@ -53,6 +55,7 @@ function init(self)
 	--game_content_achieve.init(self)
 	--game_content_characteristic.init(self)
 	game_content_company.init(self)
+	game_content_character_parametrs.init(self)
 
 	--profiler.enable_ui(true)
 	--profiler.set_ui_mode(profiler.MODE_RECORD)

@@ -45,6 +45,7 @@ local function activate_init(self)
 end
 
 function init(self)
+	game_content_character_parametrs.set_characteristic(self)
 	self.max_live = self.live
 
 	sprite.set_hflip("#body", self.hflip)

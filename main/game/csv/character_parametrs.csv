@@ -1,0 +1,5 @@
+id;sort;coments;live;speed;speed_default;speed_attack;speed_from;speed_walking;damage;speed_damage;scale_attack;target_useful;spawn_coins;spawn_resource;spawn_xp
+zombie_main;1;Игрок;30;50;;;;;2;0.75;1;2;10;0;10
+zombie_enemy;2;Противник зомби;30;;25;75;;;1;0.75;0.5;4;0;0;1
+zombie;3;зомби из орды;20;70;;;;;0.5;0.75;0.5;4;0;0;1
+humans;4;Человечки;5;10;;;15;10;;;;3;1;0;0

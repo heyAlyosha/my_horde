@@ -24,6 +24,7 @@ go.property("active_input", true)
 
 function init(self)
 	msg.post(".", "acquire_input_focus")
+	game_content_character_parametrs.set_characteristic(self)
 
 	self.distantion_attack = self.distantion_attack * self.scale_attack
 
