@@ -121,12 +121,19 @@ end
 
 -- url в ключ для массива
 function M.url_to_key(url)
+	url = url or M.url_object()
 	return hash_to_hex(url.socket or hash("")) .. hash_to_hex(url.path) .. hash_to_hex(url.fragment or hash(""))
 end
 
 -- Url без фрагмента
 function M.url_object(url)
+	url = url or msg.url(".")
 	return msg.url(url.socket, url.path, nil)
+end
+
+-- Url скрипта
+function M.url_script(url)
+	return msg.url(url.socket, url.path, "script")
 end
 
 return M

@@ -88,6 +88,7 @@ end
 function final(self)
 	go_controller.delete(self)
 end
+
 --[[
 function update(self, dt)
 	if self.debug_lines_to_target then
@@ -116,6 +117,11 @@ function on_message(self, message_id, message, sender)
 		end
 		local animation_death = hash("effect_infection")
 		character_damage.damage_zombie(self, message, animation_death)
+
+	elseif message_id == hash("add_target") and message.target then
+		ai_attack.add_target(self, message.target)
+		self.condition_ai = hash("to_target")
+		ai_zombie_enemy.behavior(self)
 
 	elseif message_id == hash("set_point") then
 		self.to_point = true

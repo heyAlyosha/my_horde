@@ -42,12 +42,10 @@ function M.add_target(self, url_target)
 				-- Если цель стоит на месте
 				local dir = position_target_object + item.vector_target - position
 				local result = physics.raycast(position_target_object, position_target_object + item.vector_target, {hash("default")}, options)
-				pprint("result", result)
 				local sort = vmath.length(dir)
 
 				if result then
 					sort = sort + 10000
-					
 				end
 				
 				possible_targets[#possible_targets+1] = {
@@ -65,7 +63,6 @@ function M.add_target(self, url_target)
 	end)
 
 	if possible_targets[1] then
-		pprint("target.target_userful", target)
 		self.target = url_target
 		self.target_current_useful = target.target_useful
 		self.target_vector = possible_targets[1].vector_target
@@ -77,6 +74,19 @@ function M.add_target(self, url_target)
 
 		-- Ссылка на атакующего персонажа
 		table.insert(storage_game.go_targets[key_target].targets[self.target_id_point].characters, msg.url(go.get_id()))
+
+		-- Если динамическая цель
+		if target.target_dynamic then
+			local url_script = go_controller.url_script(self.target)
+			--local enemy_target = go.get(url_script, "target")
+
+			local status, enemy_target = pcall(go.get,url_script, "target");
+
+			-- Если у противника другая цель, меняем её
+			if status and go_controller.url_to_key() ~= go_controller.url_to_key(enemy_target) then
+				msg.post(self.target, "add_target", {target = go_controller.url_object()})
+			end
+		end
 		return true
 	else
 		return false

@@ -110,6 +110,12 @@ function on_message(self, message_id, message, sender)
 			ai_zombie.behavior(self)
 		end
 		character_damage.damage_zombie(self, message)
+
+	elseif message_id == hash("add_target") and message.target then
+		ai_attack.add_target(self, message.target)
+		self.condition_ai = hash("to_target")
+		ai_zombie.behavior(self)
+
 	end
 end
 
