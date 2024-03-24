@@ -3,7 +3,8 @@ go.property("live", 20)
 go.property("speed_damage", 0.75)
 go.property("speed", 70)
 go.property("distantion_visible", 50)
-go.property("distantion_attack", 10)
+go.property("scale_attack", 0.4)
+go.property("distantion_attack", 35)
 go.property("command", hash("player"))
 go.property("skin_id", 0)
 go.property("human_id", 1)
@@ -23,9 +24,10 @@ go.property("spawn_resource", 0)
 go.property("spawn_xp", 1)
 go.property("spawn_star", 0)
 
-
 function init(self)
 	go_controller.object_items_spawn_to_map(self)
+
+	self.distantion_attack = self.distantion_attack * self.scale_attack
 
 	self.targets_points = {
 		vmath.vector3(12, 6, 0),
@@ -114,7 +116,7 @@ function on_message(self, message_id, message, sender)
 		end
 
 	elseif message_id == hash("damage") then
-		if message.parent then
+		if false and message.parent then
 			self.target = message.parent
 			self.condition_ai = hash("to_target")
 			ai_zombie.behavior(self)

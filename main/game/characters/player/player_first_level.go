@@ -132,7 +132,7 @@ embedded_components {
 embedded_components {
   id: "bullet_factory"
   type: "factory"
-  data: "prototype: \"/main/game/bullets/bullet_hit_player.go\"\n"
+  data: "prototype: \"/main/game/bullets/bullet_hit.go\"\n"
   "load_dynamically: false\n"
   "dynamic_prototype: false\n"
   ""

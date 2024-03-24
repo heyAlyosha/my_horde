@@ -2,7 +2,8 @@ go.property("damage", 2)
 go.property("live", 30)
 go.property("speed_damage", 0.75)
 go.property("speed", 20)
-go.property("distantion_attack", 30)
+go.property("scale_attack", 1)
+go.property("distantion_attack", 35)
 go.property("command", hash("player"))
 go.property("skin_id", 0)
 go.property("human_id", 0)
@@ -23,6 +24,8 @@ go.property("active_input", true)
 
 function init(self)
 	msg.post(".", "acquire_input_focus")
+
+	self.distantion_attack = self.distantion_attack * self.scale_attack
 
 	go_controller.object_items_spawn_to_map(self)
 

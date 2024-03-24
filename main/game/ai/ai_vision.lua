@@ -97,6 +97,7 @@ end
 -- ВИдимые объекты
 function M.get_visible(self, exclude_aabb_id, distantion, exclude_commands)
 	local position = go.get_position()
+	position.y = position.y + go.get("#body", "size").y / 2 * go.get("#body", "scale").y
 	local width = distantion * 2
 	local height = distantion * 2
 	local group_id = storage_game.groups_aabbcc.visible_object.id

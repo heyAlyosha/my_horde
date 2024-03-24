@@ -118,7 +118,9 @@ function M.attack_hit(self, url_object)
 		rot = vmath.vector3(1, 0, 0)
 		rotation = vmath.quat_rotation_z(math.atan2(rot.y, rot.x))
 	end
-	factory.create("#bullet_factory", position, rotation, properties)
+	local scale = self.scale_attack
+	factory.create("#bullet_factory", position, rotation, properties, scale)
+
 
 	sprite.set_hflip("#body", rot.x < 0)
 	character_animations.play(self, "attack")

@@ -7,13 +7,12 @@ function M.search_target(self)
 		self.view = ai_core.view(self, function (self, visible_items)
 			if visible_items then
 				-- Есть цель
-				print("visible_items")
 				local visible_item = visible_items[1]
-				pprint("visible_item", visible_item.url, self.target_current_useful, visible_item.target_useful)
+
 				-- Если объект существует или он ценнее текущего
 				if not self.target or (self.target_current_useful and self.target_current_useful < visible_item.target_useful) then
 					-- Если нет цели
-					if go_controller.is_object(visible_item.url) then
+					if go_controller.is_object(visible_item.url) then																																																									
 						-- Помечаем целью
 						ai_attack.add_target(self, visible_item.url)
 						--self.target = visible_item.url
