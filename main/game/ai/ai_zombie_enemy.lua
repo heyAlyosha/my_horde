@@ -15,7 +15,6 @@ function M.search_target(self)
 					if go_controller.is_object(visible_item.url) then
 						if self.target and self.target_id_point and go_controller.is_object(self.target) then
 							ai_attack.delete_target(self, self.target)
-							self.target = nil
 						end
 
 						-- Помечаем целью
@@ -65,6 +64,10 @@ function M.behavior(self)
 			if not self.target or not go_controller.is_object(self.target) then
 				-- Цель пропала, возвращаемся в орду
 				self.condition_ai = nil
+				self.no_view = nil
+				ai_attack.delete_target(self, self.target)
+				M.search_target(self)
+
 				M.behavior(self)
 
 			elseif not ai_attack.check_distance_attack(self, self.target, handle_distantion_error) then
@@ -162,11 +165,11 @@ function M.behavior(self)
 				ai_move.move_item_from(self, random_position, function (self)
 					self.animation_walking = nil
 					self.condition_ai = nil
-					character_animations.play(self, "idle")
 					M.behavior(self)
 				end, self.speed)
 			else
 				-- Просто стоит
+				character_animations.play(self, "idle")
 				timer.delay(1, false, function (self)
 					self.hflip = not self.hflip
 					sprite.set_hflip("#body", self.hflip)

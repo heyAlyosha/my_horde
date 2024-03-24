@@ -6,10 +6,10 @@ go.property("distantion_attack", 15)
 go.property("command", hash("player"))
 go.property("skin_id", 0)
 go.property("human_id", 0)
-go.property("horde_count", 4)
+go.property("horde_count", 0)
 go.property("visible_horde_min", 75)
 go.property("distantion_attack_zombie_horde", 75)
-go.property("targets", 8)
+go.property("targets", 6)
 go.property("target_dynamic", true)
 go.property("target_dist", vmath.vector3(4, 0, 0))
 go.property("target_useful", 3)
@@ -25,6 +25,15 @@ function init(self)
 	msg.post(".", "acquire_input_focus")
 
 	go_controller.object_items_spawn_to_map(self)
+
+	self.targets_points = {
+		vmath.vector3(12, 6, 0),
+		vmath.vector3(15, 0, 0),
+		vmath.vector3(12, -6, 0),
+		vmath.vector3(-12, 6, 0),
+		vmath.vector3(-15, 0, 0),
+		vmath.vector3(-12, -6, 0),
+	}
 
 	if self.activate then
 		go_controller.add(self)
@@ -79,14 +88,17 @@ function init(self)
 		if visible_items then
 			for i = 1, #visible_items do
 				local target = visible_items[i]
-				if #self.horde > 0 then 
-					for horde_index = #self.horde, 1, -1 do
-						local item = self.horde[horde_index]
-						local position_target = go.get_position(target.url)
-						local position_zombie = go.get_position(item.url)
+				if go_controller.is_object(target.url) then
+					if #self.horde > 0 then 
+						for horde_index = #self.horde, 1, -1 do
+							local item = self.horde[horde_index]
+							
+							local position_target = go.get_position(target.url)
+							local position_zombie = go.get_position(item.url)
 
-						if vmath.length(position_target - position_zombie) <= self.distantion_attack_zombie_horde then
-							character_zombie_main.add_zombie_attack(self, horde_index, position_zombie, target.url)
+							if vmath.length(position_target - position_zombie) <= self.distantion_attack_zombie_horde then
+								character_zombie_main.add_zombie_attack(self, horde_index, position_zombie, target.url)
+							end
 						end
 					end
 				end

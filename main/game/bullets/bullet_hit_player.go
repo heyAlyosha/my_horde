@@ -35,11 +35,6 @@ embedded_components {
     z: 0.20896849
     w: 0.9779224
   }
-  scale {
-    x: 0.6
-    y: 0.6
-    z: 1.0
-  }
 }
 embedded_components {
   id: "collision_bullet"

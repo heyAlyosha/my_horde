@@ -33,8 +33,13 @@ function M.add(self)
 		local map_url = go.get(storage_game.map.url_script, "map_url")
 
 		for i = 1, self.targets do
-			local rot = vmath.quat_rotation_z(3.141592563 * 2 / self.targets * i)
-			local vec = vmath.rotate(rot, self.target_dist)
+			local vec
+			if self.targets_points and self.targets_points[i] then
+				vec = self.targets_points[i]
+			else
+				local rot = vmath.quat_rotation_z(3.141592563 * 2 / self.targets * i)
+				vec = vmath.rotate(rot, self.target_dist)
+			end
 
 			local position_target =  position + vec
 

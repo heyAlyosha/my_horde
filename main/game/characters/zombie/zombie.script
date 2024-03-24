@@ -11,7 +11,7 @@ go.property("parent", msg.url())
 go.property("position_to", vmath.vector3())
 go.property("target", msg.url())
 go.property("type_object", hash("zombie_dynamic"))
-go.property("targets", 8)
+go.property("targets", 6)
 go.property("target_dynamic", true)
 go.property("target_dist", vmath.vector3(6, 0, 0))
 go.property("target_useful", 4)
@@ -23,8 +23,18 @@ go.property("spawn_resource", 0)
 go.property("spawn_xp", 1)
 go.property("spawn_star", 0)
 
+
 function init(self)
 	go_controller.object_items_spawn_to_map(self)
+
+	self.targets_points = {
+		vmath.vector3(12, 6, 0),
+		vmath.vector3(15, 0, 0),
+		vmath.vector3(12, -6, 0),
+		vmath.vector3(-12, 6, 0),
+		vmath.vector3(-15, 0, 0),
+		vmath.vector3(-12, -6, 0),
+	}
 
 	go_controller.add(self)
 
