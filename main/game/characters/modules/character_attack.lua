@@ -32,7 +32,9 @@ function M.attack_bullet(self, url_object)
 
 	-- Место спавна пули
 	local position = go.get_position()
-	-- Поворачиваем пулю в нужное управление
+	position.y = position.y + go.get("#body", "size").y / 2 * go.get("#body", "scale").y
+	-- Поворачиваем пулю в нужное направление
+	
 	local rot = vmath.normalize(position - go.get_position(url_object))
 	local angle = math.atan2(rot.y, rot.x)
 	local rotation = vmath.quat_rotation_z(angle) 
@@ -83,8 +85,14 @@ function M.attack_hit(self, url_object)
 
 	-- Место спавна пули
 	local position = go.get_position()
+	position.y = position.y + go.get("#body", "size").y / 2 * go.get("#body", "scale").y
+
+	local position_to =  go.get_position(url_object)
+	local url_body_to = msg.url(url_object.socket, url_object.path, "body")
+	position_to.y = position_to.y + go.get(url_body_to, "size").y / 2 * go.get(url_body_to, "scale").y
+
 	-- Поворачиваем пулю в нужное управление
-	local rot = vmath.normalize(position - go.get_position(url_object))
+	local rot = vmath.normalize(position - position_to)
 	local angle = math.atan2(rot.y, rot.x)
 	local rotation = vmath.quat_rotation_z(angle) 
 
@@ -99,9 +107,6 @@ function M.attack_hit(self, url_object)
 	}
 
 	-- Место спавна пули
-	local position = go.get_position()
-	position.y = position.y + go.get("#body", "size").y / 2
-	local position_to = go.get_position(url_object)
 	local dir = position_to - position
 	-- Поворачиваем пулю в нужное управление
 	local rot, angle, rotation

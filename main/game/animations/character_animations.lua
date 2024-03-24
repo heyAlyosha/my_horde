@@ -75,7 +75,7 @@ function M.play(self, animation_id)
 end
 
 -- Анимация дамага
-function M.damage(self, from_object_damage)
+function M.damage(self, from_object_damage, handle)
 	-- Анимация дамага
 	if not self.particle then
 		local duration = 0.15
@@ -121,6 +121,10 @@ function M.damage(self, from_object_damage)
 		timer.delay(duration, false, function (self)
 			go.set("#body", "tint", vmath.vector4(1, 1, 1, 1)) -- <1>
 			self.particle = nil
+
+			if handle then
+				handle(self)
+			end
 		end)
 	end
 end
