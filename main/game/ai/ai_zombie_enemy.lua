@@ -77,6 +77,7 @@ function M.behavior(self)
 
 			else
 				-- Цель есть, добежали
+				character_animations.play(self, "idle")
 				character_attack.attack(self, self.target)
 			end
 		end
@@ -116,6 +117,7 @@ function M.behavior(self)
 		-- Добежал до цели
 		local handle_success = function (self)
 			ai_move.stop(self)
+			character_animations.play(self, "idle")
 			if not self.target or not go_controller.is_object(self.target) then
 				-- Цель пропала, гуляет
 				self.target = nil
@@ -161,8 +163,9 @@ function M.behavior(self)
 				local rot = vmath.quat_rotation_z(random_p)
 				random_position  = vmath.rotate(rot, self.random_dir) * 50 + go.get_position() 
 
-				character_animations.play(self, "move")
+				--character_animations.play(self, "move")
 				ai_move.move_item_from(self, random_position, function (self)
+					character_animations.play(self, "idle")
 					self.animation_walking = nil
 					self.condition_ai = nil
 					M.behavior(self)

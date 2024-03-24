@@ -19,7 +19,7 @@ function M.add_static_object(self, group_name)
 	self.pos = go.get_position(".")
 	self.size = go.get("#body", "size")
 
-	local aabb_id = aabb.insert(group_id, self.pos.x , self.pos.y, self.size.x, self.size.y)
+	local aabb_id = aabb.insert(group_id, self.pos.x , self.pos.y + self.size.y / 2, self.size.x, self.size.y)
 
 	storage_game.groups_aabbcc[group_name].objects[aabb_id] = {
 		url = msg.url(go.get_id()),

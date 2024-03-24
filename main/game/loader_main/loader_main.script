@@ -95,15 +95,16 @@ function init(self)
 	})
 
 	-- Отображаем на доп мониторе
-	--[[
+	
 	if true and not html5 then
 		local displays = defos.get_displays()
 
 		if displays[2] then
 			if true then
 				-- Горизонтальный экран
-				--defos.set_view_size(displays[2].bounds.x, displays[2].bounds.y, displays[2].bounds.width, displays[2].bounds.height)
-				defos.set_view_size(displays[1].bounds.x, displays[1].bounds.y, 1280, 720)
+				pprint(displays)
+				defos.set_view_size(displays[2].bounds.x, displays[2].bounds.y, displays[2].bounds.width, displays[2].bounds.height)
+				--defos.set_view_size(displays[1].bounds.x, displays[1].bounds.y, 1280, 720)
 			else
 				-- Вертикальный экран
 				defos.set_view_size(displays[2].bounds.x, displays[2].bounds.y, 320, 480)
@@ -115,8 +116,9 @@ function init(self)
 		end
 		
 	end
+	--[[
 	--]]
-	defos.set_view_size(0, 0, 1000, 512)
+	--defos.set_view_size(0, 0, 1000, 512)
 
 	
 
