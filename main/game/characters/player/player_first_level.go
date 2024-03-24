@@ -13,11 +13,6 @@ components {
     w: 1.0
   }
   properties {
-    id: "speed"
-    value: "50.0"
-    type: PROPERTY_TYPE_NUMBER
-  }
-  properties {
     id: "target_dist"
     value: "10.0, 0.0, 0.0"
     type: PROPERTY_TYPE_VECTOR3
