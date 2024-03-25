@@ -43,8 +43,8 @@ instances {
   id: "player"
   prototype: "/main/game/characters/player/player_first_level.go"
   position {
-    x: 671.0
-    y: 87.0
+    x: 7.0
+    y: 7.0
     z: 3.0
   }
   rotation {
@@ -55,11 +55,6 @@ instances {
   }
   component_properties {
     id: "script"
-    properties {
-      id: "horde_count"
-      value: "5.0"
-      type: PROPERTY_TYPE_NUMBER
-    }
     properties {
       id: "activate"
       value: "false"
@@ -1358,54 +1353,6 @@ instances {
   }
 }
 instances {
-  id: "left_palat_zombie1"
-  prototype: "/main/game/characters/zombie_enemy/zombie_enemy_first_level.go"
-  position {
-    x: 434.0
-    y: 245.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  component_properties {
-    id: "script"
-    properties {
-      id: "activation"
-      value: "false"
-      type: PROPERTY_TYPE_BOOLEAN
-    }
-    properties {
-      id: "id_activation"
-      value: "left_palat"
-      type: PROPERTY_TYPE_HASH
-    }
-    properties {
-      id: "human_id"
-      value: "2.0"
-      type: PROPERTY_TYPE_NUMBER
-    }
-    properties {
-      id: "to_point"
-      value: "true"
-      type: PROPERTY_TYPE_BOOLEAN
-    }
-    properties {
-      id: "to_point_position"
-      value: "425.0, 60.0, 0.0"
-      type: PROPERTY_TYPE_VECTOR3
-    }
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
   id: "right_palat_human"
   prototype: "/main/game/characters/human/human.go"
   position {
@@ -1440,54 +1387,6 @@ instances {
       id: "animation_running"
       value: "true"
       type: PROPERTY_TYPE_BOOLEAN
-    }
-    properties {
-      id: "to_point"
-      value: "true"
-      type: PROPERTY_TYPE_BOOLEAN
-    }
-    properties {
-      id: "to_point_position"
-      value: "565.0, 60.0, 0.0"
-      type: PROPERTY_TYPE_VECTOR3
-    }
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "right_palat_zombie"
-  prototype: "/main/game/characters/zombie_enemy/zombie_enemy_first_level.go"
-  position {
-    x: 555.0
-    y: 252.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  component_properties {
-    id: "script"
-    properties {
-      id: "activation"
-      value: "false"
-      type: PROPERTY_TYPE_BOOLEAN
-    }
-    properties {
-      id: "id_activation"
-      value: "right_palat"
-      type: PROPERTY_TYPE_HASH
-    }
-    properties {
-      id: "human_id"
-      value: "2.0"
-      type: PROPERTY_TYPE_NUMBER
     }
     properties {
       id: "to_point"
@@ -3153,7 +3052,7 @@ embedded_instances {
   "  }\n"
   "}\n"
   "embedded_components {\n"
-  "  id: \"object\"\n"
+  "  id: \"body\"\n"
   "  type: \"sprite\"\n"
   "  data: \"default_animation: \\\"pedestal-1\\\"\\n"
   "material: \\\"/builtins/materials/sprite.material\\\"\\n"
@@ -3605,7 +3504,7 @@ embedded_instances {
   "  }\n"
   "}\n"
   "embedded_components {\n"
-  "  id: \"object\"\n"
+  "  id: \"body\"\n"
   "  type: \"sprite\"\n"
   "  data: \"default_animation: \\\"pedestal-2\\\"\\n"
   "material: \\\"/builtins/materials/sprite.material\\\"\\n"
@@ -3826,7 +3725,7 @@ embedded_instances {
   "  }\n"
   "}\n"
   "embedded_components {\n"
-  "  id: \"object\"\n"
+  "  id: \"body\"\n"
   "  type: \"sprite\"\n"
   "  data: \"default_animation: \\\"pedestal-1\\\"\\n"
   "material: \\\"/builtins/materials/sprite.material\\\"\\n"

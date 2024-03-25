@@ -10,9 +10,8 @@ function init(self)
 
 	msg.post(".", "init")
 
-	--msg.post(".", "start")
-	msg.post(".", "test")
-	
+	msg.post(".", "start")
+	--msg.post(".", "test")
 end
 
 function final(self)
@@ -129,8 +128,8 @@ function on_message(self, message_id, message, sender)
 								timer.delay(1, false, function (self)
 									-- После уничтожения последней кровати - поражение
 									msg.post("#map_core", "win", {
-										point_win = msg.url("win_point")/nil, -- Точке для анимации победы игрока
-										next_level_point = msg.url("next_level_point")/nil -- Точка куда убегает игро после закрытия реузльтатов уровня
+										point_win = msg.url("win_point"), -- Точке для анимации победы игрока
+										next_level_point = msg.url("next_level_point") -- Точка куда убегает игро после закрытия реузльтатов уровня
 									})
 								end)
 							end)

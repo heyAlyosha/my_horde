@@ -5,7 +5,7 @@ local M = {}
 function M.search_target(self)
 	if true or not self.view then
 		self.view = ai_core.view(self, function (self, visible_items)
-			if visible_items then
+			if not self.no_view and visible_items then
 				-- Есть цель
 				local visible_item = visible_items[1]
 
@@ -31,9 +31,7 @@ function M.behavior(self)
 	-- Состояние зомбика
 	self.condition_ai = self.condition_ai or nil
 
-	if true or not self.no_view then
-		M.search_target(self)
-	end
+	M.search_target(self)
 
 	-- ДИСТАНЦИЯ ОТ ИГРОКА
 	if not self.check_distantion then
@@ -42,10 +40,15 @@ function M.behavior(self)
 				if self.view then
 					self.view.stop(self)
 				end
+				if self.target then
+					ai_attack.delete_target(self, self.target)
+				end
 				self.no_view = true
 				self.condition_ai = nil
 				M.behavior(self)
 				return
+			else
+				self.no_view = nil
 			end
 		end)
 	end

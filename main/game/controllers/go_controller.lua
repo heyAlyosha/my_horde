@@ -81,11 +81,13 @@ function M.delete(self)
 
 		-- области вокруг объекта для атаки
 		local target_item = storage_game.go_targets[url_key]
-		for key, target_point in pairs(target_item.targets) do
-			for i, url_object_attack in ipairs(target_point.characters) do
-				-- Рассылаем сообщения, что объект удалён
-				if M.is_object(url_object_attack) then
-					msg.post(url_object_attack, "object_visible_kill")
+		if target_item then
+			for key, target_point in pairs(target_item.targets) do
+				for i, url_object_attack in ipairs(target_point.characters) do
+					-- Рассылаем сообщения, что объект удалён
+					if M.is_object(url_object_attack) then
+						msg.post(url_object_attack, "object_visible_kill")
+					end
 				end
 			end
 		end
