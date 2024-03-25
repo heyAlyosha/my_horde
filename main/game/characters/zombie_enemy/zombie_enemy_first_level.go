@@ -23,7 +23,7 @@ components {
   component: "/main/game/effects/blood.particlefx"
   position {
     x: -6.0
-    y: 6.0
+    y: 9.0
     z: -1.0
   }
   rotation {
@@ -38,7 +38,7 @@ components {
   component: "/main/game/effects/blood.particlefx"
   position {
     x: 6.0
-    y: 6.0
+    y: 9.0
     z: -1.0
   }
   rotation {
@@ -91,7 +91,7 @@ embedded_components {
   ""
   position {
     x: 0.0
-    y: 6.0
+    y: 10.0
     z: 1.0
   }
   rotation {
@@ -99,6 +99,11 @@ embedded_components {
     y: 0.0
     z: 0.0
     w: 1.0
+  }
+  scale {
+    x: 1.4
+    y: 1.4
+    z: 1.0
   }
 }
 embedded_components {

@@ -799,8 +799,8 @@ instances {
   id: "first_room_zombie"
   prototype: "/main/game/characters/zombie_enemy/zombie_enemy_first_level.go"
   position {
-    x: 150.0
-    y: 170.0
+    x: 160.0
+    y: 168.0
     z: 0.0
   }
   rotation {
@@ -820,44 +820,6 @@ instances {
       id: "id_activation"
       value: "first_room"
       type: PROPERTY_TYPE_HASH
-    }
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "first_room_zombie1"
-  prototype: "/main/game/characters/zombie_enemy/zombie_enemy_first_level.go"
-  position {
-    x: 170.0
-    y: 170.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  component_properties {
-    id: "script"
-    properties {
-      id: "activation"
-      value: "false"
-      type: PROPERTY_TYPE_BOOLEAN
-    }
-    properties {
-      id: "id_activation"
-      value: "first_room"
-      type: PROPERTY_TYPE_HASH
-    }
-    properties {
-      id: "human_id"
-      value: "2.0"
-      type: PROPERTY_TYPE_NUMBER
     }
   }
   scale3 {

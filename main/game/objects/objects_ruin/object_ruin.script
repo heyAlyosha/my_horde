@@ -21,8 +21,6 @@ local function activate_init(self)
 
 	self.group_name = "visible_object"
 	self.group_id, self.visible_object_id = ai_vision.add_static_object(self, self.group_name)
-
-	live_bar.create(self)
 end
 
 function init(self)
@@ -75,8 +73,10 @@ function on_message(self, message_id, message, sender)
 
 			-- Покраснение
 			go.set("#body", "tint", vmath.vector4(1, 0.6, 0.6, 1))
-
-			live_bar.set_hp(self, self.live, self.max_live)
+			if self.activation then
+				live_bar.create(self)
+				live_bar.set_hp(self, self.live, self.max_live)
+			end
 
 			-- Кровь
 			if self.damage_blood then

@@ -8,8 +8,10 @@ function M.damage_zombie(self, message)
 	self.from_id_object = message.from_id_object 
 	self.live = self.live - damage
 
-	live_bar.create(self)
-	live_bar.set_hp(self, self.live, self.max_live)
+	if self.type_object ~= hash("zombie_dynamic") then
+		live_bar.create(self)
+		live_bar.set_hp(self, self.live, self.max_live)
+	end
 
 	character_animations.damage(self, message.parent)
 
@@ -36,8 +38,8 @@ function M.damage_human(self, message)
 
 	character_animations.damage(self, message.parent)
 
-	live_bar.create(self)
-	live_bar.set_hp(self, self.live, self.max_live)
+	--live_bar.create(self)
+	--live_bar.set_hp(self, self.live, self.max_live)
 
 	if self.live <= 0 then
 		local position = go.get_position()

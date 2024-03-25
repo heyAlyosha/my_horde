@@ -8,7 +8,6 @@ function M.live(self)
 
 	self.view = ai_core.view(self, function (self, visible_items)
 		if visible_items and not self.to_point then
-			pprint("visible", visible_items)
 			-- Убегает от врагов
 			self.animation_walking = nil
 			if not self.animation_run then
