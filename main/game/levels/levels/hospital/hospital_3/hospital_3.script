@@ -80,7 +80,7 @@ function on_message(self, message_id, message, sender)
 		-- Начинают ломать дверь
 		timer_linear.add(self, "start", 2, function (self)
 			camera.unfollow()
-			local position_to = go.get_position("door_first_room_right")
+			local position_to = go.get_position("first_room_zombie")
 
 			go.animate("camera", "position", go.PLAYBACK_ONCE_FORWARD, position_to, go.EASING_OUTCUBIC, 1, 0)
 
@@ -112,9 +112,19 @@ function on_message(self, message_id, message, sender)
 			msg.post(".", "activation_point", {id_activation = hash("first_room")})
 		end, delay)
 
+		-- Выходит зомбик
+		timer_linear.add(self, "start", 0.5, function (self)
+			camera.follow(camera_id, msg.url("first_room_zombie"))
+			sprite.play_flipbook("first_room_zombie#body", "zombie_18_1_run")
+			sprite.set_hflip("first_room_zombie#body", false)
+			go.animate("first_room_zombie", "position.y", go.PLAYBACK_ONCE_FORWARD, go.get_position("first_room_zombie").y - 80, go.EASING_LINEAR, 2, 0, function (self)
+				sprite.play_flipbook("first_room_zombie#body", "zombie_18_1_default")
+			end)
+		end)
+
 		-- Цели зомбики
 		timer_linear.add(self, "start", 0.1, function (self)
-			local goals = {msg.url("first_room_zombie"), msg.url("first_room_zombie1")}
+			local goals = {msg.url("first_room_zombie")}
 			levels_script_functions.add_goal_ruins(self, goals, function (self)
 				msg.post(".", "activation_point", {id_activation = hash("two_room")})
 				timer.delay(0.5, false, function (self)
@@ -141,8 +151,9 @@ function on_message(self, message_id, message, sender)
 		end, delay)
 
 		
-		timer_linear.add(self, "start", 1, function (self)
+		timer_linear.add(self, "start", 2, function (self)
 			go.animate("camera", "position", go.PLAYBACK_ONCE_FORWARD, go.get_position("player"), go.EASING_OUTCUBIC, 0.5, 0, function (self)
+				msg.post(".", "activation_point", {id_activation = hash("first_room_zombie")})
 				go.set("player#script", "active_input", true)
 				camera.follow(camera_id, msg.url("player"), options)
 			end)

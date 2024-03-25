@@ -818,7 +818,7 @@ instances {
     }
     properties {
       id: "id_activation"
-      value: "first_room"
+      value: "first_room_zombie"
       type: PROPERTY_TYPE_HASH
     }
   }

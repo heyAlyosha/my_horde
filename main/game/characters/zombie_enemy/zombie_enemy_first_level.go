@@ -48,36 +48,6 @@ components {
     w: 0.70710677
   }
 }
-components {
-  id: "shot_right"
-  component: "/main/game/effects/shot.particlefx"
-  position {
-    x: 1.0
-    y: 4.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: -0.70710677
-    w: 0.70710677
-  }
-}
-components {
-  id: "shot_left"
-  component: "/main/game/effects/shot.particlefx"
-  position {
-    x: -1.0
-    y: 4.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.70710677
-    w: 0.70710677
-  }
-}
 embedded_components {
   id: "body"
   type: "sprite"
@@ -91,7 +61,7 @@ embedded_components {
   ""
   position {
     x: 0.0
-    y: 10.0
+    y: 9.0
     z: 1.0
   }
   rotation {
@@ -101,8 +71,8 @@ embedded_components {
     w: 1.0
   }
   scale {
-    x: 1.4
-    y: 1.4
+    x: 1.3
+    y: 1.3
     z: 1.0
   }
 }
