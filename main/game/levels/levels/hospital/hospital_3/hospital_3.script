@@ -43,6 +43,9 @@ function on_message(self, message_id, message, sender)
 		-- Тестируем
 		camera.follow(camera_id, msg.url("player"), options)
 		msg.post("player", "activate")
+		msg.post(".", "activation_point", {id_activation = hash("left_palat")})
+		msg.post(".", "activation_point", {id_activation = hash("two_room")})
+		
 		
 	elseif message_id == hash("start") then
 		-- Игрок идёт до стартовой точки уровня
@@ -121,8 +124,17 @@ function on_message(self, message_id, message, sender)
 					local goals = {msg.url("bed_hospital_first_room")}
 					levels_script_functions.add_goal_ruins(self, goals, function (self)
 						timer.delay(1, false, function (self)
-							--print("WIN")
-							-- Победа
+							local goals = {msg.url("bed_exit")}
+							levels_script_functions.add_goal_ruins(self, goals, function (self)
+								timer.delay(1, false, function (self)
+									-- После уничтожения последней кровати - поражение
+									msg.post("#map_core", "win", {
+										point_win = msg.url("win_point")/nil, -- Точке для анимации победы игрока
+										next_level_point = msg.url("next_level_point")/nil -- Точка куда убегает игро после закрытия реузльтатов уровня
+									})
+								end)
+							end)
+							
 						end)
 					end)
 				end)

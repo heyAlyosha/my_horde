@@ -7,7 +7,8 @@ function M.live(self)
 	self.exclude_commands[hash("building_ruin")] = true
 
 	self.view = ai_core.view(self, function (self, visible_items)
-		if visible_items then
+		if visible_items and not self.to_point then
+			pprint("visible", visible_items)
 			-- Убегает от врагов
 			self.animation_walking = nil
 			if not self.animation_run then
@@ -15,6 +16,7 @@ function M.live(self)
 				self.animation_run = true
 				character_animations.play(self, "move")
 				self.speed = self.speed_from
+
 				ai_move.move_item_from(self, go.get_position(visible_items[1].url), function (self)
 					character_animations.play(self, "idle")
 					self.animation_run = nil

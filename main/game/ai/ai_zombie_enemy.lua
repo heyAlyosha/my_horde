@@ -178,6 +178,7 @@ function M.behavior(self)
 					sprite.set_hflip("#body", self.hflip)
 					character_animations.play(self, "idle")
 					self.animation_walking = nil
+					M.behavior(self)
 				end)
 			end
 		else

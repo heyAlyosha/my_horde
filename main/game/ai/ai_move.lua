@@ -23,8 +23,14 @@ function M.move_item_from(self, position_from, handle, speed)
 					sort = sort + 10000
 					
 				end
-				local dot = vmath.dot(dir, position_to - position) * 0.00001
-				sort = sort + dot
+				local dot = vmath.dot(dir, position_to - position)
+				if dot > 0 then
+					sort = sort + 100
+				end
+				--sort = sort + dot
+				if self.to_point then
+					print("sort_astar", sort, dir, position_to - position)
+				end
 
 				if not result_collision then
 					table.insert(result, {
@@ -43,7 +49,9 @@ function M.move_item_from(self, position_from, handle, speed)
 		end)
 		local position_to = result[1].position
 
-		--pprint(result, "-----------------")
+		if self.to_point then
+			pprint(result, "result-----------------")
+		end
 
 		M.move_item(self, position_functions.go_get_perspective_z(position_to), handle)
 	else

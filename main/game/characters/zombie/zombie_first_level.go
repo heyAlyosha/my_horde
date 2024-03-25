@@ -12,6 +12,16 @@ components {
     z: 0.0
     w: 1.0
   }
+  properties {
+    id: "skin_id"
+    value: "18.0"
+    type: PROPERTY_TYPE_NUMBER
+  }
+  properties {
+    id: "human_id"
+    value: "0.0"
+    type: PROPERTY_TYPE_NUMBER
+  }
 }
 components {
   id: "blood_right"
@@ -46,7 +56,7 @@ components {
 embedded_components {
   id: "body"
   type: "sprite"
-  data: "default_animation: \"zombie_0_2_default\"\n"
+  data: "default_animation: \"zombie_18_1_default\"\n"
   "material: \"/builtins/materials/sprite.material\"\n"
   "blend_mode: BLEND_MODE_ALPHA\n"
   "textures {\n"
