@@ -232,29 +232,6 @@ embedded_components {
   }
 }
 embedded_components {
-  id: "shadow"
-  type: "sprite"
-  data: "default_animation: \"shadow\"\n"
-  "material: \"/builtins/materials/sprite.material\"\n"
-  "blend_mode: BLEND_MODE_ALPHA\n"
-  "textures {\n"
-  "  sampler: \"texture_sampler\"\n"
-  "  texture: \"/main/atlases/first_level.atlas\"\n"
-  "}\n"
-  ""
-  position {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-}
-embedded_components {
   id: "zombie_animation_horde_factory"
   type: "factory"
   data: "prototype: \"/main/game/characters/zombie_animation_horde/zombie_animation_horde_first_level.go\"\n"
@@ -283,6 +260,42 @@ embedded_components {
   position {
     x: 0.0
     y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}
+embedded_components {
+  id: "shadow"
+  type: "sprite"
+  data: "default_animation: \"shadow\"\n"
+  "material: \"/builtins/materials/sprite.material\"\n"
+  "blend_mode: BLEND_MODE_ALPHA\n"
+  "slice9 {\n"
+  "  x: 6.0\n"
+  "  y: 0.0\n"
+  "  z: 6.0\n"
+  "  w: 0.0\n"
+  "}\n"
+  "size {\n"
+  "  x: 20.0\n"
+  "  y: 6.0\n"
+  "  z: 0.0\n"
+  "  w: 0.0\n"
+  "}\n"
+  "size_mode: SIZE_MODE_MANUAL\n"
+  "textures {\n"
+  "  sampler: \"texture_sampler\"\n"
+  "  texture: \"/main/atlases/first_level.atlas\"\n"
+  "}\n"
+  ""
+  position {
+    x: 0.0
+    y: -1.0
     z: 0.0
   }
   rotation {

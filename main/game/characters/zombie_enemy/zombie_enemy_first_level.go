@@ -23,7 +23,7 @@ components {
   component: "/main/game/effects/blood.particlefx"
   position {
     x: -6.0
-    y: 9.0
+    y: 7.0
     z: -1.0
   }
   rotation {
@@ -38,7 +38,7 @@ components {
   component: "/main/game/effects/blood.particlefx"
   position {
     x: 6.0
-    y: 9.0
+    y: 7.0
     z: -1.0
   }
   rotation {
@@ -61,7 +61,7 @@ embedded_components {
   ""
   position {
     x: 0.0
-    y: 10.0
+    y: 8.0
     z: 1.0
   }
   rotation {
@@ -151,6 +151,19 @@ embedded_components {
   data: "default_animation: \"shadow\"\n"
   "material: \"/builtins/materials/sprite.material\"\n"
   "blend_mode: BLEND_MODE_ALPHA\n"
+  "slice9 {\n"
+  "  x: 6.0\n"
+  "  y: 0.0\n"
+  "  z: 6.0\n"
+  "  w: 0.0\n"
+  "}\n"
+  "size {\n"
+  "  x: 20.0\n"
+  "  y: 6.0\n"
+  "  z: 0.0\n"
+  "  w: 0.0\n"
+  "}\n"
+  "size_mode: SIZE_MODE_MANUAL\n"
   "textures {\n"
   "  sampler: \"texture_sampler\"\n"
   "  texture: \"/main/atlases/first_level.atlas\"\n"

@@ -31,7 +31,7 @@ function M.behavior(self)
 	-- Состояние зомбика
 	self.condition_ai = self.condition_ai or nil
 
-	M.search_target(self)
+	--M.search_target(self)
 
 	-- ДИСТАНЦИЯ ОТ ИГРОКА
 	if not self.check_distantion then
