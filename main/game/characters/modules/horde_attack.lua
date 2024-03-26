@@ -145,7 +145,7 @@ function M.add_zombie_target(self, zombie, target)
 	end
 
 	msg.post(zombie.url, "add_target", {target = target.url})
-	zombie.target_key = target.key
+	zombie.target_key = target.key_target
 end
 
 -- Удаление цели зомбику
@@ -169,6 +169,30 @@ function M.delete_zombie_target(self, zombie)
 		end
 	end
 	zombie.target_key = nil
+end
+
+-- Смерть зомбика
+function M.zombie_death(self, zombie)
+	
+	if zombie and zombie.target_key then
+		local target = self.target_objects[zombie.target_key]
+		horde_attack.delete_zombie_target(self, zombie)
+
+		--pprint("zombie_death", zombie.target_key, self.target_objects)
+		-- Если осталась цель
+		if target then
+			--Находим самую численную группу
+			local target_sort_max = M.get_targets_sort(self)[1]
+			print(target.targets_count, target_sort_max.targets_count)
+			if target_sort_max and target_sort_max.targets_count > 1 and target.targets_count < target_sort_max.targets_count then
+				local last_zombie_url = target_sort_max.enemies[#target_sort_max.enemies]
+				local zombie = self.zombies[go_controller.url_to_key(last_zombie_url)]
+				if zombie then
+					horde_attack.add_zombie_target(self, zombie, target)
+				end
+			end
+		end
+	end
 end
 
 return M
