@@ -32,7 +32,7 @@ function init(self)
 		local duration = vmath.length(go.get_position() - position_to) / self.speed
 
 		-- Переворачиваем спрайт пули в напралвении
-		sprite.set_hflip("#body", self.dir.x > 0)
+		--sprite.set_hflip("#body", self.dir.x < 0)
 
 		go.animate(".", "position", go.PLAYBACK_ONCE_FORWARD, position_to, go.EASING_LINEAR, duration, 0, function (self)
 			go.delete()
@@ -84,7 +84,7 @@ function on_message(self, message_id, message, sender)
 					-- Наносим урон только ей
 					msg.post(other_url, "damage", {damage = self.damage, parent = self.parent, position = go.get_position()})
 					self.delete = true
-					go.delete()
+					--go.delete()
 				end
 
 			elseif self.command ~= command_object then
