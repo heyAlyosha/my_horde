@@ -72,8 +72,13 @@ function M.move_item(self, position_to, handle)
 	local duration = len / self.speed
 	live_bar.position_to(self, position_to, duration)
 	go.cancel_animations(".", "position")
+	if self.timer_move_item then
+		timer.cancel(self.timer_move_item)
+		self.timer_move_item = nil
+	end
 	if len > 3 then
-		go.animate(".", "position", go.PLAYBACK_ONCE_FORWARD, position_functions.go_get_perspective_z(position_to), go.EASING_LINEAR, duration, 0, handle)
+		go.animate(".", "position", go.PLAYBACK_ONCE_FORWARD, position_functions.go_get_perspective_z(position_to), go.EASING_LINEAR, duration, 0)
+		self.timer_move_item = timer.delay(duration, false, handle)
 	else
 		position_functions.go_set_perspective_z(position_to)
 		if handle then

@@ -120,7 +120,7 @@ function M.behavior(self)
 			character_animations.play(self, "idle")
 			if not self.target or not go_controller.is_object(self.target) then
 				-- Цель пропала, гуляет
-				self.target = nil
+				ai_attack.delete_target(self, self.target)
 				self.condition_ai = nil
 				M.behavior(self)
 

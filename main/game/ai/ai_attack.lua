@@ -98,7 +98,7 @@ function M.delete_target(self, url_target)
 	local key_target = go_controller.url_to_key(url_target)
 	local target = storage_game.go_targets[key_target]
 
-	if target then
+	if target and go_controller.is_object(target) then
 		if self.target_id_point then
 			storage_game.go_targets[key_target].targets[self.target_id_point].count_object = storage_game.go_targets[key_target].targets[self.target_id_point].count_object - 1
 		end

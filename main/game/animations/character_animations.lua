@@ -76,6 +76,8 @@ end
 
 -- Анимация дамага
 function M.damage(self, from_object_damage, handle)
+	self.damage_animate_x = self.damage_animate_x or 5
+	self.damage_animate_y = self.damage_animate_y or 5
 	-- Анимация дамага
 	if not self.particle then
 		local duration = 0.15
@@ -85,11 +87,10 @@ function M.damage(self, from_object_damage, handle)
 
 		-- Отпрыгивание
 		if dir.x < 0 then
-			--position.x = position.x + 3
-			
+			position.x = position.x + self.damage_animate_x
 			particle_name = "#blood_right"
 		else
-			--position.x = position.x - 3
+			position.x = position.x - self.damage_animate_x
 			particle_name = "#blood_left"
 		end
 		
@@ -101,13 +102,13 @@ function M.damage(self, from_object_damage, handle)
 			position = position + collision.normal * collision.fraction
 		end
 
-		position.y = position.y + 5
+		--position.y = position.y + self.damage_animate_y
 		
 		live_bar.position_to(self, position, duration)
 		position = position_functions.go_get_perspective_z(position)
 
 		go.animate(".", "position.x", go.PLAYBACK_ONCE_FORWARD, position.x, go.EASING_LINEAR, duration, 0)
-		go.animate(".", "position.y", go.PLAYBACK_ONCE_PINGPONG, position.y, go.EASING_LINEAR, duration, 0)
+		go.animate(".", "position.y", go.PLAYBACK_ONCE_PINGPONG, position.y + self.damage_animate_y, go.EASING_LINEAR, duration, 0)
 		go.animate(".", "position.z", go.PLAYBACK_ONCE_FORWARD, position.z, go.EASING_LINEAR, duration, 0)
 
 		-- Покраснение
@@ -151,8 +152,8 @@ function M.damage_player(self, from_object_damage)
 		end
 		position = position_functions.go_get_perspective_z(position)
 		--camera.unfollow(camera_id, ".")
-		go.animate(".", "position.x", go.PLAYBACK_ONCE_FORWARD, position.x, go.EASING_LINEAR, duration, 0)
-		go.animate(".", "position.y", go.PLAYBACK_ONCE_PINGPONG, position.y, go.EASING_LINEAR, duration, 0)
+		--go.animate(".", "position.x", go.PLAYBACK_ONCE_FORWARD, position.x, go.EASING_LINEAR, duration, 0)
+		--go.animate(".", "position.y", go.PLAYBACK_ONCE_PINGPONG, position.y, go.EASING_LINEAR, duration, 0)
 		--camera.shake(camera_id, 0.005, 0.1)
 
 		--[[

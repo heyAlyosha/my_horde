@@ -122,7 +122,12 @@ function on_message(self, message_id, message, sender)
 			end)
 		end)
 
-		-- Цели зомбики
+		-- Выходит зомбик
+		timer_linear.add(self, "start", 2.1, function (self)
+			msg.post(".", "activation_point", {id_activation = hash("first_room_zombie")})
+		end)
+
+		-- Активируем зомбика
 		timer_linear.add(self, "start", 0.1, function (self)
 			local goals = {msg.url("first_room_zombie")}
 			levels_script_functions.add_goal_ruins(self, goals, function (self)
@@ -151,9 +156,8 @@ function on_message(self, message_id, message, sender)
 		end, delay)
 
 		
-		timer_linear.add(self, "start", 2, function (self)
+		timer_linear.add(self, "start", 0.5, function (self)
 			go.animate("camera", "position", go.PLAYBACK_ONCE_FORWARD, go.get_position("player"), go.EASING_OUTCUBIC, 0.5, 0, function (self)
-				msg.post(".", "activation_point", {id_activation = hash("first_room_zombie")})
 				go.set("player#script", "active_input", true)
 				camera.follow(camera_id, msg.url("player"), options)
 			end)

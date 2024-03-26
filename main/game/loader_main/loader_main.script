@@ -90,9 +90,19 @@ function init(self)
 		visible = true
 	})
 
-	msg.post("main:/loader_main", "load_level", {
-		company_id = "city_hospital", level_id = 3
-	})
+	if false then
+		msg.post("main:/loader_main", "load_level", {
+			company_id = "city_hospital", level_id = 3
+		})
+	else
+		msg.post("main:/loader_main", "load_level", {
+			company_id = "prototypes", level_id = "prototype_enemy"
+		})
+	end
+	
+	
+	
+	
 
 	-- Отображаем на доп мониторе
 	

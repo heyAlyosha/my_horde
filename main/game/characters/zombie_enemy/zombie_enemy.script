@@ -18,6 +18,8 @@ go.property("distantion_visible", 75)
 go.property("attack_type", hash("bullet_hit"))
 go.property("bullet_damage", 0.25)
 go.property("bullet_distantion", 120)
+go.property("damage_animate_x", 0)
+go.property("damage_animate_y", 1)
 go.property("command", hash("zombie_enemy"))
 go.property("target", msg.url())
 go.property("target_dynamic", true)
@@ -120,7 +122,7 @@ end
 function on_message(self, message_id, message, sender)
 	if message_id == hash("damage") then
 		-- Урон
-		if false and message.parent then
+		if message.parent then
 			if self.target then
 				ai_attack.delete_target(self, self.target)
 			end
@@ -131,7 +133,7 @@ function on_message(self, message_id, message, sender)
 		local animation_death = hash("effect_infection")
 		character_damage.damage_zombie(self, message, animation_death)
 
-	elseif message_id == hash("add_target") and message.target then
+	elseif false and message_id == hash("add_target") and message.target then
 		ai_attack.add_target(self, message.target)
 		self.condition_ai = hash("to_target")
 		ai_zombie_enemy.behavior(self)

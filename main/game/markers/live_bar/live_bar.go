@@ -24,7 +24,7 @@ embedded_components {
   ""
   position {
     x: 0.0
-    y: 19.0
+    y: 22.0
     z: 5.0
   }
   rotation {

@@ -51,8 +51,6 @@ function init(self)
 	astar.setup(astar_settings.mapWidth, astar_settings.mapHeight, astar_settings.direction, astar_settings.allocate, astar_settings.typical_adjacent, astar_settings.cache)
 	astar.set_map(astar_settings.world)
 	astar.set_costs(costs)
-
-	touch_pos = vmath.vector3(168, 150, 0)
 	
 	-- Записываем настройки карты
 

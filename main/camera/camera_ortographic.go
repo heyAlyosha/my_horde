@@ -23,11 +23,6 @@ components {
     type: PROPERTY_TYPE_NUMBER
   }
   properties {
-    id: "zoom"
-    value: "1.0"
-    type: PROPERTY_TYPE_NUMBER
-  }
-  properties {
     id: "projection"
     value: "FIXED_AUTO"
     type: PROPERTY_TYPE_HASH
@@ -41,10 +36,5 @@ components {
     id: "follow_vertical"
     value: "false"
     type: PROPERTY_TYPE_BOOLEAN
-  }
-  properties {
-    id: "follow_target"
-    value: "prototype_main_horde/player"
-    type: PROPERTY_TYPE_HASH
   }
 }

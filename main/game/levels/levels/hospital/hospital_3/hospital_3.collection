@@ -44,7 +44,7 @@ instances {
   prototype: "/main/game/characters/player/player_first_level.go"
   position {
     x: 7.0
-    y: 7.0
+    y: 8.0
     z: 3.0
   }
   rotation {
@@ -129,8 +129,8 @@ instances {
   id: "human_first_room2"
   prototype: "/main/game/characters/human/human.go"
   position {
-    x: 94.0
-    y: 116.0
+    x: 93.0
+    y: 129.0
     z: 0.0
   }
   rotation {
@@ -579,8 +579,8 @@ instances {
   id: "human_first_room3"
   prototype: "/main/game/characters/human/human.go"
   position {
-    x: 227.0
-    y: 114.0
+    x: 109.0
+    y: 129.0
     z: 0.0
   }
   rotation {
@@ -595,6 +595,11 @@ instances {
       id: "human_id"
       value: "9.0"
       type: PROPERTY_TYPE_NUMBER
+    }
+    properties {
+      id: "hflip"
+      value: "true"
+      type: PROPERTY_TYPE_BOOLEAN
     }
     properties {
       id: "human_id_random"
@@ -989,8 +994,8 @@ instances {
   id: "two_room_human2"
   prototype: "/main/game/characters/human/human.go"
   position {
-    x: 517.0
-    y: 65.0
+    x: 521.0
+    y: 99.0
     z: 0.0
   }
   rotation {
@@ -1022,8 +1027,8 @@ instances {
   id: "two_room_human3"
   prototype: "/main/game/characters/human/human.go"
   position {
-    x: 586.0
-    y: 103.0
+    x: 424.0
+    y: 62.0
     z: 0.0
   }
   rotation {
@@ -1055,8 +1060,8 @@ instances {
   id: "two_room_human4"
   prototype: "/main/game/characters/human/human.go"
   position {
-    x: 604.0
-    y: 103.0
+    x: 442.0
+    y: 62.0
     z: 0.0
   }
   rotation {
@@ -1093,8 +1098,8 @@ instances {
   id: "two_room_human5"
   prototype: "/main/game/characters/human/human.go"
   position {
-    x: 661.0
-    y: 125.0
+    x: 658.0
+    y: 92.0
     z: 0.0
   }
   rotation {
@@ -1123,155 +1128,11 @@ instances {
   }
 }
 instances {
-  id: "left_palat_human"
-  prototype: "/main/game/characters/human/human.go"
-  position {
-    x: 418.0
-    y: 161.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  component_properties {
-    id: "script"
-    properties {
-      id: "activation"
-      value: "false"
-      type: PROPERTY_TYPE_BOOLEAN
-    }
-    properties {
-      id: "id_activation"
-      value: "left_palat"
-      type: PROPERTY_TYPE_HASH
-    }
-    properties {
-      id: "hflip"
-      value: "true"
-      type: PROPERTY_TYPE_BOOLEAN
-    }
-    properties {
-      id: "animation_running"
-      value: "true"
-      type: PROPERTY_TYPE_BOOLEAN
-    }
-    properties {
-      id: "to_point"
-      value: "true"
-      type: PROPERTY_TYPE_BOOLEAN
-    }
-    properties {
-      id: "to_point_position"
-      value: "425.0, 60.0, 0.0"
-      type: PROPERTY_TYPE_VECTOR3
-    }
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "left_palat_human1"
-  prototype: "/main/game/characters/human/human.go"
-  position {
-    x: 428.0
-    y: 168.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  component_properties {
-    id: "script"
-    properties {
-      id: "activation"
-      value: "false"
-      type: PROPERTY_TYPE_BOOLEAN
-    }
-    properties {
-      id: "id_activation"
-      value: "left_palat"
-      type: PROPERTY_TYPE_HASH
-    }
-    properties {
-      id: "animation_running"
-      value: "true"
-      type: PROPERTY_TYPE_BOOLEAN
-    }
-    properties {
-      id: "to_point"
-      value: "true"
-      type: PROPERTY_TYPE_BOOLEAN
-    }
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "left_palat_human2"
-  prototype: "/main/game/characters/human/human.go"
-  position {
-    x: 427.0
-    y: 153.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  component_properties {
-    id: "script"
-    properties {
-      id: "activation"
-      value: "false"
-      type: PROPERTY_TYPE_BOOLEAN
-    }
-    properties {
-      id: "id_activation"
-      value: "left_palat"
-      type: PROPERTY_TYPE_HASH
-    }
-    properties {
-      id: "animation_running"
-      value: "true"
-      type: PROPERTY_TYPE_BOOLEAN
-    }
-    properties {
-      id: "to_point"
-      value: "true"
-      type: PROPERTY_TYPE_BOOLEAN
-    }
-    properties {
-      id: "to_point_position"
-      value: "425.0, 60.0, 0.0"
-      type: PROPERTY_TYPE_VECTOR3
-    }
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "left_palat_zombie"
+  id: "two_room_zombie"
   prototype: "/main/game/characters/zombie_enemy/zombie_enemy_first_level.go"
   position {
-    x: 415.0
-    y: 249.0
+    x: 772.0
+    y: 84.0
     z: 0.0
   }
   rotation {
@@ -1289,7 +1150,7 @@ instances {
     }
     properties {
       id: "id_activation"
-      value: "left_palat"
+      value: "end_two_room"
       type: PROPERTY_TYPE_HASH
     }
     properties {
@@ -1304,108 +1165,7 @@ instances {
     }
     properties {
       id: "to_point_position"
-      value: "425.0, 60.0, 0.0"
-      type: PROPERTY_TYPE_VECTOR3
-    }
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "right_palat_human"
-  prototype: "/main/game/characters/human/human.go"
-  position {
-    x: 568.0
-    y: 162.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  component_properties {
-    id: "script"
-    properties {
-      id: "activation"
-      value: "false"
-      type: PROPERTY_TYPE_BOOLEAN
-    }
-    properties {
-      id: "id_activation"
-      value: "right_palat"
-      type: PROPERTY_TYPE_HASH
-    }
-    properties {
-      id: "hflip"
-      value: "true"
-      type: PROPERTY_TYPE_BOOLEAN
-    }
-    properties {
-      id: "animation_running"
-      value: "true"
-      type: PROPERTY_TYPE_BOOLEAN
-    }
-    properties {
-      id: "to_point"
-      value: "true"
-      type: PROPERTY_TYPE_BOOLEAN
-    }
-    properties {
-      id: "to_point_position"
-      value: "565.0, 60.0, 0.0"
-      type: PROPERTY_TYPE_VECTOR3
-    }
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "right_palat_zombie1"
-  prototype: "/main/game/characters/zombie_enemy/zombie_enemy_first_level.go"
-  position {
-    x: 581.0
-    y: 253.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  component_properties {
-    id: "script"
-    properties {
-      id: "activation"
-      value: "false"
-      type: PROPERTY_TYPE_BOOLEAN
-    }
-    properties {
-      id: "id_activation"
-      value: "right_palat"
-      type: PROPERTY_TYPE_HASH
-    }
-    properties {
-      id: "human_id"
-      value: "3.0"
-      type: PROPERTY_TYPE_NUMBER
-    }
-    properties {
-      id: "to_point"
-      value: "true"
-      type: PROPERTY_TYPE_BOOLEAN
-    }
-    properties {
-      id: "to_point_position"
-      value: "565.0, 60.0, 0.0"
+      value: "565.0, 100.0, 0.0"
       type: PROPERTY_TYPE_VECTOR3
     }
   }
@@ -1694,117 +1454,11 @@ instances {
   }
 }
 instances {
-  id: "last_room_human"
-  prototype: "/main/game/characters/human/human.go"
-  position {
-    x: 941.0
-    y: 142.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  component_properties {
-    id: "script"
-    properties {
-      id: "activation"
-      value: "false"
-      type: PROPERTY_TYPE_BOOLEAN
-    }
-    properties {
-      id: "id_activation"
-      value: "last_room"
-      type: PROPERTY_TYPE_HASH
-    }
-    properties {
-      id: "hflip"
-      value: "true"
-      type: PROPERTY_TYPE_BOOLEAN
-    }
-    properties {
-      id: "animation_running"
-      value: "true"
-      type: PROPERTY_TYPE_BOOLEAN
-    }
-    properties {
-      id: "to_point"
-      value: "true"
-      type: PROPERTY_TYPE_BOOLEAN
-    }
-    properties {
-      id: "to_point_position"
-      value: "785.0, 90.0, 0.0"
-      type: PROPERTY_TYPE_VECTOR3
-    }
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
   id: "last_room_human1"
   prototype: "/main/game/characters/human/human.go"
   position {
     x: 914.0
     y: 126.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  component_properties {
-    id: "script"
-    properties {
-      id: "activation"
-      value: "false"
-      type: PROPERTY_TYPE_BOOLEAN
-    }
-    properties {
-      id: "id_activation"
-      value: "last_room"
-      type: PROPERTY_TYPE_HASH
-    }
-    properties {
-      id: "hflip"
-      value: "true"
-      type: PROPERTY_TYPE_BOOLEAN
-    }
-    properties {
-      id: "animation_running"
-      value: "true"
-      type: PROPERTY_TYPE_BOOLEAN
-    }
-    properties {
-      id: "to_point"
-      value: "true"
-      type: PROPERTY_TYPE_BOOLEAN
-    }
-    properties {
-      id: "to_point_position"
-      value: "785.0, 90.0, 0.0"
-      type: PROPERTY_TYPE_VECTOR3
-    }
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "last_room_human2"
-  prototype: "/main/game/characters/human/human.go"
-  position {
-    x: 940.0
-    y: 113.0
     z: 0.0
   }
   rotation {
@@ -1906,59 +1560,6 @@ instances {
   }
 }
 instances {
-  id: "last_room_human4"
-  prototype: "/main/game/characters/human/human.go"
-  position {
-    x: 941.0
-    y: 87.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  component_properties {
-    id: "script"
-    properties {
-      id: "activation"
-      value: "false"
-      type: PROPERTY_TYPE_BOOLEAN
-    }
-    properties {
-      id: "id_activation"
-      value: "last_room"
-      type: PROPERTY_TYPE_HASH
-    }
-    properties {
-      id: "hflip"
-      value: "true"
-      type: PROPERTY_TYPE_BOOLEAN
-    }
-    properties {
-      id: "animation_running"
-      value: "true"
-      type: PROPERTY_TYPE_BOOLEAN
-    }
-    properties {
-      id: "to_point"
-      value: "true"
-      type: PROPERTY_TYPE_BOOLEAN
-    }
-    properties {
-      id: "to_point_position"
-      value: "785.0, 90.0, 0.0"
-      type: PROPERTY_TYPE_VECTOR3
-    }
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
   id: "last_room_human5"
   prototype: "/main/game/characters/human/human.go"
   position {
@@ -2012,117 +1613,11 @@ instances {
   }
 }
 instances {
-  id: "last_room_human6"
-  prototype: "/main/game/characters/human/human.go"
-  position {
-    x: 942.0
-    y: 57.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  component_properties {
-    id: "script"
-    properties {
-      id: "activation"
-      value: "false"
-      type: PROPERTY_TYPE_BOOLEAN
-    }
-    properties {
-      id: "id_activation"
-      value: "last_room"
-      type: PROPERTY_TYPE_HASH
-    }
-    properties {
-      id: "hflip"
-      value: "true"
-      type: PROPERTY_TYPE_BOOLEAN
-    }
-    properties {
-      id: "animation_running"
-      value: "true"
-      type: PROPERTY_TYPE_BOOLEAN
-    }
-    properties {
-      id: "to_point"
-      value: "true"
-      type: PROPERTY_TYPE_BOOLEAN
-    }
-    properties {
-      id: "to_point_position"
-      value: "785.0, 90.0, 0.0"
-      type: PROPERTY_TYPE_VECTOR3
-    }
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
   id: "last_room_human7"
   prototype: "/main/game/characters/human/human.go"
   position {
     x: 914.0
     y: 38.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  component_properties {
-    id: "script"
-    properties {
-      id: "activation"
-      value: "false"
-      type: PROPERTY_TYPE_BOOLEAN
-    }
-    properties {
-      id: "id_activation"
-      value: "last_room"
-      type: PROPERTY_TYPE_HASH
-    }
-    properties {
-      id: "hflip"
-      value: "true"
-      type: PROPERTY_TYPE_BOOLEAN
-    }
-    properties {
-      id: "animation_running"
-      value: "true"
-      type: PROPERTY_TYPE_BOOLEAN
-    }
-    properties {
-      id: "to_point"
-      value: "true"
-      type: PROPERTY_TYPE_BOOLEAN
-    }
-    properties {
-      id: "to_point_position"
-      value: "785.0, 90.0, 0.0"
-      type: PROPERTY_TYPE_VECTOR3
-    }
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "last_room_human8"
-  prototype: "/main/game/characters/human/human.go"
-  position {
-    x: 936.0
-    y: 22.0
     z: 0.0
   }
   rotation {
@@ -2267,107 +1762,11 @@ instances {
   }
 }
 instances {
-  id: "last_room_zombie1"
-  prototype: "/main/game/characters/zombie_enemy/zombie_enemy_first_level.go"
-  position {
-    x: 1066.0
-    y: 115.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  component_properties {
-    id: "script"
-    properties {
-      id: "activation"
-      value: "false"
-      type: PROPERTY_TYPE_BOOLEAN
-    }
-    properties {
-      id: "id_activation"
-      value: "last_room"
-      type: PROPERTY_TYPE_HASH
-    }
-    properties {
-      id: "human_id"
-      value: "2.0"
-      type: PROPERTY_TYPE_NUMBER
-    }
-    properties {
-      id: "to_point"
-      value: "true"
-      type: PROPERTY_TYPE_BOOLEAN
-    }
-    properties {
-      id: "to_point_position"
-      value: "775.0, 90.0, 0.0"
-      type: PROPERTY_TYPE_VECTOR3
-    }
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
   id: "last_room_zombie2"
   prototype: "/main/game/characters/zombie_enemy/zombie_enemy_first_level.go"
   position {
     x: 1049.0
     y: 90.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  component_properties {
-    id: "script"
-    properties {
-      id: "activation"
-      value: "false"
-      type: PROPERTY_TYPE_BOOLEAN
-    }
-    properties {
-      id: "id_activation"
-      value: "last_room"
-      type: PROPERTY_TYPE_HASH
-    }
-    properties {
-      id: "human_id"
-      value: "2.0"
-      type: PROPERTY_TYPE_NUMBER
-    }
-    properties {
-      id: "to_point"
-      value: "true"
-      type: PROPERTY_TYPE_BOOLEAN
-    }
-    properties {
-      id: "to_point_position"
-      value: "775.0, 90.0, 0.0"
-      type: PROPERTY_TYPE_VECTOR3
-    }
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "last_room_zombie3"
-  prototype: "/main/game/characters/zombie_enemy/zombie_enemy_first_level.go"
-  position {
-    x: 1066.0
-    y: 58.0
     z: 0.0
   }
   rotation {
@@ -2459,125 +1858,11 @@ instances {
   }
 }
 instances {
-  id: "last_room_zombie5"
-  prototype: "/main/game/characters/zombie_enemy/zombie_enemy_first_level.go"
-  position {
-    x: 1198.0
-    y: 138.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  component_properties {
-    id: "script"
-    properties {
-      id: "activation"
-      value: "false"
-      type: PROPERTY_TYPE_BOOLEAN
-    }
-    properties {
-      id: "id_activation"
-      value: "last_room"
-      type: PROPERTY_TYPE_HASH
-    }
-    properties {
-      id: "human_id"
-      value: "2.0"
-      type: PROPERTY_TYPE_NUMBER
-    }
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
   id: "last_room_zombie6"
   prototype: "/main/game/characters/zombie_enemy/zombie_enemy_first_level.go"
   position {
-    x: 1212.0
+    x: 1221.0
     y: 117.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  component_properties {
-    id: "script"
-    properties {
-      id: "activation"
-      value: "false"
-      type: PROPERTY_TYPE_BOOLEAN
-    }
-    properties {
-      id: "id_activation"
-      value: "last_room"
-      type: PROPERTY_TYPE_HASH
-    }
-    properties {
-      id: "human_id"
-      value: "2.0"
-      type: PROPERTY_TYPE_NUMBER
-    }
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "last_room_zombie7"
-  prototype: "/main/game/characters/zombie_enemy/zombie_enemy_first_level.go"
-  position {
-    x: 1191.0
-    y: 104.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  component_properties {
-    id: "script"
-    properties {
-      id: "activation"
-      value: "false"
-      type: PROPERTY_TYPE_BOOLEAN
-    }
-    properties {
-      id: "id_activation"
-      value: "last_room"
-      type: PROPERTY_TYPE_HASH
-    }
-    properties {
-      id: "human_id"
-      value: "2.0"
-      type: PROPERTY_TYPE_NUMBER
-    }
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "last_room_zombie8"
-  prototype: "/main/game/characters/zombie_enemy/zombie_enemy_first_level.go"
-  position {
-    x: 1208.0
-    y: 87.0
     z: 0.0
   }
   rotation {
@@ -2614,8 +1899,8 @@ instances {
   id: "last_room_zombie9"
   prototype: "/main/game/characters/zombie_enemy/zombie_enemy_first_level.go"
   position {
-    x: 1190.0
-    y: 60.0
+    x: 1221.0
+    y: 59.0
     z: 0.0
   }
   rotation {
@@ -2638,7 +1923,7 @@ instances {
     }
     properties {
       id: "human_id"
-      value: "2.0"
+      value: "1.0"
       type: PROPERTY_TYPE_NUMBER
     }
   }
@@ -2649,11 +1934,11 @@ instances {
   }
 }
 instances {
-  id: "last_room_zombie10"
-  prototype: "/main/game/characters/zombie_enemy/zombie_enemy_first_level.go"
+  id: "two_room_human6"
+  prototype: "/main/game/characters/human/human.go"
   position {
-    x: 1212.0
-    y: 39.0
+    x: 505.0
+    y: 140.0
     z: 0.0
   }
   rotation {
@@ -2671,13 +1956,221 @@ instances {
     }
     properties {
       id: "id_activation"
-      value: "last_room"
+      value: "two_room"
+      type: PROPERTY_TYPE_HASH
+    }
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room_human7"
+  prototype: "/main/game/characters/human/human.go"
+  position {
+    x: 412.0
+    y: 201.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "script"
+    properties {
+      id: "activation"
+      value: "false"
+      type: PROPERTY_TYPE_BOOLEAN
+    }
+    properties {
+      id: "id_activation"
+      value: "two_room"
+      type: PROPERTY_TYPE_HASH
+    }
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room_human8"
+  prototype: "/main/game/characters/human/human.go"
+  position {
+    x: 410.0
+    y: 242.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "script"
+    properties {
+      id: "activation"
+      value: "false"
+      type: PROPERTY_TYPE_BOOLEAN
+    }
+    properties {
+      id: "id_activation"
+      value: "two_room"
+      type: PROPERTY_TYPE_HASH
+    }
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room_human9"
+  prototype: "/main/game/characters/human/human.go"
+  position {
+    x: 441.0
+    y: 242.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "script"
+    properties {
+      id: "activation"
+      value: "false"
+      type: PROPERTY_TYPE_BOOLEAN
+    }
+    properties {
+      id: "id_activation"
+      value: "two_room"
+      type: PROPERTY_TYPE_HASH
+    }
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room_human10"
+  prototype: "/main/game/characters/human/human.go"
+  position {
+    x: 585.0
+    y: 243.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "script"
+    properties {
+      id: "activation"
+      value: "false"
+      type: PROPERTY_TYPE_BOOLEAN
+    }
+    properties {
+      id: "id_activation"
+      value: "two_room"
+      type: PROPERTY_TYPE_HASH
+    }
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room_human11"
+  prototype: "/main/game/characters/human/human.go"
+  position {
+    x: 552.0
+    y: 241.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "script"
+    properties {
+      id: "activation"
+      value: "false"
+      type: PROPERTY_TYPE_BOOLEAN
+    }
+    properties {
+      id: "id_activation"
+      value: "two_room"
+      type: PROPERTY_TYPE_HASH
+    }
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room_zombie1"
+  prototype: "/main/game/characters/zombie_enemy/zombie_enemy_first_level.go"
+  position {
+    x: 772.0
+    y: 101.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "script"
+    properties {
+      id: "activation"
+      value: "false"
+      type: PROPERTY_TYPE_BOOLEAN
+    }
+    properties {
+      id: "id_activation"
+      value: "end_two_room"
       type: PROPERTY_TYPE_HASH
     }
     properties {
       id: "human_id"
       value: "2.0"
       type: PROPERTY_TYPE_NUMBER
+    }
+    properties {
+      id: "to_point"
+      value: "true"
+      type: PROPERTY_TYPE_BOOLEAN
+    }
+    properties {
+      id: "to_point_position"
+      value: "565.0, 100.0, 0.0"
+      type: PROPERTY_TYPE_VECTOR3
     }
   }
   scale3 {
@@ -2853,7 +2346,7 @@ embedded_instances {
   "}\n"
   ""
   position {
-    x: 715.0
+    x: 716.0
     y: 96.0
     z: 0.0
   }
@@ -3774,188 +3267,6 @@ embedded_instances {
   }
 }
 embedded_instances {
-  id: "activation_point2"
-  data: "components {\n"
-  "  id: \"activation_point\"\n"
-  "  component: \"/main/game/points/activation_point.script\"\n"
-  "  position {\n"
-  "    x: 0.0\n"
-  "    y: 0.0\n"
-  "    z: 0.0\n"
-  "  }\n"
-  "  rotation {\n"
-  "    x: 0.0\n"
-  "    y: 0.0\n"
-  "    z: 0.0\n"
-  "    w: 1.0\n"
-  "  }\n"
-  "  properties {\n"
-  "    id: \"id_activation\"\n"
-  "    value: \"left_palat\"\n"
-  "    type: PROPERTY_TYPE_HASH\n"
-  "  }\n"
-  "  property_decls {\n"
-  "  }\n"
-  "}\n"
-  "embedded_components {\n"
-  "  id: \"collisionobject\"\n"
-  "  type: \"collisionobject\"\n"
-  "  data: \"collision_shape: \\\"\\\"\\n"
-  "type: COLLISION_OBJECT_TYPE_TRIGGER\\n"
-  "mass: 0.0\\n"
-  "friction: 0.1\\n"
-  "restitution: 0.5\\n"
-  "group: \\\"point\\\"\\n"
-  "mask: \\\"default\\\"\\n"
-  "embedded_collision_shape {\\n"
-  "  shapes {\\n"
-  "    shape_type: TYPE_BOX\\n"
-  "    position {\\n"
-  "      x: 0.0\\n"
-  "      y: 0.0\\n"
-  "      z: 0.0\\n"
-  "    }\\n"
-  "    rotation {\\n"
-  "      x: 0.0\\n"
-  "      y: 0.0\\n"
-  "      z: 0.0\\n"
-  "      w: 1.0\\n"
-  "    }\\n"
-  "    index: 0\\n"
-  "    count: 3\\n"
-  "    id: \\\"\\\"\\n"
-  "  }\\n"
-  "  data: 23.573896\\n"
-  "  data: 38.41266\\n"
-  "  data: 10.0\\n"
-  "}\\n"
-  "linear_damping: 0.0\\n"
-  "angular_damping: 0.0\\n"
-  "locked_rotation: false\\n"
-  "bullet: false\\n"
-  "\"\n"
-  "  position {\n"
-  "    x: 0.0\n"
-  "    y: 0.0\n"
-  "    z: 0.0\n"
-  "  }\n"
-  "  rotation {\n"
-  "    x: 0.0\n"
-  "    y: 0.0\n"
-  "    z: 0.0\n"
-  "    w: 1.0\n"
-  "  }\n"
-  "}\n"
-  ""
-  position {
-    x: 391.0
-    y: 98.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-embedded_instances {
-  id: "activation_point3"
-  data: "components {\n"
-  "  id: \"activation_point\"\n"
-  "  component: \"/main/game/points/activation_point.script\"\n"
-  "  position {\n"
-  "    x: 0.0\n"
-  "    y: 0.0\n"
-  "    z: 0.0\n"
-  "  }\n"
-  "  rotation {\n"
-  "    x: 0.0\n"
-  "    y: 0.0\n"
-  "    z: 0.0\n"
-  "    w: 1.0\n"
-  "  }\n"
-  "  properties {\n"
-  "    id: \"id_activation\"\n"
-  "    value: \"right_palat\"\n"
-  "    type: PROPERTY_TYPE_HASH\n"
-  "  }\n"
-  "  property_decls {\n"
-  "  }\n"
-  "}\n"
-  "embedded_components {\n"
-  "  id: \"collisionobject\"\n"
-  "  type: \"collisionobject\"\n"
-  "  data: \"collision_shape: \\\"\\\"\\n"
-  "type: COLLISION_OBJECT_TYPE_TRIGGER\\n"
-  "mass: 0.0\\n"
-  "friction: 0.1\\n"
-  "restitution: 0.5\\n"
-  "group: \\\"point\\\"\\n"
-  "mask: \\\"default\\\"\\n"
-  "embedded_collision_shape {\\n"
-  "  shapes {\\n"
-  "    shape_type: TYPE_BOX\\n"
-  "    position {\\n"
-  "      x: 0.0\\n"
-  "      y: 0.0\\n"
-  "      z: 0.0\\n"
-  "    }\\n"
-  "    rotation {\\n"
-  "      x: 0.0\\n"
-  "      y: 0.0\\n"
-  "      z: 0.0\\n"
-  "      w: 1.0\\n"
-  "    }\\n"
-  "    index: 0\\n"
-  "    count: 3\\n"
-  "    id: \\\"\\\"\\n"
-  "  }\\n"
-  "  data: 23.573896\\n"
-  "  data: 50.0\\n"
-  "  data: 10.0\\n"
-  "}\\n"
-  "linear_damping: 0.0\\n"
-  "angular_damping: 0.0\\n"
-  "locked_rotation: false\\n"
-  "bullet: false\\n"
-  "\"\n"
-  "  position {\n"
-  "    x: 0.0\n"
-  "    y: 0.0\n"
-  "    z: 0.0\n"
-  "  }\n"
-  "  rotation {\n"
-  "    x: 0.0\n"
-  "    y: 0.0\n"
-  "    z: 0.0\n"
-  "    w: 1.0\n"
-  "  }\n"
-  "}\n"
-  ""
-  position {
-    x: 545.0
-    y: 98.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-embedded_instances {
   id: "start_point"
   data: ""
   position {
@@ -4508,6 +3819,97 @@ embedded_instances {
   position {
     x: 1242.0
     y: 95.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+embedded_instances {
+  id: "activation_point"
+  data: "components {\n"
+  "  id: \"activation_point\"\n"
+  "  component: \"/main/game/points/activation_point.script\"\n"
+  "  position {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "  }\n"
+  "  rotation {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "    w: 1.0\n"
+  "  }\n"
+  "  properties {\n"
+  "    id: \"id_activation\"\n"
+  "    value: \"end_two_room\"\n"
+  "    type: PROPERTY_TYPE_HASH\n"
+  "  }\n"
+  "  property_decls {\n"
+  "  }\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"collisionobject\"\n"
+  "  type: \"collisionobject\"\n"
+  "  data: \"collision_shape: \\\"\\\"\\n"
+  "type: COLLISION_OBJECT_TYPE_TRIGGER\\n"
+  "mass: 0.0\\n"
+  "friction: 0.1\\n"
+  "restitution: 0.5\\n"
+  "group: \\\"point\\\"\\n"
+  "mask: \\\"default\\\"\\n"
+  "embedded_collision_shape {\\n"
+  "  shapes {\\n"
+  "    shape_type: TYPE_BOX\\n"
+  "    position {\\n"
+  "      x: 0.0\\n"
+  "      y: 0.0\\n"
+  "      z: 0.0\\n"
+  "    }\\n"
+  "    rotation {\\n"
+  "      x: 0.0\\n"
+  "      y: 0.0\\n"
+  "      z: 0.0\\n"
+  "      w: 1.0\\n"
+  "    }\\n"
+  "    index: 0\\n"
+  "    count: 3\\n"
+  "    id: \\\"\\\"\\n"
+  "  }\\n"
+  "  data: 26.184015\\n"
+  "  data: 51.581432\\n"
+  "  data: 10.0\\n"
+  "}\\n"
+  "linear_damping: 0.0\\n"
+  "angular_damping: 0.0\\n"
+  "locked_rotation: false\\n"
+  "bullet: false\\n"
+  "\"\n"
+  "  position {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "  }\n"
+  "  rotation {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "    w: 1.0\n"
+  "  }\n"
+  "}\n"
+  ""
+  position {
+    x: 566.0
+    y: 99.0
     z: 0.0
   }
   rotation {
