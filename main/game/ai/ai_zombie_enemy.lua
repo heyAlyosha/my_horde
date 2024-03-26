@@ -10,7 +10,7 @@ function M.search_target(self)
 				local visible_item = visible_items[1]
 				-- Если объект существует или он ценнее текущего
 				
-				if not self.target or (self.target_useful and self.target_useful < visible_item.target_useful) then
+				if not self.target or (self.target_current_useful and self.target_current_useful < visible_item.target_useful) then
 					-- Если нет цели
 					if go_controller.is_object(visible_item.url) then
 						if self.target and self.target_id_point and go_controller.is_object(self.target) then
@@ -19,7 +19,6 @@ function M.search_target(self)
 
 						-- Помечаем целью
 						self.target = visible_item.url
-						self.target_useful = visible_item.target_useful
 
 						self.condition_ai = hash("to_target")
 						M.behavior(self)
@@ -72,12 +71,14 @@ function M.behavior(self)
 
 			elseif not ai_attack.check_distance_attack(self, self.target, handle_distantion_error) then
 				-- Цель убежала далеко возвращаемся к ней
+				self.no_view = true
 				self.condition_ai = hash("to_target")
 				M.behavior(self)
 
 			else
 				-- Цель есть, добежали
 				character_animations.play(self, "idle")
+				self.no_view = true
 				local target_damage = self.target
 				character_attack.attack(self, self.target, target_damage)
 			end

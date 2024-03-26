@@ -122,14 +122,30 @@ end
 function on_message(self, message_id, message, sender)
 	if message_id == hash("damage") then
 		-- Урон
-		if message.parent then
+		-- Меняем прицеливание 
+		if message.parent and (not self.target or vmath.length(go.get_position(self.target) - go.get_position()) > 20) then
 			if self.target then
-				ai_attack.delete_target(self, self.target)
+				-- Проверсяем, если новая цель ценнее, чем старая, меняем на неё
+				local url_script_target = go_controller.url_script(self.target)
+				local url_script_new_target = go_controller.url_script(message.parent)
+				local target_useful = go.get(url_script_target, "target_useful") or 0
+				local new_target_useful = go.get(url_script_new_target, "target_useful") or 0
+				pprint("target_useful", message.parent, target_useful, new_target_useful)
+
+				if target_useful > new_target_useful then
+					return true
+				else
+					ai_attack.delete_target(self, self.target)
+				end
 			end
+
+			pprint("set_target", message.parent)
 			self.target = go_controller.url_object(message.parent)
 			self.condition_ai = hash("to_target")
 			ai_zombie_enemy.behavior(self)
 		end
+
+		-- Наносим урон
 		local animation_death = hash("effect_infection")
 		character_damage.damage_zombie(self, message, animation_death)
 
