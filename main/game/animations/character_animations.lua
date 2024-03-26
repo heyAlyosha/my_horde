@@ -82,6 +82,7 @@ function M.damage(self, from_object_damage, handle)
 	if not self.particle then
 		local duration = 0.15
 		local position = go.get_position()
+		local last_position = go.get_position()
 		local dir = go.get_position(from_object_damage) - position
 		local particle_name
 
@@ -107,9 +108,28 @@ function M.damage(self, from_object_damage, handle)
 		live_bar.position_to(self, position, duration)
 		position = position_functions.go_get_perspective_z(position)
 
-		go.animate(".", "position.x", go.PLAYBACK_ONCE_FORWARD, position.x, go.EASING_LINEAR, duration, 0)
-		go.animate(".", "position.y", go.PLAYBACK_ONCE_PINGPONG, position.y + self.damage_animate_y, go.EASING_LINEAR, duration, 0)
-		go.animate(".", "position.z", go.PLAYBACK_ONCE_FORWARD, position.z, go.EASING_LINEAR, duration, 0)
+		if not self.animate_position_damage then
+			self.animate_position_damage = true
+			--M.play(self, "idle")
+			go.animate(".", "position.x", go.PLAYBACK_ONCE_FORWARD, position.x, go.EASING_LINEAR, duration, 0)
+			go.animate(".", "position.y", go.PLAYBACK_ONCE_PINGPONG, position.y + self.damage_animate_y, go.EASING_LINEAR, duration, 0)
+			go.animate(".", "position.z", go.PLAYBACK_ONCE_FORWARD, position.z, go.EASING_LINEAR, duration, 0)
+
+			timer.delay(duration, false, function (self)
+				local dir_from = go.get_position() - last_position
+				if self.damage_animate_x > 0 and vmath.length(dir_from) > 0 then
+					M.play(self, "move")
+					--sprite.set_hflip("#body", dir_from.x > 0)
+					go.animate(".", "position", go.PLAYBACK_ONCE_FORWARD, last_position, go.EASING_LINEAR, duration, 0, function (self)
+						M.play(self, "idle")
+						self.animate_position_damage = nil
+					end)
+				else
+					self.animate_position_damage = nil
+					--M.play(self, "idle")
+				end
+			end)
+		end
 
 		-- Покраснение
 		go.set("#body", "tint", vmath.vector4(1, 0.6, 0.6, 1)) -- <1>

@@ -19,7 +19,7 @@ go.property("attack_type", hash("bullet_hit"))
 go.property("bullet_damage", 0.25)
 go.property("bullet_distantion", 120)
 go.property("damage_animate_x", 0)
-go.property("damage_animate_y", 1)
+go.property("damage_animate_y", 3)
 go.property("command", hash("zombie_enemy"))
 go.property("target", msg.url())
 go.property("target_dynamic", true)
@@ -62,12 +62,12 @@ function init(self)
 	go_controller.object_items_spawn_to_map(self)
 
 	self.targets_points = {
-		vmath.vector3(12, 6, 0),
-		vmath.vector3(15, 0, 0),
-		vmath.vector3(12, -6, 0),
-		vmath.vector3(-12, 6, 0),
-		vmath.vector3(-15, 0, 0),
-		vmath.vector3(-12, -6, 0),
+		vmath.vector3(14, 6, 0),
+		vmath.vector3(17, 0, 0),
+		vmath.vector3(14, -6, 0),
+		vmath.vector3(-14, 6, 0),
+		vmath.vector3(-17, 0, 0),
+		vmath.vector3(-14, -6, 0),
 	}
 
 	-- Добавляем активацию объекта в скрипт карты
@@ -123,8 +123,8 @@ function on_message(self, message_id, message, sender)
 	if message_id == hash("damage") then
 		-- Урон
 		-- Меняем прицеливание 
-		if message.parent and (not self.target or vmath.length(go.get_position(self.target) - go.get_position()) > 20) then
-			if self.target then
+		if message.parent and (not self.target or not go_controller.is_object(self.target) or vmath.length(go.get_position(self.target) - go.get_position()) > 20) then
+			if self.target and go_controller.is_object(self.target) then
 				-- Проверсяем, если новая цель ценнее, чем старая, меняем на неё
 				local url_script_target = go_controller.url_script(self.target)
 				local url_script_new_target = go_controller.url_script(message.parent)
