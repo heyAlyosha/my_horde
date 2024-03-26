@@ -38,7 +38,7 @@ function M.visible(self, visible_items)
 	-- Смотрим устаревшие
 	for key_target, item in pairs(self.target_objects) do
 		if item.iteration_visible_objects ~= self.iteration_visible_objects then
-			M.delete_target(self, key_target, item)
+			M.delete_target(self, key_target)
 		end
 	end
 
@@ -60,7 +60,8 @@ function M.add_target(self, key_target, item)
 end
 
 -- Удаление цели
-function M.delete_target(self, key_target, item)
+function M.delete_target(self, key_target)
+	local item = self.target_objects[key_target]
 	self.target_objects[key_target] = nil
 
 	-- Перенаправляем зомбиков на другие объекты
@@ -149,6 +150,10 @@ end
 
 -- Удаление цели зомбику
 function M.delete_zombie_target(self, zombie)
+	if not zombie then
+		return
+	end
+
 	local target = self.target_objects[zombie.target_key]
 	if target then
 		for i, url_zombie in ipairs(target.enemies) do

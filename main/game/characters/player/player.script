@@ -228,7 +228,13 @@ function on_message(self, message_id, message, sender)
 	elseif message_id == hash("zombie_attack_death") then
 		-- Атакуюющий зомбик умер
 		local url = go_controller.url_object(sender)
+		horde_attack.delete_zombie_target(self, self.zombies[go_controller.url_to_key(url)])
 		self.zombies[go_controller.url_to_key(url)] = nil
+
+	elseif message_id == hash("zombie_ruin_target") then
+		-- Зомбик уничтожил объект
+		local key_target = go_controller.url_to_key(message.target)
+		horde_attack.delete_target(self, key_target)
 
 	elseif message_id == hash("add_horde") then
 		-- Добавляем зомбика в орду

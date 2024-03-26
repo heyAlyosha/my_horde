@@ -58,6 +58,9 @@ function M.behavior(self)
 		local handle_fire = function (self)
 			if not self.target or not go_controller.is_object(self.target) then
 				-- Цель пропала, возвращаемся в орду
+				if self.target then
+					msg.post(self.parent, "zombie_ruin_target", {target = self.target})
+				end
 				self.condition_ai = nil
 				M.behavior(self)
 

@@ -4,7 +4,7 @@ instances {
   prototype: "/main/game/levels/levels/prototypes/prototype_enemy/prototype_enemy.go"
   position {
     x: 0.0
-    y: 0.0
+    y: 1.0
     z: 0.0
   }
   rotation {
@@ -43,8 +43,8 @@ instances {
   id: "player"
   prototype: "/main/game/characters/player/player_first_level.go"
   position {
-    x: 495.0
-    y: 170.0
+    x: 862.0
+    y: 197.0
     z: 1.0
   }
   rotation {
@@ -57,7 +57,7 @@ instances {
     id: "script"
     properties {
       id: "horde_count"
-      value: "10.0"
+      value: "20.0"
       type: PROPERTY_TYPE_NUMBER
     }
   }
@@ -273,6 +273,66 @@ instances {
   position {
     x: 439.0
     y: 199.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "zombie_enemy_first_level2"
+  prototype: "/main/game/characters/zombie_enemy/zombie_enemy_first_level.go"
+  position {
+    x: 785.0
+    y: 196.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "zombie_enemy_first_level6"
+  prototype: "/main/game/characters/zombie_enemy/zombie_enemy_first_level.go"
+  position {
+    x: 960.0
+    y: 201.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "zombie_enemy_first_level7"
+  prototype: "/main/game/characters/zombie_enemy/zombie_enemy_first_level.go"
+  position {
+    x: 885.0
+    y: 262.0
     z: 0.0
   }
   rotation {
