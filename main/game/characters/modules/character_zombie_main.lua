@@ -97,7 +97,6 @@ function M.add_zombie_animation(self, type_from_zombie, key, index)
 	}
 
 	local url = msg.url(factory.create("#zombie_animation_horde_factory", position, rotation, properties))
-	pprint(url)
 	table.insert(self.animation_zombies, {
 		url = url,
 		skin_id = skin_id,

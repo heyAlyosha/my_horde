@@ -62,6 +62,22 @@ end
 -- Удаление цели
 function M.delete_target(self, key_target, item)
 	self.target_objects[key_target] = nil
+
+	-- Перенаправляем зомбиков на другие объекты
+	local targets = M.get_targets_sort(self)
+	local index_target = #targets
+	for i, zombie_url in ipairs(item.enemies) do
+		local target_item = targets[index_target]
+		local zombie = self.zombies[go_controller.url_to_key(zombie_url)]
+		if zombie and target_item then
+			M.add_zombie_target(self, zombie, target_item)
+
+			index_target = index_target - 1
+			if index_target < 1 then
+				index_target = #targets
+			end
+		end
+	end
 end
 
 -- Цели по зомбикам на них
@@ -134,18 +150,20 @@ end
 -- Удаление цели зомбику
 function M.delete_zombie_target(self, zombie)
 	local target = self.target_objects[zombie.target_key]
-	for i, url_zombie in ipairs(target.enemies) do
-		if go_controller.url_to_key(url_zombie) == go_controller.url_to_key(zombie.url) then
-			table.remove(target.enemies, i)
+	if target then
+		for i, url_zombie in ipairs(target.enemies) do
+			if go_controller.url_to_key(url_zombie) == go_controller.url_to_key(zombie.url) then
+				table.remove(target.enemies, i)
+			end
+		end
+		target.targets_count = #target.enemies
+
+		-- Если это первая цель, записываем ему
+		if #target.enemies > 0 then
+			msg.post(target.url, "add_target", {target = target.enemies[1]})
 		end
 	end
-	target.targets_count = #target.enemies
 	zombie.target_key = nil
-
-	-- Если это первая цель, записываем ему
-	if #target.enemies > 0 then
-		msg.post(target.url, "add_target", {target = target.enemies[1]})
-	end
 end
 
 return M
