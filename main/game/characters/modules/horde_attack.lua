@@ -171,24 +171,35 @@ function M.delete_zombie_target(self, zombie)
 	zombie.target_key = nil
 end
 
+-- Добавление зомбика к самому маленькому отряду
+function M.add_zombie_min_target(self, zombie)
+	local targets_sort = M.get_targets_sort(self)
+
+	-- Добавляем цель для самой малочисленной группы зомбиков
+	if #targets_sort > 0 then
+		local min_target = targets_sort[#targets_sort]
+		M.add_zombie_target(self, zombie, min_target)
+	else
+		M.delete_zombie_target(self, zombie)
+	end
+end
+
 -- Смерть зомбика
 function M.zombie_death(self, zombie)
-	
 	if zombie and zombie.target_key then
 		local target = self.target_objects[zombie.target_key]
-		horde_attack.delete_zombie_target(self, zombie)
+		M.delete_zombie_target(self, zombie)
 
 		--pprint("zombie_death", zombie.target_key, self.target_objects)
 		-- Если осталась цель
 		if target then
 			--Находим самую численную группу
 			local target_sort_max = M.get_targets_sort(self)[1]
-			print(target.targets_count, target_sort_max.targets_count)
 			if target_sort_max and target_sort_max.targets_count > 1 and target.targets_count < target_sort_max.targets_count then
 				local last_zombie_url = target_sort_max.enemies[#target_sort_max.enemies]
 				local zombie = self.zombies[go_controller.url_to_key(last_zombie_url)]
 				if zombie then
-					horde_attack.add_zombie_target(self, zombie, target)
+					M.add_zombie_target(self, zombie, target)
 				end
 			end
 		end

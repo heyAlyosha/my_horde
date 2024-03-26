@@ -347,4 +347,64 @@ instances {
     z: 1.0
   }
 }
+instances {
+  id: "two_room9"
+  prototype: "/main/game/characters/human/human.go"
+  position {
+    x: 820.0
+    y: 148.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room10"
+  prototype: "/main/game/characters/human/human.go"
+  position {
+    x: 853.0
+    y: 149.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room11"
+  prototype: "/main/game/characters/human/human.go"
+  position {
+    x: 889.0
+    y: 150.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
 scale_along_z: 0
