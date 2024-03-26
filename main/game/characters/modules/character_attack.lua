@@ -2,7 +2,7 @@
 local M = {}
 
 --Запуск атаки
-function M.attack(self, url_object)
+function M.attack(self, url_object, target_damage)
 	local url_object = url_object or msg.url(self.message.other_id)
 
 	if not go_controller.is_object(url_object) then
@@ -17,17 +17,17 @@ function M.attack(self, url_object)
 		for i = 1, self.fire_queue - 1 do
 			add_time = add_time + 0.2
 			timer.delay(add_time, false, function (self)
-				M.attack_bullet(self, url_object)
+				M.attack_bullet(self, url_object, target_damage)
 			end)
 		end
 		return true
 	else
-		return M.attack_hit(self, url_object)
+		return M.attack_hit(self, url_object, target_damage)
 	end
 end
 
 -- Дальний бой
-function M.attack_bullet(self, url_object)
+function M.attack_bullet(self, url_object, target_damage)
 	self.type_bullet = hash("bullet_default")
 
 	-- Место спавна пули
@@ -45,6 +45,7 @@ function M.attack_bullet(self, url_object)
 		damage = self.damage,
 		damage_count_object = 1,
 		parent = msg.url(),
+		target_damage = target_damage
 	}
 
 	-- Место спавна пули
@@ -80,7 +81,7 @@ function M.attack_bullet(self, url_object)
 end
 
 -- Ближний бой
-function M.attack_hit(self, url_object)
+function M.attack_hit(self, url_object, target_damage)
 	self.type_bullet = hash("bullet_hit")
 
 	-- Место спавна пули
@@ -103,7 +104,8 @@ function M.attack_hit(self, url_object)
 		damage_count_object = 5,
 		type = hash("hit"),
 		parent = msg.url(),
-		visible_attack = self.visible_attack
+		visible_attack = self.visible_attack,
+		target_damage = target_damage
 	}
 
 	-- Место спавна пули

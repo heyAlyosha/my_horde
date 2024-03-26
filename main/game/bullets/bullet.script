@@ -8,6 +8,7 @@ go.property("visible_attack", true)
 go.property("distantion", 150)
 go.property("speed", 150)
 go.property("dir", vmath.vector3())
+go.property("target_damage", msg.url())
 
 function init(self)
 	if self.type == hash("hit") then
@@ -74,9 +75,19 @@ function on_message(self, message_id, message, sender)
 			end
 			-- Проверяем, что объект из другой команды
 			local url_script = msg.url(nil, message.other_id, "script")
+			local other_url = msg.url(message.other_id)
 			local command_object = go.get(url_script, "command")
 
-			if self.command ~= command_object then
+			if go_controller.url_to_key(self.target_damage) ~= go_controller.url_to_key(msg.url()) then
+				-- Есть конкретная цель для атаки
+				if go_controller.url_to_key(other_url) == go_controller.url_to_key(self.target_damage) then
+					-- Наносим урон только ей
+					msg.post(other_url, "damage", {damage = self.damage, parent = self.parent, position = go.get_position()})
+					self.delete = true
+					go.delete()
+				end
+
+			elseif self.command ~= command_object then
 				self.damage_count_object = self.damage_count_object - 1
 				msg.post(message.other_id, "damage", {damage = self.damage, parent = self.parent, position = go.get_position()})
 

@@ -78,7 +78,8 @@ function M.behavior(self)
 			else
 				-- Цель есть, добежали
 				character_animations.play(self, "idle")
-				character_attack.attack(self, self.target)
+				local target_damage = self.target
+				character_attack.attack(self, self.target, target_damage)
 			end
 		end
 		if not self.timer_damage then
