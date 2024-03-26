@@ -43,8 +43,8 @@ instances {
   id: "player"
   prototype: "/main/game/characters/player/player_first_level.go"
   position {
-    x: 53.0
-    y: 181.0
+    x: 495.0
+    y: 170.0
     z: 1.0
   }
   rotation {
@@ -57,7 +57,7 @@ instances {
     id: "script"
     properties {
       id: "horde_count"
-      value: "4.0"
+      value: "10.0"
       type: PROPERTY_TYPE_NUMBER
     }
   }
@@ -93,6 +93,166 @@ instances {
   position {
     x: 0.0
     y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room"
+  prototype: "/main/game/objects/objects_ruin/maneken_skelet.go"
+  position {
+    x: 495.0
+    y: 211.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room1"
+  prototype: "/main/game/characters/human/human.go"
+  position {
+    x: 462.0
+    y: 218.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room2"
+  prototype: "/main/game/objects/objects_ruin/maneken_skelet.go"
+  position {
+    x: 423.0
+    y: 170.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room3"
+  prototype: "/main/game/characters/human/human.go"
+  position {
+    x: 527.0
+    y: 219.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room4"
+  prototype: "/main/game/characters/human/human.go"
+  position {
+    x: 559.0
+    y: 174.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room5"
+  prototype: "/main/game/characters/human/human.go"
+  position {
+    x: 459.0
+    y: 143.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room6"
+  prototype: "/main/game/objects/objects_ruin/maneken_skelet.go"
+  position {
+    x: 498.0
+    y: 134.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room7"
+  prototype: "/main/game/objects/objects_ruin/maneken_skelet.go"
+  position {
+    x: 538.0
+    y: 140.0
     z: 0.0
   }
   rotation {

@@ -84,7 +84,7 @@ function M.add_target(self, url_target)
 
 			-- Если у противника другая цель, меняем её
 			if status and go_controller.url_to_key() ~= go_controller.url_to_key(enemy_target) then
-				msg.post(self.target, "add_target", {target = go_controller.url_object()})
+				--msg.post(self.target, "add_target", {target = go_controller.url_object()})
 			end
 		end
 		return true

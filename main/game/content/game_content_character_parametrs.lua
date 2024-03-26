@@ -30,7 +30,6 @@ function M.set_characteristic(self)
 
 	if characteristics then
 		for k, v in pairs(characteristics) do
-			print("set_characteristic", self.type_object, k, v)
 			self[k] = v
 		end
 	end

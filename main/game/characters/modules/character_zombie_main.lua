@@ -4,6 +4,7 @@ local M = {}
 -- Добавление атакующего зомбика
 function M.add_zombie_attack(self, horde_index, position, target, message)
 	local position = position or go.get_position(item.url)
+	local url_key
 
 	if horde_index and self.horde[horde_index] then
 		-- Из орды
@@ -22,7 +23,7 @@ function M.add_zombie_attack(self, horde_index, position, target, message)
 		}
 		local go_id = factory.create("#zombie_factory", position, rotation, properties)
 		local url = msg.url(go_id)
-		local url_key = go_controller.url_to_key(url)
+		url_key = go_controller.url_to_key(url)
 		self.zombies[url_key] = {
 			id = go_id,
 			url = url,
@@ -31,7 +32,6 @@ function M.add_zombie_attack(self, horde_index, position, target, message)
 			skin_id = item.skin_id,
 			human_id = item.human_id,
 		}
-
 	else
 		-- Из сообщения
 		local properties = {
@@ -43,7 +43,7 @@ function M.add_zombie_attack(self, horde_index, position, target, message)
 		}
 		local go_id = factory.create("#zombie_factory", position, rotation, properties)
 		local url = msg.url(go_id)
-		local url_key = go_controller.url_to_key(url)
+		url_key = go_controller.url_to_key(url)
 		self.zombies[url_key] = {
 			id = go_id,
 			url = url,
@@ -55,6 +55,8 @@ function M.add_zombie_attack(self, horde_index, position, target, message)
 	end
 
 	character_zombie_main.change_horde(self)
+
+	return self.zombies[url_key]
 end
 
 -- Добавление анимированных кружащихся зомбиков
