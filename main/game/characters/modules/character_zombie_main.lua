@@ -19,7 +19,8 @@ function M.add_zombie_attack(self, horde_index, position, target, message)
 			skin_id = item.skin_id,
 			human_id = item.human_id,
 			parent = msg.url(go.get_id()),
-			target = target
+			target = target,
+			position_horde = horde.get_position(self, nil, horde_index)
 		}
 		local go_id = factory.create("#zombie_factory", position, rotation, properties)
 		local url = msg.url(go_id)
@@ -39,7 +40,8 @@ function M.add_zombie_attack(self, horde_index, position, target, message)
 			skin_id = message.skin_id or self.skin_id,
 			human_id = message.human_id or 0,
 			parent = msg.url(go.get_id()),
-			target = target
+			target = target,
+			position_horde = horde.get_position(self, nil, self.size_horde + 1)
 		}
 		local go_id = factory.create("#zombie_factory", position, rotation, properties)
 		local url = msg.url(go_id)
@@ -50,7 +52,7 @@ function M.add_zombie_attack(self, horde_index, position, target, message)
 			url_script = msg.url(nil, go_id, "script"),
 			url_sprite = msg.url(nil, go_id, "body"),
 			skin_id = message.skin_id or self.skin_id,
-			human_id = message.human_id or 0,
+			human_id = message.human_id or 0
 		}
 	end
 
@@ -108,6 +110,7 @@ end
 -- Отслеживание изменений в орде
 function M.change_horde(self)
 	self.horde_count_current =  #self.horde
+
 	local max_index = self.horde_count_current
 	if max_index < 1 then
 		max_index = 1
@@ -129,6 +132,11 @@ function M.change_horde(self)
 			msg.post(url_label, "enable")
 		end
 		label.set_text(url_label, self.horde_count_current)
+	end
+
+	self.size_horde = self.horde_count_current
+	for k, v in pairs(self.zombies) do
+		self.size_horde = self.size_horde + 1
 	end
 end
 

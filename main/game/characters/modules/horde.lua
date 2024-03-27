@@ -166,6 +166,8 @@ end
 
 -- Получение позиции для расположения зомбика
 function M.get_position(self, сenter_position, index_to_horde)
+	local сenter_position = сenter_position or vmath.vector3(0)
+
 	if M.positions[index_to_horde] then
 		-- Если есть кешированный результат
 		return сenter_position + M.positions[index_to_horde]
@@ -214,6 +216,7 @@ end
 -- Дистанция для добавления в орду
 function M.check_distantion_add_horde(self, parent, position_from, position_parent)
 	local target_add_horde = go.get(msg.url(parent.socket, parent.path, "script"), "target_add_horde")
+	
 	local position_parent = position_parent or go.get_position(parent)
 	local position_from = position_from or go.get_position()
 

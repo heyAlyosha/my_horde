@@ -21,6 +21,7 @@ go.property("type_object", hash("zombie_main"))
 go.property("activate", true)
 go.property("horde_count_current", 0)
 go.property("active_input", true)
+go.property("size_horde", 0)
 
 function init(self)
 	msg.post(".", "acquire_input_focus")
@@ -281,7 +282,6 @@ function on_message(self, message_id, message, sender)
 			})
 			go.delete(item.url)
 		end
-		
 
 	elseif message_id == hash("win") then
 		-- Анимация победы

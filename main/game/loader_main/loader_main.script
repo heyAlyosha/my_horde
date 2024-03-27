@@ -92,10 +92,12 @@ function init(self)
 	})
 
 	if false then
+		-- Игровой уровень
 		msg.post("main:/loader_main", "load_level", {
 			company_id = "city_hospital", level_id = 3
 		})
 	else
+		-- Прототип с противниками
 		msg.post("main:/loader_main", "load_level", {
 			company_id = "prototypes", level_id = "prototype_enemy"
 		})

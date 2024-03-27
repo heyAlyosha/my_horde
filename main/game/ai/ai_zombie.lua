@@ -98,8 +98,6 @@ function M.behavior(self)
 	-- К ЦЕЛИ
 	if self.condition_ai == hash("to_target") then
 		-- Прокладываем путь для атаки
-		
-
 		-- НЕ может найти путь для атаки
 		local handle_error = function (self, error_code)
 			-- Не может найти путь для атаки, повторяем поиск
@@ -136,16 +134,16 @@ function M.behavior(self)
 	if not self.condition_ai then
 		-- Ищем путь к месту в орде
 		if self.parent and go_controller.url_to_key(self.parent) ~= go_controller.url_to_key(msg.url()) and go_controller.is_object(self.parent) then
-			self.target_add_horde = go.get_position(self.parent)
+			self.target_add_horde = go.get_position(self.parent) + self.position_horde
 
 			local function handle_success(self)
 				--Добежал до пункта
 				-- Цель до орды
-				self.target_add_horde = go.get_position(self.parent)
+				self.target_add_horde = go.get_position(self.parent) + self.position_horde
 
 				-- Смотрим дистацию до игрока
 				local position_from = go.get_position()
-				if horde.check_distantion_add_horde(self, self.parent, position_from, self.target_add_horde) then
+				if vmath.length(self.target_add_horde - position_from) < 20 then
 					-- Добежал
 					msg.post(self.parent, "add_horde", {
 						skin_id = self.skin_id,
