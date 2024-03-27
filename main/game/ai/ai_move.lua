@@ -134,7 +134,6 @@ function M.move_to_object(self, url, handle_success, handle_error, handle_no_obj
 				handle_error(self, error_code)
 			end
 			--]]
-			print(self.target_position, self.target_vector)
 			M.move_item(self, self.target_position, handle_success)
 		else
 			table.remove(path, 1)

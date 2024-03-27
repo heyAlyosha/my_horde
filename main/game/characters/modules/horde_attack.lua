@@ -3,11 +3,13 @@ local M = {}
 
 function M.visible(self, visible_items)
 	local change_visible = false
+	local add_targets = {}
 	self.target_objects = self.target_objects or {}
 	self.target_objects_useful = self.target_objects_useful or 0
 	-- Итерация просмотра для определения устревших 
 	self.iteration_visible_objects = self.iteration_visible_objects or 0
 	self.iteration_visible_objects = self.iteration_visible_objects + 1
+	
 
 	if visible_items then
 		-- Сортируем
@@ -26,7 +28,7 @@ function M.visible(self, visible_items)
 				-- Была ли уже цель в обзоре орды
 				local key_target = go_controller.url_to_key(item.url)
 				if not self.target_objects[key_target] then
-					M.add_target(self, key_target, item)
+					table.insert(add_targets, M.add_target(self, key_target, item))
 					change_visible = true
 				end
 
@@ -43,7 +45,7 @@ function M.visible(self, visible_items)
 	end
 
 	if change_visible then
-		M.horde_attack(self)
+		M.horde_attack(self, add_targets)
 	end
 
 	-- Генерируем зомбиков, если они есть в орде
@@ -78,6 +80,8 @@ function M.add_target(self, key_target, item)
 		targets_count = 0,
 		enemies = {}
 	}
+
+	return self.target_objects[key_target]
 end
 
 -- Удаление цели
@@ -120,8 +124,8 @@ function M.get_targets_sort(self)
 end
 
 -- Атака орды
-function M.horde_attack(self)
-	local targets = M.get_targets_sort(self)
+function M.horde_attack(self, add_targets)
+	local targets = add_targets or M.get_targets_sort(self)
 
 	local index_target = #targets
 	-- Зомбики из орды
@@ -140,14 +144,34 @@ function M.horde_attack(self)
 	end
 
 	-- Обычные зомбики
+	local index_target = #targets
 	for k, zombie in pairs(self.zombies) do
 		local target_item = targets[index_target]
+		local add_zombie
 
-		M.add_zombie_target(self, zombie, target_item)
+		-- Добавляем цели зомбикам
+		if not zombie.target_key then
+			-- Если у зомбика нет цели
+			
+			M.add_zombie_target(self, zombie, target_item)
+			add_zombie = true
+		elseif not self.target_objects[zombie.target_key] then
+			-- Если цель зомбика удалена
+			
+			M.add_zombie_target(self, zombie, target_item)
+			add_zombie = true
 
-		index_target = index_target - 1
-		if index_target < 1 then
-			index_target = #targets
+		elseif self.target_objects[zombie.target_key].targets_count > target_item.targets_count then
+			-- Если на цели больше з
+			M.add_zombie_target(self, zombie, target_item)
+			add_zombie = true
+		end
+
+		if add_zombie then
+			index_target = index_target - 1
+			if index_target < 1 then
+				index_target = #targets
+			end
 		end
 	end
 end

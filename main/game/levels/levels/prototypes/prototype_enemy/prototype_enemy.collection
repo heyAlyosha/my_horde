@@ -43,8 +43,8 @@ instances {
   id: "player"
   prototype: "/main/game/characters/player/player_first_level.go"
   position {
-    x: 862.0
-    y: 197.0
+    x: 63.0
+    y: 526.0
     z: 1.0
   }
   rotation {
@@ -393,6 +393,1966 @@ instances {
   position {
     x: 889.0
     y: 150.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room12"
+  prototype: "/main/game/objects/objects_ruin/maneken_skelet.go"
+  position {
+    x: 498.0
+    y: 134.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room13"
+  prototype: "/main/game/objects/objects_ruin/maneken_skelet.go"
+  position {
+    x: 324.0
+    y: 603.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room14"
+  prototype: "/main/game/objects/objects_ruin/maneken_skelet.go"
+  position {
+    x: 22.0
+    y: 600.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room15"
+  prototype: "/main/game/objects/objects_ruin/outdoor_flower_big.go"
+  position {
+    x: 87.0
+    y: 600.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room16"
+  prototype: "/main/game/objects/objects_ruin/vending machine_1.go"
+  position {
+    x: 134.0
+    y: 600.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room17"
+  prototype: "/main/game/objects/objects_ruin/vending machine_1.go"
+  position {
+    x: 439.0
+    y: 199.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room18"
+  prototype: "/main/game/objects/objects_ruin/vending machine_1.go"
+  position {
+    x: 53.0
+    y: 599.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room19"
+  prototype: "/main/game/objects/objects_ruin/maneken_skelet.go"
+  position {
+    x: 185.0
+    y: 603.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room20"
+  prototype: "/main/game/objects/objects_ruin/outdoor_flower_big.go"
+  position {
+    x: 200.0
+    y: 603.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room21"
+  prototype: "/main/game/objects/objects_ruin/outdoor_flower_big.go"
+  position {
+    x: 169.0
+    y: 603.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room22"
+  prototype: "/main/game/characters/human/human.go"
+  position {
+    x: 94.0
+    y: 572.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room23"
+  prototype: "/main/game/characters/human/human.go"
+  position {
+    x: 123.0
+    y: 498.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room24"
+  prototype: "/main/game/characters/human/human.go"
+  position {
+    x: 74.0
+    y: 471.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room25"
+  prototype: "/main/game/characters/human/human.go"
+  position {
+    x: 149.0
+    y: 554.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room26"
+  prototype: "/main/game/characters/human/human.go"
+  position {
+    x: 92.0
+    y: 470.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room27"
+  prototype: "/main/game/characters/human/human.go"
+  position {
+    x: 27.0
+    y: 567.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room28"
+  prototype: "/main/game/characters/human/human.go"
+  position {
+    x: 48.0
+    y: 564.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room29"
+  prototype: "/main/game/objects/objects_ruin/vending machine_1.go"
+  position {
+    x: 286.0
+    y: 598.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room30"
+  prototype: "/main/game/objects/objects_ruin/vending machine_1.go"
+  position {
+    x: 356.0
+    y: 598.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room31"
+  prototype: "/main/game/objects/objects_ruin/vending machine_1.go"
+  position {
+    x: 509.0
+    y: 601.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room32"
+  prototype: "/main/game/objects/objects_ruin/vending machine_1.go"
+  position {
+    x: 580.0
+    y: 600.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room33"
+  prototype: "/main/game/objects/objects_ruin/maneken_skelet.go"
+  position {
+    x: 529.0
+    y: 600.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room34"
+  prototype: "/main/game/objects/objects_ruin/maneken_skelet.go"
+  position {
+    x: 487.0
+    y: 600.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room35"
+  prototype: "/main/game/objects/objects_ruin/outdoor_flower_big.go"
+  position {
+    x: 295.0
+    y: 461.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room36"
+  prototype: "/main/game/objects/objects_ruin/outdoor_flower_big.go"
+  position {
+    x: 200.0
+    y: 603.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room37"
+  prototype: "/main/game/objects/objects_ruin/outdoor_flower_big.go"
+  position {
+    x: 596.0
+    y: 507.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room38"
+  prototype: "/main/game/objects/objects_ruin/maneken_skelet.go"
+  position {
+    x: 292.0
+    y: 508.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room39"
+  prototype: "/main/game/objects/objects_ruin/maneken_skelet.go"
+  position {
+    x: 543.0
+    y: 483.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room40"
+  prototype: "/main/game/characters/human/human.go"
+  position {
+    x: 267.0
+    y: 574.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room41"
+  prototype: "/main/game/characters/human/human.go"
+  position {
+    x: 296.0
+    y: 500.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room42"
+  prototype: "/main/game/characters/human/human.go"
+  position {
+    x: 247.0
+    y: 473.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room43"
+  prototype: "/main/game/characters/human/human.go"
+  position {
+    x: 322.0
+    y: 556.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room44"
+  prototype: "/main/game/characters/human/human.go"
+  position {
+    x: 265.0
+    y: 472.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room45"
+  prototype: "/main/game/characters/human/human.go"
+  position {
+    x: 200.0
+    y: 569.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room46"
+  prototype: "/main/game/characters/human/human.go"
+  position {
+    x: 221.0
+    y: 566.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room47"
+  prototype: "/main/game/characters/human/human.go"
+  position {
+    x: 399.0
+    y: 577.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room48"
+  prototype: "/main/game/characters/human/human.go"
+  position {
+    x: 428.0
+    y: 503.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room49"
+  prototype: "/main/game/characters/human/human.go"
+  position {
+    x: 379.0
+    y: 476.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room50"
+  prototype: "/main/game/characters/human/human.go"
+  position {
+    x: 454.0
+    y: 559.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room51"
+  prototype: "/main/game/characters/human/human.go"
+  position {
+    x: 397.0
+    y: 475.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room52"
+  prototype: "/main/game/characters/human/human.go"
+  position {
+    x: 332.0
+    y: 572.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room53"
+  prototype: "/main/game/characters/human/human.go"
+  position {
+    x: 353.0
+    y: 569.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "zombie_enemy_first_level1"
+  prototype: "/main/game/characters/zombie_enemy/zombie_enemy_first_level.go"
+  position {
+    x: 789.0
+    y: 564.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "zombie_enemy_first_level3"
+  prototype: "/main/game/characters/zombie_enemy/zombie_enemy_first_level.go"
+  position {
+    x: 789.0
+    y: 500.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room54"
+  prototype: "/main/game/objects/objects_ruin/vending machine_1.go"
+  position {
+    x: 53.0
+    y: 599.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room55"
+  prototype: "/main/game/objects/objects_ruin/maneken_skelet.go"
+  position {
+    x: 22.0
+    y: 600.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room56"
+  prototype: "/main/game/objects/objects_ruin/vending machine_1.go"
+  position {
+    x: 439.0
+    y: 199.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room57"
+  prototype: "/main/game/objects/objects_ruin/vending machine_1.go"
+  position {
+    x: 134.0
+    y: 600.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room58"
+  prototype: "/main/game/characters/human/human.go"
+  position {
+    x: 94.0
+    y: 572.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room59"
+  prototype: "/main/game/objects/objects_ruin/outdoor_flower_big.go"
+  position {
+    x: 200.0
+    y: 603.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room60"
+  prototype: "/main/game/objects/objects_ruin/maneken_skelet.go"
+  position {
+    x: 185.0
+    y: 603.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room61"
+  prototype: "/main/game/objects/objects_ruin/outdoor_flower_big.go"
+  position {
+    x: 87.0
+    y: 600.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room62"
+  prototype: "/main/game/objects/objects_ruin/outdoor_flower_big.go"
+  position {
+    x: 169.0
+    y: 603.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room63"
+  prototype: "/main/game/characters/human/human.go"
+  position {
+    x: 74.0
+    y: 471.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room64"
+  prototype: "/main/game/characters/human/human.go"
+  position {
+    x: 92.0
+    y: 470.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room65"
+  prototype: "/main/game/characters/human/human.go"
+  position {
+    x: 149.0
+    y: 554.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room66"
+  prototype: "/main/game/characters/human/human.go"
+  position {
+    x: 123.0
+    y: 498.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room67"
+  prototype: "/main/game/objects/objects_ruin/maneken_skelet.go"
+  position {
+    x: 173.0
+    y: 897.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room68"
+  prototype: "/main/game/objects/objects_ruin/vending machine_1.go"
+  position {
+    x: 122.0
+    y: 894.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room69"
+  prototype: "/main/game/objects/objects_ruin/vending machine_1.go"
+  position {
+    x: 344.0
+    y: 892.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room70"
+  prototype: "/main/game/objects/objects_ruin/outdoor_flower_big.go"
+  position {
+    x: 75.0
+    y: 894.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room71"
+  prototype: "/main/game/objects/objects_ruin/maneken_skelet.go"
+  position {
+    x: 10.0
+    y: 894.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room72"
+  prototype: "/main/game/objects/objects_ruin/outdoor_flower_big.go"
+  position {
+    x: 157.0
+    y: 897.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room73"
+  prototype: "/main/game/objects/objects_ruin/vending machine_1.go"
+  position {
+    x: 274.0
+    y: 892.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room74"
+  prototype: "/main/game/objects/objects_ruin/outdoor_flower_big.go"
+  position {
+    x: 188.0
+    y: 897.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room75"
+  prototype: "/main/game/objects/objects_ruin/vending machine_1.go"
+  position {
+    x: 41.0
+    y: 893.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room76"
+  prototype: "/main/game/objects/objects_ruin/maneken_skelet.go"
+  position {
+    x: 312.0
+    y: 897.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room77"
+  prototype: "/main/game/objects/objects_ruin/maneken_skelet.go"
+  position {
+    x: 176.0
+    y: 767.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room78"
+  prototype: "/main/game/objects/objects_ruin/vending machine_1.go"
+  position {
+    x: 125.0
+    y: 764.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room79"
+  prototype: "/main/game/objects/objects_ruin/vending machine_1.go"
+  position {
+    x: 347.0
+    y: 762.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room80"
+  prototype: "/main/game/objects/objects_ruin/outdoor_flower_big.go"
+  position {
+    x: 78.0
+    y: 764.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room81"
+  prototype: "/main/game/objects/objects_ruin/maneken_skelet.go"
+  position {
+    x: 13.0
+    y: 764.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room82"
+  prototype: "/main/game/objects/objects_ruin/outdoor_flower_big.go"
+  position {
+    x: 160.0
+    y: 767.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room83"
+  prototype: "/main/game/objects/objects_ruin/vending machine_1.go"
+  position {
+    x: 277.0
+    y: 762.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room84"
+  prototype: "/main/game/objects/objects_ruin/outdoor_flower_big.go"
+  position {
+    x: 191.0
+    y: 767.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room85"
+  prototype: "/main/game/objects/objects_ruin/vending machine_1.go"
+  position {
+    x: 44.0
+    y: 763.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room86"
+  prototype: "/main/game/objects/objects_ruin/maneken_skelet.go"
+  position {
+    x: 315.0
+    y: 767.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room87"
+  prototype: "/main/game/objects/objects_ruin/vending machine_1.go"
+  position {
+    x: 670.0
+    y: 761.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room88"
+  prototype: "/main/game/objects/objects_ruin/vending machine_1.go"
+  position {
+    x: 518.0
+    y: 763.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room89"
+  prototype: "/main/game/objects/objects_ruin/vending machine_1.go"
+  position {
+    x: 437.0
+    y: 762.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room90"
+  prototype: "/main/game/objects/objects_ruin/vending machine_1.go"
+  position {
+    x: 740.0
+    y: 761.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room91"
+  prototype: "/main/game/objects/objects_ruin/maneken_skelet.go"
+  position {
+    x: 406.0
+    y: 763.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room92"
+  prototype: "/main/game/objects/objects_ruin/vending machine_1.go"
+  position {
+    x: 434.0
+    y: 892.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room93"
+  prototype: "/main/game/objects/objects_ruin/outdoor_flower_big.go"
+  position {
+    x: 581.0
+    y: 896.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room94"
+  prototype: "/main/game/objects/objects_ruin/maneken_skelet.go"
+  position {
+    x: 566.0
+    y: 896.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room95"
+  prototype: "/main/game/objects/objects_ruin/vending machine_1.go"
+  position {
+    x: 737.0
+    y: 891.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room96"
+  prototype: "/main/game/objects/objects_ruin/vending machine_1.go"
+  position {
+    x: 515.0
+    y: 893.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "map1"
+  prototype: "/main/game/levels/levels/prototypes/prototype_enemy/prototype_enemy.go"
+  position {
+    x: 0.0
+    y: 1.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room97"
+  prototype: "/main/game/objects/objects_ruin/maneken_skelet.go"
+  position {
+    x: 708.0
+    y: 766.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room98"
+  prototype: "/main/game/objects/objects_ruin/outdoor_flower_big.go"
+  position {
+    x: 550.0
+    y: 896.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room99"
+  prototype: "/main/game/objects/objects_ruin/maneken_skelet.go"
+  position {
+    x: 569.0
+    y: 766.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room100"
+  prototype: "/main/game/objects/objects_ruin/vending machine_1.go"
+  position {
+    x: 667.0
+    y: 891.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room101"
+  prototype: "/main/game/objects/objects_ruin/maneken_skelet.go"
+  position {
+    x: 705.0
+    y: 896.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room102"
+  prototype: "/main/game/objects/objects_ruin/outdoor_flower_big.go"
+  position {
+    x: 468.0
+    y: 893.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room103"
+  prototype: "/main/game/objects/objects_ruin/outdoor_flower_big.go"
+  position {
+    x: 584.0
+    y: 766.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room104"
+  prototype: "/main/game/objects/objects_ruin/outdoor_flower_big.go"
+  position {
+    x: 471.0
+    y: 763.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room105"
+  prototype: "/main/game/objects/objects_ruin/outdoor_flower_big.go"
+  position {
+    x: 553.0
+    y: 766.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "two_room106"
+  prototype: "/main/game/objects/objects_ruin/maneken_skelet.go"
+  position {
+    x: 403.0
+    y: 893.0
     z: 0.0
   }
   rotation {
