@@ -96,6 +96,12 @@ function init(self)
 		msg.post("main:/loader_main", "load_level", {
 			company_id = "city_hospital", level_id = 3
 		})
+
+	elseif true then
+		-- карта
+		msg.post("main:/loader_main", "load_level", {
+			company_id = "world_map", level_id = "world_map"
+		})
 	else
 		-- Прототип с противниками
 		msg.post("main:/loader_main", "load_level", {

@@ -1,7 +1,7 @@
 name: "hospital_1"
 instances {
   id: "map"
-  prototype: "/main/game/levels/levels/hospital/hospital_1/hospital_1.go"
+  prototype: "/main/game/levels/levels/world_map/world_map.go"
   position {
     x: 0.0
     y: 0.0
@@ -14,9 +14,9 @@ instances {
     w: 1.0
   }
   scale3 {
-    x: 0.25
-    y: 0.25
-    z: 0.25
+    x: 1.0
+    y: 1.0
+    z: 1.0
   }
 }
 instances {
@@ -41,10 +41,10 @@ instances {
 }
 instances {
   id: "player"
-  prototype: "/main/game/characters/player/player_first_level.go"
+  prototype: "/main/game/characters/player/player_world_map.go"
   position {
-    x: 37.0
-    y: 53.0
+    x: 240.0
+    y: 205.0
     z: 3.0
   }
   rotation {
@@ -56,9 +56,9 @@ instances {
   component_properties {
     id: "script"
     properties {
-      id: "activate"
-      value: "false"
-      type: PROPERTY_TYPE_BOOLEAN
+      id: "horde_count"
+      value: "100.0"
+      type: PROPERTY_TYPE_NUMBER
     }
   }
   scale3 {
@@ -73,6 +73,74 @@ instances {
   position {
     x: 0.0
     y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "script"
+    properties {
+      id: "zoom"
+      value: "0.5"
+      type: PROPERTY_TYPE_NUMBER
+    }
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+collection_instances {
+  id: "map_forest_1"
+  collection: "/main/game/levels/levels/world_map/collections/map_forest_1.collection"
+  position {
+    x: 171.0
+    y: 239.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+collection_instances {
+  id: "map_forest_"
+  collection: "/main/game/levels/levels/world_map/collections/map_forest_1.collection"
+  position {
+    x: 262.0
+    y: 304.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+collection_instances {
+  id: "map_forest_2"
+  collection: "/main/game/levels/levels/world_map/collections/map_forest_mini.collection"
+  position {
+    x: 313.0
+    y: 132.0
     z: 0.0
   }
   rotation {

@@ -1,0 +1,482 @@
+name: "map_forest_1"
+instances {
+  id: "wood"
+  prototype: "/main/game/objects/objects_static/wood_normal_map_1.go"
+  position {
+    x: -57.0
+    y: 20.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "wood1"
+  prototype: "/main/game/objects/objects_static/wood_normal_map_1.go"
+  position {
+    x: -71.0
+    y: -2.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "wood2"
+  prototype: "/main/game/objects/objects_static/wood_normal_map_2.go"
+  position {
+    x: -33.0
+    y: 3.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "wood3"
+  prototype: "/main/game/objects/objects_static/wood_normal_map_1.go"
+  position {
+    x: -50.0
+    y: -9.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "wood4"
+  prototype: "/main/game/objects/objects_static/wood_normal_map_2.go"
+  position {
+    x: -36.0
+    y: -24.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "wood5"
+  prototype: "/main/game/objects/objects_static/wood_normal_map_2.go"
+  position {
+    x: -15.0
+    y: -16.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "wood6"
+  prototype: "/main/game/objects/objects_static/wood_normal_map_2.go"
+  position {
+    x: -10.0
+    y: 18.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "wood7"
+  prototype: "/main/game/objects/objects_static/wood_normal_map_1.go"
+  position {
+    x: 22.0
+    y: 24.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "wood8"
+  prototype: "/main/game/objects/objects_static/wood_normal_map_1.go"
+  position {
+    x: -15.0
+    y: -35.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "wood9"
+  prototype: "/main/game/objects/objects_static/wood_normal_map_1.go"
+  position {
+    x: -3.0
+    y: -2.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "wood10"
+  prototype: "/main/game/objects/objects_static/wood_normal_map_1.go"
+  position {
+    x: 3.0
+    y: 30.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "wood11"
+  prototype: "/main/game/objects/objects_static/wood_normal_map_1.go"
+  position {
+    x: 2.0
+    y: -22.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "wood12"
+  prototype: "/main/game/objects/objects_static/wood_normal_map_1.go"
+  position {
+    x: -32.0
+    y: 30.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "wood13"
+  prototype: "/main/game/objects/objects_static/wood_normal_map_2.go"
+  position {
+    x: 18.0
+    y: 3.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "wood14"
+  prototype: "/main/game/objects/objects_static/wood_normal_map_1.go"
+  position {
+    x: 12.0
+    y: -27.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "wood15"
+  prototype: "/main/game/objects/objects_static/wood_normal_map_1.go"
+  position {
+    x: 39.0
+    y: -29.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "wood16"
+  prototype: "/main/game/objects/objects_static/wood_normal_map_1.go"
+  position {
+    x: 36.0
+    y: -2.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "wood17"
+  prototype: "/main/game/objects/objects_static/wood_normal_map_1.go"
+  position {
+    x: 46.0
+    y: 21.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "wood18"
+  prototype: "/main/game/objects/objects_static/wood_normal_map_1.go"
+  position {
+    x: -66.0
+    y: -27.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "wood19"
+  prototype: "/main/game/objects/objects_static/wood_normal_map_2.go"
+  position {
+    x: 13.0
+    y: -17.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "wood20"
+  prototype: "/main/game/objects/objects_static/wood_normal_map_1.go"
+  position {
+    x: 56.0
+    y: -9.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "wood21"
+  prototype: "/main/game/objects/objects_static/wood_normal_map_1.go"
+  position {
+    x: 44.0
+    y: 42.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "wood22"
+  prototype: "/main/game/objects/objects_static/wood_normal_map_1.go"
+  position {
+    x: 12.0
+    y: 43.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "wood23"
+  prototype: "/main/game/objects/objects_static/wood_normal_map_1.go"
+  position {
+    x: -20.0
+    y: 54.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+scale_along_z: 0

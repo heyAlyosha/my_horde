@@ -1,0 +1,62 @@
+name: "map_forest_1"
+instances {
+  id: "wood"
+  prototype: "/main/game/objects/objects_static/wood_normal_map_3.go"
+  position {
+    x: -28.0
+    y: 15.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "wood1"
+  prototype: "/main/game/objects/objects_static/wood_normal_map_3.go"
+  position {
+    x: 22.0
+    y: 8.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "wood2"
+  prototype: "/main/game/objects/objects_static/wood_normal_map_3.go"
+  position {
+    x: -12.0
+    y: -20.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+scale_along_z: 0
