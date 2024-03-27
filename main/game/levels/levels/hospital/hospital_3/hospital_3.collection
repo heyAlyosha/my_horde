@@ -397,6 +397,19 @@ instances {
     z: 0.0
     w: 1.0
   }
+  component_properties {
+    id: "script"
+    properties {
+      id: "activation"
+      value: "false"
+      type: PROPERTY_TYPE_BOOLEAN
+    }
+    properties {
+      id: "id_activation"
+      value: "two_room"
+      type: PROPERTY_TYPE_HASH
+    }
+  }
   scale3 {
     x: 1.0
     y: 1.0
@@ -455,6 +468,19 @@ instances {
     z: 0.0
     w: 1.0
   }
+  component_properties {
+    id: "script"
+    properties {
+      id: "activation"
+      value: "false"
+      type: PROPERTY_TYPE_BOOLEAN
+    }
+    properties {
+      id: "id_activation"
+      value: "two_room"
+      type: PROPERTY_TYPE_HASH
+    }
+  }
   scale3 {
     x: 1.0
     y: 1.0
@@ -477,6 +503,16 @@ instances {
   }
   component_properties {
     id: "script"
+    properties {
+      id: "activation"
+      value: "false"
+      type: PROPERTY_TYPE_BOOLEAN
+    }
+    properties {
+      id: "id_activation"
+      value: "two_room"
+      type: PROPERTY_TYPE_HASH
+    }
     properties {
       id: "spawn_star"
       value: "1.0"
@@ -630,6 +666,11 @@ instances {
   component_properties {
     id: "script"
     properties {
+      id: "activation"
+      value: "false"
+      type: PROPERTY_TYPE_BOOLEAN
+    }
+    properties {
       id: "id_activation"
       value: "first_room"
       type: PROPERTY_TYPE_HASH
@@ -657,6 +698,11 @@ instances {
   }
   component_properties {
     id: "script"
+    properties {
+      id: "activation"
+      value: "false"
+      type: PROPERTY_TYPE_BOOLEAN
+    }
     properties {
       id: "id_activation"
       value: "first_room"
@@ -783,6 +829,11 @@ instances {
   }
   component_properties {
     id: "script"
+    properties {
+      id: "activation"
+      value: "false"
+      type: PROPERTY_TYPE_BOOLEAN
+    }
     properties {
       id: "id_activation"
       value: "first_room"
@@ -2179,6 +2230,105 @@ instances {
     z: 1.0
   }
 }
+instances {
+  id: "human_first_room4"
+  prototype: "/main/game/characters/human/human.go"
+  position {
+    x: 73.0
+    y: 101.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "script"
+    properties {
+      id: "human_id"
+      value: "9.0"
+      type: PROPERTY_TYPE_NUMBER
+    }
+    properties {
+      id: "human_id_random"
+      value: "true"
+      type: PROPERTY_TYPE_BOOLEAN
+    }
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "human_first_room5"
+  prototype: "/main/game/characters/human/human.go"
+  position {
+    x: 187.0
+    y: 136.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "script"
+    properties {
+      id: "human_id"
+      value: "9.0"
+      type: PROPERTY_TYPE_NUMBER
+    }
+    properties {
+      id: "human_id_random"
+      value: "true"
+      type: PROPERTY_TYPE_BOOLEAN
+    }
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "human_first_room6"
+  prototype: "/main/game/characters/human/human.go"
+  position {
+    x: 178.0
+    y: 66.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "script"
+    properties {
+      id: "human_id"
+      value: "9.0"
+      type: PROPERTY_TYPE_NUMBER
+    }
+    properties {
+      id: "human_id_random"
+      value: "true"
+      type: PROPERTY_TYPE_BOOLEAN
+    }
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
 scale_along_z: 0
 embedded_instances {
   id: "activation_point_first_room"
@@ -2625,6 +2775,16 @@ embedded_instances {
   "    y: 0.0\n"
   "    z: 0.0\n"
   "    w: 1.0\n"
+  "  }\n"
+  "  properties {\n"
+  "    id: \"activation\"\n"
+  "    value: \"false\"\n"
+  "    type: PROPERTY_TYPE_BOOLEAN\n"
+  "  }\n"
+  "  properties {\n"
+  "    id: \"id_activation\"\n"
+  "    value: \"two_room\"\n"
+  "    type: PROPERTY_TYPE_HASH\n"
   "  }\n"
   "  property_decls {\n"
   "  }\n"
@@ -3077,6 +3237,16 @@ embedded_instances {
   "    y: 0.0\n"
   "    z: 0.0\n"
   "    w: 1.0\n"
+  "  }\n"
+  "  properties {\n"
+  "    id: \"activation\"\n"
+  "    value: \"false\"\n"
+  "    type: PROPERTY_TYPE_BOOLEAN\n"
+  "  }\n"
+  "  properties {\n"
+  "    id: \"id_activation\"\n"
+  "    value: \"two_room\"\n"
+  "    type: PROPERTY_TYPE_HASH\n"
   "  }\n"
   "  property_decls {\n"
   "  }\n"
