@@ -8,7 +8,7 @@ go.property("command", hash("player"))
 go.property("skin_id", 0)
 go.property("human_id", 0)
 go.property("horde_count", 0)
-go.property("visible_horde_min", 75)
+go.property("visible_horde_min", 200)
 go.property("distantion_attack_zombie_horde", 75)
 go.property("targets", 6)
 go.property("target_dynamic", true)
@@ -233,8 +233,9 @@ function on_message(self, message_id, message, sender)
 
 	elseif message_id == hash("zombie_ruin_target") then
 		-- Зомбик уничтожил объект
+		print("zombie_ruin_target", message.target)
 		local key_target = go_controller.url_to_key(message.target)
-		horde_attack.add_zombie_min_target(self, key_target)
+		horde_attack.delete_target(self, key_target)
 
 	elseif message_id == hash("add_horde") then
 		-- Добавляем зомбика в орду

@@ -113,6 +113,7 @@ function on_message(self, message_id, message, sender)
 
 			ai_zombie.condition_to_horde(self)
 			--]]
+			msg.post(self.parent, "zombie_ruin_target", {target = self.target})
 			self.target = nil
 			ai_zombie.behavior(self)
 		end

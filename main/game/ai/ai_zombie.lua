@@ -34,7 +34,8 @@ function M.behavior(self)
 	--M.search_target(self)
 
 	-- ДИСТАНЦИЯ ОТ ИГРОКА
-	if not self.check_distantion then
+	--[[
+	if false and not self.check_distantion then
 		self.check_distantion = timer.delay(1, true, function (self)
 			if self.parent and go_controller.is_object(self.parent) and vmath.length(go.get_position() - go.get_position(self.parent)) >= 150 then
 				if self.view then
@@ -52,6 +53,7 @@ function M.behavior(self)
 			end
 		end)
 	end
+	--]]
 
 	-- АТАКА
 	if self.condition_ai == hash("attack") then

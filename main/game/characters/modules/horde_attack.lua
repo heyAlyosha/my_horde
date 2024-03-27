@@ -45,6 +45,27 @@ function M.visible(self, visible_items)
 	if change_visible then
 		M.horde_attack(self)
 	end
+
+	-- Генерируем зомбиков, если они есть в орде
+	if visible_items and #visible_items > 0  then
+		local targets = M.get_targets_sort(self)
+
+		local index_target = #targets
+		-- Зомбики из орды
+		for horde_index = #self.horde, 1, -1 do
+			local item = self.horde[horde_index]
+			local target_item = targets[index_target]
+			local position_zombie = go.get_position(item.url)
+			local zombie = character_zombie_main.add_zombie_attack(self, horde_index, position_zombie, target_item.url)
+
+			M.add_zombie_target(self, zombie, target_item)
+
+			index_target = index_target - 1
+			if index_target < 1 then
+				index_target = #targets
+			end
+		end
+	end
 end
 
 -- Добавление цели для орды
@@ -65,17 +86,19 @@ function M.delete_target(self, key_target)
 	self.target_objects[key_target] = nil
 
 	-- Перенаправляем зомбиков на другие объекты
-	local targets = M.get_targets_sort(self)
-	local index_target = #targets
-	for i, zombie_url in ipairs(item.enemies) do
-		local target_item = targets[index_target]
-		local zombie = self.zombies[go_controller.url_to_key(zombie_url)]
-		if zombie and target_item then
-			M.add_zombie_target(self, zombie, target_item)
+	if item then
+		local targets = M.get_targets_sort(self)
+		local index_target = #targets
+		for i, zombie_url in ipairs(item.enemies) do
+			local target_item = targets[index_target]
+			local zombie = self.zombies[go_controller.url_to_key(zombie_url)]
+			if zombie and target_item then
+				M.add_zombie_target(self, zombie, target_item)
 
-			index_target = index_target - 1
-			if index_target < 1 then
-				index_target = #targets
+				index_target = index_target - 1
+				if index_target < 1 then
+					index_target = #targets
+				end
 			end
 		end
 	end
