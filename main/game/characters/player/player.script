@@ -24,6 +24,8 @@ go.property("horde_count_current", 0)
 go.property("active_input", true)
 go.property("size_horde", 0)
 
+
+
 function init(self)
 	msg.post(".", "acquire_input_focus")
 	game_content_character_parametrs.set_characteristic(self)
@@ -103,6 +105,9 @@ function init(self)
 				msg.post(items[i].url, "activate")
 			end
 		end)
+	else
+		zone_infection.create(self)
+		zone_infection.update_size(self, 50)
 	end
 end
 
@@ -112,6 +117,8 @@ function final(self)
 end
 
 function update(self, dt)
+	zone_infection.on_update(self)
+
 	storage_gui.active_input = not self.active_input
 	if self.active_input then
 		msg.post(".", "acquire_input_focus")
@@ -330,6 +337,8 @@ function on_message(self, message_id, message, sender)
 		end
 		
 	end
+
+	
 	
 end
 

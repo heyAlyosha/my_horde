@@ -54,14 +54,6 @@ instances {
     z: 0.0
     w: 1.0
   }
-  component_properties {
-    id: "script"
-    properties {
-      id: "horde_count"
-      value: "100.0"
-      type: PROPERTY_TYPE_NUMBER
-    }
-  }
   scale3 {
     x: 1.0
     y: 1.0
@@ -142,6 +134,106 @@ instances {
   position {
     x: 176.0
     y: 235.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "spawn_human2"
+  prototype: "/main/game/markers/spawn_points/spawn_point_human.go"
+  position {
+    x: 166.0
+    y: 602.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "spawn_human3"
+  prototype: "/main/game/markers/spawn_points/spawn_point_human.go"
+  position {
+    x: 966.0
+    y: 671.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "spawn_human4"
+  prototype: "/main/game/markers/spawn_points/spawn_point_human.go"
+  position {
+    x: 872.0
+    y: 260.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "spawn_human5"
+  prototype: "/main/game/markers/spawn_points/spawn_point_human.go"
+  position {
+    x: 666.0
+    y: 96.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "spawn_human6"
+  prototype: "/main/game/markers/spawn_points/spawn_point_human.go"
+  position {
+    x: 608.0
+    y: 514.0
     z: 0.0
   }
   rotation {

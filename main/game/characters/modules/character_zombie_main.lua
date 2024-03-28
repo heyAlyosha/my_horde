@@ -120,6 +120,8 @@ function M.change_horde(self)
 
 	local dist_max_horde = vmath.length(go.get_position() - self.target_add_horde)
 
+	zone_infection.update_size(self, dist_max_horde)
+
 	self.visible_horde = self.visible_horde_min + dist_max_horde
 	self.distantion_visible = dist_max_horde
 

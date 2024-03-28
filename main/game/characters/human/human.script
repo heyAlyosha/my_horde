@@ -123,6 +123,23 @@ function on_message(self, message_id, message, sender)
 		-- Активируем персонажа
 		self.activation = true
 		activate_init(self)
+
+	elseif message_id == hash("infection") then
+		-- Заражаем человечка
+		-- Анимация заражения
+		local position = go.get_position()
+		position.y = position.y + go.get("#body", "size").y / 2
+		msg.post(storage_game.map.url_script, "effect", {
+			position = position,
+			animation_id = hash("effect_infection"), 
+			timer_delete = 0
+		})
+
+		msg.post(message.parent, "add_horde", {
+			human_id = self.human_id, position_from = go.get_position()
+		})
+
+		go.delete()
 	end
 end
 

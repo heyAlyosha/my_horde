@@ -49,6 +49,7 @@ function init(self)
 	game_content_functions = require "main.game.content.modules.game_content_functions"
 	game_content_company = require "main.game.content.game_content_company"
 	game_content_character_parametrs = require "main.game.content.game_content_character_parametrs"
+	zone_infection = require("main.game.characters.zombie_horde.modules.zone_infection")
 
 	-- контент игры
 	--game_content_prize.init(self)

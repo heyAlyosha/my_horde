@@ -70,9 +70,6 @@ function M.damage_human(self, message)
 		end
 
 		go.delete()
-
-		
-		
 	end
 end
 

@@ -8,6 +8,8 @@ go.property("position_to", vmath.vector3(0))
 
 -- Спавн персонажей
 local function spawn(self)
+	self.count_object = go.get("map#map_core", "count_"..self.spawn_item.id)
+
 	if self.count_object < self.max_spawn then
 		msg.post(self.parent, "start_spawn")
 		local delay = self.interval_spawn + 0.2
