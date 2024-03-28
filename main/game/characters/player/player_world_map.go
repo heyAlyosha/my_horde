@@ -13,9 +13,9 @@ components {
     w: 1.0
   }
   properties {
-    id: "horde_count"
-    value: "50.0"
-    type: PROPERTY_TYPE_NUMBER
+    id: "horde_map"
+    value: "true"
+    type: PROPERTY_TYPE_BOOLEAN
   }
   properties {
     id: "target_dist"

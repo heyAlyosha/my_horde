@@ -2,7 +2,7 @@
 local M = {}
 
 function M.create(self, is_player)
-	if not self.hp_bar then
+	if not self.horde_map and not self.hp_bar then
 		if is_player then
 			self.hp_bar = collectionfactory.create("#live_bar_collectionfactory", go.get_position())
 

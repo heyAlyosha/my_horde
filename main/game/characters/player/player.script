@@ -1,3 +1,6 @@
+go.property("activate", true)
+go.property("horde_count", 0)
+go.property("horde_map", false)
 go.property("damage", 2)
 go.property("live", 30)
 go.property("speed_damage", 0.75)
@@ -7,7 +10,6 @@ go.property("distantion_attack", 35)
 go.property("command", hash("player"))
 go.property("skin_id", 0)
 go.property("human_id", 0)
-go.property("horde_count", 0)
 go.property("visible_horde_min", 100)
 go.property("distantion_attack_zombie_horde", 75)
 go.property("targets", 6)
@@ -18,7 +20,6 @@ go.property("target_add_horde", vmath.vector3())
 go.property("time_view", 0.1)
 go.property("damage_blood", true)
 go.property("type_object", hash("zombie_main"))
-go.property("activate", true)
 go.property("horde_count_current", 0)
 go.property("active_input", true)
 go.property("size_horde", 0)
@@ -73,54 +74,36 @@ function init(self)
 		end
 
 		-- Обзор для удара по противникам
-		timer.delay(self.speed_damage, true, function (self)
-			local visible_items = ai_vision.get_visible(self, self.visible_object_id, self.distantion_attack - 3, exclude_commands)
-			if visible_items and #visible_items > 0 then
-				-- Есть враги
-				character_attack.attack(self, visible_items[1].url)
-			end
-		end)
+		if not self.horde_map then
+			timer.delay(self.speed_damage, true, function (self)
+				local visible_items = ai_vision.get_visible(self, self.visible_object_id, self.distantion_attack - 3, exclude_commands)
+				if visible_items and #visible_items > 0 then
+					-- Есть враги
+					character_attack.attack(self, visible_items[1].url)
+				end
+			end)
+		end
 	end)
 
 	self.group_name = "visible_object"
 	self.group_id, self.visible_object_id = ai_vision.add_dynamic_object(self, self.group_name)
 
 	-- Обзор вокруг орды
-	self.timer_view_horde = timer.delay(0.25, true, function (self)
-		local visible_items = ai_vision.get_visible(self, self.visible_object_id, self.visible_horde)
-		local position = go.get_position()
+	if not self.horde_map then
+		self.timer_view_horde = timer.delay(0.25, true, function (self)
+			local visible_items = ai_vision.get_visible(self, self.visible_object_id, self.visible_horde)
+			local position = go.get_position()
 
-		horde_attack.visible(self, visible_items)
+			horde_attack.visible(self, visible_items)
 
-		--[[
-		if visible_items then
-			for i = 1, #visible_items do
-				local target = visible_items[i]
-				if go_controller.is_object(target.url) then
-					if #self.horde > 0 then 
-						for horde_index = #self.horde, 1, -1 do
-							local item = self.horde[horde_index]
-							
-							local position_target = go.get_position(target.url)
-							local position_zombie = go.get_position(item.url)
-
-							if vmath.length(position_target - position_zombie) <= self.distantion_attack_zombie_horde then
-								character_zombie_main.add_zombie_attack(self, horde_index, position_zombie, target.url)
-							end
-						end
-					end
-				end
+			-- Предметы, чтобы подобрать
+			local group_name = "items"
+			local items = ai_vision.get_objects_group(self, exclude_aabb_id, group_name, self.distantion_visible + 10)
+			for i = 1, #items do
+				msg.post(items[i].url, "activate")
 			end
-		end
-		--]]
-
-		-- Предметы, чтобы подобрать
-		local group_name = "items"
-		local items = ai_vision.get_objects_group(self, exclude_aabb_id, group_name, self.distantion_visible + 10)
-		for i = 1, #items do
-			msg.post(items[i].url, "activate")
-		end
-	end)
+		end)
+	end
 end
 
 function final(self)
