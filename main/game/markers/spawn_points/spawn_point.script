@@ -1,0 +1,74 @@
+go.property("type_spawn", hash("human"))
+go.property("interval", 5)
+go.property("interval_spawn", 0.1)
+go.property("spawn_count", 3)
+go.property("init_spawn", true)
+go.property("parent", msg.url())
+go.property("position_to", vmath.vector3(0))
+
+-- Спавн персонажей
+local function spawn(self)
+	if self.count_object < self.max_spawn then
+		msg.post(self.parent, "start_spawn")
+		local delay = self.interval_spawn + 0.2
+		for i = 1, self.spawn_count do
+			if self.count_object < self.max_spawn then
+				timer.delay(delay, false, function (self)
+					local position = go.get_position()
+					local properties = {
+						
+					}
+					local new_object = factory.create(self.spawn_item.factory, position, rotation, properties)
+					self.count_object = go.get("map#map_core", "count_"..self.spawn_item.id)
+				end)
+				delay = delay + self.interval_spawn
+			end
+		end
+
+		delay = delay + 0.2
+		timer.delay(delay, false, function (self)
+			msg.post(self.parent, "end_spawn")
+		end)
+	end
+end
+
+function init(self)
+	msg.post("#label", "disable")
+	msg.post("#sprite", "disable")
+
+	self.types_spawn = {}
+	self.types_spawn[hash("human")] = {
+		id = "human",
+		factory = "#human_factory"
+	}
+
+	self.spawn_item = self.types_spawn[self.type_spawn]
+
+	self.max_spawn = go.get("map#map_core", "max_spawn_"..self.spawn_item.id)
+	self.count_object = go.get("map#map_core", "count_"..self.spawn_item.id)
+
+	
+	timer.delay(self.interval, true, spawn)
+
+	if self.init_spawn then
+		spawn(self)
+	end
+end
+
+function final(self)
+	-- Add finalization code here
+	-- Learn more: https://defold.com/manuals/script/
+	-- Remove this function if not needed
+end
+
+function on_message(self, message_id, message, sender)
+	-- Add message-handling code here
+	-- Learn more: https://defold.com/manuals/message-passing/
+	-- Remove this function if not needed
+end
+
+function on_reload(self)
+	-- Add reload-handling code here
+	-- Learn more: https://defold.com/manuals/hot-reload/
+	-- Remove this function if not needed
+end

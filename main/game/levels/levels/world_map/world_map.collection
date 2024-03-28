@@ -4,8 +4,8 @@ instances {
   prototype: "/main/game/levels/levels/world_map/world_map.go"
   children: "city_policy"
   position {
-    x: 0.0
-    y: 0.0
+    x: 1.0
+    y: 2.0
     z: 0.0
   }
   rotation {
@@ -113,6 +113,46 @@ instances {
   scale3 {
     x: 0.5
     y: 0.5
+    z: 1.0
+  }
+}
+instances {
+  id: "spawn_human"
+  prototype: "/main/game/markers/spawn_points/spawn_point_human.go"
+  position {
+    x: 246.0
+    y: 332.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "spawn_human1"
+  prototype: "/main/game/markers/spawn_points/spawn_point_human.go"
+  position {
+    x: 176.0
+    y: 235.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
     z: 1.0
   }
 }

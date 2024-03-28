@@ -1,6 +1,8 @@
 go.property("map_url", msg.url())
 go.property("stars", true)
 go.property("print_count_items", true)
+go.property("max_spawn_human", 50)
+go.property("count_human", 0)
 
 function init(self)
 	storage_game.map.url = self.map_url
@@ -221,6 +223,10 @@ function on_message(self, message_id, message, sender)
 				animate_next(self)
 			end
 		end, delay)
+
+	elseif message_id == hash("set_object") then
+		-- Кол-во объектов на карте
+		self['count_' .. message.id] = self['count_' .. message.id] + message.count
 		
 	end
 end
