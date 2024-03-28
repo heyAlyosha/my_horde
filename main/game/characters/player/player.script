@@ -1,6 +1,7 @@
 go.property("activate", true)
 go.property("horde_count", 0)
 go.property("horde_map", false)
+go.property("max_horde", 30)
 go.property("damage", 2)
 go.property("live", 30)
 go.property("speed_damage", 0.75)
@@ -23,8 +24,6 @@ go.property("type_object", hash("zombie_main"))
 go.property("horde_count_current", 0)
 go.property("active_input", true)
 go.property("size_horde", 0)
-
-
 
 function init(self)
 	msg.post(".", "acquire_input_focus")
@@ -107,8 +106,10 @@ function init(self)
 		end)
 	else
 		zone_infection.create(self)
-		zone_infection.update_size(self, 50)
+		zone_infection.update_size(self, 5)
 	end
+
+	character_zombie_main.change_horde(self)
 end
 
 function final(self)

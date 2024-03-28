@@ -140,6 +140,14 @@ function M.change_horde(self)
 	for k, v in pairs(self.zombies) do
 		self.size_horde = self.size_horde + 1
 	end
+
+	if self.horde_map then
+		if self.max_horde then
+			label.set_text("#size_horde", self.size_horde .. "/ ".. self.max_horde)
+		else
+			label.set_text("#size_horde", self.size_horde)
+		end
+	end
 end
 
 return M

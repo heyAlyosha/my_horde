@@ -19,21 +19,21 @@ function M.add_zombie_horde(self, skin_id, human_id, position)
 		human_id = human_id,
 	}
 
-	local id = factory.create("#zombie_horde_factory", position, rotation, properties)
-	self.horde[#self.horde + 1] = {
-		id = id,
-		url = msg.url(id),
-		url_script = msg.url(nil, id, "script"),
-		url_sprite = msg.url(nil, id, "body"),
-		skin_id = skin_id,
-		human_id = human_id,
-	}
+	if not self.max_horde or self.size_horde < self.max_horde then
+		local id = factory.create("#zombie_horde_factory", position, rotation, properties)
+		self.horde[#self.horde + 1] = {
+			id = id,
+			url = msg.url(id),
+			url_script = msg.url(nil, id, "script"),
+			url_sprite = msg.url(nil, id, "body"),
+			skin_id = skin_id,
+			human_id = human_id,
+		}
 
-	self.target_add_horde = M.get_position(self, go.get_position(), #self.horde)
-
-	character_zombie_main.change_horde(self)
-
-	M.move_horde_player(self)
+		self.target_add_horde = M.get_position(self, go.get_position(), #self.horde)
+		character_zombie_main.change_horde(self)
+		M.move_horde_player(self)
+	end
 end
 
 -- Передвижение орды игрока
