@@ -1,0 +1,295 @@
+go.property("activate", true)
+go.property("horde_count", 0)
+go.property("horde_map", false)
+go.property("dir", vmath.vector(-1,0,0))
+go.property("max_horde", 30)
+go.property("ai_dist_way", 50)
+go.property("ai_dist_visible", 30)
+go.property("ai_interval_visible", 30)
+go.property("ai_character", hash("default")) -- "pacific/agressive"
+go.property("time_view", 1)
+go.property("damage", 2)
+go.property("live", 30)
+go.property("speed_damage", 0.75)
+go.property("speed", 20)
+go.property("speed_default", 20)
+go.property("speed_attack", 30)
+go.property("scale_attack", 1)
+go.property("distantion_attack", 35)
+go.property("command", hash("zombie_enemy"))
+go.property("skin_id", 0)
+go.property("human_id", 0)
+go.property("visible_horde_min", 100)
+go.property("distantion_attack_zombie_horde", 75)
+go.property("targets", 6)
+go.property("target_dynamic", true)
+go.property("target_dist", vmath.vector3(4, 0, 0))
+go.property("target_useful", 3)
+go.property("target_add_horde", vmath.vector3())
+go.property("time_view", 0.1)
+go.property("damage_blood", true)
+go.property("type_object", hash("zombie_main_enemy"))
+go.property("horde_count_current", 0)
+go.property("active_input", true)
+go.property("size_horde", 0)
+
+function init(self)
+	game_content_character_parametrs.set_characteristic(self)
+
+	self.distantion_attack = self.distantion_attack * self.scale_attack
+
+	go_controller.object_items_spawn_to_map(self)
+
+	self.targets_points = {
+		vmath.vector3(12, 6, 0),
+		vmath.vector3(15, 0, 0),
+		vmath.vector3(12, -6, 0),
+		vmath.vector3(-12, 6, 0),
+		vmath.vector3(-15, 0, 0),
+		vmath.vector3(-12, -6, 0),
+	}
+
+	if self.activate then
+		go_controller.add(self)
+		position_functions.go_set_perspective_z()
+		--camera.follow(camera_id, msg.url(), options)
+		local is_player = true
+		live_bar.create(self, is_player)
+	end
+
+	self.max_live = self.live
+
+	self.position_center_horde = go.get_position()
+	--self.movement = vmath.vector(0)
+	self.input = vmath.vector3(0)
+	self.velocity = vmath.vector3(0)
+	self.correction = vmath.vector3()
+
+	self.visible_horde = self.visible_horde_min
+	self.distantion_visible = self.distantion_attack
+	self.horde = {}
+	self.zombies = {}
+
+	timer.delay(0.1, false, function (self)
+		local сenter_position = vmath.vector3(0)
+		local index_to_horde = self.horde_count
+		horde.get_position(self, сenter_position, 250)
+
+		for i = 1, index_to_horde do
+			math.randomseed(i)
+			local human_id = math.random(1, 9)
+			horde.add_zombie_horde(self, self.skin_id, human_id)
+		end
+
+		-- Обзор для удара по противникам
+		if not self.horde_map then
+			timer.delay(self.speed_damage, true, function (self)
+				local visible_items = ai_vision.get_visible(self, self.visible_object_id, self.distantion_attack - 3, exclude_commands)
+				if visible_items and #visible_items > 0 then
+					-- Есть враги
+					character_attack.attack(self, visible_items[1].url)
+				end
+			end)
+		end
+	end)
+
+	self.group_name = "visible_object"
+	self.group_id, self.visible_object_id = ai_vision.add_dynamic_object(self, self.group_name)
+
+	-- Обзор вокруг орды
+	if not self.horde_map then
+		self.timer_view_horde = timer.delay(0.25, true, function (self)
+			local visible_items = ai_vision.get_visible(self, self.visible_object_id, self.visible_horde)
+			local position = go.get_position()
+
+			--horde_attack.visible(self, visible_items)
+		end)
+	else
+		zone_infection.create(self)
+		zone_infection.update_size(self, 5)
+	end
+
+	character_zombie_main.change_horde(self)
+
+	ai_zombie_main_enemy_horde.behavior(self)
+end
+
+function final(self)
+	go_controller.delete(self)
+	msg.post(".", "release_input_focus")
+end
+
+function fixed_update(self, dt)
+	
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("activate") then
+		self.activate = true
+		go_controller.add(self)
+		position_functions.go_set_perspective_z()
+		--camera.follow(camera_id, msg.url(), options)
+		local is_player = true
+		live_bar.create(self, is_player)
+	elseif message_id == hash("damage") then
+		-- Получили урон
+		local damage = message.damage or 0
+		self.from_id_object = message.from_id_object 
+		self.live = self.live - damage
+
+		character_animations.damage_player(self, message.parent)
+
+		live_bar.set_hp(self, self.live, self.max_live)
+
+		if self.live <= 0 then
+			local position = go.get_position()
+			position.y = position.y + go.get("#body", "size").y / 2
+
+			msg.post(storage_game.map.url_script, "effect", {
+				position = position,
+				animation_id = hash("effect_zombie_death"), 
+				timer_delete = 3
+			})
+			items_functions.spawn(self)
+			go.delete()
+		end
+
+	elseif message_id == hash("contact_point_response") then
+		-- СТолкновение с физическим объектом
+		if message.distance > 0 then
+			local proj = vmath.project(self.correction, message.normal * message.distance)
+			if proj < 1 then
+				local comp = (message.distance - message.distance * proj) * message.normal
+				go.set_position(go.get_position() + comp)
+				self.correction = self.correction + comp
+			end
+		end
+
+	elseif message_id == hash("zombie_attack_death") then
+		-- Атакуюющий зомбик умер
+		local url = go_controller.url_object(sender)
+		horde_attack.zombie_death(self, self.zombies[go_controller.url_to_key(url)])
+		self.zombies[go_controller.url_to_key(url)] = nil
+
+	elseif message_id == hash("zombie_ruin_target") then
+		-- Зомбик уничтожил объект
+		local key_target = go_controller.url_to_key(message.target)
+		local key_zombie = go_controller.url_to_key(go_controller.url_object(sender))
+		local zombie = self.zombies[key_zombie]
+		
+		horde_attack.add_zombie_min_target(self, zombie)
+		--horde_attack.delete_target(self, key_target)
+
+	elseif message_id == hash("add_horde") then
+		-- Добавляем зомбика в орду
+		local url = go_controller.url_object(sender)
+		self.zombies[go_controller.url_to_key(url)] = nil
+
+		local skin_id = message.skin_id or 0
+		local human_id = message.human_id or 0
+		horde.add_zombie_horde(self, skin_id, human_id, message.position_from)
+
+		if self.animation_horde == "run" then
+			sprite.play_flipbook(self.horde[#self.horde].url_sprite, "zombie_"..skin_id.."_"..human_id .. "_run")
+		end
+
+	elseif message_id == hash("create_zombie") then
+		-- Создаём зомбика
+		local position = message.position
+		if position then
+			local zombie = character_zombie_main.add_zombie_attack(self, horde_index, position, target, message)
+			horde_attack.add_zombie_min_target(self, zombie)
+		end
+
+	elseif message_id == hash("position_to") then
+		ai_move.move_item(self, message.position_to, function (self)
+			character_animations.play(self, "idle")
+			msg.post(sender, "player_position_success")
+		end)
+
+	elseif message_id == hash("horde_to_score") then
+		-- Орду в очки
+		for i, item in ipairs(self.animation_zombies) do
+			msg.post("main:/loader_gui", "set_status", {
+				id = "add_balance",
+				type = "score",
+				start_position =  camera.world_to_screen(camera_id, go.get_position(item.url), gui.ADJUST_STRETCH),
+				value = 1,
+				not_screen_to_local = true,
+				icon = "zombie_0_"..item.human_id.."_default",
+				--atlas = atlas
+			})
+			go.delete(item.url)
+		end
+
+	elseif message_id == hash("win") then
+		-- Анимация победы
+		self.win = true
+		self.activate = true
+
+		if self.timer_view_horde then
+			timer.cancel(self.timer_view_horde)
+			self.timer_view_horde = nil
+		end
+		local function animate_win(self)
+			character_animations.play(self, "win")
+			-- Спавн анимированных зомбиков 
+			local index_zombie_animation = 0
+			for key = #self.horde, 1, -1 do
+				index_zombie_animation = index_zombie_animation + 1
+				character_zombie_main.add_zombie_animation(self, "horde", key, index_zombie_animation)
+			end
+
+			-- Спавн анимированных зомбиков 
+			for key, v in pairs(self.zombies) do
+				index_zombie_animation = index_zombie_animation + 1
+				character_zombie_main.add_zombie_animation(self, "zombie_attack", key, index_zombie_animation)
+			end
+
+			--Анимация грозы для победы в гуи
+			msg.post("main:/loader_gui", "visible", {
+				id = "win_player",
+				visible = true
+			})
+			character_animations.play(self, "win")
+
+			timer.delay(2, false, function (self)
+				msg.post("main:/loader_gui", "visible", {
+					id = "modal_result",
+					visible = true,
+					value = {
+						type_result = "win",
+						prizes = {
+							coins = storage_game.map.player_add_items.coins,
+							xp = storage_game.map.player_add_items.xp,
+							resource = storage_game.map.player_add_items.resource,
+							trofey = storage_game.map.player_add_items.trofey
+						},
+						hidden_btns = {"back", "shop"}
+					},
+				})
+			end)
+		end
+
+		if message.point_win then
+			-- Последовать к точке
+			local position_to = go.get_position(message.point_win)
+			self.input_animate = vmath.normalize(position_to - go.get_position())
+			ai_move.move_item(self, position_to, function (self)
+				self.input_animate = nil
+				self.move_stop = true
+				animate_win(self)
+			end)
+		else
+			self.move_stop = true
+			animate_win(self)
+		end
+		
+	end
+end
+
+function on_reload(self)
+	-- Add reload-handling code here
+	-- Learn more: https://defold.com/manuals/hot-reload/
+	-- Remove this function if not needed
+end

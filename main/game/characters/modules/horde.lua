@@ -19,7 +19,7 @@ function M.add_zombie_horde(self, skin_id, human_id, position)
 		human_id = human_id,
 	}
 
-	if not self.max_horde or self.size_horde < self.max_horde then
+	if self.max_horde == 0 or self.size_horde < self.max_horde then
 		local id = factory.create("#zombie_horde_factory", position, rotation, properties)
 		self.horde[#self.horde + 1] = {
 			id = id,

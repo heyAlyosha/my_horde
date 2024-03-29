@@ -3,6 +3,7 @@ instances {
   id: "map"
   prototype: "/main/game/levels/levels/world_map/world_map.go"
   children: "city_policy"
+  children: "city_policy1"
   position {
     x: 1.0
     y: 2.0
@@ -44,8 +45,8 @@ instances {
   id: "player"
   prototype: "/main/game/characters/player/player_world_map.go"
   position {
-    x: 240.0
-    y: 205.0
+    x: 35.0
+    y: 84.0
     z: 3.0
   }
   rotation {
@@ -245,6 +246,46 @@ instances {
   scale3 {
     x: 1.0
     y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "zombie_main_enemy"
+  prototype: "/main/game/characters/zombie_main_enemy/zombie_main_enemy.go"
+  position {
+    x: 189.0
+    y: 104.0
+    z: 3.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "city_policy1"
+  prototype: "/main/game/objects/objects_static/world_map/city_policy.go"
+  position {
+    x: 339.0
+    y: 170.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
     z: 1.0
   }
 }

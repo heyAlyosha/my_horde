@@ -62,6 +62,62 @@ function M.move_item_from(self, position_from, handle, speed)
 	end
 end
 
+-- Передвиджение от точки
+function M.move_random(self, max_cost, handle)
+	self.dir = self.dir or vmath.vector(-1, 0, 0)
+	local position = go.get_position()
+	local start_x, start_y = astar_utils:screen_to_coords(position.x, position.y)
+	local max_cost = max_cost or 2
+
+	-- Находим случайную плитку
+	local near_result, near_size, nears = astar.solve_near(start_x, start_y, max_cost)
+
+	-- Находим случайные координаты
+	local coordinate_random
+	if near_result == astar.SOLVED then
+		-- Удаляем первую плитку
+		table.remove(nears, 1)
+		for i = #nears, 1, -1 do
+			local item = nears[i]
+			local x,y = astar_utils:coords_to_screen(item.x, item.y)
+
+			-- Проверяем, есть ли коллизии 
+			local left_position = vmath.vector3(x - 3, y - 3, 0)
+			local right_position = vmath.vector3(x + 3, y + 3, 0)
+			local result_collision = physics.raycast(left_position, right_position, {hash("default")}, options)
+			
+			if not result_collision then
+				
+				-- Нет коллизии, добавляем
+				local position_to = vmath.vector3(x, y, 0)
+
+				-- Смотрим направление
+				if vmath.dot(self.dir, position_to - position) > 0 then
+					nears[i].cost = nears[i].cost + 3
+				end
+				nears[i].position_to = position_to
+			else
+				table.remove(nears, i)
+			end
+		end
+	end
+
+	-- Сортируем
+	table.sort(nears, function (a, b)
+		return a.cost > b.cost
+	end)
+
+	if #nears > 6 then
+		coordinate_random = nears[math.random(1,6)].position_to
+	else
+		coordinate_random = nears[math.random(1,#nears)].position_to
+	end
+
+	self.dir = vmath.normalize(coordinate_random - position)
+
+	M.move_to_position(self, coordinate_random, handle, handle_error)
+end
+
 -- Пердвижение к точке
 function M.move_item(self, position_to, handle)
 	local position = go.get_position()
