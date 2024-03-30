@@ -16,6 +16,13 @@ function M.on_update(self)
 	end
 end
 
+
+function M.animate_position(self, position_to, duration)
+	if self.zone_infection then
+		go.animate(self.zone_infection, "position", go.PLAYBACK_ONCE_FORWARD, position_to, go.EASING_LINEAR, duration)
+	end
+end
+
 function M.update_size(self, diametr)
 	if self.zone_infection then
 		go.set_scale(diametr, self.zone_infection)

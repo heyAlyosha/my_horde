@@ -3,31 +3,25 @@ local M = {}
 
 -- Поиск цели вокруг
 function M.search_target(self)
-	if not self.view then
-		local distantion_visible = 150
-		self.view = ai_core.view(self, function (self, visible_items)
-			if false and visible_items and not self.no_view then
-				-- Есть цели вокруг
-				local visible_item = visible_items[1].url
+	local distantion_visible = 150
+	local visible_items = ai_vision.get_visible(self, self.visible_object_id, distantion_visible, self.exclude_commands_view)
 
-				if go_controller.is_object(visible_item)  then
-					-- Помечаем целью
-					ai_attack.add_target(self, visible_item)
+	if visible_items and #visible_items > 0 then
+		-- Есть враги
+		local visible_item = visible_items[1]
 
-					self.condition_ai = hash("to_target")
-					M.behavior(self)
-				end
+		if go_controller.is_object(visible_item.url)  then
+			-- Помечаем целью
+			ai_attack.add_target(self, visible_item.url)
+			self.condition_ai = hash("to_target")
+			M.behavior(self)
+		end
 
-				if not self.target or (self.target_current_useful and self.target_current_useful < visible_item.target_useful) then
-					-- Если нет цели
-					
-				end
-			else
-				-- Целей нет
-				--self.condition_ai = nil
-				--M.behavior(self)
-			end
-		end, self.exclude_commands_view, distantion_visible)
+		if not self.target or (self.target_current_useful and self.target_current_useful < visible_item.target_useful) then
+			-- Если нет цели
+			-- Целей нет
+			
+		end
 	end
 end
 
@@ -41,10 +35,6 @@ function M.behavior(self)
 	self.exclude_commands_view = self.exclude_commands_view or {}
 	self.exclude_commands_view[hash("building_ruin")] = true
 	self.exclude_commands_view[hash("zombie_enemy")] = true
-
-	if not self.no_view then
-		M.search_target(self)
-	end
 
 	-- К ЦЕЛИ
 	if self.condition_ai == hash("to_target") then
@@ -71,7 +61,9 @@ function M.behavior(self)
 
 			else
 				-- Добежали до цели
-				
+				ai_attack.delete_target(self, self.target)
+				self.condition_ai = nil
+				M.behavior(self)
 			end
 		end
 
@@ -88,6 +80,7 @@ function M.behavior(self)
 	if not self.condition_ai then
 		-- Обычная скорость
 		self.speed = self.speed_default
+		M.search_target(self)
 
 		local max_cost = 5
 		ai_move.move_random(self, max_cost, M.behavior)

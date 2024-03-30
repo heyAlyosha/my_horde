@@ -71,12 +71,7 @@ function init(self)
 	self.horde = {}
 	self.zombies = {}
 
-	-- Отслеживаем перемещение зомбика
-	self.handle_move_item = function (self, position, position_to, duration, dir)
-		print("self.handle_move_item", position, position_to, duration, dir)
-		print("------")
-		horde.move_horde_bot(self, position_to, duration, dir)
-	end
+	
 
 	timer.delay(0.1, false, function (self)
 		local сenter_position = vmath.vector3(0)
@@ -119,7 +114,17 @@ function init(self)
 		zone_infection.update_size(self, 5)
 	end
 
-	
+	-- Отслеживаем перемещение зомбика
+	zone_infection.create(self)
+	zone_infection.update_size(self, 5)
+
+	-- Обработка перредвижения
+	self.handle_move_item = function (self, position, position_to, duration, dir)
+		-- Перемещение орды
+		horde.move_horde_bot(self, position_to, duration, dir)
+		-- Перемещение зоны инфекции
+		zone_infection.animate_position(self, position_to, duration)
+	end
 
 	character_zombie_main.change_horde(self)
 

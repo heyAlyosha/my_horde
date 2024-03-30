@@ -45,8 +45,8 @@ instances {
   id: "player"
   prototype: "/main/game/characters/player/player_world_map.go"
   position {
-    x: 35.0
-    y: 84.0
+    x: 60.0
+    y: 36.0
     z: 3.0
   }
   rotation {
@@ -253,8 +253,8 @@ instances {
   id: "zombie_main_enemy"
   prototype: "/main/game/characters/zombie_main_enemy/zombie_main_enemy.go"
   position {
-    x: 189.0
-    y: 104.0
+    x: 351.0
+    y: 467.0
     z: 3.0
   }
   rotation {
@@ -286,6 +286,126 @@ instances {
   scale3 {
     x: 0.5
     y: 0.5
+    z: 1.0
+  }
+}
+instances {
+  id: "human"
+  prototype: "/main/game/characters/human/human.go"
+  position {
+    x: 376.0
+    y: 486.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "human1"
+  prototype: "/main/game/characters/human/human.go"
+  position {
+    x: 388.0
+    y: 466.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "human2"
+  prototype: "/main/game/characters/human/human.go"
+  position {
+    x: 389.0
+    y: 439.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "human3"
+  prototype: "/main/game/characters/human/human.go"
+  position {
+    x: 362.0
+    y: 419.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "human4"
+  prototype: "/main/game/characters/human/human.go"
+  position {
+    x: 334.0
+    y: 428.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "human5"
+  prototype: "/main/game/characters/human/human.go"
+  position {
+    x: 326.0
+    y: 452.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
     z: 1.0
   }
 }

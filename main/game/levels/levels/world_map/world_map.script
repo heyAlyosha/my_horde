@@ -26,7 +26,7 @@ end
 function on_message(self, message_id, message, sender)
 	if message_id == hash("init") then
 		-- Инициализация карты
-		camera.follow(camera_id, msg.url("player"), options)
+		camera.follow(camera_id, msg.url("zombie_main_enemy"), options)
 
 	elseif message_id == hash("start") then
 		
