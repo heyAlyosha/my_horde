@@ -25572,5 +25572,34 @@ layers {
     rotate90: 0
   }
 }
+layers {
+  id: "walls"
+  z: 1.0
+  is_visible: 1
+  cell {
+    x: 11
+    y: 9
+    tile: 529
+    h_flip: 0
+    v_flip: 0
+    rotate90: 0
+  }
+  cell {
+    x: 12
+    y: 9
+    tile: 529
+    h_flip: 0
+    v_flip: 0
+    rotate90: 0
+  }
+  cell {
+    x: 13
+    y: 9
+    tile: 529
+    h_flip: 0
+    v_flip: 0
+    rotate90: 0
+  }
+}
 material: "/builtins/materials/tile_map.material"
 blend_mode: BLEND_MODE_ALPHA

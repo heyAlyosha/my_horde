@@ -41,9 +41,9 @@ function M.condition_attack(self, url, handle_success, handle_error, handle_fire
 end
 
 -- Обзор окружения
-function M.view(self, handle_enemy, exclude_commands)
+function M.view(self, handle_enemy, exclude_commands, distantion_visible)
 	local function view(self)
-		local visible_items = ai_vision.get_visible(self, self.visible_object_id, self.distantion_visible, exclude_commands)
+		local visible_items = ai_vision.get_visible(self, self.visible_object_id, distantion_visible or self.distantion_visible, exclude_commands)
 
 		if visible_items and #visible_items > 0 then
 			-- Есть враги

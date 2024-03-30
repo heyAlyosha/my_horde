@@ -144,6 +144,14 @@ function M.move_item(self, position_to, handle)
 
 	character_animations.play(self, "move")
 	sprite.set_hflip("#body", dir.x < 0)
+
+	-- Если есть слушатель
+	if self.handle_move_item then
+		print("move_item")
+		self.handle_move_item(self, position, position_to, duration, dir)
+	end
+
+	
 end
 
 -- Пердвижение к цели
@@ -234,6 +242,7 @@ function M.move_to_position(self, move_position_to, handle_success, handle_error
 
 	elseif dist < distantion_magnite then
 		-- Маленькое расстояние до цели
+		pprint("distantion_magnite", go.get_position())
 		M.move_item(self, move_position_to, handle_success)
 	else
 		local result, path_size, totalcost, path = astar_functions.get_path(self, move_position_to)

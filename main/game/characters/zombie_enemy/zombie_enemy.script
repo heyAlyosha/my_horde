@@ -130,7 +130,6 @@ function on_message(self, message_id, message, sender)
 				local url_script_new_target = go_controller.url_script(message.parent)
 				local target_useful = go.get(url_script_target, "target_useful") or 0
 				local new_target_useful = go.get(url_script_new_target, "target_useful") or 0
-				pprint("target_useful", message.parent, target_useful, new_target_useful)
 
 				if target_useful > new_target_useful then
 					return true
@@ -139,7 +138,6 @@ function on_message(self, message_id, message, sender)
 				end
 			end
 
-			pprint("set_target", message.parent)
 			self.target = go_controller.url_object(message.parent)
 			self.condition_ai = hash("to_target")
 			ai_zombie_enemy.behavior(self)

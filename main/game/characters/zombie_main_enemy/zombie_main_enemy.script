@@ -1,12 +1,13 @@
 go.property("activate", true)
-go.property("horde_count", 0)
-go.property("horde_map", false)
+go.property("horde_count", 1)
+go.property("horde_map", true)
 go.property("dir", vmath.vector(-1,0,0))
 go.property("max_horde", 30)
 go.property("ai_dist_way", 50)
 go.property("ai_dist_visible", 30)
 go.property("ai_interval_visible", 30)
 go.property("ai_character", hash("default")) -- "pacific/agressive"
+go.property("distantion_visible", 50) -- "pacific/agressive"
 go.property("time_view", 1)
 go.property("damage", 2)
 go.property("live", 30)
@@ -66,9 +67,16 @@ function init(self)
 	self.correction = vmath.vector3()
 
 	self.visible_horde = self.visible_horde_min
-	self.distantion_visible = self.distantion_attack
+	--self.distantion_visible = self.distantion_attack
 	self.horde = {}
 	self.zombies = {}
+
+	-- Отслеживаем перемещение зомбика
+	self.handle_move_item = function (self, position, position_to, duration, dir)
+		print("self.handle_move_item", position, position_to, duration, dir)
+		print("------")
+		horde.move_horde_bot(self, position_to, duration, dir)
+	end
 
 	timer.delay(0.1, false, function (self)
 		local сenter_position = vmath.vector3(0)
@@ -91,6 +99,8 @@ function init(self)
 				end
 			end)
 		end
+
+		horde.move_horde_bot(self, go.get_position(), duration, dir)
 	end)
 
 	self.group_name = "visible_object"
@@ -102,16 +112,20 @@ function init(self)
 			local visible_items = ai_vision.get_visible(self, self.visible_object_id, self.visible_horde)
 			local position = go.get_position()
 
-			--horde_attack.visible(self, visible_items)
+			horde_attack.visible(self, visible_items)
 		end)
 	else
 		zone_infection.create(self)
 		zone_infection.update_size(self, 5)
 	end
 
+	
+
 	character_zombie_main.change_horde(self)
 
 	ai_zombie_main_enemy_horde.behavior(self)
+
+	
 end
 
 function final(self)

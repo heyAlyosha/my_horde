@@ -32,7 +32,9 @@ function M.add_zombie_horde(self, skin_id, human_id, position)
 
 		self.target_add_horde = M.get_position(self, go.get_position(), #self.horde)
 		character_zombie_main.change_horde(self)
-		M.move_horde_player(self)
+		if self.command == hash("player") then
+			M.move_horde_player(self)
+		end
 	end
 end
 
@@ -112,6 +114,36 @@ function M.move_horde_player(self)
 		if self.animation_horde ~= self.last_animation_horde then
 			sprite.play_flipbook(item.url_sprite, "zombie_"..item.skin_id.."_"..item.human_id .. "_run")
 		end
+	end
+end
+
+-- Передвижение орды бота
+function M.move_horde_bot(self, position_to, duration, dir)
+	for i = 1, #self.horde do
+		local item = self.horde[i]
+
+		local position = go.get_position(item.url)
+		local position_zombie_to = M.get_position(self, position_to, i)
+
+		local result = physics.raycast(position_to, position_zombie_to, {hash("default")}, options)
+		-- Есть столкновения
+		if result then
+			position_zombie_to = result.position
+		end
+		position_zombie_to = position_functions.go_get_perspective_z(position_zombie_to, item.url)
+
+		dir = dir or vmath.normalize(position_zombie_to - position)
+		duration = duration or vmath.length(position_zombie_to - position) / 75
+
+		sprite.set_hflip(item.url_sprite, dir.x < 0)
+
+		-- Анимация ходьбы
+		if self.animation_horde ~= self.last_animation_horde then
+			sprite.play_flipbook(item.url_sprite, "zombie_"..item.skin_id.."_"..item.human_id .. "_run")
+		end
+
+		--go.cancel_animations(item.url, "position")
+		go.animate(item.url, "position", go.PLAYBACK_ONCE_FORWARD, position_zombie_to, gui.EASING_LINEAR, duration)
 	end
 end
 
