@@ -119,6 +119,13 @@ end
 
 -- Передвижение орды бота
 function M.move_horde_bot(self, position_to, duration, dir)
+	local dist = vmath.length(position_to - go.get_position())
+	if dist > 0 then
+		self.animation_horde = "run"
+	else
+		self.animation_horde = "default"
+	end
+
 	for i = 1, #self.horde do
 		local item = self.horde[i]
 
@@ -137,14 +144,19 @@ function M.move_horde_bot(self, position_to, duration, dir)
 
 		sprite.set_hflip(item.url_sprite, dir.x < 0)
 
-		-- Анимация ходьбы
-		if self.animation_horde ~= self.last_animation_horde then
-			sprite.play_flipbook(item.url_sprite, "zombie_"..item.skin_id.."_"..item.human_id .. "_run")
-		end
+		
 
 		--go.cancel_animations(item.url, "position")
 		go.animate(item.url, "position", go.PLAYBACK_ONCE_FORWARD, position_zombie_to, gui.EASING_LINEAR, duration)
+
+		-- АНимация
+		if self.animation_horde ~= self.last_animation_horde then
+			sprite.play_flipbook(item.url_sprite, "zombie_"..item.skin_id.."_"..item.human_id .. "_".. self.animation_horde)
+		end
 	end
+
+	-- Анимация орды
+	self.last_animation_horde = self.animation_horde
 end
 
 
