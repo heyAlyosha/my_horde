@@ -133,8 +133,13 @@ function M.move_item(self, position_to, handle)
 		self.timer_move_item = nil
 	end
 	if len > 3 then
+		-- Если есть слушатель
 		go.animate(".", "position", go.PLAYBACK_ONCE_FORWARD, position_functions.go_get_perspective_z(position_to), go.EASING_LINEAR, duration, 0)
 		self.timer_move_item = timer.delay(duration, false, handle)
+
+		if self.handle_move_item then
+			self.handle_move_item(self, position, position_to, duration, dir)
+		end
 	else
 		position_functions.go_set_perspective_z(position_to)
 		if handle then
@@ -144,12 +149,6 @@ function M.move_item(self, position_to, handle)
 
 	character_animations.play(self, "move")
 	sprite.set_hflip("#body", dir.x < 0)
-
-	-- Если есть слушатель
-	if self.handle_move_item then
-		print("move_item")
-		self.handle_move_item(self, position, position_to, duration, dir)
-	end
 
 	
 end
@@ -242,7 +241,10 @@ function M.move_to_position(self, move_position_to, handle_success, handle_error
 
 	elseif dist < distantion_magnite then
 		-- Маленькое расстояние до цели
-		pprint("distantion_magnite", go.get_position())
+		if self.handle_move_item then
+			pprint("distantion_magnite", go.get_id())
+		end
+		
 		M.move_item(self, move_position_to, handle_success)
 	else
 		local result, path_size, totalcost, path = astar_functions.get_path(self, move_position_to)
