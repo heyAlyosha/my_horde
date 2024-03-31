@@ -15,8 +15,6 @@ function M.init(self)
 	for k, v in pairs(M.catalog_keys) do
 		M.catalog_keys[hash(k)] = v
 	end
-
-	pprint(M.catalog_keys)
 end
 
 -- Получить характеристику под тип

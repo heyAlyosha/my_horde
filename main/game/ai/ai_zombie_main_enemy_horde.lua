@@ -10,18 +10,21 @@ function M.search_target(self)
 		-- Есть враги
 		local visible_item = visible_items[1]
 
-		if go_controller.is_object(visible_item.url)  then
+		if go_controller.is_object(visible_item.url) and not self.target or (self.target_current_useful and self.target_current_useful < visible_item.target_useful)  then
 			-- Помечаем целью
 			ai_attack.add_target(self, visible_item.url)
 			self.condition_ai = hash("to_target")
 			M.behavior(self)
+		else
+			ai_attack.delete_target(self, self.target)
+			self.condition_ai = nil
+			self.not_search_target = true
+			M.behavior(self)
 		end
-
-		if not self.target or (self.target_current_useful and self.target_current_useful < visible_item.target_useful) then
-			-- Если нет цели
-			-- Целей нет
-			
-		end
+	else
+		self.condition_ai = nil
+		self.not_search_target = true
+		M.behavior(self)
 	end
 end
 
@@ -39,8 +42,6 @@ function M.behavior(self)
 	-- К ЦЕЛИ
 	if self.condition_ai == hash("to_target") then
 		self.speed = self.speed_attack
-		-- Прокладываем путь для атаки
-		ai_move.stop(self)
 
 		-- НЕ может найти путь для атаки
 		local handle_error = function (self, error_code)
@@ -51,7 +52,7 @@ function M.behavior(self)
 
 		-- Добежал до цели
 		local handle_success = function (self)
-			ai_move.stop(self)
+			self.not_search_target = true
 			character_animations.play(self, "idle")
 			if not self.target or not go_controller.is_object(self.target) then
 				-- Цель пропала, гуляет
@@ -68,10 +69,10 @@ function M.behavior(self)
 		end
 
 		if self.target and go_controller.is_object(self.target) then
-			ai_core.condition_attack(self, self.target, handle_success, handle_error)
+			ai_core.condition_attack(self, self.target, handle_success, handle_error, handle_success)
 		else
 			-- Цели нет или она исчезла
-			self.condition_ai = nil
+			self.condition_ai = nil   
 			M.behavior(self)
 		end
 	end
@@ -80,10 +81,15 @@ function M.behavior(self)
 	if not self.condition_ai then
 		-- Обычная скорость
 		self.speed = self.speed_default
-		M.search_target(self)
+
+		if not self.not_search_target then
+			M.search_target(self)
+		end
 
 		local max_cost = 5
 		ai_move.move_random(self, max_cost, M.behavior)
+
+		self.not_search_target = nil
 	end
 end
 

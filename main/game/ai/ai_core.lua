@@ -2,14 +2,14 @@
 local M = {}
 
 -- Состояние атаки
-function M.condition_attack(self, url, handle_success, handle_error, handle_fire)
+function M.condition_attack(self, url, handle_success, handle_error, handle_no_object_target)
 	self.condition = hash("attack")
 	self.target = go_controller.url_object(url)
 	self.is_attack = true
 
 	local handle_success = handle_success or function (self)
 		if not ai_attack.check_distance_attack(self, url, handle_distantion_error) then
-			M.condition_attack(self, url, handle_success, handle_error)
+			M.condition_attack(self, url, handle_success, handle_error, handle_no_object_target)
 		end
 	end
 
@@ -17,27 +17,8 @@ function M.condition_attack(self, url, handle_success, handle_error, handle_fire
 		print("Error", error_code)
 	end
 
-	-- Расстояние до цели
-	local function handle_distantion_success(self)
-		ai_move.stop(self)
-		self.fire = ai_core.fire(self, self.target, handle_fire)
-	end
-	local function handle_distantion_error(self)
-		ai_core.clear_coditions(self, url)
-		M.condition_to_horde(self)
-	end
-
-	--[[
-	if not self.last_target or go_controller.url_to_key(self.target) ~= go_controller.url_to_key(self.last_target) then
-		
-		print("condition_attack", self.last_target, self.target, go_controller.url_to_key(self.target) ~= go_controller.url_to_key(self.last_target))
-	end
-	--]]
-
 	ai_attack.add_target(self, self.target)
 	ai_move.move_to_object(self, self.target, handle_success, handle_error, handle_no_object_target)
-
-	--self.check_attak = ai_core.check_distantion_attack(self, self.target, handle_distantion_success, handle_distantion_error)
 end
 
 -- Обзор окружения

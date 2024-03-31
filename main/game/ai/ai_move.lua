@@ -213,7 +213,8 @@ function M.move_to_object(self, url, handle_success, handle_error, handle_no_obj
 					if handle_item_move then
 						handle_item_move(self)
 					end
-					M.move_to_object(self, url, handle_success, handle_error)
+					print("move_to_object")
+					M.move_to_object(self, url, handle_success, handle_error, handle_no_object_target)
 				end)
 			end
 		end
@@ -241,9 +242,6 @@ function M.move_to_position(self, move_position_to, handle_success, handle_error
 
 	elseif dist < distantion_magnite then
 		-- Маленькое расстояние до цели
-		if self.handle_move_item then
-			pprint("distantion_magnite", go.get_id())
-		end
 		
 		M.move_item(self, move_position_to, handle_success)
 	else
