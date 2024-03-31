@@ -63,8 +63,8 @@ function M.move_item_from(self, position_from, handle, speed)
 end
 
 -- Передвиджение от точки
-function M.move_random(self, max_cost, handle)
-	self.dir = self.dir or vmath.vector(-1, 0, 0)
+function M.move_random(self, max_cost, handle, dir)
+	local dir = dir or self.dir or vmath.vector(-1, 0, 0)
 	local position = go.get_position()
 	local start_x, start_y = astar_utils:screen_to_coords(position.x, position.y)
 	local max_cost = max_cost or 2
@@ -92,7 +92,7 @@ function M.move_random(self, max_cost, handle)
 				local position_to = vmath.vector3(x, y, 0)
 
 				-- Смотрим направление
-				if vmath.dot(self.dir, position_to - position) > 0 then
+				if vmath.dot(dir, position_to - position) > 0 then
 					nears[i].cost = nears[i].cost + 3
 				end
 				nears[i].position_to = position_to
@@ -213,7 +213,6 @@ function M.move_to_object(self, url, handle_success, handle_error, handle_no_obj
 					if handle_item_move then
 						handle_item_move(self)
 					end
-					print("move_to_object")
 					M.move_to_object(self, url, handle_success, handle_error, handle_no_object_target)
 				end)
 			end

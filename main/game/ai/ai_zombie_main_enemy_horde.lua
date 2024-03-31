@@ -8,7 +8,42 @@ function M.search_target(self)
 
 	if visible_items and #visible_items > 0 then
 		-- Есть враги
-		local visible_item = visible_items[1]
+		local visible_item
+		-- Смотрим есть ли орды зомби вокруг
+		for i, item in ipairs(visible_items) do
+			local url_script = go_controller.url_script(item.url)
+			local type_object = go.get(url_script, "type_object")
+
+			if type_object == hash("zombie_main") then
+				-- Смотрим размер орды противника
+				local size_horde = go.get(url_script, "size_horde")
+				local relation_hordes = 0
+
+				if size_horde > 0 then
+					relation_hordes = size_horde / self.size_horde
+				end
+				
+				print("relation_hordes", relation_hordes)
+
+				if relation_hordes >= 1.2 then
+					-- Если орда врага намного больше, убегаем
+					self.from_target = item.url
+					self.condition_ai = hash("from_target")
+					M.behavior(self)
+					return
+
+				elseif relation_hordes <= 0.8 then
+					-- Если орда врага намного меньше
+					ai_attack.add_target(self, item.url)
+					self.condition_ai = hash("to_target")
+					M.behavior(self)
+					return
+				else
+					-- Если орда врага приблизительно равна, ничего не делаем
+				end
+			end
+		end
+		visible_item = visible_items[1]
 
 		if go_controller.is_object(visible_item.url) and not self.target or (self.target_current_useful and self.target_current_useful < visible_item.target_useful)  then
 			-- Помечаем целью
@@ -74,6 +109,22 @@ function M.behavior(self)
 			-- Цели нет или она исчезла
 			self.condition_ai = nil   
 			M.behavior(self)
+		end
+	end
+
+	-- Убегает
+	if self.condition_ai == hash("from_target") then
+		self.speed = self.speed_attack
+
+		local max_cost = 5
+		if go_controller.is_object(self.from_target)  then
+			local dir = vmath.normalize((go.get_position() - go.get_position(self.from_target)))
+			ai_move.move_random(self, max_cost, M.search_target)
+
+		else
+			self.condition_ai = nil   
+			M.behavior(self)
+
 		end
 	end
 

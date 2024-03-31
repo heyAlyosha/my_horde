@@ -1,5 +1,5 @@
 go.property("activate", true)
-go.property("horde_count", 0)
+go.property("horde_count", 20)
 go.property("horde_map", false)
 go.property("max_horde", 30)
 go.property("damage", 2)
