@@ -1,7 +1,7 @@
 go.property("activate", true)
-go.property("horde_count", 20)
+go.property("horde_count", 100)
 go.property("horde_map", false)
-go.property("max_horde", 30)
+go.property("max_horde", 100)
 go.property("damage", 2)
 go.property("live", 30)
 go.property("speed_damage", 0.75)
@@ -183,6 +183,10 @@ function on_message(self, message_id, message, sender)
 		--camera.follow(camera_id, msg.url(), options)
 		local is_player = true
 		live_bar.create(self, is_player)
+
+	elseif message_id == hash("collision_enemy_infection_zone") then
+		local enemy = message.enemy
+		pprint("collision_enemy_infection_zone", enemy)
 	elseif message_id == hash("damage") then
 		-- Получили урон
 		local damage = message.damage or 0

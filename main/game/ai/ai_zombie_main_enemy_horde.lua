@@ -22,8 +22,6 @@ function M.search_target(self)
 				if size_horde > 0 then
 					relation_hordes = size_horde / self.size_horde
 				end
-				
-				print("relation_hordes", relation_hordes)
 
 				if relation_hordes >= 1.2 then
 					-- Если орда врага намного больше, убегаем

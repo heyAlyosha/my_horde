@@ -37,17 +37,7 @@ function on_message(self, message_id, message, sender)
 			message_id = message_id,
 			message = message,
 		}
-
-		if message.distance > 0 then
-		else
-			self.comp = nil
-		end
-		
-		--[[
-		--]]
 	end
-	
-	
 end
 
 function on_reload(self)

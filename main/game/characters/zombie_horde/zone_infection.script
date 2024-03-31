@@ -15,7 +15,18 @@ end
 
 function on_message(self, message_id, message, sender)
 	if message_id == hash("trigger_response") then
-		msg.post(message.other_id, "infection", {parent = self.parent})
+		if message.other_group == hash("infection_zone") then
+			-- Задел чужую зону инфекцию
+			local other_url_script = go_controller.url_script(msg.url(message.other_id))
+			local enemy_url = go.get(other_url_script, "parent")
+			msg.post(enemy_url, "collision_enemy_infection_zone", {enemy = self.parent, enter = message.enter})
+			msg.post(self.parent, "collision_infection_zone", {other_id = message.other_id, enter = message.enter})
+
+		else
+			-- Инфицирует человечков
+			msg.post(message.other_id, "infection", {parent = self.parent})
+
+		end
 	end
 end
 

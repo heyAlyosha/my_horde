@@ -1,5 +1,5 @@
 components {
-  id: "zone_infection"
+  id: "script"
   component: "/main/game/characters/zombie_horde/zone_infection.script"
   position {
     x: 0.0
@@ -23,6 +23,7 @@ embedded_components {
   "restitution: 0.5\n"
   "group: \"infection_zone\"\n"
   "mask: \"damage\"\n"
+  "mask: \"infection_zone\"\n"
   "embedded_collision_shape {\n"
   "  shapes {\n"
   "    shape_type: TYPE_SPHERE\n"
