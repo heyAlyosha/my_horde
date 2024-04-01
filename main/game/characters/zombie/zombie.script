@@ -21,7 +21,7 @@ go.property("damage_blood", true)
 go.property("visible_attack", false)
 go.property("spawn_coins", 0)
 go.property("spawn_resource", 0)
-go.property("spawn_xp", 1)
+go.property("spawn_xp", 0)
 go.property("spawn_star", 0)
 go.property("position_horde", vmath.vector3())
 

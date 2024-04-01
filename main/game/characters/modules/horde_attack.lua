@@ -9,7 +9,6 @@ function M.visible(self, visible_items)
 	-- Итерация просмотра для определения устревших 
 	self.iteration_visible_objects = self.iteration_visible_objects or 0
 	self.iteration_visible_objects = self.iteration_visible_objects + 1
-	
 
 	if visible_items then
 		-- Сортируем

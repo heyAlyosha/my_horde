@@ -51,8 +51,10 @@ function init(self)
 	game_content_character_parametrs = require "main.game.content.game_content_character_parametrs"
 	zone_infection = require("main.game.characters.zombie_horde.modules.zone_infection")
 	ai_zombie_main_enemy_horde = require "main.game.ai.ai_zombie_main_enemy_horde"
+	horde_battle_type_io = require "main.game.characters.modules.horde_battle_type_io"
+	horde_battle_type_action = require "main.game.characters.modules.horde_battle_type_action"
 
-	-- контент игры
+	-- онтент игры
 	--game_content_prize.init(self)
 	--game_content_artifact.init(self)
 	--game_content_achieve.init(self)
@@ -118,7 +120,6 @@ function init(self)
 		if displays[2] then
 			if true then
 				-- Горизонтальный экран
-				pprint(displays)
 				defos.set_view_size(displays[2].bounds.x, displays[2].bounds.y, displays[2].bounds.width, displays[2].bounds.height)
 				--defos.set_view_size(displays[1].bounds.x, displays[1].bounds.y, 1280, 720)
 			else
@@ -127,10 +128,9 @@ function init(self)
 			end
 		else
 			-- Тестируем
-			--defos.set_view_size(displays[1].bounds.x, displays[1].bounds.y, 960, 540)
-			defos.set_view_size(displays[1].bounds.x, displays[1].bounds.y, 405, 720)
+			defos.set_view_size(displays[1].bounds.x, displays[1].bounds.y, displays[1].bounds.width, displays[1].bounds.height)
+			--defos.set_view_size(displays[1].bounds.x, displays[1].bounds.y, 405, 720)
 		end
-		
 	end
 	--[[
 	--]]
