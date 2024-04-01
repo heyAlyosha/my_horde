@@ -15,6 +15,7 @@ function M.add_zombie_horde(self, skin_id, human_id, position)
 	local position = position or M.get_position(self, go.get_position(), #self.horde + 1)
 	local properties = {
 		parent = msg.url(),
+		command = self.command,
 		skin_id = skin_id,
 		human_id = human_id,
 	}
@@ -35,6 +36,26 @@ function M.add_zombie_horde(self, skin_id, human_id, position)
 		if self.command == hash("player") then
 			M.move_horde_player(self)
 		end
+	end
+end
+
+-- Уничтожение зомби в орде
+function M.delete_zombie_horde(self, index, effect_dead)
+	local item = self.horde[index]
+
+	-- Удаляем зомбика из орды
+	if item then
+		table.remove(self.horde, index)
+
+		if effect_dead then
+			msg.post(storage_game.map.url_script, "effect", {
+				position = go.get_position(item.url),
+				animation_id = hash("effect_zombie_death"), 
+				timer_delete = 3
+			})
+		end
+
+		go.delete(item.url)
 	end
 end
 

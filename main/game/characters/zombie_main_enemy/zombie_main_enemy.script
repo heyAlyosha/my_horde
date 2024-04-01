@@ -103,7 +103,7 @@ function init(self)
 	self.group_id, self.visible_object_id = ai_vision.add_dynamic_object(self, self.group_name)
 
 	-- Обзор вокруг орды
-	if true or not self.horde_map then
+	if not self.horde_map then
 		self.timer_view_horde = timer.delay(0.25, true, function (self)
 			local visible_items = ai_vision.get_visible(self, self.visible_object_id, self.visible_horde)
 			local position = go.get_position()
@@ -112,11 +112,6 @@ function init(self)
 		end)
 	else
 
-		self.timer_view_enemy_horde = timer.delay(0.25, true, function (self)
-			local exclude_commands = {}
-			local visible_items = ai_vision.get_visible(self, self.visible_object_id, self.visible_horde, exclude_commands)
-			local position = go.get_position()
-		end)
 	end
 
 	zone_infection.create(self)
@@ -156,6 +151,23 @@ function on_message(self, message_id, message, sender)
 		--camera.follow(camera_id, msg.url(), options)
 		local is_player = true
 		live_bar.create(self, is_player)
+
+	elseif message_id == hash("collision_enemy_infection_zone") then
+		local enemy = message.enemy
+		horde_battle_type_io.start(self, enemy, sender)
+
+	elseif message_id == hash("kill_zombie") then
+		local id_zombie = message.id_zombie
+		local url_zombie = message.url_zombie
+
+		if not id_zombie and url_zombie then
+			for index, zombie in ipairs(self.horde) do
+				if zombie.url.path == url_zombie.path then
+					horde.delete_zombie_horde(self, index, true)
+					break
+				end
+			end
+		end
 
 	elseif message_id == hash("set_attack_horde") then
 		-- Включение режима атаки орды

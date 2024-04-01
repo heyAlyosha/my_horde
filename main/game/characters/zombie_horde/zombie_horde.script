@@ -6,6 +6,7 @@ go.property("skin_id", 0)
 go.property("human_id", 1)
 go.property("parent", msg.url())
 go.property("position_to", vmath.vector3())
+go.property("type_object", hash("zombie_horde"))
 
 function init(self)
 	storage_game.go_objects[go.get_id()] = {
@@ -37,6 +38,27 @@ function on_message(self, message_id, message, sender)
 			message_id = message_id,
 			message = message,
 		}
+	elseif message_id == hash("trigger_response") then
+		if message.enter then
+			local url_script = go_controller.url_script(msg.url(message.other_id))
+			local command = go.get(url_script, "command")
+			if command ~= self.command  then
+				local type_object = go.get(url_script, "type_object")
+
+				if type_object == self.type_object then
+					pprint("Да")
+					-- Если зомбик врезался в другого вражеского зомбика
+					msg.post(self.parent, "kill_zombie", {url_zombie = msg.url()})
+					--msg.post(message.other_id, "kill")
+					
+				else
+					
+				end
+			end
+		end
+
+	elseif message_id == hash("kill") then
+		msg.post(self.parent, "kill_zombie", {url_zombie = msg.url()})
 	end
 end
 
