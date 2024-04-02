@@ -45,10 +45,12 @@ function M.search_target(self)
 
 		if go_controller.is_object(visible_item.url) and not self.target or (self.target_current_useful and self.target_current_useful < visible_item.target_useful)  then
 			-- Помечаем целью
+			print("-- Помечаем целью")
 			ai_attack.add_target(self, visible_item.url)
 			self.condition_ai = hash("to_target")
 			M.behavior(self)
 		else
+			print("else -- Помечаем целью")
 			ai_attack.delete_target(self, self.target)
 			self.condition_ai = nil
 			self.not_search_target = true
@@ -63,6 +65,7 @@ end
 
 -- Поведение
 function M.behavior(self)
+	print("self.condition_ai", self.condition_ai)
 	-- Состояние зомбика
 	self.condition_ai = self.condition_ai or nil
 	self.dir = self.dir or vmath.normalize(vmath.vector3(math.random(-100, 100), math.random(-100, 100), 0))
@@ -87,7 +90,7 @@ function M.behavior(self)
 		local handle_success = function (self)
 			self.not_search_target = true
 			character_animations.play(self, "idle")
-			if not self.target or not go_controller.is_object(self.target) then
+			if not self.target or not go_controller.is_object(self.target) or vmath.length(go.get_position(self.target) - go.get_position()) > 150 then
 				-- Цель пропала, гуляет
 				ai_attack.delete_target(self, self.target)
 				self.condition_ai = nil
@@ -95,6 +98,8 @@ function M.behavior(self)
 
 			else
 				-- Добежали до цели
+				local url_script = go_controller.url_script(self.target)
+				local type = url_script
 				ai_attack.delete_target(self, self.target)
 				self.condition_ai = nil
 				M.behavior(self)
@@ -102,12 +107,36 @@ function M.behavior(self)
 		end
 
 		if self.target and go_controller.is_object(self.target) then
-			ai_core.condition_attack(self, self.target, handle_success, handle_error, handle_success)
+			local url_script = go_controller.url_script(self.target)
+			local type_object = go.get(url_script, "type_object")
+			-- Если это вожак зомби 
+			pprint("type_object", type_object, self.is_circle_horde)
+			if type_object == hash("zombie_main") and not self.is_circle_horde then
+				pprint("ai_move.stop")
+				ai_move.stop(self)
+				-- Начинаем вращение
+				horde_circle.set(self, true, function (self)
+					pprint("horde_circle_set")
+					ai_core.condition_attack(self, self.target, handle_success, handle_error, handle_success)
+				end)
+
+				return
+			else
+				ai_core.condition_attack(self, self.target, handle_success, handle_error, handle_success)
+			end
+
+			return
+			
 		else
 			-- Цели нет или она исчезла
 			self.condition_ai = nil   
 			M.behavior(self)
+			return
 		end
+	end
+
+	if self.is_circle_horde then
+		horde_circle.set(self, false)
 	end
 
 	-- Убегает

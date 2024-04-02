@@ -14,7 +14,7 @@ go.property("live", 100)
 go.property("speed_damage", 0.75)
 go.property("speed", 20)
 go.property("speed_default", 30)
-go.property("speed_attack", 45)
+go.property("speed_attack", 40)
 go.property("scale_attack", 1)
 go.property("distantion_attack", 35)
 go.property("command", hash("zombie_enemy"))
@@ -34,6 +34,7 @@ go.property("horde_count_current", 0)
 go.property("active_input", true)
 go.property("size_horde", 0)
 go.property("attack_horde", false)
+go.property("is_circle_horde", false)
 
 function init(self)
 	game_content_character_parametrs.set_characteristic(self)
@@ -127,7 +128,9 @@ function init(self)
 	-- Обработка перредвижения
 	self.handle_move_item = function (self, position, position_to, duration, dir)
 		-- Перемещение орды
-		horde.move_horde_bot(self, position_to, duration, dir)
+		if not self.is_circle_horde then
+			horde.move_horde_bot(self, position_to, duration, dir)
+		end
 		-- Перемещение зоны инфекции
 		zone_infection.animate_position(self, position_to, duration)
 	end
@@ -142,8 +145,12 @@ function final(self)
 	msg.post(".", "release_input_focus")
 end
 
-function fixed_update(self, dt)
-	
+
+
+function update(self, dt)
+	if self.is_circle_horde then
+		horde_circle.player_update(self, dt)
+	end
 end
 
 function on_message(self, message_id, message, sender)

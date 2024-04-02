@@ -49,10 +49,6 @@ function M.move_item_from(self, position_from, handle, speed)
 		end)
 		local position_to = result[1].position
 
-		if self.to_point then
-			pprint(result, "result-----------------")
-		end
-
 		M.move_item(self, position_functions.go_get_perspective_z(position_to), handle)
 	else
 		if handle then
@@ -241,8 +237,8 @@ function M.move_to_position(self, move_position_to, handle_success, handle_error
 
 	elseif dist < distantion_magnite then
 		-- Маленькое расстояние до цели
-		
 		M.move_item(self, move_position_to, handle_success)
+
 	else
 		local result, path_size, totalcost, path = astar_functions.get_path(self, move_position_to)
 
@@ -282,10 +278,20 @@ function M.stop(self)
 	--go.cancel_animations(go.get_id(), "position")
 	live_bar.update_position(self)
 
+	go.cancel_animations(".", "position")
+
 	if self.timer_check_distation_attack then
 		timer.cancel(self.timer_check_distation_attack)
 		self.timer_check_distation_attack = nil
 	end
+
+	-- Останавливаем движение
+	if self.timer_move_item then
+		timer.cancel(self.timer_move_item)
+		self.timer_move_item = nil
+	end
+
+	
 end
 
 return M
