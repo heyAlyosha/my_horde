@@ -32,6 +32,7 @@ function M.search_target(self)
 
 				elseif relation_hordes <= 0.8 then
 					-- Если орда врага намного меньше
+					pprint("relation_hordes")
 					ai_attack.add_target(self, item.url)
 					self.condition_ai = hash("to_target")
 					M.behavior(self)
@@ -84,10 +85,12 @@ function M.behavior(self)
 			-- Не может найти путь для атаки, повторяем поиск
 			self.condition_ai = nil
 			M.behavior(self)
+			print("handle_error")
 		end
 
 		-- Добежал до цели
 		local handle_success = function (self)
+			print("handle_success")
 			self.not_search_target = true
 			character_animations.play(self, "idle")
 			if not self.target or not go_controller.is_object(self.target) or vmath.length(go.get_position(self.target) - go.get_position()) > 150 then
