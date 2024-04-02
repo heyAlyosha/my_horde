@@ -33,10 +33,19 @@ function M.player_update(self, dt)
 	for i = 1, #self.horde do
 		zombie = self.horde[i]
 		local vec = horde.positions[i].vector
-		local pos = vmath.rotate(rot, vec) + self.center
-		sprite.set_hflip(zombie.url_sprite, pos.x < go.get_position(zombie.url).x)
-
-		position_functions.go_set_perspective_z(pos, zombie.url) -- <9>
+		local position_to = vmath.rotate(rot, vec) + self.center
+		local position_current = go.get_position(zombie.url)
+		local dir = position_to - position_current
+		local len = vmath.length(dir)
+		if len > 5 then
+			-- Если зомбик далеко
+			local speed = 100
+			local input = vmath.normalize(dir)
+			local movement = input * speed * dt
+			position_to = position_current + movement
+		end
+		sprite.set_hflip(zombie.url_sprite, dir.x < 0)
+		position_functions.go_set_perspective_z(position_to, zombie.url)
 	end
 
 end
