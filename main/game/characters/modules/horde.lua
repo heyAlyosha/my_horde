@@ -38,6 +38,19 @@ function M.add_zombie_horde(self, skin_id, human_id, position)
 		if self.command == hash("player") then
 			M.move_horde_player(self)
 		end
+
+		M.compile(self)
+	end
+end
+
+-- СОбрать орду вокруг игрока
+function M.compile(self)
+	for i, zombie_horde in ipairs(self.horde) do
+		local position, vector, row, row_i = M.get_position(self, go.get_position(), i)
+
+		zombie_horde.vector = vector
+		zombie_horde.row = row
+		zombie_horde.row_i = row_i
 	end
 end
 
@@ -62,6 +75,67 @@ function M.delete_zombie_horde(self, index, effect_dead)
 	end
 end
 
+-- Вращение отдельного зомби
+function M.circle_item_zombie(self, zombie)
+	local row = zombie.row
+	local row_i = zombie.row_i
+	local next_row_i = zombie.row_i + 1
+
+	-- Находим следующее расположение зомбика
+	if M.positions_circle[row] and not M.positions_circle[row][next_row_i] then
+		next_row_i = 1
+	end
+
+	if self.is_circle_horde then
+		-- Включено вращение
+		if M.positions_circle[row] and  M.positions_circle[row][next_row_i] then
+			-- Находим конечную позицию вокруг вождя
+			zombie.vector = M.positions_circle[row][next_row_i]
+			zombie.position = position_functions.add_perspective_z(go.get_position() + zombie.vector)
+			zombie.row = row
+			zombie.row_i = next_row_i
+
+			-- Высчитываем продолжительность движения
+			-- Запускаем его
+			local speed = 75
+			local dir = zombie.position - go.get_position(zombie.url)
+			local len = vmath.length(dir)
+
+			if len > 20 then
+				speed = 125
+			end
+			local duration = len / speed
+			go.animate(zombie.url, "position", go.PLAYBACK_ONCE_FORWARD, zombie.position, go.EASING_LINEAR, duration)
+
+			-- Анимация бега
+			sprite.set_hflip(zombie.url_sprite, dir.x < 0)
+			sprite.play_flipbook(zombie.url_sprite, "zombie_"..zombie.skin_id.."_"..zombie.human_id .. "_run")
+
+			zombie.circle_timer = timer.delay(duration, false, function (self)
+				M.circle_item_zombie(self, zombie)
+			end)
+		end
+
+	else
+		
+	end
+
+	
+end
+
+-- Вращение орды
+function M.circle_horde(self, is_circle)
+	self.is_circle_horde = is_circle
+	if self.is_circle_horde then
+		for i, zombie in ipairs(self.horde) do
+			M.circle_item_zombie(self, zombie)
+		end
+	else
+		
+	end
+	
+end
+
 -- Передвижение орды игрока
 function M.move_horde_player(self)
 	for i = 1, #self.horde do
@@ -80,20 +154,6 @@ function M.move_horde_player(self)
 			if result then
 				-- Смотрим в тот ли объект уткается  луч
 				local is_collision = true
-				--[[
-				-- Проверить В ту ли коллизию упёрся
-				for i = 1, #result do
-					local item_raycast_collision = result[i]
-					if item_raycast_collision.id == collision_message.other_id then
-						-- Если луч упёрся в ту коллизию
-						--draw.line(self.position_center_horde, item_raycast_collision.position)
-						position_to = position_functions.go_get_perspective_z(item_raycast_collision.position, item.url)
-
-						is_collision = true
-						break
-					end
-				end
-				--]]
 				position_to = position_functions.go_get_perspective_z(result.position, item.url)
 
 				if not is_collision then
@@ -182,6 +242,8 @@ function M.move_horde_bot(self, position_to, duration, dir)
 end
 
 
+
+
 function M.on_update(self)
 	-- УСтанавливаем расположение орды
 	self.collisions_zombie = self.collisions_zombie or {}
@@ -254,7 +316,7 @@ function M.get_position(self, сenter_position, index_to_horde)
 				add_angle = M.get_angle_radius(radius, row)
 			end
 
-			if current_angle > 360 then
+			if current_angle > 355 then
 				current_angle = 0
 				row = row + 1
 				row_i = 1
@@ -280,6 +342,7 @@ function M.get_position(self, сenter_position, index_to_horde)
 				vector = vmath.vector3(x, y, 0),
 				row = row,
 				row_i = row_i,
+				dist_center = vmath.length(vmath.vector3(x, y, 0))
 			}
 			-- Сохраняем позиции для кругового вращения
 			M.positions_circle[row] = M.positions_circle[row] or {}
@@ -288,8 +351,6 @@ function M.get_position(self, сenter_position, index_to_horde)
 			-- Увеличиваем место в ряду 
 			row_i = row_i + 1
 		end
-
-		pprint("M.positions_circle", M.positions_circle)
 
 		return сenter_position + M.positions[index_to_horde].vector, M.positions[index_to_horde].vector, M.positions[index_to_horde].row, M.positions[index_to_horde].row_i
 	end

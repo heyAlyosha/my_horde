@@ -24,6 +24,7 @@ function init(self)
 	camera = require "orthographic.camera"
 	storage_game = require "main.game.storage.storage_game"
 	horde = require "main.game.characters.modules.horde"
+	horde_circle = require "main.game.characters.modules.horde_circle"
 	input_remote_tv = require "input.input_remote_tv.modules.input_remote_tv"
 	character_animations = require "main.game.animations.character_animations"
 	character_attack = require "main.game.characters.modules.character_attack"

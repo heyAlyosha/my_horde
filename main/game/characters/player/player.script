@@ -1,5 +1,5 @@
 go.property("activate", true)
-go.property("horde_count", 9)
+go.property("horde_count", 10)
 go.property("horde_map", false)
 go.property("max_horde", 100)
 go.property("damage", 2)
@@ -111,6 +111,10 @@ function init(self)
 	end
 
 	character_zombie_main.change_horde(self)
+
+	timer.delay(1, false, function (self)
+		--horde.circle_horde(self, true)
+	end)
 end
 
 function final(self)
@@ -164,7 +168,9 @@ function update(self, dt)
 		live_bar.update_position(self)
 	end
 
-	horde.on_update(self)
+	horde_circle.player_update(self, dt)
+
+	--horde.on_update(self)
 
 	position_functions.go_set_perspective_z()
 
