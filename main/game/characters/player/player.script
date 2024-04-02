@@ -113,7 +113,8 @@ function init(self)
 	character_zombie_main.change_horde(self)
 
 	timer.delay(1, false, function (self)
-		--horde.circle_horde(self, true)
+		local is_circle_horde = true
+		horde_circle.set(self, is_circle_horde)
 	end)
 end
 
@@ -168,7 +169,9 @@ function update(self, dt)
 		live_bar.update_position(self)
 	end
 
-	horde_circle.player_update(self, dt)
+	if self.is_circle_horde then
+		horde_circle.player_update(self, dt)
+	end
 
 	--horde.on_update(self)
 

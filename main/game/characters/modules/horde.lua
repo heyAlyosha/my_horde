@@ -193,12 +193,32 @@ function M.move_horde_player(self)
 
 		-- Поворачиваем в сторону игрока
 		sprite.set_hflip(item.url_sprite, self.movement.x < 0)
+	end
 
-		-- Анимация ходьбы
-		if self.animation_horde ~= self.last_animation_horde then
-			sprite.play_flipbook(item.url_sprite, "zombie_"..item.skin_id.."_"..item.human_id .. "_run")
+	M.set_animation(self, hash("run"))
+end
+
+-- УСтановка анимации для орды
+function M.set_animation(self, animation_id)
+	-- Анимация ходьбы
+	if animation_id == hash("run") then
+		for i, item in ipairs(self.horde) do
+			if item.animation_id ~= animation_id then
+				sprite.play_flipbook(item.url_sprite, "zombie_"..item.skin_id.."_"..item.human_id .. "_run")
+				item.animation_id = animation_id
+			end
+		end
+
+	-- Анимация на месте
+	elseif animation_id == hash("default") then
+		for i, item in ipairs(self.horde) do
+			if item.animation_id ~= animation_id then
+				sprite.play_flipbook(item.url_sprite, "zombie_"..item.skin_id.."_"..item.human_id .. "_default")
+				item.animation_id = animation_id
+			end
 		end
 	end
+	
 end
 
 -- Передвижение орды бота
