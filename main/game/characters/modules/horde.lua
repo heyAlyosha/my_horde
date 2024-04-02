@@ -84,7 +84,6 @@ end
 -- УСтановка анимации для орды
 function M.set_animation_horde(self, animation_id)
 	-- Анимация ходьбы
-	print("set_animation_horde", animation_id)
 	if self.animation_horde ~= animation_id then
 		for i, item in ipairs(self.horde) do
 			if item.animation_id ~= animation_id then

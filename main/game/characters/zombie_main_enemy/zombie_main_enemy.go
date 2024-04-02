@@ -13,6 +13,36 @@ components {
     w: 1.0
   }
 }
+components {
+  id: "blood_left"
+  component: "/main/game/effects/blood.particlefx"
+  position {
+    x: -6.0
+    y: 7.0
+    z: -1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.70710677
+    w: 0.70710677
+  }
+}
+components {
+  id: "blood_right"
+  component: "/main/game/effects/blood.particlefx"
+  position {
+    x: 6.0
+    y: 7.0
+    z: -1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: -0.70710677
+    w: 0.70710677
+  }
+}
 embedded_components {
   id: "body"
   type: "sprite"
@@ -26,7 +56,7 @@ embedded_components {
   ""
   position {
     x: 0.0
-    y: 7.0
+    y: 9.0
     z: 1.0
   }
   rotation {
@@ -34,6 +64,11 @@ embedded_components {
     y: 0.0
     z: 0.0
     w: 1.0
+  }
+  scale {
+    x: 1.4
+    y: 1.4
+    z: 1.0
   }
 }
 embedded_components {
@@ -152,6 +187,7 @@ embedded_components {
   "group: \"damage\"\n"
   "mask: \"attack\"\n"
   "mask: \"bullet\"\n"
+  "mask: \"damage\"\n"
   "embedded_collision_shape {\n"
   "  shapes {\n"
   "    shape_type: TYPE_BOX\n"
@@ -322,7 +358,7 @@ embedded_components {
   ""
   position {
     x: 0.0
-    y: 18.0
+    y: 25.0
     z: 3.0
   }
   rotation {

@@ -253,8 +253,8 @@ instances {
   id: "zombie_main_enemy"
   prototype: "/main/game/characters/zombie_main_enemy/zombie_main_enemy.go"
   position {
-    x: 223.0
-    y: 85.0
+    x: 931.0
+    y: 424.0
     z: 3.0
   }
   rotation {
@@ -267,7 +267,7 @@ instances {
     id: "script"
     properties {
       id: "horde_count"
-      value: "30.0"
+      value: "0.0"
       type: PROPERTY_TYPE_NUMBER
     }
   }

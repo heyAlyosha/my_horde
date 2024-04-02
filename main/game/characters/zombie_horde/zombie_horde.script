@@ -1,6 +1,6 @@
 go.property("damage", 1)
-go.property("speed_damage", 0.25)
-go.property("speed_to_object", 30)
+-- Дамаг о коллизию
+go.property("damage_for_collision", 1)
 go.property("command", hash("player"))
 go.property("skin_id", 0)
 go.property("human_id", 1)
@@ -46,13 +46,10 @@ function on_message(self, message_id, message, sender)
 				local type_object = go.get(url_script, "type_object")
 
 				if type_object == self.type_object then
-					pprint("Да")
 					-- Если зомбик врезался в другого вражеского зомбика
 					msg.post(self.parent, "kill_zombie", {url_zombie = msg.url()})
-					--msg.post(message.other_id, "kill")
-					
 				else
-					
+					msg.post(message.other_id, "damage", {damage = self.damage})
 				end
 			end
 		end

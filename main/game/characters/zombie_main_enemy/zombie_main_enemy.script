@@ -144,6 +144,7 @@ function fixed_update(self, dt)
 end
 
 function on_message(self, message_id, message, sender)
+	pprint(message_id)
 	if message_id == hash("activate") then
 		self.activate = true
 		go_controller.add(self)
@@ -215,7 +216,7 @@ function on_message(self, message_id, message, sender)
 		self.from_id_object = message.from_id_object 
 		self.live = self.live - damage
 
-		character_animations.damage_player(self, message.parent)
+		character_animations.damage(self, message.parent or sender)
 
 		live_bar.set_hp(self, self.live, self.max_live)
 
