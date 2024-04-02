@@ -4,11 +4,18 @@ local M = {}
 M.speed = 2 -- Скорость поворота 
 M.rot = vmath.quat_rotation_z(3.141592653 * 2) 
 
-function M.set(self, is_circle_horde)
+function M.set(self, is_circle_horde, handle)
 	self.is_circle_horde = is_circle_horde
 	if self.is_circle_horde then
 		self.t_horde_circle = 0
 		horde.set_animation_horde(self, "run")
+
+		local delay = 1
+		character_animations.play(self, "win")
+		self.move_stop = true
+		timer.delay(delay, false, function (self)
+			self.move_stop = false
+		end)
 	else
 		self.t_horde_circle = 0
 		horde.set_animation_horde(self, "default")

@@ -231,11 +231,6 @@ function on_message(self, message_id, message, sender)
 
 		end
 
-	elseif message_id == hash("collision_enemy_infection_zone") then
-		local enemy = message.enemy
-		horde_battle_type_io.start(self, enemy, sender)
-
-
 	elseif message_id == hash("kill_zombie") then
 		local id_zombie = message.id_zombie
 		local url_zombie = message.url_zombie

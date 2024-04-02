@@ -45,8 +45,8 @@ instances {
   id: "player"
   prototype: "/main/game/characters/player/player_world_map.go"
   position {
-    x: 855.0
-    y: 426.0
+    x: 710.0
+    y: 494.0
     z: 3.0
   }
   rotation {
@@ -262,14 +262,6 @@ instances {
     y: 0.0
     z: 0.0
     w: 1.0
-  }
-  component_properties {
-    id: "script"
-    properties {
-      id: "horde_count"
-      value: "0.0"
-      type: PROPERTY_TYPE_NUMBER
-    }
   }
   scale3 {
     x: 1.0

@@ -1,5 +1,5 @@
 go.property("activate", true)
-go.property("horde_count", 10)
+go.property("horde_count", 30)
 go.property("horde_map", true)
 go.property("dir", vmath.vector(-1,0,0))
 go.property("max_horde", 30)
@@ -13,8 +13,8 @@ go.property("damage", 2)
 go.property("live", 100)
 go.property("speed_damage", 0.75)
 go.property("speed", 20)
-go.property("speed_default", 20)
-go.property("speed_attack", 25)
+go.property("speed_default", 30)
+go.property("speed_attack", 45)
 go.property("scale_attack", 1)
 go.property("distantion_attack", 35)
 go.property("command", hash("zombie_enemy"))
@@ -72,7 +72,13 @@ function init(self)
 	self.horde = {}
 	self.zombies = {}
 
-	
+	-- Обзор для удара по противникам
+	if self.horde_map then
+		self.exclude_attack = {}
+		self.exclude_attack[hash("")] = {}
+	else
+		
+	end
 
 	timer.delay(0.1, false, function (self)
 		local сenter_position = vmath.vector3(0)
@@ -85,16 +91,13 @@ function init(self)
 			horde.add_zombie_horde(self, self.skin_id, human_id)
 		end
 
-		-- Обзор для удара по противникам
-		if not self.horde_map then
-			timer.delay(self.speed_damage, true, function (self)
-				local visible_items = ai_vision.get_visible(self, self.visible_object_id, self.distantion_attack - 3, exclude_commands)
-				if visible_items and #visible_items > 0 then
-					-- Есть враги
-					character_attack.attack(self, visible_items[1].url)
-				end
-			end)
-		end
+		timer.delay(self.speed_damage, true, function (self)
+			local visible_items = ai_vision.get_visible(self, self.visible_object_id, self.distantion_attack - 3, self.exclude_attack)
+			if visible_items and #visible_items > 0 then
+				-- Есть враги
+				character_attack.attack(self, visible_items[1].url)
+			end
+		end)
 
 		horde.move_horde_bot(self, go.get_position(), duration, dir)
 	end)
@@ -111,7 +114,7 @@ function init(self)
 			horde_attack.visible(self, visible_items)
 		end)
 	else
-
+		
 	end
 
 	zone_infection.create(self)
@@ -167,46 +170,6 @@ function on_message(self, message_id, message, sender)
 					break
 				end
 			end
-		end
-
-	elseif message_id == hash("set_attack_horde") then
-		-- Включение режима атаки орды
-		self.attack_horde = message.attack_horde
-
-		if self.attack_horde then
-			-- Включаем таймер обзора
-			if not self.timer_view_horde then
-				self.timer_view_horde = timer.delay(0.25, true, function (self)
-					local visible_items = ai_vision.get_visible(self, self.visible_object_id, self.visible_horde)
-					local position = go.get_position()
-
-					horde_attack.visible(self, visible_items)
-				end)
-			end
-
-			-- Атакаы
-			if not self.timer_view_attack then
-				self.timer_view_attack = timer.delay(self.speed_damage, true, function (self)
-					local visible_items = ai_vision.get_visible(self, self.visible_object_id, self.distantion_attack - 3, exclude_commands)
-					if visible_items and #visible_items > 0 then
-						-- Есть враги
-						character_attack.attack(self, visible_items[1].url)
-					end
-				end)
-			end
-		else
-			-- Включаем таймер обзора
-			if self.timer_view_horde then
-				timer.cancel(self.timer_view_horde)
-				self.timer_view_horde = nil
-			end
-
-			-- Атака
-			if self.timer_view_attack then
-				timer.cancel(self.timer_view_attack)
-				self.timer_view_attack = nil
-			end
-			
 		end
 
 	elseif message_id == hash("damage") then
