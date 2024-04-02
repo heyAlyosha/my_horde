@@ -35,8 +35,11 @@ function M.add_zombie_horde(self, skin_id, human_id, position)
 
 		self.target_add_horde = M.get_position(self, go.get_position(), #self.horde)
 		character_zombie_main.change_horde(self)
-		if self.command == hash("player") then
+		if not self.is_circle_horde and self.command == hash("player") then
+			-- Обычная орда
 			M.move_horde_player(self)
+		elseif self.is_circle_horde then 
+			M.set_animation(self, hash("run"))
 		end
 
 		M.compile(self)
@@ -269,6 +272,7 @@ function M.on_update(self)
 	self.collisions_zombie = self.collisions_zombie or {}
 	if self.movement and vmath.length(self.movement) > 0 then
 		self.animation_horde = "run"
+		M.set_animation(self, animation_id)
 		M.move_horde_player(self)
 
 	else
@@ -282,20 +286,6 @@ function M.on_update(self)
 		end
 	end
 	self.last_animation_horde = self.animation_horde
-
-	--[[
-	for i = 1, #self.collisions_zombie do
-		local item = self.collisions_zombie[i]
-
-		if item.collision_physic then
-			local collision_message =  item.collision_physic.message
-			local storage_item = item.storage or {}
-			position_functions.go_set_perspective_z(collision_message.position, item.url)
-			item.collision_physic = nil
-		end
-		
-	end
-	--]]
 end
 
 -- Получение угла, основываясь

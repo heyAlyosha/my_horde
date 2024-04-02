@@ -171,9 +171,9 @@ function update(self, dt)
 
 	if self.is_circle_horde then
 		horde_circle.player_update(self, dt)
+	else
+		horde.on_update(self)
 	end
-
-	--horde.on_update(self)
 
 	position_functions.go_set_perspective_z()
 
