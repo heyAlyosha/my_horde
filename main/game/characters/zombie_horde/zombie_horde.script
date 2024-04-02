@@ -52,7 +52,9 @@ function on_message(self, message_id, message, sender)
 					-- Если зомбик врезался в другого вражеского зомбика
 					msg.post(self.parent, "kill_zombie", {url_zombie = msg.url()})
 				else
-					msg.post(message.other_id, "damage", {damage = self.damage})
+					if go.get(self.parent, "is_circle_horde") then
+						msg.post(message.other_id, "damage", {damage = self.damage})
+					end
 					character_damage.damage_zombie_horde(self)
 				end
 			end

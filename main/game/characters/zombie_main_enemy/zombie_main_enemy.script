@@ -10,7 +10,7 @@ go.property("ai_character", hash("default")) -- "pacific/agressive"
 go.property("distantion_visible", 50) -- "pacific/agressive"
 go.property("time_view", 1)
 go.property("damage", 2)
-go.property("live", 30)
+go.property("live", 100)
 go.property("speed_damage", 0.75)
 go.property("speed", 20)
 go.property("speed_default", 20)
@@ -144,7 +144,6 @@ function fixed_update(self, dt)
 end
 
 function on_message(self, message_id, message, sender)
-	pprint(message_id)
 	if message_id == hash("activate") then
 		self.activate = true
 		go_controller.add(self)
