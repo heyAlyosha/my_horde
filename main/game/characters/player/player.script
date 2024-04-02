@@ -25,6 +25,7 @@ go.property("horde_count_current", 0)
 go.property("active_input", true)
 go.property("size_horde", 0)
 go.property("attack_horde", false)
+go.property("is_circle_horde", false)
 go.property("is_input_circle_horde", true)
 
 function init(self)

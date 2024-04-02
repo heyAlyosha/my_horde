@@ -1,6 +1,7 @@
 go.property("damage", 1)
 -- Дамаг о коллизию
-go.property("damage_for_collision", 1)
+go.property("damage_for_collision", 2)
+go.property("live", 20)
 go.property("command", hash("player"))
 go.property("skin_id", 0)
 go.property("human_id", 1)
@@ -18,6 +19,8 @@ function init(self)
 		command = self.command,
 		storage = {}
 	}
+
+	self.max_live = self.live
 	sprite.play_flipbook("#body", "zombie_"..self.skin_id.."_"..self.human_id .. "_default")
 
 	position_functions.go_set_perspective_z()
@@ -50,6 +53,7 @@ function on_message(self, message_id, message, sender)
 					msg.post(self.parent, "kill_zombie", {url_zombie = msg.url()})
 				else
 					msg.post(message.other_id, "damage", {damage = self.damage})
+					character_damage.damage_zombie_horde(self)
 				end
 			end
 		end

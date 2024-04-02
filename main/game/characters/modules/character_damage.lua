@@ -29,6 +29,19 @@ function M.damage_zombie(self, message)
 	end
 end
 
+-- Дамаг по зомби
+function M.damage_zombie_horde(self, damage)
+	local damage = damage or self.damage_for_collision
+
+	self.live = self.live - damage
+
+	character_animations.damage_zombie_horde(self)
+
+	if self.live <= 0 then
+		msg.post(self.parent, "kill_zombie", {url_zombie = msg.url()})
+	end
+end
+
 -- Дамаг человечка
 function M.damage_human(self, message)
 	-- Получили урон
@@ -111,8 +124,6 @@ function M.damage_soldier(self, message)
 				human_id = self.human_id, position = go.get_position()
 			})
 		end
-
-
 	end
 end
 

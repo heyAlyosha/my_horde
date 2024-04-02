@@ -151,6 +151,26 @@ function M.damage(self, from_object_damage, handle)
 	end
 end
 
+
+function M.damage_zombie_horde(self, from_object_damage, handle)
+	local duration = 0.2
+	-- Анимация дамага
+	if not self.particle then
+		-- Покраснение
+		go.set("#body", "tint", vmath.vector4(1, 0, 0, 1)) -- <1>
+
+		--self.particle = true
+		timer.delay(duration, false, function (self)
+			go.set("#body", "tint", vmath.vector4(1, 1, 1, 1)) -- <1>
+			self.particle = nil
+
+			if handle then
+				handle(self)
+			end
+		end)
+	end
+end
+
 function M.damage_player(self, from_object_damage)
 	-- Анимация дамага
 	if not self.particle then
