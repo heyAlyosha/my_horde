@@ -1,7 +1,7 @@
 -- Орда
 local M = {}
 
-M.start_radius = 13
+M.start_radius = 20
 M.start_angle = 35
 M.add_step_radius = 12
 M.add_step_angle = -20
@@ -9,6 +9,8 @@ M.interval_zombie = 20
 
 -- Позиции для орды
 M.positions = {}
+-- Позиции для кругового вращения
+M.positions_circle = {}
 
 -- Добавление зомбика в орду
 function M.add_zombie_horde(self, skin_id, human_id, position)
@@ -56,6 +58,7 @@ function M.delete_zombie_horde(self, index, effect_dead)
 		end
 
 		go.delete(item.url)
+		character_zombie_main.change_horde(self)
 	end
 end
 
@@ -165,8 +168,6 @@ function M.move_horde_bot(self, position_to, duration, dir)
 
 		sprite.set_hflip(item.url_sprite, dir.x < 0)
 
-		
-
 		--go.cancel_animations(item.url, "position")
 		go.animate(item.url, "position", go.PLAYBACK_ONCE_FORWARD, position_zombie_to, gui.EASING_LINEAR, duration)
 
@@ -230,18 +231,20 @@ function M.get_angle_radius(radius, row)
 end
 
 -- Получение позиции для расположения зомбика
+--return position, vector, row, row_i
 function M.get_position(self, сenter_position, index_to_horde)
 	local сenter_position = сenter_position or vmath.vector3(0)
 
 	if M.positions[index_to_horde] then
 		-- Если есть кешированный результат
-		return сenter_position + M.positions[index_to_horde]
+		return сenter_position + M.positions[index_to_horde].vector, M.positions[index_to_horde].vector, M.positions[index_to_horde].row, M.positions[index_to_horde].row_i
 	else
 		local center = vmath.vector3(0)
 		local radius = M.start_radius 
 		local interval = 15
 		local current_angle = 0
 		local row = 1
+		local row_i = 1
 		local add_angle
 
 		-- Точки вокруг
@@ -254,6 +257,7 @@ function M.get_position(self, сenter_position, index_to_horde)
 			if current_angle > 360 then
 				current_angle = 0
 				row = row + 1
+				row_i = 1
 				add_angle = M.get_angle_radius(radius, row)
 			end
 
@@ -270,11 +274,24 @@ function M.get_position(self, сenter_position, index_to_horde)
 			math.randomseed(i)
 			x = x + math.random(-2, 2)
 			y = y + math.random(-2, 2) - 3
-			M.positions[i] = vmath.vector3(x, y, 0)
+
+			-- Сохраняем позиции
+			M.positions[i] = {
+				vector = vmath.vector3(x, y, 0),
+				row = row,
+				row_i = row_i,
+			}
+			-- Сохраняем позиции для кругового вращения
+			M.positions_circle[row] = M.positions_circle[row] or {}
+			M.positions_circle[row][row_i] = M.positions[i].vector
+
+			-- Увеличиваем место в ряду 
+			row_i = row_i + 1
 		end
 
-		return сenter_position + M.positions[index_to_horde]
+		pprint("M.positions_circle", M.positions_circle)
 
+		return сenter_position + M.positions[index_to_horde].vector, M.positions[index_to_horde].vector, M.positions[index_to_horde].row, M.positions[index_to_horde].row_i
 	end
 end
 

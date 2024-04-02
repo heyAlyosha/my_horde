@@ -170,15 +170,6 @@ function update(self, dt)
 
 	self.input = vmath.vector3()
 	self.correction = vmath.vector3()
-
-	for i, zombie_horde in ipairs(self.horde) do
-		-- Если зомбик не мёртв
-		if not zombie_horde.is_death then
-			draw.line(go.get_position(), go.get_position(zombie_horde.url))
-			local raycasts = physics.raycast(go.get_position(), go.get_position(zombie_horde.url), {hash("infection_zone")}, options_raycast)
-			--pprint("raycasts", raycasts)
-		end
-	end
 end
 
 function fixed_update(self, dt)

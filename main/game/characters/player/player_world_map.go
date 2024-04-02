@@ -23,27 +23,34 @@ components {
     type: PROPERTY_TYPE_VECTOR3
   }
 }
-embedded_components {
-  id: "body"
-  type: "sprite"
-  data: "default_animation: \"zombie_0_0_default\"\n"
-  "material: \"/builtins/materials/sprite.material\"\n"
-  "blend_mode: BLEND_MODE_ALPHA\n"
-  "textures {\n"
-  "  sampler: \"texture_sampler\"\n"
-  "  texture: \"/main/atlases/first_level.atlas\"\n"
-  "}\n"
-  ""
+components {
+  id: "blood_left"
+  component: "/main/game/effects/blood.particlefx"
   position {
-    x: 0.0
-    y: 7.0
-    z: 1.0
+    x: -6.0
+    y: 6.0
+    z: -1.0
   }
   rotation {
     x: 0.0
     y: 0.0
-    z: 0.0
-    w: 1.0
+    z: 0.70710677
+    w: 0.70710677
+  }
+}
+components {
+  id: "blood_right"
+  component: "/main/game/effects/blood.particlefx"
+  position {
+    x: 6.0
+    y: 6.0
+    z: -1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: -0.70710677
+    w: 0.70710677
   }
 }
 embedded_components {
@@ -252,7 +259,7 @@ embedded_components {
   "  w: 0.0\n"
   "}\n"
   "size {\n"
-  "  x: 16.0\n"
+  "  x: 20.0\n"
   "  y: 6.0\n"
   "  z: 0.0\n"
   "  w: 0.0\n"
@@ -265,7 +272,7 @@ embedded_components {
   ""
   position {
     x: 0.0
-    y: 0.0
+    y: -1.0
     z: 0.0
   }
   rotation {
@@ -332,8 +339,60 @@ embedded_components {
   ""
   position {
     x: 0.0
-    y: 18.0
+    y: 28.0
     z: 3.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 0.5
+    y: 0.5
+    z: 1.0
+  }
+}
+embedded_components {
+  id: "body"
+  type: "sprite"
+  data: "default_animation: \"zombie_0_0_default\"\n"
+  "material: \"/builtins/materials/sprite.material\"\n"
+  "blend_mode: BLEND_MODE_ALPHA\n"
+  "textures {\n"
+  "  sampler: \"texture_sampler\"\n"
+  "  texture: \"/main/atlases/first_level.atlas\"\n"
+  "}\n"
+  ""
+  position {
+    x: 0.0
+    y: 9.0
+    z: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.3
+    y: 1.3
+    z: 1.0
+  }
+}
+embedded_components {
+  id: "bullet_factory1"
+  type: "factory"
+  data: "prototype: \"/main/game/bullets/bullet_hit.go\"\n"
+  "load_dynamically: false\n"
+  "dynamic_prototype: false\n"
+  ""
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
   }
   rotation {
     x: 0.0
