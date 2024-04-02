@@ -1,7 +1,7 @@
 -- Вращение орды
 local M = {}
 
-M.speed = 3.5 -- Скорость поворота 
+M.speed = 2 -- Скорость поворота 
 M.rot = vmath.quat_rotation_z(3.141592653 * 2) 
 
 function M.set(self, is_circle_horde)
@@ -10,7 +10,9 @@ function M.set(self, is_circle_horde)
 		self.t_horde_circle = 0
 		horde.set_animation_horde(self, "run")
 	else
-		
+		self.t_horde_circle = 0
+		horde.set_animation_horde(self, "default")
+		horde.move_horde_player(self)
 	end
 end
 

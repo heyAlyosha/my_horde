@@ -33,8 +33,8 @@ function M.add_zombie_horde(self, skin_id, human_id, position)
 			human_id = human_id,
 		}
 
-		self.animation_id = self.animation_id or "default"
-		M.set_animation_item(self, self.horde[#self.horde], self.animation_id)
+		self.animation_horde = self.animation_horde or "default"
+		M.set_animation_item(self, self.horde[#self.horde], self.animation_horde)
 
 		self.target_add_horde = M.get_position(self, go.get_position(), #self.horde)
 		character_zombie_main.change_horde(self)
@@ -81,65 +81,27 @@ function M.delete_zombie_horde(self, index, effect_dead)
 	end
 end
 
--- Вращение отдельного зомби
-function M.circle_item_zombie(self, zombie)
-	local row = zombie.row
-	local row_i = zombie.row_i
-	local next_row_i = zombie.row_i + 1
-
-	-- Находим следующее расположение зомбика
-	if M.positions_circle[row] and not M.positions_circle[row][next_row_i] then
-		next_row_i = 1
-	end
-
-	if self.is_circle_horde then
-		-- Включено вращение
-		if M.positions_circle[row] and  M.positions_circle[row][next_row_i] then
-			-- Находим конечную позицию вокруг вождя
-			zombie.vector = M.positions_circle[row][next_row_i]
-			zombie.position = position_functions.add_perspective_z(go.get_position() + zombie.vector)
-			zombie.row = row
-			zombie.row_i = next_row_i
-
-			-- Высчитываем продолжительность движения
-			-- Запускаем его
-			local speed = 75
-			local dir = zombie.position - go.get_position(zombie.url)
-			local len = vmath.length(dir)
-
-			if len > 20 then
-				speed = 125
+-- УСтановка анимации для орды
+function M.set_animation_horde(self, animation_id)
+	-- Анимация ходьбы
+	print("set_animation_horde", animation_id)
+	if self.animation_horde ~= animation_id then
+		for i, item in ipairs(self.horde) do
+			if item.animation_id ~= animation_id then
+				
+				M.set_animation_item(self, item, animation_id)
 			end
-			local duration = len / speed
-			go.animate(zombie.url, "position", go.PLAYBACK_ONCE_FORWARD, zombie.position, go.EASING_LINEAR, duration)
-
-			-- Анимация бега
-			sprite.set_hflip(zombie.url_sprite, dir.x < 0)
-			sprite.play_flipbook(zombie.url_sprite, "zombie_"..zombie.skin_id.."_"..zombie.human_id .. "_run")
-
-			zombie.circle_timer = timer.delay(duration, false, function (self)
-				M.circle_item_zombie(self, zombie)
-			end)
 		end
-
-	else
-		
 	end
 
-	
+	self.animation_horde = animation_id
 end
 
--- Вращение орды
-function M.circle_horde(self, is_circle)
-	self.is_circle_horde = is_circle
-	if self.is_circle_horde then
-		for i, zombie in ipairs(self.horde) do
-			M.circle_item_zombie(self, zombie)
-		end
-	else
-		
-	end
-	
+-- УСтановка анимации для орды
+function M.set_animation_item(self, zombie, animation_id)
+	-- Анимация ходьбы
+	sprite.play_flipbook(zombie.url_sprite, "zombie_"..zombie.skin_id.."_"..zombie.human_id .. "_"..animation_id)
+	zombie.animation_id = animation_id
 end
 
 -- Передвижение орды игрока
@@ -204,38 +166,7 @@ function M.move_horde_player(self)
 	M.set_animation_horde(self, "run")
 end
 
--- УСтановка анимации для орды
-function M.set_animation_horde(self, animation_id)
-	-- Анимация ходьбы
-	if animation_id == "run" then
-		for i, item in ipairs(self.horde) do
-			if item.animation_id ~= animation_id then
-				M.set_animation_item(self, item, animation_id)
-			end
-		end
 
-	-- Анимация на месте
-	elseif animation_id == "default" then
-		for i, item in ipairs(self.horde) do
-			if item.animation_id ~= animation_id then
-				M.set_animation_item(self, item, animation_id)
-			end
-		end
-	end
-
-	self.animation_horde = animation_id
-	
-end
-
--- УСтановка анимации для орды
-function M.set_animation_item(self, zombie, animation_id)
-	-- Анимация ходьбы
-	sprite.play_flipbook(zombie.url_sprite, "zombie_"..zombie.skin_id.."_"..zombie.human_id .. "_"..animation_id)
-	zombie.animation_id = animation_id
-
-	self.animation_horde = animation_id
-
-end
 
 -- Передвижение орды бота
 function M.move_horde_bot(self, position_to, duration, dir)
@@ -284,20 +215,12 @@ function M.on_update(self)
 	-- УСтанавливаем расположение орды
 	self.collisions_zombie = self.collisions_zombie or {}
 	if self.movement and vmath.length(self.movement) > 0 then
-		if self.animation_horde ~= "run" then
-			M.set_animation_horde(self, "run")
-		end
 		M.move_horde_player(self)
+		M.set_animation_horde(self, "run")
 
 	else
-		self.animation_horde = "default"
-		if self.animation_horde ~= self.last_animation_horde then
-			for i = 1, #self.horde do
-				local item = self.horde[i]
-				-- Анимация покоя
-				sprite.play_flipbook(item.url_sprite, "zombie_"..item.skin_id.."_"..item.human_id .. "_default")
-			end
-		end
+		M.set_animation_horde(self, "default")
+
 	end
 	self.last_animation_horde = self.animation_horde
 end

@@ -1,5 +1,5 @@
 go.property("activate", true)
-go.property("horde_count", 10)
+go.property("horde_count", 30)
 go.property("horde_map", false)
 go.property("max_horde", 100)
 go.property("damage", 2)
@@ -25,6 +25,7 @@ go.property("horde_count_current", 0)
 go.property("active_input", true)
 go.property("size_horde", 0)
 go.property("attack_horde", false)
+go.property("is_input_circle_horde", true)
 
 function init(self)
 	msg.post(".", "acquire_input_focus")
@@ -111,11 +112,6 @@ function init(self)
 	end
 
 	character_zombie_main.change_horde(self)
-
-	timer.delay(1, false, function (self)
-		local is_circle_horde = true
-		horde_circle.set(self, is_circle_horde)
-	end)
 end
 
 function final(self)
@@ -429,8 +425,8 @@ function on_input(self, action_id, action)
 	elseif action_id == hash("right") then
 		self.input.x = 1                     -- [1]
 		return true
-	elseif action_id == hash("action") and action.pressed then
-		character_animations.play(self, "attack")
+	elseif action_id == hash("action") and action.pressed and self.is_input_circle_horde then
+		horde_circle.set(self, not self.is_circle_horde)
 		return true
 	end
 end
