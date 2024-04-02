@@ -8,8 +8,7 @@ function M.set(self, is_circle_horde)
 	self.is_circle_horde = is_circle_horde
 	if self.is_circle_horde then
 		self.t_horde_circle = 0
-		horde.set_animation(self, nil)
-		horde.set_animation(self, hash("run"))
+		horde.set_animation_horde(self, "run")
 	else
 		
 	end

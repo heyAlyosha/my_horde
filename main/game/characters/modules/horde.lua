@@ -33,13 +33,16 @@ function M.add_zombie_horde(self, skin_id, human_id, position)
 			human_id = human_id,
 		}
 
+		self.animation_id = self.animation_id or "default"
+		M.set_animation_item(self, self.horde[#self.horde], self.animation_id)
+
 		self.target_add_horde = M.get_position(self, go.get_position(), #self.horde)
 		character_zombie_main.change_horde(self)
 		if not self.is_circle_horde and self.command == hash("player") then
 			-- Обычная орда
 			M.move_horde_player(self)
 		elseif self.is_circle_horde then 
-			M.set_animation(self, hash("run"))
+			
 		end
 
 		M.compile(self)
@@ -198,30 +201,40 @@ function M.move_horde_player(self)
 		sprite.set_hflip(item.url_sprite, self.movement.x < 0)
 	end
 
-	M.set_animation(self, hash("run"))
+	M.set_animation_horde(self, "run")
 end
 
 -- УСтановка анимации для орды
-function M.set_animation(self, animation_id)
+function M.set_animation_horde(self, animation_id)
 	-- Анимация ходьбы
-	if animation_id == hash("run") then
+	if animation_id == "run" then
 		for i, item in ipairs(self.horde) do
 			if item.animation_id ~= animation_id then
-				sprite.play_flipbook(item.url_sprite, "zombie_"..item.skin_id.."_"..item.human_id .. "_run")
-				item.animation_id = animation_id
+				M.set_animation_item(self, item, animation_id)
 			end
 		end
 
 	-- Анимация на месте
-	elseif animation_id == hash("default") then
+	elseif animation_id == "default" then
 		for i, item in ipairs(self.horde) do
 			if item.animation_id ~= animation_id then
-				sprite.play_flipbook(item.url_sprite, "zombie_"..item.skin_id.."_"..item.human_id .. "_default")
-				item.animation_id = animation_id
+				M.set_animation_item(self, item, animation_id)
 			end
 		end
 	end
+
+	self.animation_horde = animation_id
 	
+end
+
+-- УСтановка анимации для орды
+function M.set_animation_item(self, zombie, animation_id)
+	-- Анимация ходьбы
+	sprite.play_flipbook(zombie.url_sprite, "zombie_"..zombie.skin_id.."_"..zombie.human_id .. "_"..animation_id)
+	zombie.animation_id = animation_id
+
+	self.animation_horde = animation_id
+
 end
 
 -- Передвижение орды бота
@@ -271,8 +284,9 @@ function M.on_update(self)
 	-- УСтанавливаем расположение орды
 	self.collisions_zombie = self.collisions_zombie or {}
 	if self.movement and vmath.length(self.movement) > 0 then
-		self.animation_horde = "run"
-		M.set_animation(self, animation_id)
+		if self.animation_horde ~= "run" then
+			M.set_animation_horde(self, "run")
+		end
 		M.move_horde_player(self)
 
 	else
