@@ -38,7 +38,7 @@ function M.get_id(id, user_lang)
 end
 
 -- Запуск анимации
-function M.play_flipbook(self, url, skin_id, human_id, animation_name)
+function M.play_flipbook(self, url, skin_id, human_id, animation_name, no_old, live, max_live)
 	local skin = M.catalog_keys["skin_"..skin_id]
 	local human_id = skin["human_"..human_id]
 	local atlas_id = skin.atlas_id
@@ -57,8 +57,11 @@ function M.play_flipbook(self, url, skin_id, human_id, animation_name)
 	else
 		-- Передвижение и атака
 		local string_animation = skin_id.."_"..human_id
-		if skin.is_old and self.max_live and self.live then
-			local procent_live = self.live / self.max_live
+		-- Старение
+		local live = live or self.live 
+		local max_live = max_live or self.max_live
+		if not no_old and skin.is_old and max_live and live then
+			local procent_live = live / max_live
 
 			if procent_live < 0.2  then
 				go.set(url, "image", self.atlas_first_level)

@@ -23,14 +23,17 @@ function init(self)
 	}
 
 	self.max_live = self.live
+	self.live = 3
 
-	game_content_skins.play_flipbook(self, "#body", self.skin_id, self.human_id, "default")
+	--game_content_skins.play_flipbook(self, "#body", self.skin_id, self.human_id, "default")
 
 	position_functions.go_set_perspective_z()
 
 	self.input = vmath.vector3(0)
 	self.velocity = vmath.vector3(0)
 	self.correction = vmath.vector3()
+	local no_effect = true
+	character_animations.aging_zombie(self, no_effect)
 end
 
 function final(self)

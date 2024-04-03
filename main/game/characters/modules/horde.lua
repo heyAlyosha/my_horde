@@ -99,7 +99,10 @@ end
 -- УСтановка анимации для орды
 function M.set_animation_item(self, zombie, animation_id)
 	-- Анимация ходьбы
-	game_content_skins.play_flipbook(self, zombie.url_sprite, zombie.skin_id, zombie.human_id, animation_id)
+	local no_old = false
+	local live = go.get(zombie.url_script, "live")
+	local max_live = self.zombie_live
+	game_content_skins.play_flipbook(self, zombie.url_sprite, zombie.skin_id, zombie.human_id, animation_id, no_old, live, max_live)
 	zombie.animation_id = animation_id
 end
 
@@ -196,11 +199,11 @@ function M.move_horde_bot(self, position_to, duration, dir)
 
 		--go.cancel_animations(item.url, "position")
 		go.animate(item.url, "position", go.PLAYBACK_ONCE_FORWARD, position_zombie_to, gui.EASING_LINEAR, duration)
+	end
 
-		-- АНимация
-		if self.animation_horde ~= self.last_animation_horde then
-			game_content_skins.play_flipbook(self, item.url_sprite, item.skin_id, item.human_id, self.animation_horde)
-		end
+	-- Анимация
+	if self.animation_horde ~= self.last_animation_horde then
+		M.set_animation_horde(self, self.animation_horde)
 	end
 
 	-- Анимация орды
@@ -313,6 +316,11 @@ function M.check_distantion_add_horde(self, parent, position_from, position_pare
 	local dist_to_parent = vmath.length(position_from - position_parent)
 
 	return dist_to_parent <= dist_add_horde
+end
+
+-- Дистанция для добавления в орду
+function M.aging(self, url_script)
+	
 end
 
 return M

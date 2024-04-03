@@ -227,7 +227,7 @@ function M.damage_player(self, from_object_damage)
 end
 
 -- Старение
-function M.aging_zombie(self)
+function M.aging_zombie(self, no_effect)
 	local step_aging 
 	local procent_live = self.live/self.max_live
 
@@ -237,15 +237,14 @@ function M.aging_zombie(self)
 		step_aging = "old"
 	end
 
-	print("procent_live", procent_live)
-
 	if self.step_aging ~= step_aging then
-		msg.post(storage_game.map.url_script, "effect", {
-			position = go.get_position(),
-			animation_id = hash("destroy"), 
-			timer_delete = 0,
-			shake = true
-		})
+		if not no_effect then
+			msg.post(storage_game.map.url_script, "effect", {
+				position = go.get_position(),
+				animation_id = hash("destroy"), 
+				timer_delete = 0
+			})
+		end
 		game_content_skins.play_flipbook(self, "#body", self.skin_id, self.human_id, self.animation_current or self.animation_horde or "run")
 		self.step_aging = step_aging
 	end
