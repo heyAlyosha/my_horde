@@ -378,9 +378,18 @@ function M.check_distantion_add_horde(self, parent, position_from, position_pare
 	return dist_to_parent <= dist_add_horde
 end
 
--- Дистанция для добавления в орду
-function M.aging(self, url_script)
-	
+-- Убить всех зомбиков
+function M.killing_all(self)
+	for index, zombie in ipairs(self.horde) do
+		if zombie.url.path == url_zombie.path then
+			horde.delete_zombie_horde(self, index, true)
+			break
+		end
+	end
+
+	for k, zombie in pairs(self.zombies) do
+		msg.post(zombie.url, "killing")
+	end
 end
 
 return M

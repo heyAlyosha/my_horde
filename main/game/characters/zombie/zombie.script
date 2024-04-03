@@ -135,6 +135,18 @@ function on_message(self, message_id, message, sender)
 		self.condition_ai = hash("to_target")
 		ai_zombie.behavior(self)
 
+	elseif message_id == hash("killing") then
+		local position = go.get_position()
+		position.y = position.y + go.get("#body", "size").y / 2
+
+		msg.post(storage_game.map.url_script, "effect", {
+			position = position,
+			animation_id = hash("effect_zombie_death"), 
+			timer_delete = 3
+		})
+		items_functions.spawn(self)
+		go.delete()
+
 	end
 end
 

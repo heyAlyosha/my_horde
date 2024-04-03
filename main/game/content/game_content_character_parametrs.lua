@@ -25,7 +25,6 @@ end
 -- Получить характеристику под тип
 function M.set_characteristic(self, id_characteristic)
 	local characteristics = M.get_type(self, id_characteristic or self.type_object)
-	pprint("id_characteristic", id_characteristic, characteristics)
 
 	if characteristics then
 		for k, v in pairs(characteristics) do
