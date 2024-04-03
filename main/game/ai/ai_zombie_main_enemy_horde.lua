@@ -110,12 +110,14 @@ function M.behavior(self)
 			local type_object = go.get(url_script, "type_object")
 			-- Если это вожак зомби 
 			if type_object == hash("zombie_main") and not self.is_circle_horde then
+				ai_core.clear_coditions(self, url)
 				ai_move.stop(self)
 				-- Начинаем вращение
+				print("ai_core.condition_attack")
+				character_animations.play(self, "win")
 				horde_circle.set(self, true, function (self)
 					ai_core.condition_attack(self, self.target, handle_success, handle_error, handle_success)
 				end)
-
 				return
 			else
 				ai_core.condition_attack(self, self.target, handle_success, handle_error, handle_success)

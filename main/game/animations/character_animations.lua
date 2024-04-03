@@ -47,6 +47,10 @@ function M.play(self, animation_id)
 		end
 
 	else
+		if self.id_characteristic == hash("zombie_main_enemy_map") then
+			print(animation_id)
+		end
+		
 		if animation_id == "move" or animation_id == "idle" or animation_id == "win" then
 			if animation_id == "move" then
 				self.animation_current = "run"

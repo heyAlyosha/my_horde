@@ -45,8 +45,8 @@ instances {
   id: "player"
   prototype: "/main/game/characters/player/player_world_map.go"
   position {
-    x: 678.0
-    y: 649.0
+    x: 718.0
+    y: 656.0
     z: 3.0
   }
   rotation {

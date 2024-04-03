@@ -114,6 +114,8 @@ end
 function M.move_item(self, position_to, handle)
 	local position = go.get_position()
 
+	character_animations.play(self, "move")
+
 	local dir = position_to - position
 	local len = vmath.length(dir)
 
@@ -139,8 +141,6 @@ function M.move_item(self, position_to, handle)
 			handle(self)
 		end
 	end
-
-	character_animations.play(self, "move")
 	sprite.set_hflip("#body", dir.x < 0)
 
 	
