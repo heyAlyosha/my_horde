@@ -14,30 +14,6 @@ images {
   image: "/assets/images/game/world_map/icons/city_policy_icon.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
-images {
-  image: "/assets/app_icons/TrophyBlack_mini.png"
-  sprite_trim_mode: SPRITE_TRIM_MODE_OFF
-}
-images {
-  image: "/assets/app_icons/TrophyBlue_mini.png"
-  sprite_trim_mode: SPRITE_TRIM_MODE_OFF
-}
-images {
-  image: "/assets/app_icons/TrophyGray_mini.png"
-  sprite_trim_mode: SPRITE_TRIM_MODE_OFF
-}
-images {
-  image: "/assets/app_icons/TrophyYellow_mini.png"
-  sprite_trim_mode: SPRITE_TRIM_MODE_OFF
-}
-images {
-  image: "/assets/app_icons/TrophyGreen_mini.png"
-  sprite_trim_mode: SPRITE_TRIM_MODE_OFF
-}
-images {
-  image: "/assets/app_icons/TrophyRed_mini.png"
-  sprite_trim_mode: SPRITE_TRIM_MODE_OFF
-}
 margin: 0
 extrude_borders: 2
 inner_padding: 0
