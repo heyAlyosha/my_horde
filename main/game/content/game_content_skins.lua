@@ -60,7 +60,7 @@ function M.play_flipbook(self, url, skin_id, human_id, animation_name, no_old, l
 		-- Старение
 		local live = live or self.live 
 		local max_live = max_live or self.max_live
-		if not no_old and skin.is_old and max_live and live then
+		if human_id ~= 0 and not no_old and skin.is_old and max_live and live then
 			local procent_live = live / max_live
 
 			if procent_live < 0.2  then
