@@ -74,7 +74,7 @@ function M.play_flipbook(self, url, skin_id, human_id, animation_name, no_old, l
 		end
 		animate_id = "zombie_"..string_animation.. "_" .. animation_name
 	end
-
+	
 	sprite.play_flipbook(url, animate_id)
 	return animate_id
 end

@@ -1,7 +1,7 @@
 go.property("damage", 1)
 -- Дамаг о коллизию
 go.property("damage_for_collision", 2)
-go.property("live", 10)
+go.property("live", 20)
 go.property("command", hash("player"))
 go.property("skin_id", 0)
 go.property("human_id", 1)
@@ -31,7 +31,7 @@ function init(self)
 	self.correction = vmath.vector3()
 	local no_effect = true
 	character_animations.aging_zombie(self, no_effect)        
-	game_content_skins.play_flipbook(self, "#body", self.skin_id, self.human_id, "default")
+	--game_content_skins.play_flipbook(self, "#body", self.skin_id, self.human_id, "default")
 end
 
 function final(self)

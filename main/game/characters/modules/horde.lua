@@ -147,7 +147,6 @@ function M.set_animation_horde(self, animation_id)
 	if self.animation_horde ~= animation_id then
 		for i, item in ipairs(self.horde) do
 			if item.animation_id ~= animation_id then
-				
 				M.set_animation_item(self, item, animation_id)
 			end
 		end

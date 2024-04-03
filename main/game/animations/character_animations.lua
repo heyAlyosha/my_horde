@@ -105,7 +105,7 @@ function M.damage(self, from_object_damage, handle)
 
 		--position.y = position.y + self.damage_animate_y
 		
-		live_bar.position_to(self, position, duration)
+		
 		position = position_functions.go_get_perspective_z(position)
 
 		if not self.animate_position_damage then
@@ -114,6 +114,7 @@ function M.damage(self, from_object_damage, handle)
 			go.animate(".", "position.x", go.PLAYBACK_ONCE_FORWARD, position.x, go.EASING_LINEAR, duration, 0)
 			go.animate(".", "position.y", go.PLAYBACK_ONCE_PINGPONG, position.y + self.damage_animate_y, go.EASING_LINEAR, duration, 0)
 			go.animate(".", "position.z", go.PLAYBACK_ONCE_FORWARD, position.z, go.EASING_LINEAR, duration, 0)
+			live_bar.position_to(self, position, duration)
 
 			timer.delay(duration, false, function (self)
 				local dir_from = go.get_position() - last_position
@@ -243,7 +244,7 @@ function M.aging_zombie(self, no_effect)
 	end
 
 	if self.damage_for_collision then
-		print(self.step_aging, step_aging)
+		print("self.step_aging", self.step_aging, step_aging, self.live, self.max_live)
 	end
 
 	if self.step_aging ~= step_aging then
