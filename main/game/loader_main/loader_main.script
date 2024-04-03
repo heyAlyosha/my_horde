@@ -55,6 +55,10 @@ function init(self)
 	horde_battle_type_io = require "main.game.characters.modules.horde_battle_type_io"
 	horde_battle_type_action = require "main.game.characters.modules.horde_battle_type_action"
 
+	-- Создаём для кеша позиции в орде
+	print("horde.get_position")
+	horde.get_position(self, сenter_position, 250)
+
 	-- онтент игры
 	--game_content_prize.init(self)
 	--game_content_artifact.init(self)

@@ -33,6 +33,9 @@ function M.player_update(self, dt)
 	self.t_horde_circle = self.t_horde_circle or 0 
 	self.t_horde_circle = self.t_horde_circle + dt
 	local hordes_count = #self.horde
+	if hordes_count < 1 then
+		return
+	end
 	local row = horde.positions[hordes_count].row
 	local speed = M.speed_max + row * M.speed_row
 	if speed > M.speed_min then

@@ -253,8 +253,8 @@ instances {
   id: "zombie_main_enemy"
   prototype: "/main/game/characters/zombie_main_enemy/zombie_main_enemy.go"
   position {
-    x: 931.0
-    y: 424.0
+    x: 836.0
+    y: 446.0
     z: 3.0
   }
   rotation {
