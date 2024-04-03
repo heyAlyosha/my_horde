@@ -34,6 +34,7 @@ function M.search_target(self)
 					-- Если орда врага намного меньше
 					ai_attack.add_target(self, item.url)
 					self.condition_ai = hash("to_target")
+
 					self.is_target_horde = true
 					M.behavior(self)
 					return true
@@ -46,9 +47,12 @@ function M.search_target(self)
 
 		if go_controller.is_object(visible_item.url) and not self.target or (self.target_current_useful and self.target_current_useful < visible_item.target_useful)  then
 			-- Помечаем целью
+			local url_script = go_controller.url_script(visible_item.url)
+			local type_object = go.get(url_script, "type_object")
 			ai_attack.add_target(self, visible_item.url)
+
 			self.condition_ai = hash("to_target")
-			self.is_target_horde = nil
+			self.is_target_horde = type_object == hash("zombie_main")
 			M.behavior(self)
 		else
 			ai_attack.delete_target(self, self.target)
@@ -177,12 +181,33 @@ end
 
 
 function M.ai_handle_item_move(self)
+	print(self.is_target_horde)
 	if self.condition_ai == hash("to_target") and self.is_target_horde then
 		-- Прицелен на другую орду
 		if not self.target or not go_controller.is_object(self.target) or vmath.length(go.get_position(self.target) - go.get_position()) > 200 then
 			-- Цель убежала далеко
 			self.condition_ai = nil
 			M.behavior(self)
+
+		elseif self.target and go_controller.is_object(self.target) then
+			-- Если орда врага выросла
+			local url_script = go_controller.url_script(self.target)
+			local size_horde = go.get(url_script, "size_horde")
+			local relation_hordes = 0
+
+			if size_horde > 0 then
+				relation_hordes = size_horde / self.size_horde
+			end
+
+			print("size_horde", size_horde, self.size_horde, relation_hordes, relation_hordes > 1.2)
+
+			if relation_hordes > 1.2 then
+				self.from_target = self.target
+				self.condition_ai = hash("from_target")
+				M.behavior(self)
+			end
+
+			
 		end
 	end
 end
