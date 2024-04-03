@@ -381,10 +381,7 @@ end
 -- Убить всех зомбиков
 function M.killing_all(self)
 	for index, zombie in ipairs(self.horde) do
-		if zombie.url.path == url_zombie.path then
-			horde.delete_zombie_horde(self, index, true)
-			break
-		end
+		horde.delete_zombie_horde(self, index, true)
 	end
 
 	for k, zombie in pairs(self.zombies) do

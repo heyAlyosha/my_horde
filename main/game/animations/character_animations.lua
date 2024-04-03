@@ -120,8 +120,13 @@ function M.damage(self, from_object_damage, handle)
 				if self.damage_animate_x > 0 and vmath.length(dir_from) > 0 then
 					M.play(self, "move")
 					--sprite.set_hflip("#body", dir_from.x > 0)
+					
 					go.animate(".", "position", go.PLAYBACK_ONCE_FORWARD, last_position, go.EASING_LINEAR, duration, 0, function (self)
 						M.play(self, "idle")
+						
+					end)
+
+					timer.delay(duration + 0.5, false, function (self)
 						self.animate_position_damage = nil
 					end)
 				else
@@ -132,7 +137,7 @@ function M.damage(self, from_object_damage, handle)
 		end
 
 		-- Покраснение
-		go.set("#body", "tint", vmath.vector4(1, 0.6, 0.6, 1)) -- <1>
+		go.set("#body", "tint", vmath.vector4(1, 0.3, 0.3, 1)) -- <1>
 
 		-- Кровь
 		if self.damage_blood then
@@ -157,7 +162,7 @@ function M.damage_zombie_horde(self, from_object_damage, handle)
 	-- Анимация дамага
 	if not self.particle then
 		-- Покраснение
-		go.set("#body", "tint", vmath.vector4(1, 0, 0, 1)) -- <1>
+		go.set("#body", "tint", vmath.vector4(1, 0.6, 0.6, 1)) -- <1>
 
 		--self.particle = true
 		timer.delay(duration, false, function (self)
@@ -235,6 +240,10 @@ function M.aging_zombie(self, no_effect)
 		step_aging = "very-old"
 	elseif procent_live < 0.4 then
 		step_aging = "old"
+	end
+
+	if self.damage_for_collision then
+		print(self.step_aging, step_aging)
 	end
 
 	if self.step_aging ~= step_aging then

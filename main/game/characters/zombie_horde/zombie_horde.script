@@ -30,7 +30,7 @@ function init(self)
 	self.velocity = vmath.vector3(0)
 	self.correction = vmath.vector3()
 	local no_effect = true
-	character_animations.aging_zombie(self, no_effect)
+	character_animations.aging_zombie(self, no_effect)        
 	game_content_skins.play_flipbook(self, "#body", self.skin_id, self.human_id, "default")
 end
 

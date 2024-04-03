@@ -42,7 +42,7 @@ function M.damage_zombie_horde(self, damage)
 	if self.live <= 0 then
 		msg.post(self.parent, "kill_zombie", {url_zombie = msg.url()})
 	else
-		character_animations.aging_zombie(self)
+		
 	end
 end
 
