@@ -28,15 +28,14 @@ function M.search_target(self)
 					self.from_target = item.url
 					self.condition_ai = hash("from_target")
 					M.behavior(self)
-					return
+					return true
 
 				elseif relation_hordes <= 0.8 then
 					-- Если орда врага намного меньше
-					pprint("relation_hordes")
 					ai_attack.add_target(self, item.url)
 					self.condition_ai = hash("to_target")
 					M.behavior(self)
-					return
+					return true
 				else
 					-- Если орда врага приблизительно равна, ничего не делаем
 				end
@@ -46,12 +45,10 @@ function M.search_target(self)
 
 		if go_controller.is_object(visible_item.url) and not self.target or (self.target_current_useful and self.target_current_useful < visible_item.target_useful)  then
 			-- Помечаем целью
-			print("-- Помечаем целью")
 			ai_attack.add_target(self, visible_item.url)
 			self.condition_ai = hash("to_target")
 			M.behavior(self)
 		else
-			print("else -- Помечаем целью")
 			ai_attack.delete_target(self, self.target)
 			self.condition_ai = nil
 			self.not_search_target = true
@@ -62,11 +59,12 @@ function M.search_target(self)
 		self.not_search_target = true
 		M.behavior(self)
 	end
+
+	return true
 end
 
 -- Поведение
 function M.behavior(self)
-	print("self.condition_ai", self.condition_ai)
 	-- Состояние зомбика
 	self.condition_ai = self.condition_ai or nil
 	self.dir = self.dir or vmath.normalize(vmath.vector3(math.random(-100, 100), math.random(-100, 100), 0))
@@ -85,12 +83,10 @@ function M.behavior(self)
 			-- Не может найти путь для атаки, повторяем поиск
 			self.condition_ai = nil
 			M.behavior(self)
-			print("handle_error")
 		end
 
 		-- Добежал до цели
 		local handle_success = function (self)
-			print("handle_success")
 			self.not_search_target = true
 			character_animations.play(self, "idle")
 			if not self.target or not go_controller.is_object(self.target) or vmath.length(go.get_position(self.target) - go.get_position()) > 150 then
@@ -113,13 +109,10 @@ function M.behavior(self)
 			local url_script = go_controller.url_script(self.target)
 			local type_object = go.get(url_script, "type_object")
 			-- Если это вожак зомби 
-			pprint("type_object", type_object, self.is_circle_horde)
 			if type_object == hash("zombie_main") and not self.is_circle_horde then
-				pprint("ai_move.stop")
 				ai_move.stop(self)
 				-- Начинаем вращение
 				horde_circle.set(self, true, function (self)
-					pprint("horde_circle_set")
 					ai_core.condition_attack(self, self.target, handle_success, handle_error, handle_success)
 				end)
 
@@ -136,6 +129,8 @@ function M.behavior(self)
 			M.behavior(self)
 			return
 		end
+
+		return
 	end
 
 	if self.is_circle_horde then
@@ -164,7 +159,9 @@ function M.behavior(self)
 		self.speed = self.speed_default
 
 		if not self.not_search_target then
-			M.search_target(self)
+			if M.search_target(self) then
+				return
+			end
 		end
 
 		local max_cost = 5

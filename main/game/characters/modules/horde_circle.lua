@@ -14,7 +14,7 @@ function M.set(self, is_circle_horde, handle)
 		self.t_horde_circle = 0
 		horde.set_animation_horde(self, "run")
 
-		local delay = 1
+		local delay = 1.5
 		character_animations.play(self, "win")
 		self.move_stop = true
 		timer.delay(delay, false, function (self)

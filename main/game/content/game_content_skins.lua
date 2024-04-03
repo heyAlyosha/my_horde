@@ -14,7 +14,6 @@ function M.init(self)
 	local is_replace_placeholder = false
 	game_content_functions.load_content(self, "skins", group_columns, function (self, row_id, row_item)
 		M.catalog_keys[row_id] = row_item
-		pprint("init_csv", row_id)
 	end, is_replace_placeholder)
 
 	M.catalog = game_content_functions.create_catalog(self, "price", M.catalog_keys, sort_function)

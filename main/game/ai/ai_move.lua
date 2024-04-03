@@ -21,15 +21,11 @@ function M.move_item_from(self, position_from, handle, speed)
 				local result_collision = physics.raycast(go.get_position(), position_to, {hash("default")}, options)
 				if result_collision then
 					sort = sort + 10000
-					
 				end
+
 				local dot = vmath.dot(dir, position_to - position)
 				if dot > 0 then
 					sort = sort + 100
-				end
-				--sort = sort + dot
-				if self.to_point then
-					print("sort_astar", sort, dir, position_to - position)
 				end
 
 				if not result_collision then
@@ -130,6 +126,7 @@ function M.move_item(self, position_to, handle)
 	end
 	if len > 3 then
 		-- Если есть слушатель
+		
 		go.animate(".", "position", go.PLAYBACK_ONCE_FORWARD, position_functions.go_get_perspective_z(position_to), go.EASING_LINEAR, duration, 0)
 		self.timer_move_item = timer.delay(duration, false, handle)
 
@@ -262,6 +259,7 @@ function M.move_to_position(self, move_position_to, handle_success, handle_error
 			else
 				local x,y = astar_utils:coords_to_screen(path[1].x, path[1].y)
 				local position_to = vmath.vector3(x, y, 0)
+			
 				M.move_item(self, position_to, function (self)
 					if handle_item_move then
 						handle_item_move(self)

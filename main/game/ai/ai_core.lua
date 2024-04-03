@@ -3,6 +3,7 @@ local M = {}
 
 -- Состояние атаки
 function M.condition_attack(self, url, handle_success, handle_error, handle_no_object_target)
+	print("M.condition_attack")
 	self.condition = hash("attack")
 	self.target = go_controller.url_object(url)
 	self.is_attack = true
