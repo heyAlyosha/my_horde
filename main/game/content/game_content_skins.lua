@@ -42,6 +42,7 @@ function M.play_flipbook(self, url, skin_id, human_id, animation_name, no_old, l
 	local skin = M.catalog_keys["skin_"..skin_id]
 	local human_id = skin["human_"..human_id]
 	local atlas_id = skin.atlas_id
+	local animate_id
 
 	if self._atlas_current_skin ~= atlas_id then
 		local atlas = self["atlas_"..atlas_id]
@@ -53,7 +54,7 @@ function M.play_flipbook(self, url, skin_id, human_id, animation_name, no_old, l
 
 	if animation_name == "win" then
 		-- АНимация победы зомбика
-		sprite.play_flipbook(url, "win_skin_"..skin_id)
+		animate_id = "win_skin_"..skin_id
 	else
 		-- Передвижение и атака
 		local string_animation = skin_id.."_"..human_id
@@ -71,10 +72,11 @@ function M.play_flipbook(self, url, skin_id, human_id, animation_name, no_old, l
 				string_animation = "old"
 			end
 		end
-		sprite.play_flipbook(url, "zombie_"..string_animation.. "_" .. animation_name)
+		animate_id = "zombie_"..string_animation.. "_" .. animation_name
 	end
-	
-	return M.catalog_keys[id]
+
+	sprite.play_flipbook(url, animate_id)
+	return animate_id
 end
 
 return M

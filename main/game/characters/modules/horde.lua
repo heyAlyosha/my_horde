@@ -102,7 +102,7 @@ function M.set_animation_item(self, zombie, animation_id)
 	local no_old = false
 	local live = go.get(zombie.url_script, "live")
 	local max_live = self.zombie_live
-	game_content_skins.play_flipbook(self, zombie.url_sprite, zombie.skin_id, zombie.human_id, animation_id, no_old, live, max_live)
+	local animation = game_content_skins.play_flipbook(self, zombie.url_sprite, zombie.skin_id, zombie.human_id, animation_id, no_old, live, max_live)
 	zombie.animation_id = animation_id
 end
 

@@ -310,7 +310,8 @@ function on_message(self, message_id, message, sender)
 		horde.add_zombie_horde(self, skin_id, human_id, message.position_from)
 
 		if self.animation_horde == "run" then
-			sprite.play_flipbook(self.horde[#self.horde].url_sprite, "zombie_"..skin_id.."_"..human_id .. "_run")
+			local zombie = self.horde[#self.horde]
+			horde.set_animation_item(self, zombie, self.animation_horde)
 		end
 
 	elseif message_id == hash("create_zombie") then
