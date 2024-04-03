@@ -1377,7 +1377,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "first_level/trofey_head_1"
+  texture: "first_level/trofey_head_0"
   id: "avatar_img"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
