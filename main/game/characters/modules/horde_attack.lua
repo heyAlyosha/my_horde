@@ -57,7 +57,7 @@ function M.visible(self, visible_items)
 			local item = self.horde[horde_index]
 			local target_item = targets[index_target]
 			local position_zombie = go.get_position(item.url)
-			local zombie = character_zombie_main.add_zombie_attack(self, horde_index, position_zombie, target_item.url)
+			local zombie = horde.add_zombie_attack(self, horde_index, position_zombie, target_item.url)
 
 			M.add_zombie_target(self, zombie, target_item)
 
@@ -132,7 +132,7 @@ function M.horde_attack(self, add_targets)
 		local item = self.horde[horde_index]
 		local target_item = targets[index_target]
 		local position_zombie = go.get_position(item.url)
-		local zombie = character_zombie_main.add_zombie_attack(self, horde_index, position_zombie, target_item.url)
+		local zombie = horde.add_zombie_attack(self, horde_index, position_zombie, target_item.url)
 
 		M.add_zombie_target(self, zombie, target_item)
 

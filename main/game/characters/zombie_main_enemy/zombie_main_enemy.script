@@ -37,6 +37,10 @@ go.property("attack_horde", false)
 go.property("is_circle_horde", false)
 go.property("atlas_first_level", resource.atlas("/main/atlases/first_level.atlas"))
 go.property("atlas_skins", resource.atlas("/main/atlases/first_level.atlas"))
+go.property("zombie_live", 20)
+go.property("zombie_damage", 1)
+go.property("zombie_speed_damage", 0.75)
+go.property("zombie_scale_attack", 0.5)
 
 function init(self)
 	game_content_character_parametrs.set_characteristic(self)
@@ -244,7 +248,7 @@ function on_message(self, message_id, message, sender)
 		-- Создаём зомбика
 		local position = message.position
 		if position then
-			local zombie = character_zombie_main.add_zombie_attack(self, horde_index, position, target, message)
+			local zombie = horde.add_zombie_attack(self, horde_index, position, target, message)
 			horde_attack.add_zombie_min_target(self, zombie)
 		end
 

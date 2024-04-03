@@ -23,9 +23,6 @@ function init(self)
 	}
 
 	self.max_live = self.live
-	self.live = 3
-
-	
 
 	position_functions.go_set_perspective_z()
 
