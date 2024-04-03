@@ -50,6 +50,7 @@ function init(self)
 	game_content_functions = require "main.game.content.modules.game_content_functions"
 	game_content_company = require "main.game.content.game_content_company"
 	game_content_character_parametrs = require "main.game.content.game_content_character_parametrs"
+	game_content_skins = require "main.game.content.game_content_skins"
 	zone_infection = require("main.game.characters.zombie_horde.modules.zone_infection")
 	ai_zombie_main_enemy_horde = require "main.game.ai.ai_zombie_main_enemy_horde"
 	horde_battle_type_io = require "main.game.characters.modules.horde_battle_type_io"
@@ -59,13 +60,14 @@ function init(self)
 	print("horde.get_position")
 	horde.get_position(self, сenter_position, 250)
 
-	-- онтент игры
+	-- Контент игры
 	--game_content_prize.init(self)
 	--game_content_artifact.init(self)
 	--game_content_achieve.init(self)
 	--game_content_characteristic.init(self)
 	game_content_company.init(self)
 	game_content_character_parametrs.init(self)
+	game_content_skins.init(self)
 
 	--profiler.enable_ui(true)
 	--profiler.set_ui_mode(profiler.MODE_RECORD)

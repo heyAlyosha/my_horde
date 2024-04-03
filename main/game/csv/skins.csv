@@ -1,0 +1,31 @@
+id;comments;atlas_id;human_0;human_1;human_2;human_3;human_4;human_5;human_6;human_7;human_8;human_9;head_mini_id;head_full_id;price;sound_move;is_old
+skin_0;обычный;first_level;0;1;2;3;4;5;6;7;8;9;TrophyGreen_mini;trofey_head_0;0;default_move;1
+skin_1;синий;skins;0;1;2;3;4;5;6;7;8;9;TrophyBlue_mini;trofey_head_1;250;default_move;1
+skin_2;красный;skins;0;1;2;3;4;5;6;7;8;9;TrophyRed_mini;trofey_head_2;250;default_move;1
+skin_3;серый;skins;0;1;2;3;4;5;6;7;8;9;TrophyGray_mini;trofey_head_3;250;default_move;1
+skin_4;жёлтый;skins;0;1;2;3;4;5;6;7;8;9;TrophyYellow_mini;trofey_head_4;250;default_move;1
+skin_5;разноцветный;skins;0;1;2;3;4;5;6;7;8;9;TrophyRed_mini;trofey_head_5;250;default_move;1
+skin_6;скелеты;skins;0;1;2;3;1;2;3;1;2;3;TrophyGray_mini;trofey_head_6;1000;default_move;1
+skin_7;боевая машина;skins;0;1;2;3;1;2;3;1;2;3;TrophyGray_mini;trofey_head_7;20000;machine_move;1
+skin_8;некроны;skins;0;1;2;3;1;2;3;1;2;3;TrophyGray_mini;trofey_head_8;15000;nekron_move;1
+skin_9;мексиканцы;skins;0;1;2;3;1;2;3;1;2;3;TrophyGreen_mini;trofey_head_9;500;default_move;1
+skin_10;русские;skins;0;1;2;3;1;2;3;1;2;3;TrophyGreen_mini;trofey_head_10;500;default_move;1
+skin_11;американцы;skins;0;1;2;3;1;2;3;1;2;3;TrophyGreen_mini;trofey_head_11;500;default_move;1
+skin_12;пляжные;skins;0;1;2;3;1;2;3;1;2;3;TrophyGreen_mini;trofey_head_12;500;default_move;1
+skin_13;пираты;skins;0;1;2;3;1;2;3;1;2;3;TrophyGreen_mini;trofey_head_13;500;default_move;1
+skin_14;скелеты пираты;skins;0;1;2;3;1;2;3;1;2;3;TrophyGray_mini;trofey_head_14;1000;default_move;1
+skin_15;хеллоуин;skins;0;1;2;3;1;2;3;1;2;3;TrophyYellow_mini;trofey_head_15;2000;default_move;1
+skin_16;мужчины;skins;0;1;2;3;1;2;3;1;2;3;TrophyGreen_mini;trofey_head_16;500;default_move;1
+skin_17;женщины;skins;0;1;2;3;1;2;3;1;2;3;TrophyGreen_mini;trofey_head_17;500;default_move;1
+skin_18;врачи;first_level;0;1;2;3;1;2;3;1;2;3;TrophyGreen_mini;trofey_head_18;500;default_move;1
+skin_19;нло;skins;0;1;2;3;1;2;3;1;2;3;TrophyGreen_mini;trofey_head_19;10000;ufo_move;1
+skin_20;гоблины;skins;0;1;2;3;1;2;3;1;2;3;TrophyGreen_mini;trofey_head_20;500;default_move;1
+skin_21;немцы;skins;0;1;2;3;1;2;3;1;2;3;TrophyGreen_mini;trofey_head_21;1500;default_move;1
+skin_22;чужие;skins;0;1;2;3;1;2;3;1;2;3;TrophyGray_mini;trofey_head_22;15000;alien_move;1
+skin_23;солдаты в противогазах;skins;0;1;2;3;1;2;3;1;2;3;TrophyGray_mini;trofey_head_23;1500;default_move;1
+skin_24;люди в чёрном;skins;0;1;2;3;1;2;3;1;2;3;TrophyYellow_mini;trofey_head_24;3000;default_move;1
+skin_25;футболисты;skins;0;1;2;3;1;2;3;1;2;3;TrophyYellow_mini;trofey_head_25;3000;default_move;1
+skin_26;неоновые;skins;0;1;2;3;1;2;3;1;2;3;TrophyGreen_mini;trofey_head_26;1000;default_move;1
+skin_27;хиппи;skins;0;1;2;3;1;2;3;1;2;3;TrophyGreen_mini;trofey_head_27;500;default_move;1
+skin_28;солдаты;skins;0;1;2;3;1;2;3;1;2;3;TrophyGreen_mini;trofey_head_28;1500;default_move;1
+skin_29;пауки;skins;0;1;2;3;1;2;3;1;2;3;TrophyGray_mini;trofey_head_29;5000;spider_move;1

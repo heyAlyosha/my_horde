@@ -17,6 +17,11 @@ components {
     value: "10.0, 0.0, 0.0"
     type: PROPERTY_TYPE_VECTOR3
   }
+  properties {
+    id: "atlas_first_level"
+    value: "/main/atlases/first_level.atlas"
+    type: PROPERTY_TYPE_HASH
+  }
 }
 components {
   id: "blood_left"

@@ -49,21 +49,21 @@ function M.play(self, animation_id)
 	else
 		if animation_id == "move" or animation_id == "idle" or animation_id == "win" then
 			if animation_id == "move" then
-				self.animation_current = "zombie_"..self.skin_id.."_"..self.human_id.."_run"
+				self.animation_current = "run"
 			elseif animation_id == "idle" then
-				self.animation_current = "zombie_"..self.skin_id.."_"..self.human_id.."_default"
+				self.animation_current = "default"
 			elseif animation_id == "win" then
-				self.animation_current = "win_skin_"..self.skin_id
+				self.animation_current = "win"
 			end
 
 			if self.last_animation ~= self.animation_current then
-				sprite.play_flipbook("#body", self.animation_current)
+				game_content_skins.play_flipbook(self, "#body", self.skin_id, self.human_id, self.animation_current)
 				self.last_animation = self.animation_current
 			end
 
 		elseif animation_id == "attack" then
 			self.hflip_stop = true
-			sprite.play_flipbook("#body", "zombie_"..self.skin_id.."_"..self.human_id.."_attack")
+			game_content_skins.play_flipbook(self, "#body", self.skin_id, self.human_id, animation_id)
 
 			timer.delay(0.1, false, function (self)
 				self.hflip_stop = nil

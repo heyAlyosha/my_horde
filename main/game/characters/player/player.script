@@ -27,10 +27,14 @@ go.property("size_horde", 0)
 go.property("attack_horde", false)
 go.property("is_circle_horde", false)
 go.property("is_input_circle_horde", true)
+go.property("atlas_first_level", resource.atlas("/main/atlases/first_level.atlas"))
+go.property("atlas_skins", resource.atlas("/main/atlases/first_level.atlas"))
 
 function init(self)
 	msg.post(".", "acquire_input_focus")
 	game_content_character_parametrs.set_characteristic(self)
+
+	
 
 	self.distantion_attack = self.distantion_attack * self.scale_attack
 
