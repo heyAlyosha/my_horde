@@ -140,6 +140,7 @@ function init(self)
 		end
 		-- Перемещение зоны инфекции
 		zone_infection.animate_position(self, position_to, duration)
+		ai_zombie_main_enemy_horde.ai_handle_item_move(self)
 	end
 
 	character_zombie_main.change_horde(self)

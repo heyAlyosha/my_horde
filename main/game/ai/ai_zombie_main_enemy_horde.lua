@@ -34,6 +34,7 @@ function M.search_target(self)
 					-- Если орда врага намного меньше
 					ai_attack.add_target(self, item.url)
 					self.condition_ai = hash("to_target")
+					self.is_target_horde = true
 					M.behavior(self)
 					return true
 				else
@@ -47,6 +48,7 @@ function M.search_target(self)
 			-- Помечаем целью
 			ai_attack.add_target(self, visible_item.url)
 			self.condition_ai = hash("to_target")
+			self.is_target_horde = nil
 			M.behavior(self)
 		else
 			ai_attack.delete_target(self, self.target)
@@ -113,7 +115,6 @@ function M.behavior(self)
 				ai_core.clear_coditions(self, url)
 				ai_move.stop(self)
 				-- Начинаем вращение
-				print("ai_core.condition_attack")
 				character_animations.play(self, "win")
 				horde_circle.set(self, true, function (self)
 					ai_core.condition_attack(self, self.target, handle_success, handle_error, handle_success)
@@ -134,10 +135,11 @@ function M.behavior(self)
 
 		return
 	end
-
+	-- Очищаем данные после состояния прицеливания
 	if self.is_circle_horde then
 		horde_circle.set(self, false)
 	end
+	self.is_target_horde = nil
 
 	-- Убегает
 	if self.condition_ai == hash("from_target") then
@@ -170,6 +172,18 @@ function M.behavior(self)
 		ai_move.move_random(self, max_cost, M.behavior)
 
 		self.not_search_target = nil
+	end
+end
+
+
+function M.ai_handle_item_move(self)
+	if self.condition_ai == hash("to_target") and self.is_target_horde then
+		-- Прицелен на другую орду
+		if not self.target or not go_controller.is_object(self.target) or vmath.length(go.get_position(self.target) - go.get_position()) > 200 then
+			-- Цель убежала далеко
+			self.condition_ai = nil
+			M.behavior(self)
+		end
 	end
 end
 
