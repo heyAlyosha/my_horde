@@ -19,6 +19,9 @@ function M.set(self, is_circle_horde, handle)
 		self.move_stop = true
 		timer.delay(delay, false, function (self)
 			self.move_stop = false
+			if handle then
+				handle(self)
+			end
 		end)
 	else
 		self.t_horde_circle = 0

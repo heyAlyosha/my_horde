@@ -290,8 +290,6 @@ function M.stop(self)
 		timer.cancel(self.timer_move_item)
 		self.timer_move_item = nil
 	end
-
-	
 end
 
 return M

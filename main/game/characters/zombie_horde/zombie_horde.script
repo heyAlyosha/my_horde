@@ -49,6 +49,7 @@ function on_message(self, message_id, message, sender)
 
 			local ok, command = pcall(go.get, url_script, "command")
 
+			print("command", ok, command, url_script)
 			if ok and command ~= self.command  then
 				local type_object = go.get(url_script, "type_object")
 
