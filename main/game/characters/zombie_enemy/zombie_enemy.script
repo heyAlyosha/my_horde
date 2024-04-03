@@ -35,6 +35,8 @@ go.property("spawn_coins", 0)
 go.property("spawn_resource", 0)
 go.property("spawn_xp", 1)
 go.property("spawn_star", 0)
+go.property("atlas_first_level", resource.atlas("/main/atlases/first_level.atlas"))
+go.property("atlas_skins", resource.atlas("/main/atlases/first_level.atlas"))
 
 -- Активация человечка
 local function activate_init(self)

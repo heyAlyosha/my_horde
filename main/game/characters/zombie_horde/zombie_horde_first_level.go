@@ -12,6 +12,11 @@ components {
     z: 0.0
     w: 1.0
   }
+  properties {
+    id: "atlas_skins"
+    value: "/main/atlases/skins.atlas"
+    type: PROPERTY_TYPE_HASH
+  }
 }
 embedded_components {
   id: "body"

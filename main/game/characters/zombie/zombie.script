@@ -24,6 +24,8 @@ go.property("spawn_resource", 0)
 go.property("spawn_xp", 0)
 go.property("spawn_star", 0)
 go.property("position_horde", vmath.vector3())
+go.property("atlas_first_level", resource.atlas("/main/atlases/first_level.atlas"))
+go.property("atlas_skins", resource.atlas("/main/atlases/first_level.atlas"))
 
 function init(self)
 	game_content_character_parametrs.set_characteristic(self)
@@ -43,7 +45,7 @@ function init(self)
 
 	go_controller.add(self)
 
-	sprite.play_flipbook("#body", "zombie_"..self.skin_id.."_"..self.human_id .. "_default")
+	--sprite.play_flipbook("#body", "zombie_"..self.skin_id.."_"..self.human_id .. "_default")
 	position_functions.go_set_perspective_z()
 
 	self.max_live = self.live

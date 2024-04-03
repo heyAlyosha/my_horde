@@ -1,13 +1,15 @@
 go.property("damage", 1)
 -- Дамаг о коллизию
 go.property("damage_for_collision", 2)
-go.property("live", 20)
+go.property("live", 10)
 go.property("command", hash("player"))
 go.property("skin_id", 0)
 go.property("human_id", 1)
 go.property("parent", msg.url())
 go.property("position_to", vmath.vector3())
 go.property("type_object", hash("zombie_horde"))
+go.property("atlas_first_level", resource.atlas("/main/atlases/first_level.atlas"))
+go.property("atlas_skins", resource.atlas("/main/atlases/first_level.atlas"))
 
 function init(self)
 	storage_game.go_objects[go.get_id()] = {
@@ -21,7 +23,8 @@ function init(self)
 	}
 
 	self.max_live = self.live
-	sprite.play_flipbook("#body", "zombie_"..self.skin_id.."_"..self.human_id .. "_default")
+
+	game_content_skins.play_flipbook(self, "#body", self.skin_id, self.human_id, "default")
 
 	position_functions.go_set_perspective_z()
 

@@ -237,6 +237,8 @@ function M.aging_zombie(self)
 		step_aging = "old"
 	end
 
+	print("procent_live", procent_live)
+
 	if self.step_aging ~= step_aging then
 		msg.post(storage_game.map.url_script, "effect", {
 			position = go.get_position(),
@@ -244,7 +246,7 @@ function M.aging_zombie(self)
 			timer_delete = 0,
 			shake = true
 		})
-		game_content_skins.play_flipbook(self, "#body", self.skin_id, self.human_id, self.animation_current)
+		game_content_skins.play_flipbook(self, "#body", self.skin_id, self.human_id, self.animation_current or self.animation_horde or "run")
 		self.step_aging = step_aging
 	end
 end

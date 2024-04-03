@@ -47,8 +47,6 @@ function M.player_update(self, dt)
 		speed = M.speed_min 
 	end
 	local rot = vmath.quat_rotation_z(3.141592653 * self.t_horde_circle / speed ) 
-	
-
 
 	for i = 1, hordes_count do
 		zombie = self.horde[i]

@@ -99,7 +99,7 @@ end
 -- УСтановка анимации для орды
 function M.set_animation_item(self, zombie, animation_id)
 	-- Анимация ходьбы
-	sprite.play_flipbook(zombie.url_sprite, "zombie_"..zombie.skin_id.."_"..zombie.human_id .. "_"..animation_id)
+	game_content_skins.play_flipbook(self, zombie.url_sprite, zombie.skin_id, zombie.human_id, animation_id)
 	zombie.animation_id = animation_id
 end
 
@@ -199,7 +199,7 @@ function M.move_horde_bot(self, position_to, duration, dir)
 
 		-- АНимация
 		if self.animation_horde ~= self.last_animation_horde then
-			sprite.play_flipbook(item.url_sprite, "zombie_"..item.skin_id.."_"..item.human_id .. "_".. self.animation_horde)
+			game_content_skins.play_flipbook(self, item.url_sprite, item.skin_id, item.human_id, self.animation_horde)
 		end
 	end
 
