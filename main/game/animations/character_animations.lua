@@ -226,4 +226,26 @@ function M.damage_player(self, from_object_damage)
 	end
 end
 
+-- Старение
+function M.aging_zombie(self)
+	local step_aging 
+	local procent_live = self.live/self.max_live
+
+	if procent_live < 0.2  then
+		step_aging = "very-old"
+	elseif procent_live < 0.4 then
+		step_aging = "old"
+	end
+
+	if self.step_aging ~= step_aging then
+		msg.post(storage_game.map.url_script, "effect", {
+			position = go.get_position(),
+			animation_id = hash("destroy"), 
+			timer_delete = 0,
+			shake = true
+		})
+		game_content_skins.play_flipbook(self, "#body", self.skin_id, self.human_id, self.animation_current)
+		self.step_aging = step_aging
+	end
+end
 return M

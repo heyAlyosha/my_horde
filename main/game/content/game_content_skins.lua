@@ -41,9 +41,10 @@ end
 function M.play_flipbook(self, url, skin_id, human_id, animation_name)
 	local skin = M.catalog_keys["skin_"..skin_id]
 	local human_id = skin["human_"..human_id]
+	local atlas_id = skin.atlas_id
 
-	if self._atlas_current_skin ~= skin.atlas_id then
-		local atlas = self["atlas_"..skin.atlas_id]
+	if self._atlas_current_skin ~= atlas_id then
+		local atlas = self["atlas_"..atlas_id]
 		if atlas then
 			go.set(url, "image", atlas)
 		end
@@ -58,8 +59,6 @@ function M.play_flipbook(self, url, skin_id, human_id, animation_name)
 		local string_animation = skin_id.."_"..human_id
 		if skin.is_old and self.max_live and self.live then
 			local procent_live = self.live / self.max_live
-
-			
 
 			if procent_live < 0.2  then
 				go.set(url, "image", self.atlas_first_level)

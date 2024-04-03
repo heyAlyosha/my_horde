@@ -267,6 +267,8 @@ function on_message(self, message_id, message, sender)
 			})
 			items_functions.spawn(self)
 			go.delete()
+		else
+			character_animations.aging_zombie(self)
 		end
 
 	elseif message_id == hash("contact_point_response") then
