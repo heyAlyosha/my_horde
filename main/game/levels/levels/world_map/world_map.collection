@@ -45,8 +45,8 @@ instances {
   id: "player"
   prototype: "/main/game/characters/player/player_world_map.go"
   position {
-    x: 710.0
-    y: 494.0
+    x: 809.0
+    y: 510.0
     z: 3.0
   }
   rotation {
@@ -253,8 +253,8 @@ instances {
   id: "zombie_main_enemy"
   prototype: "/main/game/characters/zombie_main_enemy/zombie_main_enemy.go"
   position {
-    x: 836.0
-    y: 446.0
+    x: 884.0
+    y: 528.0
     z: 3.0
   }
   rotation {

@@ -1,6 +1,6 @@
 id;sort;coments;live;speed;speed_default;speed_attack;speed_from;speed_walking;damage;speed_damage;scale_attack;target_useful;spawn_coins;spawn_resource;spawn_xp;max_horde;zombie_live;zombie_damage;zombie_speed_damage;zombie_scale_attack
 zombie_main;1;Игрок;30;50;;;;;5;0.75;0.8;2;10;0;10;30;20;1;0.75;0.5
 zombie_enemy;2;Противник зомби;150;;25;75;;;5;0.75;0.6;4;0;0;3;;;;;
-zombie_main_enemy_map;3;Вождь на карте;200;50;25;35;25;;5;0.75;0.8;2;0;0;0;;;;;
+zombie_main_enemy_map;3;Вождь на карте;75;50;25;35;25;;5;0.75;0.8;2;0;0;0;;;;;
 zombie_dynamic;4;зомби из орды;;70;;;;;;;;4;0;0;0;;;;;
 humans;5;Человечки;20;10;;;15;10;;;;1;1;0;0;;;;;

@@ -2,7 +2,7 @@
 local M = {}
 
 function M.create(self, is_player)
-	if not self.horde_map and not self.hp_bar then
+	if not self.hp_bar then
 		if is_player then
 			self.hp_bar = collectionfactory.create("#live_bar_collectionfactory", go.get_position())
 
@@ -48,13 +48,13 @@ function M.set_hp(self, live, max_live)
 
 		local sx = go.get(msg.url(url_bg.socket, url_bg.path, "bg"), "size.x") - 2
 		local procent = live / max_live
-		local size_line = sx * procent
+		local size_line = math.floor(sx * procent)
 
 		-- Устанавливаем ширину
 		go.set(msg.url(url_hp.socket, url_hp.path, "sprite"), "size.x", size_line)
 		-- Устанавливаем позицию линии здоровья
 		local position = go.get_position(url_hp)
-		position.x = -(sx - size_line) / 2
+		position.x = math.floor(-(sx - size_line) / 2 + 0.5)
 		go.set_position(position, url_hp)
 	end
 end

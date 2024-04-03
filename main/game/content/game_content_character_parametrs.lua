@@ -23,8 +23,9 @@ function M.get_type(self, type_id)
 end
 
 -- Получить характеристику под тип
-function M.set_characteristic(self)
-	local characteristics = M.get_type(self, self.type_object)
+function M.set_characteristic(self, id_characteristic)
+	local characteristics = M.get_type(self, id_characteristic or self.type_object)
+	pprint("id_characteristic", id_characteristic, characteristics)
 
 	if characteristics then
 		for k, v in pairs(characteristics) do

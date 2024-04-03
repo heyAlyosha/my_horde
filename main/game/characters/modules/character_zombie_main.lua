@@ -65,6 +65,11 @@ function M.change_horde(self)
 	self.visible_horde = self.visible_horde_min + dist_max_horde
 	self.distantion_visible = dist_max_horde
 
+	self.size_horde = self.horde_count_current
+	for k, v in pairs(self.zombies) do
+		self.size_horde = self.size_horde + 1
+	end
+
 	if self.hp_bar and self.hp_bar[hash("/count")] then
 		local url = msg.url(self.hp_bar[hash("/count")])
 		local url_label = msg.url(url.socket, url.path, "count_horde")
@@ -73,20 +78,7 @@ function M.change_horde(self)
 		else
 			msg.post(url_label, "enable")
 		end
-		label.set_text(url_label, self.horde_count_current)
-	end
-
-	self.size_horde = self.horde_count_current
-	for k, v in pairs(self.zombies) do
-		self.size_horde = self.size_horde + 1
-	end
-
-	if self.horde_map then
-		if self.max_horde then
-			label.set_text("#size_horde", self.size_horde .. "/ ".. self.max_horde)
-		else
-			label.set_text("#size_horde", self.size_horde)
-		end
+		label.set_text(url_label, self.size_horde .. "/" ..self.max_horde)
 	end
 end
 

@@ -18,6 +18,7 @@ go.property("speed_attack", 40)
 go.property("scale_attack", 1)
 go.property("distantion_attack", 35)
 go.property("command", hash("zombie_enemy"))
+go.property("id_characteristic", hash("zombie_main_enemy_map"))
 go.property("skin_id", 0)
 go.property("human_id", 0)
 go.property("visible_horde_min", 100)
@@ -43,7 +44,7 @@ go.property("zombie_speed_damage", 0.75)
 go.property("zombie_scale_attack", 0.5)
 
 function init(self)
-	game_content_character_parametrs.set_characteristic(self)
+	game_content_character_parametrs.set_characteristic(self, self.id_characteristic)
 
 	self.distantion_attack = self.distantion_attack * self.scale_attack
 
