@@ -43,6 +43,14 @@ function M.play_flipbook(self, url, skin_id, human_id, animation_name)
 	pprint("M.catalog_keys", skin_id, M.catalog_keys[skin_id])
 	local human_id = skin["human_"..human_id]
 
+	if self._atlas_current_skin ~= skin.atlas_id then
+		local atlas = self["atlas_"..skin.atlas_id]
+		if atlas then
+			go.set(url, "image", atlas)
+		end
+		self._atlas_current_ski = skin.atlas_id
+	end
+
 	if animation_name == "win" then
 		-- АНимация победы зомбика
 		sprite.play_flipbook(url, "win_skin_"..skin_id)

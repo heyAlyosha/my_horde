@@ -18,9 +18,19 @@ components {
     type: PROPERTY_TYPE_BOOLEAN
   }
   properties {
+    id: "skin_id"
+    value: "2.0"
+    type: PROPERTY_TYPE_NUMBER
+  }
+  properties {
     id: "target_dist"
     value: "10.0, 0.0, 0.0"
     type: PROPERTY_TYPE_VECTOR3
+  }
+  properties {
+    id: "atlas_skins"
+    value: "/main/atlases/skins.atlas"
+    type: PROPERTY_TYPE_HASH
   }
 }
 components {
