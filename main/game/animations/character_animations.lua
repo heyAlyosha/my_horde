@@ -243,10 +243,6 @@ function M.aging_zombie(self, no_effect)
 		step_aging = "old"
 	end
 
-	if self.damage_for_collision then
-		print("self.step_aging", self.step_aging, step_aging, self.live, self.max_live)
-	end
-
 	if self.step_aging ~= step_aging then
 		if not no_effect then
 			msg.post(storage_game.map.url_script, "effect", {

@@ -22,7 +22,9 @@ function init(self)
 		storage = {}
 	}
 
-	self.max_live = self.live
+	self.max_live = go.get(self.parent, "zombie_live")
+
+	print(self.max_live)
 
 	position_functions.go_set_perspective_z()
 
@@ -31,7 +33,7 @@ function init(self)
 	self.correction = vmath.vector3()
 	local no_effect = true
 	character_animations.aging_zombie(self, no_effect)        
-	--game_content_skins.play_flipbook(self, "#body", self.skin_id, self.human_id, "default")
+	game_content_skins.play_flipbook(self, "#body", self.skin_id, self.human_id, "default")
 end
 
 function final(self)
