@@ -23,7 +23,9 @@ function M.set(self, is_circle_horde, handle)
 	else
 		self.t_horde_circle = 0
 		horde.set_animation_horde(self, "default")
-		horde.move_horde_player(self)
+		if self.command == hash("player") then
+			horde.move_horde_player(self)
+		end
 	end
 end
 
