@@ -1417,8 +1417,8 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 1.0
-    y: 1.0
+    x: 1.25
+    y: 1.25
     z: 1.0
     w: 1.0
   }
@@ -1436,7 +1436,7 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "1"
+  text: "999999"
   font: "font_standart_mini"
   id: "account_level"
   xanchor: XANCHOR_NONE

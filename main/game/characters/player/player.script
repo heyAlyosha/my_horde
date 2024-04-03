@@ -1,5 +1,5 @@
 go.property("activate", true)
-go.property("horde_count", 30)
+go.property("horde_count", 8)
 go.property("horde_map", false)
 go.property("max_horde", 100)
 go.property("damage", 2)
@@ -306,7 +306,7 @@ function on_message(self, message_id, message, sender)
 		local url = go_controller.url_object(sender)
 		self.zombies[go_controller.url_to_key(url)] = nil
 
-		local skin_id = message.skin_id or 0
+		local skin_id = message.skin_id or self.skin_id or 0
 		local human_id = message.human_id or 0
 		horde.add_zombie_horde(self, skin_id, human_id, message.position_from)
 
