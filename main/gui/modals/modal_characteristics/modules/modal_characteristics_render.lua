@@ -3,7 +3,7 @@ local M = {}
 
 local storage_player = require "main.storage.storage_player"
 local gui_text = require "main.gui.modules.gui_text"
-local game_content_text = require "main.game.content.game_content_text"
+
 local game_content_characteristic = require "main.game.content.game_content_characteristic"
 local gui_input = require "main.gui.modules.gui_input"
 local gui_animate = require "main.gui.modules.gui_animate"

@@ -1,6 +1,6 @@
 local storage_player = require "main.storage.storage_player"
 local storage_game = require "main.game.storage.storage_game"
-local game_content_stars = require "main.game.content.game_content_stars"
+
 local core_stars_type_default = require "main.core.core_stars.modules.core_stars_type_default"
 
 function init(self)

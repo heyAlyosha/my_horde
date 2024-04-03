@@ -4,7 +4,7 @@ local M = {}
 local gui_catalog = require "main.gui.modules.gui_catalog"
 local gui_input = require "main.gui.modules.gui_input"
 local gui_loader = require "main.gui.modules.gui_loader"
-local game_content_achieve = require "main.game.content.game_content_achieve"
+
 local storage_player = require "main.storage.storage_player"
 local core_player_function = require "main.core.core_player.modules.core_player_function"
 local gui_loyouts = require "main.gui.modules.gui_loyouts"

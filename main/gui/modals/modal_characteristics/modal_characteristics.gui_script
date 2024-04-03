@@ -8,7 +8,7 @@ local modal_characteristics_up = require "main.gui.modals.modal_characteristics.
 local modal_characteristics_render = require "main.gui.modals.modal_characteristics.modules.modal_characteristics_render"
 local gui_manager = require "main.gui.modules.gui_manager"
 local game_content_characteristic = require "main.game.content.game_content_characteristic"
-local game_content_text = require "main.game.content.game_content_text"
+
 local gui_render = require "main.gui.modules.gui_render"
 local gui_size = require 'main.gui.modules.gui_size'
 local api_player = require 'main.game.api.api_player'

@@ -3,7 +3,7 @@ local M = {}
 
 local storage_player = require "main.storage.storage_player"
 local api_player = require "main.game.api.api_player"
-local game_content_prize = require "main.game.content.game_content_prize"
+
 local api_core_shop = require "main.core.api.api_core_shop"
 local nakama_api_account = require "main.online.nakama.api.nakama_api_account"
 local data_handler = require "main.data.data_handler"

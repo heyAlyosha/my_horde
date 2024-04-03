@@ -5,7 +5,7 @@ local gui_animate = require "main.gui.modules.gui_animate"
 local gui_catalog = require "main.gui.modules.gui_catalog"
 local gui_input = require "main.gui.modules.gui_input"
 local gui_loader = require "main.gui.modules.gui_loader"
-local game_content_prize = require "main.game.content.game_content_prize"
+
 local gui_catalog_type_inventary = require "main.gui.modules.gui_catalog.gui_catalog_type_inventary"
 local sound_render = require "main.sound.modules.sound_render"
 local gui_loyouts = require "main.gui.modules.gui_loyouts"

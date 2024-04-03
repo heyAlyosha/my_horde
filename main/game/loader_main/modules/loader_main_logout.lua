@@ -4,16 +4,16 @@ local M = {}
 local color = require("color-lib.color")
 local storage_player = require "main.storage.storage_player"
 local loader_sdk_modules = require "main.loaders.loader_sdk.modules.loader_sdk_modules"
-local game_content_artifact = require "main.game.content.game_content_artifact"
+
 local api_core_shop = require "main.core.api.api_core_shop"
 local nakama_api_account = require "main.online.nakama.api.nakama_api_account"
 local api_player = require "main.game.api.api_player"
-local game_content_notify_add = require "main.game.content.game_content_notify_add"
+
 local game_tests_gui = require "main.game.tests.game_tests_gui"
 local game_tests_gui_family = require "main.game.tests.game_tests_gui_family"
 local data_handler = require "main.data.data_handler"
 local core_player_function = require "main.core.core_player.modules.core_player_function"
-local game_content_prize = require "main.game.content.game_content_prize"
+
 local storage_game = require "main.game.storage.storage_game"
 local timer_linear = require "main.modules.timer_linear"
 local gui_integer = require "main.gui.modules.gui_integer"

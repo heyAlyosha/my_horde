@@ -2,8 +2,8 @@
 local M = {}
 
 local storage_player = require "main.storage.storage_player"
-local game_content_achieve = require "main.game.content.game_content_achieve"
-local game_content_notify_add = require "main.game.content.game_content_notify_add"
+
+
 local nakama_api_account = require "main.online.nakama.api.nakama_api_account"
 local data_handler = require "main.data.data_handler"
 

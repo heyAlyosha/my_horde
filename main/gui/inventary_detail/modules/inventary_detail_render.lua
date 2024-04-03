@@ -1,9 +1,9 @@
 -- функции для показа и отрисовки подробностей об объекте
 local M = {}
 
-local game_content_prize = require "main.game.content.game_content_prize"
-local game_content_artifact = require "main.game.content.game_content_artifact"
-local game_content_achieve = require "main.game.content.game_content_achieve"
+
+
+
 local game_content_characteristic = require "main.game.content.game_content_characteristic"
 local core_achieve_functions = require "main.core.core_achieve.modules.core_achieve_functions"
 local gui_text = require "main.gui.modules.gui_text"

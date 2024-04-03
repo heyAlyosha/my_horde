@@ -1,8 +1,8 @@
 -- функции для показа и отрисовки подробностей об объекте
 local M = {}
 
-local game_content_prize = require "main.game.content.game_content_prize"
-local game_content_artifact = require "main.game.content.game_content_artifact"
+
+
 local game_content_characteristic = require "main.game.content.game_content_characteristic"
 local gui_text = require "main.gui.modules.gui_text"
 local gui_input = require "main.gui.modules.gui_input"

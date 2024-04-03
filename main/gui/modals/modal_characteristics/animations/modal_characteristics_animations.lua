@@ -2,7 +2,6 @@
 local M = {}
 
 local gui_size = require 'main.gui.modules.gui_size'
-local game_content_prize = require 'main.game.content.game_content_prize'
 local gui_animate = require "main.gui.modules.gui_animate"
 local sound_render = require "main.sound.modules.sound_render"
 

@@ -1,6 +1,6 @@
 -- Тестирвоание ачивок
 local core_achieve_functions = require "main.core.core_achieve.modules.core_achieve_functions"
-local game_content_achieve = require "main.game.content.game_content_achieve"
+
 local core_prorgress = require "main.core.core_progress.core_prorgress"
 local storage_player = require "main.storage.storage_player"
 local api_core_player = require"main.core.api.api_core_player"

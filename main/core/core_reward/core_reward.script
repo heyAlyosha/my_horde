@@ -1,4 +1,4 @@
-local game_content_artifact = require "main.game.content.game_content_artifact"
+
 local storage_player = require "main.storage.storage_player"
 local storage_gui = require "main.storage.storage_gui"
 local api_player = require "main.game.api.api_player"

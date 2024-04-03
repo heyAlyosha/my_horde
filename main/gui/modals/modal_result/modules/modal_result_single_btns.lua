@@ -11,7 +11,7 @@ local loader_sdk_modules = require "main.loaders.loader_sdk.modules.loader_sdk_m
 local storage_game = require "main.game.storage.storage_game"
 local storage_player = require "main.storage.storage_player"
 local api_player = require "main.game.api.api_player"
-local game_content_artifact = require "main.game.content.game_content_artifact"
+
 local lang_core = require "main.lang.lang_core"
 
 function M.function_back(self)

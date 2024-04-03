@@ -5,9 +5,9 @@ local color = require("color-lib.color")
 local storage_player = require "main.storage.storage_player"
 local game_content_bots = require "main.game.content.game_content_bots"
 local storage_game = require "main.game.storage.storage_game"
-local game_content_wheel = require "main.game.content.game_content_wheel"
+
 local storage_sdk = require "main.storage.storage_sdk" 
-local game_content_stars = require "main.game.content.game_content_stars"
+
 
 function M.core(self, id)
 	--[[

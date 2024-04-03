@@ -10,7 +10,7 @@ local modal_result_single_animate_win = require "main.gui.modals.modal_result.an
 local gui_manager = require "main.gui.modules.gui_manager"
 local game_content_levels = require "main.game.content.game_content_levels"
 local game_content_company = require "main.game.content.game_content_company"
-local game_content_text = require "main.game.content.game_content_text"
+
 local gui_render = require "main.gui.modules.gui_render"
 local gui_size = require 'main.gui.modules.gui_size'
 local modal_result_single_btns = require "main.gui.modals.modal_result.modules.modal_result_single_btns"

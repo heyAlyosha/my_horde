@@ -6,7 +6,7 @@ local storage_player = require "main.storage.storage_player"
 local gui_animate = require "main.gui.modules.gui_animate"
 local gui_manager = require "main.gui.modules.gui_manager"
 local api_player = require "main.game.api.api_player"
-local game_content_prize = require "main.game.content.game_content_prize"
+
 local gui_loader = require "main.gui.modules.gui_loader"
 local catalog_characteristic_functions = require "main.gui.catalog_characteristic.modules.catalog_characteristic_functions"
 local modal_characteristics_render = require "main.gui.modals.modal_characteristics.modules.modal_characteristics_render"

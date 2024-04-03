@@ -1,6 +1,6 @@
 local druid = require("druid.druid")
 local game_content_levels = require "main.game.content.game_content_levels"
-local game_content_text = require "main.game.content.game_content_text"
+
 local catalog_rating_render = require "main.gui.catalog_rating.modules.catalog_rating_render"
 local catalog_rating_render_default = require "main.gui.catalog_rating.modules.catalog_rating_render_default"
 local catalog_rating_render_change_animated = require "main.gui.catalog_rating.modules.catalog_rating_render_change_animated"

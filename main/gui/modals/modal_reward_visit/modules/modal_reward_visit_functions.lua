@@ -6,8 +6,8 @@ local color = require("color-lib.color")
 local gui_input = require "main.gui.modules.gui_input"
 local gui_animate = require "main.gui.modules.gui_animate"
 local gui_text = require "main.gui.modules.gui_text"
-local game_content_artifact = require "main.game.content.game_content_artifact"
-local game_content_text = require "main.game.content.game_content_text"
+
+
 local game_content_reward = require "main.game.content.game_content_reward"
 -- Адаптирвоанный интерфейс
 local gui_loyouts = require "main.gui.modules.gui_loyouts"

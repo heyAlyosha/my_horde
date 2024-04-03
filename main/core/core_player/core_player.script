@@ -3,7 +3,7 @@ local core_player_function = require "main.core.core_player.modules.core_player_
 local api_core_player = require "main.core.api.api_core_player"
 local api_player = require "main.game.api.api_player"
 local api_core_shop = require "main.core.api.api_core_shop"
-local game_content_artifact = require "main.game.content.game_content_artifact"
+
 
 function init(self)
 

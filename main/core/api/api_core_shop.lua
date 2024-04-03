@@ -6,7 +6,7 @@ local storage_player = require "main.storage.storage_player"
 local storage_gui = require "main.storage.storage_gui"
 local nakama_api_account = require "main.online.nakama.api.nakama_api_account"
 local game_content_characteristic = require "main.game.content.game_content_characteristic"
-local game_content_notify_add = require "main.game.content.game_content_notify_add"
+
 local api_player = require "main.game.api.api_player"
 local data_handler = require "main.data.data_handler"
 

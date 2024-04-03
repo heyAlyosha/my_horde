@@ -3,7 +3,7 @@ local M = {}
 
 local gui_animate = require "main.gui.modules.gui_animate"
 local gui_catalog_prize_magazine = require "main.gui.modules.gui_catalog_prize_magazine"
-local game_content_prize = require "main.game.content.game_content_prize"
+
 local color = require("color-lib.color")
 local storage_game = require "main.game.storage.storage_game"
 local api_player = require "main.game.api.api_player"

@@ -7,7 +7,7 @@ local modal_settings_color = require "main.gui.modals.modal_settings.modules.mod
 local modal_settings_btns = require "main.gui.modals.modal_settings.modules.modal_settings_btns"
 local gui_manager = require "main.gui.modules.gui_manager"
 local game_content_levels = require "main.game.content.game_content_levels"
-local game_content_text = require "main.game.content.game_content_text"
+
 local gui_render = require "main.gui.modules.gui_render"
 local gui_size = require 'main.gui.modules.gui_size'
 local api_player = require 'main.game.api.api_player'

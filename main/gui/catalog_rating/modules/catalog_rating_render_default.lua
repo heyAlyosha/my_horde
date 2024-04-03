@@ -3,7 +3,7 @@ local M = {}
 
 local api_core_rating = require "main.core.api.api_core_rating"
 local catalog_rating_render = require "main.gui.catalog_rating.modules.catalog_rating_render"
-local game_content_text = require "main.game.content.game_content_text"
+
 local gui_loader = require "main.gui.modules.gui_loader"
 local gui_input = require "main.gui.modules.gui_input"
 local gui_loyouts = require "main.gui.modules.gui_loyouts"

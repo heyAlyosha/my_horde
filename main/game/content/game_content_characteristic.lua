@@ -1,5 +1,5 @@
 local storage_player = require "main.storage.storage_player"
-local game_content_text = require "main.game.content.game_content_text"
+
 local game_content_functions = require "main.game.content.modules.game_content_functions"
 
 -- Информация про ботов
