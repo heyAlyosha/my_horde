@@ -129,7 +129,7 @@ function M.behavior(self)
 			end
 
 			return
-			
+
 		else
 			-- Цели нет или она исчезла
 			self.condition_ai = nil   

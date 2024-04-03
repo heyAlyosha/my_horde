@@ -1,5 +1,5 @@
 go.property("activate", true)
-go.property("horde_count", 10)
+go.property("horde_count", 0)
 go.property("horde_map", false)
 go.property("max_horde", 100)
 go.property("damage", 2)
@@ -84,15 +84,18 @@ function init(self)
 		end
 
 		-- Обзор для удара по противникам
-		if not self.horde_map then
-			timer.delay(self.speed_damage, true, function (self)
-				local visible_items = ai_vision.get_visible(self, self.visible_object_id, self.distantion_attack - 3, exclude_commands)
-				if visible_items and #visible_items > 0 then
-					-- Есть враги
-					character_attack.attack(self, visible_items[1].url)
-				end
-			end)
+		self.exclude_commands_attack = {}
+		if self.horde_map then
+			self.exclude_commands_attack[hash("humans")] = true
 		end
+
+		timer.delay(self.speed_damage, true, function (self)
+			local visible_items = ai_vision.get_visible(self, self.visible_object_id, self.distantion_attack - 3, self.exclude_commands_attack)
+			if visible_items and #visible_items > 0 then
+				-- Есть враги
+				character_attack.attack(self, visible_items[1].url)
+			end
+		end)
 	end)
 
 	self.group_name = "visible_object"
