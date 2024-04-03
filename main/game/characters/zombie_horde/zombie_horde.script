@@ -45,10 +45,11 @@ function on_message(self, message_id, message, sender)
 		local url = msg.url(message.other_id)
 		if message.enter then
 			local url_script = go_controller.url_script(url)
-			pprint(url_script)
-			local command = go.get(url_script, "command")
-			
-			if command ~= self.command  then
+			--local command = go.get(url_script, "command")
+
+			local ok, command = pcall(go.get, url_script, "command")
+
+			if ok and command ~= self.command  then
 				local type_object = go.get(url_script, "type_object")
 
 				if type_object == self.type_object then
