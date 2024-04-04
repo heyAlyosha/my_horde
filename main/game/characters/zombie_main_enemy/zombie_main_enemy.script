@@ -1,5 +1,5 @@
 go.property("activate", true)
-go.property("horde_count", 0)
+go.property("horde_count", 5)
 go.property("horde_map", true)
 go.property("dir", vmath.vector(-1,0,0))
 go.property("max_horde", 30)
@@ -38,6 +38,8 @@ go.property("attack_horde", false)
 go.property("is_circle_horde", false)
 go.property("atlas_first_level", resource.atlas("/main/atlases/first_level.atlas"))
 go.property("atlas_skins", resource.atlas("/main/atlases/first_level.atlas"))
+go.property("spawn_coins", 0)
+go.property("spawn_xp", 0)
 go.property("zombie_live", 20)
 go.property("zombie_damage", 1)
 go.property("zombie_speed_damage", 0.75)
@@ -195,16 +197,8 @@ function on_message(self, message_id, message, sender)
 		live_bar.set_hp(self, self.live, self.max_live)
 
 		if self.live <= 0 then
-			local position = go.get_position()
-			position.y = position.y + go.get("#body", "size").y / 2
-
-			msg.post(storage_game.map.url_script, "effect", {
-				position = position,
-				animation_id = hash("effect_zombie_death"), 
-				timer_delete = 3
-			})
-			items_functions.spawn(self)
-			go.delete()
+			local is_player = false
+			character_zombie_main.killing(self, is_player)
 		end
 
 	elseif message_id == hash("contact_point_response") then

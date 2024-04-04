@@ -68,4 +68,9 @@ function M.spawn(self)
 	end
 end
 
+-- Спавн трофея
+function M.spawn_trophy(self)
+	
+end
+
 return M

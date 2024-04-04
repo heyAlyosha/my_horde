@@ -70,6 +70,12 @@ function M.change_horde(self)
 		self.size_horde = self.size_horde + 1
 	end
 
+	-- Запоминаем рекорд размера орды
+	self.max_size_horde = self.max_size_horde or 0
+	if self.size_horde > self.max_size_horde then
+		self.max_size_horde = self.size_horde
+	end
+
 	if self.hp_bar and self.hp_bar[hash("/count")] then
 		local url = msg.url(self.hp_bar[hash("/count")])
 		local url_label = msg.url(url.socket, url.path, "count_horde")
@@ -81,5 +87,57 @@ function M.change_horde(self)
 		label.set_text(url_label, self.size_horde .. "/" ..self.max_horde)
 	end
 end
+
+-- Выпадение предметов (кроме трофея)
+function M.spawn_items(self)
+	local items = {
+		{size_horde = 0, coins = 1, xp = 3,},
+		{size_horde = 5, coins = 3, xp = 5,},
+		{size_horde = 20, coins = 5, xp = 10,},
+		{size_horde = 40, coins = 7, xp = 20,},
+		{size_horde = 80, coins = 10, xp = 30,},
+		{size_horde = 100, coins = 15, xp = 50,}
+	}
+
+	self.max_size_horde = self.max_size_horde or 0
+	for i = #items, 1, -1 do
+		local item = items[i]
+		print("M.spawn_items", self.max_size_horde, item.size_horde)
+		if self.max_size_horde >= item.size_horde then
+			if self.spawn_coins == 0 then
+				self.spawn_coins = item.coins
+			end
+
+			if self.spawn_xp == 0 then
+				self.spawn_xp = item.xp
+			end
+			break
+		end
+	end
+
+	
+
+	items_functions.spawn(self)
+end
+
+function M.killing(self, is_player)
+	local position = go.get_position()
+	position.y = position.y + go.get("#body", "size").y / 2
+
+	msg.post(storage_game.map.url_script, "effect", {
+		position = position,
+		animation_id = hash("effect_zombie_death"), 
+		timer_delete = 3
+	})
+	if not is_player then
+		
+		M.spawn_items(self)
+		--items_functions.spawn_trophy(self)
+	end
+
+	go.delete()
+end
+
+
 
 return M
