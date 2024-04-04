@@ -1,6 +1,6 @@
 go.property("damage", 1)
 -- Дамаг о коллизию
-go.property("damage_for_collision", 2)
+go.property("damage_for_collision", 1)
 go.property("live", 20)
 go.property("command", hash("player"))
 go.property("skin_id", 0)
@@ -23,6 +23,7 @@ function init(self)
 	}
 
 	self.max_live = go.get(self.parent, "zombie_live")
+	print("live", self.live, self.max_live)
 
 	position_functions.go_set_perspective_z()
 

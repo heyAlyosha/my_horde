@@ -125,10 +125,10 @@ function M.damage(self, from_object_damage, handle)
 					
 					go.animate(".", "position", go.PLAYBACK_ONCE_FORWARD, last_position, go.EASING_LINEAR, duration, 0, function (self)
 						M.play(self, "idle")
-						
 					end)
 
-					timer.delay(duration + 0.5, false, function (self)
+					local delay = self.damage_interval_move or duration + 0.5
+					timer.delay(delay, false, function (self)
 						self.animate_position_damage = nil
 					end)
 				else
