@@ -56,19 +56,16 @@ function init(self)
 			timer.delay(self.duration, false, function (self)
 				local position_y = self.positions_cloud[i].y
 				if i == 1 then
-					position_y = position_y + 3
+					position_y = position_y + 5
 				elseif i == 2 then
-					position_y = position_y - 6
+					position_y = position_y - 9
 				else
-					position_y = position_y - 3
+					position_y = position_y - 5
 				end
 				go.animate(url_cloud, "position.y", go.PLAYBACK_LOOP_PINGPONG, position_y, go.EASING_LINEAR, 1)
 			end)
 		end
 	end)
-	if true then
-		return true
-	end
 
 	-- Анимация грозы
 	self.duration_lightning = 0.1
@@ -78,30 +75,31 @@ function init(self)
 			math.randomseed(i)
 			if math.random(0, 1) == 1 then
 				local url_lightning = self.urls["lightning"..i]
-				local sprite = lightning_sprite[math.random(1, 2)]
-				gui.set_enabled(url_lightning, true)
-				gui.play_flipbook(url_lightning, sprite)
-				gui.set_color(self.urls.shadow, vmath.vector4(0, 0, 0, 0.3))
+				local url_cloud_sprite = self.urls["cloud_sprite"..i]
+				local animation_id = lightning_sprite[math.random(1, 2)]
+				msg.post(url_lightning, "enable")
+				sprite.play_flipbook(url_lightning, animation_id)
+				go.set(self.urls.shadow, "tint", vmath.vector4(0, 0, 0, 0.3))
 
 				timer.delay(self.duration_lightning/2, false, function (self)
 					if math.random(0, 1) == 1 then
 						timer.delay(self.duration_lightning/2, false, function (self)
 							if sprite == 1 then
-								sprite = lightning_sprite[2]
+								animation_id = lightning_sprite[2]
 							else 
-								sprite = lightning_sprite[1]
+								animation_id = lightning_sprite[1]
 							end
 
-							gui.play_flipbook(url_lightning, sprite)
+							sprite.play_flipbook(url_lightning, animation_id)
 
 							timer.delay(self.duration_lightning/2, false, function (self)
-								gui.set_enabled(url_lightning, false)
-								gui.set_color(self.urls.shadow, vmath.vector4(0, 0, 0, 0.5))
+								msg.post(url_lightning, "disable")
+								go.set(self.urls.shadow, "tint", vmath.vector4(0, 0, 0, 0.5))
 							end)
 						end)
 					else
-						gui.set_enabled(url_lightning, false)
-						gui.set_color(self.urls.shadow, vmath.vector4(0, 0, 0, 0.5))
+						msg.post(url_lightning, "disable")
+						go.set(self.urls.shadow, "tint", vmath.vector4(0, 0, 0, 0.5))
 					end
 				end)
 			end
