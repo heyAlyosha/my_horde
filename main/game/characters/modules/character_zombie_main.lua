@@ -102,7 +102,6 @@ function M.spawn_items(self)
 	self.max_size_horde = self.max_size_horde or 0
 	for i = #items, 1, -1 do
 		local item = items[i]
-		print("M.spawn_items", self.max_size_horde, item.size_horde)
 		if self.max_size_horde >= item.size_horde then
 			if self.spawn_coins == 0 then
 				self.spawn_coins = item.coins

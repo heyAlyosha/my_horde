@@ -102,21 +102,23 @@ function init(self)
 	self.group_id, self.visible_object_id = ai_vision.add_dynamic_object(self, self.group_name)
 
 	-- Обзор вокруг орды
-	if not self.horde_map then
-		self.timer_view_horde = timer.delay(0.25, true, function (self)
+	self.timer_view_horde = timer.delay(0.25, true, function (self)
+		if not self.horde_map then
 			local visible_items = ai_vision.get_visible(self, self.visible_object_id, self.visible_horde)
 			local position = go.get_position()
 
 			horde_attack.visible(self, visible_items)
+		end
 
-			-- Предметы, чтобы подобрать
-			local group_name = "items"
-			local items = ai_vision.get_objects_group(self, exclude_aabb_id, group_name, self.distantion_visible + 10)
-			for i = 1, #items do
-				msg.post(items[i].url, "activate")
-			end
-		end)
-	else
+		-- Предметы, чтобы подобрать
+		local group_name = "items"
+		local items = ai_vision.get_objects_group(self, exclude_aabb_id, group_name, self.distantion_visible + 10)
+		for i = 1, #items do
+			msg.post(items[i].url, "activate")
+		end
+	end)
+	
+	if self.horde_map then
 		zone_infection.create(self)
 		zone_infection.update_size(self, 5)
 	end
