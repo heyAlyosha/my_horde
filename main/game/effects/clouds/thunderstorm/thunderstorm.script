@@ -1,4 +1,5 @@
 go.property("animate", false)
+go.property("timer_hidden", 0)
 
 function init(self)
 	self.urls = {
@@ -115,9 +116,11 @@ function init(self)
 		end
 	end)
 
-	timer.delay(2, false, function (self)
-		msg.post(".", "hidden")
-	end)
+	if self.timer_hidden > 0 then
+		timer.delay(self.timer_hidden, false, function (self)
+			msg.post(".", "hidden")
+		end)
+	end
 end
 
 function final(self)
