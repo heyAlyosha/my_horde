@@ -1,4 +1,4 @@
-go.property("animate", true)
+go.property("animate", false)
 
 function init(self)
 	self.urls = {
@@ -8,7 +8,9 @@ function init(self)
 	self.positions_cloud = {}
 
 	-- Затемнение
-	go.set(self.urls.shadow, "tint.w", 0)
+	if self.animate then
+		go.set(self.urls.shadow, "tint.w", 0)
+	end
 
 	-- Облака и грозы
 	for i = 1, 3 do
@@ -25,17 +27,19 @@ function init(self)
 
 		-- Отключаем молнии и облака
 		msg.post(url_lightning, "disable")
-		go.set(url_cloud_sprite, "tint.w", 0)
+		if self.animate then
+			go.set(url_cloud_sprite, "tint.w", 0)
 
-		local position = go.get_position(url_cloud)
+			local position = go.get_position(url_cloud)
 
-		-- Раздвигаем облака
-		if i == 1 then
-			position.x = position.x - 300
-			go.set_position(position, url_cloud)
-		elseif i == 3 then
-			position.x = position.x + 300
-			go.set_position(position, url_cloud)
+			-- Раздвигаем облака
+			if i == 1 then
+				position.x = position.x - 300
+				go.set_position(position, url_cloud)
+			elseif i == 3 then
+				position.x = position.x + 300
+				go.set_position(position, url_cloud)
+			end
 		end
 	end
 
@@ -48,12 +52,17 @@ function init(self)
 		for i = 1, 3 do
 			local url_cloud = self.urls["cloud"..i]
 			local url_cloud_sprite = self.urls["cloud_sprite"..i]
+			local duration = self.duration
 
-			go.animate(url_cloud, "position", go.PLAYBACK_ONCE_FORWARD, self.positions_cloud[i], go.EASING_OUTCUBIC, self.duration)
-			go.animate(url_cloud_sprite, "tint.w", go.PLAYBACK_ONCE_FORWARD, 1, go.EASING_LINEAR, self.duration)
+			if self.animate then
+				go.animate(url_cloud, "position", go.PLAYBACK_ONCE_FORWARD, self.positions_cloud[i], go.EASING_OUTCUBIC, self.duration)
+				go.animate(url_cloud_sprite, "tint.w", go.PLAYBACK_ONCE_FORWARD, 1, go.EASING_LINEAR, self.duration)
+			else
+				duration = 0
+			end
 
 			--Анимация плавания облаков
-			timer.delay(self.duration, false, function (self)
+			timer.delay(duration, false, function (self)
 				local position_y = self.positions_cloud[i].y
 				if i == 1 then
 					position_y = position_y + 5
