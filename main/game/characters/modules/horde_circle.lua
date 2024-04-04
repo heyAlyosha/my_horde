@@ -11,6 +11,9 @@ M.rot = vmath.quat_rotation_z(3.141592653 * 2)
 function M.set(self, is_circle_horde, handle)
 	self.is_circle_horde = is_circle_horde
 	if self.is_circle_horde then
+		for k, zombie in pairs(self.zombies) do
+			msg.post(zombie.url, "to_horde")
+		end
 		self.t_horde_circle = 0
 		horde.set_animation_horde(self, "run")
 

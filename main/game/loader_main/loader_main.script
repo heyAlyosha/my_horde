@@ -1,10 +1,6 @@
 local api_core_rating = require "main.core.api.api_core_rating"
-
 local loader_sdk_modules = require "main.loaders.loader_sdk.modules.loader_sdk_modules"
 local loader_main_event_logout = require "main.game.loader_main.modules.loader_main_event_logout"
-
-
-
 local game_content_characteristic = require "main.game.content.game_content_characteristic"
 --local game_content_company = require "main.game.content.game_content_company"
 local storage_collection = require "main.storage.storage_collection"
@@ -108,7 +104,7 @@ function init(self)
 			company_id = "city_hospital", level_id = 3
 		})
 
-	elseif true then
+	elseif false then
 		-- карта
 		msg.post("main:/loader_main", "load_level", {
 			company_id = "world_map", level_id = "world_map"

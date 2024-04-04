@@ -48,7 +48,8 @@ function init(self)
 	--sprite.play_flipbook("#body", "zombie_"..self.skin_id.."_"..self.human_id .. "_default")
 	position_functions.go_set_perspective_z()
 
-	self.max_live = go.get(self.parent, "zombie_live")
+	local url_parent = go_controller.url_script(self.parent)
+	self.max_live = go.get(url_parent, "zombie_live")
 
 	self.input = vmath.vector3(0)
 	self.velocity = vmath.vector3(0)
@@ -133,6 +134,13 @@ function on_message(self, message_id, message, sender)
 	elseif message_id == hash("add_target") and message.target then
 		ai_attack.add_target(self, message.target)
 		self.condition_ai = hash("to_target")
+		ai_zombie.behavior(self)
+
+	elseif message_id == hash("to_horde") then
+		if self.target then
+			ai_attack.delete_target(self, self.target)
+		end
+		self.condition_ai = nil
 		ai_zombie.behavior(self)
 
 	elseif message_id == hash("killing") then

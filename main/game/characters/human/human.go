@@ -78,6 +78,7 @@ embedded_components {
   "mask: \"attack\"\n"
   "mask: \"bullet\"\n"
   "mask: \"infection_zone\"\n"
+  "mask: \"damage\"\n"
   "embedded_collision_shape {\n"
   "  shapes {\n"
   "    shape_type: TYPE_BOX\n"

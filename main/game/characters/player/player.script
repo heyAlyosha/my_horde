@@ -103,7 +103,7 @@ function init(self)
 
 	-- Обзор вокруг орды
 	self.timer_view_horde = timer.delay(0.25, true, function (self)
-		if not self.horde_map then
+		if not self.horde_map and not self.is_circle_horde then
 			local visible_items = ai_vision.get_visible(self, self.visible_object_id, self.visible_horde)
 			local position = go.get_position()
 
