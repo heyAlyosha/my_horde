@@ -379,8 +379,8 @@ end
 
 -- Убить всех зомбиков
 function M.killing_all(self)
-	for index, zombie in ipairs(self.horde) do
-		horde.delete_zombie_horde(self, index, true)
+	for i = #self.horde, 1, -1 do
+		horde.delete_zombie_horde(self, i, true)
 	end
 
 	for k, zombie in pairs(self.zombies) do

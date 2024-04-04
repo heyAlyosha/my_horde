@@ -130,7 +130,6 @@ function M.killing(self, is_player)
 		timer_delete = 3
 	})
 	if not is_player then
-		
 		M.spawn_items(self)
 		--items_functions.spawn_trophy(self)
 	end
