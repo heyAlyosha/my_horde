@@ -181,7 +181,6 @@ end
 
 
 function M.ai_handle_item_move(self)
-	print(self.is_target_horde)
 	if self.condition_ai == hash("to_target") and self.is_target_horde then
 		-- Прицелен на другую орду
 		if not self.target or not go_controller.is_object(self.target) or vmath.length(go.get_position(self.target) - go.get_position()) > 200 then
@@ -198,8 +197,6 @@ function M.ai_handle_item_move(self)
 			if size_horde > 0 then
 				relation_hordes = size_horde / self.size_horde
 			end
-
-			print("size_horde", size_horde, self.size_horde, relation_hordes, relation_hordes > 1.2)
 
 			if relation_hordes > 1.2 then
 				self.from_target = self.target

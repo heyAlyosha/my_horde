@@ -149,7 +149,8 @@ function M.behavior(self)
 					msg.post(self.parent, "add_horde", {
 						skin_id = self.skin_id,
 						human_id = self.human_id,
-						position_from = position_from
+						position_from = position_from,
+						live = self.live
 					})
 					go.delete()
 					self.add_horde = true
@@ -170,7 +171,8 @@ function M.behavior(self)
 					msg.post(self.parent, "add_horde", {
 						skin_id = self.skin_id,
 						human_id = self.human_id,
-						position_from = position_from
+						position_from = position_from,
+						live = self.live
 					})
 					self.add_horde = true
 					go.delete()

@@ -48,7 +48,7 @@ function init(self)
 	--sprite.play_flipbook("#body", "zombie_"..self.skin_id.."_"..self.human_id .. "_default")
 	position_functions.go_set_perspective_z()
 
-	self.max_live = self.live
+	self.max_live = go.get(self.parent, "zombie_live")
 
 	self.input = vmath.vector3(0)
 	self.velocity = vmath.vector3(0)

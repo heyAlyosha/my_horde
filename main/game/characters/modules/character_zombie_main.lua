@@ -9,7 +9,7 @@ function M.on_message(self, message_id, message, sender)
 
 		local skin_id = message.skin_id or self.skin_id or 0
 		local human_id = message.human_id or 0
-		horde.add_zombie_horde(self, skin_id, human_id, message.position_from)
+		horde.add_zombie_horde(self, skin_id, human_id, message.position_from, message)
 
 		if self.animation_horde == "run" then
 			local zombie = self.horde[#self.horde]

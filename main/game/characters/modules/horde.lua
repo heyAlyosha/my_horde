@@ -13,13 +13,19 @@ M.positions = {}
 M.positions_circle = {}
 
 -- Добавление зомбика в орду
-function M.add_zombie_horde(self, skin_id, human_id, position)
+function M.add_zombie_horde(self, skin_id, human_id, position, message)
 	local position = position or M.get_position(self, go.get_position(), #self.horde + 1)
+	local message = message or {}
+
 	local properties = {
 		parent = msg.url(),
 		command = self.command,
 		skin_id = skin_id,
 		human_id = human_id,
+		live = message.live or self.zombie_live,
+		damage = self.zombie_damage,
+		speed_damage = self.zombie_speed_damage,
+		scale_attack = self.zombie_scale_attack
 	}
 
 	if self.max_horde == 0 or self.size_horde < self.max_horde then
@@ -57,6 +63,7 @@ function M.add_zombie_attack(self, horde_index, position, target, message)
 	if horde_index and self.horde[horde_index] then
 		-- Из орды
 		local item = self.horde[horde_index]
+		local live = go.get(item.url_script, "live")
 
 		-- Удаляем зомбика из орды
 		table.remove(self.horde, horde_index)
@@ -68,7 +75,11 @@ function M.add_zombie_attack(self, horde_index, position, target, message)
 			human_id = item.human_id,
 			parent = msg.url(go.get_id()),
 			target = target,
-			position_horde = horde.get_position(self, nil, horde_index)
+			position_horde = horde.get_position(self, nil, horde_index),
+			live = live or self.zombie_live,
+			damage = self.zombie_damage,
+			speed_damage = self.zombie_speed_damage,
+			scale_attack = self.zombie_scale_attack
 		}
 		local go_id = factory.create("#zombie_factory", position, rotation, properties)
 		local url = msg.url(go_id)
@@ -89,7 +100,11 @@ function M.add_zombie_attack(self, horde_index, position, target, message)
 			human_id = message.human_id or 0,
 			parent = msg.url(go.get_id()),
 			target = target,
-			position_horde = horde.get_position(self, nil, self.size_horde + 1)
+			position_horde = horde.get_position(self, nil, self.size_horde + 1),
+			live = live or self.zombie_live,
+			damage = self.zombie_damage,
+			speed_damage = self.zombie_speed_damage,
+			scale_attack = self.zombie_scale_attack
 		}
 		local go_id = factory.create("#zombie_factory", position, rotation, properties)
 		local url = msg.url(go_id)
