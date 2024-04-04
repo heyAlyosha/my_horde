@@ -125,7 +125,6 @@ function init(self)
 end
 
 function final(self)
-	horde.killing_all(self)
 	go_controller.delete(self)
 	msg.post(".", "release_input_focus")
 end

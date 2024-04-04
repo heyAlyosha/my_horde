@@ -135,6 +135,7 @@ function M.killing(self, is_player)
 		--items_functions.spawn_trophy(self)
 	end
 
+	horde.killing_all(self)
 	go.delete()
 end
 
