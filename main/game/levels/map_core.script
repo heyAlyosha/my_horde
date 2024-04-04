@@ -138,9 +138,10 @@ function on_message(self, message_id, message, sender)
 		local properties = {
 			animation_id = message.animation_id,
 			timer_delete = message.timer_delete,
-			shake = message.shake
+			shake = message.shake,
+			animate = message.animate
 		}
-		factory.create("#effect_factory", message.position, message.rotation, properties)
+		factory.create("#effect_factory", message.position, message.rotation, properties, message.scale)
 
 	elseif message_id == hash("add_item") then
 		-- Добавление предметов

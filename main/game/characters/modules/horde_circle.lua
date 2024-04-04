@@ -14,8 +14,16 @@ function M.set(self, is_circle_horde, handle)
 		self.t_horde_circle = 0
 		horde.set_animation_horde(self, "run")
 
-		local delay = 1.5
+		local delay = 2
 		character_animations.play(self, "win")
+		msg.post(storage_game.map.url_script, "effect", {
+			position = go.get_position(),
+			scale = vmath.vector3(1),
+			animation_id = hash("thunderstorm"),
+			timer_delete = delay,
+			animate = true,
+			shake = false, -- Тряска камеры при эффекте
+		})
 		self.move_stop = true
 		timer.delay(delay, false, function (self)
 			self.move_stop = false

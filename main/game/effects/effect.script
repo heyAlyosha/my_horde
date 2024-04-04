@@ -1,8 +1,10 @@
 go.property("animation_id", hash("effect_infection"))
 go.property("timer_delete", 0)
 go.property("shake", false)
+go.property("animate", false)
 
 function init(self)
+	local scale = go.get_scale()
 	local position = go.get_position()
 	position.z = 10
 	go.set_position(position)
@@ -12,14 +14,40 @@ function init(self)
 		camera.shake(camera_id, intensity)
 	end
 
-	sprite.play_flipbook("#sprite", self.animation_id, function (self)
-		position_functions.go_set_perspective_z(position)
-		if self.timer_delete > 0 then
-			timer.delay(self.timer_delete, false, function (self)
+	if self.animation_id == hash("thunderstorm") then
+		-- Гроза
+		msg.post("#sprite", "disable")
+		local properties = {}
+		properties[hash("/core")] = {
+			animate = self.animate,
+			timer_delete = self.timer_delete,
+			parent = msg.url()
+		}
+		self.urls_go = collectionfactory.create("#thunderstorm_collectionfactory", position, rotation, properties, scale)
+	else
+		-- Обычные эффекты
+		sprite.play_flipbook("#sprite", self.animation_id, function (self)
+			position_functions.go_set_perspective_z(position)
+			if self.timer_delete > 0 then
+				timer.delay(self.timer_delete, false, function (self)
+					go.delete()
+				end)
+			else
 				go.delete()
-			end)
-		else
-			go.delete()
+			end
+		end)
+	end
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("delete") then
+		if self.urls_go then
+			for k, url in pairs(self.urls_go) do
+				go.delete(url)
+			end
 		end
-	end)
+
+		go.delete()
+	end
+	
 end

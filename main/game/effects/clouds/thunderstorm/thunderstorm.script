@@ -1,5 +1,6 @@
-go.property("animate", false)
-go.property("timer_hidden", 0)
+go.property("animate", true)
+go.property("timer_delete", 3)
+go.property("parent", msg.url())
 
 function init(self)
 	self.urls = {
@@ -45,7 +46,7 @@ function init(self)
 	end
 
 	-- Анимация появления облаков
-	self.delay_animation = 0.5
+	self.delay_animation = 0
 	self.duration = 0.25
 	go.animate(self.urls.shadow, "tint.w", go.PLAYBACK_ONCE_FORWARD, 0.5, go.EASING_LINEAR, self.duration)
 
@@ -116,8 +117,8 @@ function init(self)
 		end
 	end)
 
-	if self.timer_hidden > 0 then
-		timer.delay(self.timer_hidden, false, function (self)
+	if self.timer_delete > 0 then
+		timer.delay(self.timer_delete, false, function (self)
 			msg.post(".", "hidden")
 		end)
 	end
@@ -152,7 +153,7 @@ function on_message(self, message_id, message, sender)
 
 			timer.delay(self.duration, false, function (self)
 				--Удаление
-				go.delete()
+				msg.post(self.parent, "delete")
 			end)
 		end
 	end

@@ -247,7 +247,7 @@ embedded_instances {
   }
 }
 embedded_instances {
-  id: "thunderstorm_core"
+  id: "core"
   data: "components {\n"
   "  id: \"thunderstorm\"\n"
   "  component: \"/main/game/effects/clouds/thunderstorm/thunderstorm.script\"\n"
