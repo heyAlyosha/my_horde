@@ -1,6 +1,6 @@
 go.property("damage", 1)
 -- Дамаг о коллизию
-go.property("damage_for_collision", 1)
+go.property("damage_for_collision", 0.5)
 go.property("live", 20)
 go.property("command", hash("player"))
 go.property("skin_id", 0)

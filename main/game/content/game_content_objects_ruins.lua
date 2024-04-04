@@ -15,7 +15,6 @@ function M.init(self)
 	for k, v in pairs(M.catalog_keys) do
 		M.catalog_keys[hash(k)] = v
 	end
-	pprint(M.catalog_keys)
 end
 
 -- Получить характеристику под тип
@@ -26,7 +25,6 @@ end
 -- Получить характеристику под тип
 function M.set_characteristic(self, id)
 	local characteristics = M.get_type(self, id_characteristic or self.type_object_ruin)
-	pprint("set_characteristic", characteristics)
 
 	if characteristics then
 		for k, v in pairs(characteristics) do
