@@ -403,7 +403,7 @@ nodes {
   template_node_child: false
   size_mode: SIZE_MODE_AUTO
   custom_type: 0
-  enabled: false
+  enabled: true
   visible: true
   material: ""
 }

@@ -20,13 +20,15 @@ function init(self)
 			gui.set_alpha(node, 0)
 
 		elseif key == "head" then
-			gui_loyouts.set_scale(self, node, vmath.vector(0))
+			gui_loyouts.set_scale(self, node, vmath.vector3(0.2))
 
 		elseif key == "retort_head" then
 			gui_loyouts.set_enabled(self, node, false)
 
 		end
 	end
+
+	msg.post(".", "visible", {skin_id = 2, position_start = vmath.vector3(800, 400, 0)})
 end
 
 function final(self)
@@ -37,7 +39,37 @@ end
 
 function on_message(self, message_id, message, sender)
 	if message_id == hash("visible") then
+		-- Ставим иконку головы
 		self.skin_id = message.skin_id
-		
+		local icon_head = game_content_skins.get_id(self.skin_id).head_full_id
+		gui_loyouts.play_flipbook(self, self.nodes.head, icon_head)
+		gui_loyouts.play_flipbook(self, self.nodes.retort_head, icon_head)
+
+		local position_start = message.position_start
+		position_start = gui.screen_to_local(self.nodes.head, position_start)
+
+		gui.set_position(self.nodes.head, position_start)
+		-- Полёт головы к центру
+		timer_linear.add(self, "add_trophy", 0, function (self)
+			local duration = 0.25
+			gui.animate(self.nodes.head, "scale", vmath.vector3(1), gui.EASING_INCUBIC, duration)
+			gui.animate(self.nodes.head, "position", self.positions_start.head, gui.EASING_INCUBIC, duration, 0, function (self)
+				-- Включаем головы
+				gui_loyouts.set_enabled(self, self.nodes.head, false)
+				gui_loyouts.set_enabled(self, self.nodes.retort_head, true)
+			end)
+		end, delay)
+
+		timer_linear.add(self, "add_trophy", 0.5, function (self)
+			local duration = 0.25
+			gui.animate(self.nodes.retort_body, "color", vmath.vector4(1), gui.EASING_INCUBIC, duration)
+			gui.animate(self.nodes.retort_ground, "color", vmath.vector4(1), gui.EASING_INCUBIC, duration)
+			gui.animate(self.nodes.retort_body, "position", self.positions_start.retort_body, gui.EASING_OUTBOUNCE, duration + 0.3)
+			gui.animate(self.nodes.retort_ground, "position", self.positions_start.retort_ground, gui.EASING_OUTBOUNCE, duration  + 0.3)
+		end, delay)
+
+		timer_linear.add(self, "add_trophy", 1, function (self)
+			
+		end, delay)
 	end
 end
