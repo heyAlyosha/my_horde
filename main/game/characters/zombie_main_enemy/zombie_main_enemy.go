@@ -12,6 +12,11 @@ components {
     z: 0.0
     w: 1.0
   }
+  properties {
+    id: "atlas_skins"
+    value: "/main/atlases/skins.atlas"
+    type: PROPERTY_TYPE_HASH
+  }
 }
 components {
   id: "blood_left"
@@ -305,6 +310,25 @@ embedded_components {
   id: "zone_infection_factory"
   type: "factory"
   data: "prototype: \"/main/game/characters/zombie_horde/zone_infection.go\"\n"
+  "load_dynamically: false\n"
+  "dynamic_prototype: false\n"
+  ""
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}
+embedded_components {
+  id: "trophy_factory"
+  type: "factory"
+  data: "prototype: \"/main/game/objects/items/item_trophy.go\"\n"
   "load_dynamically: false\n"
   "dynamic_prototype: false\n"
   ""

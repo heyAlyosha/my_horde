@@ -92,11 +92,11 @@ end
 function M.spawn_items(self)
 	local items = {
 		{size_horde = 0, coins = 1, xp = 3,},
-		{size_horde = 5, coins = 3, xp = 5,},
-		{size_horde = 20, coins = 5, xp = 10,},
-		{size_horde = 40, coins = 7, xp = 20,},
-		{size_horde = 80, coins = 10, xp = 30,},
-		{size_horde = 100, coins = 15, xp = 50,}
+		{size_horde = 5, coins = 2, xp = 5,},
+		{size_horde = 20, coins = 3, xp = 10,},
+		{size_horde = 40, coins = 4, xp = 20,},
+		{size_horde = 80, coins = 7, xp = 30,},
+		{size_horde = 100, coins = 10, xp = 50,}
 	}
 
 	self.max_size_horde = self.max_size_horde or 0
@@ -129,8 +129,8 @@ function M.killing(self, is_player)
 		timer_delete = 3
 	})
 	if not is_player then
-		M.spawn_items(self)
-		--items_functions.spawn_trophy(self)
+		--M.spawn_items(self)
+		items_functions.spawn_trophy(self)
 	end
 
 	horde.killing_all(self)

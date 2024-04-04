@@ -33,7 +33,7 @@ end
 
 -- Получение компании по id
 function M.get_id(id, user_lang)
-	return M.catalog_keys["skin_"..skin_id]
+	return M.catalog_keys["skin_"..id]
 end
 
 -- Запуск анимации

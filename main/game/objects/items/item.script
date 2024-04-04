@@ -3,6 +3,9 @@ go.property("count", 1)
 go.property("value", 0)
 go.property("distantion", vmath.vector3(10, 45, 0))
 go.property("duration_animate", 0.5)
+go.property("trophy_size_horde", 0)
+go.property("trophy_skin_id", 0)
+go.property("trophy_id_character", hash(""))
 
 function init(self)
 	self.types_valute = {}
@@ -15,7 +18,12 @@ function init(self)
 	self.item = self.types_valute[self.type_valute]
 
 	-- Иконка
-	sprite.play_flipbook("#body", self.item.animation_id)
+	if self.type_valute == hash("trophy") then
+		local skin = game_content_skins.get_id(self.trophy_skin_id)
+		sprite.play_flipbook("#body", skin.head_mini_id)
+	else
+		sprite.play_flipbook("#body", self.item.animation_id)
+	end
 
 	-- Случайное направление выброса предметов
 	local random_dir = vmath.vector3(1, 0, 0)

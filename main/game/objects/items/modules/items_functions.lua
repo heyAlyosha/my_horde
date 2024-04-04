@@ -70,7 +70,12 @@ end
 
 -- Спавн трофея
 function M.spawn_trophy(self)
-	
+	local properties = {
+		trophy_size_horde = self.max_size_horde,
+		trophy_skin_id = self.skin_id,
+		trophy_id_characteristic = self.id_characteristic,
+	}
+	factory.create("#trophy_factory",go.get_position(), rotation, properties)
 end
 
 return M
