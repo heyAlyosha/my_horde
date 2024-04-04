@@ -1,14 +1,14 @@
-type_object_ruin;comments;live;spawn_resource;spawn_coins;spawn_xp;explosion
-bed_hospital;больничная кровать;30;1;;;
-chair;стул;30;1;;;
-door;дверь;40;1;;;
-maneken;манекен скелета;10;1;;1;
-flower_big;цветок напольный;20;1;;1;
-flower_normal;цветок напольный;15;1;;1;
-flower_mini;цветок напольный;10;1;;1;
-box;коробка/ящик/тумба;5;1;;;
-table_big;большой стол;30;1;;;
-table_mini;столик;20;1;;;
-trash_mini;маленькое ведро с мусором;30;2;;1;
-vending_machine;торговый автомат;50;2;5;;1
-wheelachair;креслокаталка;30;2;;;
+id;comments;live;spawn_resource;spawn_coins;spawn_xp;explosion
+bed_hospital;больничная кровать;60;1;;;
+chair;стул;60;1;;;
+door;дверь;80;1;;;
+maneken;манекен скелета;20;1;;1;
+flower_big;цветок напольный;40;1;;1;
+flower_normal;цветок напольный;30;1;;1;
+flower_mini;цветок напольный;20;1;;1;
+box;коробка/ящик/тумба;20;1;;;
+table_big;большой стол;60;1;;;
+table_mini;столик;40;1;;;
+trash_mini;маленькое ведро с мусором;60;2;;1;
+vending_machine;торговый автомат;150;2;5;;1
+wheelachair;креслокаталка;60;2;;;

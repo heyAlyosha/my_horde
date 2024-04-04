@@ -25,6 +25,8 @@ local function activate_init(self)
 end
 
 function init(self)
+	game_content_objects_ruins.set_characteristic(self)
+
 	go_controller.add(self)
 	go_controller.object_items_spawn_to_map(self)
 

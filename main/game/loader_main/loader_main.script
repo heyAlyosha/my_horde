@@ -46,6 +46,7 @@ function init(self)
 	game_content_functions = require "main.game.content.modules.game_content_functions"
 	game_content_company = require "main.game.content.game_content_company"
 	game_content_character_parametrs = require "main.game.content.game_content_character_parametrs"
+	game_content_objects_ruins = require "main.game.content.game_content_objects_ruins"
 	game_content_skins = require "main.game.content.game_content_skins"
 	zone_infection = require("main.game.characters.zombie_horde.modules.zone_infection")
 	ai_zombie_main_enemy_horde = require "main.game.ai.ai_zombie_main_enemy_horde"
@@ -64,6 +65,7 @@ function init(self)
 	game_content_company.init(self)
 	game_content_character_parametrs.init(self)
 	game_content_skins.init(self)
+	game_content_objects_ruins.init(self)
 
 	--profiler.enable_ui(true)
 	--profiler.set_ui_mode(profiler.MODE_RECORD)
