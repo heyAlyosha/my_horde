@@ -79,12 +79,11 @@ function on_message(self, message_id, message, sender)
 			self.activate = true
 			local duration = 0.1
 			go.cancel_animations(".", "position")
-			go.animate(".", "position", go.PLAYBACK_ONCE_FORWARD, go.get_position(sender), go.EASING_LINEAR, duration)
-			go.animate(".", "scale", go.PLAYBACK_ONCE_FORWARD, vmath.vector3(0.5), go.EASING_LINEAR, duration)
-
-			local start_podition = camera.world_to_screen(camera_id, go.get_position(), gui.ADJUST_STRETCH)
-			timer.delay(duration, false, function (self)
+			if self.type_valute == hash("trophy") then
+				-- Трофей
+			else
 				-- Заичлсяем игроку
+				local start_podition = camera.world_to_screen(camera_id, go.get_position(), gui.ADJUST_STRETCH)
 				msg.post("main:/loader_gui", "set_status", {
 					id = "add_balance",
 					type = self.item.id,
@@ -98,7 +97,31 @@ function on_message(self, message_id, message, sender)
 				storage_game.map.player_add_items[self.item.id] = storage_game.map.player_add_items[self.item.id] + self.count
 
 				go.delete()
-			end)
+				--[[
+				-- C анимация притягивания к игроку
+				go.animate(".", "position", go.PLAYBACK_ONCE_FORWARD, go.get_position(sender), go.EASING_LINEAR, duration)
+				go.animate(".", "scale", go.PLAYBACK_ONCE_FORWARD, vmath.vector3(0.5), go.EASING_LINEAR, duration)
+
+				local start_podition = camera.world_to_screen(camera_id, go.get_position(), gui.ADJUST_STRETCH)
+				timer.delay(duration, false, function (self)
+					-- Заичлсяем игроку
+					msg.post("main:/loader_gui", "set_status", {
+						id = "add_balance",
+						type = self.item.id,
+						start_position = start_podition,
+						value = self.count,
+						not_screen_to_local = true
+					})
+
+					-- Заносим в данные карты
+					storage_game.map.player_add_items[self.item.id] = storage_game.map.player_add_items[self.item.id] or 0
+					storage_game.map.player_add_items[self.item.id] = storage_game.map.player_add_items[self.item.id] + self.count
+
+					go.delete()
+				end)
+				--]]
+			end
+			
 		end
 	end
 end

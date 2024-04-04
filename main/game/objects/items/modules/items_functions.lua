@@ -43,18 +43,6 @@ function M.spawn(self)
 		end
 	end
 
-	-- Спавн трофеев 
-	if self.spawn_trophy then
-		for i = 1, self.spawn_trophy do
-			msg.post(storage_game.map.url_script, "add_item", {
-				position = go.get_position(),
-				type_valute = hash("trophy"),
-				count = 1,
-				value = 0, -- Данные для влаюты
-			})
-		end
-	end
-
 	-- Спавн звёзд 
 	if self.spawn_star then
 		for i = 1, self.spawn_star do
