@@ -417,26 +417,6 @@ instances {
     z: 1.0
   }
 }
-instances {
-  id: "item_trophy"
-  prototype: "/main/game/objects/items/item_trophy.go"
-  position {
-    x: 787.0
-    y: 338.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
 collection_instances {
   id: "map_forest_1"
   collection: "/main/game/levels/levels/world_map/collections/map_forest_1.collection"
@@ -483,6 +463,26 @@ collection_instances {
   position {
     x: 313.0
     y: 132.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+collection_instances {
+  id: "thunderstorm"
+  collection: "/main/game/effects/clouds/thunderstorm/thunderstorm.collection"
+  position {
+    x: 753.0
+    y: 343.0
     z: 0.0
   }
   rotation {
