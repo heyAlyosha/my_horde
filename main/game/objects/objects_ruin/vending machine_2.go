@@ -28,6 +28,11 @@ components {
     type: PROPERTY_TYPE_VECTOR3
   }
   properties {
+    id: "type_object_ruin"
+    value: "vending_machine"
+    type: PROPERTY_TYPE_HASH
+  }
+  properties {
     id: "spawn_coins"
     value: "5.0"
     type: PROPERTY_TYPE_NUMBER

@@ -18,8 +18,13 @@ components {
     type: PROPERTY_TYPE_NUMBER
   }
   properties {
+    id: "type_object_ruin"
+    value: "door"
+    type: PROPERTY_TYPE_HASH
+  }
+  properties {
     id: "spawn_resource"
-    value: "3.0"
+    value: "1.0"
     type: PROPERTY_TYPE_NUMBER
   }
 }

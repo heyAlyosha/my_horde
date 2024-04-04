@@ -22,6 +22,11 @@ components {
     value: "10.0, 0.0, 0.0"
     type: PROPERTY_TYPE_VECTOR3
   }
+  properties {
+    id: "type_object_ruin"
+    value: "table_big"
+    type: PROPERTY_TYPE_HASH
+  }
 }
 components {
   id: "destroy"

@@ -17,6 +17,11 @@ components {
     value: "40.0"
     type: PROPERTY_TYPE_NUMBER
   }
+  properties {
+    id: "type_object_ruin"
+    value: "door"
+    type: PROPERTY_TYPE_HASH
+  }
 }
 components {
   id: "destroy"

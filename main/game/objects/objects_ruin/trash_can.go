@@ -18,6 +18,11 @@ components {
     type: PROPERTY_TYPE_VECTOR3
   }
   properties {
+    id: "type_object_ruin"
+    value: "trash_mini"
+    type: PROPERTY_TYPE_HASH
+  }
+  properties {
     id: "spawn_resource"
     value: "2.0"
     type: PROPERTY_TYPE_NUMBER

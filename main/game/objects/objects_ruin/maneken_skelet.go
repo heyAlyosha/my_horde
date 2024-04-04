@@ -18,6 +18,11 @@ components {
     type: PROPERTY_TYPE_VECTOR3
   }
   properties {
+    id: "type_object_ruin"
+    value: "maneken"
+    type: PROPERTY_TYPE_HASH
+  }
+  properties {
     id: "spawn_resource"
     value: "1.0"
     type: PROPERTY_TYPE_NUMBER

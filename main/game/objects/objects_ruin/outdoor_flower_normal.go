@@ -17,6 +17,11 @@ components {
     value: "15.0"
     type: PROPERTY_TYPE_NUMBER
   }
+  properties {
+    id: "type_object_ruin"
+    value: "flower_normal"
+    type: PROPERTY_TYPE_HASH
+  }
 }
 components {
   id: "destroy"

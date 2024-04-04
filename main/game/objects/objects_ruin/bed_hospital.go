@@ -17,6 +17,11 @@ components {
     value: "30.0"
     type: PROPERTY_TYPE_NUMBER
   }
+  properties {
+    id: "type_object_ruin"
+    value: "bed_hospital"
+    type: PROPERTY_TYPE_HASH
+  }
 }
 components {
   id: "destroy"
