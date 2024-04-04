@@ -66,6 +66,10 @@ function M.player_update(self, dt)
 		local vec = horde.positions[i].vector
 		local position_to = vmath.rotate(rot, vec) + self.center
 		local position_current = go.get_position(zombie.url)
+		local raycast = physics.raycast(self.center, position_to, {hash("default")}, {all = true})
+		if raycast and raycast[1] then
+			position_to = raycast[1].position
+		end
 		local dir = position_to - position_current
 		local len = vmath.length(dir)
 		if len > 5 then

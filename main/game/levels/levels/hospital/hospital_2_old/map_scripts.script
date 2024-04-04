@@ -1,0 +1,164 @@
+-- Скрипты для карты
+function init(self)
+	-- Объекты для активации
+	self.activation_objects = {}
+
+	sprite.play_flipbook("door_exit#body", hash("door_open"))
+
+	storage_gui.core_screens.visible_shop = false
+	msg.post("main:/core_screens", "game")
+
+	msg.post(".", "init")
+
+	msg.post(".", "start")
+	--msg.post(".", "test")
+	
+end
+
+function final(self)
+	-- Add finalization code here
+	-- Learn more: https://defold.com/manuals/script/
+	-- Remove this function if not needed
+end
+
+function update(self, dt)
+	levels_script_functions.on_update(self)
+end
+
+function fixed_update(self, dt)
+	-- This function is called if 'Fixed Update Frequency' is enabled in the Engine section of game.project
+	-- Can be coupled with fixed updates of the physics simulation if 'Use Fixed Timestep' is enabled in
+	-- Physics section of game.project
+	-- Add update code here
+	-- Learn more: https://defold.com/manuals/script/
+	-- Remove this function if not needed
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("init") then
+		-- Инициализация карты
+		camera.follow(camera_id, msg.url("player"), options)
+
+	elseif message_id == hash("test") then
+		-- Тестируем
+		camera.follow(camera_id, msg.url("player"), options)
+		msg.post("player", "activate")
+		
+	elseif message_id == hash("start") then
+		-- Игрок идёт до стартовой точки уровня
+		local position_to = go.get_position("start_point")
+		position_to = position_functions.add_perspective_z(position_to)
+		msg.post("player", "position_to", {position_to = position_to})
+
+	elseif message_id == hash("player_position_success") then
+		-- Игрок дошёл до стартовой точки
+
+		-- Наводим камеру на цель
+		timer_linear.add(self, "start", 0.5, function (self)
+			camera.unfollow()
+			local position_to = go.get_position("door_exit")
+			go.animate("camera", "position", go.PLAYBACK_ONCE_FORWARD, position_to, go.EASING_OUTCUBIC, 1, 0)
+		end, delay)
+
+		-- Возвращаем камеру на игрока
+		timer_linear.add(self, "start", 3, function (self)
+			go.animate("camera", "position", go.PLAYBACK_ONCE_FORWARD, go.get_position("player"), go.EASING_OUTCUBIC, 1, 0)
+		end, delay)
+
+		-- Активируем игрока
+		timer_linear.add(self, "start", 1, function (self)
+			msg.post("player", "activate")
+			camera.follow(camera_id, msg.url("player"), options)
+
+			go.delete("/marker_goal/marker_goal")
+			go.delete("/marker_goal/go")
+
+			-- ЦЕЛЬ
+			local goals = {msg.url("door_exit")}
+			levels_script_functions.add_goal_ruins(self, goals, function (self)
+				print("WIN")
+				timer.delay(1, false, function (self)
+					-- Победа
+					msg.post("#map_core", "win", {point_win = msg.url("win_point"), next_level_point = msg.url("next_level_point")})
+				end)
+			end)
+		end, delay)
+
+	elseif message_id == hash("activation_point")  and message.id_activation == hash("last_room") then
+		-- Входит в последнюю комнату
+
+		timer_linear.add(self, "start", 0.25, function (self)
+			-- Камера наезжает на дверь
+			go.set("player#script", "active_input", false)
+			camera.unfollow()
+			local position_to = go.get_position("door_exit")
+			go.animate("camera", "position", go.PLAYBACK_ONCE_FORWARD, position_to, go.EASING_OUTCUBIC, 1, 0)
+
+			-- человечек убегает
+			sprite.play_flipbook("last_human#body", "human_9_running")
+			go.animate("last_human", "position", go.PLAYBACK_ONCE_FORWARD, go.get_position("point_end_human"), go.EASING_OUTCUBIC, 20, 0, function (self)
+				go.delete("last_human")
+			end)
+
+			-- Закрывает за собой дверь
+			timer.delay(1.5, false, function (self)
+				sprite.play_flipbook("door_exit#body", hash("door_closing"))
+			end)
+			
+		end, delay)
+
+		-- Камера направляется на кнопку
+		timer_linear.add(self, "start", 2.5, function (self)
+			go.animate("camera", "position", go.PLAYBACK_ONCE_FORWARD, go.get_position("btn_zone_count"), go.EASING_OUTCUBIC, 0.5, 0, function (self)
+				msg.post("btn_zone_count", "activation", {activation = true})
+			end)
+
+		end, delay)
+
+		-- Камера направляется к игроку
+		timer_linear.add(self, "start", 1.5, function (self)
+			-- Камера возвращается к игроку
+			go.animate("camera", "position", go.PLAYBACK_ONCE_FORWARD, go.get_position("player"), go.EASING_OUTCUBIC, 1, 0, function (self)
+				go.set("player#script", "active_input", true)
+				camera.follow(camera_id, msg.url("player"), options)
+			end)
+
+			-- Активируем двери
+			msg.post(".", "activation_point", {id_activation = hash("doors_palats")})
+
+		end, delay)
+
+	elseif message_id == hash("add_activation_object") then
+		-- Добавляем объект в активацию
+		local id_activation = message.id_activation
+		self.activation_objects[id_activation] = self.activation_objects[id_activation] or {}
+		table.insert(self.activation_objects[id_activation], sender)
+
+	elseif message_id == hash("activation_point") then
+		-- Активация объектов по поинту
+		local id_activation = message.id_activation
+		if self.activation_objects[id_activation] then
+			for i, url in ipairs(self.activation_objects[id_activation]) do
+				msg.post(url, "activation")
+			end
+		end
+	end
+end
+
+function on_input(self, action_id, action)
+	-- Add input-handling code here. The game object this script is attached to
+	-- must have acquired input focus:
+	--
+	--    msg.post(".", "acquire_input_focus")
+	--
+	-- All mapped input bindings will be received. Mouse and touch input will
+	-- be received regardless of where on the screen it happened.
+	-- Learn more: https://defold.com/manuals/input/
+	-- Remove this function if not needed
+end
+
+function on_reload(self)
+	-- Add reload-handling code here
+	-- Learn more: https://defold.com/manuals/hot-reload/
+	-- Remove this function if not needed
+end

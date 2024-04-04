@@ -34,7 +34,7 @@ embedded_components {
 embedded_components {
   id: "level_hospital_2_collectionproxy"
   type: "collectionproxy"
-  data: "collection: \"/main/game/levels/levels/hospital/hospital_2/hospital_2.collection\"\n"
+  data: "collection: \"/main/game/levels/levels/hospital/hospital_2_old/hospital_2.collection\"\n"
   "exclude: false\n"
   ""
   position {
