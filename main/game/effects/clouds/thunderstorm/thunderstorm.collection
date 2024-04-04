@@ -1,7 +1,7 @@
 name: "thunderstorm"
 scale_along_z: 0
 embedded_instances {
-  id: "cloud_left"
+  id: "cloud1"
   data: "embedded_components {\n"
   "  id: \"body\"\n"
   "  type: \"sprite\"\n"
@@ -44,8 +44,8 @@ embedded_instances {
   "  rotation {\n"
   "    x: 0.0\n"
   "    y: 0.0\n"
-  "    z: 0.15532632\n"
-  "    w: 0.98786324\n"
+  "    z: 0.13052619\n"
+  "    w: 0.9914449\n"
   "  }\n"
   "}\n"
   ""
@@ -91,8 +91,8 @@ embedded_instances {
   "    w: 1.0\n"
   "  }\n"
   "  scale {\n"
-  "    x: 10.0\n"
-  "    y: 5.0\n"
+  "    x: 19.199331\n"
+  "    y: 6.632171\n"
   "    z: 1.0\n"
   "  }\n"
   "}\n"
@@ -115,7 +115,7 @@ embedded_instances {
   }
 }
 embedded_instances {
-  id: "cloud_center"
+  id: "cloud2"
   data: "embedded_components {\n"
   "  id: \"body\"\n"
   "  type: \"sprite\"\n"
@@ -181,7 +181,7 @@ embedded_instances {
   }
 }
 embedded_instances {
-  id: "cloud_right"
+  id: "cloud3"
   data: "embedded_components {\n"
   "  id: \"body\"\n"
   "  type: \"sprite\"\n"
@@ -195,7 +195,7 @@ embedded_instances {
   "\"\n"
   "  position {\n"
   "    x: 75.0\n"
-  "    y: 104.0\n"
+  "    y: 120.0\n"
   "    z: 1.0\n"
   "  }\n"
   "  rotation {\n"
@@ -218,14 +218,14 @@ embedded_instances {
   "\"\n"
   "  position {\n"
   "    x: 81.0\n"
-  "    y: 50.0\n"
+  "    y: 66.0\n"
   "    z: 0.0\n"
   "  }\n"
   "  rotation {\n"
   "    x: 0.0\n"
   "    y: 0.0\n"
-  "    z: 0.0\n"
-  "    w: 1.0\n"
+  "    z: -0.13052619\n"
+  "    w: 0.9914449\n"
   "  }\n"
   "}\n"
   ""
