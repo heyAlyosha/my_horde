@@ -123,7 +123,7 @@ function init(self)
 		zone_infection.update_size(self, 5)
 	end
 
-	character_zombie_main.change_horde(self)
+	horde.change_horde(self)
 end
 
 function final(self)
@@ -194,6 +194,8 @@ function fixed_update(self, dt)
 end
 
 function on_message(self, message_id, message, sender)
+	character_zombie_main.on_message(self, message_id, message, sender)
+
 	if message_id == hash("activate") then
 		self.activate = true
 		go_controller.add(self)
@@ -298,20 +300,6 @@ function on_message(self, message_id, message, sender)
 		horde_attack.add_zombie_min_target(self, zombie)
 		--horde_attack.delete_target(self, key_target)
 
-	elseif message_id == hash("add_horde") then
-		-- Добавляем зомбика в орду
-		local url = go_controller.url_object(sender)
-		self.zombies[go_controller.url_to_key(url)] = nil
-
-		local skin_id = message.skin_id or self.skin_id or 0
-		local human_id = message.human_id or 0
-		horde.add_zombie_horde(self, skin_id, human_id, message.position_from)
-
-		if self.animation_horde == "run" then
-			local zombie = self.horde[#self.horde]
-			horde.set_animation_item(self, zombie, self.animation_horde)
-		end
-
 	elseif message_id == hash("create_zombie") then
 		-- Создаём зомбика
 		local position = message.position
@@ -356,13 +344,13 @@ function on_message(self, message_id, message, sender)
 			local index_zombie_animation = 0
 			for key = #self.horde, 1, -1 do
 				index_zombie_animation = index_zombie_animation + 1
-				character_zombie_main.add_zombie_animation(self, "horde", key, index_zombie_animation)
+				horde.add_zombie_animation(self, "horde", key, index_zombie_animation)
 			end
 
 			-- Спавн анимированных зомбиков 
 			for key, v in pairs(self.zombies) do
 				index_zombie_animation = index_zombie_animation + 1
-				character_zombie_main.add_zombie_animation(self, "zombie_attack", key, index_zombie_animation)
+				horde.add_zombie_animation(self, "zombie_attack", key, index_zombie_animation)
 			end
 
 			--Анимация грозы для победы в гуи

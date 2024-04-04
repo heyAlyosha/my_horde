@@ -146,7 +146,7 @@ function init(self)
 		ai_zombie_main_enemy_horde.ai_handle_item_move(self)
 	end
 
-	character_zombie_main.change_horde(self)
+	horde.change_horde(self)
 
 	ai_zombie_main_enemy_horde.behavior(self)
 end
@@ -165,6 +165,8 @@ function update(self, dt)
 end
 
 function on_message(self, message_id, message, sender)
+	character_zombie_main.on_message(self, message_id, message, sender)
+
 	if message_id == hash("activate") then
 		self.activate = true
 		go_controller.add(self)
@@ -227,20 +229,6 @@ function on_message(self, message_id, message, sender)
 		horde_attack.add_zombie_min_target(self, zombie)
 		--horde_attack.delete_target(self, key_target)
 
-	elseif message_id == hash("add_horde") then
-		-- Добавляем зомбика в орду
-		local url = go_controller.url_object(sender)
-		self.zombies[go_controller.url_to_key(url)] = nil
-
-		local skin_id = message.skin_id or 0
-		local human_id = message.human_id or 0
-		horde.add_zombie_horde(self, skin_id, human_id, message.position_from)
-
-		if self.animation_horde == "run" then
-			local zombie = self.horde[#self.horde]
-			horde.set_animation_item(self, zombie, self.animation_horde)
-		end
-
 	elseif message_id == hash("create_zombie") then
 		-- Создаём зомбика
 		local position = message.position
@@ -254,85 +242,6 @@ function on_message(self, message_id, message, sender)
 			character_animations.play(self, "idle")
 			msg.post(sender, "player_position_success")
 		end)
-
-	elseif message_id == hash("horde_to_score") then
-		-- Орду в очки
-		for i, item in ipairs(self.animation_zombies) do
-			msg.post("main:/loader_gui", "set_status", {
-				id = "add_balance",
-				type = "score",
-				start_position =  camera.world_to_screen(camera_id, go.get_position(item.url), gui.ADJUST_STRETCH),
-				value = 1,
-				not_screen_to_local = true,
-				icon = "zombie_0_"..item.human_id.."_default",
-				--atlas = atlas
-			})
-			go.delete(item.url)
-		end
-
-	elseif message_id == hash("win") then
-		-- Анимация победы
-		self.win = true
-		self.activate = true
-
-		if self.timer_view_horde then
-			timer.cancel(self.timer_view_horde)
-			self.timer_view_horde = nil
-		end
-		local function animate_win(self)
-			character_animations.play(self, "win")
-			-- Спавн анимированных зомбиков 
-			local index_zombie_animation = 0
-			for key = #self.horde, 1, -1 do
-				index_zombie_animation = index_zombie_animation + 1
-				character_zombie_main.add_zombie_animation(self, "horde", key, index_zombie_animation)
-			end
-
-			-- Спавн анимированных зомбиков 
-			for key, v in pairs(self.zombies) do
-				index_zombie_animation = index_zombie_animation + 1
-				character_zombie_main.add_zombie_animation(self, "zombie_attack", key, index_zombie_animation)
-			end
-
-			--Анимация грозы для победы в гуи
-			msg.post("main:/loader_gui", "visible", {
-				id = "win_player",
-				visible = true
-			})
-			character_animations.play(self, "win")
-
-			timer.delay(2, false, function (self)
-				msg.post("main:/loader_gui", "visible", {
-					id = "modal_result",
-					visible = true,
-					value = {
-						type_result = "win",
-						prizes = {
-							coins = storage_game.map.player_add_items.coins,
-							xp = storage_game.map.player_add_items.xp,
-							resource = storage_game.map.player_add_items.resource,
-							trofey = storage_game.map.player_add_items.trofey
-						},
-						hidden_btns = {"back", "shop"}
-					},
-				})
-			end)
-		end
-
-		if message.point_win then
-			-- Последовать к точке
-			local position_to = go.get_position(message.point_win)
-			self.input_animate = vmath.normalize(position_to - go.get_position())
-			ai_move.move_item(self, position_to, function (self)
-				self.input_animate = nil
-				self.move_stop = true
-				animate_win(self)
-			end)
-		else
-			self.move_stop = true
-			animate_win(self)
-		end
-		
 	end
 end
 
