@@ -1,5 +1,6 @@
 function init(self)
 	self.nodes = {
+		wrap = gui.get_node("retort_template/wrap"),
 		retort_body = gui.get_node("retort_template/body"),
 		retort_ground = gui.get_node("retort_template/ground"),
 		retort_head = gui.get_node("retort_template/head"),
@@ -69,7 +70,11 @@ function on_message(self, message_id, message, sender)
 		end, delay)
 
 		timer_linear.add(self, "add_trophy", 1, function (self)
-			
+			local duration = 0.5
+			local position_to = gui.screen_to_local(self.nodes.wrap, storage_gui.interface.position_trophy_screen)
+			gui.animate(self.nodes.wrap, "position", position_to, gui.EASING_INCUBIC, duration)
+			gui.animate(self.nodes.wrap, "scale", vmath.vector3(0.25), gui.EASING_INCUBIC, duration)
+			gui.animate(self.nodes.wrap, "color.w", 0, gui.EASING_INCUBIC, duration)
 		end, delay)
 	end
 end

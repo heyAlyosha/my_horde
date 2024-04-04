@@ -31,6 +31,7 @@ function M.set_position_balance(self)
 		position_resource_screen = gui.get_screen_position(self.nodes.resource_wrap),
 		position_score_screen = gui.get_screen_position(self.nodes.score),
 		position_star_screen = gui.get_screen_position(self.nodes.stars_wrap),
+		position_trophy_screen = gui.get_screen_position(self.nodes.btn_3_wrap),
 	}
 end
 
