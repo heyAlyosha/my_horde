@@ -1,0 +1,43 @@
+function init(self)
+	self.nodes = {
+		retort_body = gui.get_node("retort_template/body"),
+		retort_ground = gui.get_node("retort_template/ground"),
+		retort_head = gui.get_node("retort_template/head"),
+		head = gui.get_node("head")
+	}
+
+	self.positions_start = {}
+	for key, node in pairs(self.nodes) do
+		-- Узнаём стартовую позицию
+		self.positions_start[key] = gui.get_position(node)
+		-- Выставляем элементы на старт
+		if key == "retort_body" then
+			gui_loyouts.set_position(self, node, gui.get_position(node).y + 200, "y")
+			gui.set_alpha(node, 0)
+
+		elseif key == "retort_ground" then
+			gui_loyouts.set_position(self, node, gui.get_position(node).y - 200, "y")
+			gui.set_alpha(node, 0)
+
+		elseif key == "head" then
+			gui_loyouts.set_scale(self, node, vmath.vector(0))
+
+		elseif key == "retort_head" then
+			gui_loyouts.set_enabled(self, node, false)
+
+		end
+	end
+end
+
+function final(self)
+	-- Add finalization code here
+	-- Learn more: https://defold.com/manuals/script/
+	-- Remove this function if not needed
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("visible") then
+		self.skin_id = message.skin_id
+		
+	end
+end
