@@ -29,7 +29,7 @@ function init(self)
 		end
 	end
 
-	msg.post(".", "visible", {skin_id = 2, position_start = vmath.vector3(800, 400, 0)})
+	--msg.post(".", "visible", {skin_id = 2, position_start = vmath.vector3(800, 400, 0)})
 end
 
 function final(self)
@@ -47,7 +47,8 @@ function on_message(self, message_id, message, sender)
 		gui_loyouts.play_flipbook(self, self.nodes.retort_head, icon_head)
 
 		local position_start = message.position_start
-		position_start = gui.screen_to_local(self.nodes.head, position_start)
+		print("message.position_start", message.position_start)
+		--position_start = gui.screen_to_local(self.nodes.head, position_start)
 
 		gui.set_position(self.nodes.head, position_start)
 		-- Полёт головы к центру
@@ -61,6 +62,7 @@ function on_message(self, message_id, message, sender)
 			end)
 		end, delay)
 
+		-- Запераем трофей в колбу
 		timer_linear.add(self, "add_trophy", 0.5, function (self)
 			local duration = 0.25
 			gui.animate(self.nodes.retort_body, "color", vmath.vector4(1), gui.EASING_INCUBIC, duration)
@@ -69,12 +71,18 @@ function on_message(self, message_id, message, sender)
 			gui.animate(self.nodes.retort_ground, "position", self.positions_start.retort_ground, gui.EASING_OUTBOUNCE, duration  + 0.3)
 		end, delay)
 
+		-- Улетает
 		timer_linear.add(self, "add_trophy", 1, function (self)
 			local duration = 0.5
 			local position_to = gui.screen_to_local(self.nodes.wrap, storage_gui.interface.position_trophy_screen)
 			gui.animate(self.nodes.wrap, "position", position_to, gui.EASING_INCUBIC, duration)
 			gui.animate(self.nodes.wrap, "scale", vmath.vector3(0.25), gui.EASING_INCUBIC, duration)
 			gui.animate(self.nodes.wrap, "color.w", 0, gui.EASING_INCUBIC, duration)
+
+			timer.delay(duration, false, function (self)
+				-- Улетел
+				msg.post(".", "success")
+			end)
 		end, delay)
 	end
 end

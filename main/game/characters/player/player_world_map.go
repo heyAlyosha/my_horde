@@ -63,21 +63,6 @@ components {
     w: 0.70710677
   }
 }
-components {
-  id: "add_trofey"
-  component: "/main/gui/game_gui/add_trofey/add_trofey.gui"
-  position {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-}
 embedded_components {
   id: "collision_physic"
   type: "collisionobject"
@@ -353,5 +338,24 @@ embedded_components {
     x: 1.4
     y: 1.4
     z: 1.0
+  }
+}
+embedded_components {
+  id: "add_trofey_factory"
+  type: "factory"
+  data: "prototype: \"/main/gui/game_gui/add_trofey/add_trofey.go\"\n"
+  "load_dynamically: false\n"
+  "dynamic_prototype: false\n"
+  ""
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
   }
 }
