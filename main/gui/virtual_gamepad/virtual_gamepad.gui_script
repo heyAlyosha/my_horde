@@ -21,21 +21,20 @@ function update(self, dt)
 	virtual_gamepad_render.on_update(self)
 end
 
---[[
 function on_message(self, message_id, message, sender)
 	input_remote_tv.on_message(self, message_id, message, sender)
+
+	if message_id == hash("set_btn") then
+		-- Запись сотсояния кнопки
+		if message.active then
+			gui_loyouts.play_flipbook(self, self.nodes.btn, "btn_interface_focus")
+		else
+			gui_loyouts.play_flipbook(self, self.nodes.btn, "btn_interface_default")
+		end
+	end
 end
---]]
 
 function on_input(self, action_id, action)
 	action_id, action = input_remote_tv.on_input(self, action_id, action)
 	virtual_gamepad_render.on_input(self, action_id, action)
 end
-
---[[
-function on_reload(self)
-	-- Add reload-handling code here
-	-- Learn more: https://defold.com/manuals/hot-reload/
-	-- Remove this function if not needed
-end
-]]--

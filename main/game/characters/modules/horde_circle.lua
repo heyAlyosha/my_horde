@@ -43,6 +43,10 @@ function M.set(self, is_circle_horde, handle)
 			horde.set_animation_horde(self, "run")
 		end
 	end
+
+	if self.command == hash("player") then
+		msg.post("main:/virtual_gamepad", "set_btn", {active = self.is_circle_horde})
+	end
 end
 
 -- Обновление вращающейся орды

@@ -318,6 +318,10 @@ images {
   image: "/assets/images/gui/stick_active.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
+images {
+  image: "/assets/images/game/icons/Icon_bio.png"
+  sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+}
 animations {
   id: "zombie_0_0_run"
   images {

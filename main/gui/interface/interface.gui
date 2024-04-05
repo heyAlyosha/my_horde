@@ -2795,7 +2795,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "first_level/account_border"
+  texture: "first_level/btn_interface_default"
   id: "btn_3_template/btn"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
