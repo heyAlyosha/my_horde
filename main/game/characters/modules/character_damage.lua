@@ -54,7 +54,7 @@ function M.damage_human(self, message)
 	self.from_id_object = message.from_id_object 
 	self.live = self.live - damage
 
-	character_animations.damage(self, message.parent)
+	character_animations.damage_human(self, message.parent)
 
 	--live_bar.create(self)
 	--live_bar.set_hp(self, self.live, self.max_live)

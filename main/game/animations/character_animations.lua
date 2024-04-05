@@ -158,6 +158,70 @@ function M.damage(self, from_object_damage, handle)
 	end
 end
 
+-- Анимация дамага
+function M.damage_human(self, from_object_damage, handle)
+	self.damage_animate_x = self.damage_animate_x or 5
+	self.damage_animate_y = self.damage_animate_y or 5
+	-- Анимация дамага
+	if not self.particle then
+		local duration = 0.15
+		local position = go.get_position()
+		local last_position = go.get_position()
+		local dir = go.get_position(from_object_damage) - position
+		local particle_name
+
+		-- Отпрыгивание
+		if dir.x < 0 then
+			position.x = position.x + self.damage_animate_x
+			particle_name = "#blood_right"
+		else
+			position.x = position.x - self.damage_animate_x
+			particle_name = "#blood_left"
+		end
+
+		-- Если есть коллизии
+		local collision = physics.raycast(go.get_position(), position, {hash("default")}, options)
+
+		if collision then
+			--position.x = go.get_position().x
+			position = position + collision.normal * collision.fraction
+		end
+
+		position = position_functions.go_get_perspective_z(position)
+
+		if not self.animate_position_damage then
+			self.animate_position_damage = true
+			--M.play(self, "idle")
+			go.animate(".", "position.x", go.PLAYBACK_ONCE_FORWARD, position.x, go.EASING_LINEAR, duration, 0)
+			go.animate(".", "position.y", go.PLAYBACK_ONCE_PINGPONG, position.y + self.damage_animate_y, go.EASING_LINEAR, duration, 0)
+			go.animate(".", "position.z", go.PLAYBACK_ONCE_FORWARD, position.z, go.EASING_LINEAR, duration, 0)
+			live_bar.position_to(self, position, duration)
+
+			timer.delay(duration, false, function (self)
+				self.animate_position_damage = nil
+			end)
+		end
+
+		-- Покраснение
+		go.set("#body", "tint", vmath.vector4(1, 0.3, 0.3, 1)) -- <1>
+
+		-- Кровь
+		if self.damage_blood then
+			particlefx.play(particle_name)
+		end
+
+		--self.particle = true
+		timer.delay(duration, false, function (self)
+			go.set("#body", "tint", vmath.vector4(1, 1, 1, 1)) -- <1>
+			self.particle = nil
+
+			if handle then
+				handle(self)
+			end
+		end)
+	end
+end
+
 
 function M.damage_zombie_horde(self, from_object_damage, handle)
 	local duration = 0.2

@@ -54,7 +54,9 @@ function M.on_input(self, action_id, action)
 		if action.pressed then
 			if gui.pick_node(self.nodes.btn, action.x, action.y) then
 				-- Нажатие на кнопку
-				msg.post(storage_player.user_go_url, "input", {action_id = hash("action"), action = {pressed = true}})
+				if storage_player.user_go_url then
+					msg.post(storage_player.user_go_url, "input", {action_id = hash("action"), action = {pressed = true}})
+				end
 			else
 				-- Стик
 				gui.set_enabled(self.nodes.stick_wrap, true)
