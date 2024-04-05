@@ -4,12 +4,8 @@ fonts {
   font: "/assets/fonts/font_standart_normal.font"
 }
 textures {
-  name: "gui"
-  texture: "/main/atlases/gui.atlas"
-}
-textures {
-  name: "main"
-  texture: "/main/main.atlas"
+  name: "first_level"
+  texture: "/main/atlases/first_level.atlas"
 }
 background_color {
   x: 0.0
@@ -38,7 +34,7 @@ nodes {
   }
   size {
     x: 100.0
-    y: 60.0
+    y: 30.0
     z: 0.0
     w: 1.0
   }
@@ -50,7 +46,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "gui/button_default_violet_default"
+  texture: "first_level/btn_interface_default"
   id: "btn_wrap"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -59,10 +55,10 @@ nodes {
   layer: "box"
   inherit_alpha: true
   slice9 {
-    x: 30.0
-    y: 17.0
-    z: 30.0
-    w: 20.0
+    x: 14.0
+    y: 14.0
+    z: 14.0
+    w: 14.0
   }
   clipping_mode: CLIPPING_MODE_NONE
   clipping_visible: true
@@ -78,7 +74,7 @@ nodes {
 nodes {
   position {
     x: 0.0
-    y: 3.0
+    y: 0.0
     z: 0.0
     w: 1.0
   }
@@ -89,14 +85,14 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 0.65
-    y: 0.65
+    x: 1.4
+    y: 1.4
     z: 1.0
     w: 1.0
   }
   size {
-    x: 125.0
-    y: 40.0
+    x: 70.0
+    y: 20.0
     z: 0.0
     w: 1.0
   }
@@ -108,7 +104,7 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "\320\242\320\265\320\272\321\201\321\202"
+  text: "\320\242\320\225\320\232\320\241\320\242"
   font: "font_standart_normal"
   id: "btn_title"
   xanchor: XANCHOR_NONE

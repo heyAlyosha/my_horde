@@ -13154,7 +13154,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "gui/button_default_violet_default"
+  texture: "first_level/btn_interface_default"
   id: "btn_word_template/btn_wrap"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -13164,10 +13164,10 @@ nodes {
   layer: "box"
   inherit_alpha: true
   slice9 {
-    x: 30.0
-    y: 17.0
-    z: 30.0
-    w: 20.0
+    x: 14.0
+    y: 14.0
+    z: 14.0
+    w: 14.0
   }
   clipping_mode: CLIPPING_MODE_NONE
   clipping_visible: true
@@ -13185,7 +13185,7 @@ nodes {
 nodes {
   position {
     x: 0.0
-    y: 3.0
+    y: 0.0
     z: 0.0
     w: 1.0
   }
@@ -13196,14 +13196,14 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 0.65
-    y: 0.65
+    x: 1.4
+    y: 1.4
     z: 1.0
     w: 1.0
   }
   size {
-    x: 125.0
-    y: 40.0
+    x: 70.0
+    y: 20.0
     z: 0.0
     w: 1.0
   }
@@ -13325,7 +13325,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "gui/button_default_violet_default"
+  texture: "first_level/btn_interface_default"
   id: "btn_refresh_template/btn_wrap"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -13335,10 +13335,10 @@ nodes {
   layer: "box"
   inherit_alpha: true
   slice9 {
-    x: 30.0
-    y: 17.0
-    z: 30.0
-    w: 20.0
+    x: 14.0
+    y: 14.0
+    z: 14.0
+    w: 14.0
   }
   clipping_mode: CLIPPING_MODE_NONE
   clipping_visible: true
@@ -13356,7 +13356,7 @@ nodes {
 nodes {
   position {
     x: 0.0
-    y: 3.0
+    y: 0.0
     z: 0.0
     w: 1.0
   }
@@ -13367,14 +13367,14 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 0.65
-    y: 0.65
+    x: 1.4
+    y: 1.4
     z: 1.0
     w: 1.0
   }
   size {
-    x: 125.0
-    y: 40.0
+    x: 70.0
+    y: 20.0
     z: 0.0
     w: 1.0
   }
@@ -13496,7 +13496,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "gui/button_default_violet_default"
+  texture: "first_level/btn_interface_default"
   id: "btn_surrender_template/btn_wrap"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -13506,10 +13506,10 @@ nodes {
   layer: "box"
   inherit_alpha: true
   slice9 {
-    x: 30.0
-    y: 17.0
-    z: 30.0
-    w: 20.0
+    x: 14.0
+    y: 14.0
+    z: 14.0
+    w: 14.0
   }
   clipping_mode: CLIPPING_MODE_NONE
   clipping_visible: true
@@ -13527,7 +13527,7 @@ nodes {
 nodes {
   position {
     x: 0.0
-    y: 3.0
+    y: 0.0
     z: 0.0
     w: 1.0
   }
@@ -13538,14 +13538,14 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 0.65
-    y: 0.65
+    x: 1.4
+    y: 1.4
     z: 1.0
     w: 1.0
   }
   size {
-    x: 125.0
-    y: 40.0
+    x: 70.0
+    y: 20.0
     z: 0.0
     w: 1.0
   }

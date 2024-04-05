@@ -46,7 +46,6 @@ function M.render_btns(self, btns)
 			gui.set_position(nodes[hash("wrap_btn")], result.start_position)
 			gui.set_size(self.nodes.center_btns, result.size_wrap)
 			gui.set_position(self.nodes.center_btns, result.position_wrap)
-			
 		end
 
 		result.position_wrap.x = result.position_wrap.x - result.size_wrap.x / 4

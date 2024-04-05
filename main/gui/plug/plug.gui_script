@@ -35,7 +35,10 @@ function init(self)
 	}
 
 	local rotation = gui.get_rotation(self.nodes.loader_icon)
-	gui.animate(self.nodes.loader_icon, "rotation.z", rotation.z + 360, gui.EASING_LINEAR, 3, 0, nil, gui.PLAYBACK_LOOP_FORWARD)
+	local node_body = false
+	local visible = true
+	gui_loader.visible(visible, node_wrap, node_icon, node_body, self)
+	--gui.animate(self.nodes.loader_icon, "rotation.z", rotation.z + 360, gui.EASING_LINEAR, 3, 0, nil, gui.PLAYBACK_LOOP_FORWARD)
 end
 
 function final(self)

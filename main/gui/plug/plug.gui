@@ -4,12 +4,8 @@ fonts {
   font: "/assets/fonts/font_standart_normal.font"
 }
 textures {
-  name: "gui"
-  texture: "/main/atlases/gui.atlas"
-}
-textures {
-  name: "main"
-  texture: "/main/main.atlas"
+  name: "first_level"
+  texture: "/main/atlases/first_level.atlas"
 }
 background_color {
   x: 0.0
@@ -77,8 +73,8 @@ nodes {
 }
 nodes {
   position {
-    x: 948.0
-    y: 560.0
+    x: 2.0
+    y: 7.0
     z: 0.0
     w: 1.0
   }
@@ -118,8 +114,8 @@ nodes {
 }
 nodes {
   position {
-    x: 0.0
-    y: 0.0
+    x: 237.0
+    y: 115.0
     z: 0.0
     w: 1.0
   }
@@ -136,8 +132,8 @@ nodes {
     w: 1.0
   }
   size {
-    x: 600.0
-    y: 400.0
+    x: 450.0
+    y: 200.0
     z: 0.0
     w: 1.0
   }
@@ -178,7 +174,7 @@ nodes {
 nodes {
   position {
     x: 0.0
-    y: 100.0
+    y: 21.0
     z: 0.0
     w: 1.0
   }
@@ -189,14 +185,14 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 1.0
-    y: 1.0
+    x: 0.4
+    y: 0.4
     z: 1.0
     w: 1.0
   }
   size {
-    x: 200.0
-    y: 200.0
+    x: 175.0
+    y: 175.0
     z: 0.0
     w: 1.0
   }
@@ -236,15 +232,15 @@ nodes {
 }
 nodes {
   position {
-    x: 73.0
-    y: -34.0
+    x: 42.0
+    y: 43.0
     z: 0.0
     w: 1.0
   }
   rotation {
     x: 0.0
     y: 0.0
-    z: 0.0
+    z: -45.0
     w: 1.0
   }
   scale {
@@ -254,8 +250,8 @@ nodes {
     w: 1.0
   }
   size {
-    x: 35.0
-    y: 35.0
+    x: 200.0
+    y: 100.0
     z: 0.0
     w: 1.0
   }
@@ -267,66 +263,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "gui/loader_item"
-  id: "loader_template/loader_item"
-  xanchor: XANCHOR_NONE
-  yanchor: YANCHOR_NONE
-  pivot: PIVOT_CENTER
-  adjust_mode: ADJUST_MODE_FIT
-  parent: "loader_template/loader_icon"
-  layer: "box"
-  inherit_alpha: true
-  slice9 {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 0.0
-  }
-  clipping_mode: CLIPPING_MODE_NONE
-  clipping_visible: true
-  clipping_inverted: false
-  alpha: 1.0
-  template_node_child: true
-  size_mode: SIZE_MODE_MANUAL
-  custom_type: 0
-  enabled: true
-  visible: true
-  material: ""
-}
-nodes {
-  position {
-    x: 43.0
-    y: -67.0
-    z: 0.0
-    w: 1.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  size {
-    x: 33.0
-    y: 33.0
-    z: 0.0
-    w: 1.0
-  }
-  color {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  type: TYPE_BOX
-  blend_mode: BLEND_MODE_ALPHA
-  texture: "gui/loader_item"
+  texture: "first_level/loader_item"
   id: "loader_template/loader_item1"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -346,7 +283,7 @@ nodes {
   clipping_inverted: false
   alpha: 1.0
   template_node_child: true
-  size_mode: SIZE_MODE_MANUAL
+  size_mode: SIZE_MODE_AUTO
   custom_type: 0
   enabled: true
   visible: true
@@ -354,15 +291,15 @@ nodes {
 }
 nodes {
   position {
-    x: -1.0
-    y: -82.0
+    x: 63.0
+    y: 2.0
     z: 0.0
     w: 1.0
   }
   rotation {
     x: 0.0
     y: 0.0
-    z: 0.0
+    z: -90.0
     w: 1.0
   }
   scale {
@@ -372,8 +309,8 @@ nodes {
     w: 1.0
   }
   size {
-    x: 31.0
-    y: 31.0
+    x: 200.0
+    y: 100.0
     z: 0.0
     w: 1.0
   }
@@ -385,7 +322,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "gui/loader_item"
+  texture: "first_level/loader_item"
   id: "loader_template/loader_item2"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -403,9 +340,9 @@ nodes {
   clipping_mode: CLIPPING_MODE_NONE
   clipping_visible: true
   clipping_inverted: false
-  alpha: 1.0
+  alpha: 0.4
   template_node_child: true
-  size_mode: SIZE_MODE_MANUAL
+  size_mode: SIZE_MODE_AUTO
   custom_type: 0
   enabled: true
   visible: true
@@ -413,15 +350,15 @@ nodes {
 }
 nodes {
   position {
-    x: -45.0
-    y: -73.0
+    x: 45.0
+    y: -41.0
     z: 0.0
     w: 1.0
   }
   rotation {
     x: 0.0
     y: 0.0
-    z: 0.0
+    z: -135.0
     w: 1.0
   }
   scale {
@@ -431,8 +368,8 @@ nodes {
     w: 1.0
   }
   size {
-    x: 30.0
-    y: 30.0
+    x: 200.0
+    y: 100.0
     z: 0.0
     w: 1.0
   }
@@ -444,7 +381,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "gui/loader_item"
+  texture: "first_level/loader_item"
   id: "loader_template/loader_item3"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -462,9 +399,9 @@ nodes {
   clipping_mode: CLIPPING_MODE_NONE
   clipping_visible: true
   clipping_inverted: false
-  alpha: 1.0
+  alpha: 0.4
   template_node_child: true
-  size_mode: SIZE_MODE_MANUAL
+  size_mode: SIZE_MODE_AUTO
   custom_type: 0
   enabled: true
   visible: true
@@ -472,15 +409,15 @@ nodes {
 }
 nodes {
   position {
-    x: -80.0
-    y: -42.0
+    x: 0.0
+    y: -59.0
     z: 0.0
     w: 1.0
   }
   rotation {
     x: 0.0
     y: 0.0
-    z: 0.0
+    z: -180.0
     w: 1.0
   }
   scale {
@@ -490,8 +427,8 @@ nodes {
     w: 1.0
   }
   size {
-    x: 28.0
-    y: 28.0
+    x: 200.0
+    y: 100.0
     z: 0.0
     w: 1.0
   }
@@ -503,7 +440,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "gui/loader_item"
+  texture: "first_level/loader_item"
   id: "loader_template/loader_item4"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -521,9 +458,9 @@ nodes {
   clipping_mode: CLIPPING_MODE_NONE
   clipping_visible: true
   clipping_inverted: false
-  alpha: 1.0
+  alpha: 0.4
   template_node_child: true
-  size_mode: SIZE_MODE_MANUAL
+  size_mode: SIZE_MODE_AUTO
   custom_type: 0
   enabled: true
   visible: true
@@ -531,15 +468,15 @@ nodes {
 }
 nodes {
   position {
-    x: -95.0
-    y: 1.0
+    x: -43.0
+    y: -41.0
     z: 0.0
     w: 1.0
   }
   rotation {
     x: 0.0
     y: 0.0
-    z: 0.0
+    z: -225.0
     w: 1.0
   }
   scale {
@@ -549,8 +486,8 @@ nodes {
     w: 1.0
   }
   size {
-    x: 27.0
-    y: 27.0
+    x: 200.0
+    y: 100.0
     z: 0.0
     w: 1.0
   }
@@ -562,7 +499,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "gui/loader_item"
+  texture: "first_level/loader_item"
   id: "loader_template/loader_item5"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -580,9 +517,9 @@ nodes {
   clipping_mode: CLIPPING_MODE_NONE
   clipping_visible: true
   clipping_inverted: false
-  alpha: 1.0
+  alpha: 0.4
   template_node_child: true
-  size_mode: SIZE_MODE_MANUAL
+  size_mode: SIZE_MODE_AUTO
   custom_type: 0
   enabled: true
   visible: true
@@ -590,15 +527,15 @@ nodes {
 }
 nodes {
   position {
-    x: -84.0
-    y: 45.0
+    x: -59.0
+    y: 2.0
     z: 0.0
     w: 1.0
   }
   rotation {
     x: 0.0
     y: 0.0
-    z: 0.0
+    z: -270.0
     w: 1.0
   }
   scale {
@@ -608,8 +545,8 @@ nodes {
     w: 1.0
   }
   size {
-    x: 25.0
-    y: 25.0
+    x: 200.0
+    y: 100.0
     z: 0.0
     w: 1.0
   }
@@ -621,7 +558,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "gui/loader_item"
+  texture: "first_level/loader_item"
   id: "loader_template/loader_item6"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -639,9 +576,9 @@ nodes {
   clipping_mode: CLIPPING_MODE_NONE
   clipping_visible: true
   clipping_inverted: false
-  alpha: 1.0
+  alpha: 0.4
   template_node_child: true
-  size_mode: SIZE_MODE_MANUAL
+  size_mode: SIZE_MODE_AUTO
   custom_type: 0
   enabled: true
   visible: true
@@ -649,15 +586,15 @@ nodes {
 }
 nodes {
   position {
-    x: -53.0
-    y: 79.0
+    x: -43.0
+    y: 44.0
     z: 0.0
     w: 1.0
   }
   rotation {
     x: 0.0
     y: 0.0
-    z: 0.0
+    z: -315.0
     w: 1.0
   }
   scale {
@@ -667,8 +604,8 @@ nodes {
     w: 1.0
   }
   size {
-    x: 24.0
-    y: 24.0
+    x: 200.0
+    y: 100.0
     z: 0.0
     w: 1.0
   }
@@ -680,7 +617,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "gui/loader_item"
+  texture: "first_level/loader_item"
   id: "loader_template/loader_item7"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -698,9 +635,9 @@ nodes {
   clipping_mode: CLIPPING_MODE_NONE
   clipping_visible: true
   clipping_inverted: false
-  alpha: 1.0
+  alpha: 0.4
   template_node_child: true
-  size_mode: SIZE_MODE_MANUAL
+  size_mode: SIZE_MODE_AUTO
   custom_type: 0
   enabled: true
   visible: true
@@ -708,8 +645,8 @@ nodes {
 }
 nodes {
   position {
-    x: -11.0
-    y: 94.0
+    x: 0.0
+    y: 58.0
     z: 0.0
     w: 1.0
   }
@@ -726,8 +663,8 @@ nodes {
     w: 1.0
   }
   size {
-    x: 22.0
-    y: 22.0
+    x: 200.0
+    y: 100.0
     z: 0.0
     w: 1.0
   }
@@ -739,7 +676,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "gui/loader_item"
+  texture: "first_level/loader_item"
   id: "loader_template/loader_item8"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -757,186 +694,9 @@ nodes {
   clipping_mode: CLIPPING_MODE_NONE
   clipping_visible: true
   clipping_inverted: false
-  alpha: 1.0
+  alpha: 0.4
   template_node_child: true
-  size_mode: SIZE_MODE_MANUAL
-  custom_type: 0
-  enabled: true
-  visible: true
-  material: ""
-}
-nodes {
-  position {
-    x: 35.0
-    y: 85.0
-    z: 0.0
-    w: 1.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  size {
-    x: 20.0
-    y: 20.0
-    z: 0.0
-    w: 1.0
-  }
-  color {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  type: TYPE_BOX
-  blend_mode: BLEND_MODE_ALPHA
-  texture: "gui/loader_item"
-  id: "loader_template/loader_item9"
-  xanchor: XANCHOR_NONE
-  yanchor: YANCHOR_NONE
-  pivot: PIVOT_CENTER
-  adjust_mode: ADJUST_MODE_FIT
-  parent: "loader_template/loader_icon"
-  layer: "box"
-  inherit_alpha: true
-  slice9 {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 0.0
-  }
-  clipping_mode: CLIPPING_MODE_NONE
-  clipping_visible: true
-  clipping_inverted: false
-  alpha: 1.0
-  template_node_child: true
-  size_mode: SIZE_MODE_MANUAL
-  custom_type: 0
-  enabled: true
-  visible: true
-  material: ""
-}
-nodes {
-  position {
-    x: 67.0
-    y: 55.0
-    z: 0.0
-    w: 1.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  size {
-    x: 17.0
-    y: 17.0
-    z: 0.0
-    w: 1.0
-  }
-  color {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  type: TYPE_BOX
-  blend_mode: BLEND_MODE_ALPHA
-  texture: "gui/loader_item"
-  id: "loader_template/loader_item10"
-  xanchor: XANCHOR_NONE
-  yanchor: YANCHOR_NONE
-  pivot: PIVOT_CENTER
-  adjust_mode: ADJUST_MODE_FIT
-  parent: "loader_template/loader_icon"
-  layer: "box"
-  inherit_alpha: true
-  slice9 {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 0.0
-  }
-  clipping_mode: CLIPPING_MODE_NONE
-  clipping_visible: true
-  clipping_inverted: false
-  alpha: 1.0
-  template_node_child: true
-  size_mode: SIZE_MODE_MANUAL
-  custom_type: 0
-  enabled: true
-  visible: true
-  material: ""
-}
-nodes {
-  position {
-    x: 79.0
-    y: 16.0
-    z: 0.0
-    w: 1.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  size {
-    x: 15.0
-    y: 15.0
-    z: 0.0
-    w: 1.0
-  }
-  color {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  type: TYPE_BOX
-  blend_mode: BLEND_MODE_ALPHA
-  texture: "gui/loader_item"
-  id: "loader_template/loader_item11"
-  xanchor: XANCHOR_NONE
-  yanchor: YANCHOR_NONE
-  pivot: PIVOT_CENTER
-  adjust_mode: ADJUST_MODE_FIT
-  parent: "loader_template/loader_icon"
-  layer: "box"
-  inherit_alpha: true
-  slice9 {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 0.0
-  }
-  clipping_mode: CLIPPING_MODE_NONE
-  clipping_visible: true
-  clipping_inverted: false
-  alpha: 1.0
-  template_node_child: true
-  size_mode: SIZE_MODE_MANUAL
+  size_mode: SIZE_MODE_AUTO
   custom_type: 0
   enabled: true
   visible: true
@@ -956,14 +716,14 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 1.0
-    y: 1.0
+    x: 1.5
+    y: 1.5
     z: 1.0
     w: 1.0
   }
   size {
-    x: 1000.0
-    y: 100.0
+    x: 300.0
+    y: 40.0
     z: 0.0
     w: 1.0
   }
@@ -1001,7 +761,6 @@ nodes {
   alpha: 1.0
   outline_alpha: 1.0
   shadow_alpha: 1.0
-  overridden_fields: 4
   template_node_child: true
   text_leading: 1.0
   text_tracking: 0.0
@@ -1042,8 +801,8 @@ nodes {
     w: 1.0
   }
   type: TYPE_BOX
-  blend_mode: BLEND_MODE_ALPHA
-  texture: "gui/account_avatar_bg"
+  blend_mode: BLEND_MODE_MULT
+  texture: ""
   id: "wrap_icon"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -1070,8 +829,8 @@ nodes {
 }
 nodes {
   position {
-    x: 0.0
-    y: 4.0
+    x: -707.0
+    y: -515.0
     z: 0.0
     w: 1.0
   }
@@ -1088,8 +847,8 @@ nodes {
     w: 1.0
   }
   size {
-    x: 125.0
-    y: 125.0
+    x: 200.0
+    y: 100.0
     z: 0.0
     w: 1.0
   }
@@ -1101,7 +860,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "gui/btn_circle_bg_violet_default"
+  texture: "first_level/icon_danger"
   id: "icon"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -1121,7 +880,7 @@ nodes {
   clipping_inverted: false
   alpha: 1.0
   template_node_child: false
-  size_mode: SIZE_MODE_MANUAL
+  size_mode: SIZE_MODE_AUTO
   custom_type: 0
   enabled: true
   visible: true
@@ -1129,8 +888,8 @@ nodes {
 }
 nodes {
   position {
-    x: 917.0
-    y: 359.0
+    x: 202.0
+    y: 90.0
     z: 0.0
     w: 1.0
   }
@@ -1246,8 +1005,8 @@ nodes {
 }
 nodes {
   position {
-    x: 0.0
-    y: 0.0
+    x: 10.0
+    y: -60.0
     z: 0.0
     w: 1.0
   }
@@ -1265,7 +1024,7 @@ nodes {
   }
   size {
     x: 200.0
-    y: 100.0
+    y: 30.0
     z: 0.0
     w: 1.0
   }
@@ -1297,7 +1056,7 @@ nodes {
   clipping_inverted: false
   alpha: 1.0
   template_node_child: false
-  size_mode: SIZE_MODE_AUTO
+  size_mode: SIZE_MODE_MANUAL
   custom_type: 0
   enabled: true
   visible: true
@@ -1366,7 +1125,7 @@ nodes {
   }
   size {
     x: 100.0
-    y: 60.0
+    y: 30.0
     z: 0.0
     w: 1.0
   }
@@ -1378,7 +1137,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "gui/button_default_green_default"
+  texture: "first_level/btn_interface_default"
   id: "btn_template/btn_wrap"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -1388,16 +1147,15 @@ nodes {
   layer: "box"
   inherit_alpha: true
   slice9 {
-    x: 30.0
-    y: 17.0
-    z: 30.0
-    w: 20.0
+    x: 14.0
+    y: 14.0
+    z: 14.0
+    w: 14.0
   }
   clipping_mode: CLIPPING_MODE_NONE
   clipping_visible: true
   clipping_inverted: false
   alpha: 1.0
-  overridden_fields: 9
   template_node_child: true
   size_mode: SIZE_MODE_MANUAL
   custom_type: 0
@@ -1408,7 +1166,7 @@ nodes {
 nodes {
   position {
     x: 0.0
-    y: 3.0
+    y: 0.0
     z: 0.0
     w: 1.0
   }
@@ -1419,14 +1177,14 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 0.65
-    y: 0.65
+    x: 1.4
+    y: 1.4
     z: 1.0
     w: 1.0
   }
   size {
-    x: 125.0
-    y: 40.0
+    x: 70.0
+    y: 20.0
     z: 0.0
     w: 1.0
   }
@@ -1772,8 +1530,8 @@ layouts {
   }
   nodes {
     position {
-      x: 948.0
-      y: 560.0
+      x: 2.0
+      y: 7.0
       z: 0.0
       w: 1.0
     }
@@ -1832,8 +1590,8 @@ layouts {
       w: 1.0
     }
     size {
-      x: 600.0
-      y: 400.0
+      x: 450.0
+      y: 200.0
       z: 0.0
       w: 1.0
     }
@@ -1886,8 +1644,8 @@ layouts {
       w: 1.0
     }
     scale {
-      x: 1.0
-      y: 1.0
+      x: 1.5
+      y: 1.5
       z: 1.0
       w: 1.0
     }
@@ -1972,8 +1730,8 @@ layouts {
       w: 1.0
     }
     type: TYPE_BOX
-    blend_mode: BLEND_MODE_ALPHA
-    texture: "gui/account_avatar_bg"
+    blend_mode: BLEND_MODE_MULT
+    texture: ""
     id: "wrap_icon"
     xanchor: XANCHOR_NONE
     yanchor: YANCHOR_NONE

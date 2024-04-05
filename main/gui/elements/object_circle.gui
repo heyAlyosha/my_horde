@@ -745,10 +745,10 @@ nodes {
   layer: "box"
   inherit_alpha: true
   slice9 {
-    x: 30.0
-    y: 17.0
-    z: 30.0
-    w: 20.0
+    x: 14.0
+    y: 14.0
+    z: 14.0
+    w: 14.0
   }
   clipping_mode: CLIPPING_MODE_NONE
   clipping_visible: true
@@ -783,8 +783,8 @@ nodes {
     w: 1.0
   }
   size {
-    x: 125.0
-    y: 40.0
+    x: 70.0
+    y: 20.0
     z: 0.0
     w: 1.0
   }

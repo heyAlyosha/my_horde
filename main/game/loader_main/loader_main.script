@@ -12,6 +12,7 @@ local druid_castom_style = require "main.gui.modules.druid_castom_style"
 function init(self)
 	color = require("color-lib.color")
 	storage_gui = require "main.storage.storage_gui"
+	gui_loader = require "main.gui.modules.gui_loader"
 	storage_player = require "main.storage.storage_player"
 	camera = require "orthographic.camera"
 	gui_loyouts = require "main.gui.modules.gui_loyouts"
@@ -96,29 +97,6 @@ function init(self)
 	msg.post("camera", "acquire_camera_focus")
 	--msg.post("#camera", "acquire_camera_focus")
 
-	msg.post("/loader_gui", "visible", {
-		id = "interface",
-		visible = true
-	})
-
-	if false then
-		-- Игровой уровень
-		msg.post("main:/loader_main", "load_level", {
-			company_id = "city_hospital", level_id = 2
-		})
-
-	elseif false then
-		-- карта
-		msg.post("main:/loader_main", "load_level", {
-			company_id = "world_map", level_id = "world_map"
-		})
-	else
-		-- Прототип с противниками
-		msg.post("main:/loader_main", "load_level", {
-			company_id = "prototypes", level_id = "prototype_enemy"
-		})
-	end
-
 	-- Отображаем на доп мониторе
 	if true and not html5 then
 		local displays = defos.get_displays()
@@ -142,7 +120,7 @@ function init(self)
 	--]]
 	--defos.set_view_size(0, 0, 1000, 512)
 
-	
+	msg.post(".", "init_logout")
 
 end
 
@@ -152,7 +130,10 @@ end
 
 function on_message(self, message_id, message, sender)
 	-- Ловим события в игре 
-	if message_id == hash("event") then
+	if message_id == hash("init_logout") then
+		msg.post('/loader_main', 'event', {id = "start_logout"})
+
+	elseif message_id == hash("event") then
 		if message.id == "logout" or message.id == "start_logout" then
 			loader_main_event_logout.on(self, message)
 		end

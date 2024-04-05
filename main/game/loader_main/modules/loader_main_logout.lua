@@ -17,8 +17,7 @@ local gui_integer = require "main.gui.modules.gui_integer"
 
 function M.start(self, message)
 	self.start = nil
-	game_core_round_start.to_start(self)
-	msg.post("/loader_gui", "visible", {id = "plug", visible = false})
+	--msg.post("/loader_gui", "visible", {id = "plug", visible = false})
 	msg.post("/core_screens", "clear", {})
 
 	loader_sdk_modules.logout.start()
@@ -50,9 +49,11 @@ function M.success(self, message)
 		return
 	end
 
+	--[[
 	msg.post("/loader_gui", "visible", {
 		id = "plug", visible = false
 	})
+	--]]
 
 	storage_player.settings = api_player.get_settings(self)
 
@@ -64,8 +65,6 @@ function M.success(self, message)
 	elseif not storage_player.created and storage_player.new_day then
 		
 	end
-
-	api_core_shop.add_start_shop(self, game_content_artifact)
 
 	-- Новый день в игре
 	if storage_player.new_day and not storage_player.created then
@@ -123,45 +122,32 @@ function M.success(self, message)
 			})
 		end)
 	else
-		--[[
-		timer.delay(0.1, false, function (self)
-			msg.post("/loader_gui", "visible", {
-				id = "modal_reward_visit",
-				visible = true,
-				value = {day = storage_player.day_to_game},
-				type = hash("animated_close"),
-			})
-		end)
-
-		msg.post("main:/loader_gui", "visible", {
-			id = "catalog_shop",
-			visible = true,
-		})
-		--]]
+		
 	end
 
-	--[[
-	msg.post("main:/loader_gui", "visible", {
-		id = "modal_settings",
-		visible = true,
-	})
-
 	msg.post("/loader_gui", "visible", {
-		id = "character_dialog",
+		id = "interface",
 		visible = true
 	})
-	--]]
-	--msg.post("/core_screens", "catalog_company", {category_id = "history"})
-	--msg.post("/core_screens", "catalog_levels", {category_id = "army", focus_level = nil})
 
-	--msg.post("game-room:/core_game", "start_tournir")
+	if false then
+		-- Игровой уровень
+		msg.post("main:/loader_main", "load_level", {
+			company_id = "city_hospital", level_id = 2
+		})
 
-	--game_content_notify_add.update_shop(self)
+	elseif false then
+		-- карта
+		msg.post("main:/loader_main", "load_level", {
+			company_id = "world_map", level_id = "world_map"
+		})
+	else
+		-- Прототип с противниками
+		msg.post("main:/loader_main", "load_level", {
+			company_id = "prototypes", level_id = "prototype_enemy"
+		})
+	end
 
-	--game_content_notify_add.add_achieve(self, "coins_500")
-	--game_content_notify_add.add_achieve(self, "full_mind")
-	--game_content_notify_add.add_achieve(self, "score_2500")
-	--game_content_notify_add.add_achieve(self, "full_charisma")
 	
 end
 

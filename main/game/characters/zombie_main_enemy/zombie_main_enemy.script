@@ -1,7 +1,7 @@
 go.property("activate", true)
 go.property("horde_count", 5)
 go.property("horde_map", true)
-go.property("dir", vmath.vector(-1,0,0))
+go.property("dir", vmath.vector3(-1,0,0))
 go.property("max_horde", 30)
 go.property("ai_dist_way", 50)
 go.property("ai_dist_visible", 30)
