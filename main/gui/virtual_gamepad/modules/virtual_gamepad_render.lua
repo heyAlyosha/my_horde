@@ -39,6 +39,7 @@ function M.init(self)
 	self.nodes = {
 		stick = gui.get_node("stick"),
 		stick_wrap = gui.get_node("stick_wrap"),
+		btn = gui.get_node("btn_template/btn")
 	}
 
 	gui.set_enabled(self.nodes.stick_wrap, false)
@@ -51,33 +52,26 @@ end
 function M.on_input(self, action_id, action)
 	if action_id == hash("touch") then
 		if action.pressed then
-			gui.set_enabled(self.nodes.stick_wrap, true)
-			gui.set_position(self.nodes.stick_wrap, vmath.vector3(action.x, action.y, 0))
+			if gui.pick_node(self.nodes.btn, action.x, action.y) then
+				-- Нажатие на кнопку
+				msg.post(storage_player.user_go_url, "input", {action_id = hash("action"), action = {pressed = true}})
+			else
+				-- Стик
+				gui.set_enabled(self.nodes.stick_wrap, true)
+				gui.set_position(self.nodes.stick_wrap, vmath.vector3(action.x, action.y, 0))
+			end
+			
 		elseif action.released then
 			gui.set_enabled(self.nodes.stick_wrap, false)
 			gui.set_position(self.nodes.stick_wrap, vmath.vector3(action.x, action.y, 0))
 			gui.set_position(self.nodes.stick, vmath.vector3(0))
 		end
 	end
-	pprint(action_id, action)
 	onscreen.on_input(action_id, action)
 end
 
 -- Ловим обновление
 function M.on_update(s)
-	--[[
-	if M.gamepad_run then
-		storage_player.virtual_gamepad.gamepad_run = true
-	else
-		storage_player.virtual_gamepad.gamepad_run = nil
-	end
-
-	if M.gamepad_moved then
-		storage_player.virtual_gamepad.moved = M.gamepad_moved
-	else
-		storage_player.virtual_gamepad.moved = nil
-	end
-	--]]
 end
 
 return M
