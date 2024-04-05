@@ -215,7 +215,9 @@ function on_message(self, message_id, message, sender)
 					self.timer_update_balance_nakama = timer.delay(0.5, false, function (self)
 						local data = {
 							coins = self.current_values.coins or 0,
-							score = self.current_values.score or 0
+							score = self.current_values.score or 0,
+							xp = self.current_values.xp or 0,
+							resource = self.current_values.resource or 0
 						}
 						local function function_result(self)
 							api_core_rating.update_rating_player(self, self.current_values.score, function (self, err)

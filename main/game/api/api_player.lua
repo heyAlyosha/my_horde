@@ -262,6 +262,8 @@ end
 function M.update_wallet(self, wallet, metadata, callback)
 	storage_player.coins = wallet.coins or storage_player.coins
 	storage_player.score = wallet.score or storage_player.score
+	storage_player.xp = wallet.xp or storage_player.xp
+	storage_player.resource = wallet.resource or storage_player.resource
 
 	data_handler.set_wallet(self, wallet, operation, metadata, callback)
 end

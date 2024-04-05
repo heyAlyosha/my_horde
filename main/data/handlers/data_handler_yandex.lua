@@ -35,6 +35,8 @@ function M.init_player(self, callback)
 		storage_player.lang_tag = account.lang_tag
 		storage_player.coins = account.wallet.coins or 0
 		storage_player.score = account.wallet.score or 0
+		storage_player.resource = account.wallet.resource or 0
+		storage_player.xp = account.wallet.xp or 0
 		account.userdata = data_handler_functions.get_new_day(self, account.userdata)
 		storage_player.userdata = account.userdata
 

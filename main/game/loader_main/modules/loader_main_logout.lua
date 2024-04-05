@@ -17,7 +17,7 @@ local gui_integer = require "main.gui.modules.gui_integer"
 
 function M.start(self, message)
 	self.start = nil
-	--msg.post("/loader_gui", "visible", {id = "plug", visible = false})
+	msg.post("/loader_gui", "visible", {id = "plug", visible = false})
 	msg.post("/core_screens", "clear", {})
 
 	loader_sdk_modules.logout.start()
@@ -49,11 +49,9 @@ function M.success(self, message)
 		return
 	end
 
-	--[[
 	msg.post("/loader_gui", "visible", {
 		id = "plug", visible = false
 	})
-	--]]
 
 	storage_player.settings = api_player.get_settings(self)
 
@@ -93,10 +91,10 @@ function M.success(self, message)
 					catch_1 = 1,
 				}
 				-- Запускаем обучение
-				msg.post("game-room:/core_game", "start_study", {})
+				--msg.post("game-room:/core_game", "start_study", {})
 
 			else
-				msg.post("main:/core_screens", "main_menu", {})
+				--msg.post("main:/core_screens", "main_menu", {})
 
 			end
 		end
@@ -107,6 +105,23 @@ function M.success(self, message)
 		--msg.post("/core_screens", "catalog_company", {category_id = nil})
 		--msg.post("/loader_gui", "visible", {id = "catalog_company", visible = true})
 		-- ТЕСТЫ --
+		if false then
+			-- Игровой уровень
+			msg.post("main:/loader_main", "load_level", {
+				company_id = "city_hospital", level_id = 2
+			})
+
+		elseif false then
+			-- карта
+			msg.post("main:/loader_main", "load_level", {
+				company_id = "world_map", level_id = "world_map"
+			})
+		else
+			-- Прототип с противниками
+			msg.post("main:/loader_main", "load_level", {
+				company_id = "prototypes", level_id = "prototype_enemy"
+			})
+		end
 
 		
 	end
@@ -130,23 +145,7 @@ function M.success(self, message)
 		visible = true
 	})
 
-	if false then
-		-- Игровой уровень
-		msg.post("main:/loader_main", "load_level", {
-			company_id = "city_hospital", level_id = 2
-		})
-
-	elseif false then
-		-- карта
-		msg.post("main:/loader_main", "load_level", {
-			company_id = "world_map", level_id = "world_map"
-		})
-	else
-		-- Прототип с противниками
-		msg.post("main:/loader_main", "load_level", {
-			company_id = "prototypes", level_id = "prototype_enemy"
-		})
-	end
+	
 
 	
 end
