@@ -11,8 +11,8 @@ background_color {
 }
 nodes {
   position {
-    x: 320.0
-    y: 100.0
+    x: 435.0
+    y: 36.0
     z: 0.0
     w: 1.0
   }
@@ -25,12 +25,12 @@ nodes {
   scale {
     x: 1.0
     y: 1.0
-    z: 0.96
+    z: 1.0
     w: 1.0
   }
   size {
-    x: 640.0
-    y: 200.0
+    x: 50.0
+    y: 50.0
     z: 0.0
     w: 1.0
   }
@@ -41,9 +41,9 @@ nodes {
     w: 1.0
   }
   type: TYPE_BOX
-  blend_mode: BLEND_MODE_MULT
-  texture: ""
-  id: "gamepad"
+  blend_mode: BLEND_MODE_ALPHA
+  texture: "gui/stick_bg"
+  id: "stick_wrap"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
@@ -69,8 +69,67 @@ nodes {
 }
 nodes {
   position {
-    x: -297.0
-    y: -75.0
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_BOX
+  blend_mode: BLEND_MODE_ALPHA
+  texture: "gui/stick_active"
+  id: "stick"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_CENTER
+  adjust_mode: ADJUST_MODE_FIT
+  parent: "stick_wrap"
+  layer: ""
+  inherit_alpha: true
+  slice9 {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 0.0
+  }
+  clipping_mode: CLIPPING_MODE_NONE
+  clipping_visible: true
+  clipping_inverted: false
+  alpha: 1.0
+  template_node_child: false
+  size_mode: SIZE_MODE_AUTO
+  custom_type: 0
+  enabled: true
+  visible: true
+  material: ""
+}
+nodes {
+  position {
+    x: 28.0
+    y: 33.0
     z: 0.0
     w: 1.0
   }
@@ -100,7 +159,6 @@ nodes {
   }
   type: TYPE_TEMPLATE
   id: "btn_template"
-  parent: "gamepad"
   layer: ""
   inherit_alpha: true
   alpha: 1.0
@@ -345,189 +403,9 @@ nodes {
   visible: true
   material: ""
 }
-nodes {
-  position {
-    x: 114.0
-    y: -66.0
-    z: 0.0
-    w: 1.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  size {
-    x: 50.0
-    y: 50.0
-    z: 0.0
-    w: 1.0
-  }
-  color {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  type: TYPE_BOX
-  blend_mode: BLEND_MODE_ALPHA
-  texture: "gui/stick_bg"
-  id: "stick_wrap"
-  xanchor: XANCHOR_NONE
-  yanchor: YANCHOR_NONE
-  pivot: PIVOT_CENTER
-  adjust_mode: ADJUST_MODE_FIT
-  parent: "gamepad"
-  layer: ""
-  inherit_alpha: true
-  slice9 {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 0.0
-  }
-  clipping_mode: CLIPPING_MODE_NONE
-  clipping_visible: true
-  clipping_inverted: false
-  alpha: 1.0
-  template_node_child: false
-  size_mode: SIZE_MODE_MANUAL
-  custom_type: 0
-  enabled: true
-  visible: true
-  material: ""
-}
-nodes {
-  position {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  size {
-    x: 200.0
-    y: 100.0
-    z: 0.0
-    w: 1.0
-  }
-  color {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  type: TYPE_BOX
-  blend_mode: BLEND_MODE_ALPHA
-  texture: "gui/stick_active"
-  id: "stick"
-  xanchor: XANCHOR_NONE
-  yanchor: YANCHOR_NONE
-  pivot: PIVOT_CENTER
-  adjust_mode: ADJUST_MODE_FIT
-  parent: "stick_wrap"
-  layer: ""
-  inherit_alpha: true
-  slice9 {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 0.0
-  }
-  clipping_mode: CLIPPING_MODE_NONE
-  clipping_visible: true
-  clipping_inverted: false
-  alpha: 1.0
-  template_node_child: false
-  size_mode: SIZE_MODE_AUTO
-  custom_type: 0
-  enabled: true
-  visible: true
-  material: ""
-}
 material: "/builtins/materials/gui.material"
 layouts {
   name: "Portrait"
-  nodes {
-    position {
-      x: 158.0
-      y: 79.0
-      z: 0.0
-      w: 1.0
-    }
-    rotation {
-      x: 0.0
-      y: 0.0
-      z: 0.0
-      w: 1.0
-    }
-    scale {
-      x: 1.0
-      y: 1.0
-      z: 0.9
-      w: 1.0
-    }
-    size {
-      x: 315.0
-      y: 100.0
-      z: 0.0
-      w: 1.0
-    }
-    color {
-      x: 1.0
-      y: 1.0
-      z: 1.0
-      w: 1.0
-    }
-    type: TYPE_BOX
-    blend_mode: BLEND_MODE_MULT
-    texture: ""
-    id: "gamepad"
-    xanchor: XANCHOR_NONE
-    yanchor: YANCHOR_NONE
-    pivot: PIVOT_CENTER
-    adjust_mode: ADJUST_MODE_STRETCH
-    layer: ""
-    inherit_alpha: true
-    slice9 {
-      x: 0.0
-      y: 0.0
-      z: 0.0
-      w: 0.0
-    }
-    clipping_mode: CLIPPING_MODE_NONE
-    clipping_visible: true
-    clipping_inverted: false
-    alpha: 1.0
-    overridden_fields: 1
-    overridden_fields: 3
-    overridden_fields: 4
-    overridden_fields: 17
-    template_node_child: false
-    size_mode: SIZE_MODE_MANUAL
-    custom_type: 0
-    enabled: true
-    visible: true
-    material: ""
-  }
 }
 layouts {
   name: "Landscape"

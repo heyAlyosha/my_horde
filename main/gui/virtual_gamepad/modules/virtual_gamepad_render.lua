@@ -18,9 +18,9 @@ function M.on_control(action, node, touch)
 
 			M.gamepad_moved.x = touch.x
 			M.gamepad_moved.y = touch.y
-			M.gamepad_moved.z = 1
+			M.gamepad_moved.z = 0
 
-			M.gamepad_moved = vmath.normalize(M.gamepad_moved)
+			--M.gamepad_moved = vmath.normalize(M.gamepad_moved)
 			if storage_player.user_go_url then
 				msg.post(storage_player.user_go_url, "input", {action_id = hash("virtual_stick"), action = {input = M.gamepad_moved}})
 			end
@@ -35,13 +35,31 @@ function M.on_control(action, node, touch)
 end
 
 -- Инициализация
-function M.init(s)
-	onscreen.register_analog(gui.get_node("stick"), { radius = 20, threshold = 0.9 }, M.on_control)
+function M.init(self)
+	self.nodes = {
+		stick = gui.get_node("stick"),
+		stick_wrap = gui.get_node("stick_wrap"),
+	}
+
+	gui.set_enabled(self.nodes.stick_wrap, false)
+
+	onscreen.register_analog(gui.get_node("stick"), { radius = gui.get_size(self.nodes.stick_wrap).x / 2, threshold = 1 }, M.on_control)
 	onscreen.register_button(gui.get_node("btn_template/btn"), nil, M.on_control)
 end
 
 -- Инициализация
-function M.on_input(s, action_id, action)
+function M.on_input(self, action_id, action)
+	if action_id == hash("touch") then
+		if action.pressed then
+			gui.set_enabled(self.nodes.stick_wrap, true)
+			gui.set_position(self.nodes.stick_wrap, vmath.vector3(action.x, action.y, 0))
+		elseif action.released then
+			gui.set_enabled(self.nodes.stick_wrap, false)
+			gui.set_position(self.nodes.stick_wrap, vmath.vector3(action.x, action.y, 0))
+			gui.set_position(self.nodes.stick, vmath.vector3(0))
+		end
+	end
+	pprint(action_id, action)
 	onscreen.on_input(action_id, action)
 end
 

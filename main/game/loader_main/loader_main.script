@@ -101,7 +101,7 @@ function init(self)
 		visible = true
 	})
 
-	if true then
+	if false then
 		-- Игровой уровень
 		msg.post("main:/loader_main", "load_level", {
 			company_id = "city_hospital", level_id = 2
