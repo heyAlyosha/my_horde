@@ -101,11 +101,6 @@ embedded_components {
     z: 0.0
     w: 1.0
   }
-  scale {
-    x: 0.3
-    y: 0.3
-    z: 1.0
-  }
 }
 embedded_components {
   id: "icon"
@@ -120,7 +115,7 @@ embedded_components {
   ""
   position {
     x: 0.0
-    y: 6.0
+    y: 7.0
     z: 0.1
   }
   rotation {

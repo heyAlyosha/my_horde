@@ -21,6 +21,9 @@ function M.on_control(action, node, touch)
 			M.gamepad_moved.z = 1
 
 			M.gamepad_moved = vmath.normalize(M.gamepad_moved)
+			if storage_player.user_go_url then
+				msg.post(storage_player.user_go_url, "input", {action_id = hash("virtual_stick"), action = {input = M.gamepad_moved}})
+			end
 		else
 			M.gamepad_moved = nil
 		end
@@ -33,8 +36,8 @@ end
 
 -- Инициализация
 function M.init(s)
-	onscreen.register_analog(gui.get_node("stick"), { radius = 40, threshold = 0.9 }, M.on_control)
-	onscreen.register_button(gui.get_node("btn_run"), nil, M.on_control)
+	onscreen.register_analog(gui.get_node("stick"), { radius = 20, threshold = 0.9 }, M.on_control)
+	onscreen.register_button(gui.get_node("btn_template/btn"), nil, M.on_control)
 end
 
 -- Инициализация
@@ -44,6 +47,7 @@ end
 
 -- Ловим обновление
 function M.on_update(s)
+	--[[
 	if M.gamepad_run then
 		storage_player.virtual_gamepad.gamepad_run = true
 	else
@@ -55,6 +59,7 @@ function M.on_update(s)
 	else
 		storage_player.virtual_gamepad.moved = nil
 	end
+	--]]
 end
 
 return M

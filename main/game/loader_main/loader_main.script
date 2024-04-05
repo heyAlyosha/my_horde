@@ -12,6 +12,7 @@ local druid_castom_style = require "main.gui.modules.druid_castom_style"
 function init(self)
 	color = require("color-lib.color")
 	storage_gui = require "main.storage.storage_gui"
+	storage_player = require "main.storage.storage_player"
 	camera = require "orthographic.camera"
 	gui_loyouts = require "main.gui.modules.gui_loyouts"
 	levels_script_functions = require "main.game.levels.modules.levels_script_functions"
@@ -100,10 +101,10 @@ function init(self)
 		visible = true
 	})
 
-	if false then
+	if true then
 		-- Игровой уровень
 		msg.post("main:/loader_main", "load_level", {
-			company_id = "city_hospital", level_id = 3
+			company_id = "city_hospital", level_id = 2
 		})
 
 	elseif false then

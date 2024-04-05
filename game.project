@@ -26,6 +26,7 @@ dependencies#15 = https://github.com/Insality/defold-printer/archive/master.zip
 dependencies#16 = https://github.com/Lerg/extension-imageloader/archive/master.zip
 dependencies#17 = https://github.com/selimanac/defold-astar/archive/master.zip
 dependencies#18 = https://github.com/selimanac/DAABBCC/archive/refs/heads/v2.1.zip
+dependencies#19 = https://github.com/britzl/defold-input/archive/master.zip
 
 [platform]
 platform = yandex_games

@@ -132,7 +132,7 @@ nodes {
 }
 nodes {
   position {
-    x: -12.0
+    x: -15.0
     y: 7.0
     z: 0.0
     w: 1.0
@@ -144,14 +144,14 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 0.4
-    y: 0.4
-    z: 0.3
+    x: 1.5
+    y: 1.5
+    z: 1.5
     w: 1.0
   }
   size {
-    x: 75.0
-    y: 40.0
+    x: 30.0
+    y: 20.0
     z: 0.0
     w: 1.0
   }
@@ -163,7 +163,7 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "0"
+  text: "999"
   font: "font_standart_normal"
   id: "count"
   xanchor: XANCHOR_NONE

@@ -101,8 +101,8 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 0.5
-    y: 0.5
+    x: 1.0
+    y: 1.0
     z: 1.0
     w: 1.0
   }
@@ -160,14 +160,14 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 1.25
-    y: 1.25
-    z: 1.25
+    x: 2.0
+    y: 2.0
+    z: 2.0
     w: 1.0
   }
   size {
-    x: 200.0
-    y: 40.0
+    x: 150.0
+    y: 20.0
     z: 0.0
     w: 1.0
   }
@@ -275,7 +275,7 @@ nodes {
 nodes {
   position {
     x: 0.0
-    y: 18.0
+    y: 19.0
     z: 0.0
     w: 1.0
   }
@@ -286,14 +286,14 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 0.3
-    y: 0.3
+    x: 1.0
+    y: 1.0
     z: 0.3
     w: 1.0
   }
   size {
     x: 200.0
-    y: 40.0
+    y: 20.0
     z: 0.0
     w: 1.0
   }
@@ -502,7 +502,7 @@ nodes {
 }
 nodes {
   position {
-    x: -12.0
+    x: -15.0
     y: 7.0
     z: 0.0
     w: 1.0
@@ -514,14 +514,14 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 0.4
-    y: 0.4
-    z: 0.3
+    x: 1.5
+    y: 1.5
+    z: 1.5
     w: 1.0
   }
   size {
-    x: 75.0
-    y: 40.0
+    x: 30.0
+    y: 20.0
     z: 0.0
     w: 1.0
   }
@@ -533,7 +533,7 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "0"
+  text: "999"
   font: "font_standart_normal"
   id: "trophy_coins_template/count"
   xanchor: XANCHOR_NONE
@@ -730,7 +730,7 @@ nodes {
 }
 nodes {
   position {
-    x: -12.0
+    x: -15.0
     y: 7.0
     z: 0.0
     w: 1.0
@@ -742,14 +742,14 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 0.4
-    y: 0.4
-    z: 0.3
+    x: 1.5
+    y: 1.5
+    z: 1.5
     w: 1.0
   }
   size {
-    x: 75.0
-    y: 40.0
+    x: 30.0
+    y: 20.0
     z: 0.0
     w: 1.0
   }
@@ -761,7 +761,7 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "0"
+  text: "999"
   font: "font_standart_normal"
   id: "trophy_xp_template/count"
   xanchor: XANCHOR_NONE
@@ -958,7 +958,7 @@ nodes {
 }
 nodes {
   position {
-    x: -12.0
+    x: -15.0
     y: 7.0
     z: 0.0
     w: 1.0
@@ -970,14 +970,14 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 0.4
-    y: 0.4
-    z: 0.3
+    x: 1.5
+    y: 1.5
+    z: 1.5
     w: 1.0
   }
   size {
-    x: 75.0
-    y: 40.0
+    x: 30.0
+    y: 20.0
     z: 0.0
     w: 1.0
   }
@@ -989,7 +989,7 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "0"
+  text: "999"
   font: "font_standart_normal"
   id: "trophy_resource_template/count"
   xanchor: XANCHOR_NONE
@@ -1186,7 +1186,7 @@ nodes {
 }
 nodes {
   position {
-    x: -12.0
+    x: -15.0
     y: 7.0
     z: 0.0
     w: 1.0
@@ -1198,14 +1198,14 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 0.4
-    y: 0.4
-    z: 0.3
+    x: 1.5
+    y: 1.5
+    z: 1.5
     w: 1.0
   }
   size {
-    x: 75.0
-    y: 40.0
+    x: 30.0
+    y: 20.0
     z: 0.0
     w: 1.0
   }
@@ -1217,7 +1217,7 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "0"
+  text: "999"
   font: "font_standart_normal"
   id: "trophy_trofey_template/count"
   xanchor: XANCHOR_NONE

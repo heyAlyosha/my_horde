@@ -1,7 +1,7 @@
 script: "/main/gui/virtual_gamepad/virtual_gamepad.gui_script"
 textures {
   name: "gui"
-  texture: "/main/atlases/gui.atlas"
+  texture: "/main/atlases/first_level.atlas"
 }
 background_color {
   x: 0.0
@@ -41,7 +41,7 @@ nodes {
     w: 1.0
   }
   type: TYPE_BOX
-  blend_mode: BLEND_MODE_ALPHA
+  blend_mode: BLEND_MODE_MULT
   texture: ""
   id: "gamepad"
   xanchor: XANCHOR_NONE
@@ -59,15 +59,18 @@ nodes {
   clipping_mode: CLIPPING_MODE_NONE
   clipping_visible: true
   clipping_inverted: false
-  alpha: 0.0
+  alpha: 1.0
   template_node_child: false
   size_mode: SIZE_MODE_MANUAL
   custom_type: 0
+  enabled: true
+  visible: true
+  material: ""
 }
 nodes {
   position {
-    x: -228.0
-    y: 9.0
+    x: -297.0
+    y: -75.0
     z: 0.0
     w: 1.0
   }
@@ -84,7 +87,49 @@ nodes {
     w: 1.0
   }
   size {
-    x: 100.0
+    x: 200.0
+    y: 100.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_TEMPLATE
+  id: "btn_template"
+  parent: "gamepad"
+  layer: ""
+  inherit_alpha: true
+  alpha: 1.0
+  template: "/main/gui/elements/btn_circle_up.gui"
+  template_node_child: false
+  custom_type: 0
+  enabled: true
+}
+nodes {
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 200.0
     y: 100.0
     z: 0.0
     w: 1.0
@@ -97,15 +142,15 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "gui/gamepad_btn_run"
-  id: "btn_down"
+  texture: "first_level/account_border"
+  id: "btn_template/btn"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
-  parent: "gamepad"
+  parent: "btn_template"
   layer: ""
-  inherit_alpha: false
+  inherit_alpha: true
   slice9 {
     x: 0.0
     y: 0.0
@@ -115,15 +160,18 @@ nodes {
   clipping_mode: CLIPPING_MODE_NONE
   clipping_visible: true
   clipping_inverted: false
-  alpha: 0.75
-  template_node_child: false
-  size_mode: SIZE_MODE_MANUAL
+  alpha: 1.0
+  template_node_child: true
+  size_mode: SIZE_MODE_AUTO
   custom_type: 0
+  enabled: true
+  visible: true
+  material: ""
 }
 nodes {
   position {
-    x: 210.0
-    y: 3.0
+    x: 0.0
+    y: 0.0
     z: 0.0
     w: 1.0
   }
@@ -134,14 +182,14 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 0.8
-    y: 0.8
+    x: 1.0
+    y: 1.0
     z: 1.0
     w: 1.0
   }
   size {
-    x: 80.0
-    y: 80.0
+    x: 32.0
+    y: 32.0
     z: 0.0
     w: 1.0
   }
@@ -154,14 +202,191 @@ nodes {
   type: TYPE_BOX
   blend_mode: BLEND_MODE_MULT
   texture: ""
-  id: "pad"
+  id: "btn_template/btn_icon_wrap"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_CENTER
+  adjust_mode: ADJUST_MODE_FIT
+  parent: "btn_template/btn"
+  layer: ""
+  inherit_alpha: true
+  slice9 {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 0.0
+  }
+  clipping_mode: CLIPPING_MODE_NONE
+  clipping_visible: true
+  clipping_inverted: false
+  alpha: 1.0
+  template_node_child: true
+  size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
+  enabled: true
+  visible: false
+  material: ""
+}
+nodes {
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 0.6
+    y: 0.6
+    z: 0.6
+    w: 1.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_BOX
+  blend_mode: BLEND_MODE_ALPHA
+  texture: "first_level/icon_zombie_default"
+  id: "btn_template/btn_icon"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_CENTER
+  adjust_mode: ADJUST_MODE_FIT
+  parent: "btn_template/btn_icon_wrap"
+  layer: ""
+  inherit_alpha: true
+  slice9 {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 0.0
+  }
+  clipping_mode: CLIPPING_MODE_NONE
+  clipping_visible: true
+  clipping_inverted: false
+  alpha: 1.0
+  template_node_child: true
+  size_mode: SIZE_MODE_AUTO
+  custom_type: 0
+  enabled: true
+  visible: true
+  material: ""
+}
+nodes {
+  position {
+    x: -5.0
+    y: 7.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 0.6
+    y: 0.6
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_BOX
+  blend_mode: BLEND_MODE_ALPHA
+  texture: "first_level/icon_up_arrow"
+  id: "btn_template/up"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_CENTER
+  adjust_mode: ADJUST_MODE_FIT
+  parent: "btn_template/btn_icon_wrap"
+  layer: ""
+  inherit_alpha: true
+  slice9 {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 0.0
+  }
+  clipping_mode: CLIPPING_MODE_NONE
+  clipping_visible: true
+  clipping_inverted: false
+  alpha: 1.0
+  template_node_child: true
+  size_mode: SIZE_MODE_AUTO
+  custom_type: 0
+  enabled: true
+  visible: true
+  material: ""
+}
+nodes {
+  position {
+    x: 114.0
+    y: -66.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 50.0
+    y: 50.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_BOX
+  blend_mode: BLEND_MODE_ALPHA
+  texture: "gui/stick_bg"
+  id: "stick_wrap"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
   parent: "gamepad"
   layer: ""
-  inherit_alpha: false
+  inherit_alpha: true
   slice9 {
     x: 0.0
     y: 0.0
@@ -175,10 +400,13 @@ nodes {
   template_node_child: false
   size_mode: SIZE_MODE_MANUAL
   custom_type: 0
+  enabled: true
+  visible: true
+  material: ""
 }
 nodes {
   position {
-    x: -80.0
+    x: 0.0
     y: 0.0
     z: 0.0
     w: 1.0
@@ -196,7 +424,7 @@ nodes {
     w: 1.0
   }
   size {
-    x: 100.0
+    x: 200.0
     y: 100.0
     z: 0.0
     w: 1.0
@@ -207,190 +435,33 @@ nodes {
     z: 1.0
     w: 1.0
   }
-  type: TYPE_PIE
+  type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "gui/gamepad_btn_run"
-  id: "arrow_left"
+  texture: "gui/stick_active"
+  id: "stick"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
-  parent: "pad"
+  parent: "stick_wrap"
   layer: ""
   inherit_alpha: true
-  outerBounds: PIEBOUNDS_ELLIPSE
-  innerRadius: 0.0
-  perimeterVertices: 25
-  pieFillAngle: 360.0
+  slice9 {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 0.0
+  }
   clipping_mode: CLIPPING_MODE_NONE
   clipping_visible: true
   clipping_inverted: false
   alpha: 1.0
   template_node_child: false
-  size_mode: SIZE_MODE_MANUAL
+  size_mode: SIZE_MODE_AUTO
   custom_type: 0
-}
-nodes {
-  position {
-    x: 0.0
-    y: 80.0
-    z: 0.0
-    w: 1.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  size {
-    x: 100.0
-    y: 100.0
-    z: 0.0
-    w: 1.0
-  }
-  color {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  type: TYPE_PIE
-  blend_mode: BLEND_MODE_ALPHA
-  texture: "gui/gamepad_btn_run"
-  id: "arrow_up"
-  xanchor: XANCHOR_NONE
-  yanchor: YANCHOR_NONE
-  pivot: PIVOT_CENTER
-  adjust_mode: ADJUST_MODE_FIT
-  parent: "pad"
-  layer: ""
-  inherit_alpha: true
-  outerBounds: PIEBOUNDS_ELLIPSE
-  innerRadius: 0.0
-  perimeterVertices: 25
-  pieFillAngle: 360.0
-  clipping_mode: CLIPPING_MODE_NONE
-  clipping_visible: true
-  clipping_inverted: false
-  alpha: 1.0
-  template_node_child: false
-  size_mode: SIZE_MODE_MANUAL
-  custom_type: 0
-}
-nodes {
-  position {
-    x: 78.75
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  size {
-    x: 100.0
-    y: 100.0
-    z: 0.0
-    w: 1.0
-  }
-  color {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  type: TYPE_PIE
-  blend_mode: BLEND_MODE_ALPHA
-  texture: "gui/gamepad_btn_run"
-  id: "arrow_right"
-  xanchor: XANCHOR_NONE
-  yanchor: YANCHOR_NONE
-  pivot: PIVOT_CENTER
-  adjust_mode: ADJUST_MODE_FIT
-  parent: "pad"
-  layer: ""
-  inherit_alpha: true
-  outerBounds: PIEBOUNDS_ELLIPSE
-  innerRadius: 0.0
-  perimeterVertices: 25
-  pieFillAngle: 360.0
-  clipping_mode: CLIPPING_MODE_NONE
-  clipping_visible: true
-  clipping_inverted: false
-  alpha: 1.0
-  template_node_child: false
-  size_mode: SIZE_MODE_MANUAL
-  custom_type: 0
-}
-nodes {
-  position {
-    x: 0.0
-    y: -80.0
-    z: 0.0
-    w: 1.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  size {
-    x: 100.0
-    y: 100.0
-    z: 0.0
-    w: 1.0
-  }
-  color {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  type: TYPE_PIE
-  blend_mode: BLEND_MODE_ALPHA
-  texture: "gui/gamepad_btn_run"
-  id: "arrow_down"
-  xanchor: XANCHOR_NONE
-  yanchor: YANCHOR_NONE
-  pivot: PIVOT_CENTER
-  adjust_mode: ADJUST_MODE_FIT
-  parent: "pad"
-  layer: ""
-  inherit_alpha: true
-  outerBounds: PIEBOUNDS_ELLIPSE
-  innerRadius: 0.0
-  perimeterVertices: 25
-  pieFillAngle: 360.0
-  clipping_mode: CLIPPING_MODE_NONE
-  clipping_visible: true
-  clipping_inverted: false
-  alpha: 1.0
-  template_node_child: false
-  size_mode: SIZE_MODE_MANUAL
-  custom_type: 0
+  enabled: true
+  visible: true
+  material: ""
 }
 material: "/builtins/materials/gui.material"
 layouts {
@@ -427,7 +498,7 @@ layouts {
       w: 1.0
     }
     type: TYPE_BOX
-    blend_mode: BLEND_MODE_ALPHA
+    blend_mode: BLEND_MODE_MULT
     texture: ""
     id: "gamepad"
     xanchor: XANCHOR_NONE
@@ -445,7 +516,7 @@ layouts {
     clipping_mode: CLIPPING_MODE_NONE
     clipping_visible: true
     clipping_inverted: false
-    alpha: 0.0
+    alpha: 1.0
     overridden_fields: 1
     overridden_fields: 3
     overridden_fields: 4
@@ -453,120 +524,9 @@ layouts {
     template_node_child: false
     size_mode: SIZE_MODE_MANUAL
     custom_type: 0
-  }
-  nodes {
-    position {
-      x: -98.0
-      y: 1.0
-      z: 0.0
-      w: 1.0
-    }
-    rotation {
-      x: 0.0
-      y: 0.0
-      z: 0.0
-      w: 1.0
-    }
-    scale {
-      x: 1.0
-      y: 1.0
-      z: 1.0
-      w: 1.0
-    }
-    size {
-      x: 100.0
-      y: 100.0
-      z: 0.0
-      w: 1.0
-    }
-    color {
-      x: 1.0
-      y: 1.0
-      z: 1.0
-      w: 1.0
-    }
-    type: TYPE_BOX
-    blend_mode: BLEND_MODE_ALPHA
-    texture: "gui/gamepad_btn_run"
-    id: "btn_down"
-    xanchor: XANCHOR_NONE
-    yanchor: YANCHOR_NONE
-    pivot: PIVOT_CENTER
-    adjust_mode: ADJUST_MODE_FIT
-    parent: "gamepad"
-    layer: ""
-    inherit_alpha: false
-    slice9 {
-      x: 0.0
-      y: 0.0
-      z: 0.0
-      w: 0.0
-    }
-    clipping_mode: CLIPPING_MODE_NONE
-    clipping_visible: true
-    clipping_inverted: false
-    alpha: 0.75
-    overridden_fields: 1
-    template_node_child: false
-    size_mode: SIZE_MODE_MANUAL
-    custom_type: 0
-  }
-  nodes {
-    position {
-      x: 88.0
-      y: 0.0
-      z: 0.0
-      w: 1.0
-    }
-    rotation {
-      x: 0.0
-      y: 0.0
-      z: 0.0
-      w: 1.0
-    }
-    scale {
-      x: 0.8
-      y: 0.8
-      z: 1.0
-      w: 1.0
-    }
-    size {
-      x: 80.0
-      y: 80.0
-      z: 0.0
-      w: 1.0
-    }
-    color {
-      x: 1.0
-      y: 1.0
-      z: 1.0
-      w: 1.0
-    }
-    type: TYPE_BOX
-    blend_mode: BLEND_MODE_MULT
-    texture: ""
-    id: "pad"
-    xanchor: XANCHOR_NONE
-    yanchor: YANCHOR_NONE
-    pivot: PIVOT_CENTER
-    adjust_mode: ADJUST_MODE_FIT
-    parent: "gamepad"
-    layer: ""
-    inherit_alpha: false
-    slice9 {
-      x: 0.0
-      y: 0.0
-      z: 0.0
-      w: 0.0
-    }
-    clipping_mode: CLIPPING_MODE_NONE
-    clipping_visible: true
-    clipping_inverted: false
-    alpha: 1.0
-    overridden_fields: 1
-    template_node_child: false
-    size_mode: SIZE_MODE_MANUAL
-    custom_type: 0
+    enabled: true
+    visible: true
+    material: ""
   }
 }
 layouts {
