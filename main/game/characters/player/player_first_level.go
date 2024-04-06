@@ -54,8 +54,8 @@ components {
   }
 }
 components {
-  id: "inventary_wrap"
-  component: "/main/gui/inventary_wrap/inventary_wrap.gui"
+  id: "catalog_characteristic"
+  component: "/main/gui/catalog_characteristic/catalog_characteristic.gui"
   position {
     x: 0.0
     y: 0.0
