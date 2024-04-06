@@ -12,12 +12,8 @@ fonts {
   font: "/assets/fonts/font_standart_normal.font"
 }
 textures {
-  name: "gui"
-  texture: "/main/atlases/gui.atlas"
-}
-textures {
-  name: "main"
-  texture: "/main/main.atlas"
+  name: "first_level"
+  texture: "/main/atlases/first_level.atlas"
 }
 background_color {
   x: 0.0
@@ -203,7 +199,7 @@ nodes {
 nodes {
   position {
     x: 0.0
-    y: -13.0
+    y: -20.0
     z: 0.0
     w: 1.0
   }
@@ -349,7 +345,7 @@ nodes {
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 15.0
@@ -450,7 +446,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template/zombie-template-3"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -509,7 +505,7 @@ nodes {
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template/zombie-template-3/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -568,7 +564,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template/zombie-template-3/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -669,7 +665,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template/zombie-template-1"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -728,7 +724,7 @@ nodes {
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template/zombie-template-1/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -787,7 +783,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template/zombie-template-1/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -888,7 +884,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template/zombie-template-2"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -947,7 +943,7 @@ nodes {
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template/zombie-template-2/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -1006,7 +1002,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template/zombie-template-2/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -1027,8 +1023,8 @@ nodes {
 }
 nodes {
   position {
-    x: -10.0
-    y: -24.0
+    x: -12.0
+    y: -18.0
     z: 0.0
     w: 1.0
   }
@@ -1107,7 +1103,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template/zombie-template-4"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -1166,7 +1162,7 @@ nodes {
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template/zombie-template-4/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -1225,7 +1221,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template/zombie-template-4/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -1246,8 +1242,8 @@ nodes {
 }
 nodes {
   position {
-    x: 12.0
-    y: -25.0
+    x: 13.0
+    y: -18.0
     z: 0.0
     w: 1.0
   }
@@ -1326,7 +1322,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template/zombie-template-6"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -1385,7 +1381,7 @@ nodes {
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template/zombie-template-6/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -1444,7 +1440,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template/zombie-template-6/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -1545,7 +1541,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template/zombie-template-5"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -1604,7 +1600,7 @@ nodes {
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template/zombie-template-5/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -1663,7 +1659,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template/zombie-template-5/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -1764,7 +1760,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template/zombie-template-main"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -1823,7 +1819,7 @@ nodes {
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template/zombie-template-main/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -1882,7 +1878,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template/zombie-template-main/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -1983,7 +1979,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template/zombie-template-"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -2042,7 +2038,7 @@ nodes {
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template/zombie-template-/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -2101,7 +2097,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template/zombie-template-/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -2202,7 +2198,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template/zombie-template-7"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -2261,7 +2257,7 @@ nodes {
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template/zombie-template-7/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -2320,7 +2316,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template/zombie-template-7/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -2421,7 +2417,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template/zombie-template-8"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -2480,7 +2476,7 @@ nodes {
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template/zombie-template-8/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -2539,7 +2535,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template/zombie-template-8/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -2640,7 +2636,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template/zombie-template-9"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -2699,7 +2695,7 @@ nodes {
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template/zombie-template-9/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -2758,7 +2754,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template/zombie-template-9/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -2859,7 +2855,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template/zombie-template-10"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -2918,7 +2914,7 @@ nodes {
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template/zombie-template-10/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -2977,7 +2973,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template/zombie-template-10/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -2998,8 +2994,8 @@ nodes {
 }
 nodes {
   position {
-    x: 21.0
-    y: -37.0
+    x: 22.0
+    y: -31.0
     z: 0.0
     w: 1.0
   }
@@ -3078,7 +3074,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template/zombie-template-11"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -3137,7 +3133,7 @@ nodes {
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template/zombie-template-11/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -3196,7 +3192,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template/zombie-template-11/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -3217,8 +3213,8 @@ nodes {
 }
 nodes {
   position {
-    x: 2.0
-    y: -42.0
+    x: 1.0
+    y: -34.0
     z: 0.0
     w: 1.0
   }
@@ -3297,7 +3293,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template/zombie-template-12"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -3356,7 +3352,7 @@ nodes {
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template/zombie-template-12/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -3415,7 +3411,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template/zombie-template-12/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -3437,7 +3433,7 @@ nodes {
 nodes {
   position {
     x: -22.0
-    y: -35.0
+    y: -30.0
     z: 0.0
     w: 1.0
   }
@@ -3516,7 +3512,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template/zombie-template-13"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -3575,7 +3571,7 @@ nodes {
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template/zombie-template-13/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -3634,7 +3630,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template/zombie-template-13/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -3735,7 +3731,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template/zombie-template-14"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -3794,7 +3790,7 @@ nodes {
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template/zombie-template-14/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -3853,7 +3849,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template/zombie-template-14/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -3954,7 +3950,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template/zombie-template-15"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -4013,7 +4009,7 @@ nodes {
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template/zombie-template-15/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -4072,7 +4068,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template/zombie-template-15/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -4145,7 +4141,7 @@ nodes {
   adjust_mode: ADJUST_MODE_FIT
   line_break: false
   parent: "item_template/main-preview"
-  layer: ""
+  layer: "text"
   inherit_alpha: true
   alpha: 1.0
   outline_alpha: 1.0
@@ -4153,6 +4149,132 @@ nodes {
   template_node_child: true
   text_leading: 1.0
   text_tracking: 0.0
+  custom_type: 0
+  enabled: true
+  visible: true
+  material: ""
+}
+nodes {
+  position {
+    x: 0.0
+    y: -39.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 0.75
+    w: 1.0
+  }
+  size {
+    x: 20.0
+    y: 10.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_TEXT
+  blend_mode: BLEND_MODE_ALPHA
+  text: "999"
+  font: "font_standart_normal"
+  id: "item_template/price"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_E
+  outline {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  shadow {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  adjust_mode: ADJUST_MODE_FIT
+  line_break: false
+  parent: "item_template/main-preview"
+  layer: "text"
+  inherit_alpha: true
+  alpha: 1.0
+  outline_alpha: 1.0
+  shadow_alpha: 1.0
+  template_node_child: true
+  text_leading: 1.0
+  text_tracking: 0.0
+  custom_type: 0
+  enabled: true
+  visible: true
+  material: ""
+}
+nodes {
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 0.6
+    y: 0.6
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_BOX
+  blend_mode: BLEND_MODE_ALPHA
+  texture: "first_level/interface-icon-gold"
+  id: "item_template/price_icon"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_W
+  adjust_mode: ADJUST_MODE_FIT
+  parent: "item_template/price"
+  layer: "box"
+  inherit_alpha: true
+  slice9 {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 0.0
+  }
+  clipping_mode: CLIPPING_MODE_NONE
+  clipping_visible: true
+  clipping_inverted: false
+  alpha: 1.0
+  template_node_child: true
+  size_mode: SIZE_MODE_AUTO
   custom_type: 0
   enabled: true
   visible: true
@@ -4240,7 +4362,7 @@ nodes {
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template1"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 15.0
@@ -4341,7 +4463,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template1/zombie-template-3"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -4400,7 +4522,7 @@ nodes {
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template1/zombie-template-3/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -4459,7 +4581,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template1/zombie-template-3/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -4560,7 +4682,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template1/zombie-template-1"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -4619,7 +4741,7 @@ nodes {
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template1/zombie-template-1/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -4678,7 +4800,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template1/zombie-template-1/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -4779,7 +4901,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template1/zombie-template-2"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -4838,7 +4960,7 @@ nodes {
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template1/zombie-template-2/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -4897,7 +5019,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template1/zombie-template-2/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -4918,8 +5040,8 @@ nodes {
 }
 nodes {
   position {
-    x: -10.0
-    y: -24.0
+    x: -12.0
+    y: -18.0
     z: 0.0
     w: 1.0
   }
@@ -4998,7 +5120,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template1/zombie-template-4"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -5057,7 +5179,7 @@ nodes {
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template1/zombie-template-4/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -5116,7 +5238,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template1/zombie-template-4/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -5137,8 +5259,8 @@ nodes {
 }
 nodes {
   position {
-    x: 12.0
-    y: -25.0
+    x: 13.0
+    y: -18.0
     z: 0.0
     w: 1.0
   }
@@ -5217,7 +5339,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template1/zombie-template-6"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -5276,7 +5398,7 @@ nodes {
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template1/zombie-template-6/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -5335,7 +5457,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template1/zombie-template-6/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -5436,7 +5558,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template1/zombie-template-5"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -5495,7 +5617,7 @@ nodes {
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template1/zombie-template-5/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -5554,7 +5676,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template1/zombie-template-5/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -5655,7 +5777,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template1/zombie-template-main"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -5714,7 +5836,7 @@ nodes {
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template1/zombie-template-main/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -5773,7 +5895,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template1/zombie-template-main/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -5874,7 +5996,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template1/zombie-template-"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -5933,7 +6055,7 @@ nodes {
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template1/zombie-template-/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -5992,7 +6114,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template1/zombie-template-/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -6093,7 +6215,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template1/zombie-template-7"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -6152,7 +6274,7 @@ nodes {
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template1/zombie-template-7/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -6211,7 +6333,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template1/zombie-template-7/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -6312,7 +6434,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template1/zombie-template-8"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -6371,7 +6493,7 @@ nodes {
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template1/zombie-template-8/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -6430,7 +6552,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template1/zombie-template-8/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -6531,7 +6653,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template1/zombie-template-9"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -6590,7 +6712,7 @@ nodes {
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template1/zombie-template-9/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -6649,7 +6771,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template1/zombie-template-9/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -6750,7 +6872,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template1/zombie-template-10"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -6809,7 +6931,7 @@ nodes {
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template1/zombie-template-10/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -6868,7 +6990,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template1/zombie-template-10/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -6889,8 +7011,8 @@ nodes {
 }
 nodes {
   position {
-    x: 21.0
-    y: -37.0
+    x: 22.0
+    y: -31.0
     z: 0.0
     w: 1.0
   }
@@ -6969,7 +7091,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template1/zombie-template-11"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -7028,7 +7150,7 @@ nodes {
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template1/zombie-template-11/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -7087,7 +7209,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template1/zombie-template-11/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -7108,8 +7230,8 @@ nodes {
 }
 nodes {
   position {
-    x: 2.0
-    y: -42.0
+    x: 1.0
+    y: -34.0
     z: 0.0
     w: 1.0
   }
@@ -7188,7 +7310,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template1/zombie-template-12"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -7247,7 +7369,7 @@ nodes {
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template1/zombie-template-12/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -7306,7 +7428,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template1/zombie-template-12/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -7328,7 +7450,7 @@ nodes {
 nodes {
   position {
     x: -22.0
-    y: -35.0
+    y: -30.0
     z: 0.0
     w: 1.0
   }
@@ -7407,7 +7529,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template1/zombie-template-13"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -7466,7 +7588,7 @@ nodes {
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template1/zombie-template-13/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -7525,7 +7647,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template1/zombie-template-13/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -7626,7 +7748,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template1/zombie-template-14"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -7685,7 +7807,7 @@ nodes {
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template1/zombie-template-14/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -7744,7 +7866,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template1/zombie-template-14/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -7845,7 +7967,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template1/zombie-template-15"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -7904,7 +8026,7 @@ nodes {
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template1/zombie-template-15/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -7963,7 +8085,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template1/zombie-template-15/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -8036,7 +8158,7 @@ nodes {
   adjust_mode: ADJUST_MODE_FIT
   line_break: false
   parent: "item_template1/main-preview"
-  layer: ""
+  layer: "text"
   inherit_alpha: true
   alpha: 1.0
   outline_alpha: 1.0
@@ -8044,6 +8166,132 @@ nodes {
   template_node_child: true
   text_leading: 1.0
   text_tracking: 0.0
+  custom_type: 0
+  enabled: true
+  visible: true
+  material: ""
+}
+nodes {
+  position {
+    x: 0.0
+    y: -39.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 0.75
+    w: 1.0
+  }
+  size {
+    x: 20.0
+    y: 10.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_TEXT
+  blend_mode: BLEND_MODE_ALPHA
+  text: "999"
+  font: "font_standart_normal"
+  id: "item_template1/price"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_E
+  outline {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  shadow {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  adjust_mode: ADJUST_MODE_FIT
+  line_break: false
+  parent: "item_template1/main-preview"
+  layer: "text"
+  inherit_alpha: true
+  alpha: 1.0
+  outline_alpha: 1.0
+  shadow_alpha: 1.0
+  template_node_child: true
+  text_leading: 1.0
+  text_tracking: 0.0
+  custom_type: 0
+  enabled: true
+  visible: true
+  material: ""
+}
+nodes {
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 0.6
+    y: 0.6
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_BOX
+  blend_mode: BLEND_MODE_ALPHA
+  texture: "first_level/interface-icon-gold"
+  id: "item_template1/price_icon"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_W
+  adjust_mode: ADJUST_MODE_FIT
+  parent: "item_template1/price"
+  layer: "box"
+  inherit_alpha: true
+  slice9 {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 0.0
+  }
+  clipping_mode: CLIPPING_MODE_NONE
+  clipping_visible: true
+  clipping_inverted: false
+  alpha: 1.0
+  template_node_child: true
+  size_mode: SIZE_MODE_AUTO
   custom_type: 0
   enabled: true
   visible: true
@@ -8131,7 +8379,7 @@ nodes {
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template2"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 15.0
@@ -8232,7 +8480,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template2/zombie-template-3"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -8291,7 +8539,7 @@ nodes {
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template2/zombie-template-3/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -8350,7 +8598,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template2/zombie-template-3/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -8451,7 +8699,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template2/zombie-template-1"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -8510,7 +8758,7 @@ nodes {
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template2/zombie-template-1/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -8569,7 +8817,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template2/zombie-template-1/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -8670,7 +8918,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template2/zombie-template-2"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -8729,7 +8977,7 @@ nodes {
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template2/zombie-template-2/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -8788,7 +9036,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template2/zombie-template-2/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -8809,8 +9057,8 @@ nodes {
 }
 nodes {
   position {
-    x: -10.0
-    y: -24.0
+    x: -12.0
+    y: -18.0
     z: 0.0
     w: 1.0
   }
@@ -8889,7 +9137,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template2/zombie-template-4"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -8948,7 +9196,7 @@ nodes {
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template2/zombie-template-4/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -9007,7 +9255,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template2/zombie-template-4/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -9028,8 +9276,8 @@ nodes {
 }
 nodes {
   position {
-    x: 12.0
-    y: -25.0
+    x: 13.0
+    y: -18.0
     z: 0.0
     w: 1.0
   }
@@ -9108,7 +9356,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template2/zombie-template-6"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -9167,7 +9415,7 @@ nodes {
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template2/zombie-template-6/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -9226,7 +9474,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template2/zombie-template-6/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -9327,7 +9575,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template2/zombie-template-5"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -9386,7 +9634,7 @@ nodes {
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template2/zombie-template-5/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -9445,7 +9693,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template2/zombie-template-5/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -9546,7 +9794,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template2/zombie-template-main"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -9605,7 +9853,7 @@ nodes {
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template2/zombie-template-main/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -9664,7 +9912,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template2/zombie-template-main/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -9765,7 +10013,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template2/zombie-template-"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -9824,7 +10072,7 @@ nodes {
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template2/zombie-template-/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -9883,7 +10131,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template2/zombie-template-/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -9984,7 +10232,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template2/zombie-template-7"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -10043,7 +10291,7 @@ nodes {
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template2/zombie-template-7/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -10102,7 +10350,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template2/zombie-template-7/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -10203,7 +10451,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template2/zombie-template-8"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -10262,7 +10510,7 @@ nodes {
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template2/zombie-template-8/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -10321,7 +10569,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template2/zombie-template-8/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -10422,7 +10670,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template2/zombie-template-9"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -10481,7 +10729,7 @@ nodes {
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template2/zombie-template-9/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -10540,7 +10788,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template2/zombie-template-9/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -10641,7 +10889,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template2/zombie-template-10"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -10700,7 +10948,7 @@ nodes {
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template2/zombie-template-10/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -10759,7 +11007,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template2/zombie-template-10/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -10780,8 +11028,8 @@ nodes {
 }
 nodes {
   position {
-    x: 21.0
-    y: -37.0
+    x: 22.0
+    y: -31.0
     z: 0.0
     w: 1.0
   }
@@ -10860,7 +11108,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template2/zombie-template-11"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -10919,7 +11167,7 @@ nodes {
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template2/zombie-template-11/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -10978,7 +11226,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template2/zombie-template-11/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -10999,8 +11247,8 @@ nodes {
 }
 nodes {
   position {
-    x: 2.0
-    y: -42.0
+    x: 1.0
+    y: -34.0
     z: 0.0
     w: 1.0
   }
@@ -11079,7 +11327,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template2/zombie-template-12"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -11138,7 +11386,7 @@ nodes {
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template2/zombie-template-12/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -11197,7 +11445,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template2/zombie-template-12/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -11219,7 +11467,7 @@ nodes {
 nodes {
   position {
     x: -22.0
-    y: -35.0
+    y: -30.0
     z: 0.0
     w: 1.0
   }
@@ -11298,7 +11546,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template2/zombie-template-13"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -11357,7 +11605,7 @@ nodes {
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template2/zombie-template-13/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -11416,7 +11664,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template2/zombie-template-13/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -11517,7 +11765,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template2/zombie-template-14"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -11576,7 +11824,7 @@ nodes {
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template2/zombie-template-14/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -11635,7 +11883,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template2/zombie-template-14/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -11736,7 +11984,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template2/zombie-template-15"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -11795,7 +12043,7 @@ nodes {
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template2/zombie-template-15/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -11854,7 +12102,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template2/zombie-template-15/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -11927,7 +12175,7 @@ nodes {
   adjust_mode: ADJUST_MODE_FIT
   line_break: false
   parent: "item_template2/main-preview"
-  layer: ""
+  layer: "text"
   inherit_alpha: true
   alpha: 1.0
   outline_alpha: 1.0
@@ -11935,6 +12183,132 @@ nodes {
   template_node_child: true
   text_leading: 1.0
   text_tracking: 0.0
+  custom_type: 0
+  enabled: true
+  visible: true
+  material: ""
+}
+nodes {
+  position {
+    x: 0.0
+    y: -39.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 0.75
+    w: 1.0
+  }
+  size {
+    x: 20.0
+    y: 10.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_TEXT
+  blend_mode: BLEND_MODE_ALPHA
+  text: "999"
+  font: "font_standart_normal"
+  id: "item_template2/price"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_E
+  outline {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  shadow {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  adjust_mode: ADJUST_MODE_FIT
+  line_break: false
+  parent: "item_template2/main-preview"
+  layer: "text"
+  inherit_alpha: true
+  alpha: 1.0
+  outline_alpha: 1.0
+  shadow_alpha: 1.0
+  template_node_child: true
+  text_leading: 1.0
+  text_tracking: 0.0
+  custom_type: 0
+  enabled: true
+  visible: true
+  material: ""
+}
+nodes {
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 0.6
+    y: 0.6
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_BOX
+  blend_mode: BLEND_MODE_ALPHA
+  texture: "first_level/interface-icon-gold"
+  id: "item_template2/price_icon"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_W
+  adjust_mode: ADJUST_MODE_FIT
+  parent: "item_template2/price"
+  layer: "box"
+  inherit_alpha: true
+  slice9 {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 0.0
+  }
+  clipping_mode: CLIPPING_MODE_NONE
+  clipping_visible: true
+  clipping_inverted: false
+  alpha: 1.0
+  template_node_child: true
+  size_mode: SIZE_MODE_AUTO
   custom_type: 0
   enabled: true
   visible: true
@@ -12022,7 +12396,7 @@ nodes {
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template3"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 15.0
@@ -12123,7 +12497,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template3/zombie-template-3"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -12182,7 +12556,7 @@ nodes {
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template3/zombie-template-3/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -12241,7 +12615,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template3/zombie-template-3/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -12342,7 +12716,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template3/zombie-template-1"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -12401,7 +12775,7 @@ nodes {
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template3/zombie-template-1/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -12460,7 +12834,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template3/zombie-template-1/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -12561,7 +12935,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template3/zombie-template-2"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -12620,7 +12994,7 @@ nodes {
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template3/zombie-template-2/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -12679,7 +13053,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template3/zombie-template-2/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -12700,8 +13074,8 @@ nodes {
 }
 nodes {
   position {
-    x: -10.0
-    y: -24.0
+    x: -12.0
+    y: -18.0
     z: 0.0
     w: 1.0
   }
@@ -12780,7 +13154,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template3/zombie-template-4"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -12839,7 +13213,7 @@ nodes {
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template3/zombie-template-4/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -12898,7 +13272,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template3/zombie-template-4/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -12919,8 +13293,8 @@ nodes {
 }
 nodes {
   position {
-    x: 12.0
-    y: -25.0
+    x: 13.0
+    y: -18.0
     z: 0.0
     w: 1.0
   }
@@ -12999,7 +13373,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template3/zombie-template-6"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -13058,7 +13432,7 @@ nodes {
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template3/zombie-template-6/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -13117,7 +13491,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template3/zombie-template-6/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -13218,7 +13592,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template3/zombie-template-5"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -13277,7 +13651,7 @@ nodes {
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template3/zombie-template-5/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -13336,7 +13710,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template3/zombie-template-5/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -13437,7 +13811,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template3/zombie-template-main"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -13496,7 +13870,7 @@ nodes {
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template3/zombie-template-main/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -13555,7 +13929,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template3/zombie-template-main/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -13656,7 +14030,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template3/zombie-template-"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -13715,7 +14089,7 @@ nodes {
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template3/zombie-template-/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -13774,7 +14148,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template3/zombie-template-/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -13875,7 +14249,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template3/zombie-template-7"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -13934,7 +14308,7 @@ nodes {
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template3/zombie-template-7/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -13993,7 +14367,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template3/zombie-template-7/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -14094,7 +14468,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template3/zombie-template-8"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -14153,7 +14527,7 @@ nodes {
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template3/zombie-template-8/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -14212,7 +14586,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template3/zombie-template-8/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -14313,7 +14687,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template3/zombie-template-9"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -14372,7 +14746,7 @@ nodes {
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template3/zombie-template-9/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -14431,7 +14805,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template3/zombie-template-9/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -14532,7 +14906,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template3/zombie-template-10"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -14591,7 +14965,7 @@ nodes {
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template3/zombie-template-10/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -14650,7 +15024,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template3/zombie-template-10/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -14671,8 +15045,8 @@ nodes {
 }
 nodes {
   position {
-    x: 21.0
-    y: -37.0
+    x: 22.0
+    y: -31.0
     z: 0.0
     w: 1.0
   }
@@ -14751,7 +15125,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template3/zombie-template-11"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -14810,7 +15184,7 @@ nodes {
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template3/zombie-template-11/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -14869,7 +15243,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template3/zombie-template-11/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -14890,8 +15264,8 @@ nodes {
 }
 nodes {
   position {
-    x: 2.0
-    y: -42.0
+    x: 1.0
+    y: -34.0
     z: 0.0
     w: 1.0
   }
@@ -14970,7 +15344,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template3/zombie-template-12"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -15029,7 +15403,7 @@ nodes {
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template3/zombie-template-12/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -15088,7 +15462,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template3/zombie-template-12/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -15110,7 +15484,7 @@ nodes {
 nodes {
   position {
     x: -22.0
-    y: -35.0
+    y: -30.0
     z: 0.0
     w: 1.0
   }
@@ -15189,7 +15563,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template3/zombie-template-13"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -15248,7 +15622,7 @@ nodes {
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template3/zombie-template-13/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -15307,7 +15681,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template3/zombie-template-13/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -15408,7 +15782,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template3/zombie-template-14"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -15467,7 +15841,7 @@ nodes {
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template3/zombie-template-14/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -15526,7 +15900,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template3/zombie-template-14/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -15627,7 +16001,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template3/zombie-template-15"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -15686,7 +16060,7 @@ nodes {
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template3/zombie-template-15/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -15745,7 +16119,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template3/zombie-template-15/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -15818,7 +16192,7 @@ nodes {
   adjust_mode: ADJUST_MODE_FIT
   line_break: false
   parent: "item_template3/main-preview"
-  layer: ""
+  layer: "text"
   inherit_alpha: true
   alpha: 1.0
   outline_alpha: 1.0
@@ -15826,6 +16200,132 @@ nodes {
   template_node_child: true
   text_leading: 1.0
   text_tracking: 0.0
+  custom_type: 0
+  enabled: true
+  visible: true
+  material: ""
+}
+nodes {
+  position {
+    x: 0.0
+    y: -39.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 0.75
+    w: 1.0
+  }
+  size {
+    x: 20.0
+    y: 10.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_TEXT
+  blend_mode: BLEND_MODE_ALPHA
+  text: "999"
+  font: "font_standart_normal"
+  id: "item_template3/price"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_E
+  outline {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  shadow {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  adjust_mode: ADJUST_MODE_FIT
+  line_break: false
+  parent: "item_template3/main-preview"
+  layer: "text"
+  inherit_alpha: true
+  alpha: 1.0
+  outline_alpha: 1.0
+  shadow_alpha: 1.0
+  template_node_child: true
+  text_leading: 1.0
+  text_tracking: 0.0
+  custom_type: 0
+  enabled: true
+  visible: true
+  material: ""
+}
+nodes {
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 0.6
+    y: 0.6
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_BOX
+  blend_mode: BLEND_MODE_ALPHA
+  texture: "first_level/interface-icon-gold"
+  id: "item_template3/price_icon"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_W
+  adjust_mode: ADJUST_MODE_FIT
+  parent: "item_template3/price"
+  layer: "box"
+  inherit_alpha: true
+  slice9 {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 0.0
+  }
+  clipping_mode: CLIPPING_MODE_NONE
+  clipping_visible: true
+  clipping_inverted: false
+  alpha: 1.0
+  template_node_child: true
+  size_mode: SIZE_MODE_AUTO
   custom_type: 0
   enabled: true
   visible: true
@@ -15913,7 +16413,7 @@ nodes {
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template4"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 15.0
@@ -16014,7 +16514,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template4/zombie-template-3"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -16073,7 +16573,7 @@ nodes {
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template4/zombie-template-3/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -16132,7 +16632,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template4/zombie-template-3/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -16233,7 +16733,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template4/zombie-template-1"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -16292,7 +16792,7 @@ nodes {
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template4/zombie-template-1/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -16351,7 +16851,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template4/zombie-template-1/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -16452,7 +16952,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template4/zombie-template-2"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -16511,7 +17011,7 @@ nodes {
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template4/zombie-template-2/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -16570,7 +17070,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template4/zombie-template-2/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -16591,8 +17091,8 @@ nodes {
 }
 nodes {
   position {
-    x: -10.0
-    y: -24.0
+    x: -12.0
+    y: -18.0
     z: 0.0
     w: 1.0
   }
@@ -16671,7 +17171,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template4/zombie-template-4"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -16730,7 +17230,7 @@ nodes {
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template4/zombie-template-4/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -16789,7 +17289,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template4/zombie-template-4/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -16810,8 +17310,8 @@ nodes {
 }
 nodes {
   position {
-    x: 12.0
-    y: -25.0
+    x: 13.0
+    y: -18.0
     z: 0.0
     w: 1.0
   }
@@ -16890,7 +17390,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template4/zombie-template-6"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -16949,7 +17449,7 @@ nodes {
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template4/zombie-template-6/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -17008,7 +17508,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template4/zombie-template-6/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -17109,7 +17609,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template4/zombie-template-5"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -17168,7 +17668,7 @@ nodes {
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template4/zombie-template-5/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -17227,7 +17727,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template4/zombie-template-5/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -17328,7 +17828,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template4/zombie-template-main"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -17387,7 +17887,7 @@ nodes {
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template4/zombie-template-main/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -17446,7 +17946,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template4/zombie-template-main/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -17547,7 +18047,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template4/zombie-template-"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -17606,7 +18106,7 @@ nodes {
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template4/zombie-template-/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -17665,7 +18165,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template4/zombie-template-/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -17766,7 +18266,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template4/zombie-template-7"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -17825,7 +18325,7 @@ nodes {
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template4/zombie-template-7/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -17884,7 +18384,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template4/zombie-template-7/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -17985,7 +18485,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template4/zombie-template-8"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -18044,7 +18544,7 @@ nodes {
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template4/zombie-template-8/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -18103,7 +18603,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template4/zombie-template-8/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -18204,7 +18704,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template4/zombie-template-9"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -18263,7 +18763,7 @@ nodes {
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template4/zombie-template-9/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -18322,7 +18822,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template4/zombie-template-9/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -18423,7 +18923,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template4/zombie-template-10"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -18482,7 +18982,7 @@ nodes {
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template4/zombie-template-10/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -18541,7 +19041,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template4/zombie-template-10/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -18562,8 +19062,8 @@ nodes {
 }
 nodes {
   position {
-    x: 21.0
-    y: -37.0
+    x: 22.0
+    y: -31.0
     z: 0.0
     w: 1.0
   }
@@ -18642,7 +19142,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template4/zombie-template-11"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -18701,7 +19201,7 @@ nodes {
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template4/zombie-template-11/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -18760,7 +19260,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template4/zombie-template-11/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -18781,8 +19281,8 @@ nodes {
 }
 nodes {
   position {
-    x: 2.0
-    y: -42.0
+    x: 1.0
+    y: -34.0
     z: 0.0
     w: 1.0
   }
@@ -18861,7 +19361,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template4/zombie-template-12"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -18920,7 +19420,7 @@ nodes {
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template4/zombie-template-12/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -18979,7 +19479,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template4/zombie-template-12/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -19001,7 +19501,7 @@ nodes {
 nodes {
   position {
     x: -22.0
-    y: -35.0
+    y: -30.0
     z: 0.0
     w: 1.0
   }
@@ -19080,7 +19580,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template4/zombie-template-13"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -19139,7 +19639,7 @@ nodes {
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template4/zombie-template-13/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -19198,7 +19698,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template4/zombie-template-13/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -19299,7 +19799,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template4/zombie-template-14"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -19358,7 +19858,7 @@ nodes {
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template4/zombie-template-14/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -19417,7 +19917,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template4/zombie-template-14/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -19518,7 +20018,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template4/zombie-template-15"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -19577,7 +20077,7 @@ nodes {
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template4/zombie-template-15/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -19636,7 +20136,7 @@ nodes {
   pivot: PIVOT_S
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_template4/zombie-template-15/zombie_wrap"
-  layer: ""
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 0.0
@@ -19709,7 +20209,7 @@ nodes {
   adjust_mode: ADJUST_MODE_FIT
   line_break: false
   parent: "item_template4/main-preview"
-  layer: ""
+  layer: "text"
   inherit_alpha: true
   alpha: 1.0
   outline_alpha: 1.0
@@ -19719,6 +20219,479 @@ nodes {
   text_tracking: 0.0
   custom_type: 0
   enabled: true
+  visible: true
+  material: ""
+}
+nodes {
+  position {
+    x: 0.0
+    y: -39.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 0.75
+    w: 1.0
+  }
+  size {
+    x: 20.0
+    y: 10.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_TEXT
+  blend_mode: BLEND_MODE_ALPHA
+  text: "999"
+  font: "font_standart_normal"
+  id: "item_template4/price"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_E
+  outline {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  shadow {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  adjust_mode: ADJUST_MODE_FIT
+  line_break: false
+  parent: "item_template4/main-preview"
+  layer: "text"
+  inherit_alpha: true
+  alpha: 1.0
+  outline_alpha: 1.0
+  shadow_alpha: 1.0
+  template_node_child: true
+  text_leading: 1.0
+  text_tracking: 0.0
+  custom_type: 0
+  enabled: true
+  visible: true
+  material: ""
+}
+nodes {
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 0.6
+    y: 0.6
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_BOX
+  blend_mode: BLEND_MODE_ALPHA
+  texture: "first_level/interface-icon-gold"
+  id: "item_template4/price_icon"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_W
+  adjust_mode: ADJUST_MODE_FIT
+  parent: "item_template4/price"
+  layer: "box"
+  inherit_alpha: true
+  slice9 {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 0.0
+  }
+  clipping_mode: CLIPPING_MODE_NONE
+  clipping_visible: true
+  clipping_inverted: false
+  alpha: 1.0
+  template_node_child: true
+  size_mode: SIZE_MODE_AUTO
+  custom_type: 0
+  enabled: true
+  visible: true
+  material: ""
+}
+nodes {
+  position {
+    x: 225.0
+    y: -86.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 0.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_BOX
+  blend_mode: BLEND_MODE_ALPHA
+  texture: "first_level/icon_play_default"
+  id: "arrow_right"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_CENTER
+  adjust_mode: ADJUST_MODE_FIT
+  parent: "wrap"
+  layer: ""
+  inherit_alpha: true
+  slice9 {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 0.0
+  }
+  clipping_mode: CLIPPING_MODE_NONE
+  clipping_visible: true
+  clipping_inverted: false
+  alpha: 1.0
+  template_node_child: false
+  size_mode: SIZE_MODE_AUTO
+  custom_type: 0
+  enabled: true
+  visible: true
+  material: ""
+}
+nodes {
+  position {
+    x: -227.0
+    y: -86.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 180.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 0.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_BOX
+  blend_mode: BLEND_MODE_ALPHA
+  texture: "first_level/icon_play_default"
+  id: "arrow_left"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_CENTER
+  adjust_mode: ADJUST_MODE_FIT
+  parent: "wrap"
+  layer: ""
+  inherit_alpha: true
+  slice9 {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 0.0
+  }
+  clipping_mode: CLIPPING_MODE_NONE
+  clipping_visible: true
+  clipping_inverted: false
+  alpha: 1.0
+  template_node_child: false
+  size_mode: SIZE_MODE_AUTO
+  custom_type: 0
+  enabled: true
+  visible: true
+  material: ""
+}
+nodes {
+  position {
+    x: 0.0
+    y: -157.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_TEMPLATE
+  id: "btn_template"
+  parent: "wrap"
+  layer: "box"
+  inherit_alpha: true
+  alpha: 1.0
+  template: "/main/gui/elements/btn_ellipse.gui"
+  template_node_child: false
+  custom_type: 0
+  enabled: true
+}
+nodes {
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 60.0
+    y: 20.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_BOX
+  blend_mode: BLEND_MODE_ALPHA
+  texture: "first_level/button_green_default"
+  id: "btn_template/btn_wrap"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_CENTER
+  adjust_mode: ADJUST_MODE_FIT
+  parent: "btn_template"
+  layer: ""
+  inherit_alpha: true
+  slice9 {
+    x: 7.0
+    y: 10.0
+    z: 7.0
+    w: 10.0
+  }
+  clipping_mode: CLIPPING_MODE_NONE
+  clipping_visible: true
+  clipping_inverted: false
+  alpha: 1.0
+  overridden_fields: 4
+  template_node_child: true
+  size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
+  enabled: true
+  visible: true
+  material: ""
+}
+nodes {
+  position {
+    x: 0.0
+    y: 1.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 20.0
+    y: 10.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_TEXT
+  blend_mode: BLEND_MODE_ALPHA
+  text: "\320\232\320\243\320\237\320\230\320\242\320\254"
+  font: "font_standart_normal"
+  id: "btn_template/btn_title"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_CENTER
+  outline {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  shadow {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  adjust_mode: ADJUST_MODE_FIT
+  line_break: false
+  parent: "btn_template/btn_wrap"
+  layer: ""
+  inherit_alpha: true
+  alpha: 1.0
+  outline_alpha: 1.0
+  shadow_alpha: 1.0
+  overridden_fields: 8
+  template_node_child: true
+  text_leading: 1.0
+  text_tracking: 0.0
+  custom_type: 0
+  enabled: true
+  visible: true
+  material: ""
+}
+nodes {
+  position {
+    x: 0.0
+    y: 3.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_BOX
+  blend_mode: BLEND_MODE_ALPHA
+  texture: "first_level/Icon_bio"
+  id: "btn_template/btn_icon"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_CENTER
+  adjust_mode: ADJUST_MODE_FIT
+  parent: "btn_template/btn_wrap"
+  layer: ""
+  inherit_alpha: true
+  slice9 {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 0.0
+  }
+  clipping_mode: CLIPPING_MODE_NONE
+  clipping_visible: true
+  clipping_inverted: false
+  alpha: 1.0
+  template_node_child: true
+  size_mode: SIZE_MODE_AUTO
+  custom_type: 0
+  enabled: false
   visible: true
   material: ""
 }
