@@ -1,6 +1,8 @@
-id;sort;img_preview;step;start_value;level;buff;next_buff;title_id_string;description_id_string
-mind;5;mind;10;0;0;0;0;_characteristic_title_mind;_characteristic_description_mind
-accuracy;4;accuracy;7;0;0;0;0;_characteristic_title_accuracy;_characteristic_description_accuracy
-speed_caret;3;speed_caret;7;0;0;0;0;_characteristic_title_speed_caret;_characteristic_description_speed_caret
-trade;2;trade;5;5;0;0;0;_characteristic_title_trade;_characteristic_description_trade
-charisma;1;charisma;1;5;0;0;0;_characteristic_title_charisma;_characteristic_description_charisma
+id;comments;type_characteristic;sort;img_preview;step;step_visible_start;step_visible;max_level;price_start;price_step;title_id_string;description_id_string
+live;Жизнь персонажа;main;7;live;5;30;5;20;50;50;_characteristic_title_live;_characteristic_description_live
+damage;урон;main;6;damage;1;50;10;20;50;50;_characteristic_title_damage;_characteristic_description_damage
+speed_damage;скорость ударов;main;5;speed_damage;0.025;100;10;20;40;40;_characteristic_title_speed_damage;_characteristic_description_speed_damage
+max_horde;размер орды;horde;4;max_horde;1;30;1;120;10;10;_characteristic_title_max_horde;_characteristic_description_max_horde
+zombie_live;Жизнь зомби;horde;3;zombie_live;1;20;1;30;50;50;_characteristic_title_zombie_live;_characteristic_description_zombie_live
+zombie_damage;урон зомби;horde;2;zombie_damage;0.1;10;1;30;50;50;_characteristic_title_zombie_damage;_characteristic_description_zombie_damage
+zombie_speed_damage;Скорость удара;horde;1;zombie_speed_damage;0.02;100;10;20;50;50;_characteristic_title_zombie_speed_damage;_characteristic_description_zombie_speed_damage
