@@ -1,6 +1,6 @@
 components {
-  id: "catalog_prize_magazine"
-  component: "/main/gui/catalog_prize_magazine/catalog_prize_magazine.gui"
+  id: "catalog_skins"
+  component: "/main/gui/catalog_skins/catalog_skins.gui"
   position {
     x: 0.0
     y: 0.0

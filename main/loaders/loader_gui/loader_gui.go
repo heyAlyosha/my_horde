@@ -280,25 +280,6 @@ embedded_components {
   }
 }
 embedded_components {
-  id: "catalog_achieve_factory"
-  type: "factory"
-  data: "prototype: \"/main/gui/catalog_achieve/catalog_achieve.go\"\n"
-  "load_dynamically: false\n"
-  "dynamic_prototype: false\n"
-  ""
-  position {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-}
-embedded_components {
   id: "catalog_characteristic_factory"
   type: "factory"
   data: "prototype: \"/main/gui/catalog_characteristic/catalog_characteristic.go\"\n"
@@ -549,25 +530,6 @@ embedded_components {
   id: "catalog_company_factory"
   type: "factory"
   data: "prototype: \"/main/gui/catalog_company/catalog_company.go\"\n"
-  "load_dynamically: false\n"
-  "dynamic_prototype: false\n"
-  ""
-  position {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-}
-embedded_components {
-  id: "catalog_prize_magazine_factory"
-  type: "factory"
-  data: "prototype: \"/main/gui/catalog_prize_magazine/catalog_prize_magazine.go\"\n"
   "load_dynamically: false\n"
   "dynamic_prototype: false\n"
   ""
