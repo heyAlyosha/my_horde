@@ -55,7 +55,7 @@ components {
 }
 components {
   id: "catalog_characteristic"
-  component: "/main/gui/catalog_characteristic/catalog_characteristic.gui"
+  component: "/main/gui/catalog_skins/catalog_skins.gui"
   position {
     x: 0.0
     y: 0.0
