@@ -55,7 +55,7 @@ components {
 }
 components {
   id: "catalog_characteristic"
-  component: "/main/gui/catalog_trophy/catalog_trophy.gui"
+  component: "/main/gui/catalog_rating/catalog_rating.gui"
   position {
     x: 0.0
     y: 0.0

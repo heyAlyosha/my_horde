@@ -4,8 +4,8 @@ fonts {
   font: "/assets/fonts/font_standart_normal.font"
 }
 textures {
-  name: "gui"
-  texture: "/main/atlases/gui.atlas"
+  name: "first_level"
+  texture: "/main/atlases/first_level.atlas"
 }
 background_color {
   x: 0.0
@@ -15,7 +15,7 @@ background_color {
 }
 nodes {
   position {
-    x: 3.0
+    x: 0.0
     y: 0.0
     z: 0.0
     w: 1.0
@@ -27,14 +27,14 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 1.0
-    y: 1.0
+    x: 0.5
+    y: 0.5
     z: 1.0
     w: 1.0
   }
   size {
-    x: 250.0
-    y: 50.0
+    x: 150.0
+    y: 30.0
     z: 0.0
     w: 1.0
   }
@@ -46,7 +46,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "gui/main_menu_btn_default"
+  texture: "first_level/bg_popup"
   id: "btn_wrap"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -55,10 +55,10 @@ nodes {
   layer: ""
   inherit_alpha: true
   slice9 {
-    x: 25.0
-    y: 0.0
-    z: 25.0
-    w: 0.0
+    x: 14.0
+    y: 14.0
+    z: 14.0
+    w: 14.0
   }
   clipping_mode: CLIPPING_MODE_NONE
   clipping_visible: true
@@ -103,8 +103,8 @@ nodes {
     w: 1.0
   }
   type: TYPE_BOX
-  blend_mode: BLEND_MODE_ALPHA
-  texture: "gui/account_avatar_border"
+  blend_mode: BLEND_MODE_MULT
+  texture: ""
   id: "btn_border"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -132,8 +132,8 @@ nodes {
 }
 nodes {
   position {
-    x: -1.0
-    y: -1.0
+    x: -4.0
+    y: -2.0
     z: 0.0
     w: 1.0
   }
@@ -150,8 +150,8 @@ nodes {
     w: 1.0
   }
   size {
-    x: 30.0
-    y: 30.0
+    x: 20.0
+    y: 20.0
     z: 0.0
     w: 1.0
   }
@@ -163,7 +163,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "gui/icon_rating_1"
+  texture: "first_level/cup_gold"
   id: "btn_icon"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -191,8 +191,8 @@ nodes {
 }
 nodes {
   position {
-    x: 57.0
-    y: 3.0
+    x: 32.0
+    y: 0.0
     z: 0.0
     w: 1.0
   }
@@ -203,14 +203,14 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 0.65
-    y: 0.65
+    x: 1.5
+    y: 1.5
     z: 1.0
     w: 1.0
   }
   size {
     x: 100.0
-    y: 40.0
+    y: 10.0
     z: 0.0
     w: 1.0
   }
