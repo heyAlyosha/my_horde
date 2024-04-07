@@ -136,7 +136,7 @@ nodes {
   shadow_alpha: 1.0
   template_node_child: false
   text_leading: 1.0
-  text_tracking: 0.0
+  text_tracking: 0.2
   custom_type: 0
   enabled: true
   visible: true

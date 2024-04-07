@@ -55,7 +55,7 @@ components {
 }
 components {
   id: "catalog_characteristic"
-  component: "/main/gui/catalog_rating/catalog_rating.gui"
+  component: "/main/gui/inventary_wrap/inventary_wrap.gui"
   position {
     x: 0.0
     y: 0.0

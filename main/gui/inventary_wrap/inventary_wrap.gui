@@ -139,8 +139,8 @@ nodes {
 }
 nodes {
   position {
-    x: 478.0
-    y: 258.0
+    x: 429.0
+    y: 162.0
     z: 0.0
     w: 1.0
   }
@@ -415,6 +415,7 @@ nodes {
   outline_alpha: 1.0
   shadow_alpha: 1.0
   overridden_fields: 8
+  overridden_fields: 37
   template_node_child: true
   text_leading: 1.0
   text_tracking: 0.0
@@ -555,14 +556,14 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 0.6
-    y: 0.6
+    x: 1.4
+    y: 1.4
     z: 1.0
     w: 1.0
   }
   size {
-    x: 200.0
-    y: 100.0
+    x: 11.0
+    y: 14.0
     z: 0.0
     w: 1.0
   }
@@ -574,7 +575,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "first_level/icon_close_default"
+  texture: "first_level/icon_up_arrow"
   id: "upgrade_skill_btn_template/btn_icon"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -593,8 +594,12 @@ nodes {
   clipping_visible: true
   clipping_inverted: false
   alpha: 1.0
+  overridden_fields: 3
+  overridden_fields: 4
+  overridden_fields: 9
+  overridden_fields: 38
   template_node_child: true
-  size_mode: SIZE_MODE_AUTO
+  size_mode: SIZE_MODE_MANUAL
   custom_type: 0
   enabled: true
   visible: true
@@ -761,9 +766,10 @@ nodes {
   outline_alpha: 1.0
   shadow_alpha: 1.0
   overridden_fields: 8
+  overridden_fields: 37
   template_node_child: true
   text_leading: 1.0
-  text_tracking: 0.0
+  text_tracking: 0.1
   custom_type: 0
   enabled: true
   visible: true
@@ -901,8 +907,8 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 0.6
-    y: 0.6
+    x: 0.9
+    y: 0.9
     z: 1.0
     w: 1.0
   }
@@ -920,7 +926,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "first_level/icon_close_default"
+  texture: "first_level/inventary_icon_skins"
   id: "skins_btn_template/btn_icon"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -939,6 +945,9 @@ nodes {
   clipping_visible: true
   clipping_inverted: false
   alpha: 1.0
+  overridden_fields: 1
+  overridden_fields: 3
+  overridden_fields: 9
   template_node_child: true
   size_mode: SIZE_MODE_AUTO
   custom_type: 0
@@ -1109,7 +1118,7 @@ nodes {
   overridden_fields: 8
   template_node_child: true
   text_leading: 1.0
-  text_tracking: 0.0
+  text_tracking: 0.2
   custom_type: 0
   enabled: true
   visible: true
@@ -1247,8 +1256,8 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 0.6
-    y: 0.6
+    x: 0.75
+    y: 0.75
     z: 1.0
     w: 1.0
   }
@@ -1266,7 +1275,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "first_level/icon_close_default"
+  texture: "first_level/TrophyGreen_mini"
   id: "upgrade_horde_btn_template1/btn_icon"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -1285,6 +1294,8 @@ nodes {
   clipping_visible: true
   clipping_inverted: false
   alpha: 1.0
+  overridden_fields: 3
+  overridden_fields: 9
   template_node_child: true
   size_mode: SIZE_MODE_AUTO
   custom_type: 0
@@ -1455,7 +1466,7 @@ nodes {
   overridden_fields: 8
   template_node_child: true
   text_leading: 1.0
-  text_tracking: 0.0
+  text_tracking: 0.2
   custom_type: 0
   enabled: true
   visible: true
@@ -1612,7 +1623,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "first_level/icon_close_default"
+  texture: "first_level/cup_gold"
   id: "rating_template/btn_icon"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -1632,6 +1643,7 @@ nodes {
   clipping_inverted: false
   alpha: 1.0
   overridden_fields: 1
+  overridden_fields: 9
   template_node_child: true
   size_mode: SIZE_MODE_AUTO
   custom_type: 0
@@ -1803,7 +1815,7 @@ nodes {
 }
 nodes {
   position {
-    x: 1.0
+    x: 0.0
     y: 0.0
     z: 0.0
     w: 1.0
