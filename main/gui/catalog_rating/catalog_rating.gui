@@ -895,7 +895,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "other/btn_inventary_default"
+  texture: "first_level/border-transperend"
   id: "item_template/avatar_border"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -3120,6 +3120,9 @@ layers {
 }
 layers {
   name: "text"
+}
+layers {
+  name: "border"
 }
 material: "/builtins/materials/gui.material"
 layouts {

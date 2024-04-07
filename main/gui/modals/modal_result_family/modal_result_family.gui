@@ -1447,7 +1447,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "other/btn_inventary_default"
+  texture: "first_level/border-transperend"
   id: "rating_item_1_template/avatar_border"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -2112,7 +2112,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "other/btn_inventary_default"
+  texture: "first_level/border-transperend"
   id: "rating_item_2_template/avatar_border"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -2777,7 +2777,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "other/btn_inventary_default"
+  texture: "first_level/border-transperend"
   id: "rating_item_3_template/avatar_border"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
