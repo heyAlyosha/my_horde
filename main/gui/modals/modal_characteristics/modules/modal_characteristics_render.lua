@@ -75,11 +75,9 @@ end
 -- Отрисовка карточки хар-ки
 function M.card(self, item)
 	local content = game_content_characteristic.get_id(self, item.id)
-	pprint(content)
 
 	local up_level = storage_player.characteristic_points > 0
 
-	print("item.template_name", item.template_name)
 	local nodes = {
 		title = gui.get_node(item.template_name..'/title'),
 		val = gui.get_node(item.template_name..'/val'),

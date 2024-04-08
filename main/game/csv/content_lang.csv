@@ -1,11 +1,13 @@
 id;comments;ru;en
+_title_upgrade_main;;Улучшение вожака;
+_title_upgrade_horde;;УЛУЧШЕНИЕ ОРДЫ;
 _characteristic_title_live;;Здоровье;
-_characteristic_title_damage;;Урон;
-_characteristic_title_speed_damage;;Скорость ударов;
+_characteristic_title_damage;;АТАКА;
+_characteristic_title_speed_damage;;Скорость АТАКи;
 _characteristic_title_max_horde;;Размер орды;
-_characteristic_title_zombie_live;;Здоровье;
-_characteristic_title_zombie_damage;;Урон;
-_characteristic_title_zombie_speed_damage;;Скорость ударов;
+_characteristic_title_zombie_live;;ЗДОРОВЬЕ ЗОМБИ;
+_characteristic_title_zombie_damage;;АТАКА ЗОМБИ;
+_characteristic_title_zombie_speed_damage;;СКОРОСТЬ АТАКИ ЗОМБИ;
 _characteristic_value_live;;+{{value}};
 _characteristic_value_damage;;+{{value}};
 _characteristic_value_speed_damage;;+{{value}}%;

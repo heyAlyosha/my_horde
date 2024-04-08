@@ -43,8 +43,8 @@ function init(self)
 		title_horde = gui.get_node("title_horde"),
 	}
 
-	gui_lang.set_text(self, self.nodes.title_main, "_title_upgrade_main")
-	gui_lang.set_text(self, self.nodes.title_horde, "_title_upgrade_horde")
+	gui_lang.set_text_upper(self, self.nodes.title_main, "_title_upgrade_main")
+	gui_lang.set_text_upper(self, self.nodes.title_horde, "_title_upgrade_horde")
 
 	self.druid = druid.new(self)
 	self.focus_btn_id = nil
