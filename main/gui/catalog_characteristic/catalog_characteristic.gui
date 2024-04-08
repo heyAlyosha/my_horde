@@ -1,4 +1,4 @@
-script: ""
+script: "/main/gui/catalog_characteristic/catalog_characteristic.gui_script"
 fonts {
   name: "font_standart_normal"
   font: "/assets/fonts/font_standart_normal.font"
@@ -10,14 +10,6 @@ fonts {
 fonts {
   name: "font_standart_mini"
   font: "/assets/fonts/font_standart_normal.font"
-}
-textures {
-  name: "gui"
-  texture: "/main/atlases/gui.atlas"
-}
-textures {
-  name: "main"
-  texture: "/main/main.atlas"
 }
 background_color {
   x: 0.0
@@ -51,13 +43,13 @@ nodes {
     w: 1.0
   }
   color {
-    x: 0.0
-    y: 0.0
-    z: 0.219
+    x: 1.0
+    y: 1.0
+    z: 1.0
     w: 1.0
   }
   type: TYPE_BOX
-  blend_mode: BLEND_MODE_ALPHA
+  blend_mode: BLEND_MODE_MULT
   texture: ""
   id: "bg"
   xanchor: XANCHOR_NONE
@@ -144,7 +136,7 @@ nodes {
 nodes {
   position {
     x: 120.0
-    y: 200.0
+    y: 220.0
     z: 0.0
     w: 1.0
   }
@@ -515,8 +507,8 @@ nodes {
     w: 1.0
   }
   size {
-    x: 200.0
-    y: 100.0
+    x: 56.0
+    y: 56.0
     z: 0.0
     w: 1.0
   }
@@ -528,7 +520,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "other/btn_inventary_default"
+  texture: "first_level/border-transperend"
   id: "item_main_live_template/border"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -548,7 +540,7 @@ nodes {
   clipping_inverted: false
   alpha: 1.0
   template_node_child: true
-  size_mode: SIZE_MODE_AUTO
+  size_mode: SIZE_MODE_MANUAL
   custom_type: 0
   enabled: true
   visible: true
@@ -691,7 +683,7 @@ nodes {
   }
   size {
     x: 100.0
-    y: 8.0
+    y: 9.0
     z: 0.0
     w: 1.0
   }
@@ -713,9 +705,9 @@ nodes {
   layer: "border_box"
   inherit_alpha: true
   slice9 {
-    x: 3.0
+    x: 4.0
     y: 3.0
-    z: 3.0
+    z: 4.0
     w: 3.0
   }
   clipping_mode: CLIPPING_MODE_NONE
@@ -731,7 +723,7 @@ nodes {
 }
 nodes {
   position {
-    x: 0.0
+    x: 2.0
     y: 0.0
     z: 0.0
     w: 1.0
@@ -749,7 +741,7 @@ nodes {
     w: 1.0
   }
   size {
-    x: 100.0
+    x: 95.0
     y: 6.0
     z: 0.0
     w: 1.0
@@ -850,7 +842,7 @@ nodes {
 nodes {
   position {
     x: 28.0
-    y: 14.0
+    y: 18.0
     z: 0.0
     w: 1.0
   }
@@ -885,7 +877,7 @@ nodes {
   id: "item_main_live_template/val"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
-  pivot: PIVOT_W
+  pivot: PIVOT_NW
   outline {
     x: 0.0
     y: 0.0
@@ -1210,7 +1202,7 @@ nodes {
 }
 nodes {
   position {
-    x: 0.0
+    x: 1.0
     y: 0.0
     z: 0.0
     w: 1.0
@@ -1222,14 +1214,14 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 0.4
-    y: 0.4
+    x: 1.0
+    y: 1.0
     z: 1.0
     w: 1.0
   }
   size {
-    x: 200.0
-    y: 100.0
+    x: 12.0
+    y: 12.0
     z: 0.0
     w: 1.0
   }
@@ -1241,7 +1233,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "first_level/interface-icon-mutate"
+  texture: "first_level/game-icon-mutate"
   id: "item_main_live_template/price_icon"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -1260,10 +1252,11 @@ nodes {
   clipping_visible: true
   clipping_inverted: false
   alpha: 1.0
-  overridden_fields: 3
+  overridden_fields: 4
   overridden_fields: 9
+  overridden_fields: 38
   template_node_child: true
-  size_mode: SIZE_MODE_AUTO
+  size_mode: SIZE_MODE_MANUAL
   custom_type: 0
   enabled: true
   visible: true
@@ -1517,8 +1510,8 @@ nodes {
     w: 1.0
   }
   size {
-    x: 200.0
-    y: 100.0
+    x: 56.0
+    y: 56.0
     z: 0.0
     w: 1.0
   }
@@ -1530,7 +1523,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "other/btn_inventary_default"
+  texture: "first_level/border-transperend"
   id: "item_main_damage_template/border"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -1551,7 +1544,7 @@ nodes {
   alpha: 1.0
   overridden_fields: 5
   template_node_child: true
-  size_mode: SIZE_MODE_AUTO
+  size_mode: SIZE_MODE_MANUAL
   custom_type: 0
   enabled: true
   visible: true
@@ -1695,7 +1688,7 @@ nodes {
   }
   size {
     x: 100.0
-    y: 8.0
+    y: 9.0
     z: 0.0
     w: 1.0
   }
@@ -1717,9 +1710,9 @@ nodes {
   layer: "border_box"
   inherit_alpha: true
   slice9 {
-    x: 3.0
+    x: 4.0
     y: 3.0
-    z: 3.0
+    z: 4.0
     w: 3.0
   }
   clipping_mode: CLIPPING_MODE_NONE
@@ -1735,7 +1728,7 @@ nodes {
 }
 nodes {
   position {
-    x: 0.0
+    x: 2.0
     y: 0.0
     z: 0.0
     w: 1.0
@@ -1753,7 +1746,7 @@ nodes {
     w: 1.0
   }
   size {
-    x: 100.0
+    x: 95.0
     y: 6.0
     z: 0.0
     w: 1.0
@@ -1854,7 +1847,7 @@ nodes {
 nodes {
   position {
     x: 28.0
-    y: 14.0
+    y: 18.0
     z: 0.0
     w: 1.0
   }
@@ -1889,7 +1882,7 @@ nodes {
   id: "item_main_damage_template/val"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
-  pivot: PIVOT_W
+  pivot: PIVOT_NW
   outline {
     x: 0.0
     y: 0.0
@@ -2214,7 +2207,7 @@ nodes {
 }
 nodes {
   position {
-    x: 0.0
+    x: 1.0
     y: 0.0
     z: 0.0
     w: 1.0
@@ -2226,14 +2219,14 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 0.4
-    y: 0.4
+    x: 1.0
+    y: 1.0
     z: 1.0
     w: 1.0
   }
   size {
-    x: 200.0
-    y: 100.0
+    x: 12.0
+    y: 12.0
     z: 0.0
     w: 1.0
   }
@@ -2245,7 +2238,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "first_level/interface-icon-mutate"
+  texture: "first_level/game-icon-mutate"
   id: "item_main_damage_template/price_icon"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -2264,10 +2257,11 @@ nodes {
   clipping_visible: true
   clipping_inverted: false
   alpha: 1.0
-  overridden_fields: 3
+  overridden_fields: 4
   overridden_fields: 9
+  overridden_fields: 38
   template_node_child: true
-  size_mode: SIZE_MODE_AUTO
+  size_mode: SIZE_MODE_MANUAL
   custom_type: 0
   enabled: true
   visible: true
@@ -2521,8 +2515,8 @@ nodes {
     w: 1.0
   }
   size {
-    x: 200.0
-    y: 100.0
+    x: 56.0
+    y: 56.0
     z: 0.0
     w: 1.0
   }
@@ -2534,7 +2528,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "other/btn_inventary_default"
+  texture: "first_level/border-transperend"
   id: "item_main_speed_damage_template/border"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -2555,7 +2549,7 @@ nodes {
   alpha: 1.0
   overridden_fields: 5
   template_node_child: true
-  size_mode: SIZE_MODE_AUTO
+  size_mode: SIZE_MODE_MANUAL
   custom_type: 0
   enabled: true
   visible: true
@@ -2699,7 +2693,7 @@ nodes {
   }
   size {
     x: 100.0
-    y: 8.0
+    y: 9.0
     z: 0.0
     w: 1.0
   }
@@ -2721,9 +2715,9 @@ nodes {
   layer: "border_box"
   inherit_alpha: true
   slice9 {
-    x: 3.0
+    x: 4.0
     y: 3.0
-    z: 3.0
+    z: 4.0
     w: 3.0
   }
   clipping_mode: CLIPPING_MODE_NONE
@@ -2739,7 +2733,7 @@ nodes {
 }
 nodes {
   position {
-    x: 0.0
+    x: 2.0
     y: 0.0
     z: 0.0
     w: 1.0
@@ -2757,7 +2751,7 @@ nodes {
     w: 1.0
   }
   size {
-    x: 100.0
+    x: 95.0
     y: 6.0
     z: 0.0
     w: 1.0
@@ -2858,7 +2852,7 @@ nodes {
 nodes {
   position {
     x: 28.0
-    y: 14.0
+    y: 18.0
     z: 0.0
     w: 1.0
   }
@@ -2893,7 +2887,7 @@ nodes {
   id: "item_main_speed_damage_template/val"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
-  pivot: PIVOT_W
+  pivot: PIVOT_NW
   outline {
     x: 0.0
     y: 0.0
@@ -3218,7 +3212,7 @@ nodes {
 }
 nodes {
   position {
-    x: 0.0
+    x: 1.0
     y: 0.0
     z: 0.0
     w: 1.0
@@ -3230,14 +3224,14 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 0.4
-    y: 0.4
+    x: 1.0
+    y: 1.0
     z: 1.0
     w: 1.0
   }
   size {
-    x: 200.0
-    y: 100.0
+    x: 12.0
+    y: 12.0
     z: 0.0
     w: 1.0
   }
@@ -3249,7 +3243,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "first_level/interface-icon-mutate"
+  texture: "first_level/game-icon-mutate"
   id: "item_main_speed_damage_template/price_icon"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -3268,10 +3262,11 @@ nodes {
   clipping_visible: true
   clipping_inverted: false
   alpha: 1.0
-  overridden_fields: 3
+  overridden_fields: 4
   overridden_fields: 9
+  overridden_fields: 38
   template_node_child: true
-  size_mode: SIZE_MODE_AUTO
+  size_mode: SIZE_MODE_MANUAL
   custom_type: 0
   enabled: true
   visible: true
@@ -3524,8 +3519,8 @@ nodes {
     w: 1.0
   }
   size {
-    x: 200.0
-    y: 100.0
+    x: 54.0
+    y: 54.0
     z: 0.0
     w: 1.0
   }
@@ -3537,7 +3532,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "other/btn_inventary_default"
+  texture: "first_level/border-transperend"
   id: "item_transfer_mutation_template/border"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -3557,7 +3552,7 @@ nodes {
   clipping_inverted: false
   alpha: 1.0
   template_node_child: true
-  size_mode: SIZE_MODE_AUTO
+  size_mode: SIZE_MODE_MANUAL
   custom_type: 0
   enabled: true
   visible: true
@@ -3634,8 +3629,8 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 1.25
-    y: 1.25
+    x: 1.0
+    y: 1.0
     z: 1.0
     w: 1.0
   }
@@ -4053,8 +4048,8 @@ nodes {
     w: 1.0
   }
   size {
-    x: 200.0
-    y: 100.0
+    x: 54.0
+    y: 54.0
     z: 0.0
     w: 1.0
   }
@@ -4066,7 +4061,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "other/btn_inventary_default"
+  texture: "first_level/border-transperend"
   id: "item_transfer_mutation_template/border1"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -4087,7 +4082,7 @@ nodes {
   alpha: 1.0
   overridden_fields: 5
   template_node_child: true
-  size_mode: SIZE_MODE_AUTO
+  size_mode: SIZE_MODE_MANUAL
   custom_type: 0
   enabled: true
   visible: true
@@ -4164,8 +4159,8 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 1.25
-    y: 1.25
+    x: 1.0
+    y: 1.0
     z: 1.0
     w: 1.0
   }
@@ -4213,7 +4208,7 @@ nodes {
 nodes {
   position {
     x: 360.0
-    y: 200.0
+    y: 220.0
     z: 0.0
     w: 1.0
   }
@@ -4517,8 +4512,8 @@ nodes {
     w: 1.0
   }
   size {
-    x: 200.0
-    y: 100.0
+    x: 56.0
+    y: 56.0
     z: 0.0
     w: 1.0
   }
@@ -4530,7 +4525,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "other/btn_inventary_default"
+  texture: "first_level/border-transperend"
   id: "item_max_horde_template/border"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -4551,7 +4546,7 @@ nodes {
   alpha: 1.0
   overridden_fields: 5
   template_node_child: true
-  size_mode: SIZE_MODE_AUTO
+  size_mode: SIZE_MODE_MANUAL
   custom_type: 0
   enabled: true
   visible: true
@@ -4695,7 +4690,7 @@ nodes {
   }
   size {
     x: 100.0
-    y: 8.0
+    y: 9.0
     z: 0.0
     w: 1.0
   }
@@ -4717,9 +4712,9 @@ nodes {
   layer: "border_box"
   inherit_alpha: true
   slice9 {
-    x: 3.0
+    x: 4.0
     y: 3.0
-    z: 3.0
+    z: 4.0
     w: 3.0
   }
   clipping_mode: CLIPPING_MODE_NONE
@@ -4735,7 +4730,7 @@ nodes {
 }
 nodes {
   position {
-    x: 0.0
+    x: 2.0
     y: 0.0
     z: 0.0
     w: 1.0
@@ -4753,7 +4748,7 @@ nodes {
     w: 1.0
   }
   size {
-    x: 100.0
+    x: 95.0
     y: 6.0
     z: 0.0
     w: 1.0
@@ -4854,7 +4849,7 @@ nodes {
 nodes {
   position {
     x: 28.0
-    y: 14.0
+    y: 18.0
     z: 0.0
     w: 1.0
   }
@@ -4889,7 +4884,7 @@ nodes {
   id: "item_max_horde_template/val"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
-  pivot: PIVOT_W
+  pivot: PIVOT_NW
   outline {
     x: 0.0
     y: 0.0
@@ -5214,7 +5209,7 @@ nodes {
 }
 nodes {
   position {
-    x: 0.0
+    x: 1.0
     y: 0.0
     z: 0.0
     w: 1.0
@@ -5226,8 +5221,8 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 0.6
-    y: 0.6
+    x: 1.0
+    y: 1.0
     z: 1.0
     w: 1.0
   }
@@ -5245,7 +5240,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "first_level/interface-icon-gold"
+  texture: "first_level/game-icon-coin"
   id: "item_max_horde_template/price_icon"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -5519,8 +5514,8 @@ nodes {
     w: 1.0
   }
   size {
-    x: 200.0
-    y: 100.0
+    x: 56.0
+    y: 56.0
     z: 0.0
     w: 1.0
   }
@@ -5532,7 +5527,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "other/btn_inventary_default"
+  texture: "first_level/border-transperend"
   id: "item_zombie_live_template/border"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -5552,7 +5547,7 @@ nodes {
   clipping_inverted: false
   alpha: 1.0
   template_node_child: true
-  size_mode: SIZE_MODE_AUTO
+  size_mode: SIZE_MODE_MANUAL
   custom_type: 0
   enabled: true
   visible: true
@@ -5695,7 +5690,7 @@ nodes {
   }
   size {
     x: 100.0
-    y: 8.0
+    y: 9.0
     z: 0.0
     w: 1.0
   }
@@ -5717,9 +5712,9 @@ nodes {
   layer: "border_box"
   inherit_alpha: true
   slice9 {
-    x: 3.0
+    x: 4.0
     y: 3.0
-    z: 3.0
+    z: 4.0
     w: 3.0
   }
   clipping_mode: CLIPPING_MODE_NONE
@@ -5735,7 +5730,7 @@ nodes {
 }
 nodes {
   position {
-    x: 0.0
+    x: 2.0
     y: 0.0
     z: 0.0
     w: 1.0
@@ -5753,7 +5748,7 @@ nodes {
     w: 1.0
   }
   size {
-    x: 100.0
+    x: 95.0
     y: 6.0
     z: 0.0
     w: 1.0
@@ -5854,7 +5849,7 @@ nodes {
 nodes {
   position {
     x: 28.0
-    y: 14.0
+    y: 18.0
     z: 0.0
     w: 1.0
   }
@@ -5889,7 +5884,7 @@ nodes {
   id: "item_zombie_live_template/val"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
-  pivot: PIVOT_W
+  pivot: PIVOT_NW
   outline {
     x: 0.0
     y: 0.0
@@ -6214,7 +6209,7 @@ nodes {
 }
 nodes {
   position {
-    x: 0.0
+    x: 1.0
     y: 0.0
     z: 0.0
     w: 1.0
@@ -6226,8 +6221,8 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 0.6
-    y: 0.6
+    x: 1.0
+    y: 1.0
     z: 1.0
     w: 1.0
   }
@@ -6245,7 +6240,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "first_level/interface-icon-gold"
+  texture: "first_level/game-icon-coin"
   id: "item_zombie_live_template/price_icon"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -6303,7 +6298,7 @@ nodes {
     w: 1.0
   }
   type: TYPE_TEMPLATE
-  id: "item_main_zombie_damage_template"
+  id: "item_zombie_damage_template"
   parent: "wrap_characteristics_horde"
   layer: "box"
   inherit_alpha: true
@@ -6347,12 +6342,12 @@ nodes {
   type: TYPE_BOX
   blend_mode: BLEND_MODE_MULT
   texture: ""
-  id: "item_main_zombie_damage_template/wrap"
+  id: "item_zombie_damage_template/wrap"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_SW
   adjust_mode: ADJUST_MODE_FIT
-  parent: "item_main_zombie_damage_template"
+  parent: "item_zombie_damage_template"
   layer: "box"
   inherit_alpha: true
   slice9 {
@@ -6407,7 +6402,7 @@ nodes {
   blend_mode: BLEND_MODE_ALPHA
   text: "\320\220\320\242\320\220\320\232\320\220 \320\227\320\236\320\234\320\221\320\230"
   font: "font_standart_mini"
-  id: "item_main_zombie_damage_template/title"
+  id: "item_zombie_damage_template/title"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_W
@@ -6425,7 +6420,7 @@ nodes {
   }
   adjust_mode: ADJUST_MODE_FIT
   line_break: false
-  parent: "item_main_zombie_damage_template/wrap"
+  parent: "item_zombie_damage_template/wrap"
   layer: "text"
   inherit_alpha: true
   alpha: 1.0
@@ -6474,12 +6469,12 @@ nodes {
   type: TYPE_BOX
   blend_mode: BLEND_MODE_MULT
   texture: ""
-  id: "item_main_zombie_damage_template/icon_wrap"
+  id: "item_zombie_damage_template/icon_wrap"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
-  parent: "item_main_zombie_damage_template/wrap"
+  parent: "item_zombie_damage_template/wrap"
   layer: "box"
   inherit_alpha: true
   slice9 {
@@ -6519,8 +6514,8 @@ nodes {
     w: 1.0
   }
   size {
-    x: 200.0
-    y: 100.0
+    x: 56.0
+    y: 56.0
     z: 0.0
     w: 1.0
   }
@@ -6532,13 +6527,13 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "other/btn_inventary_default"
-  id: "item_main_zombie_damage_template/border"
+  texture: "first_level/border-transperend"
+  id: "item_zombie_damage_template/border"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
-  parent: "item_main_zombie_damage_template/icon_wrap"
+  parent: "item_zombie_damage_template/icon_wrap"
   layer: "border_box"
   inherit_alpha: true
   slice9 {
@@ -6553,7 +6548,7 @@ nodes {
   alpha: 1.0
   overridden_fields: 5
   template_node_child: true
-  size_mode: SIZE_MODE_AUTO
+  size_mode: SIZE_MODE_MANUAL
   custom_type: 0
   enabled: true
   visible: true
@@ -6593,12 +6588,12 @@ nodes {
   type: TYPE_PIE
   blend_mode: BLEND_MODE_MULT
   texture: ""
-  id: "item_main_zombie_damage_template/icon_border"
+  id: "item_zombie_damage_template/icon_border"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
-  parent: "item_main_zombie_damage_template/icon_wrap"
+  parent: "item_zombie_damage_template/icon_wrap"
   layer: "box"
   inherit_alpha: true
   outerBounds: PIEBOUNDS_ELLIPSE
@@ -6650,12 +6645,12 @@ nodes {
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
   texture: "other/icon_damage"
-  id: "item_main_zombie_damage_template/img"
+  id: "item_zombie_damage_template/img"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
-  parent: "item_main_zombie_damage_template/icon_border"
+  parent: "item_zombie_damage_template/icon_border"
   layer: "box"
   inherit_alpha: true
   slice9 {
@@ -6697,7 +6692,7 @@ nodes {
   }
   size {
     x: 100.0
-    y: 8.0
+    y: 9.0
     z: 0.0
     w: 1.0
   }
@@ -6710,18 +6705,18 @@ nodes {
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
   texture: "other/characteristic_line_border"
-  id: "item_main_zombie_damage_template/characteristic_line_border"
+  id: "item_zombie_damage_template/characteristic_line_border"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_W
   adjust_mode: ADJUST_MODE_FIT
-  parent: "item_main_zombie_damage_template/wrap"
+  parent: "item_zombie_damage_template/wrap"
   layer: "border_box"
   inherit_alpha: true
   slice9 {
-    x: 3.0
+    x: 4.0
     y: 3.0
-    z: 3.0
+    z: 4.0
     w: 3.0
   }
   clipping_mode: CLIPPING_MODE_NONE
@@ -6737,7 +6732,7 @@ nodes {
 }
 nodes {
   position {
-    x: 0.0
+    x: 2.0
     y: 0.0
     z: 0.0
     w: 1.0
@@ -6755,7 +6750,7 @@ nodes {
     w: 1.0
   }
   size {
-    x: 100.0
+    x: 95.0
     y: 6.0
     z: 0.0
     w: 1.0
@@ -6769,12 +6764,12 @@ nodes {
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
   texture: ""
-  id: "item_main_zombie_damage_template/characteristics_bg"
+  id: "item_zombie_damage_template/characteristics_bg"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_W
   adjust_mode: ADJUST_MODE_FIT
-  parent: "item_main_zombie_damage_template/characteristic_line_border"
+  parent: "item_zombie_damage_template/characteristic_line_border"
   layer: "box"
   inherit_alpha: true
   slice9 {
@@ -6828,12 +6823,12 @@ nodes {
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
   texture: "other/characteristic_line_body"
-  id: "item_main_zombie_damage_template/characteristic_line_body"
+  id: "item_zombie_damage_template/characteristic_line_body"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_W
   adjust_mode: ADJUST_MODE_FIT
-  parent: "item_main_zombie_damage_template/characteristic_line_border"
+  parent: "item_zombie_damage_template/characteristic_line_border"
   layer: "border_box"
   inherit_alpha: true
   slice9 {
@@ -6856,7 +6851,7 @@ nodes {
 nodes {
   position {
     x: 28.0
-    y: 14.0
+    y: 18.0
     z: 0.0
     w: 1.0
   }
@@ -6888,10 +6883,10 @@ nodes {
   blend_mode: BLEND_MODE_ALPHA
   text: "+0 => +10"
   font: "font_standart_mini"
-  id: "item_main_zombie_damage_template/val"
+  id: "item_zombie_damage_template/val"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
-  pivot: PIVOT_W
+  pivot: PIVOT_NW
   outline {
     x: 0.0
     y: 0.0
@@ -6906,7 +6901,7 @@ nodes {
   }
   adjust_mode: ADJUST_MODE_FIT
   line_break: false
-  parent: "item_main_zombie_damage_template/wrap"
+  parent: "item_zombie_damage_template/wrap"
   layer: "text"
   inherit_alpha: true
   alpha: 1.0
@@ -6952,8 +6947,8 @@ nodes {
     w: 1.0
   }
   type: TYPE_TEMPLATE
-  id: "item_main_zombie_damage_template/btn_template"
-  parent: "item_main_zombie_damage_template/wrap"
+  id: "item_zombie_damage_template/btn_template"
+  parent: "item_zombie_damage_template/wrap"
   layer: "box"
   inherit_alpha: true
   alpha: 1.0
@@ -6996,12 +6991,12 @@ nodes {
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
   texture: "first_level/button_green_default"
-  id: "item_main_zombie_damage_template/btn_template/btn_wrap"
+  id: "item_zombie_damage_template/btn_template/btn_wrap"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
-  parent: "item_main_zombie_damage_template/btn_template"
+  parent: "item_zombie_damage_template/btn_template"
   layer: ""
   inherit_alpha: true
   slice9 {
@@ -7056,7 +7051,7 @@ nodes {
   blend_mode: BLEND_MODE_ALPHA
   text: "\320\243\320\233\320\243\320\247\320\250\320\230\320\242\320\254"
   font: "font_standart_normal"
-  id: "item_main_zombie_damage_template/btn_template/btn_title"
+  id: "item_zombie_damage_template/btn_template/btn_title"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
@@ -7074,7 +7069,7 @@ nodes {
   }
   adjust_mode: ADJUST_MODE_FIT
   line_break: false
-  parent: "item_main_zombie_damage_template/btn_template/btn_wrap"
+  parent: "item_zombie_damage_template/btn_template/btn_wrap"
   layer: ""
   inherit_alpha: true
   alpha: 1.0
@@ -7122,12 +7117,12 @@ nodes {
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
   texture: "first_level/Icon_bio"
-  id: "item_main_zombie_damage_template/btn_template/btn_icon"
+  id: "item_zombie_damage_template/btn_template/btn_icon"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
-  parent: "item_main_zombie_damage_template/btn_template/btn_wrap"
+  parent: "item_zombie_damage_template/btn_template/btn_wrap"
   layer: ""
   inherit_alpha: true
   slice9 {
@@ -7182,7 +7177,7 @@ nodes {
   blend_mode: BLEND_MODE_ALPHA
   text: "999"
   font: "font_standart_mini"
-  id: "item_main_zombie_damage_template/price"
+  id: "item_zombie_damage_template/price"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_E
@@ -7200,7 +7195,7 @@ nodes {
   }
   adjust_mode: ADJUST_MODE_FIT
   line_break: false
-  parent: "item_main_zombie_damage_template/wrap"
+  parent: "item_zombie_damage_template/wrap"
   layer: "text"
   inherit_alpha: true
   alpha: 1.0
@@ -7216,7 +7211,7 @@ nodes {
 }
 nodes {
   position {
-    x: 0.0
+    x: 1.0
     y: 0.0
     z: 0.0
     w: 1.0
@@ -7228,8 +7223,8 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 0.6
-    y: 0.6
+    x: 1.0
+    y: 1.0
     z: 1.0
     w: 1.0
   }
@@ -7247,13 +7242,13 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "first_level/interface-icon-gold"
-  id: "item_main_zombie_damage_template/price_icon"
+  texture: "first_level/game-icon-coin"
+  id: "item_zombie_damage_template/price_icon"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_W
   adjust_mode: ADJUST_MODE_FIT
-  parent: "item_main_zombie_damage_template/price"
+  parent: "item_zombie_damage_template/price"
   layer: "border_box"
   inherit_alpha: true
   slice9 {
@@ -7521,8 +7516,8 @@ nodes {
     w: 1.0
   }
   size {
-    x: 200.0
-    y: 100.0
+    x: 56.0
+    y: 56.0
     z: 0.0
     w: 1.0
   }
@@ -7534,7 +7529,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "other/btn_inventary_default"
+  texture: "first_level/border-transperend"
   id: "item_zombie_speed_damage_template/border"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -7555,7 +7550,7 @@ nodes {
   alpha: 1.0
   overridden_fields: 5
   template_node_child: true
-  size_mode: SIZE_MODE_AUTO
+  size_mode: SIZE_MODE_MANUAL
   custom_type: 0
   enabled: true
   visible: true
@@ -7699,7 +7694,7 @@ nodes {
   }
   size {
     x: 100.0
-    y: 8.0
+    y: 9.0
     z: 0.0
     w: 1.0
   }
@@ -7721,9 +7716,9 @@ nodes {
   layer: "border_box"
   inherit_alpha: true
   slice9 {
-    x: 3.0
+    x: 4.0
     y: 3.0
-    z: 3.0
+    z: 4.0
     w: 3.0
   }
   clipping_mode: CLIPPING_MODE_NONE
@@ -7739,7 +7734,7 @@ nodes {
 }
 nodes {
   position {
-    x: 0.0
+    x: 2.0
     y: 0.0
     z: 0.0
     w: 1.0
@@ -7757,7 +7752,7 @@ nodes {
     w: 1.0
   }
   size {
-    x: 100.0
+    x: 95.0
     y: 6.0
     z: 0.0
     w: 1.0
@@ -7858,7 +7853,7 @@ nodes {
 nodes {
   position {
     x: 28.0
-    y: 14.0
+    y: 18.0
     z: 0.0
     w: 1.0
   }
@@ -7893,7 +7888,7 @@ nodes {
   id: "item_zombie_speed_damage_template/val"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
-  pivot: PIVOT_W
+  pivot: PIVOT_NW
   outline {
     x: 0.0
     y: 0.0
@@ -8218,7 +8213,7 @@ nodes {
 }
 nodes {
   position {
-    x: 0.0
+    x: 1.0
     y: 0.0
     z: 0.0
     w: 1.0
@@ -8230,8 +8225,8 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 0.6
-    y: 0.6
+    x: 1.0
+    y: 1.0
     z: 1.0
     w: 1.0
   }
@@ -8249,7 +8244,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "first_level/interface-icon-gold"
+  texture: "first_level/game-icon-coin"
   id: "item_zombie_speed_damage_template/price_icon"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -8589,8 +8584,8 @@ nodes {
     w: 1.0
   }
   size {
-    x: 200.0
-    y: 100.0
+    x: 54.0
+    y: 54.0
     z: 0.0
     w: 1.0
   }
@@ -8602,7 +8597,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "other/btn_inventary_default"
+  texture: "first_level/border-transperend"
   id: "item_transfer_gold_template/border"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -8622,7 +8617,7 @@ nodes {
   clipping_inverted: false
   alpha: 1.0
   template_node_child: true
-  size_mode: SIZE_MODE_AUTO
+  size_mode: SIZE_MODE_MANUAL
   custom_type: 0
   enabled: true
   visible: true
@@ -8699,8 +8694,8 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 1.25
-    y: 1.25
+    x: 1.0
+    y: 1.0
     z: 1.0
     w: 1.0
   }
@@ -9117,8 +9112,8 @@ nodes {
     w: 1.0
   }
   size {
-    x: 200.0
-    y: 100.0
+    x: 54.0
+    y: 54.0
     z: 0.0
     w: 1.0
   }
@@ -9130,7 +9125,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "other/btn_inventary_default"
+  texture: "first_level/border-transperend"
   id: "item_transfer_gold_template/border1"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -9150,7 +9145,7 @@ nodes {
   clipping_inverted: false
   alpha: 1.0
   template_node_child: true
-  size_mode: SIZE_MODE_AUTO
+  size_mode: SIZE_MODE_MANUAL
   custom_type: 0
   enabled: true
   visible: true
@@ -9227,8 +9222,8 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 1.25
-    y: 1.25
+    x: 1.0
+    y: 1.0
     z: 1.0
     w: 1.0
   }
@@ -9313,13 +9308,13 @@ layouts {
       w: 1.0
     }
     color {
-      x: 0.0
-      y: 0.0
-      z: 0.219
+      x: 1.0
+      y: 1.0
+      z: 1.0
       w: 1.0
     }
     type: TYPE_BOX
-    blend_mode: BLEND_MODE_ALPHA
+    blend_mode: BLEND_MODE_MULT
     texture: ""
     id: "bg"
     xanchor: XANCHOR_NONE

@@ -923,8 +923,8 @@ nodes {
     w: 1.0
   }
   size {
-    x: 200.0
-    y: 100.0
+    x: 56.0
+    y: 56.0
     z: 0.0
     w: 1.0
   }
@@ -936,7 +936,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "other/btn_inventary_default"
+  texture: "first_level/border-transperend"
   id: "item_1_template/border"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -956,7 +956,7 @@ nodes {
   clipping_inverted: false
   alpha: 1.0
   template_node_child: true
-  size_mode: SIZE_MODE_AUTO
+  size_mode: SIZE_MODE_MANUAL
   custom_type: 0
   enabled: true
   visible: true
@@ -1099,7 +1099,7 @@ nodes {
   }
   size {
     x: 100.0
-    y: 8.0
+    y: 9.0
     z: 0.0
     w: 1.0
   }
@@ -1121,9 +1121,9 @@ nodes {
   layer: "border_box"
   inherit_alpha: true
   slice9 {
-    x: 3.0
+    x: 4.0
     y: 3.0
-    z: 3.0
+    z: 4.0
     w: 3.0
   }
   clipping_mode: CLIPPING_MODE_NONE
@@ -1139,7 +1139,7 @@ nodes {
 }
 nodes {
   position {
-    x: 0.0
+    x: 2.0
     y: 0.0
     z: 0.0
     w: 1.0
@@ -1157,7 +1157,7 @@ nodes {
     w: 1.0
   }
   size {
-    x: 100.0
+    x: 95.0
     y: 6.0
     z: 0.0
     w: 1.0
@@ -1258,7 +1258,7 @@ nodes {
 nodes {
   position {
     x: 28.0
-    y: 14.0
+    y: 18.0
     z: 0.0
     w: 1.0
   }
@@ -1293,7 +1293,7 @@ nodes {
   id: "item_1_template/val"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
-  pivot: PIVOT_W
+  pivot: PIVOT_NW
   outline {
     x: 0.0
     y: 0.0
@@ -1618,7 +1618,7 @@ nodes {
 }
 nodes {
   position {
-    x: 0.0
+    x: 1.0
     y: 0.0
     z: 0.0
     w: 1.0
@@ -1630,8 +1630,8 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 0.6
-    y: 0.6
+    x: 1.0
+    y: 1.0
     z: 1.0
     w: 1.0
   }
@@ -1649,7 +1649,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "first_level/interface-icon-gold"
+  texture: "first_level/game-icon-coin"
   id: "item_1_template/price_icon"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -1922,8 +1922,8 @@ nodes {
     w: 1.0
   }
   size {
-    x: 200.0
-    y: 100.0
+    x: 56.0
+    y: 56.0
     z: 0.0
     w: 1.0
   }
@@ -1935,7 +1935,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "other/btn_inventary_default"
+  texture: "first_level/border-transperend"
   id: "item_2_template/border"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -1955,7 +1955,7 @@ nodes {
   clipping_inverted: false
   alpha: 1.0
   template_node_child: true
-  size_mode: SIZE_MODE_AUTO
+  size_mode: SIZE_MODE_MANUAL
   custom_type: 0
   enabled: true
   visible: true
@@ -2098,7 +2098,7 @@ nodes {
   }
   size {
     x: 100.0
-    y: 8.0
+    y: 9.0
     z: 0.0
     w: 1.0
   }
@@ -2120,9 +2120,9 @@ nodes {
   layer: "border_box"
   inherit_alpha: true
   slice9 {
-    x: 3.0
+    x: 4.0
     y: 3.0
-    z: 3.0
+    z: 4.0
     w: 3.0
   }
   clipping_mode: CLIPPING_MODE_NONE
@@ -2138,7 +2138,7 @@ nodes {
 }
 nodes {
   position {
-    x: 0.0
+    x: 2.0
     y: 0.0
     z: 0.0
     w: 1.0
@@ -2156,7 +2156,7 @@ nodes {
     w: 1.0
   }
   size {
-    x: 100.0
+    x: 95.0
     y: 6.0
     z: 0.0
     w: 1.0
@@ -2257,7 +2257,7 @@ nodes {
 nodes {
   position {
     x: 28.0
-    y: 14.0
+    y: 18.0
     z: 0.0
     w: 1.0
   }
@@ -2292,7 +2292,7 @@ nodes {
   id: "item_2_template/val"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
-  pivot: PIVOT_W
+  pivot: PIVOT_NW
   outline {
     x: 0.0
     y: 0.0
@@ -2617,7 +2617,7 @@ nodes {
 }
 nodes {
   position {
-    x: 0.0
+    x: 1.0
     y: 0.0
     z: 0.0
     w: 1.0
@@ -2629,8 +2629,8 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 0.6
-    y: 0.6
+    x: 1.0
+    y: 1.0
     z: 1.0
     w: 1.0
   }
@@ -2648,7 +2648,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "first_level/interface-icon-gold"
+  texture: "first_level/game-icon-coin"
   id: "item_2_template/price_icon"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -2921,8 +2921,8 @@ nodes {
     w: 1.0
   }
   size {
-    x: 200.0
-    y: 100.0
+    x: 56.0
+    y: 56.0
     z: 0.0
     w: 1.0
   }
@@ -2934,7 +2934,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "other/btn_inventary_default"
+  texture: "first_level/border-transperend"
   id: "item_3_template/border"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -2954,7 +2954,7 @@ nodes {
   clipping_inverted: false
   alpha: 1.0
   template_node_child: true
-  size_mode: SIZE_MODE_AUTO
+  size_mode: SIZE_MODE_MANUAL
   custom_type: 0
   enabled: true
   visible: true
@@ -3097,7 +3097,7 @@ nodes {
   }
   size {
     x: 100.0
-    y: 8.0
+    y: 9.0
     z: 0.0
     w: 1.0
   }
@@ -3119,9 +3119,9 @@ nodes {
   layer: "border_box"
   inherit_alpha: true
   slice9 {
-    x: 3.0
+    x: 4.0
     y: 3.0
-    z: 3.0
+    z: 4.0
     w: 3.0
   }
   clipping_mode: CLIPPING_MODE_NONE
@@ -3137,7 +3137,7 @@ nodes {
 }
 nodes {
   position {
-    x: 0.0
+    x: 2.0
     y: 0.0
     z: 0.0
     w: 1.0
@@ -3155,7 +3155,7 @@ nodes {
     w: 1.0
   }
   size {
-    x: 100.0
+    x: 95.0
     y: 6.0
     z: 0.0
     w: 1.0
@@ -3256,7 +3256,7 @@ nodes {
 nodes {
   position {
     x: 28.0
-    y: 14.0
+    y: 18.0
     z: 0.0
     w: 1.0
   }
@@ -3291,7 +3291,7 @@ nodes {
   id: "item_3_template/val"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
-  pivot: PIVOT_W
+  pivot: PIVOT_NW
   outline {
     x: 0.0
     y: 0.0
@@ -3616,7 +3616,7 @@ nodes {
 }
 nodes {
   position {
-    x: 0.0
+    x: 1.0
     y: 0.0
     z: 0.0
     w: 1.0
@@ -3628,8 +3628,8 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 0.6
-    y: 0.6
+    x: 1.0
+    y: 1.0
     z: 1.0
     w: 1.0
   }
@@ -3647,7 +3647,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "first_level/interface-icon-gold"
+  texture: "first_level/game-icon-coin"
   id: "item_3_template/price_icon"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -3920,8 +3920,8 @@ nodes {
     w: 1.0
   }
   size {
-    x: 200.0
-    y: 100.0
+    x: 56.0
+    y: 56.0
     z: 0.0
     w: 1.0
   }
@@ -3933,7 +3933,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "other/btn_inventary_default"
+  texture: "first_level/border-transperend"
   id: "item_4_template/border"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -3953,7 +3953,7 @@ nodes {
   clipping_inverted: false
   alpha: 1.0
   template_node_child: true
-  size_mode: SIZE_MODE_AUTO
+  size_mode: SIZE_MODE_MANUAL
   custom_type: 0
   enabled: true
   visible: true
@@ -4096,7 +4096,7 @@ nodes {
   }
   size {
     x: 100.0
-    y: 8.0
+    y: 9.0
     z: 0.0
     w: 1.0
   }
@@ -4118,9 +4118,9 @@ nodes {
   layer: "border_box"
   inherit_alpha: true
   slice9 {
-    x: 3.0
+    x: 4.0
     y: 3.0
-    z: 3.0
+    z: 4.0
     w: 3.0
   }
   clipping_mode: CLIPPING_MODE_NONE
@@ -4136,7 +4136,7 @@ nodes {
 }
 nodes {
   position {
-    x: 0.0
+    x: 2.0
     y: 0.0
     z: 0.0
     w: 1.0
@@ -4154,7 +4154,7 @@ nodes {
     w: 1.0
   }
   size {
-    x: 100.0
+    x: 95.0
     y: 6.0
     z: 0.0
     w: 1.0
@@ -4255,7 +4255,7 @@ nodes {
 nodes {
   position {
     x: 28.0
-    y: 14.0
+    y: 18.0
     z: 0.0
     w: 1.0
   }
@@ -4290,7 +4290,7 @@ nodes {
   id: "item_4_template/val"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
-  pivot: PIVOT_W
+  pivot: PIVOT_NW
   outline {
     x: 0.0
     y: 0.0
@@ -4615,7 +4615,7 @@ nodes {
 }
 nodes {
   position {
-    x: 0.0
+    x: 1.0
     y: 0.0
     z: 0.0
     w: 1.0
@@ -4627,8 +4627,8 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 0.6
-    y: 0.6
+    x: 1.0
+    y: 1.0
     z: 1.0
     w: 1.0
   }
@@ -4646,7 +4646,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "first_level/interface-icon-gold"
+  texture: "first_level/game-icon-coin"
   id: "item_4_template/price_icon"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -4919,8 +4919,8 @@ nodes {
     w: 1.0
   }
   size {
-    x: 200.0
-    y: 100.0
+    x: 56.0
+    y: 56.0
     z: 0.0
     w: 1.0
   }
@@ -4932,7 +4932,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "other/btn_inventary_default"
+  texture: "first_level/border-transperend"
   id: "item_5_template/border"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -4952,7 +4952,7 @@ nodes {
   clipping_inverted: false
   alpha: 1.0
   template_node_child: true
-  size_mode: SIZE_MODE_AUTO
+  size_mode: SIZE_MODE_MANUAL
   custom_type: 0
   enabled: true
   visible: true
@@ -5095,7 +5095,7 @@ nodes {
   }
   size {
     x: 100.0
-    y: 8.0
+    y: 9.0
     z: 0.0
     w: 1.0
   }
@@ -5117,9 +5117,9 @@ nodes {
   layer: "border_box"
   inherit_alpha: true
   slice9 {
-    x: 3.0
+    x: 4.0
     y: 3.0
-    z: 3.0
+    z: 4.0
     w: 3.0
   }
   clipping_mode: CLIPPING_MODE_NONE
@@ -5135,7 +5135,7 @@ nodes {
 }
 nodes {
   position {
-    x: 0.0
+    x: 2.0
     y: 0.0
     z: 0.0
     w: 1.0
@@ -5153,7 +5153,7 @@ nodes {
     w: 1.0
   }
   size {
-    x: 100.0
+    x: 95.0
     y: 6.0
     z: 0.0
     w: 1.0
@@ -5254,7 +5254,7 @@ nodes {
 nodes {
   position {
     x: 28.0
-    y: 14.0
+    y: 18.0
     z: 0.0
     w: 1.0
   }
@@ -5289,7 +5289,7 @@ nodes {
   id: "item_5_template/val"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
-  pivot: PIVOT_W
+  pivot: PIVOT_NW
   outline {
     x: 0.0
     y: 0.0
@@ -5614,7 +5614,7 @@ nodes {
 }
 nodes {
   position {
-    x: 0.0
+    x: 1.0
     y: 0.0
     z: 0.0
     w: 1.0
@@ -5626,8 +5626,8 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 0.6
-    y: 0.6
+    x: 1.0
+    y: 1.0
     z: 1.0
     w: 1.0
   }
@@ -5645,7 +5645,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "first_level/interface-icon-gold"
+  texture: "first_level/game-icon-coin"
   id: "item_5_template/price_icon"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE

@@ -145,6 +145,12 @@ function M.success(self, message)
 		visible = true
 	})
 
+	-- Характеристики
+	msg.post("main:/loader_gui", "visible", {
+		id = "catalog_characteristic",
+		visible = true,
+	})
+
 	
 
 	

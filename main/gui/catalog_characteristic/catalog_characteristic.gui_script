@@ -39,28 +39,12 @@ function init(self)
 
 	self.nodes = {
 		body = gui.get_node("body"),
-		title = gui.get_node("title"),
-		title_catalog = gui.get_node("title_modal"),
-		wrap = gui.get_node("wrap"),
-		description = gui.get_node("description"),
-		level = gui.get_node("level"),
-		xp = gui.get_node("xp"),
-		points = gui.get_node("points"),
-		mission_complete = gui.get_node("mission_complete"),
-		company_complete = gui.get_node("company_complete"),
-		wins = gui.get_node("wins"),
-		fails = gui.get_node("fails"),
-		btn_close = gui.get_node("btn-close-template/btn"),
-		btn_close_icon = gui.get_node("btn-close-template/btn_icon"),
+		title_main = gui.get_node("title_main"),
+		title_horde = gui.get_node("title_horde"),
 	}
 
-	gui_lang.set_text_upper(self, self.nodes.title, "_statistic", before_str, after_str)
-	gui_lang.set_text_upper(self, self.nodes.title_catalog, "_improvements", before_str, after_str)
-
-	catalog_characteristic_functions.render_stats(self)
-
-	local node_body = self.nodes.body
-	gui_loader.visible(true, node_wrap, node_icon, node_body, self)
+	gui_lang.set_text(self, self.nodes.title_main, "_title_upgrade_main")
+	gui_lang.set_text(self, self.nodes.title_horde, "_title_upgrade_horde")
 
 	self.druid = druid.new(self)
 	self.focus_btn_id = nil
@@ -70,17 +54,17 @@ function init(self)
 
 	-- Карточки с харкатеристиками
 	self.cards = {
-		{id = "mind", template_name = "item_1_template"},
-		{id = "accuracy", template_name = "item_2_template"},
-		{id = "charisma", template_name = "item_3_template"},
-		{id = "trade", template_name = "item_4_template"},
-		{id = "speed_caret", template_name = "item_5_template"},
+		{id = "live", template_name = "item_main_live_template", section = 1},
+		{id = "damage", template_name = "item_main_damage_template", section = 2},
+		{id = "speed_damage", template_name = "item_main_speed_damage_template", section = 3},
+		{id = "max_horde", template_name = "item_max_horde_template", section = 1},
+		{id = "zombie_live", template_name = "item_zombie_live_template", section = 2},
+		{id = "zombie_damage", template_name = "item_zombie_damage_template", section = 3},
+		{id = "zombie_speed_damage", template_name = "item_zombie_speed_damage_template", section = 4},
 	}
 
 	--catalog_characteristic_functions.render_catalog(self)
 	modal_characteristics_render.render(self, true)
-
-	gui_loyouts.set_enabled(self, self.nodes.btn_close, false)
 
 	timer.delay(0.1, false, function(self)
 		if #self.btns > 0 then
@@ -88,7 +72,6 @@ function init(self)
 		end
 
 		local node_body = self.nodes.body
-		gui_loader.visible(false, node_wrap, node_icon, node_body, self)
 	end)
 end
 

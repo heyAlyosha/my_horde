@@ -292,20 +292,8 @@ function on_input(self, action_id, action)
 
 		elseif btn.id == "shop" then
 			msg.post("main:/loader_gui", "visible", {
-				id = "catalog_shop",
+				id = "catalog_characteristic",
 				visible = true,
-				modal = false,
-				-- Кнопка внизу
-				btn_smart = {
-					type = "message",
-					title_id = "_ready",
-					message_url = "main:/loader_gui",
-					message_id = "visible",
-					message = {
-						id = "inventary_wrap",
-						visible = false
-					},
-				},
 			})
 
 		elseif btn.id == "volume" then

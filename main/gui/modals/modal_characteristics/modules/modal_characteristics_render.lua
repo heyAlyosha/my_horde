@@ -22,7 +22,7 @@ end
 
 -- Отрисовка элементов
 function M.render(self, not_modal)
-	M.description(self)
+	--M.description(self)
 	-- Очищаем старые данные, если есть
 	for i, v in ipairs(self.btns) do
 		if not_modal then
@@ -69,62 +69,27 @@ function M.render(self, not_modal)
 		end
 	end
 
-	-- Кнопка пропуска
-	if not not_modal then
-		self.btns[#self.btns + 1] = {
-			id = "skip", -- айдишник для активации кнопки
-			type = "btn",
-			section = 'skip',  -- Секция, если одинаоквая, то можно переключаться вправо-влево
-			node = gui.get_node("btn_next_template/btn_wrap"), -- нода с иконкой, подставляется icon
-			node_title = gui.get_node("btn_next_template/btn_title"), -- Текст, окрашивается в зелёный
-			icon = "btn_ellipse_green_", 
-		}
-	end
-
-	gui_loyouts.set_enabled(self, gui.get_node("btn_next_template/btn_wrap"), not not_modal)
-
-	if not_modal then
-		return true
-	elseif storage_player.characteristic_points > 0 then
-		gui_lang.set_text_upper(self, self.btns[#self.btns].node_title, "_skip", before_str, after_str)
-
-	else
-		gui_lang.set_text_upper(self, self.btns[#self.btns].node_title, "_continue", before_str, after_str)
-
-	end
+	return true
 end
 
 -- Отрисовка карточки хар-ки
 function M.card(self, item)
 	local content = game_content_characteristic.get_id(self, item.id)
+	pprint(content)
 
 	local up_level = storage_player.characteristic_points > 0
 
+	print("item.template_name", item.template_name)
 	local nodes = {
 		title = gui.get_node(item.template_name..'/title'),
-		img = gui.get_node(item.template_name..'/img'),
-		loader_img = gui.get_node(item.template_name..'/loader_icon_template/loader_icon'),
 		val = gui.get_node(item.template_name..'/val'),
-		description = gui.get_node(item.template_name..'/description'),
+		price = gui.get_node(item.template_name.."/price"),
 		btn_wrap = gui.get_node(item.template_name..'/btn_template/btn_wrap'),
 		btn_title = gui.get_node(item.template_name..'/btn_template/btn_title'),
 	}
 
 	-- Заполняем статичные данные
 	gui_lang.set_text_upper(self, nodes.title, content.title_id_string, before_str, after_str)
-	gui_lang.set_text_upper(self, nodes.description, content.description_id_string, before_str, after_str)
-
-	if content.img_preview then
-		local node_img = nodes.img
-		local node_loader = nodes.loader_img
-		local atlas_id = "characteristics"
-
-		live_update_atlas.render_loader_gui(self, node_img, node_loader, atlas_id, function (self, atlas_id)
-			gui_loyouts.set_texture(self, nodes.img, atlas_id)
-			gui_loyouts.play_flipbook(self, nodes.img, content.img_preview)
-		end)
-		--gui.play_flipbook(nodes.img, content.img_preview)
-	end
 
 	-- Заполняем данные с текущей прокачкой
 	local text_buff = lang_core.get_text(self, "_characteristic_value_"..content.id, before_str, after_str, {value = content.buff})
@@ -137,20 +102,11 @@ function M.card(self, item)
 		up_level = false
 	end
 
-	-- Отрисовываем кружочки
-	for i = 1, 10 do
-		local circle_node = gui.get_node(item.template_name..'/item_characteristics'..i)
+	-- Отрисовываем линию прокачки
 
-		if i <= content.level  then
-			gui.play_flipbook(circle_node, "btn_circle_bg_green_default")
-		else
-			gui.play_flipbook(circle_node, "btn_circle_bg_violet_default")
-		end
-	end
-
+	
 	-- Если нет следующего уровня, удаляем кнопки и 
 	gui.set_enabled(nodes.btn_wrap, up_level)
-	--gui.set_enabled(nodes.next_val, up_level)
 	if up_level then
 		local text_buff = lang_core.get_text(self, "_characteristic_value_"..content.id, before_str, after_str, {value = content.buff})
 		local text_next_buff = lang_core.get_text(self, "_characteristic_value_"..content.id, before_str, after_str, {value = content.next_buff})

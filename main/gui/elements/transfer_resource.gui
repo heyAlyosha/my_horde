@@ -229,8 +229,8 @@ nodes {
     w: 1.0
   }
   size {
-    x: 200.0
-    y: 100.0
+    x: 54.0
+    y: 54.0
     z: 0.0
     w: 1.0
   }
@@ -242,7 +242,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "other/btn_inventary_default"
+  texture: "first_level/border-transperend"
   id: "border"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -262,7 +262,7 @@ nodes {
   clipping_inverted: false
   alpha: 1.0
   template_node_child: false
-  size_mode: SIZE_MODE_AUTO
+  size_mode: SIZE_MODE_MANUAL
   custom_type: 0
   enabled: true
   visible: true
@@ -339,8 +339,8 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 1.25
-    y: 1.25
+    x: 1.0
+    y: 1.0
     z: 1.0
     w: 1.0
   }
@@ -760,8 +760,8 @@ nodes {
     w: 1.0
   }
   size {
-    x: 200.0
-    y: 100.0
+    x: 54.0
+    y: 54.0
     z: 0.0
     w: 1.0
   }
@@ -773,7 +773,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "other/btn_inventary_default"
+  texture: "first_level/border-transperend"
   id: "border1"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -793,7 +793,7 @@ nodes {
   clipping_inverted: false
   alpha: 1.0
   template_node_child: false
-  size_mode: SIZE_MODE_AUTO
+  size_mode: SIZE_MODE_MANUAL
   custom_type: 0
   enabled: true
   visible: true
@@ -870,8 +870,8 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 1.25
-    y: 1.25
+    x: 1.0
+    y: 1.0
     z: 1.0
     w: 1.0
   }
