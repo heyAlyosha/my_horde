@@ -40,14 +40,27 @@ function M.get_id(self, id)
 	item.level = characteristics[id] or 0
 	item.buff = M.get_buff(self, item.id, item.level)
 
+	-- Видимые характеристик
+	item.visible_buff = item.step_visible_start + item.step_visible * item.level
+
+	-- Стоимость улучшения
+	item.price = item.price_start + item.price_step * item.level
+
+	-- Валюта на которую покупаются улучшения
+	item.valute = "xp"
+	if item.type_characteristic == "horde" then
+		item.valute = "coins"
+	end
+
 	-- Определяем данные для следующего уровня
 	item.next_level = item.level + 1
-	if item.next_level > 10 then
+	if item.max_level <= item.level then
 		item.next_level = false
 		item.next_buff = false
 	else
 		item.next_level = item.next_level
 		item.next_buff = M.get_buff(self, item.id, item.next_level)
+		item.visible_next_buff = item.step_visible_start + item.step_visible * item.next_level
 	end
 
 	return item

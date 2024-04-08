@@ -542,7 +542,7 @@ nodes {
   pivot: PIVOT_W
   adjust_mode: ADJUST_MODE_FIT
   parent: "characteristic_line_border"
-  layer: "border_box"
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 2.0

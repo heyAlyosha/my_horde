@@ -820,7 +820,7 @@ nodes {
   pivot: PIVOT_W
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_main_live_template/characteristic_line_border"
-  layer: "border_box"
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 2.0
@@ -1825,7 +1825,7 @@ nodes {
   pivot: PIVOT_W
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_main_damage_template/characteristic_line_border"
-  layer: "border_box"
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 2.0
@@ -2830,7 +2830,7 @@ nodes {
   pivot: PIVOT_W
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_main_speed_damage_template/characteristic_line_border"
-  layer: "border_box"
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 2.0
@@ -4055,8 +4055,8 @@ nodes {
   }
   color {
     x: 1.0
-    y: 0.0
-    z: 1.0
+    y: 0.576
+    z: 0.906
     w: 1.0
   }
   type: TYPE_BOX
@@ -4827,7 +4827,7 @@ nodes {
   pivot: PIVOT_W
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_max_horde_template/characteristic_line_border"
-  layer: "border_box"
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 2.0
@@ -5827,7 +5827,7 @@ nodes {
   pivot: PIVOT_W
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_zombie_live_template/characteristic_line_border"
-  layer: "border_box"
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 2.0
@@ -6829,7 +6829,7 @@ nodes {
   pivot: PIVOT_W
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_zombie_damage_template/characteristic_line_border"
-  layer: "border_box"
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 2.0
@@ -7831,7 +7831,7 @@ nodes {
   pivot: PIVOT_W
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_zombie_speed_damage_template/characteristic_line_border"
-  layer: "border_box"
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 2.0

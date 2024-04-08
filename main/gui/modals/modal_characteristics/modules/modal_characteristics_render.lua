@@ -94,12 +94,11 @@ function M.card(self, item)
 
 	-- Отрисовываем линию прокачки
 
-	
 	-- Если нет следующего уровня, удаляем кнопки и 
 	gui.set_enabled(nodes.btn_wrap, up_level)
 	if up_level then
-		local text_buff = lang_core.get_text(self, "_characteristic_value_"..content.id, before_str, after_str, {value = content.buff})
-		local text_next_buff = lang_core.get_text(self, "_characteristic_value_"..content.id, before_str, after_str, {value = content.next_buff})
+		local text_buff = lang_core.get_text(self, "_characteristic_value_"..content.id, before_str, after_str, {value = content.visible_buff})
+		local text_next_buff = lang_core.get_text(self, "_characteristic_value_"..content.id, before_str, after_str, {value = content.visible_next_buff})
 		gui_loyouts.set_rich_text(self, nodes.val, text_buff .." => " .. "<color=lime>"..text_next_buff.."</color>")
 
 		item.btn = {
@@ -108,10 +107,13 @@ function M.card(self, item)
 			wrap_title = nodes.title
 		}
 
+		gui_loyouts.set_text(self, nodes.price, content.price)
+
 	else
 		local text_buff = lang_core.get_text(self, "_characteristic_value_"..content.id, before_str, after_str, {value = content.buff})
 		gui_loyouts.set_rich_text(self, nodes.val, text_buff)
 		item.is_btn = nil
+		gui_loyouts.set_enabled(self, nodes.price, false)
 	end
 
 	return item

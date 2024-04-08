@@ -1236,7 +1236,7 @@ nodes {
   pivot: PIVOT_W
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_1_template/characteristic_line_border"
-  layer: "border_box"
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 2.0
@@ -2235,7 +2235,7 @@ nodes {
   pivot: PIVOT_W
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_2_template/characteristic_line_border"
-  layer: "border_box"
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 2.0
@@ -3234,7 +3234,7 @@ nodes {
   pivot: PIVOT_W
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_3_template/characteristic_line_border"
-  layer: "border_box"
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 2.0
@@ -4233,7 +4233,7 @@ nodes {
   pivot: PIVOT_W
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_4_template/characteristic_line_border"
-  layer: "border_box"
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 2.0
@@ -5232,7 +5232,7 @@ nodes {
   pivot: PIVOT_W
   adjust_mode: ADJUST_MODE_FIT
   parent: "item_5_template/characteristic_line_border"
-  layer: "border_box"
+  layer: "box"
   inherit_alpha: true
   slice9 {
     x: 2.0
