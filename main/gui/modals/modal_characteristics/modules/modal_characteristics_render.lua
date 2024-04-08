@@ -43,24 +43,25 @@ function M.render(self, not_modal)
 
 		-- Если есть кнопка,
 		if card.btn then
+			pprint("card", card)
 			self.btns[#self.btns + 1] = {
 				id = card.id, -- айдишник для активации кнопки
 				type = "btn",
+				price = card.price, -- айдишник для активации кнопки
+				valute = card.valute,
 				name_template = value.template_name,
 				is_characteristic = true, 
 				section = card.id,  -- Секция, если одинаоквая, то можно переключаться вправо-влево
 				node = card.btn.btn_wrap, -- нода с иконкой, подставляется icon
 				wrap_node = card.btn.btn_wrap, --обёртка, подставляется wrap_icon
-				--node_title = card.btn.btn_title, -- Текст, окрашивается в зелёный
-				--node_wrap_title = card.btn.wrap_title, -- Текст заголовка секции вокруг кнопки, окрашивается в зелёный
-				--next_level_circle = card.btn.next_level_circle,
-				--icon = "button_green_default", 
 				wrap_icon = "button_green_"
 			}
 
 			self.btns_id[card.id] = self.btns[#self.btns]
 		end
 	end
+
+	M.btns_disabled(self)
 
 	return true
 end
@@ -69,6 +70,8 @@ end
 function M.card(self, item)
 	local content = game_content_characteristic.get_id(self, item.id)
 	local up_level = content.max_level > content.level
+	item.price = content.price
+	item.valute = content.valute
 
 	local nodes = {
 		title = gui.get_node(item.template_name..'/title'),
@@ -96,7 +99,6 @@ function M.card(self, item)
 
 	-- Отрисовываем линию прокачки
 	local procent = content.level / content.max_level
-	print("procent", procent)
 	local max_size = gui.get_size(nodes.progress_wrap).x
 	local min_size = 2
 	local size_line = 0
@@ -143,6 +145,24 @@ function M.hidden(self)
 			type = hash("popup")
 		})
 	end)
+end
+
+-- Блокировка недоступных улучшений
+function M.btns_disabled(self)
+	for i, btn in ipairs(self.btns) do
+		pprint("btn", btn)
+		if btn.price then
+			print("btns_disabled", btn.price, storage_player[btn.valute], btn.price > storage_player[btn.valute])
+			if btn.price > storage_player[btn.valute] then
+				-- ХВатает средств
+				gui_input.set_disabled(self, btn, false)
+				--gui_loyouts.set_color(self, btn.node, color.white, property)
+			else
+				gui_input.set_disabled(self, btn, true)
+				--gui_loyouts.set_color(self, btn.node, color.red, property)
+			end
+		end
+	end
 end
 
 return M
