@@ -50,19 +50,12 @@ function M.render(self, not_modal)
 				is_characteristic = true, 
 				section = card.id,  -- Секция, если одинаоквая, то можно переключаться вправо-влево
 				node = card.btn.btn_wrap, -- нода с иконкой, подставляется icon
-				--wrap_node = card.btn.next_level_circle, --обёртка, подставляется wrap_icon
-				node_title = card.btn.btn_title, -- Текст, окрашивается в зелёный
-				node_wrap_title = card.btn.wrap_title, -- Текст заголовка секции вокруг кнопки, окрашивается в зелёный
-				next_level_circle = card.btn.next_level_circle,
-				on_set_function = function (self, btn, focus)
-					if focus  then
-						gui_loyouts.play_flipbook(self, btn.next_level_circle, 'btn_circle_bg_green_default')
-					else
-						gui_loyouts.play_flipbook(self, btn.next_level_circle, 'btn_circle_bg_violet_default')
-					end
-				end,
-				icon = "btn_ellipse_green_", 
-				wrap_icon = "btn_circle_bg_violet_"
+				wrap_node = card.btn.btn_wrap, --обёртка, подставляется wrap_icon
+				--node_title = card.btn.btn_title, -- Текст, окрашивается в зелёный
+				--node_wrap_title = card.btn.wrap_title, -- Текст заголовка секции вокруг кнопки, окрашивается в зелёный
+				--next_level_circle = card.btn.next_level_circle,
+				--icon = "button_green_default", 
+				wrap_icon = "button_green_"
 			}
 
 			self.btns_id[card.id] = self.btns[#self.btns]
@@ -75,8 +68,7 @@ end
 -- Отрисовка карточки хар-ки
 function M.card(self, item)
 	local content = game_content_characteristic.get_id(self, item.id)
-
-	local up_level = storage_player.characteristic_points > 0
+	local up_level = content.max_level > content.level
 
 	local nodes = {
 		title = gui.get_node(item.template_name..'/title'),
@@ -113,7 +105,6 @@ function M.card(self, item)
 		item.btn = {
 			btn_wrap = nodes.btn_wrap,
 			btn_title = nodes.btn_wrap,
-			next_level_circle = gui.get_node(item.template_name..'/item_characteristics'..content.next_level),
 			wrap_title = nodes.title
 		}
 

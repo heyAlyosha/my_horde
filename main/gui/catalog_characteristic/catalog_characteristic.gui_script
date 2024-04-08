@@ -63,7 +63,6 @@ function init(self)
 		{id = "zombie_speed_damage", template_name = "item_zombie_speed_damage_template", section = 4},
 	}
 
-	--catalog_characteristic_functions.render_catalog(self)
 	modal_characteristics_render.render(self, true)
 
 	timer.delay(0.1, false, function(self)
