@@ -146,7 +146,7 @@ function M.success(self, message)
 	})
 
 	-- Характеристики
-	storage_player.characteristics.damage = 19
+	storage_player.characteristics.damage = 1
 	msg.post("main:/loader_gui", "visible", {
 		id = "catalog_characteristic",
 		visible = true,

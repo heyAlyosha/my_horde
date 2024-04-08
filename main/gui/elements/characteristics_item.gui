@@ -445,7 +445,7 @@ nodes {
 }
 nodes {
   position {
-    x: 2.0
+    x: 3.0
     y: 0.0
     z: 0.0
     w: 1.0
@@ -463,7 +463,7 @@ nodes {
     w: 1.0
   }
   size {
-    x: 95.0
+    x: 93.0
     y: 6.0
     z: 0.0
     w: 1.0
@@ -504,7 +504,7 @@ nodes {
 }
 nodes {
   position {
-    x: 2.0
+    x: 3.0
     y: 0.0
     z: 0.0
     w: 1.0

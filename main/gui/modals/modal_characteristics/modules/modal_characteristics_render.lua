@@ -76,6 +76,8 @@ function M.card(self, item)
 		price = gui.get_node(item.template_name.."/price"),
 		btn_wrap = gui.get_node(item.template_name..'/btn_template/btn_wrap'),
 		btn_title = gui.get_node(item.template_name..'/btn_template/btn_title'),
+		progress_line = gui.get_node(item.template_name..'/characteristic_line_body'),
+		progress_wrap = gui.get_node(item.template_name..'/characteristics_bg'),
 	}
 
 	-- Заполняем статичные данные
@@ -93,6 +95,20 @@ function M.card(self, item)
 	end
 
 	-- Отрисовываем линию прокачки
+	local procent = content.level / content.max_level
+	print("procent", procent)
+	local max_size = gui.get_size(nodes.progress_wrap).x
+	local min_size = 2
+	local size_line = 0
+	if procent > 0 then
+		size_line = max_size * procent
+	end
+	if size_line < min_size then
+		size_line = min_size
+	elseif size_line > max_size then
+		size_line = max_size
+	end
+	gui_loyouts.set_size(self, nodes.progress_line, size_line, "x")
 
 	-- Если нет следующего уровня, удаляем кнопки и 
 	gui.set_enabled(nodes.btn_wrap, up_level)
