@@ -150,7 +150,7 @@ end
 function M.btns_disabled(self)
 	for i, btn in ipairs(self.btns) do
 		if btn.price then
-			if btn.price > storage_player[btn.valute] then
+			if btn.price <= storage_player[btn.valute] then
 				-- ХВатает средств
 				gui_input.set_disabled(self, btn, false)
 				--gui_loyouts.set_color(self, btn.node, color.white, property)
