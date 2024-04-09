@@ -280,25 +280,6 @@ embedded_components {
   }
 }
 embedded_components {
-  id: "upgrades_factory"
-  type: "factory"
-  data: "prototype: \"/main/gui/upgrades/upgrades.go\"\n"
-  "load_dynamically: false\n"
-  "dynamic_prototype: false\n"
-  ""
-  position {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-}
-embedded_components {
   id: "notify_factory"
   type: "factory"
   data: "prototype: \"/main/gui/notify/notify.go\"\n"
@@ -627,6 +608,24 @@ embedded_components {
   data: "prototype: \"/main/gui/dark_screen/dark_screen.go\"\n"
   "load_dynamically: false\n"
   "dynamic_prototype: false\n"
+  ""
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}
+embedded_components {
+  id: "upgrades_collectionproxy"
+  type: "collectionproxy"
+  data: "collection: \"/main/gui/upgrades/upgrades.collection\"\n"
+  "exclude: true\n"
   ""
   position {
     x: 0.0

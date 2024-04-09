@@ -1,7 +1,6 @@
 local input_remote_tv = require "input.input_remote_tv.modules.input_remote_tv"
 
 function init(self)
-	pprint("self", on_input)
 end
 
 function final(self)

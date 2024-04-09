@@ -85,7 +85,6 @@ end
 
 function M.set_visible(self, visible)
 	self.visible = visible
-	print("set_visible", visible)
 	gui.set_enabled(self.nodes.btn, visible)
 	gui.set_enabled(self.nodes.stick_wrap, visible)
 end

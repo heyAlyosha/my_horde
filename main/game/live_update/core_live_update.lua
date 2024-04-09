@@ -3,9 +3,6 @@ local M = {}
 
 local reszip = require "liveupdate_reszip.reszip"
 
-
-
-
 local function on_finish(self, err)
 	print("on_finish")
 end
@@ -36,7 +33,7 @@ function M.load(self, url, callback_finish, callback_progress)
 			callback_finish(self, err)
 		end
 	end
-	
+
 end
 
 return M

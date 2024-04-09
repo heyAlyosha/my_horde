@@ -440,7 +440,6 @@ function on_message(self, message_id, message, sender)
 	elseif message_id == hash("set_active_input") then
 		self.active_input = message.active_input
 
-		print("set_active_input")
 	end
 
 	

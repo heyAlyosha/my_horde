@@ -43,7 +43,6 @@ function M.render(self, not_modal)
 
 		-- Если есть кнопка,
 		if card.btn then
-			pprint("card", card)
 			self.btns[#self.btns + 1] = {
 				id = card.id, -- айдишник для активации кнопки
 				type = "btn",
@@ -150,9 +149,7 @@ end
 -- Блокировка недоступных улучшений
 function M.btns_disabled(self)
 	for i, btn in ipairs(self.btns) do
-		pprint("btn", btn)
 		if btn.price then
-			print("btns_disabled", btn.price, storage_player[btn.valute], btn.price > storage_player[btn.valute])
 			if btn.price > storage_player[btn.valute] then
 				-- ХВатает средств
 				gui_input.set_disabled(self, btn, false)

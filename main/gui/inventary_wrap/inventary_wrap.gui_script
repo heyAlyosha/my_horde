@@ -177,8 +177,6 @@ function on_message(self, message_id, message, sender)
 		gui_input.set_focus(self, message.focus)
 
 	elseif message_id == hash("visible") then
-		print("visible", storage_player.user_go_url)
-		
 		if storage_player.user_go_url then
 			msg.post(storage_player.user_go_url, "set_active_input", {active_input = false})
 		end

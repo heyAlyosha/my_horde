@@ -4,6 +4,14 @@ local storage_collection = require "main.storage.storage_collection"
 
 function init(self)
 	msg.post(".", "acquire_input_focus")
+	self.nodes = {
+		loader_wrap = gui.get_node("loader_template/loader_wrap"),
+		loader_icon = gui.get_node("loader_template/loader_icon"),
+		loader_progress = gui.get_node("loader_template/loader_progress"),
+	}
+
+	local node_body = false -- Если не нужно скрывать контент
+	gui_loader.visible(false, node_wrap, node_icon, node_body, self)
 end
 
 function on_message(self, message_id, message, sender)
@@ -15,5 +23,21 @@ function on_message(self, message_id, message, sender)
 		if storage_collection.components_visible.inventary then
 			msg.post("main:/loader_collection", "visible", {id = "inventary", visible = false})
 		end
+
+	elseif message_id == hash("set_loader") then
+		if message.visible == false then
+			gui.set_enabled(self.nodes.loader_wrap, false)
+
+		else
+			gui.set_enabled(self.nodes.loader_wrap, true)
+
+			if message.progress then
+				gui_loyouts.set_text(self, self.nodes.loader_progress, tostring(message.progress) .. "%")
+				gui.set_enabled(self.nodes.loader_progress, true)
+			else
+				gui.set_enabled(self.nodes.loader_progress, false)
+			end
+		end 
+
 	end
 end

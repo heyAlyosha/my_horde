@@ -11,6 +11,11 @@ function init(self)
 		popup_notify = {}
 	}
 
+	-- Прокси коллекции для лайв апдейт
+	self.collections_proxy = {
+		upgrades = {}
+	}
+
 	-- Устанавливаем перевод
 	lang_core.init(self)
 end
@@ -21,7 +26,6 @@ end
 
 function on_message(self, message_id, message, sender)
 	loader_gui_history.on_message(self, message_id, message, sender)
-
 
 	if message_id == hash("visible") then
 		-- Сообщения скрытия/показа компонентов
@@ -207,14 +211,14 @@ function on_message(self, message_id, message, sender)
 		msg.post(sender, "init")
 		msg.post(sender, "enable")
 
-
 		local id = storage_gui.components_visible_sender_fragment_to_id[msg.url(sender).fragment]
 		local proxy_collection = self.collections_proxy[id]
+		pprint("proxy_collection", msg.url(sender).fragment)
+		pprint(storage_gui.components_visible_sender_fragment_to_id)
 
 		if proxy_collection and proxy_collection.messages then
 			for i, value in ipairs(proxy_collection.messages) do
 				msg.post(storage_gui.components_visible[id], value.message_id, value.message)
-
 			end
 
 			self.collections_proxy[id].messages = nil

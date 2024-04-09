@@ -8,17 +8,36 @@ local lang_core = require "main.lang.lang_core"
 
 -- Создание компонента
 function M.create_component(self, id, message, sender, message_id)
-	-- Обычный компонент гуи
 	storage_gui.components_visible_hash_to_id[hash(message.id)] = message.id
 	storage_gui.components_visible_sender_to_id[sender] = message.id
-	local url = msg.url(factory.create("#"..message.id .. "_factory", nil, nil, message.properties))
-	storage_gui.components_visible[message.id] = url
 
-	--msg.post("game-room:/core_game", "event", {id = "visible_gui", component_id = message.id, value = message.value or message.values })
-	--msg.post("main:/core_study", "event", {id = "visible_gui", component_id = message.id, value = message.value or message.values })
-	
-	if message_id == hash("visible") then
-		msg.post(storage_gui.components_visible[message.id], message_id, message)
+	if not self.collections_proxy[message.id] then
+		-- Обычный компонент гуи
+		local url = msg.url(factory.create("#"..message.id .. "_factory", nil, nil, message.properties))
+		storage_gui.components_visible[message.id] = url
+
+		--msg.post("game-room:/core_game", "event", {id = "visible_gui", component_id = message.id, value = message.value or message.values })
+		--msg.post("main:/core_study", "event", {id = "visible_gui", component_id = message.id, value = message.value or message.values })
+		
+		if message_id == hash("visible") then
+			msg.post(storage_gui.components_visible[message.id], message_id, message)
+		end
+
+	else
+		-- Прокси коллекция
+		local url_collection = "#"..message.id.."_collectionproxy"
+		storage_gui.components_visible[message.id] = url_collection
+		core_live_update.load(self, url_collection, function (self)
+			-- Загрузилось
+			msg.post(url_collection, hash("load"))
+			msg.post(".", "set_loader", {visible = false})
+
+		end, function (self, loaded, total)
+			-- Загрузка прогресса
+			local progress = math.floor(loaded / total * 100)
+			msg.post(".", "set_loader", {visible = true, progress = progress})
+
+		end)
 	end
 
 end

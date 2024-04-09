@@ -43,8 +43,6 @@ function M.init_player(self, callback)
 
 	storage_player.userdata = data_handler_functions.get_new_day(self, account.userdata)
 
-	pprint("storage_player.userdata", storage_player.userdata)
-
 	for k, v in pairs(storage_player.userdata) do
 		storage_player[k] = v
 	end
