@@ -108,22 +108,11 @@ function on_message(self, message_id, message, sender)
 			modal_characteristics_render.render(self, true)
 
 			-- Устанавливаем фокус
-			if storage_player.characteristic_points > 0 then
-				if self.focus_btn_id > #self.btns then
-					self.focus_btn_id = #self.btns
-				end
-
-				gui_input.set_focus(self, self.focus_btn_id)
-			else
-				msg.post("main:/loader_gui", "focus", {
-					id = "inventary_wrap", -- id компонента в лоадер гуи
-					focus = 4 -- кнопка фокуса
-				})
+			if self.focus_btn_id > #self.btns then
+				self.focus_btn_id = #self.btns
 			end
 
-			local btn = self.btns_id[message.value.id]
-			modal_characteristics_animations.up(self, btn.name_template)
-			upgrades_functions.render_stats(self)
+			gui_input.set_focus(self, self.focus_btn_id)
 		end
 	end
 end

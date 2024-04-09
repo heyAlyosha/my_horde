@@ -10,7 +10,6 @@ local lang_core = require "main.lang.lang_core"
 function M.create_component(self, id, message, sender, message_id)
 	storage_gui.components_visible_hash_to_id[hash(message.id)] = message.id
 	storage_gui.components_visible_sender_to_id[sender] = message.id
-	print("create_component", message.id)
 
 	if not self.collections_proxy[message.id] then
 		-- Обычный компонент гуи

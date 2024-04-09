@@ -15,14 +15,10 @@ function M.set_characteristic(self, id, operation, value, set, callback)
 	
 	storage_player.characteristics[id] = storage_player.characteristics[id] or 0
 
-	if storage_player.characteristic_points <= 0 or storage_player.characteristics[id] >= 10 then
-		return false
-	elseif operation == "add" then
+	if operation == "add" then
 		storage_player.characteristics[id] = storage_player.characteristics[id] + 1
-		storage_player.characteristic_points = storage_player.characteristic_points - 1
 	elseif operation == "set" then
 		storage_player.characteristics[id] = value
-		storage_player.characteristic_points = storage_player.characteristic_points - value
 	else
 		return false
 	end

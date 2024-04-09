@@ -56,11 +56,7 @@ function on_message(self, message_id, message, sender)
 		end)
 
 		-- Определяем какому компоненту отсылать
-		local id_component = "modal_characteristics"
-		-- Если это не модальное окно, значит это каталог в инвентаре
-		if message.not_modal then
-			id_component = "catalog_characteristic"
-		end
+		local id_component = "upgrades"
 
 		if result then
 			msg.post("/loader_gui", "set_status", {

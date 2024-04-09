@@ -43,7 +43,7 @@ function M.render(self, not_modal)
 
 		-- Если есть кнопка,
 		if card.btn then
-			pprint("card", card)
+			pprint(card)
 			self.btns[#self.btns + 1] = {
 				id = card.id, -- айдишник для активации кнопки
 				type = "btn",

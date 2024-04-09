@@ -23,16 +23,6 @@ function M.update_balance(self, operation, values, animate)
 			-- Если это перезапись 
 			storage_player[key] = value
 		end
-
-		-- Если изменялся опыт, смотрим не нужно ли изменять уровень 
-		pprint("update_balance")
-		if key == 'score' then
-			local level_data_user = M.get_level_data_user()
-
-			if level_data_user.procent_to_next_level >= 100 then
-				M.level_up(self)
-			end
-		end
 	end 
 
 	-- Обновляем интерфейс
