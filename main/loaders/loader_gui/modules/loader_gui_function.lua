@@ -10,6 +10,7 @@ local lang_core = require "main.lang.lang_core"
 function M.create_component(self, id, message, sender, message_id)
 	storage_gui.components_visible_hash_to_id[hash(message.id)] = message.id
 	storage_gui.components_visible_sender_to_id[sender] = message.id
+	print("create_component", message.id)
 
 	if not self.collections_proxy[message.id] then
 		-- Обычный компонент гуи
@@ -44,7 +45,14 @@ end
 
 -- Создание компонента
 function M.delete_component(self, id, all_msg)
-	go.delete(storage_gui.components_visible[id], true)
+	if not self.collections_proxy[id] then
+		go.delete(storage_gui.components_visible[id], true)
+	else
+		local url_collection = "#"..id.."_collectionproxy"
+		msg.post(url_collection, "disable")
+		msg.post(url_collection, "final")
+		msg.post(url_collection, "unload")
+	end
 
 	storage_gui.components_visible[id] = nil
 	storage_gui.components_status[id] = {}
