@@ -43,7 +43,6 @@ function M.render(self, not_modal)
 
 		-- Если есть кнопка,
 		if card.btn then
-			pprint(card)
 			self.btns[#self.btns + 1] = {
 				id = card.id, -- айдишник для активации кнопки
 				type = "btn",
@@ -58,6 +57,42 @@ function M.render(self, not_modal)
 			}
 
 			self.btns_id[card.id] = self.btns[#self.btns]
+		end
+	end
+
+	-- Добавляем кнопки обмена ресурсов
+	local transfer_btns = {
+		speed_damage = {
+			id = "transfer_xp",
+			price = tonumber(gui.get_text(gui.get_node("item_transfer_mutation_template/from"))),
+			valute = "xp",
+			section = 4,
+			node = gui.get_node("item_transfer_mutation_template/btn_template/btn_wrap")
+		},
+		zombie_speed_damage = {
+			id = "transfer_coins",
+			price = tonumber(gui.get_text(gui.get_node("item_transfer_gold_template/from"))),
+			valute = "coins",
+			section = 5,
+			node = gui.get_node("item_transfer_gold_template/btn_template/btn_wrap")
+		}
+	}
+	for i, btn in ipairs(self.btns) do
+		if transfer_btns[btn.id] then
+			local btn_transfer = transfer_btns[btn.id]
+			table.insert(self.btns, {
+				id = btn_transfer.id, -- айдишник для активации кнопки
+				type = "btn",
+				price = btn_transfer.price, -- айдишник для активации кнопки
+				valute = "resource",
+				valute_to = btn_transfer.valute,
+				--name_template = value.template_name,
+				is_transfer = true, 
+				section = btn_transfer.section,  -- Секция, если одинаоквая, то можно переключаться вправо-влево
+				node = btn_transfer.node, -- нода с иконкой, подставляется icon
+				wrap_node = btn_transfer.node, --обёртка, подставляется wrap_icon
+				wrap_icon = "button_green_"
+			})
 		end
 	end
 

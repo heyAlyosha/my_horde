@@ -9,7 +9,7 @@ local data_handler = require "main.data.data_handler"
 
 
 -- Операции с балансом
-function M.update_balance(self, operation, values, animate)
+function M.update_balance(self, operation, values, animate, sender)
 	local operation = operation or 'set'
 	local values = values or {}
 	local animate = animate or true
@@ -31,6 +31,10 @@ function M.update_balance(self, operation, values, animate)
 		type = "update_balance",
 		animate = animate,
 	})
+
+	if sender then
+		msg.post(sender, "success_operation", {type_operation = "balance"})
+	end
 end
 
 -- Левел ап игрока

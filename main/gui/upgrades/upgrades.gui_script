@@ -90,6 +90,7 @@ function update(self, dt)
 end
 
 function on_message(self, message_id, message, sender)
+	pprint("on_message", message_id, message)
 	input_remote_tv.on_message(self, message_id, message, sender)
 	self.druid:on_message(message_id, message, sender)
 	live_update_atlas.on_message_gui(self, message_id, message, sender)
@@ -101,19 +102,15 @@ function on_message(self, message_id, message, sender)
 	elseif message_id == hash("focus") then
 		gui_input.set_focus(self, message.focus)
 
-	elseif message_id == hash("set_status") then
-		-- Результат повышения уровня
-		if message.type == "success_up" then
-			local success_id = message.value.id
-			modal_characteristics_render.render(self, true)
+	elseif (message_id == hash("set_status") and message.type == "success_up") or message_id == hash("success_operation") then
+		modal_characteristics_render.render(self, true)
 
-			-- Устанавливаем фокус
-			if self.focus_btn_id > #self.btns then
-				self.focus_btn_id = #self.btns
-			end
-
-			gui_input.set_focus(self, self.focus_btn_id)
+		-- Устанавливаем фокус
+		if self.focus_btn_id > #self.btns then
+			self.focus_btn_id = #self.btns
 		end
+
+		gui_input.set_focus(self, self.focus_btn_id)
 	end
 end
 

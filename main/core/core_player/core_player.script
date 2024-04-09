@@ -4,6 +4,7 @@ local api_core_player = require "main.core.api.api_core_player"
 local api_player = require "main.game.api.api_player"
 local api_core_shop = require "main.core.api.api_core_shop"
 
+
 function init(self)
 
 end
@@ -35,7 +36,7 @@ function on_message(self, message_id, message, sender)
 		local operation = message.operation or 'set'
 		local values = message.values or {}
 		local animate = message.animate or true
-		core_player_function.update_balance(self, operation, values, animate)
+		core_player_function.update_balance(self, operation, values, animate, sender)
 
 	elseif message_id == hash('set_name') then
 		-- Изменение имени
@@ -57,7 +58,6 @@ function on_message(self, message_id, message, sender)
 
 		-- Определяем какому компоненту отсылать
 		local id_component = "upgrades"
-
 		if result then
 			msg.post("/loader_gui", "set_status", {
 				id = id_component,

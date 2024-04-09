@@ -158,6 +158,7 @@ function init(self)
 	-- Характеристики
 	storage_player.characteristics.damage = 1
 	storage_player.coins = 10
+	storage_player.resource = 10
 	msg.post("main:/loader_gui", "visible", {
 		id = "upgrades",
 		visible = true,
