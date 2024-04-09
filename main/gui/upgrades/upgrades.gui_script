@@ -55,10 +55,10 @@ function init(self)
 	-- Карточки с харкатеристиками
 	self.cards = {
 		{id = "live", template_name = "item_main_live_template", section = 1},
-		{id = "damage", template_name = "item_main_damage_template", section = 2},
-		{id = "speed_damage", template_name = "item_main_speed_damage_template", section = 3},
 		{id = "max_horde", template_name = "item_max_horde_template", section = 1},
+		{id = "damage", template_name = "item_main_damage_template", section = 2},
 		{id = "zombie_live", template_name = "item_zombie_live_template", section = 2},
+		{id = "speed_damage", template_name = "item_main_speed_damage_template", section = 3},
 		{id = "zombie_damage", template_name = "item_zombie_damage_template", section = 3},
 		{id = "zombie_speed_damage", template_name = "item_zombie_speed_damage_template", section = 4},
 	}

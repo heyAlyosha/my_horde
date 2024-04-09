@@ -37,12 +37,13 @@ function M.render(self, not_modal)
 
 	for i, value in ipairs(self.cards) do
 		-- очищаем старые карточки
-		value = {id = value.id, template_name = value.template_name}
+		value = {id = value.id, template_name = value.template_name, section = value.section}
 
 		local card = M.card(self, value)
 
 		-- Если есть кнопка,
 		if card.btn then
+			pprint("card", card)
 			self.btns[#self.btns + 1] = {
 				id = card.id, -- айдишник для активации кнопки
 				type = "btn",
@@ -50,7 +51,7 @@ function M.render(self, not_modal)
 				valute = card.valute,
 				name_template = value.template_name,
 				is_characteristic = true, 
-				section = card.id,  -- Секция, если одинаоквая, то можно переключаться вправо-влево
+				section = value.section,  -- Секция, если одинаоквая, то можно переключаться вправо-влево
 				node = card.btn.btn_wrap, -- нода с иконкой, подставляется icon
 				wrap_node = card.btn.btn_wrap, --обёртка, подставляется wrap_icon
 				wrap_icon = "button_green_"
@@ -151,7 +152,7 @@ function M.btns_disabled(self)
 	for i, btn in ipairs(self.btns) do
 		if btn.price then
 			if btn.price <= storage_player[btn.valute] then
-				-- ХВатает средств
+				-- Хватает средств
 				gui_input.set_disabled(self, btn, false)
 				--gui_loyouts.set_color(self, btn.node, color.white, property)
 			else
