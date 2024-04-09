@@ -7,7 +7,7 @@ function init(self)
 	msg.post(".", "acquire_input_focus")
 	gui.set_render_order(15)
 	virtual_gamepad_render.init(self)
-	storage_gui.visible_virtual_gamepad = true
+	storage_gui.visible_virtual_gamepad = msg.url()
 end
 
 function final(self)
@@ -31,6 +31,10 @@ function on_message(self, message_id, message, sender)
 		else
 			gui_loyouts.play_flipbook(self, self.nodes.btn, "btn_interface_default")
 		end
+
+	elseif message_id == hash("set_visible") then
+		-- Скрытие
+		virtual_gamepad_render.set_visible(self, message.visible)
 	end
 end
 

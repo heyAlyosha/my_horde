@@ -280,9 +280,9 @@ embedded_components {
   }
 }
 embedded_components {
-  id: "catalog_characteristic_factory"
+  id: "upgrades_factory"
   type: "factory"
-  data: "prototype: \"/main/gui/catalog_characteristic/catalog_characteristic.go\"\n"
+  data: "prototype: \"/main/gui/upgrades/upgrades.go\"\n"
   "load_dynamically: false\n"
   "dynamic_prototype: false\n"
   ""

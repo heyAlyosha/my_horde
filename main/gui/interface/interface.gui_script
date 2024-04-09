@@ -292,7 +292,7 @@ function on_input(self, action_id, action)
 
 		elseif btn.id == "shop" then
 			msg.post("main:/loader_gui", "visible", {
-				id = "catalog_characteristic",
+				id = "upgrades",
 				visible = true,
 			})
 

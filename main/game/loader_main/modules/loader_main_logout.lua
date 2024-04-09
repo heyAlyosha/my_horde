@@ -144,14 +144,6 @@ function M.success(self, message)
 		id = "interface",
 		visible = true
 	})
-
-	-- Характеристики
-	storage_player.characteristics.damage = 1
-	storage_player.coins = 10
-	msg.post("main:/loader_gui", "visible", {
-		id = "catalog_characteristic",
-		visible = true,
-	})
 end
 
 

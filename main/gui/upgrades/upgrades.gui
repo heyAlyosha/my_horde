@@ -1,4 +1,4 @@
-script: "/main/gui/catalog_characteristic/catalog_characteristic.gui_script"
+script: "/main/gui/upgrades/upgrades.gui_script"
 fonts {
   name: "font_standart_normal"
   font: "/assets/fonts/font_standart_normal.font"

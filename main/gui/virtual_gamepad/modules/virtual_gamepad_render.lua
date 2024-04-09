@@ -7,8 +7,10 @@ function M.on_control(action, node, touch)
 	if action == onscreen.BUTTON then
 		if touch.pressed then
 			M.gamepad_run = true
+
 		elseif touch.released then
 			M.gamepad_run = false
+
 		end
 	elseif action == onscreen.ANALOG then
 		if not touch.released then
@@ -50,7 +52,7 @@ end
 
 -- Инициализация
 function M.on_input(self, action_id, action)
-	if action_id == hash("touch") then
+	if action_id == hash("touch") and self.visible then
 		if action.pressed then
 			if gui.pick_node(self.nodes.btn, action.x, action.y) then
 				-- Нажатие на кнопку
@@ -73,7 +75,19 @@ function M.on_input(self, action_id, action)
 end
 
 -- Ловим обновление
-function M.on_update(s)
+function M.on_update(self)
+	-- Досупно ли управление
+	local visible = not storage_gui.components_visible.inevntary_wrap
+	if self.visible ~= visible  then
+		--M.set_visible(self, visible)
+	end
+end
+
+function M.set_visible(self, visible)
+	self.visible = visible
+	print("set_visible", visible)
+	gui.set_enabled(self.nodes.btn, visible)
+	gui.set_enabled(self.nodes.stick_wrap, visible)
 end
 
 return M

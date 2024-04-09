@@ -8,7 +8,7 @@ local gui_manager = require "main.gui.modules.gui_manager"
 local api_player = require "main.game.api.api_player"
 
 local gui_loader = require "main.gui.modules.gui_loader"
-local catalog_characteristic_functions = require "main.gui.catalog_characteristic.modules.catalog_characteristic_functions"
+local upgrades_functions = require "main.gui.upgrades.modules.upgrades_functions"
 local modal_characteristics_render = require "main.gui.modals.modal_characteristics.modules.modal_characteristics_render"
 local modal_characteristics_up = require "main.gui.modals.modal_characteristics.modules.modal_characteristics_up"
 local modal_characteristics_animations = require "main.gui.modals.modal_characteristics.animations.modal_characteristics_animations"
@@ -21,9 +21,9 @@ function init(self)
 	msg.post(".", "acquire_input_focus")
 	gui.set_render_order(storage_gui.orders.inventary_component)
 
-	self.type = "characteristic"
+	self.type = "upgrades"
 	self.type_gui = "inventary"
-	self.id = "catalog_characteristic"
+	self.id = "upgrades"
 	self.id_catalog = self.id
 
 	-- Сообщаем обёртке, что раздел открыт
@@ -32,7 +32,7 @@ function init(self)
 		section_id = self.type,
 		type = "open_section",
 	})
-	gui_manager.add_screen("catalog_characteristic", msg.url())
+	gui_manager.add_screen("upgrades", msg.url())
 
 	msg.post("main:/music", "play", {sound = "music-catalog"})
 	sound_render.play("inventary_category_listen", url_object)
@@ -72,10 +72,14 @@ function init(self)
 
 		local node_body = self.nodes.body
 	end)
+
+	if storage_player.user_go_url then
+		msg.post(storage_player.user_go_url, "set_active_input", {active_input = true})
+	end
 end
 
 function final(self)
-	gui_manager.remove_screen("catalog_characteristic", msg.url())
+	gui_manager.remove_screen("upgrades", msg.url())
 	gui_input.on_final(self)
 	self.druid:final()
 	live_update_atlas.on_final_gui(self)
@@ -119,7 +123,7 @@ function on_message(self, message_id, message, sender)
 
 			local btn = self.btns_id[message.value.id]
 			modal_characteristics_animations.up(self, btn.name_template)
-			catalog_characteristic_functions.render_stats(self)
+			upgrades_functions.render_stats(self)
 		end
 	end
 end

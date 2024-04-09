@@ -4,10 +4,8 @@ local storage_gui = require "main.storage.storage_gui"
 local M = {}
 
 M.lang_tag = "ru"
-M.user_id = false
-M.user_object = false
 M.user_go_url = false
-M.user_go_id = false
+M.active_input = false
 M.name = 'Анонимный игрок'
 M.avatar_url = nil -- "icon-anonim"
 M.coins = 0

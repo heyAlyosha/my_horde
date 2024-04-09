@@ -17,3 +17,5 @@ _characteristic_value_zombie_damage;;{{value}};
 _characteristic_value_zombie_speed_damage;;{{value}}%;
 _bot_name_andrew;;Андрей;
 _company_name_tournir;;Любые;
+_skins;;Скины;
+_trophy;;Трофеи;

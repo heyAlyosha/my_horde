@@ -1,6 +1,6 @@
 components {
-  id: "catalog_characteristic"
-  component: "/main/gui/catalog_characteristic/catalog_characteristic.gui"
+  id: "upgrades"
+  component: "/main/gui/upgrades/upgrades.gui"
   position {
     x: 0.0
     y: 0.0

@@ -22,14 +22,14 @@ function init(self)
 
 	self.nodes = {
 		wrap = gui.get_node("wrap"),
-		btn_sale = gui.get_node("sale_btn_template/btn_bg"),
-		btn_sale_title = gui.get_node("sale_btn_template/btn_title"),
-		btn_shop = gui.get_node("shop_btn_template/btn_bg"),
-		btn_shop_title = gui.get_node("shop_btn_template/btn_title"),
-		btn_achieve = gui.get_node("achieve_btn_template/btn_bg"),
-		btn_achieve_title = gui.get_node("achieve_btn_template/btn_title"),
-		btn_characteristic = gui.get_node("characteristic_btn_template/btn_bg"),
-		btn_characteristic_title = gui.get_node("characteristic_btn_template/btn_title"),
+		btn_upgrade = gui.get_node("upgrade_btn_template/btn_bg"),
+		btn_upgrade_title = gui.get_node("upgrade_btn_template/btn_title"),
+		btn_skins = gui.get_node("skins_btn_template/btn_bg"),
+		btn_skins_title = gui.get_node("skins_btn_template/btn_title"),
+		btn_trophy = gui.get_node("trophy_btn_template/btn_bg"),
+		btn_trophy_title = gui.get_node("trophy_btn_template/btn_title"),
+		btn_rating = gui.get_node("rating_btn_template/btn_bg"),
+		btn_rating_title = gui.get_node("rating_btn_template/btn_title"),
 		btn_close = gui.get_node("close_btn_template/btn"),
 		btn_close_icon = gui.get_node("close_btn_template/btn_icon"),
 	}
@@ -37,48 +37,43 @@ function init(self)
 	-- Добавляем кнопки
 	self.btns = {
 		{
-			id = "inventary", type = "btn", section = "tabs", 
-			node = self.nodes.btn_sale, 
-			--node_title = self.nodes.btn_sale_title, 
-			node_title_section = self.nodes.btn_sale_title, 
-			icon = "btn_circle_bg_violet_",
+			id = "upgrade", type = "btn", section = "tabs", 
+			node = self.nodes.btn_upgrade, 
+			node_title_section = self.nodes.btn_upgrade_title, 
+			icon = "btn_interface_",
 		},
 		{
-			id = "shop", type = "btn", section = "tabs", 
-			node = self.nodes.btn_shop, 
-			--node_title = self.nodes.btn_shop_title, 
-			node_title_section = self.nodes.btn_shop_title, 
-			icon = "btn_circle_bg_violet_",
+			id = "skins", type = "btn", section = "tabs", 
+			node = self.nodes.btn_skins, 
+			node_title_section = self.nodes.btn_skins_title, 
+			icon = "btn_interface_",
 		},
 		{
-			id = "achieve", type = "btn", section = "tabs", 
-			node = self.nodes.btn_achieve, 
-			--node_title = self.nodes.btn_achieve_title, 
-			node_title_section = self.nodes.btn_achieve_title, 
-			icon = "btn_circle_bg_violet_"
+			id = "trophy", type = "btn", section = "tabs", 
+			node = self.nodes.btn_trophy,
+			node_title_section = self.nodes.btn_trophy_title, 
+			icon = "btn_interface_"
 		},
 		{
-			id = "characteristic", type = "btn", section = "tabs", 
-			node = self.nodes.btn_characteristic, 
+			id = "rating", type = "btn", section = "tabs", 
+			node = self.nodes.btn_rating, 
 			--node_title = self.nodes.btn_characteristic_title, 
-			node_title_section = self.nodes.btn_characteristic_title, 
-			icon = "btn_circle_bg_violet_"
+			node_title_section = self.nodes.btn_rating_title, 
+			icon = "btn_interface_"
 		},
 		{
 			id = "close", type = "btn", section = "tabs", 
 			node = self.nodes.btn_close, 
-			node_title = self.nodes.btn_close_icon, 
 			wrap_node = self.nodes.btn_close_icon, 
-			icon = "btn_circle_bg_red_", 
-			wrap_icon = "btn_icon_close_",
+			icon = "btn_interface_", 
 		},
 	}
 
 	-- Текст кнопок
-	gui_lang.set_text_upper(self, self.nodes.btn_sale_title, "_sell_prizes")
-	gui_lang.set_text_upper(self, self.nodes.btn_shop_title, "_shop")
-	gui_lang.set_text_upper(self, self.nodes.btn_achieve_title, "_achieves")
-	gui_lang.set_text_upper(self, self.nodes.btn_characteristic_title, "_improvements")
+	gui_lang.set_text_upper(self, self.nodes.btn_upgrade_title, "_improvements")
+	gui_lang.set_text_upper(self, self.nodes.btn_skins_title, "_skins")
+	gui_lang.set_text_upper(self, self.nodes.btn_trophy_title, "_trophy")
+	gui_lang.set_text_upper(self, self.nodes.btn_rating_title, "_best_players")
 
 	self.btns_id = {}
 
@@ -90,10 +85,10 @@ function init(self)
 	-- Составляем разделы
 	self.open_section_id = nil
 	self.sections = {
-		{id = "inventary", id_loader_gui = "catalog_inventary", visible = false, btn = self.btns_id.inventary},
-		{id = "shop", id_loader_gui = "catalog_shop", visible = false, btn = self.btns_id.shop},
-		{id = "achieve", id_loader_gui = "catalog_achieve", visible = false, btn = self.btns_id.achieve},
-		{id = "characteristic", id_loader_gui = "catalog_characteristic", visible = false, btn = self.btns_id.characteristic}
+		{id = "upgrades", id_loader_gui = "upgrades", visible = false, btn = self.btns_id.upgrade},
+		{id = "skins", id_loader_gui = "catalog_shop", visible = false, btn = self.btns_id.skins},
+		{id = "trophy", id_loader_gui = "catalog_achieve", visible = false, btn = self.btns_id.trophy},
+		{id = "rating", id_loader_gui = "catalog_characteristic", visible = false, btn = self.btns_id.rating}
 	}
 	self.sections_id = {}
 	for i, item in ipairs(self.sections) do
@@ -114,6 +109,13 @@ function init(self)
 	for k, url in pairs(storage_gui.components_visible) do
 		msg.post(url, "event", {id = "visible_gui", component_id = self.id})
 	end
+
+	msg.post(".", "visible")
+	if storage_player.user_go_url then
+		msg.post(storage_player.user_go_url, "set_active_input", {active_input = false})
+	end
+
+	msg.post(storage_gui.visible_virtual_gamepad, "set_visible", {visible = false})
 end
 
 function final(self)
@@ -144,6 +146,14 @@ function final(self)
 	for k, url in pairs(storage_gui.components_visible) do
 		msg.post(url, "event", {id = "close_gui", component_id = self.id})
 	end
+
+	if storage_player.user_go_url then
+		msg.post(storage_player.user_go_url, "set_active_input", {active_input = true})
+	end
+
+	if storage_gui.visible_virtual_gamepad then
+		msg.post(storage_gui.visible_virtual_gamepad, "set_visible", {visible = true})
+	end
 end
 
 function update(self, dt)
@@ -167,7 +177,12 @@ function on_message(self, message_id, message, sender)
 		gui_input.set_focus(self, message.focus)
 
 	elseif message_id == hash("visible") then
+		print("visible", storage_player.user_go_url)
 		
+		if storage_player.user_go_url then
+			msg.post(storage_player.user_go_url, "set_active_input", {active_input = false})
+		end
+
 	elseif message_id == hash("hidden") then
 		gui.animate(self.node, "color.w", 0, gui.EASING_LINEAR, 0.25, 0 , function (self)
 			msg.post("main:/loader_gui", "visible", {

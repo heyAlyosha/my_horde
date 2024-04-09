@@ -115,8 +115,8 @@ M.game_result = {
 
 -- Порядок отрисовки компонентов
 M.orders = {
-	inventary_component = 6, -- Компоненты внутри инвентаря
-	inventary_wrap = 8,
+	inventary_component = 8, -- Компоненты внутри инвентаря
+	inventary_wrap = 6,
 	default_screen = 5,
 	interface = 9,
 	modal = 10,

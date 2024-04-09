@@ -1,4 +1,4 @@
-script: ""
+script: "/main/gui/inventary_wrap/inventary_wrap.gui_script"
 fonts {
   name: "font_standart_normal"
   font: "/assets/fonts/font_standart_normal.font"
@@ -286,7 +286,7 @@ nodes {
     w: 1.0
   }
   type: TYPE_TEMPLATE
-  id: "upgrade_skill_btn_template"
+  id: "upgrade_btn_template"
   parent: "wrap_btns"
   layer: ""
   inherit_alpha: true
@@ -330,12 +330,12 @@ nodes {
   type: TYPE_BOX
   blend_mode: BLEND_MODE_MULT
   texture: ""
-  id: "upgrade_skill_btn_template/btn_wrap"
+  id: "upgrade_btn_template/btn_wrap"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
-  parent: "upgrade_skill_btn_template"
+  parent: "upgrade_btn_template"
   layer: "box"
   inherit_alpha: true
   slice9 {
@@ -390,7 +390,7 @@ nodes {
   blend_mode: BLEND_MODE_ALPHA
   text: "\320\243\320\233\320\243\320\247\320\250\320\225\320\235\320\230\320\257"
   font: "font_standart_normal"
-  id: "upgrade_skill_btn_template/btn_title"
+  id: "upgrade_btn_template/btn_title"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_N
@@ -408,7 +408,7 @@ nodes {
   }
   adjust_mode: ADJUST_MODE_FIT
   line_break: true
-  parent: "upgrade_skill_btn_template/btn_wrap"
+  parent: "upgrade_btn_template/btn_wrap"
   layer: "text"
   inherit_alpha: true
   alpha: 1.0
@@ -458,12 +458,12 @@ nodes {
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
   texture: "first_level/btn_interface_default"
-  id: "upgrade_skill_btn_template/btn_bg"
+  id: "upgrade_btn_template/btn_bg"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
-  parent: "upgrade_skill_btn_template/btn_wrap"
+  parent: "upgrade_btn_template/btn_wrap"
   layer: "box"
   inherit_alpha: true
   slice9 {
@@ -517,12 +517,12 @@ nodes {
   type: TYPE_BOX
   blend_mode: BLEND_MODE_MULT
   texture: ""
-  id: "upgrade_skill_btn_template/btn_border"
+  id: "upgrade_btn_template/btn_border"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
-  parent: "upgrade_skill_btn_template/btn_bg"
+  parent: "upgrade_btn_template/btn_bg"
   layer: "box"
   inherit_alpha: true
   slice9 {
@@ -576,12 +576,12 @@ nodes {
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
   texture: "first_level/icon_up_arrow"
-  id: "upgrade_skill_btn_template/btn_icon"
+  id: "upgrade_btn_template/btn_icon"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
-  parent: "upgrade_skill_btn_template/btn_border"
+  parent: "upgrade_btn_template/btn_border"
   layer: "box"
   inherit_alpha: true
   slice9 {
@@ -987,7 +987,7 @@ nodes {
     w: 1.0
   }
   type: TYPE_TEMPLATE
-  id: "upgrade_horde_btn_template1"
+  id: "trophy_btn_template"
   parent: "wrap_btns"
   layer: ""
   inherit_alpha: true
@@ -1031,12 +1031,12 @@ nodes {
   type: TYPE_BOX
   blend_mode: BLEND_MODE_MULT
   texture: ""
-  id: "upgrade_horde_btn_template1/btn_wrap"
+  id: "trophy_btn_template/btn_wrap"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
-  parent: "upgrade_horde_btn_template1"
+  parent: "trophy_btn_template"
   layer: "box"
   inherit_alpha: true
   slice9 {
@@ -1091,7 +1091,7 @@ nodes {
   blend_mode: BLEND_MODE_ALPHA
   text: "\320\242\320\240\320\236\320\244\320\225\320\230"
   font: "font_standart_normal"
-  id: "upgrade_horde_btn_template1/btn_title"
+  id: "trophy_btn_template/btn_title"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_N
@@ -1109,7 +1109,7 @@ nodes {
   }
   adjust_mode: ADJUST_MODE_FIT
   line_break: true
-  parent: "upgrade_horde_btn_template1/btn_wrap"
+  parent: "trophy_btn_template/btn_wrap"
   layer: "text"
   inherit_alpha: true
   alpha: 1.0
@@ -1158,12 +1158,12 @@ nodes {
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
   texture: "first_level/btn_interface_default"
-  id: "upgrade_horde_btn_template1/btn_bg"
+  id: "trophy_btn_template/btn_bg"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
-  parent: "upgrade_horde_btn_template1/btn_wrap"
+  parent: "trophy_btn_template/btn_wrap"
   layer: "box"
   inherit_alpha: true
   slice9 {
@@ -1217,12 +1217,12 @@ nodes {
   type: TYPE_BOX
   blend_mode: BLEND_MODE_MULT
   texture: ""
-  id: "upgrade_horde_btn_template1/btn_border"
+  id: "trophy_btn_template/btn_border"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
-  parent: "upgrade_horde_btn_template1/btn_bg"
+  parent: "trophy_btn_template/btn_bg"
   layer: "box"
   inherit_alpha: true
   slice9 {
@@ -1276,12 +1276,12 @@ nodes {
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
   texture: "first_level/TrophyGreen_mini"
-  id: "upgrade_horde_btn_template1/btn_icon"
+  id: "trophy_btn_template/btn_icon"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
-  parent: "upgrade_horde_btn_template1/btn_border"
+  parent: "trophy_btn_template/btn_border"
   layer: "box"
   inherit_alpha: true
   slice9 {
@@ -1335,7 +1335,7 @@ nodes {
     w: 1.0
   }
   type: TYPE_TEMPLATE
-  id: "rating_template"
+  id: "rating_btn_template"
   parent: "wrap_btns"
   layer: ""
   inherit_alpha: true
@@ -1379,12 +1379,12 @@ nodes {
   type: TYPE_BOX
   blend_mode: BLEND_MODE_MULT
   texture: ""
-  id: "rating_template/btn_wrap"
+  id: "rating_btn_template/btn_wrap"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
-  parent: "rating_template"
+  parent: "rating_btn_template"
   layer: "box"
   inherit_alpha: true
   slice9 {
@@ -1439,7 +1439,7 @@ nodes {
   blend_mode: BLEND_MODE_ALPHA
   text: "\320\233\320\243\320\247\320\250\320\230\320\225 \320\230\320\223\320\240\320\236\320\232\320\230"
   font: "font_standart_normal"
-  id: "rating_template/btn_title"
+  id: "rating_btn_template/btn_title"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_N
@@ -1457,7 +1457,7 @@ nodes {
   }
   adjust_mode: ADJUST_MODE_FIT
   line_break: true
-  parent: "rating_template/btn_wrap"
+  parent: "rating_btn_template/btn_wrap"
   layer: "text"
   inherit_alpha: true
   alpha: 1.0
@@ -1506,12 +1506,12 @@ nodes {
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
   texture: "first_level/btn_interface_default"
-  id: "rating_template/btn_bg"
+  id: "rating_btn_template/btn_bg"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
-  parent: "rating_template/btn_wrap"
+  parent: "rating_btn_template/btn_wrap"
   layer: "box"
   inherit_alpha: true
   slice9 {
@@ -1565,12 +1565,12 @@ nodes {
   type: TYPE_BOX
   blend_mode: BLEND_MODE_MULT
   texture: ""
-  id: "rating_template/btn_border"
+  id: "rating_btn_template/btn_border"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
-  parent: "rating_template/btn_bg"
+  parent: "rating_btn_template/btn_bg"
   layer: "box"
   inherit_alpha: true
   slice9 {
@@ -1624,12 +1624,12 @@ nodes {
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
   texture: "first_level/cup_gold"
-  id: "rating_template/btn_icon"
+  id: "rating_btn_template/btn_icon"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
-  parent: "rating_template/btn_border"
+  parent: "rating_btn_template/btn_border"
   layer: "box"
   inherit_alpha: true
   slice9 {
